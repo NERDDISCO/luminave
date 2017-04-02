@@ -1,0 +1,37 @@
+{
+  "name": "VisionLord",
+  "version": "0.0.1",
+  "description": "Show manager",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha --require babel-register test/*/*Test.js",
+    "start": "node index.js",
+    "build": "babel src -d lib/",
+    "compile-dev": "export NODE_ENV=development && npm run build && npm run start",
+    "compile": "export NODE_ENV=production && npm run build && npm run start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NERDDISCO/VisionLord.git"
+  },
+  "dependencies": {
+    "fivetwelve": "^1.0.0-alpha.1",
+    "fivetwelve-driver-usbpro": "^1.0.2",
+    "random-color": "^1.0.1",
+    "serialport": "^4.0.7",
+    "virtual-serialport": "^0.3.3"
+  },
+  "author": "Tim Pietrusky",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/NERDDISCO/VisionLord/issues"
+  },
+  "homepage": "https://github.com/NERDDISCO/VisionLord#readme",
+  "devDependencies": {
+    "babel-cli": "^6.24.0",
+    "babel-plugin-external-helpers": "^6.22.0",
+    "babel-preset-env": "^1.2.2",
+    "babel-register": "^6.24.0",
+    "mocha": "^3.2.0"
+  }
+}
