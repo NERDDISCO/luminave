@@ -2,6 +2,11 @@
 
 let ws = require('nodejs-websocket');
 
+/**
+ * @deprecated
+ *
+ * @TODO: Delete
+ */
 export default class WebSocketServer {
 
   constructor(param) {
@@ -11,38 +16,38 @@ export default class WebSocketServer {
     /**
      * Create a WebSocket server
      */
-     this.server = ws.createServer(function(connection) {
+    this.server = ws.createServer(function(connection) {
 
-        console.log('New connection');
+      console.log('New connection');
 
-        // Receive data
-        connection.on('text', function (data) {
-          if (this.debug) {
-            console.log(data);
-          }
+      // Receive data
+      connection.on('text', function(data) {
+        if (this.debug) {
+          console.log(data);
+        }
 
-          data = JSON.parse(data);
+        data = JSON.parse(data);
 
-           if (this.debug) {
-             console.log(JSON.stringify(data));
-           }
+        if (this.debug) {
+          console.log(JSON.stringify(data));
+        }
 
-        });
-
-
-        // Connection is closed
-        connection.on('close', function (code, reason) {
-          console.log('Connection closed');
-        });
+      });
 
 
-        // There was an error
-        connection.on('error', function (error) {
-          if (error.code !== 'ECONNRESET') {
-            // Ignore ECONNRESET and re throw anything else
-            throw error;
-          }
-        });
+      // Connection is closed
+      connection.on('close', function(code, reason) {
+        console.log('Connection closed');
+      });
+
+
+      // There was an error
+      connection.on('error', function(error) {
+        if (error.code !== 'ECONNRESET') {
+          // Ignore ECONNRESET and re throw anything else
+          throw error;
+        }
+      });
 
     }.bind(this)).listen(this.port);
 
@@ -51,7 +56,7 @@ export default class WebSocketServer {
   }
 
   broadcast(server, msg) {
-    server.connections.forEach(function (conn) {
+    server.connections.forEach(function(conn) {
       conn.sendText(msg);
     });
   }
