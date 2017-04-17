@@ -4,7 +4,7 @@
   "description": "Show manager",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require babel-register test/**/*",
+    "test": "mocha --recursive --require babel-register test/",
     "start": "node index.js",
     "build": "babel src -d lib/",
     "compile-dev": "export NODE_ENV=development && npm run build && npm run start",
