@@ -1,7 +1,12 @@
+'use strict';
+
 var fivetwelve = require('fivetwelve/es5');
 
-import RgbWAUvParam from './../util/RgbWAUvParam';
+import RgbWAUvParam from './../../util/RgbWAUvParam';
 
+/**
+ * The Cameo PixBar 600 PRO has 12 LEDs beside each other.
+ */
 export default class CameoPixBar600PRO extends fivetwelve.DmxDevice {
   constructor(options) {
     super(Object.assign({}, options, {
@@ -21,8 +26,11 @@ export default class CameoPixBar600PRO extends fivetwelve.DmxDevice {
         led10 : { rgbwauv : new RgbWAUvParam(57) },
         led11 : { rgbwauv : new RgbWAUvParam(63) },
         led12 : { rgbwauv : new RgbWAUvParam(69) },
-
       }
     }));
+
+    this.layout = {};
+    this.layout.width = 12;
+    this.layout.height = 1;
   }
 }

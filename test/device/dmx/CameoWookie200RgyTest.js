@@ -1,6 +1,6 @@
 'use strict';
 
-import CameoWookie200Rgy from '../../src/device/CameoWookie200Rgy';
+import CameoWookie200Rgy from '../../../src/device/dmx/CameoWookie200Rgy';
 
 var assert = require('assert');
 var fivetwelve = require('fivetwelve/es5');

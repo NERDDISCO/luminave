@@ -4,7 +4,7 @@
   "description": "Show manager",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --require babel-register test/*/*Test.js",
+    "test": "mocha --require babel-register test/**/*",
     "start": "node index.js",
     "build": "babel src -d lib/",
     "compile-dev": "export NODE_ENV=development && npm run build && npm run start",
@@ -15,10 +15,19 @@
     "url": "git+https://github.com/NERDDISCO/VisionLord.git"
   },
   "dependencies": {
+    "body-parser": "^1.17.1",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.15.2",
+    "express-ws": "^3.0.0",
     "fivetwelve": "^1.0.0-alpha.1",
     "fivetwelve-driver-usbpro": "^1.0.2",
+    "jade": "^1.11.0",
+    "morgan": "^1.8.1",
+    "nodejs-websocket": "^1.7.1",
+    "path": "^0.12.7",
     "random-color": "^1.0.1",
     "serialport": "^4.0.7",
+    "serve-favicon": "^2.4.2",
     "virtual-serialport": "^0.3.3"
   },
   "author": "Tim Pietrusky",

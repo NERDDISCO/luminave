@@ -1,0 +1,92 @@
+{
+  "name": "jsconf-berlin-2017",
+  "server": {
+    "port": 3000,
+    "websocket": {
+      "url": "ws://localhost:",
+      "path": "/test"
+    }
+  },
+  "log": {
+    "separator": "-------------------------------"
+  },
+  "animations": [
+    {
+      "animation": {
+        "deviceId": "cameopixbar600_1",
+        "duration": 1000,
+        "name": "dnb",
+        "sequence": [
+          {
+            "duration": 200,
+            "led1": true,
+            "led2": true,
+            "led3": false,
+            "led4": true,
+            "led5": false,
+            "led6": true
+          }
+        ]
+      }
+    }
+  ],
+  "scenes": [
+    {
+      "scene": {
+        "midi.controller.layout.part.partId": "button1",
+        "midi.controller.controllerId": "korgnanopad2",
+        "name": "scene 1",
+        "timeline": [
+          {
+            "layers": [
+              {
+                "layer1": {
+                  "duration": 5000,
+                  "animation": "name of the animation generated in animations"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "devices": {
+    "dmx": [
+      {
+        "deviceId": "cameopixbar600_1",
+        "type": "CameoPixBar600PRO",
+        "name": "Cameo PixBar 600 PRO",
+        "universe": 1,
+        "address": 13,
+        "parts": [
+          {
+            "type": "led",
+            "partId": "led1",
+            "x": 0,
+            "y": 0
+          }
+        ]
+      }
+    ],
+    "midi": [
+      {
+        "name": "KORG nanoPAD 2",
+        "controllerId": "korgnanopad2",
+        "layout": {
+          "height": 2,
+          "width": 9,
+          "parts": [
+            {
+              "note": 22,
+              "type": "button / knob / slider / xy pad",
+              "y": 0,
+              "x": 1,
+              "partId": "button1"
+            }
+          ]
+        }
+      }
+    ]
+  }
+}
