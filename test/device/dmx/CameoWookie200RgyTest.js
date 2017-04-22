@@ -1,6 +1,6 @@
 'use strict';
 
-import CameoWookie200Rgy from '../../../src/device/dmx/CameoWookie200Rgy';
+import CameoWookie200Rgy from '../../../server/device/dmx/CameoWookie200RGY';
 
 var assert = require('assert');
 var fivetwelve = require('fivetwelve/es5');
@@ -13,7 +13,7 @@ const output = fivetwelve.default(driver);
 let instance = new CameoWookie200Rgy({ universe: 1, address: 1 });
 instance.setOutput(output);
 
-describe('CameoWookie200Rgy', () => {
+describe('CameoWookie200RGY', () => {
 
   describe('mode', () => {
 

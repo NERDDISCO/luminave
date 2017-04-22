@@ -1,4 +1,4 @@
-import RgbWAUvParam from '../../src/util/RgbWAUvParam';
+import RgbWAUvParam from '../../server/util/RgbWAUvParam';
 
 var assert = require('assert');
 

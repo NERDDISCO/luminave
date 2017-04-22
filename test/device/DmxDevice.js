@@ -1,6 +1,6 @@
 'use strict';
 
-import DmxDevice from '../../src/device/DmxDevice';
+import DmxDevice from '../../server/device/DmxDevice';
 
 var assert = require('assert');
 var fivetwelve = require('fivetwelve/es5');

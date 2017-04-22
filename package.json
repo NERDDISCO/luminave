@@ -6,9 +6,13 @@
   "scripts": {
     "test": "mocha --recursive --require babel-register test/",
     "start": "node index.js",
-    "build": "babel -q src -d lib/",
-    "compile-dev": "export NODE_ENV=development && npm run build && npm run start",
-    "compile": "export NODE_ENV=production && npm run build && npm run start"
+    "build": "babel -q server -d server-bin/ && browserify client/index.js -t babelify --outfile client-bin/js/index.js",
+    "watch": "npm run watch-client & npm run watch-server",
+    "watch-dev": "npm run watch-client & npm run watch-server",
+    "watch-server": "babel-watch server",
+    "watch-client": "watchify client/index.js -t babelify --outfile client-bin/js/index.js",
+    "compile": "export NODE_ENV=production && npm run build && npm run start",
+    "compile-dev": "export NODE_ENV=development && npm run build && npm run start"
   },
   "repository": {
     "type": "git",
@@ -41,6 +45,10 @@
     "babel-plugin-external-helpers": "^6.22.0",
     "babel-preset-env": "^1.2.2",
     "babel-register": "^6.24.0",
-    "mocha": "^3.2.0"
+    "babel-watch": "^2.0.6",
+    "babelify": "^7.3.0",
+    "browserify": "^14.3.0",
+    "mocha": "^3.2.0",
+    "watchify": "^3.9.0"
   }
 }

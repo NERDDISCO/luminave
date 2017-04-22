@@ -1,5 +1,12 @@
 {
   "name": "jsconf-berlin-2017",
+  "global": {
+    "fps": 5,
+    "dimmer": 75
+  },
+  "serialport": {
+    "path": "/dev/cu.usbserial-EN193448"
+  },
   "server": {
     "port": 3000,
     "websocket": {
@@ -12,43 +19,40 @@
   },
   "animations": [
     {
-      "animation": {
-        "deviceId": "cameopixbar600_1",
-        "duration": 1000,
-        "name": "dnb",
-        "sequence": [
-          {
-            "duration": 200,
-            "led1": true,
-            "led2": true,
-            "led3": false,
-            "led4": true,
-            "led5": false,
-            "led6": true
-          }
-        ]
-      }
+      "deviceId": "cameopixbar600_1",
+      "animationId": "dnb",
+      "duration": 1000,
+      "name": "This is DnB",
+      "sequence": [
+        {
+          "duration": 200,
+          "led1": true,
+          "led2": true,
+          "led3": false,
+          "led4": true,
+          "led5": false,
+          "led6": true
+        }
+      ]
     }
   ],
   "scenes": [
     {
-      "scene": {
-        "midi.controller.layout.part.partId": "button1",
-        "midi.controller.controllerId": "korgnanopad2",
-        "name": "scene 1",
-        "timeline": [
-          {
-            "layers": [
-              {
-                "layer1": {
-                  "duration": 5000,
-                  "animation": "name of the animation generated in animations"
-                }
+      "midi.controller.layout.part.partId": "button1",
+      "midi.controller.controllerId": "korgnanopad2",
+      "name": "scene 1",
+      "timeline": [
+        {
+          "layers": [
+            {
+              "layer1": {
+                "duration": 5000,
+                "animation": "name of the animation generated in animations"
               }
-            ]
-          }
-        ]
-      }
+            }
+          ]
+        }
+      ]
     }
   ],
   "devices": {
@@ -67,6 +71,34 @@
             "y": 0
           }
         ]
+      },
+      {
+        "deviceId": "cameo_ledspot_1",
+        "type": "CameoFlat1RGBW",
+        "name": "Cameo Flat1 PAR RGBW",
+        "universe": 1,
+        "address": 100
+      },
+      {
+        "deviceId": "cameo_ledspot_2",
+        "type": "CameoFlat1RGBW",
+        "name": "Cameo Flat1 PAR RGBW",
+        "universe": 2,
+        "address": 1
+      },
+      {
+        "deviceId": "cameo_laser",
+        "type": "CameoWookie200RGY",
+        "name": "Cameo Wookie 200 RGY",
+        "universe": 2,
+        "address": 10
+      },
+      {
+        "deviceId": "adj_planet",
+        "type": "AdjStarburst",
+        "name": "ADJ Starburst",
+        "universe": 2,
+        "address": 20
       }
     ],
     "midi": [
