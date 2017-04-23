@@ -21,7 +21,7 @@ export default class DeviceManager {
         type: element.type,
         output: this.output,
         universe: element.universe,
-        address: element.address,
+        address: element.address
       });
 
       // Set default values

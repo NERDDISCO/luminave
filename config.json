@@ -1,17 +1,23 @@
 {
   "name": "jsconf-berlin-2017",
   "global": {
-    "fps": 5,
-    "dimmer": 75
+    "fps": 60,
+    "dimmer": 255
   },
-  "serialport": {
-    "path": "/dev/cu.usbserial-EN193448"
+  "dmxInterface": {
+    "universeAmount": 2,
+    "driver": "fivetwelve-driver-usbpro/es5",
+    "serialport": {
+      "path": "/dev/cu.usbserial-EN193448"
+    }
   },
   "server": {
     "port": 3000,
     "websocket": {
       "url": "ws://localhost:",
-      "path": "/test"
+      "path": {
+        "midi": "/midi"
+      }
     }
   },
   "log": {
@@ -19,36 +25,83 @@
   },
   "animations": [
     {
-      "deviceId": "cameopixbar600_1",
+      "devices": ["cameo_ledspot_1", "cameo_ledspot_2"],
       "animationId": "dnb",
-      "duration": 1000,
+      "duration": 350,
       "name": "This is DnB",
-      "sequence": [
-        {
-          "duration": 200,
-          "led1": true,
-          "led2": true,
-          "led3": false,
-          "led4": true,
-          "led5": false,
-          "led6": true
+      "timeline": [{
+          "name": "color",
+          "value": [0, 0, 0],
+          "keyframes": [
+            { "time": 0, "value": [0, 0, 0] },
+            { "time": 50, "value": [100, 0, 0] },
+            { "time": 100, "value": [0, 0, 0] },
+            { "time": 150, "value": [0, 100, 0] },
+            { "time": 200, "value": [0, 0, 0] },
+            { "time": 250, "value": [0, 0, 100] },
+            { "time": 300, "value": [0, 0, 0] }
+          ]
+        }
+      ]
+    },
+    {
+      "devices": ["cameo_ledspot_1", "cameo_ledspot_2"],
+      "animationId": "crazy",
+      "duration": 1000,
+      "name": "This is a crazy animation",
+      "timeline": [{
+          "name": "color",
+          "value": [0, 0, 0],
+          "keyframes": [
+            { "time": 0, "value": [0, 0, 0] },
+            { "time": 500, "value": [255, 255, 255] },
+            { "time": 900, "value": [0, 0, 0] }
+          ]
         }
       ]
     }
   ],
   "scenes": [
     {
-      "midi.controller.layout.part.partId": "button1",
-      "midi.controller.controllerId": "korgnanopad2",
-      "name": "scene 1",
-      "timeline": [
+      "sceneId": "scene1",
+      "name": "This is my awesome first scene",
+      "midi": {
+        "controllerId": "korgnanopad2",
+        "partId": "button1"
+      },
+      "layers": [
         {
-          "layers": [
+          "layerId": "layer1",
+          "animations": [
             {
-              "layer1": {
-                "duration": 5000,
-                "animation": "name of the animation generated in animations"
-              }
+              "start": 1000,
+              "duration": 5000,
+              "animationId": "dnb"
+            },
+            {
+              "start": 2000,
+              "duration": 5000,
+              "animationId": "dnb"
+            }
+          ]
+        },
+        {
+          "layerId": "layer2",
+          "animations": [
+            {
+              "start": 4000,
+              "duration": 5000,
+              "animationId": "crazy"
+            },
+            {
+              "start": 4250,
+              "duration": 5000,
+              "animationId": "crazy"
+            },
+            {
+              "start": 4500,
+              "duration": 5000,
+              "animationId": "crazy"
             }
           ]
         }
@@ -58,7 +111,7 @@
   "devices": {
     "dmx": [
       {
-        "deviceId": "cameopixbar600_1",
+        "deviceId": "cameo_pixbar_1",
         "type": "CameoPixBar600PRO",
         "name": "Cameo PixBar 600 PRO",
         "universe": 1,
@@ -103,15 +156,25 @@
     ],
     "midi": [
       {
-        "name": "KORG nanoPAD 2",
+        "name": "nanoPAD2",
+        "manufacturer": "KORG INC.",
         "controllerId": "korgnanopad2",
+        "input": "nanoPAD2 PAD",
+        "output": "nanoPAD2 CTRL",
         "layout": {
           "height": 2,
           "width": 9,
           "parts": [
             {
-              "note": 22,
+              "note": 20,
               "type": "button / knob / slider / xy pad",
+              "y": 0,
+              "x": 0,
+              "partId": "test"
+            },
+            {
+              "note": 37,
+              "type": "button",
               "y": 0,
               "x": 1,
               "partId": "button1"

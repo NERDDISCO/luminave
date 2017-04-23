@@ -59,9 +59,9 @@ export default class ExpressServer {
       res.render('index', { title: 'VisionLord', mydata: JSON.stringify(this.config) });
     });
 
-    // WebSocket route
-    this.app.ws(this.config.server.websocket.path, (ws, req) => {
-      console.log('WebSocket opened');
+    // WebSocket: MIDI
+    this.app.ws(this.config.server.websocket.path.midi, (ws, req) => {
+      console.log('WebSocket opened: MIDI');
 
       ws.send("❤️");
 
@@ -81,7 +81,7 @@ export default class ExpressServer {
       });
 
       ws.on('close', () => {
-        console.log('WebSocket closed');
+        console.log('WebSocket closed: MIDI');
         console.log(this.config.log.separator);
       });
     });
