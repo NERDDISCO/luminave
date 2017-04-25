@@ -27,8 +27,14 @@ export default class Layer {
       let animation = this.animationManager.get(element.animationId);
 
       // Start the animation if the start time is reached & duration is not reached yet
-      if (progress >= element.start && progress <= (element.start + animation.duration)) {
+      if (progress >= element.start && progress <= (element.start + animation.duration + delta)) {
         animation.run(delta);
+      } else {
+
+        // @BUG: This is running forever
+        // @TODO: We need a way to know when a layer is done, then kill the animation
+        console.log('Layer', 'done');
+        animation.stop();
       }
 
     });

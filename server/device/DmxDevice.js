@@ -1,9 +1,11 @@
 'use strict';
 
+// @TODO: Automatically import every device from the "dmx"-folder
 import CameoPixBar600PRO from './dmx/CameoPixBar600PRO.js';
 import CameoFlat1RGBW from './dmx/CameoFlat1RGBW';
 import CameoWookie200RGY from './dmx/CameoWookie200RGY';
 import AdjStarburst from './dmx/AdjStarburst';
+import FunGenerationSeParQuadLedRgbUv from './dmx/FunGenerationSeParQuadLedRgbUv';
 
 /**
  *
@@ -43,10 +45,14 @@ export default class DmxDevice {
      */
   }
 
+  /*
+   * @TODO: Automatically create the mapping, maybe with eval? 😐
+   */
   createMapping() {
     this.deviceMapping.set('CameoPixBar600PRO', CameoPixBar600PRO);
     this.deviceMapping.set('CameoFlat1RGBW', CameoFlat1RGBW);
     this.deviceMapping.set('CameoWookie200RGY', CameoWookie200RGY);
     this.deviceMapping.set('AdjStarburst', AdjStarburst);
+    this.deviceMapping.set('FunGenerationSeParQuadLedRgbUv', FunGenerationSeParQuadLedRgbUv);
   }
 }

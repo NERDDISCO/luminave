@@ -9,6 +9,7 @@ import cookieParser from 'cookie-parser';
 import bodyParser from 'body-parser';
 import debug from 'debug';
 import http from 'http';
+import { eventService } from './EventService';
 
 
 
@@ -61,30 +62,34 @@ export default class ExpressServer {
 
     // WebSocket: MIDI
     this.app.ws(this.config.server.websocket.path.midi, (ws, req) => {
-      console.log('WebSocket opened: MIDI');
+      // There is a new connection
+      console.log(this.config.server.websocket.path.midi, '-', 'opened 😍');
 
-      ws.send("❤️");
+      // Welcome the client
+      ws.send(JSON.stringify({ 'type': 'welcome', 'message': '❤️' }));
 
-      ws.on('message', msg => {
-        console.log('message', msg);
+      // Receive a message from the client
+      ws.on('message', message => {
+        let data = JSON.parse(message);
+        console.log(this.config.server.websocket.path.midi, '-', data);
+        eventService.emit('MidiController', data);
       });
 
-      ws.on('text', msg => {
-        console.log('text', msg);
-        // ws.send(msg);
-        // msg = JSON.parse(msg);
-        // console.log(JSON.stringify(msg));
-      });
+      // @TODO: Do we need this at all?
+      // ws.on('text', msg => {
+      //   console.log('text', msg);
+      // });
 
       ws.on('error', msg => {
         console.error(msg);
       });
 
       ws.on('close', () => {
-        console.log('WebSocket closed: MIDI');
+        console.log(this.config.server.websocket.path.midi, '-', 'closed 😱');
         console.log(this.config.log.separator);
       });
-    });
+
+    }); // WebSocket: /midi
 
 
     // Catch 404 and forward to error handler

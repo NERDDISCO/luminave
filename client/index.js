@@ -6,6 +6,7 @@ import MidiManager from './core/MidiManager';
 // Get the config from the hidden element
 var visionLordConfigElement = document.getElementById('VisionLordConfig');
 var config = JSON.parse(visionLordConfigElement.value);
+console.log('config', '-', 'loaded for', config.name);
 
 
 // Manage connected MIDI devices
@@ -17,14 +18,3 @@ let midiWebSocketClient = new WebSocketClient({
   port: config.server.port,
   path: config.server.websocket.path.midi
 });
-
-// let output = document.getElementById('outputModV');
-// output.innerHTML = "Connection: 💀";
-//
-// // Listen for messages from the server
-// connection.addEventListener('message', (msg) => {
-//   // Format the output and show it in the frontend
-//   output.innerHTML = "Connection: " + msg.data;
-//
-//   connection.send(JSON.stringify({ test: 'data' }));
-// });

@@ -52,6 +52,8 @@ export default class MidiManager {
       });
 
       this.list.set(element.controllerId, midiController);
+
+      console.log('MidiManager', '-', 'Added', midiController.controllerId);
     });
   }
 }

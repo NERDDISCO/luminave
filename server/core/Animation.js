@@ -32,8 +32,13 @@ export default class Animation {
     this.values = [];
   }
 
+  /*
+   * Start the animation for the associated devices.
+   *
+   * @BUG: When the animation is retriggered while it is running, the last color that was send to the device stays forever at the device.
+   */
   run(delta) {
-    // If animationProgress is smaller that duration we know that duraction is not reached yet
+    // If animationProgress is smaller than duration we know that duraction is not reached yet
     if ((this.progress + delta) <= this.duration) {
       // So we add the delta to animationProgress
       this.progress += delta;
@@ -45,14 +50,23 @@ export default class Animation {
       });
 
     } else {
-      this.stop();
+      // @TODO: Do we really need this?
+      console.log('test');
+      //this.stop();
     }
   }
 
   stop() {
     this.progress = 0;
+
+    // Reset all devices
+    // @TODO: Is this really ok? If we reset the device, all other animations for this device will also die :/
+    this.devices.forEach((element, index, array) => {
+      this.deviceManager.get(element).color = new Color(this.timeline.value).rgb().string();
+    });
   }
 
+  // @TODO: Implement
   play() {}
 
   // @TODO: Implement

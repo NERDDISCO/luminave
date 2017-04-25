@@ -55,7 +55,23 @@
           "keyframes": [
             { "time": 0, "value": [0, 0, 0] },
             { "time": 500, "value": [255, 255, 255] },
-            { "time": 900, "value": [0, 0, 0] }
+            { "time": 1000, "value": [0, 0, 0] }
+          ]
+        }
+      ]
+    },
+    {
+      "devices": ["fungeneration_ledspot_1"],
+      "animationId": "funny",
+      "duration": 1000,
+      "name": "This is a funny animation",
+      "timeline": [{
+          "name": "color",
+          "value": [0, 0, 0],
+          "keyframes": [
+            { "time": 0, "value": [255, 0, 0] },
+            { "time": 500, "value": [0, 255, 0] },
+            { "time": 1000, "value": [0, 0, 255] }
           ]
         }
       ]
@@ -82,6 +98,11 @@
               "start": 2000,
               "duration": 5000,
               "animationId": "dnb"
+            },
+            {
+              "start": 0,
+              "duration": 5000,
+              "animationId": "funny"
             }
           ]
         },
@@ -131,6 +152,13 @@
         "name": "Cameo Flat1 PAR RGBW",
         "universe": 1,
         "address": 100
+      },
+      {
+        "deviceId": "fungeneration_ledspot_1",
+        "type": "FunGenerationSeParQuadLedRgbUv",
+        "name": "Fun Generation SePar Quad LED RGB UV",
+        "universe": 1,
+        "address": 110
       },
       {
         "deviceId": "cameo_ledspot_2",

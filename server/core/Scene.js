@@ -1,6 +1,10 @@
 "use strict";
 
 import Layer from './Layer';
+import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/observable/fromEvent';
+import 'rxjs/add/operator/filter';
+import { eventService } from './EventService';
 
 /**
  * A set of animations & DMX devices that can be controlled by using MIDI devices.
@@ -33,7 +37,12 @@ export default class Scene {
     // The progress in terms of time of this scene
     this.progress = 0;
 
+    // Is this scene playing?
+    this.isPlaying = false;
+
     this.register();
+
+    this.listen();
   }
 
   register() {
@@ -59,10 +68,41 @@ export default class Scene {
    * - Keep track of the progress
    */
   run(delta) {
-    this.progress += delta;
+    if (this.isPlaying) {
+      this.progress += delta;
 
-    this.layers.forEach((element, index, array) => {
-      element.run(this.progress, delta);
+      this.layers.forEach((element, index, array) => {
+        element.run(this.progress, delta);
+      });
+    }
+  }
+
+  play() {
+    this.isPlaying = true;
+  }
+
+  reset() {
+    this.isPlaying = false;
+    this.progress = 0;
+  }
+
+  /*
+   * Listen to events to start this Scene.
+   */
+  listen() {
+    // @TODO: Does this make any sense at this position / class?
+    var midiControllerSource = Observable.fromEvent(eventService, 'MidiController')
+      // Only allow the MIDI controller that was attachted to this scene
+      .filter((data, idx, obs) => {
+        return data.controllerId === this.midi.controllerId;
+      });
+    midiControllerSource.subscribe(data => {
+
+      console.log('Scene', '-', data);
+
+      this.reset();
+      this.play();
+
     });
   }
 }
