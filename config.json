@@ -2,7 +2,9 @@
   "name": "jsconf-berlin-2017",
   "global": {
     "fps": 60,
-    "dimmer": 255
+    "dimmer": 50,
+    "color": [0, 255, 0],
+    "useModV": true
   },
   "dmxInterface": {
     "universeAmount": 2,
@@ -25,7 +27,6 @@
   },
   "animations": [
     {
-      "devices": ["cameo_ledspot_1", "cameo_ledspot_2"],
       "animationId": "dnb",
       "duration": 350,
       "name": "This is DnB",
@@ -45,7 +46,6 @@
       ]
     },
     {
-      "devices": ["cameo_ledspot_1", "cameo_ledspot_2"],
       "animationId": "crazy",
       "duration": 1000,
       "name": "This is a crazy animation",
@@ -61,17 +61,99 @@
       ]
     },
     {
-      "devices": ["fungeneration_ledspot_1"],
       "animationId": "funny",
-      "duration": 1000,
+      "duration": 200,
       "name": "This is a funny animation",
       "timeline": [{
           "name": "color",
           "value": [0, 0, 0],
           "keyframes": [
-            { "time": 0, "value": [255, 0, 0] },
-            { "time": 500, "value": [0, 255, 0] },
-            { "time": 1000, "value": [0, 0, 255] }
+            { "time": 0, "value": [0, 0, 255], "modV": true },
+            { "time": 50, "value": [0, 0, 0] }
+          ]
+        },
+        {
+          "name": "uv",
+          "value": 0,
+          "keyframes": [
+            { "time": 0, "value": 255, "modV": false },
+            { "time": 200, "value": 0 }
+          ]
+        }
+      ]
+    },
+    {
+      "animationId": "clockwise",
+      "duration": 5000,
+      "name": "Starburst running clockwise",
+      "timeline": [{
+          "name": "color",
+          "value": [0, 0, 0],
+          "keyframes": [
+            { "time": 0, "value": [0, 0, 0], "modV": true },
+            { "time": 5000, "value": [0, 0, 0] }
+          ]
+        },
+        {
+          "name": "uv",
+          "value": 0,
+          "keyframes": [
+            { "time": 0, "value": 255, "modV": false },
+            { "time": 5000, "value": 0 }
+          ]
+        },
+        {
+          "name": "rotate",
+          "value": 0,
+          "keyframes": [
+            { "time": 0, "value": "clockwise(50)" },
+            { "time": 5000, "value": "stop" }
+          ]
+        },
+        {
+          "name": "strobe",
+          "value": 0,
+          "keyframes": [
+            { "time": 0, "value": "on" },
+            { "time": 5000, "value": "off" }
+          ]
+        }
+      ]
+    },
+    {
+      "animationId": "counterClockwise",
+      "duration": 5000,
+      "name": "Starburst running counter-clockwise",
+      "timeline": [{
+          "name": "color",
+          "value": [0, 0, 0],
+          "keyframes": [
+            { "time": 0, "value": [0, 0, 0], "modV": true },
+            { "time": 5000, "value": [0, 0, 0] }
+          ]
+        },
+        {
+          "name": "uv",
+          "value": 0,
+          "keyframes": [
+            { "time": 0, "value": 255, "modV": false },
+            { "time": 5000, "value": 0 }
+          ]
+        },
+        {
+          "name": "rotate",
+          "value": 0,
+          "keyframes": [
+            { "time": 0, "value": "counterClockwise(50)" },
+            { "time": 5000, "value": "stop" }
+          ]
+        },
+        {
+          "name": "strobe",
+          "value": 0,
+          "keyframes": [
+            { "time": 0, "value": "on" },
+            { "time": 5000, "value": "off" }
           ]
         }
       ]
@@ -88,41 +170,117 @@
       "layers": [
         {
           "layerId": "layer1",
+          "devices": ["fungeneration_ledspot_1"],
           "animations": [
             {
-              "start": 1000,
-              "duration": 5000,
-              "animationId": "dnb"
+              "start": 66,
+              "animationId": "funny"
             },
             {
-              "start": 2000,
-              "duration": 5000,
-              "animationId": "dnb"
+              "start": 132,
+              "animationId": "funny"
             },
             {
-              "start": 0,
-              "duration": 5000,
+              "start": 198,
               "animationId": "funny"
             }
           ]
         },
         {
           "layerId": "layer2",
+          "devices": ["cameo_ledspot_1", "cameo_ledspot_2"],
           "animations": [
             {
-              "start": 4000,
-              "duration": 5000,
-              "animationId": "crazy"
+              "start": 66,
+              "animationId": "funny"
             },
             {
-              "start": 4250,
-              "duration": 5000,
-              "animationId": "crazy"
+              "start": 132,
+              "animationId": "funny"
             },
             {
-              "start": 4500,
-              "duration": 5000,
-              "animationId": "crazy"
+              "start": 198,
+              "animationId": "funny"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sceneId": "scene2",
+      "name": "This is my awesome second scene",
+      "midi": {
+        "controllerId": "korgnanopad2",
+        "partId": "button2"
+      },
+      "layers": [
+        {
+          "layerId": "layer1",
+          "devices": ["fungeneration_ledspot_1"],
+          "animations": [
+            {
+              "start": 0,
+              "animationId": "funny"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sceneId": "scene3",
+      "name": "This is my awesome second scene",
+      "midi": {
+        "controllerId": "korgnanopad2",
+        "partId": "button3"
+      },
+      "layers": [
+        {
+          "layerId": "layer1",
+          "devices": ["cameo_ledspot_1", "cameo_ledspot_2"],
+          "animations": [
+            {
+              "start": 0,
+              "animationId": "funny"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sceneId": "scene4",
+      "name": "This is my awesome second scene",
+      "midi": {
+        "controllerId": "korgnanopad2",
+        "partId": "button4"
+      },
+      "layers": [
+        {
+          "layerId": "layer1",
+          "devices": ["adj_planet"],
+          "animations": [
+            {
+              "start": 0,
+              "animationId": "clockwise"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "sceneId": "scene5",
+      "name": "This is my awesome second scene",
+      "midi": {
+        "controllerId": "korgnanopad2",
+        "partId": "button5"
+      },
+      "layers": [
+        {
+          "layerId": "layer1",
+          "devices": ["adj_planet"],
+          "animations": [
+            {
+              "start": 0,
+              "animationId": "counterClockwise"
             }
           ]
         }
@@ -194,18 +352,39 @@
           "width": 9,
           "parts": [
             {
-              "note": 20,
-              "type": "button / knob / slider / xy pad",
-              "y": 0,
-              "x": 0,
-              "partId": "test"
-            },
-            {
               "note": 37,
               "type": "button",
               "y": 0,
               "x": 1,
               "partId": "button1"
+            },
+            {
+              "note": 39,
+              "type": "button",
+              "y": 0,
+              "x": 2,
+              "partId": "button2"
+            },
+            {
+              "note": 41,
+              "type": "button",
+              "y": 0,
+              "x": 3,
+              "partId": "button3"
+            },
+            {
+              "note": 43,
+              "type": "button",
+              "y": 0,
+              "x": 4,
+              "partId": "button4"
+            },
+            {
+              "note": 45,
+              "type": "button",
+              "y": 0,
+              "x": 5,
+              "partId": "button5"
             }
           ]
         }

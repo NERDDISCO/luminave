@@ -26,7 +26,7 @@ export default class AdjStarburst extends fivetwelve.DmxDevice {
           off: { range: [0, 30] },
           clockwise: { range: [31, 140], values: [0, 255] },
           stop: { range: [141, 145] },
-          counterClockwise: { range: [146, 255], values: [0, 255] }
+          counterClockwise: { range: [146, 255], values: [255, 0] }
         })
       }
     }));

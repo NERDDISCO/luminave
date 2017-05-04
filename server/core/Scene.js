@@ -1,10 +1,10 @@
 "use strict";
 
 import Layer from './Layer';
+import { eventService } from './EventService';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/filter';
-import { eventService } from './EventService';
 
 /**
  * A set of animations & DMX devices that can be controlled by using MIDI devices.
@@ -40,6 +40,8 @@ export default class Scene {
     // Is this scene playing?
     this.isPlaying = false;
 
+    this.count = 0;
+
     this.register();
 
     this.listen();
@@ -51,7 +53,8 @@ export default class Scene {
       let layer = new Layer({
         id: element.layerId,
         animations: element.animations,
-        animationManager: this.animationManager
+        animationManager: this.animationManager,
+        devices: element.devices
       });
 
       this.add(element.layerId, layer);
@@ -63,27 +66,48 @@ export default class Scene {
     this.layers.push(layer);
   }
 
+  play() {
+    this.isPlaying = true;
+
+    this.layers.forEach((element, index, array) => {
+      // @TODO: Move this into this.stop()
+      element.stop();
+      element.play();
+    });
+  }
+
+  stop() {
+    this.isPlaying = false;
+    this.progress = 0;
+  }
+
   /*
    * - Iterate over all layers and run them
    * - Keep track of the progress
    */
   run(delta) {
+
     if (this.isPlaying) {
+
       this.progress += delta;
+
+      this.count = 0;
 
       this.layers.forEach((element, index, array) => {
         element.run(this.progress, delta);
+
+        if (element.isPlaying === true) {
+          this.count++;
+        }
       });
+
+      if (this.count === 0) {
+        this.stop();
+
+        console.log('Scene', '-', this.id, 'stopped');
+      }
+
     }
-  }
-
-  play() {
-    this.isPlaying = true;
-  }
-
-  reset() {
-    this.isPlaying = false;
-    this.progress = 0;
   }
 
   /*
@@ -91,18 +115,22 @@ export default class Scene {
    */
   listen() {
     // @TODO: Does this make any sense at this position / class?
-    var midiControllerSource = Observable.fromEvent(eventService, 'MidiController')
+    var source = Observable
+      .fromEvent(eventService, 'MidiController')
+
       // Only allow the MIDI controller that was attachted to this scene
       .filter((data, idx, obs) => {
         return data.controllerId === this.midi.controllerId;
+      })
+
+      // Only allow a specific input element (button or knob) from the MIDI controller
+      .filter((data, idx, obs) => {
+        return data.partId === this.midi.partId;
       });
-    midiControllerSource.subscribe(data => {
 
-      console.log('Scene', '-', data);
-
-      this.reset();
+    source.subscribe(data => {
+      this.stop();
       this.play();
-
     });
   }
 }

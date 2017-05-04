@@ -20,23 +20,11 @@ export default class Render {
     this.lastTime = 0;
   }
 
-  // register() {
-  //   this.config.animations.forEach((element, index, array) => {
-  //     let animation = new Animation({
-  //       duration: element.duration,
-  //       timeline: element.timeline,
-  //       deviceManager: this.deviceManager,
-  //       devices: element.devices
-  //     });
-  //
-  //     this.list.push(animation);
-  //   });
-  // }
-
   /**
    * Start rendering all elements in "list" by using the desired fps
    */
   start(fps) {
+    // @TODO: Is this correct? Don't we need to just call loop?
     this.dmxUsbInterface.output.requestDmxFrame(this.loop.bind(this));
 
     // Start the DMX output with the specified fps
@@ -56,7 +44,7 @@ export default class Render {
     // Save the current time into lastTime so we can calculate the delta for the next call of loop
     this.lastTime = time;
 
+    // Call loop again
     this.dmxUsbInterface.output.requestDmxFrame(this.loop.bind(this));
-
   }
 }

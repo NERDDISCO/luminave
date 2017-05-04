@@ -20,8 +20,17 @@ export default class MidiController {
     // Get a reference to the output port
     this.output = WebMidi.getOutputByName(param.output);
 
+    // Layout & mapping
+    this.layout = param.layout;
+
+    // Mapped elements
+    this.elementMapping = new Map();
+
     // Input is defined
     if (this.input) {
+      // Map input elements to an internal identifier
+      this.mapping();
+
       // Listen to "noteon" events
       this.input.addListener('noteon', 'all', this.noteon.bind(this));
     }
@@ -36,11 +45,27 @@ export default class MidiController {
     let note = data[1];
     let velocity = data[2];
 
-    let eventData = {
-      note: note,
-      controllerId: this.controllerId
-    };
+    // Mapping exists for this note
+    if (this.elementMapping.get(note) !== undefined) {
+      let eventData = {
+        controllerId: this.controllerId,
+        partId: this.elementMapping.get(note).partId
+      };
 
-    eventService.emit('MidiController', eventData);
+      console.log('MidiContoller|map', '-', 'noteon', eventData);
+
+      eventService.emit('MidiController', eventData);
+    } else {
+      console.log('MidiContoller|raw', '-', 'noteon', note);
+    }
+
+  }
+
+  mapping() {
+    // Create a mapping for the input elements of the controller
+    this.layout.parts.forEach((element, index, array) => {
+      // MIDI note => partId
+      this.elementMapping.set(element.note, element);
+    });
   }
 }

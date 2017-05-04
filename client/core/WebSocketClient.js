@@ -3,6 +3,7 @@
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 import { eventService } from './EventService';
+import WebSocket from 'reconnecting-websocket';
 
 /**
  * Handles the WebSocket connection to the server.
@@ -17,8 +18,15 @@ export default class WebSocketClient {
     this.port = param.port;
     this.path = param.path;
 
+    const reconnectingWebsocketOptions = {
+      maxReconnectionDelay: 500,
+      minReconnectionDelay: 250,
+      reconnectionDelayGrowFactor: 1.3,
+      connectionTimeout: 500
+    };
+
     // Create a connection to the server
-    this.connection = new WebSocket(this.url + this.port + this.path);
+    this.connection = new WebSocket(this.url + this.port + this.path, [], reconnectingWebsocketOptions);
 
     // Listen for messages from the server
     this.connection.addEventListener('message', this.fromServer.bind(this));
@@ -26,12 +34,8 @@ export default class WebSocketClient {
     // @TODO: Move this into it's own class and find a name that makes any sense :D
     var midiControllerSource = Observable.fromEvent(eventService, 'MidiController');
     midiControllerSource.subscribe(data => {
-
       data.type = 'midi';
-
       this.connection.send(JSON.stringify(data));
-
-      console.log(data);
     });
   }
 

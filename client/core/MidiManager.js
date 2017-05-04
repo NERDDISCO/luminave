@@ -45,15 +45,11 @@ export default class MidiManager {
   register() {
     this.config.devices.midi.forEach((element, index, array) => {
 
-      let midiController = new MidiController({
-        controllerId: element.controllerId,
-        input: element.input,
-        output: element.output
-      });
+      let midiController = new MidiController(Object.assign({}, element));
 
       this.list.set(element.controllerId, midiController);
 
-      console.log('MidiManager', '-', 'Added', midiController.controllerId);
+      console.log('MidiManager', '-', 'Added', element.controllerId);
     });
   }
 }

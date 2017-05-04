@@ -11,6 +11,8 @@ console.log('config', '-', 'loaded for', config.name);
 
 // Manage connected MIDI devices
 let midiManager = new MidiManager({ config: config });
+// Expose it globally so we can use it in the console
+window.midiManager = midiManager;
 
 // Create a WebSocket client to exchange MIDI data
 let midiWebSocketClient = new WebSocketClient({

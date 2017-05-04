@@ -20,6 +20,7 @@ export default class AnimationManager {
     this.config.animations.forEach((element, index, array) => {
 
       let animation = new Animation({
+        animationId: element.animationId,
         duration: element.duration,
         timeline: element.timeline,
         deviceManager: this.deviceManager,

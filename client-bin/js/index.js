@@ -89,8 +89,17 @@ var MidiController = function () {
     // Get a reference to the output port
     this.output = _webmidi2.default.getOutputByName(param.output);
 
+    // Layout & mapping
+    this.layout = param.layout;
+
+    // Mapped elements
+    this.elementMapping = new Map();
+
     // Input is defined
     if (this.input) {
+      // Map input elements to an internal identifier
+      this.mapping();
+
       // Listen to "noteon" events
       this.input.addListener('noteon', 'all', this.noteon.bind(this));
     }
@@ -108,12 +117,30 @@ var MidiController = function () {
       var note = data[1];
       var velocity = data[2];
 
-      var eventData = {
-        note: note,
-        controllerId: this.controllerId
-      };
+      // Mapping exists for this note
+      if (this.elementMapping.get(note) !== undefined) {
+        var eventData = {
+          controllerId: this.controllerId,
+          partId: this.elementMapping.get(note).partId
+        };
 
-      _EventService.eventService.emit('MidiController', eventData);
+        console.log('MidiContoller|map', '-', 'noteon', eventData);
+
+        _EventService.eventService.emit('MidiController', eventData);
+      } else {
+        console.log('MidiContoller|raw', '-', 'noteon', note);
+      }
+    }
+  }, {
+    key: 'mapping',
+    value: function mapping() {
+      var _this = this;
+
+      // Create a mapping for the input elements of the controller
+      this.layout.parts.forEach(function (element, index, array) {
+        // MIDI note => partId
+        _this.elementMapping.set(element.note, element);
+      });
     }
   }]);
 
@@ -122,7 +149,7 @@ var MidiController = function () {
 
 exports.default = MidiController;
 
-},{"./EventService":1,"webmidi":25}],3:[function(require,module,exports){
+},{"./EventService":1,"webmidi":26}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -192,15 +219,11 @@ var MidiManager = function () {
 
       this.config.devices.midi.forEach(function (element, index, array) {
 
-        var midiController = new _MidiController2.default({
-          controllerId: element.controllerId,
-          input: element.input,
-          output: element.output
-        });
+        var midiController = new _MidiController2.default(Object.assign({}, element));
 
         _this2.list.set(element.controllerId, midiController);
 
-        console.log('MidiManager', '-', 'Added', midiController.controllerId);
+        console.log('MidiManager', '-', 'Added', element.controllerId);
       });
     }
   }]);
@@ -210,7 +233,7 @@ var MidiManager = function () {
 
 exports.default = MidiManager;
 
-},{"./MidiController":2,"webmidi":25}],4:[function(require,module,exports){
+},{"./MidiController":2,"webmidi":26}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -224,6 +247,12 @@ var _Observable = require('rxjs/Observable');
 require('rxjs/add/observable/fromEvent');
 
 var _EventService = require('./EventService');
+
+var _reconnectingWebsocket = require('reconnecting-websocket');
+
+var _reconnectingWebsocket2 = _interopRequireDefault(_reconnectingWebsocket);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -244,8 +273,15 @@ var WebSocketClient = function () {
     this.port = param.port;
     this.path = param.path;
 
+    var reconnectingWebsocketOptions = {
+      maxReconnectionDelay: 500,
+      minReconnectionDelay: 250,
+      reconnectionDelayGrowFactor: 1.3,
+      connectionTimeout: 500
+    };
+
     // Create a connection to the server
-    this.connection = new WebSocket(this.url + this.port + this.path);
+    this.connection = new _reconnectingWebsocket2.default(this.url + this.port + this.path, [], reconnectingWebsocketOptions);
 
     // Listen for messages from the server
     this.connection.addEventListener('message', this.fromServer.bind(this));
@@ -253,12 +289,8 @@ var WebSocketClient = function () {
     // @TODO: Move this into it's own class and find a name that makes any sense :D
     var midiControllerSource = _Observable.Observable.fromEvent(_EventService.eventService, 'MidiController');
     midiControllerSource.subscribe(function (data) {
-
       data.type = 'midi';
-
       _this.connection.send(JSON.stringify(data));
-
-      console.log(data);
     });
   }
 
@@ -289,7 +321,7 @@ var WebSocketClient = function () {
 
 exports.default = WebSocketClient;
 
-},{"./EventService":1,"rxjs/Observable":8,"rxjs/add/observable/fromEvent":12}],5:[function(require,module,exports){
+},{"./EventService":1,"reconnecting-websocket":8,"rxjs/Observable":9,"rxjs/add/observable/fromEvent":13}],5:[function(require,module,exports){
 "use strict";
 
 var _WebSocketClient = require('./core/WebSocketClient');
@@ -309,6 +341,8 @@ console.log('config', '-', 'loaded for', config.name);
 
 // Manage connected MIDI devices
 var midiManager = new _MidiManager2.default({ config: config });
+// Expose it globally so we can use it in the console
+window.midiManager = midiManager;
 
 // Create a WebSocket client to exchange MIDI data
 var midiWebSocketClient = new _WebSocketClient2.default({
@@ -1281,6 +1315,213 @@ process.umask = function() { return 0; };
 
 },{}],8:[function(require,module,exports){
 "use strict";
+var isWebSocket = function (constructor) {
+    return constructor && constructor.CLOSING === 2;
+};
+var isGlobalWebSocket = function () {
+    return typeof WebSocket !== 'undefined' && isWebSocket(WebSocket);
+};
+var getDefaultOptions = function () { return ({
+    constructor: isGlobalWebSocket() ? WebSocket : null,
+    maxReconnectionDelay: 10000,
+    minReconnectionDelay: 1500,
+    reconnectionDelayGrowFactor: 1.3,
+    connectionTimeout: 4000,
+    maxRetries: Infinity,
+    debug: false,
+}); };
+var bypassProperty = function (src, dst, name) {
+    Object.defineProperty(dst, name, {
+        get: function () { return src[name]; },
+        set: function (value) { src[name] = value; },
+        enumerable: true,
+        configurable: true,
+    });
+};
+var initReconnectionDelay = function (config) {
+    return (config.minReconnectionDelay + Math.random() * config.minReconnectionDelay);
+};
+var updateReconnectionDelay = function (config, previousDelay) {
+    var newDelay = previousDelay * config.reconnectionDelayGrowFactor;
+    return (newDelay > config.maxReconnectionDelay)
+        ? config.maxReconnectionDelay
+        : newDelay;
+};
+var LEVEL_0_EVENTS = ['onopen', 'onclose', 'onmessage', 'onerror'];
+var reassignEventListeners = function (ws, oldWs, listeners) {
+    Object.keys(listeners).forEach(function (type) {
+        listeners[type].forEach(function (_a) {
+            var listener = _a[0], options = _a[1];
+            ws.addEventListener(type, listener, options);
+        });
+    });
+    if (oldWs) {
+        LEVEL_0_EVENTS.forEach(function (name) { ws[name] = oldWs[name]; });
+    }
+};
+var ReconnectingWebsocket = function (url, protocols, options) {
+    var _this = this;
+    if (options === void 0) { options = {}; }
+    var ws;
+    var connectingTimeout;
+    var reconnectDelay = 0;
+    var retriesCount = 0;
+    var shouldRetry = true;
+    var savedOnClose = null;
+    var listeners = {};
+    // require new to construct
+    if (!(this instanceof ReconnectingWebsocket)) {
+        throw new TypeError("Failed to construct 'ReconnectingWebSocket': Please use the 'new' operator");
+    }
+    // Set config. Not using `Object.assign` because of IE11
+    var config = getDefaultOptions();
+    Object.keys(config)
+        .filter(function (key) { return options.hasOwnProperty(key); })
+        .forEach(function (key) { return config[key] = options[key]; });
+    if (!isWebSocket(config.constructor)) {
+        throw new TypeError('Invalid WebSocket constructor. Set `options.constructor`');
+    }
+    var log = config.debug ? function () {
+        var params = [];
+        for (var _i = 0; _i < arguments.length; _i++) {
+            params[_i - 0] = arguments[_i];
+        }
+        return console.log.apply(console, ['RWS:'].concat(params));
+    } : function () { };
+    /**
+     * Not using dispatchEvent, otherwise we must use a DOM Event object
+     * Deferred because we want to handle the close event before this
+     */
+    var emitError = function (code, msg) { return setTimeout(function () {
+        var err = new Error(msg);
+        err.code = code;
+        if (Array.isArray(listeners.error)) {
+            listeners.error.forEach(function (_a) {
+                var fn = _a[0];
+                return fn(err);
+            });
+        }
+        if (ws.onerror) {
+            ws.onerror(err);
+        }
+    }, 0); };
+    var handleClose = function () {
+        log('close');
+        retriesCount++;
+        log('retries count:', retriesCount);
+        if (retriesCount > config.maxRetries) {
+            emitError('EHOSTDOWN', 'Too many failed connection attempts');
+            return;
+        }
+        if (!reconnectDelay) {
+            reconnectDelay = initReconnectionDelay(config);
+        }
+        else {
+            reconnectDelay = updateReconnectionDelay(config, reconnectDelay);
+        }
+        log('reconnectDelay:', reconnectDelay);
+        if (shouldRetry) {
+            setTimeout(connect, reconnectDelay);
+        }
+    };
+    var connect = function () {
+        log('connect');
+        var oldWs = ws;
+        ws = new config.constructor(url, protocols);
+        connectingTimeout = setTimeout(function () {
+            log('timeout');
+            ws.close();
+            emitError('ETIMEDOUT', 'Connection timeout');
+        }, config.connectionTimeout);
+        log('bypass properties');
+        for (var key in ws) {
+            // @todo move to constant
+            if (['addEventListener', 'removeEventListener', 'close', 'send'].indexOf(key) < 0) {
+                bypassProperty(ws, _this, key);
+            }
+        }
+        ws.addEventListener('open', function () {
+            clearTimeout(connectingTimeout);
+            log('open');
+            reconnectDelay = initReconnectionDelay(config);
+            log('reconnectDelay:', reconnectDelay);
+            retriesCount = 0;
+        });
+        ws.addEventListener('close', handleClose);
+        reassignEventListeners(ws, oldWs, listeners);
+        // because when closing with fastClose=true, it is saved and set to null to avoid double calls
+        ws.onclose = ws.onclose || savedOnClose;
+        savedOnClose = null;
+    };
+    log('init');
+    connect();
+    this.close = function (code, reason, _a) {
+        if (code === void 0) { code = 1000; }
+        if (reason === void 0) { reason = ''; }
+        var _b = _a === void 0 ? {} : _a, _c = _b.keepClosed, keepClosed = _c === void 0 ? false : _c, _d = _b.fastClose, fastClose = _d === void 0 ? true : _d, _e = _b.delay, delay = _e === void 0 ? 0 : _e;
+        if (delay) {
+            reconnectDelay = delay;
+        }
+        shouldRetry = !keepClosed;
+        ws.close(code, reason);
+        if (fastClose) {
+            var fakeCloseEvent_1 = {
+                code: code,
+                reason: reason,
+                wasClean: true,
+            };
+            // execute close listeners soon with a fake closeEvent
+            // and remove them from the WS instance so they
+            // don't get fired on the real close.
+            handleClose();
+            ws.removeEventListener('close', handleClose);
+            // run and remove level2
+            if (Array.isArray(listeners.close)) {
+                listeners.close.forEach(function (_a) {
+                    var listener = _a[0], options = _a[1];
+                    listener(fakeCloseEvent_1);
+                    ws.removeEventListener('close', listener, options);
+                });
+            }
+            // run and remove level0
+            if (ws.onclose) {
+                savedOnClose = ws.onclose;
+                ws.onclose(fakeCloseEvent_1);
+                ws.onclose = null;
+            }
+        }
+    };
+    this.send = function (data) {
+        ws.send(data);
+    };
+    this.addEventListener = function (type, listener, options) {
+        if (Array.isArray(listeners[type])) {
+            if (!listeners[type].some(function (_a) {
+                var l = _a[0];
+                return l === listener;
+            })) {
+                listeners[type].push([listener, options]);
+            }
+        }
+        else {
+            listeners[type] = [[listener, options]];
+        }
+        ws.addEventListener(type, listener, options);
+    };
+    this.removeEventListener = function (type, listener, options) {
+        if (Array.isArray(listeners[type])) {
+            listeners[type] = listeners[type].filter(function (_a) {
+                var l = _a[0];
+                return l !== listener;
+            });
+        }
+        ws.removeEventListener(type, listener, options);
+    };
+};
+module.exports = ReconnectingWebsocket;
+
+},{}],9:[function(require,module,exports){
+"use strict";
 var root_1 = require('./util/root');
 var toSubscriber_1 = require('./util/toSubscriber');
 var observable_1 = require('./symbol/observable');
@@ -1422,7 +1663,7 @@ var Observable = (function () {
 }());
 exports.Observable = Observable;
 
-},{"./symbol/observable":15,"./util/root":22,"./util/toSubscriber":23}],9:[function(require,module,exports){
+},{"./symbol/observable":16,"./util/root":23,"./util/toSubscriber":24}],10:[function(require,module,exports){
 "use strict";
 exports.empty = {
     closed: true,
@@ -1431,7 +1672,7 @@ exports.empty = {
     complete: function () { }
 };
 
-},{}],10:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -1694,7 +1935,7 @@ var SafeSubscriber = (function (_super) {
     return SafeSubscriber;
 }(Subscriber));
 
-},{"./Observer":9,"./Subscription":11,"./symbol/rxSubscriber":16,"./util/isFunction":20}],11:[function(require,module,exports){
+},{"./Observer":10,"./Subscription":12,"./symbol/rxSubscriber":17,"./util/isFunction":21}],12:[function(require,module,exports){
 "use strict";
 var isArray_1 = require('./util/isArray');
 var isObject_1 = require('./util/isObject');
@@ -1888,13 +2129,13 @@ function flattenUnsubscriptionErrors(errors) {
     return errors.reduce(function (errs, err) { return errs.concat((err instanceof UnsubscriptionError_1.UnsubscriptionError) ? err.errors : err); }, []);
 }
 
-},{"./util/UnsubscriptionError":17,"./util/errorObject":18,"./util/isArray":19,"./util/isFunction":20,"./util/isObject":21,"./util/tryCatch":24}],12:[function(require,module,exports){
+},{"./util/UnsubscriptionError":18,"./util/errorObject":19,"./util/isArray":20,"./util/isFunction":21,"./util/isObject":22,"./util/tryCatch":25}],13:[function(require,module,exports){
 "use strict";
 var Observable_1 = require('../../Observable');
 var fromEvent_1 = require('../../observable/fromEvent');
 Observable_1.Observable.fromEvent = fromEvent_1.fromEvent;
 
-},{"../../Observable":8,"../../observable/fromEvent":14}],13:[function(require,module,exports){
+},{"../../Observable":9,"../../observable/fromEvent":15}],14:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -2035,12 +2276,12 @@ var FromEventObservable = (function (_super) {
 }(Observable_1.Observable));
 exports.FromEventObservable = FromEventObservable;
 
-},{"../Observable":8,"../Subscription":11,"../util/errorObject":18,"../util/isFunction":20,"../util/tryCatch":24}],14:[function(require,module,exports){
+},{"../Observable":9,"../Subscription":12,"../util/errorObject":19,"../util/isFunction":21,"../util/tryCatch":25}],15:[function(require,module,exports){
 "use strict";
 var FromEventObservable_1 = require('./FromEventObservable');
 exports.fromEvent = FromEventObservable_1.FromEventObservable.create;
 
-},{"./FromEventObservable":13}],15:[function(require,module,exports){
+},{"./FromEventObservable":14}],16:[function(require,module,exports){
 "use strict";
 var root_1 = require('../util/root');
 function getSymbolObservable(context) {
@@ -2067,7 +2308,7 @@ exports.observable = getSymbolObservable(root_1.root);
  */
 exports.$$observable = exports.observable;
 
-},{"../util/root":22}],16:[function(require,module,exports){
+},{"../util/root":23}],17:[function(require,module,exports){
 "use strict";
 var root_1 = require('../util/root');
 var Symbol = root_1.root.Symbol;
@@ -2078,7 +2319,7 @@ exports.rxSubscriber = (typeof Symbol === 'function' && typeof Symbol.for === 'f
  */
 exports.$$rxSubscriber = exports.rxSubscriber;
 
-},{"../util/root":22}],17:[function(require,module,exports){
+},{"../util/root":23}],18:[function(require,module,exports){
 "use strict";
 var __extends = (this && this.__extends) || function (d, b) {
     for (var p in b) if (b.hasOwnProperty(p)) d[p] = b[p];
@@ -2104,30 +2345,30 @@ var UnsubscriptionError = (function (_super) {
 }(Error));
 exports.UnsubscriptionError = UnsubscriptionError;
 
-},{}],18:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 "use strict";
 // typeof any so that it we don't have to cast when comparing a result to the error object
 exports.errorObject = { e: {} };
 
-},{}],19:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 "use strict";
 exports.isArray = Array.isArray || (function (x) { return x && typeof x.length === 'number'; });
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 "use strict";
 function isFunction(x) {
     return typeof x === 'function';
 }
 exports.isFunction = isFunction;
 
-},{}],21:[function(require,module,exports){
+},{}],22:[function(require,module,exports){
 "use strict";
 function isObject(x) {
     return x != null && typeof x === 'object';
 }
 exports.isObject = isObject;
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 (function (global){
 "use strict";
 /**
@@ -2143,7 +2384,7 @@ if (!exports.root) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],23:[function(require,module,exports){
+},{}],24:[function(require,module,exports){
 "use strict";
 var Subscriber_1 = require('../Subscriber');
 var rxSubscriber_1 = require('../symbol/rxSubscriber');
@@ -2164,7 +2405,7 @@ function toSubscriber(nextOrObserver, error, complete) {
 }
 exports.toSubscriber = toSubscriber;
 
-},{"../Observer":9,"../Subscriber":10,"../symbol/rxSubscriber":16}],24:[function(require,module,exports){
+},{"../Observer":10,"../Subscriber":11,"../symbol/rxSubscriber":17}],25:[function(require,module,exports){
 "use strict";
 var errorObject_1 = require('./errorObject');
 var tryCatchTarget;
@@ -2184,7 +2425,7 @@ function tryCatch(fn) {
 exports.tryCatch = tryCatch;
 ;
 
-},{"./errorObject":18}],25:[function(require,module,exports){
+},{"./errorObject":19}],26:[function(require,module,exports){
 /*
 
 WebMidi v2.0.0-rc.5

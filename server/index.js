@@ -1,7 +1,6 @@
 'use strict';
 
 import fs from 'fs';
-import randomColor from 'random-color';
 import DmxUsbInterface from './core/DmxUsbInterface';
 import ExpressServer from './core/ExpressServer';
 import DeviceManager from './device/DeviceManager';
@@ -10,6 +9,7 @@ import SceneManager from './core/SceneManager';
 import Render from './core/Render';
 
 // Load the config
+// @TODO: Transform this into a ConfigService so the config can be injected into other classes
 var config = JSON.parse(fs.readFileSync('./config.json', 'utf8'));
 
 // Connect to the USB DMX interface

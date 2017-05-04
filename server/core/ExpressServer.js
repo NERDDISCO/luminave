@@ -71,7 +71,9 @@ export default class ExpressServer {
       // Receive a message from the client
       ws.on('message', message => {
         let data = JSON.parse(message);
+
         console.log(this.config.server.websocket.path.midi, '-', data);
+
         eventService.emit('MidiController', data);
       });
 
