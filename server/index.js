@@ -31,6 +31,8 @@ sceneManager.register();
 let render = new Render({ config: config, dmxUsbInterface: dmxUsbInterface, sceneManager: sceneManager });
 render.start(config.global.fps);
 
+deviceManager.reset();
+
 console.log("Started VisionLord in", process.env.NODE_ENV, "mode with", config.global.fps, "fps");
 console.log(config.log.separator);
 

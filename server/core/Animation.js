@@ -95,11 +95,44 @@ export default class Animation {
             let device = this.deviceManager.get(element);
 
             if (this.values.hasOwnProperty('color')) {
-              device.color = new Color(this.values.color).rgb().string();
+              let color = new Color(this.values.color).rgb().string();
+
+              device.color = color;
+
+              if (device.hasOwnProperty('led1')) {
+                device.led1.color = color;
+                device.led2.color = color;
+                device.led3.color = color;
+                device.led4.color = color;
+                device.led5.color = color;
+                device.led6.color = color;
+                device.led7.color = color;
+                device.led8.color = color;
+                device.led9.color = color;
+                device.led10.color = color;
+                device.led11.color = color;
+                device.led12.color = color;
+              }
+
             }
 
             if (this.values.hasOwnProperty('uv')) {
               device.uv = this.values.uv;
+
+              if (device.hasOwnProperty('led1')) {
+                device.led1.uv = this.values.uv;
+                device.led2.uv = this.values.uv;
+                device.led3.uv = this.values.uv;
+                device.led4.uv = this.values.uv;
+                device.led5.uv = this.values.uv;
+                device.led6.uv = this.values.uv;
+                device.led7.uv = this.values.uv;
+                device.led8.uv = this.values.uv;
+                device.led9.uv = this.values.uv;
+                device.led10.uv = this.values.uv;
+                device.led11.uv = this.values.uv;
+                device.led12.uv = this.values.uv;
+              }
             }
 
             if (this.values.hasOwnProperty('rotate')) {
@@ -108,6 +141,38 @@ export default class Animation {
 
             if (this.values.hasOwnProperty('strobe')) {
               device.strobe = this.values.strobe;
+            }
+
+            if (this.values.hasOwnProperty('brightness')) {
+              device.brightness = this.values.brightness;
+            }
+
+            if (this.values.hasOwnProperty('pan')) {
+              device.pan = this.values.pan;
+            }
+
+            if (this.values.hasOwnProperty('tilt')) {
+              device.tilt = this.values.tilt;
+            }
+
+            if (this.values.hasOwnProperty('amount')) {
+              device.amount = this.values.amount;
+            }
+
+            if (this.values.hasOwnProperty('led')) {
+
+            }
+
+            if (this.values.hasOwnProperty('motor')) {
+              device.motor = this.values.motor;
+            }
+
+            if (this.values.hasOwnProperty('fan')) {
+              device.fan = this.values.fan;
+            }
+
+            if (this.values.hasOwnProperty('gobo')) {
+              device.gobo = this.values.gobo;
             }
 
           });

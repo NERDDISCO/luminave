@@ -20,7 +20,7 @@ export default class ModVService {
   random() {
     setInterval(() => {
       this.globalColor = randomColor().rgbArray();
-    }, 20);
+    }, 120);
   }
 
   // @TODO: Implement

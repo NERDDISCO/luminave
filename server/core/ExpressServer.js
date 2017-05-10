@@ -10,6 +10,7 @@ import bodyParser from 'body-parser';
 import debug from 'debug';
 import http from 'http';
 import { eventService } from './EventService';
+import { modVService } from './ModVService';
 
 
 
@@ -77,17 +78,43 @@ export default class ExpressServer {
         eventService.emit('MidiController', data);
       });
 
-      // @TODO: Do we need this at all?
-      // ws.on('text', msg => {
-      //   console.log('text', msg);
-      // });
-
       ws.on('error', msg => {
         console.error(msg);
       });
 
       ws.on('close', () => {
         console.log(this.config.server.websocket.path.midi, '-', 'closed 😱');
+        console.log(this.config.log.separator);
+      });
+
+    }); // WebSocket: /midi
+
+
+    // WebSocket: modV
+    this.app.ws(this.config.server.websocket.path.modV, (ws, req) => {
+      // There is a new connection
+      console.log(this.config.server.websocket.path.modV, '-', 'opened 😍');
+
+      // Welcome the client
+      ws.send(JSON.stringify({ 'type': 'welcome', 'message': '❤️' }));
+
+      // Receive a message from the client
+      ws.on('message', message => {
+        let data = JSON.parse(message);
+
+        console.log(this.config.server.websocket.path.modV, '-', data);
+
+        modVService.globalColor = data.average;
+
+        // eventService.emit('modV', data);
+      });
+
+      ws.on('error', msg => {
+        console.error(msg);
+      });
+
+      ws.on('close', () => {
+        console.log(this.config.server.websocket.path.modV, '-', 'closed 😱');
         console.log(this.config.log.separator);
       });
 

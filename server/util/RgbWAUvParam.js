@@ -1,3 +1,5 @@
+"use strict";
+
 var fivetwelve = require('fivetwelve/es5');
 
 /**

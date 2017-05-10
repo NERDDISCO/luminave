@@ -6,6 +6,9 @@ import CameoFlat1RGBW from './dmx/CameoFlat1RGBW';
 import CameoWookie200RGY from './dmx/CameoWookie200RGY';
 import AdjStarburst from './dmx/AdjStarburst';
 import FunGenerationSeParQuadLedRgbUv from './dmx/FunGenerationSeParQuadLedRgbUv';
+import MiniLed from './dmx/MiniLed';
+import StairvilleAF150 from './dmx/StairvilleAF150';
+import EuroliteB100 from './dmx/EuroliteB100';
 
 /**
  *
@@ -54,5 +57,8 @@ export default class DmxDevice {
     this.deviceMapping.set('CameoWookie200RGY', CameoWookie200RGY);
     this.deviceMapping.set('AdjStarburst', AdjStarburst);
     this.deviceMapping.set('FunGenerationSeParQuadLedRgbUv', FunGenerationSeParQuadLedRgbUv);
+    this.deviceMapping.set('MiniLed', MiniLed);
+    this.deviceMapping.set('StairvilleAF150', StairvilleAF150);
+    this.deviceMapping.set('EuroliteB100', EuroliteB100);
   }
 }

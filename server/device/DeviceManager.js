@@ -54,4 +54,14 @@ export default class DeviceManager {
   get(deviceId) {
     return this.list.get(deviceId).instance;
   }
+
+  reset() {
+    this.list.forEach((element, key, map) => {
+
+      if (typeof element.reset === 'function') {
+        element.reset();
+      }
+
+    });
+  }
 }
