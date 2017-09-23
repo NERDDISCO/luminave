@@ -13,8 +13,6 @@
   },
   "dependencies": {
     "fivetwelve": "^1.0.0-alpha.1",
-    "fivetwelve-driver-usbpro": "^1.0.2",
-    "jade": "^1.11.0",
     "keytime": "^0.1.1"
   },
   "author": "Tim Pietrusky",
