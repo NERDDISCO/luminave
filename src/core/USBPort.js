@@ -33,7 +33,7 @@ export default class USBPort {
 
   readLoop() {
     // @TODO: What is this?
-    this.device.transferIn(5, 64).then(result => {
+    this.device.transferIn(5, 512).then(result => {
       this.onReceive(result.data)
       this.readLoop()
     }, error => {
