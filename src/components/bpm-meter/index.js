@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 
-export class BPMMeter extends PolymerElement {
+class BPMMeter extends PolymerElement {
 
   constructor() {
     super();
@@ -12,3 +12,5 @@ export class BPMMeter extends PolymerElement {
     `
   }
 }
+
+customElements.define('bpm-meter', BPMMeter)

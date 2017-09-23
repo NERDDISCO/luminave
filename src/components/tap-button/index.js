@@ -59,3 +59,6 @@ export class TapButton extends PolymerElement {
     `
   }
 }
+
+customElements.define('tap-button', TapButton)
+

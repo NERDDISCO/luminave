@@ -1,9 +1,10 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { html } from '/node_modules/lit-html/lit-html.js'
 import { render } from '/node_modules/lit-html/lib/lit-extended.js'
-import { TapButton } from '/src/components/tap-button/index.js'
-import { ConnectButton } from '/src/components/connect-button/index.js'
-import { BPMMeter } from '/src/components/bpm-meter/index.js'
+import '/src/components/tap-button/index.js'
+import '/src/components/connect-button/index.js'
+import '/src/components/bpm-meter/index.js'
+import '/src/components/channel-grid/index.js'
 
 import USBManager from '/src/core/USBManager.js'
 import StorageManager from '/src/core/StorageManager.js'
@@ -64,6 +65,7 @@ class AppContent extends PolymerElement {
                     on-tap="handleTap"
                     delay="1000"
                     items="3"></tap-button>
+        <channel-grid></channel-grid>
     </div>
     `
   }
@@ -78,8 +80,5 @@ class RenderApp extends PolymerElement {
   }
 }
 
-customElements.define('bpm-meter', BPMMeter)
-customElements.define('tap-button', TapButton)
-customElements.define('connect-button', ConnectButton)
 customElements.define('app-content', AppContent)
 customElements.define('my-app', RenderApp)
