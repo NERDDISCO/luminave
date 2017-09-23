@@ -2,18 +2,13 @@
 <html>
   <head>
     <title>DMX512 shield testing</title>
-    <script src="serial.js"></script>
+    <!-- <script src="serial.js"></script>
     <script src="dmx.js"></script>
+  -->
+    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script type="module" src="/src/app.js"></script>
   </head>
   <body>
-    <p>
-      <button id="connect">Connect</button> <span id="status"></span>
-    </p>
-    <input type="range" min="0" max="255" value="0" id="red" label="red"/>
-    <input type="range" min="0" max="255" value="0" id="green" label="green"/>
-    <input type="range" min="0" max="255" value="0" id="blue" label="blue"/>
-    <input type="range" min="0" max="255" value="0" id="uv" label="uv"/>
-    <input type="range" min="0" max="255" value="0" id="dimmer" label="dimmer"/>
-    <input type="range" min="0" max="255" value="0" id="strobe" label="strobe"/>
+    <my-app></my-app>
   </body>
 </html>

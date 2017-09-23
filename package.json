@@ -3,6 +3,12 @@
   "version": "0.0.1",
   "description": "Show manager",
   "main": "index.js",
+  "author": "Tim Pietrusky",
+  "license": "MIT",
+  "flat": true,
+  "bugs": {
+    "url": "https://github.com/NERDDISCO/VisionLord/issues"
+  },
   "scripts": {
     "test": "mocha --recursive --require babel-register test/",
     "start": "go run main.go"
@@ -14,13 +20,13 @@
   "dependencies": {
     "fivetwelve": "^1.0.0-alpha.1",
     "fivetwelve-driver-usbpro": "^1.0.2",
-    "jade": "^1.11.0",
-    "keytime": "^0.1.1"
+    "keytime": "^0.1.1",
+    "@polymer/polymer": "^3.0.0-pre.1",
+    "@webcomponents/webcomponentsjs": "^1.0.13",
+    "lit-html": "^0.6.0"
   },
-  "author": "Tim Pietrusky",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/NERDDISCO/VisionLord/issues"
+  "resolutions": {
+    "@webcomponents/webcomponentsjs": "1.0.13"
   },
   "homepage": "https://github.com/NERDDISCO/VisionLord#readme",
   "devDependencies": {}
