@@ -26,5 +26,5 @@ func main() {
 	//log.Fatal(http.ListenAndServe(":8081", nil))
 
 	// HTTPS
-	log.Fatal(http.ListenAndServeTLS(":8081", "cert.pem", "key.pem", nil))
+	log.Fatal(http.ListenAndServeTLS(":1337", "cert.pem", "key.pem", nil))
 }
