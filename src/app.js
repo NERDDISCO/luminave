@@ -17,26 +17,12 @@ class AppContent extends PolymerElement {
     this.bpm = 0
     this.connected = false
 
-      <<
-      <<
-      << < HEAD
     this.storage = new StorageManager()
     this.config = this.storage.get('config')
     console.log(this.config)
 
     window.usbManager = this.usb
     this.usb = new USBManager({ config: this.config })
-
-      ===
-      ===
-      =
-      window.usbManager = this.usb;
-    // this.storage = new StorageManager()
-    this.channels = [{
-        value: 'foobar'
-      }] >>>
-      >>>
-      > f39f0dcd650fc724dca86353dead6d5c1f8e9d3d
   }
 
   ready() {
