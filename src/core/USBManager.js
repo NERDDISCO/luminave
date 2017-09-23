@@ -8,7 +8,7 @@ import ArduinoLeonardoETHDriver from '/src/devices/dmx/driver/ArduinoLeonardoETH
 export default class USBManager {
   constructor(param) {
 
-    // this.config = param.config
+    this.config = param.config
 
     this.port = null
 
@@ -19,7 +19,6 @@ export default class USBManager {
 
     this.data = new Uint8Array(512)
     this.data.fill(0)
-
 
     // @TODO: Move ALL OF THIS into it's own module
     const driver = new ArduinoLeonardoETHDriver({ serialport: this.port })

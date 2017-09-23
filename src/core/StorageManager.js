@@ -3,11 +3,11 @@ export default class StorageManager {
     this.storage = window.localStorage
   }
 
-  save(key, data) {
+  set(key, data) {
     this.storage.setItem(key, JSON.stringify(data))
   }
 
-  load(key) {
+  get(key) {
     return JSON.parse(this.storage.getItem(key))
   }
 }

@@ -1,13 +1,13 @@
-import DmxDevice from './DmxDevice.js';
+import DmxDevice from './DmxDevice.js'
 
 /**
  * Handle all devices
  */
 export default class DeviceManager {
   constructor(param) {
-    this.list = new Map();
-    this.config = param.config;
-    this.output = param.output;
+    this.list = new Map()
+    this.config = param.config
+    this.output = param.output
   }
 
   register() {
@@ -20,46 +20,46 @@ export default class DeviceManager {
         output: this.output,
         universe: element.universe,
         address: element.address
-      });
+      })
 
       // Set default values
 
       if (device.instance.hasOwnProperty('dimmer')) {
-        device.instance.dimmer = this.config.global.dimmer;
+        device.instance.dimmer = this.config.global.dimmer
       }
 
       if (device.instance.hasOwnProperty('strobe')) {
-        device.instance.strobe = 0;
+        device.instance.strobe = 0
       }
 
       if (device.instance.hasOwnProperty('mode')) {
-        device.instance.mode = 'dmx';
+        device.instance.mode = 'dmx'
       }
 
       if (device.instance.hasOwnProperty('color')) {
-        device.instance.color = 'rgb(0, 0, 0)';
+        device.instance.color = 'rgb(0, 0, 0)'
       }
 
-      this.add(element.deviceId, device);
-    });
+      this.add(element.deviceId, device)
+    })
 
   }
 
   add(deviceId, device) {
-    this.list.set(deviceId, device);
+    this.list.set(deviceId, device)
   }
 
   get(deviceId) {
-    return this.list.get(deviceId).instance;
+    return this.list.get(deviceId).instance
   }
 
   reset() {
     this.list.forEach((element, key, map) => {
 
       if (typeof element.reset === 'function') {
-        element.reset();
+        element.reset()
       }
 
-    });
+    })
   }
 }

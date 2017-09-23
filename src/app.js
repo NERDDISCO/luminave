@@ -8,17 +8,7 @@ import '/src/components/channel-grid/index.js'
 
 import USBManager from '/src/core/USBManager.js'
 import StorageManager from '/src/core/StorageManager.js'
-
-
-// window.usbManager = usbManager
-//
-// const storageManager = new StorageManager({})
-// storageManager.save('config', {
-//   test: 1,
-//   foo: 'bar'
-// })
-
-// console.log(storageManager.load('config'))
+import DeviceManager from '/src/core/DeviceManager.js'
 
 class AppContent extends PolymerElement {
 
@@ -26,10 +16,14 @@ class AppContent extends PolymerElement {
     super()
     this.bpm = 0
     this.connected = false
-    this.usb = new USBManager()
 
-    window.usbManager = this.usb;
-    // this.storage = new StorageManager()
+    this.storage = new StorageManager()
+    this.config = this.storage.get('config')
+    console.log(this.config)
+
+    window.usbManager = this.usb
+    this.usb = new USBManager({ config: this.config })
+
   }
 
   ready() {
@@ -53,8 +47,10 @@ class AppContent extends PolymerElement {
   }
 
   handleGrid(e) {
-    const {value, channel} = e.detail
+    const { value, channel } = e.detail
     console.log('value:', value, 'channel:', channel)
+
+    this.usb.update(channel, value)
   }
 
   static get template() {
