@@ -9,6 +9,9 @@ import '/src/components/channel-grid/index.js'
 import USBManager from '/src/core/USBManager.js'
 import StorageManager from '/src/core/StorageManager.js'
 import DeviceManager from '/src/devices/DeviceManager.js'
+import AnimationManager from '/src/core/AnimationManager.js'
+import SceneManager from '/src/core/SceneManager.js'
+import Render from '/src/core/Render.js'
 import getConfig from '/src/core/GetConfig.js'
 
 class AppContent extends PolymerElement {
@@ -20,16 +23,38 @@ class AppContent extends PolymerElement {
 
     this.storage = new StorageManager()
     this.config = getConfig()
-    console.log(this.config)
-
-    window.usbManager = this.usb
     this.usb = new USBManager({ config: this.config })
+    window.usbManager = this.usb
 
     this.deviceManager = new DeviceManager({
       config: this.config,
       output: this.usb.output
     })
     this.deviceManager.register()
+
+    // Initialize all animations
+    this.animationManager = new AnimationManager({
+      config: this.config,
+      deviceManager: this.deviceManager
+    })
+    this.animationManager.register()
+
+    // Initialize all scenes
+    this.sceneManager = new SceneManager({
+      config: this.config,
+      animationManager: this.animationManager
+    })
+    this.sceneManager.register()
+
+    // Manage playback of all animations, scenes, timelines
+    this.render = new Render({
+      config: this.config,
+      dmxUsbInterface: this.usb,
+      sceneManager: this.sceneManager
+    })
+    this.render.start(this.config.global.fps)
+
+    this.deviceManager.reset()
   }
 
   ready() {

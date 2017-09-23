@@ -1,9 +1,10 @@
-import lerp from '/node_modules/lerp-array/index.js'
-import keytime from '/node_modules/keytime/index.js'
+// import lerp from '/node_modules/lerp-array/index.js'
+import BasicTimeline from '/libs/keytime/BasicTimeline.js'
 
-export default class KeytimeDeluxe extends keytime {
+export default class KeytimeDeluxe extends BasicTimeline {
   constructor(data) {
     super(data)
+    console.log("asdf");
   }
 
   interpolate(property, frame1, frame2, t) {
@@ -13,6 +14,6 @@ export default class KeytimeDeluxe extends keytime {
     }
 
     // Default interpolation
-    return lerp(frame1.value, frame2.value, t)
+    return this.lerpValues(frame1.value, frame2.value, t)
   }
 }

@@ -1,3 +1,7 @@
+const DEFAULT_OPTIONS = {
+  universeMapping: { 1: 1 }
+}
+
 /**
  * A fivetwelve-driver for the enttec usbpro mk2-interface supporting both
  * dmx-outputs.
@@ -27,9 +31,7 @@ export default class ArduinoLeonardoETHDriver {
   constructor(serialport, options = {}) {
     this.serialport = serialport
 
-    this.options = Object.assign({}, options)
-    // this.opened = this.awaitSerialportOpened()
-    // this.ready = this.opened.then(() => this.initUsbProMk2())
+    this.options = Object.assign({}, DEFAULT_OPTIONS, options);
   }
 
   /**
@@ -73,7 +75,6 @@ export default class ArduinoLeonardoETHDriver {
 
   /**
    * Sends a single packet to the usbpro.
-   * @param {Number} label The message label.
    * @param {Buffer} data The message payload.
    * @returns {Promise} A promise indicating when the data has been sent.
    * @private
@@ -90,6 +91,8 @@ export default class ArduinoLeonardoETHDriver {
    * @private
    */
   write(buffer) {
-    this.serialport.send(buffer)
+    if (this.serialport.serialport != null) {
+      this.serialport.serialport.send(buffer)
+    }
   }
 }

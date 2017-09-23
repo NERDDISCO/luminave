@@ -1,10 +1,7 @@
-"use strict";
-
-import randomColor from 'random-color';
-import { eventService } from './EventService';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/operator/filter';
+// import randomColor from '/node-modules/random-color/index.js';
+// import { Observable, fromEvent, filter } from '/node_modules/@reactivex/rxjs/index.js'
+// import 'rxjs/add/observable/fromEvent';
+// import 'rxjs/add/operator/filter';
 
 /**
  * Provide colors from modV.
@@ -12,14 +9,14 @@ import 'rxjs/add/operator/filter';
 export default class ModVService {
   constructor(param) {
 
-    this.globalColor = randomColor().rgbArray();
+    // this.globalColor = randomColor().rgbArray();
 
-    // this.random();
+    this.random();
   }
 
   random() {
     setInterval(() => {
-      this.globalColor = randomColor().rgbArray();
+      this.globalColor = [255, 0, 0];
     }, 120);
   }
 

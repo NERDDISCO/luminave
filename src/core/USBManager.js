@@ -78,7 +78,7 @@ export default class USBManager {
   update(channel, value) {
     if (this.port) {
       this.data[channel] = value
-      this.port.send(this.data)
+      this.port.send(this.data, 1)
     }
   }
 

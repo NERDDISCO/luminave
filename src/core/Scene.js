@@ -1,7 +1,5 @@
 import Layer from './Layer.js'
-import { Observable } from '/node_modules/@reactivex/rxjs/index.js'
-import 'rxjs/add/observable/fromEvent'
-import 'rxjs/add/operator/filter'
+// import { Observable } from '/node_modules/@reactivex/rxjs/index.js'
 
 /**
  * A set of animations & DMX devices that can be controlled by using MIDI devices.
@@ -111,23 +109,23 @@ export default class Scene {
    * Listen to events to start this Scene.
    */
   listen() {
-    // @TODO: Does this make any sense at this position / class?
-    var source = Observable
-      .fromEvent(eventService, 'MidiController')
-
-      // Only allow the MIDI controller that was attachted to this scene
-      .filter((data, idx, obs) => {
-        return data.controllerId === this.midi.controllerId
-      })
-
-      // Only allow a specific input element (button or knob) from the MIDI controller
-      .filter((data, idx, obs) => {
-        return data.partId === this.midi.partId
-      })
-
-    source.subscribe(data => {
-      this.stop()
-      this.play()
-    })
+    // // @TODO: Does this make any sense at this position / class?
+    // var source = Observable
+    //   .fromEvent(eventService, 'MidiController')
+    //
+    //   // Only allow the MIDI controller that was attachted to this scene
+    //   .filter((data, idx, obs) => {
+    //     return data.controllerId === this.midi.controllerId
+    //   })
+    //
+    //   // Only allow a specific input element (button or knob) from the MIDI controller
+    //   .filter((data, idx, obs) => {
+    //     return data.partId === this.midi.partId
+    //   })
+    //
+    // source.subscribe(data => {
+    //   this.stop()
+    //   this.play()
+    // })
   }
 }

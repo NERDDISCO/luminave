@@ -1,0 +1,117 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "eases@^1.0.2",
+        "scope": null,
+        "escapedName": "eases",
+        "name": "eases",
+        "rawSpec": "^1.0.2",
+        "spec": ">=1.0.2 <2.0.0",
+        "type": "range"
+      },
+      "/Users/timpietrusky/Development/workspaces/node/VisionLord/node_modules/keytime"
+    ]
+  ],
+  "_from": "eases@>=1.0.2 <2.0.0",
+  "_id": "eases@1.0.8",
+  "_inCache": true,
+  "_location": "/eases",
+  "_nodeVersion": "0.12.7",
+  "_npmUser": {
+    "name": "mattdesl",
+    "email": "dave.des@gmail.com"
+  },
+  "_npmVersion": "2.14.5",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "eases@^1.0.2",
+    "scope": null,
+    "escapedName": "eases",
+    "name": "eases",
+    "rawSpec": "^1.0.2",
+    "spec": ">=1.0.2 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/keytime"
+  ],
+  "_resolved": "https://registry.npmjs.org/eases/-/eases-1.0.8.tgz",
+  "_shasum": "f1f5069a6b6ed2ea510f9c6110398d63efe9aee6",
+  "_shrinkwrap": null,
+  "_spec": "eases@^1.0.2",
+  "_where": "/Users/timpietrusky/Development/workspaces/node/VisionLord/node_modules/keytime",
+  "author": {
+    "name": "Matt DesLauriers",
+    "email": "dave.des@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/mattdesl/eases/issues"
+  },
+  "dependencies": {},
+  "description": "grab bag of easing equations",
+  "devDependencies": {
+    "tape": "~2.13.2"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "f1f5069a6b6ed2ea510f9c6110398d63efe9aee6",
+    "tarball": "https://registry.npmjs.org/eases/-/eases-1.0.8.tgz"
+  },
+  "gitHead": "4eb8bc4c7ea4ed98b075c899cb5867461de4330a",
+  "homepage": "https://github.com/mattdesl/eases",
+  "keywords": [
+    "ease",
+    "eases",
+    "robert",
+    "penner",
+    "easing",
+    "easings",
+    "linear",
+    "lerp",
+    "animation",
+    "tween",
+    "anim",
+    "animations",
+    "tweening",
+    "tweens",
+    "function",
+    "functions",
+    "expo",
+    "quint",
+    "quadratic"
+  ],
+  "license": "MIT",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "mattdesl",
+      "email": "dave.des@gmail.com"
+    }
+  ],
+  "name": "eases",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/mattdesl/eases.git"
+  },
+  "scripts": {
+    "dev": "beefy demo/index",
+    "test": "node test.js"
+  },
+  "testling": {
+    "files": "test.js",
+    "browsers": [
+      "ie/6..latest",
+      "chrome/22..latest",
+      "firefox/16..latest",
+      "safari/latest",
+      "opera/11.0..latest",
+      "iphone/6",
+      "ipad/6",
+      "android-browser/latest"
+    ]
+  },
+  "version": "1.0.8"
+}
