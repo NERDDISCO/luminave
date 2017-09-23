@@ -1,6 +1,4 @@
-"use strict";
-
-import DmxDevice from './DmxDevice';
+import DmxDevice from './DmxDevice.js';
 
 /**
  * Handle all devices

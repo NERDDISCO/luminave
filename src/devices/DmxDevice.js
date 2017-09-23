@@ -1,14 +1,12 @@
-'use strict';
-
 // @TODO: Automatically import every device from the "dmx"-folder
-import CameoPixBar600PRO from './dmx/CameoPixBar600PRO.js';
-import CameoFlat1RGBW from './dmx/CameoFlat1RGBW';
-import CameoWookie200RGY from './dmx/CameoWookie200RGY';
-import AdjStarburst from './dmx/AdjStarburst';
-import FunGenerationSeParQuadLedRgbUv from './dmx/FunGenerationSeParQuadLedRgbUv';
-import MiniLed from './dmx/MiniLed';
-import StairvilleAF150 from './dmx/StairvilleAF150';
-import EuroliteB100 from './dmx/EuroliteB100';
+import CameoPixBar600PRO from './dmx/CameoPixBar600PRO.js'
+import CameoFlat1RGBW from './dmx/CameoFlat1RGBW.js'
+import CameoWookie200RGY from './dmx/CameoWookie200RGY.js'
+import AdjStarburst from './dmx/AdjStarburst.js'
+import FunGenerationSeParQuadLedRgbUv from './dmx/FunGenerationSeParQuadLedRgbUv.js'
+import MiniLed from './dmx/MiniLed.js'
+import StairvilleAF150 from './dmx/StairvilleAF150.js'
+import EuroliteB100 from './dmx/EuroliteB100.js'
 
 /**
  *
@@ -23,25 +21,25 @@ import EuroliteB100 from './dmx/EuroliteB100';
 export default class DmxDevice {
   constructor(param) {
 
-    this.type = param.type || undefined;
-    this.deviceId = param.deviceId || undefined;
-    this.name = param.name || undefined;
+    this.type = param.type || undefined
+    this.deviceId = param.deviceId || undefined
+    this.name = param.name || undefined
 
     // Mapping of devices
-    this.deviceMapping = new Map();
-    this.createMapping();
+    this.deviceMapping = new Map()
+    this.createMapping()
 
     // The mapping exists
     if (this.deviceMapping.get(this.type) !== undefined) {
       // Create the instance of one specified device
-      this.instance = new(this.deviceMapping.get(this.type))(param);
+      this.instance = new(this.deviceMapping.get(this.type))(param)
     } else {
-      throw new Error(this.type + ' is not defined in deviceMapping');
+      throw new Error(this.type + ' is not defined in deviceMapping')
     }
 
 
     // Set the output
-    this.instance.setOutput(param.output);
+    this.instance.setOutput(param.output)
 
     /*
      * @TODO: Maybe extend CameoPixBar600PRO with Device and to something like Device.dmx.CameoPixBar600PRO to create a new instance
@@ -52,13 +50,13 @@ export default class DmxDevice {
    * @TODO: Automatically create the mapping, maybe with eval? 😐
    */
   createMapping() {
-    this.deviceMapping.set('CameoPixBar600PRO', CameoPixBar600PRO);
-    this.deviceMapping.set('CameoFlat1RGBW', CameoFlat1RGBW);
-    this.deviceMapping.set('CameoWookie200RGY', CameoWookie200RGY);
-    this.deviceMapping.set('AdjStarburst', AdjStarburst);
-    this.deviceMapping.set('FunGenerationSeParQuadLedRgbUv', FunGenerationSeParQuadLedRgbUv);
-    this.deviceMapping.set('MiniLed', MiniLed);
-    this.deviceMapping.set('StairvilleAF150', StairvilleAF150);
-    this.deviceMapping.set('EuroliteB100', EuroliteB100);
+    this.deviceMapping.set('CameoPixBar600PRO', CameoPixBar600PRO)
+    this.deviceMapping.set('CameoFlat1RGBW', CameoFlat1RGBW)
+    this.deviceMapping.set('CameoWookie200RGY', CameoWookie200RGY)
+    this.deviceMapping.set('AdjStarburst', AdjStarburst)
+    this.deviceMapping.set('FunGenerationSeParQuadLedRgbUv', FunGenerationSeParQuadLedRgbUv)
+    this.deviceMapping.set('MiniLed', MiniLed)
+    this.deviceMapping.set('StairvilleAF150', StairvilleAF150)
+    this.deviceMapping.set('EuroliteB100', EuroliteB100)
   }
 }

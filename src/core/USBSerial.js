@@ -1,4 +1,4 @@
-import USBPort from './USBPort.js'
+import USBPort from '/src/core/USBPort.js'
 
 export default class USBSerial {
 

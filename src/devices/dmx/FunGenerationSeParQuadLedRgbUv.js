@@ -1,6 +1,4 @@
-"use strict";
-
-var fivetwelve = require('fivetwelve/es5');
+import fivetwelve from '/libs/fivetwelve/index.js'
 
 export default class FunGenerationSeParQuadLedRgbUv extends fivetwelve.DmxDevice {
   constructor(options) {

@@ -28,7 +28,6 @@ export default class ArduinoLeonardoETHDriver {
     this.serialport = serialport
 
     this.options = Object.assign({}, options)
-
     // this.opened = this.awaitSerialportOpened()
     // this.ready = this.opened.then(() => this.initUsbProMk2())
   }
@@ -47,15 +46,7 @@ export default class ArduinoLeonardoETHDriver {
       return Promise.resolve()
     }
 
-    // for whatever-reason, dmx-transmission has to start with a zero-byte.
-    const frameBuffer = new Buffer(513)
-    frameBuffer.writeUInt8(0, 0)
-    buffer.copy(frameBuffer, 1)
-
-    const label = usbProUniverse === 1 ?
-      MESSAGE_LABELS.SEND_DMX_PORT1 : MESSAGE_LABELS.SEND_DMX_PORT2
-
-    return this.ready.then(() => this.sendPacket(label, frameBuffer))
+    return this.sendPacket(buffer)
   }
 
   /**
@@ -64,41 +55,21 @@ export default class ArduinoLeonardoETHDriver {
    *     node-serialport-instance.
    * @private
    */
-  awaitSerialportOpened() {
-    if (this.serialport.isOpen()) {
-      return Promise.resolve(this.serialport)
-    }
-
-    return new Promise((resolve, reject) => {
-      this.serialport.on('open', error => {
-        if (error) {
-          return reject(error)
-        }
-
-        return resolve(this.serialport)
-      })
-    })
-  }
-
-  /**
-   * Configures both ports of the usbpro-mk2 as outputs (these messages
-   * should be ignored by other usbpro-devices).
-   * @returns {Promise} A promise resolved when intialization is complete.
-   * @private
-   */
-  initUsbProMk2() {
-    const apiKeyBuf = new Buffer(4)
-    apiKeyBuf.writeUInt32LE(API_KEY, 0)
-
-    const portAssignBuf = new Buffer(2)
-    portAssignBuf.writeUInt8(1, 0) // Port 1 enabled for DMX and RDM
-    portAssignBuf.writeUInt8(1, 1) // Port 2 enabled for DMX and RDM
-
-    return this.sendPacket(MESSAGE_LABELS.SET_API_KEY, apiKeyBuf)
-      .then(() => {
-        this.sendPacket(MESSAGE_LABELS.SET_PORT_ASSIGNMENT, portAssignBuf)
-      })
-  }
+  // awaitSerialportOpened() {
+  //   if (this.serialport.isOpen()) {
+  //     return Promise.resolve(this.serialport)
+  //   }
+  //
+  //   return new Promise((resolve, reject) => {
+  //     this.serialport.on('open', error => {
+  //       if (error) {
+  //         return reject(error)
+  //       }
+  //
+  //       return resolve(this.serialport)
+  //     })
+  //   })
+  // }
 
   /**
    * Sends a single packet to the usbpro.
@@ -107,18 +78,8 @@ export default class ArduinoLeonardoETHDriver {
    * @returns {Promise} A promise indicating when the data has been sent.
    * @private
    */
-  sendPacket(label, data) {
-    const buffer = new Buffer(data.length + 5)
-
-    buffer.writeUInt8(0x7E, 0) // usbpro packet start marker
-    buffer.writeUInt8(label, 1)
-    buffer.writeUInt16LE(data.length, 2)
-
-    data.copy(buffer, 4)
-
-    buffer.writeUInt8(0xE7, buffer.length - 1) // usbpro packet end marker
-
-    return this.write(buffer)
+  sendPacket(data) {
+    return this.write(data)
   }
 
   /**
@@ -129,16 +90,6 @@ export default class ArduinoLeonardoETHDriver {
    * @private
    */
   write(buffer) {
-    return this.opened.then(serialport => {
-      return new Promise((resolve, reject) => {
-        serialport.write(buffer, err => {
-          if (err) {
-            return reject(err)
-          }
-
-          serialport.drain(() => resolve())
-        })
-      })
-    })
+    this.serialport.send(buffer)
   }
 }

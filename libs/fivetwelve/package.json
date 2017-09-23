@@ -1,0 +1,110 @@
+{
+  "_args": [
+    [
+      {
+        "raw": "fivetwelve@^1.0.0-alpha.1",
+        "scope": null,
+        "escapedName": "fivetwelve",
+        "name": "fivetwelve",
+        "rawSpec": "^1.0.0-alpha.1",
+        "spec": ">=1.0.0-alpha.1 <2.0.0",
+        "type": "range"
+      },
+      "/Users/timpietrusky/Development/workspaces/node/VisionLord"
+    ]
+  ],
+  "_from": "fivetwelve@>=1.0.0-alpha.1 <2.0.0",
+  "_id": "fivetwelve@1.0.0-alpha.4",
+  "_inCache": true,
+  "_location": "/fivetwelve",
+  "_nodeVersion": "6.8.1",
+  "_npmOperationalInternal": {
+    "host": "packages-12-west.internal.npmjs.com",
+    "tmp": "tmp/fivetwelve-1.0.0-alpha.4.tgz_1492327594313_0.9025552403181791"
+  },
+  "_npmUser": {
+    "name": "usefulthink",
+    "email": "m.schuhfuss@googlemail.com"
+  },
+  "_npmVersion": "3.10.8",
+  "_phantomChildren": {},
+  "_requested": {
+    "raw": "fivetwelve@^1.0.0-alpha.1",
+    "scope": null,
+    "escapedName": "fivetwelve",
+    "name": "fivetwelve",
+    "rawSpec": "^1.0.0-alpha.1",
+    "spec": ">=1.0.0-alpha.1 <2.0.0",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/fivetwelve/-/fivetwelve-1.0.0-alpha.4.tgz",
+  "_shasum": "b724e0830440b3f6bfe6e6376818c2896ea5f8a8",
+  "_shrinkwrap": null,
+  "_spec": "fivetwelve@^1.0.0-alpha.1",
+  "_where": "/Users/timpietrusky/Development/workspaces/node/VisionLord",
+  "author": {
+    "name": "Martin Schuhfuss",
+    "email": "m.schuhfuss@gmail.com"
+  },
+  "bugs": {
+    "url": "https://github.com/beyondscreen/fivetwelve/issues"
+  },
+  "dependencies": {
+    "array.from": "^0.2.0",
+    "color-convert": "^0.6.0",
+    "object-assign": "^4.0.1",
+    "parse-color": "^1.0.0"
+  },
+  "description": "dmx512 lighting control library",
+  "devDependencies": {
+    "babel": "^5.8.20",
+    "eslint": "^1.2.1",
+    "expect.js": "^0.3.1",
+    "mocha": "^2.2.5",
+    "promise-polyfill": "^6.0.2",
+    "sinon": "^1.15.4"
+  },
+  "directories": {},
+  "dist": {
+    "shasum": "b724e0830440b3f6bfe6e6376818c2896ea5f8a8",
+    "tarball": "https://registry.npmjs.org/fivetwelve/-/fivetwelve-1.0.0-alpha.4.tgz"
+  },
+  "engines": {
+    "node": ">= 0.10.x"
+  },
+  "gitHead": "8e27ee4c0efa27eb372d2e1d0a3a3c539f391994",
+  "homepage": "https://github.com/beyondscreen/fivetwelve",
+  "keywords": [
+    "dmx",
+    "dmx512",
+    "lighting",
+    "light-control",
+    "fivetwelve"
+  ],
+  "license": "GPL-3.0",
+  "main": "index.js",
+  "maintainers": [
+    {
+      "name": "usefulthink",
+      "email": "m.schuhfuss@googlemail.com"
+    }
+  ],
+  "name": "fivetwelve",
+  "optionalDependencies": {},
+  "readme": "ERROR: No README data found!",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/beyondscreen/fivetwelve.git"
+  },
+  "scripts": {
+    "compile": "babel -d lib-es5 lib",
+    "postversion": "git push && git push --tags",
+    "prepublish": "npm run test && npm run compile",
+    "preversion": "npm test",
+    "test": "mocha --compilers js:babel/register test/*/*Test.js && eslint lib test"
+  },
+  "version": "1.0.0-alpha.4"
+}

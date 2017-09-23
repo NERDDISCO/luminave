@@ -5,21 +5,21 @@ import { TapButton } from '/src/components/tap-button/index.js'
 import { ConnectButton } from '/src/components/connect-button/index.js'
 import { BPMMeter } from '/src/components/bpm-meter/index.js'
 
-import USBManager from './core/USBManager.js'
-import StorageManager from './core/StorageManager.js'
+import USBManager from '/src/core/USBManager.js'
+import StorageManager from '/src/core/StorageManager.js'
 
-const usbManager = new USBManager({})
-usbManager.enable()
+// const usbManager = new USBManager({})
+// usbManager.enable()
+//
+// window.usbManager = usbManager
+//
+// const storageManager = new StorageManager({})
+// storageManager.save('config', {
+//   test: 1,
+//   foo: 'bar'
+// })
 
-window.usbManager = usbManager
-
-const storageManager = new StorageManager({})
-storageManager.save('config', {
-  test: 1,
-  foo: 'bar'
-})
-
-console.log(storageManager.load('config'))
+// console.log(storageManager.load('config'))
 
 class AppContent extends PolymerElement {
 
@@ -27,7 +27,10 @@ class AppContent extends PolymerElement {
     super()
     this.bpm = 0
     this.connected = false
-    this.storage = new StorageManager()
+    this.usb = new USBManager()
+
+    window.usbManager = this.usb;
+    // this.storage = new StorageManager()
   }
 
   ready() {
@@ -40,10 +43,14 @@ class AppContent extends PolymerElement {
 
   handleConnect(e) {
     this.connected = e.detail.connected
+
+    this.usb.enable()
   }
 
   handleDisconnect(e) {
     this.connected = e.detail.connected
+    this.usb.port.disconnect()
+    this.usb.port = null
   }
 
   static get template() {
