@@ -8,18 +8,6 @@ export default class USBPort {
   }
 
   connect() {
-    // @TODO: What is this?
-    const readLoop = () => {
-
-      // @TODO: What is this?
-      this.controller.transferIn(5, 64).then(result => {
-        this.onReceive(result.data)
-        readLoop()
-      }, error => {
-        this.onReceiveError(error)
-      })
-    }
-
     return this.device.open().
     // @TODO: What is this?
     then(() => {
@@ -39,7 +27,17 @@ export default class USBPort {
       'index': 0x02
     })).
     then(() => {
-      readLoop()
+      this.readLoop()
+    })
+  }
+
+  readLoop() {
+    // @TODO: What is this?
+    this.device.transferIn(5, 64).then(result => {
+      this.onReceive(result.data)
+      this.readLoop()
+    }, error => {
+      this.onReceiveError(error)
     })
   }
 

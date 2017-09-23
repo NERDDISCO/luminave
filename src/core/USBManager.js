@@ -1,4 +1,5 @@
 import USBSerial from './USBSerial.js'
+import ArduinoLeonardoETHDriver from '/src/'
 
 /**
  * Manage USB ports.
@@ -17,6 +18,11 @@ export default class USBManager {
 
     this.data = new Uint8Array(512)
     this.data.fill(0)
+
+    const driver = new ArduinoLeonardoETHDriver()
+
+    // Create the output by using the driver and set the amount of universes that are controlled by this interface
+    this.output = fivetwelve.default(driver, 1)
   }
 
 
@@ -53,12 +59,17 @@ export default class USBManager {
 
   update(values) {
     console.log(values)
+
     values.fill(0, values.length, this.data.length)
 
-    this.port.send(values)
-
+    // this.data[7 - 1] = 255
+    // this.data[10] = 255
+    //
+    // this.data[14 - 1] = 255
+    // this.data[16] = 255
     console.log(this.data)
-    console.log(values)
+
+    this.port.send(this.data)
   }
 
 }
