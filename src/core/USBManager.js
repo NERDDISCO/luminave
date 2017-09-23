@@ -28,7 +28,6 @@ export default class USBManager {
     }).catch(error => {
       console.error(error);
     });
-
   }
 
 
