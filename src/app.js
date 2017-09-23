@@ -52,6 +52,11 @@ class AppContent extends PolymerElement {
     this.usb.port = null
   }
 
+  handleGrid(e) {
+    const {value, channel} = e.detail
+    console.log('value:', value, 'channel:', channel)
+  }
+
   static get template() {
     return `
     <div>
@@ -63,7 +68,7 @@ class AppContent extends PolymerElement {
                     on-tap="handleTap"
                     delay="1000"
                     items="3"></tap-button>
-        <channel-grid></channel-grid>
+        <channel-grid on-update="handleGrid"></channel-grid>
     </div>
     `
   }
