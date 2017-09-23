@@ -1,5 +1,4 @@
-import WebMidi from 'webmidi'
-import {eventService} from './EventService'
+import WebMidi from '/node_modules/webmidi/index.js'
 
 /**
  * Handle the input / output port of a single MIDI controller.
@@ -39,7 +38,7 @@ export default class MidiController {
    * Handle "noteon" events
    */
   noteon(event) {
-    const {data} = event
+    const { data } = event
     const [
       foo,
       note

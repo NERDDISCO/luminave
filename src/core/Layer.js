@@ -1,29 +1,27 @@
-"use strict";
-
-import Animation from './Animation';
+import Animation from './Animation.js'
 
 /**
  * Handle animations.
  */
 export default class Layer {
   constructor(param) {
-    this.layerId = param.id;
+    this.layerId = param.id
 
-    this.animationConfigs = param.animations;
+    this.animationConfigs = param.animations
 
     // Reference to all animations
-    this.animationManager = param.animationManager;
+    this.animationManager = param.animationManager
 
     // Reference to DMX devices
-    this.devices = param.devices;
+    this.devices = param.devices
 
     // List of animations in this layer
-    this.animations = [];
+    this.animations = []
 
     // Is this Layer playing?
-    this.isPlaying = false;
+    this.isPlaying = false
 
-    this.register();
+    this.register()
   }
 
   /*
@@ -32,7 +30,7 @@ export default class Layer {
   register() {
     this.animationConfigs.forEach((element, index, array) => {
 
-      let instance = this.animationManager.get(element.animationId);
+      let instance = this.animationManager.get(element.animationId)
 
       let animation = new Animation({
         animationId: element.animationId,
@@ -41,38 +39,38 @@ export default class Layer {
         timeline: instance.timeline,
         deviceManager: instance.deviceManager,
         devices: this.devices
-      });
+      })
 
-      this.add(animation);
-    });
+      this.add(animation)
+    })
   }
 
   /*
    * Add animation to the list of animations.
    */
   add(animation) {
-    this.animations.push(animation);
+    this.animations.push(animation)
   }
 
   /*
    * Play animations.
    */
   play() {
-    this.isPlaying = true;
+    this.isPlaying = true
 
     // Run all animations
     this.animations.forEach((element, index, array) => {
       // @TODO: Move this into this.stop()
-      element.stop();
-      element.play();
-    });
+      element.stop()
+      element.play()
+    })
   }
 
   /*
    * Stop the playback.
    */
   stop() {
-    this.isPlaying = false;
+    this.isPlaying = false
   }
 
 
@@ -84,25 +82,25 @@ export default class Layer {
 
     if (this.isPlaying) {
 
-      this.count = 0;
+      this.count = 0
 
       // Run all animations
       this.animations.forEach((element, index, array) => {
 
         // Start the animation if the start time is reached & duration is not reached yet
-        element.run(progressScene, delta);
+        element.run(progressScene, delta)
 
         // The animation is not stopped yet
         if (element.isPlaying) {
-          this.count++;
+          this.count++
         }
 
-      });
+      })
 
       // All animations are stopped
       if (this.count === 0) {
-        this.stop();
-        console.log('Layer', '-', this.layerId, 'stopped');
+        this.stop()
+        console.log('Layer', '-', this.layerId, 'stopped')
       }
 
     }
