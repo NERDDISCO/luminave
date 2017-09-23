@@ -42,6 +42,10 @@ var _http = require('http');
 
 var _http2 = _interopRequireDefault(_http);
 
+var _EventService = require('./EventService');
+
+var _ModVService = require('./ModVService');
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -93,21 +97,21 @@ var ExpressServer = function () {
       res.render('index', { title: 'VisionLord', mydata: JSON.stringify(_this.config) });
     });
 
-    // WebSocket route
-    this.app.ws(this.config.server.websocket.path, function (ws, req) {
-      console.log('WebSocket opened');
+    // WebSocket: MIDI
+    this.app.ws(this.config.server.websocket.path.midi, function (ws, req) {
+      // There is a new connection
+      console.log(_this.config.server.websocket.path.midi, '-', 'opened 😍');
 
-      ws.send("❤️");
+      // Welcome the client
+      ws.send(JSON.stringify({ 'type': 'welcome', 'message': '❤️' }));
 
-      ws.on('message', function (msg) {
-        console.log('message', msg);
-      });
+      // Receive a message from the client
+      ws.on('message', function (message) {
+        var data = JSON.parse(message);
 
-      ws.on('text', function (msg) {
-        console.log('text', msg);
-        // ws.send(msg);
-        // msg = JSON.parse(msg);
-        // console.log(JSON.stringify(msg));
+        console.log(_this.config.server.websocket.path.midi, '-', data);
+
+        _EventService.eventService.emit('MidiController', data);
       });
 
       ws.on('error', function (msg) {
@@ -115,10 +119,41 @@ var ExpressServer = function () {
       });
 
       ws.on('close', function () {
-        console.log('WebSocket closed');
+        console.log(_this.config.server.websocket.path.midi, '-', 'closed 😱');
         console.log(_this.config.log.separator);
       });
-    });
+    }); // WebSocket: /midi
+
+
+    // WebSocket: modV
+    this.app.ws(this.config.server.websocket.path.modV, function (ws, req) {
+      // There is a new connection
+      console.log(_this.config.server.websocket.path.modV, '-', 'opened 😍');
+
+      // Welcome the client
+      ws.send(JSON.stringify({ 'type': 'welcome', 'message': '❤️' }));
+
+      // Receive a message from the client
+      ws.on('message', function (message) {
+        var data = JSON.parse(message);
+
+        console.log(_this.config.server.websocket.path.modV, '-', data);
+
+        _ModVService.modVService.globalColor = data.average;
+
+        // eventService.emit('modV', data);
+      });
+
+      ws.on('error', function (msg) {
+        console.error(msg);
+      });
+
+      ws.on('close', function () {
+        console.log(_this.config.server.websocket.path.modV, '-', 'closed 😱');
+        console.log(_this.config.log.separator);
+      });
+    }); // WebSocket: /midi
+
 
     // Catch 404 and forward to error handler
     this.app.use(function (req, res, next) {

@@ -14,7 +14,7 @@ export default class ModVService {
 
     this.globalColor = randomColor().rgbArray();
 
-    this.random();
+    // this.random();
   }
 
   random() {

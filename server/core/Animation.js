@@ -175,6 +175,10 @@ export default class Animation {
               device.gobo = this.values.gobo;
             }
 
+            if (this.values.hasOwnProperty('yellow')) {
+              device.yellow = this.values.yellow;
+            }
+
           });
 
         } else {

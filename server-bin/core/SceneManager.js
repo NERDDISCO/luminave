@@ -6,61 +6,60 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _Animation = require("./Animation");
+var _Scene = require("./Scene");
 
-var _Animation2 = _interopRequireDefault(_Animation);
+var _Scene2 = _interopRequireDefault(_Scene);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 /**
- * Handle all animations and keep a reference to them.
+ * Handle all scenes.
+ * @TODO: Listen to MIDI events and start scenes accordingly
  */
-var AnimationManager = function () {
-  function AnimationManager(param) {
-    _classCallCheck(this, AnimationManager);
+var SceneManager = function () {
+  function SceneManager(param) {
+    _classCallCheck(this, SceneManager);
 
-    // A list of animations
     this.list = new Map();
-
-    // Handle devices
-    this.deviceManager = param.deviceManager;
-
     this.config = param.config;
+
+    // Reference to all animations
+    this.animationManager = param.animationManager;
   }
 
-  _createClass(AnimationManager, [{
+  _createClass(SceneManager, [{
     key: "register",
     value: function register() {
       var _this = this;
 
-      this.config.animations.forEach(function (element, index, array) {
+      // Initialize all scenes
+      this.config.scenes.forEach(function (element, index, array) {
 
-        var animation = new _Animation2.default({
-          animationId: element.animationId,
-          duration: element.duration,
-          timeline: element.timeline,
-          deviceManager: _this.deviceManager,
-          devices: element.devices
+        var scene = new _Scene2.default({
+          config: element,
+          id: element.sceneId,
+          name: element.name,
+          animationManager: _this.animationManager
         });
 
-        _this.add(element.animationId, animation);
+        _this.add(element.sceneId, scene);
       });
     }
   }, {
     key: "add",
-    value: function add(animationId, animation) {
-      this.list.set(animationId, animation);
+    value: function add(sceneId, scene) {
+      this.list.set(sceneId, scene);
     }
   }, {
     key: "get",
-    value: function get(animationId) {
-      return this.list.get(animationId);
+    value: function get(sceneId) {
+      return this.list.get(sceneId);
     }
   }]);
 
-  return AnimationManager;
+  return SceneManager;
 }();
 
-exports.default = AnimationManager;
+exports.default = SceneManager;

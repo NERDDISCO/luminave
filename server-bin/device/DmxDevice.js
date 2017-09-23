@@ -1,5 +1,7 @@
 'use strict';
 
+// @TODO: Automatically import every device from the "dmx"-folder
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
@@ -21,6 +23,22 @@ var _CameoWookie200RGY2 = _interopRequireDefault(_CameoWookie200RGY);
 var _AdjStarburst = require('./dmx/AdjStarburst');
 
 var _AdjStarburst2 = _interopRequireDefault(_AdjStarburst);
+
+var _FunGenerationSeParQuadLedRgbUv = require('./dmx/FunGenerationSeParQuadLedRgbUv');
+
+var _FunGenerationSeParQuadLedRgbUv2 = _interopRequireDefault(_FunGenerationSeParQuadLedRgbUv);
+
+var _MiniLed = require('./dmx/MiniLed');
+
+var _MiniLed2 = _interopRequireDefault(_MiniLed);
+
+var _StairvilleAF = require('./dmx/StairvilleAF150');
+
+var _StairvilleAF2 = _interopRequireDefault(_StairvilleAF);
+
+var _EuroliteB = require('./dmx/EuroliteB100');
+
+var _EuroliteB2 = _interopRequireDefault(_EuroliteB);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -64,6 +82,11 @@ var DmxDevice = function () {
      */
   }
 
+  /*
+   * @TODO: Automatically create the mapping, maybe with eval? 😐
+   */
+
+
   _createClass(DmxDevice, [{
     key: 'createMapping',
     value: function createMapping() {
@@ -71,6 +94,10 @@ var DmxDevice = function () {
       this.deviceMapping.set('CameoFlat1RGBW', _CameoFlat1RGBW2.default);
       this.deviceMapping.set('CameoWookie200RGY', _CameoWookie200RGY2.default);
       this.deviceMapping.set('AdjStarburst', _AdjStarburst2.default);
+      this.deviceMapping.set('FunGenerationSeParQuadLedRgbUv', _FunGenerationSeParQuadLedRgbUv2.default);
+      this.deviceMapping.set('MiniLed', _MiniLed2.default);
+      this.deviceMapping.set('StairvilleAF150', _StairvilleAF2.default);
+      this.deviceMapping.set('EuroliteB100', _EuroliteB2.default);
     }
   }]);
 

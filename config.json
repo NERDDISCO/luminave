@@ -28,58 +28,31 @@
   },
   "animations": [
     {
-      "animationId": "dnb",
-      "duration": 350,
+      "animationId": "greenwall",
+      "duration": 64,
       "name": "This is DnB",
       "timeline": [{
           "name": "color",
           "value": [0, 0, 0],
           "keyframes": [
-            { "time": 0, "value": [0, 0, 0] },
-            { "time": 50, "value": [100, 0, 0] },
-            { "time": 100, "value": [0, 0, 0] },
-            { "time": 150, "value": [0, 100, 0] },
-            { "time": 200, "value": [0, 0, 0] },
-            { "time": 250, "value": [0, 0, 100] },
-            { "time": 300, "value": [0, 0, 0] }
-          ]
-        }
-      ]
-    },
-    {
-      "animationId": "crazy",
-      "duration": 1000,
-      "name": "This is a crazy animation",
-      "timeline": [{
-          "name": "color",
-          "value": [0, 0, 0],
-          "keyframes": [
             { "time": 0, "value": [0, 255, 0], "modV": true },
-            { "time": 500, "value": [255, 0, 0], "modV": true },
-            { "time": 1000, "value": [0, 0, 0] }
-          ]
-        },
-        {
-          "name": "uv",
-          "value": 0,
-          "keyframes": [
-            { "time": 0, "value": 255, "modV": false },
-            { "time": 500, "value": 255, "modV": false },
-            { "time": 1000, "value": 0 }
+            { "time": 64, "value": [0, 0, 0] }
           ]
         }
       ]
     },
+
     {
-      "animationId": "funny",
-      "duration": 200,
-      "name": "This is a funny animation",
+      "animationId": "whateverwall",
+      "duration": 64,
+      "name": "This is DnB",
       "timeline": [{
           "name": "color",
           "value": [0, 0, 0],
           "keyframes": [
-            { "time": 0, "value": [0, 0, 0], "modV": true },
-            { "time": 50, "value": [0, 0, 0] }
+            { "time": 0, "value": [255, 255, 255], "modV": false },
+            { "time": 48, "value": [255, 255, 255], "modV": false },
+            { "time": 64, "value": [0, 0, 0] }
           ]
         },
         {
@@ -87,50 +60,98 @@
           "value": 0,
           "keyframes": [
             { "time": 0, "value": 255, "modV": false },
-            { "time": 200, "value": 0 }
+            { "time": 64, "value": 0 }
           ]
         }
       ]
     },
+
     {
-      "animationId": "evenmorefun",
+      "animationId": "yellow",
       "duration": 128,
-      "name": "This is a funny animation",
+      "name": "yellow",
       "timeline": [{
           "name": "color",
           "value": [0, 0, 0],
           "keyframes": [
-            { "time": 0, "value": [0, 0, 0], "modV": true },
+            { "time": 0, "value": [255, 234, 0], "modV": true },
             { "time": 128, "value": [0, 0, 0] }
           ]
         }
       ]
     },
+
+    {
+      "animationId": "green",
+      "duration": 128,
+      "name": "Single color",
+      "timeline": [{
+          "name": "color",
+          "value": [0, 0, 0],
+          "keyframes": [
+            { "time": 0, "value": [0, 255, 0], "modV": true },
+            { "time": 128, "value": [0, 0, 0] }
+          ]
+        }
+      ]
+    },
+
+    {
+      "animationId": "blue",
+      "duration": 128,
+      "name": "Single color",
+      "timeline": [{
+          "name": "color",
+          "value": [0, 0, 0],
+          "keyframes": [
+            { "time": 0, "value": [0, 0, 255], "modV": true },
+            { "time": 128, "value": [0, 0, 0] }
+          ]
+        }
+      ]
+    },
+
+    {
+      "animationId": "purple",
+      "duration": 128,
+      "name": "Single color",
+      "timeline": [{
+          "name": "color",
+          "value": [0, 0, 0],
+          "keyframes": [
+            { "time": 0, "value": [255, 0, 255], "modV": true },
+            { "time": 128, "value": [0, 0, 0] }
+          ]
+        }
+      ]
+    },
+
     {
       "animationId": "allthelight",
-      "duration": 800,
+      "duration": 384,
       "name": "This is a funny animation",
       "timeline": [{
           "name": "color",
           "value": [0, 0, 0],
           "keyframes": [
-            { "time": 0, "value": [0, 0, 0], "modV": true },
-            { "time": 800, "value": [0, 0, 0] }
+            { "time": 0, "value": [255, 0, 0], "modV": true },
+            { "time": 384, "value": [0, 0, 0] }
           ]
         },
         {
-          "name": "uv",
+          "name": "strobe",
           "value": 0,
           "keyframes": [
-            { "time": 0, "value": 255, "modV": false },
-            { "time": 800, "value": 0 }
+            { "time": 0, "value": "on" },
+            { "time": 384, "value": "off" }
           ]
         }
       ]
     },
+
     {
       "animationId": "uvbaby",
-      "duration": 800,
+      "duration": 128,
       "name": "This is a funny animation",
       "timeline": [
         {
@@ -138,8 +159,8 @@
           "value": 0,
           "keyframes": [
             { "time": 0, "value": 255, "modV": false },
-            { "time": 700, "value": 0 },
-            { "time": 800, "value": 0 }
+            { "time": 64, "value": 255 },
+            { "time": 128, "value": 0 }
           ]
         },
         {
@@ -152,6 +173,7 @@
         }
       ]
     },
+
     {
       "animationId": "clockwise",
       "duration": 600,
@@ -160,8 +182,8 @@
           "name": "color",
           "value": [0, 0, 0],
           "keyframes": [
-            { "time": 0, "value": [0, 0, 0], "modV": true },
-            { "time": 400, "value": [0, 0, 0], "modV": true },
+            { "time": 0, "value": [255, 0, 0], "modV": true },
+            { "time": 400, "value": [255, 0, 0], "modV": true },
             { "time": 600, "value": [0, 0, 0] }
           ]
         },
@@ -177,7 +199,7 @@
           "name": "rotate",
           "value": 0,
           "keyframes": [
-            { "time": 0, "value": "clockwise(50)" },
+            { "time": 0, "value": "clockwise(20)" },
             { "time": 600, "value": "stop" }
           ]
         },
@@ -199,8 +221,8 @@
           "name": "color",
           "value": [0, 0, 0],
           "keyframes": [
-            { "time": 0, "value": [0, 0, 0], "modV": true },
-            { "time": 400, "value": [0, 0, 0], "modV": true },
+            { "time": 0, "value": [255, 0, 255], "modV": true },
+            { "time": 400, "value": [255, 0, 255], "modV": true },
             { "time": 600, "value": [0, 0, 0] }
           ]
         },
@@ -216,7 +238,7 @@
           "name": "rotate",
           "value": 0,
           "keyframes": [
-            { "time": 0, "value": "counterClockwise(50)" },
+            { "time": 0, "value": "counterClockwise(20)" },
             { "time": 600, "value": "stop" }
           ]
         },
@@ -230,52 +252,7 @@
         }
       ]
     },
-    {
-      "animationId": "livejs_logo",
-      "duration": 600,
-      "name": "This is a funny animation",
-      "timeline": [{
-          "name": "color",
-          "value": [0, 0, 0],
-          "keyframes": [
-            { "time": 0, "value": [255, 0, 0], "modV": true },
-            { "time": 600, "value": [0, 0, 0] }
-          ]
-        },
-        {
-          "name": "brightness",
-          "value": 0,
-          "keyframes": [
-            { "time": 0, "value": "default(1)" },
-            { "time": 600, "value": 0 }
-          ]
-        },
-        {
-          "name": "pan",
-          "value": 0,
-          "keyframes": [
-            { "time": 0, "value": -270 },
-            { "time": 600, "value": -270 }
-          ]
-        },
-        {
-          "name": "tilt",
-          "value": 0,
-          "keyframes": [
-            { "time": 0, "value": 110 },
-            { "time": 600, "value": 130 }
-          ]
-        },
-        {
-          "name": "gobo",
-          "value": 0,
-          "keyframes": [
-            { "time": 0, "value": "spiraltunnel" },
-            { "time": 500, "value": "spiraltunnel" }
-          ]
-        }
-      ]
-  },
+
     {
       "animationId": "fogfogfog",
       "duration": 5000,
@@ -291,6 +268,7 @@
       }
     ]
   },
+
     {
       "animationId": "bubblebubblebubble",
       "duration": 5000,
@@ -316,9 +294,52 @@
   ]
 }
 ],
+
   "scenes": [
     {
-      "sceneId": "scene1",
+      "sceneId": "left_1",
+      "name": "This is my awesome first scene",
+      "midi": {
+        "controllerId": "korgnanopad2",
+        "partId": "button1"
+      },
+      "layers": [
+        {
+          "layerId": "layer1",
+          "devices": ["fungeneration_ledspot_2"],
+          "animations": [
+            {
+              "start": 0,
+              "animationId": "yellow"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "sceneId": "left_2",
+      "name": "This is my awesome first scene",
+      "midi": {
+        "controllerId": "korgnanopad2",
+        "partId": "button2"
+      },
+      "layers": [
+        {
+          "layerId": "layer1",
+          "devices": ["fungeneration_ledspot_3"],
+          "animations": [
+            {
+              "start": 0,
+              "animationId": "blue"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "sceneId": "left_3",
       "name": "This is my awesome first scene",
       "midi": {
         "controllerId": "korgnanopad2",
@@ -327,62 +348,89 @@
       "layers": [
         {
           "layerId": "layer1",
-          "devices": ["fungeneration_ledspot_1", "fungeneration_ledspot_2", "fungeneration_ledspot_3", "fungeneration_ledspot_4", "cameo_ledspot_1", "cameo_ledspot_2"],
+          "devices": ["cameo_ledspot_1"],
           "animations": [
             {
               "start": 0,
-              "animationId": "allthelight"
+              "animationId": "purple"
             }
           ]
         }
       ]
     },
+
     {
-      "sceneId": "scene2",
-      "name": "This is my awesome second scene",
+      "sceneId": "right_1",
+      "name": "This is my awesome first scene",
       "midi": {
         "controllerId": "korgnanopad2",
-        "partId": "button1"
+        "partId": "button6"
       },
       "layers": [
         {
           "layerId": "layer1",
-          "devices": ["fungeneration_ledspot_1", "fungeneration_ledspot_2", "fungeneration_ledspot_3", "fungeneration_ledspot_4"],
+          "devices": ["fungeneration_ledspot_1"],
           "animations": [
             {
               "start": 0,
-              "animationId": "funny"
+              "animationId": "blue"
             }
           ]
         }
       ]
     },
+
     {
-      "sceneId": "scene3",
-      "name": "This is my awesome second scene",
-      "midi": {
-        "controllerId": "korgnanopad2",
-        "partId": "button2"
-      },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["cameo_ledspot_1", "cameo_ledspot_2"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "funny"
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "sceneId": "scene4",
-      "name": "This is my awesome second scene",
+      "sceneId": "right_2",
+      "name": "This is my awesome first scene",
       "midi": {
         "controllerId": "korgnanopad2",
         "partId": "button5"
+      },
+      "layers": [
+        {
+          "layerId": "layer1",
+          "devices": ["fungeneration_ledspot_4"],
+          "animations": [
+            {
+              "start": 0,
+              "animationId": "purple"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "sceneId": "right_3",
+      "name": "This is my awesome first scene",
+      "midi": {
+        "controllerId": "korgnanopad2",
+        "partId": "button4"
+      },
+      "layers": [
+        {
+          "layerId": "layer1",
+          "devices": ["cameo_ledspot_2"],
+          "animations": [
+            {
+              "start": 0,
+              "animationId": "yellow"
+            }
+          ]
+        }
+      ]
+    },
+
+
+
+
+    {
+      "sceneId": "sphereClockwise",
+      "name": "This is my awesome second scene",
+      "midi": {
+        "controllerId": "korgnanopad2",
+        "partId": "button7"
       },
       "layers": [
         {
@@ -397,12 +445,13 @@
         }
       ]
     },
+
     {
-      "sceneId": "scene5",
+      "sceneId": "sphereCounterClockwise",
       "name": "This is my awesome second scene",
       "midi": {
         "controllerId": "korgnanopad2",
-        "partId": "button6"
+        "partId": "button8"
       },
       "layers": [
         {
@@ -417,12 +466,13 @@
         }
       ]
     },
+
     {
-      "sceneId": "scene6",
+      "sceneId": "greenwall",
       "name": "This is my awesome second scene",
       "midi": {
         "controllerId": "korgnanopad2",
-        "partId": "button4"
+        "partId": "button10"
       },
       "layers": [
         {
@@ -431,68 +481,62 @@
           "animations": [
             {
               "start": 0,
-              "animationId": "crazy"
+              "animationId": "greenwall"
             }
           ]
         }
       ]
     },
+
     {
-      "sceneId": "scene7",
+      "sceneId": "whateverwall",
       "name": "This is my awesome second scene",
       "midi": {
         "controllerId": "korgnanopad2",
-        "partId": "button7"
+        "partId": "button11"
       },
       "layers": [
         {
           "layerId": "layer1",
-          "devices": ["fungeneration_ledspot_1"],
+          "devices": ["cameo_pixbar_1"],
           "animations": [
             {
               "start": 0,
-              "animationId": "evenmorefun"
-            }
-          ]
-        },
-        {
-          "layerId": "layer2",
-          "devices": ["fungeneration_ledspot_2"],
-          "animations": [
-            {
-              "start": 64,
-              "animationId": "evenmorefun"
-            }
-          ]
-        },
-        {
-          "layerId": "layer3",
-          "devices": ["fungeneration_ledspot_3"],
-          "animations": [
-            {
-              "start": 128,
-              "animationId": "evenmorefun"
-            }
-          ]
-        },
-        {
-          "layerId": "layer4",
-          "devices": ["fungeneration_ledspot_4"],
-          "animations": [
-            {
-              "start": 192,
-              "animationId": "evenmorefun"
+              "animationId": "whateverwall"
             }
           ]
         }
       ]
     },
+
+    {
+      "sceneId": "whateverwall2",
+      "name": "This is my awesome second scene",
+      "midi": {
+        "controllerId": "korgnanopad2",
+        "partId": "button12"
+      },
+      "layers": [
+        {
+          "layerId": "layer1",
+          "devices": ["cameo_pixbar_1"],
+          "animations": [
+            {
+              "start": 0,
+              "animationId": "whateverwall"
+            }
+          ]
+        }
+      ]
+    },
+
+
     {
       "sceneId": "scene8",
       "name": "This is my awesome second scene",
       "midi": {
         "controllerId": "korgnanopad2",
-        "partId": "button8"
+        "partId": "button16"
       },
       "layers": [
         {
@@ -507,12 +551,13 @@
         }
       ]
     },
+
     {
       "sceneId": "scene9",
       "name": "This is my awesome second scene",
       "midi": {
         "controllerId": "korgnanopad2",
-        "partId": "button9"
+        "partId": "button13"
       },
       "layers": [
         {
@@ -522,6 +567,38 @@
             "fungeneration_ledspot_2",
             "fungeneration_ledspot_3",
             "fungeneration_ledspot_4",
+            "cameo_ledspot_1",
+            "cameo_ledspot_2",
+            "cameo_pixbar_1",
+            "adj_planet"
+          ],
+          "animations": [
+            {
+              "start": 0,
+              "animationId": "allthelight"
+            }
+          ]
+        }
+      ]
+    },
+
+    {
+      "sceneId": "superuv",
+      "name": "This is my awesome second scene",
+      "midi": {
+        "controllerId": "korgnanopad2",
+        "partId": "button14"
+      },
+      "layers": [
+        {
+          "layerId": "layer1",
+          "devices": [
+            "fungeneration_ledspot_1",
+            "fungeneration_ledspot_2",
+            "fungeneration_ledspot_3",
+            "fungeneration_ledspot_4",
+            "cameo_ledspot_1",
+            "cameo_ledspot_2",
             "cameo_pixbar_1",
             "adj_planet"
           ],
@@ -533,27 +610,9 @@
           ]
         }
       ]
-    },
-    {
-      "sceneId": "scene10",
-      "name": "This is my awesome second scene",
-      "midi": {
-        "controllerId": "korgnanopad2",
-        "partId": "button10"
-      },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": [],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "bubblebubblebubble"
-            }
-          ]
-        }
-      ]
     }
+
+
   ],
   "devices": {
     "dmx": [
@@ -561,8 +620,8 @@
         "deviceId": "cameo_pixbar_1",
         "type": "CameoPixBar600PRO",
         "name": "Cameo PixBar 600 PRO",
-        "universe": 2,
-        "address": 1,
+        "universe": 1,
+        "address": 155,
         "parts": [
           {
             "type": "led",
@@ -646,7 +705,7 @@
         "deviceId": "adj_planet",
         "type": "AdjStarburst",
         "name": "ADJ Starburst",
-        "universe": 2,
+        "universe": 1,
         "address": 76
       }
     ],
@@ -730,6 +789,48 @@
               "y": 1,
               "x": 2,
               "partId": "button10"
+            },
+            {
+              "note": 40,
+              "type": "button",
+              "y": 1,
+              "x": 2,
+              "partId": "button11"
+            },
+            {
+              "note": 42,
+              "type": "button",
+              "y": 1,
+              "x": 2,
+              "partId": "button12"
+            },
+            {
+              "note": 44,
+              "type": "button",
+              "y": 1,
+              "x": 2,
+              "partId": "button13"
+            },
+            {
+              "note": 46,
+              "type": "button",
+              "y": 1,
+              "x": 2,
+              "partId": "button14"
+            },
+            {
+              "note": 48,
+              "type": "button",
+              "y": 1,
+              "x": 2,
+              "partId": "button15"
+            },
+            {
+              "note": 50,
+              "type": "button",
+              "y": 1,
+              "x": 2,
+              "partId": "button16"
             }
           ]
         }

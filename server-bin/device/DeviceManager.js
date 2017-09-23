@@ -72,6 +72,16 @@ var DeviceManager = function () {
     value: function get(deviceId) {
       return this.list.get(deviceId).instance;
     }
+  }, {
+    key: 'reset',
+    value: function reset() {
+      this.list.forEach(function (element, key, map) {
+
+        if (typeof element.reset === 'function') {
+          element.reset();
+        }
+      });
+    }
   }]);
 
   return DeviceManager;

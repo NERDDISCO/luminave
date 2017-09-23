@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -38,7 +38,7 @@ var RgbWAUvParam = function (_fivetwelve$param$Dmx) {
   }
 
   _createClass(RgbWAUvParam, [{
-    key: 'setValue',
+    key: "setValue",
     value: function setValue(device, color) {
       this.color = color;
 
@@ -47,7 +47,7 @@ var RgbWAUvParam = function (_fivetwelve$param$Dmx) {
       }
     }
   }, {
-    key: 'getValue',
+    key: "getValue",
     value: function getValue(device) {
       var channelValues = [];
 
