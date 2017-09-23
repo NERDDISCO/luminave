@@ -1,30 +1,21 @@
-"use strict";
-
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { html } from '/node_modules/lit-html/lit-html.js'
 import { render } from '/node_modules/lit-html/lib/lit-extended.js'
 
 
 import USBManager from './core/USBManager.js'
+import StorageManager from './core/StorageManager.js'
 
-let usbManager = new USBManager({});
-usbManager.enable();
+const usbManager = new USBManager({})
+usbManager.enable()
 
+const storageManager = new StorageManager({})
+storageManager.save('config', {
+  test: 1,
+  foo: 'bar'
+})
 
-// import WebSocketClient from './core/WebSocketClient';
-// import MidiManager from './core/MidiManager';
-
-// // Get the config from the hidden element
-// var visionLordConfigElement = document.getElementById('VisionLordConfig');
-// var config = JSON.parse(visionLordConfigElement.value);
-// console.log('config', '-', 'loaded for', config.name);
-//
-//
-// // Manage connected MIDI devices
-// let midiManager = new MidiManager({ config: config });
-// // Expose it globally so we can use it in the console
-// window.midiManager = midiManager;
-
+console.log(storageManager.load('config'))
 
 const header = title => html `<h1>${title}</h1>`;
 

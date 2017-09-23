@@ -1,54 +1,55 @@
-"use strict";
-
+/*
+ * USB port on the computer
+ */
 export default class USBPort {
 
   constructor(param) {
-    this.device_ = param.device;
+    this.device = param.device
   }
 
   connect() {
-    let readLoop = () => {
+    const readLoop = () => {
 
-      this.device_.transferIn(5, 64).then(result => {
-        this.onReceive(result.data);
-        readLoop();
+      this.controller.transferIn(5, 64).then(result => {
+        this.onReceive(result.data)
+        readLoop()
       }, error => {
-        this.onReceiveError(error);
-      });
-    };
-
-    return this.device_.open()
-      .then(() => {
-        if (this.device_.configuration === null) {
-          return this.device_.selectConfiguration(1);
-        }
+        this.onReceiveError(error)
       })
-      .then(() => this.device_.claimInterface(2))
-      .then(() => this.device_.controlTransferOut({
-        'requestType': 'class',
-        'recipient': 'interface',
-        'request': 0x22,
-        'value': 0x01,
-        'index': 0x02
-      }))
-      .then(() => {
-        readLoop();
-      });
+    }
+
+    return this.device.open().
+    then(() => {
+      if (this.device.configuration === null) {
+        return this.device.selectConfiguration(1)
+      }
+    }).
+    then(() => this.device.claimInterface(2)).
+    then(() => this.device.controlTransferOut({
+      'requestType': 'class',
+      'recipient': 'interface',
+      'request': 0x22,
+      'value': 0x01,
+      'index': 0x02
+    })).
+    then(() => {
+      readLoop()
+    })
   }
 
   disconnect() {
-    return this.device_.controlTransferOut({
-        'requestType': 'class',
-        'recipient': 'interface',
-        'request': 0x22,
-        'value': 0x00,
-        'index': 0x02
-      })
-      .then(() => this.device_.close());
+    return this.device.controlTransferOut({
+      'requestType': 'class',
+      'recipient': 'interface',
+      'request': 0x22,
+      'value': 0x00,
+      'index': 0x02
+    }).
+    then(() => this.device.close())
   }
 
   send(data) {
-    return this.device_.transferOut(4, data);
+    return this.device.transferOut(4, data)
   }
 
 }

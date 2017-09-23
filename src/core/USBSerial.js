@@ -1,5 +1,3 @@
-"use strict";
-
 import USBPort from './USBPort.js';
 
 export default class USBSerial {
