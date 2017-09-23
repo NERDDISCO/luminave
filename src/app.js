@@ -1,6 +1,14 @@
+"use strict";
+
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { html } from '/node_modules/lit-html/lit-html.js'
 import { render } from '/node_modules/lit-html/lib/lit-extended.js'
+
+
+import USBManager from './core/USBManager.js'
+
+let usbManager = new USBManager({});
+usbManager.enable();
 
 
 // import WebSocketClient from './core/WebSocketClient';
