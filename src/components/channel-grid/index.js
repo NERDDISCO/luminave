@@ -9,14 +9,15 @@ class ChannelGrid extends PolymerElement {
 
   ready() {
     super.ready()
+    console.log([this])
   }
 
   handleUpdate(e) {
-    const { value, channel } = e.detail
+    const {value, channelId} = e.detail
     this.dispatchEvent(new CustomEvent('update', {
       detail: {
         value,
-        channel
+        channelId
       }
     }))
   }

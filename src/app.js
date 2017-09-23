@@ -17,6 +17,9 @@ class AppContent extends PolymerElement {
     this.bpm = 0
     this.connected = false
 
+      <<
+      <<
+      << < HEAD
     this.storage = new StorageManager()
     this.config = this.storage.get('config')
     console.log(this.config)
@@ -24,6 +27,16 @@ class AppContent extends PolymerElement {
     window.usbManager = this.usb
     this.usb = new USBManager({ config: this.config })
 
+      ===
+      ===
+      =
+      window.usbManager = this.usb;
+    // this.storage = new StorageManager()
+    this.channels = [{
+        value: 'foobar'
+      }] >>>
+      >>>
+      > f39f0dcd650fc724dca86353dead6d5c1f8e9d3d
   }
 
   ready() {
@@ -47,10 +60,10 @@ class AppContent extends PolymerElement {
   }
 
   handleGrid(e) {
-    const { value, channel } = e.detail
-    console.log('value:', value, 'channel:', channel)
+    const { value, channelId } = e.detail
+    console.log('value:', value, 'channelId:', channelId)
 
-    this.usb.update(channel, value)
+    this.usb.update(channelId, value)
   }
 
   static get template() {
@@ -64,7 +77,8 @@ class AppContent extends PolymerElement {
                     on-tap="handleTap"
                     delay="1000"
                     items="3"></tap-button>
-        <channel-grid on-update="handleGrid"></channel-grid>
+        <channel-grid on-update="handleGrid"
+                      channels={{this.channels}}></channel-grid>
     </div>
     `
   }

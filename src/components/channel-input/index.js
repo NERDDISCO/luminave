@@ -8,19 +8,19 @@ class ChannelInput extends PolymerElement {
 
   ready(){
     super.ready()
-    this.channel = this.attributes.channel.value
+    const channel = parseInt(this.attributes.channel.value, 10)
+    this.channel =  channel + 1
+    this.channelId = channel
   }
 
   handleInput(e) {
-    const channel = this.attributes.channel.value
     this.dispatchEvent(new CustomEvent('update', {
       detail: {
-        channel,
+        channel: this.channel,
+        channelId: this.channelId,
         value: e.target.value
       }
     }))
-    this.channel = channel
-
   }
 
   static get template() {
@@ -33,19 +33,20 @@ class ChannelInput extends PolymerElement {
         }
 
         .item span {
+          box-sizing: border-box;
           flex: 0 0 3em;
           padding: 0.5em;
           display: flex;
           justify-content: flex-end;
         }
         input {
+          box-sizing: border-box;
           flex: 1;
           width: auto;
           max-width: calc(100% - 3em);
           margin: 0;
           font-size: 1em;
           padding: 0.5em;
-          box-sizing: border-box;
           background: #222;
           color: #fff;
           border: 0;
