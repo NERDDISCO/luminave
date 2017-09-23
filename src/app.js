@@ -1,8 +1,24 @@
-import {Element as PolymerElement} from '../node_modules/@polymer/polymer/polymer-element.js'
-import {html} from '../node_modules/lit-html/lit-html.js'
-import {render} from '../node_modules/lit-html/lib/lit-extended.js'
+import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { html } from '/node_modules/lit-html/lit-html.js'
+import { render } from '/node_modules/lit-html/lib/lit-extended.js'
 
-const header = title => html`<h1>${title}</h1>`;
+
+// import WebSocketClient from './core/WebSocketClient';
+// import MidiManager from './core/MidiManager';
+
+// // Get the config from the hidden element
+// var visionLordConfigElement = document.getElementById('VisionLordConfig');
+// var config = JSON.parse(visionLordConfigElement.value);
+// console.log('config', '-', 'loaded for', config.name);
+//
+//
+// // Manage connected MIDI devices
+// let midiManager = new MidiManager({ config: config });
+// // Expose it globally so we can use it in the console
+// window.midiManager = midiManager;
+
+
+const header = title => html `<h1>${title}</h1>`;
 
 class tapButton extends PolymerElement {
 
@@ -11,36 +27,36 @@ class tapButton extends PolymerElement {
     this.bpm = 0
     this.arr = []
     this.date = {
-        then: new Date(),
-        now: new Date()
+      then: new Date(),
+      now: new Date()
     }
-    this.timer = setTimeout(()=>{}, 0)
+    this.timer = setTimeout(() => {}, 0)
     this.ticking = false
     this.average = 0
   }
 
   handleClick() {
     clearTimeout(this.timer)
-    this.timer = setTimeout(()=>{
-        this.ticking = false
-        this.arr = []
+    this.timer = setTimeout(() => {
+      this.ticking = false
+      this.arr = []
     }, 2000)
     this.date.then = this.date.now
     this.date.now = new Date()
     this.diff = this.date.now - this.date.then
     if (this.ticking) {
-        console.log(this.ticking, this.arr)
-        this.arr.push(this.diff)
-        if (this.arr.length > 3) {
-            const diffs = this.arr.reduce((result, t) => result += t) 
-            this.arr.shift()
-            this.average = diffs / this.arr.length
-            this.bpm = ~~(60000 / this.average)
-            this.dispatchEvent(new CustomEvent('tap', {detail: {bpm: this.bpm}}))
-        }
+      console.log(this.ticking, this.arr)
+      this.arr.push(this.diff)
+      if (this.arr.length > 3) {
+        const diffs = this.arr.reduce((result, t) => result += t)
+        this.arr.shift()
+        this.average = diffs / this.arr.length
+        this.bpm = ~~(60000 / this.average)
+        this.dispatchEvent(new CustomEvent('tap', { detail: { bpm: this.bpm } }))
+      }
 
     } else {
-        this.ticking = true
+      this.ticking = true
     }
   }
 
@@ -75,7 +91,7 @@ class AppContent extends PolymerElement {
     super.ready()
   }
 
-  handleTap (e) {
+  handleTap(e) {
     this.bpm = e.detail.bpm
   }
 
@@ -92,7 +108,7 @@ class AppContent extends PolymerElement {
 class RenderApp extends PolymerElement {
 
   static get template() {
-    return render(html`
+    return render(html `
     <app-content></app-content>
     `, document.body)
   }
