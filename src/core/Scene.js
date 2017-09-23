@@ -1,10 +1,7 @@
-"use strict";
-
-import Layer from './Layer';
-import { eventService } from './EventService';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/fromEvent';
-import 'rxjs/add/operator/filter';
+import Layer from './Layer.js'
+import { Observable } from '/node_modules/@reactivex/rxjs/index.js'
+import 'rxjs/add/observable/fromEvent'
+import 'rxjs/add/operator/filter'
 
 /**
  * A set of animations & DMX devices that can be controlled by using MIDI devices.
@@ -20,31 +17,31 @@ import 'rxjs/add/operator/filter';
  */
 export default class Scene {
   constructor(param) {
-    this.id = param.id;
-    this.name = param.name;
+    this.id = param.id
+    this.name = param.name
 
-    this.config = param.config;
+    this.config = param.config
 
     // Reference to all animations
-    this.animationManager = param.animationManager;
+    this.animationManager = param.animationManager
 
     // The layers of this scene
-    this.layers = [];
+    this.layers = []
 
     // Reference to the MIDI device that is associated with the scene
-    this.midi = this.config.midi;
+    this.midi = this.config.midi
 
     // The progress in terms of time of this scene
-    this.progress = 0;
+    this.progress = 0
 
     // Is this scene playing?
-    this.isPlaying = false;
+    this.isPlaying = false
 
-    this.count = 0;
+    this.count = 0
 
-    this.register();
+    this.register()
 
-    this.listen();
+    this.listen()
   }
 
   register() {
@@ -55,30 +52,30 @@ export default class Scene {
         animations: element.animations,
         animationManager: this.animationManager,
         devices: element.devices
-      });
+      })
 
-      this.add(element.layerId, layer);
+      this.add(element.layerId, layer)
 
-    });
+    })
   }
 
   add(layerId, layer) {
-    this.layers.push(layer);
+    this.layers.push(layer)
   }
 
   play() {
-    this.isPlaying = true;
+    this.isPlaying = true
 
     this.layers.forEach((element, index, array) => {
       // @TODO: Move this into this.stop()
-      element.stop();
-      element.play();
-    });
+      element.stop()
+      element.play()
+    })
   }
 
   stop() {
-    this.isPlaying = false;
-    this.progress = 0;
+    this.isPlaying = false
+    this.progress = 0
   }
 
   /*
@@ -89,22 +86,22 @@ export default class Scene {
 
     if (this.isPlaying) {
 
-      this.progress += delta;
+      this.progress += delta
 
-      this.count = 0;
+      this.count = 0
 
       this.layers.forEach((element, index, array) => {
-        element.run(this.progress, delta);
+        element.run(this.progress, delta)
 
         if (element.isPlaying === true) {
-          this.count++;
+          this.count++
         }
-      });
+      })
 
       if (this.count === 0) {
-        this.stop();
+        this.stop()
 
-        console.log('Scene', '-', this.id, 'stopped');
+        console.log('Scene', '-', this.id, 'stopped')
       }
 
     }
@@ -120,17 +117,17 @@ export default class Scene {
 
       // Only allow the MIDI controller that was attachted to this scene
       .filter((data, idx, obs) => {
-        return data.controllerId === this.midi.controllerId;
+        return data.controllerId === this.midi.controllerId
       })
 
       // Only allow a specific input element (button or knob) from the MIDI controller
       .filter((data, idx, obs) => {
-        return data.partId === this.midi.partId;
-      });
+        return data.partId === this.midi.partId
+      })
 
     source.subscribe(data => {
-      this.stop();
-      this.play();
-    });
+      this.stop()
+      this.play()
+    })
   }
 }

@@ -1,6 +1,4 @@
-"use strict";
-
-import Scene from './Scene';
+import Scene from './Scene.js'
 
 /**
  * Handle all scenes.
@@ -8,11 +6,11 @@ import Scene from './Scene';
  */
 export default class SceneManager {
   constructor(param) {
-    this.list = new Map();
-    this.config = param.config;
+    this.list = new Map()
+    this.config = param.config
 
     // Reference to all animations
-    this.animationManager = param.animationManager;
+    this.animationManager = param.animationManager
   }
 
   register() {
@@ -25,18 +23,18 @@ export default class SceneManager {
         id: element.sceneId,
         name: element.name,
         animationManager: this.animationManager
-      });
+      })
 
-      this.add(element.sceneId, scene);
-    });
+      this.add(element.sceneId, scene)
+    })
 
   }
 
   add(sceneId, scene) {
-    this.list.set(sceneId, scene);
+    this.list.set(sceneId, scene)
   }
 
   get(sceneId) {
-    return this.list.get(sceneId);
+    return this.list.get(sceneId)
   }
 }
