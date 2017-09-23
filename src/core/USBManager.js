@@ -20,8 +20,9 @@ export default class USBManager {
     this.data = new Uint8Array(512)
     this.data.fill(0)
 
-    const driver = new ArduinoLeonardoETHDriver({ serialport: this.port })
 
+    // @TODO: Move ALL OF THIS into it's own module
+    const driver = new ArduinoLeonardoETHDriver({ serialport: this.port })
     // Create the output by using the driver and set the amount of universes that are controlled by this interface
     this.output = fivetwelve.default(driver, 1)
   }
