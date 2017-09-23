@@ -4,17 +4,19 @@ Show light manager.
 
 ## Development
 
-* Use a virtual serialport
+### Requirements
+
+* Install `go`
+
+### Run HTTPS server
+
+* Start a local HTTPS server: https://localhost:1337
+* This is required in order to use native WebUSB
 
 ```
-export NODE_ENV=development
-```
+// If you have npm
+npm start
 
-
-## Production
-
-* Use a connected DMX USB interface
-
-```
-export NODE_ENV=production
+// If you have go
+go run main.go
 ```
