@@ -1,4 +1,5 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import '../channel-input/index.js'
 
 class ChannelGrid extends PolymerElement {
 
@@ -10,9 +11,13 @@ class ChannelGrid extends PolymerElement {
     super.ready()
   }
 
+  handleUpdate(e) {
+    const {value, channel} = e.detail
+    console.log('value:', value, 'channel:', channel)
+  }
 
   static get template() {
-    const items = Array.apply(null, new Array(512)).map((e, i) => `Item ${i + 1}`)
+    const items = Array.apply(null, new Array(512)).map((e, i) => i)
     return `
       <style>
         .flex {
@@ -24,7 +29,7 @@ class ChannelGrid extends PolymerElement {
         }
       </style>
       <div class="flex">
-        ${items.map(e => `<div class="item">${e}</div>`).join('')}
+        ${items.map(e => `<channel-input channel="${e}" on-update="handleUpdate"></channel-input>`).join('')}
       </div>
     `
   }

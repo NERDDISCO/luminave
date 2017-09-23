@@ -58,7 +58,6 @@ class AppContent extends PolymerElement {
     return `
     <div>
         <bpm-meter bpm="{{bpm}}"></bpm-meter>
-        <channel-grid></channel-grid>
         <connect-button connected="{{connected}}"
                         on-connect="handleConnect"
                         on-disconnect="handleDisconnect"></connect-button>
@@ -66,6 +65,7 @@ class AppContent extends PolymerElement {
                     on-tap="handleTap"
                     delay="1000"
                     items="3"></tap-button>
+        <channel-grid></channel-grid>
     </div>
     `
   }
