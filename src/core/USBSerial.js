@@ -1,4 +1,4 @@
-import USBPort from './USBPort.js';
+import USBPort from './USBPort.js'
 
 export default class USBSerial {
 
@@ -8,8 +8,8 @@ export default class USBSerial {
 
   getPorts() {
     return navigator.usb.getDevices().then(devices => {
-      return devices.map(device => new USBPort(device));
-    });
+      return devices.map(device => new USBPort(device))
+    })
   }
 
   requestPort() {
@@ -17,10 +17,10 @@ export default class USBSerial {
       { 'vendorId': 0x2341, 'productId': 0x8036 },
       { 'vendorId': 0x2341, 'productId': 0x8037 }, // Arduino LLC (9025),
       { 'vendorId': 0x2a03, 'productId': 0x8040 }, // Arduino LLC (10755), Leonardo ETH (32832)
-    ];
+    ]
     return navigator.usb.requestDevice({ filters: filters }).then(
       device => new USBPort({ device: device })
-    );
+    )
   }
 
 

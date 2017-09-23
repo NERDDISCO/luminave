@@ -38,14 +38,5 @@
       }
     });
 
-    serial.getPorts().then(ports => {
-      if (ports.length == 0) {
-        statusDisplay.textContent = 'No device found.';
-      } else {
-        statusDisplay.textContent = 'Connecting...';
-        window.port = ports[0];
-        connect();
-      }
-    });
   });
 })();
