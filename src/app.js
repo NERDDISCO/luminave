@@ -2,6 +2,7 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import { html } from '/node_modules/lit-html/lit-html.js'
 import { render } from '/node_modules/lit-html/lib/lit-extended.js'
 import { TapButton } from '/src/components/tap-button/index.js'
+import { ConnectButton } from '/src/components/connect-button/index.js'
 import { BPMMeter } from '/src/components/bpm-meter/index.js'
 
 import USBManager from './core/USBManager.js'
@@ -25,6 +26,8 @@ class AppContent extends PolymerElement {
   constructor() {
     super()
     this.bpm = 0
+    this.connected = false
+    this.storage = new StorageManager()
   }
 
   ready() {
@@ -35,10 +38,21 @@ class AppContent extends PolymerElement {
     this.bpm = e.detail.bpm
   }
 
+  handleConnect(e) {
+    this.connected = e.detail.connected
+  }
+
+  handleDisconnect(e) {
+    this.connected = e.detail.connected
+  }
+
   static get template() {
     return `
     <div>
         <bpm-meter bpm="{{bpm}}"></bpm-meter>
+        <connect-button connected="{{connected}}"
+                        on-connect="handleConnect"
+                        on-disconnect="handleDisconnect"></connect-button>
         <tap-button class="one"
                     on-tap="handleTap"
                     delay="1000"
@@ -59,5 +73,6 @@ class RenderApp extends PolymerElement {
 
 customElements.define('bpm-meter', BPMMeter)
 customElements.define('tap-button', TapButton)
+customElements.define('connect-button', ConnectButton)
 customElements.define('app-content', AppContent)
 customElements.define('my-app', RenderApp)

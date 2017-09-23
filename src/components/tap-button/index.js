@@ -26,7 +26,6 @@ export class TapButton extends PolymerElement {
     }
     this.delay = this.options.delay.value
     this.items = this.options.items.value
-    console.log(this.options)
   }
 
   handleClick() {
