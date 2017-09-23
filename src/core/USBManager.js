@@ -1,6 +1,4 @@
-"use strict";
-
-import USBSerial from './USBSerial.js';
+import USBSerial from './USBSerial.js'
 
 /**
  * Manage USB ports.
@@ -8,26 +6,27 @@ import USBSerial from './USBSerial.js';
 export default class USBManager {
   constructor(param) {
 
-    this.config = param.config;
+    this.config = param.config
 
-    this.port = null;
+    this.port = null
 
     // List of MIDI controller
-    this.list = new Map();
+    this.list = new Map()
 
-    this.serial = new USBSerial({});
+    this.serial = new USBSerial({})
   }
 
 
   enable() {
     this.serial.requestPort().then(selectedPort => {
 
-      this.port = selectedPort;
-      this.connect();
+      this.port = selectedPort
+      this.connect()
 
-    }).catch(error => {
-      console.error(error);
-    });
+    }).
+    catch(error => {
+      console.error(error)
+    })
   }
 
 
@@ -35,53 +34,28 @@ export default class USBManager {
     this.port.connect().then(() => {
 
       this.port.onReceive = data => {
-        let textDecoder = new TextDecoder();
-        console.log(textDecoder.decode(data));
-      };
+        const textDecoder = new TextDecoder()
+        console.log(textDecoder.decode(data))
+      }
 
       this.port.onReceiveError = error => {
-        console.error(error);
-      };
+        console.error(error)
+      }
 
     }, error => {
-      console.error(error);
-    });
+      console.error(error)
+    })
   }
-
 
 
   update(values) {
-    let data = new Uint8Array(512);
-    data.fill(0);
+    const data = new Uint8Array(512)
+    data.fill(0)
 
-    this.port.send(data);
+    this.port.send(data)
 
-    console.log(data);
+    console.log(data)
+    console.log(values)
   }
-
-
-
-  /*
-   * Register all MIDI controller
-   */
-  register() {
-
-    // this.config.devices.midi.forEach((element, index, array) => {
-    //
-    //   let midiController = new MidiController(Object.assign({}, element));
-    //
-    //   this.list.set(element.controllerId, midiController);
-    //
-    //   console.log('MidiManager', '-', 'Added', element.controllerId);
-    // });
-  }
-
-
-
-
-
-
-
-
 
 }
