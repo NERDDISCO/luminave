@@ -1,7 +1,5 @@
-"use strict";
-
-import WebMidi from 'webmidi';
-import MidiController from './MidiController';
+import WebMidi from 'webmidi'
+import MidiController from './MidiController'
 
 /**
  * Manage (almost) all MIDI controller that are connected.
@@ -9,33 +7,33 @@ import MidiController from './MidiController';
 export default class MidiManager {
   constructor(param) {
 
-    this.config = param.config;
+    this.config = param.config
 
     // Is Web MIDI enabled yet?
-    this.isEnabled = false;
+    this.isEnabled = false
 
     // List of MIDI controller
-    this.list = new Map();
+    this.list = new Map()
 
     // Enable Web MIDI
-    WebMidi.enable((err) => {
+    WebMidi.enable(err => {
 
       if (err) {
-        console.log('Web MIDI API could not be enabled:', err);
+        console.log('Web MIDI API could not be enabled:', err)
       } else {
         // MIDI input / output ports (from a single device) are connected to the computer
-        WebMidi.addListener('connected', function(event) {
-          console.log(event.hasOwnProperty('input') ? 'input' : 'output', 'port for device', event.name, 'was added');
-        });
+        WebMidi.addListener('connected', event => {
+          console.log(hasOwnProperty(event, 'input') ? 'input' : 'output', 'port for device', event.name, 'was added')
+        })
 
         // Web MIDI is enabled
-        this.isEnabled = true;
+        this.isEnabled = true
 
         // Register MIDI controller
-        this.register();
+        this.register()
       }
 
-    });
+    })
 
   }
 
@@ -45,11 +43,11 @@ export default class MidiManager {
   register() {
     this.config.devices.midi.forEach((element, index, array) => {
 
-      let midiController = new MidiController(Object.assign({}, element));
+      const midiController = new MidiController(Object.assign({}, element))
 
-      this.list.set(element.controllerId, midiController);
+      this.list.set(element.controllerId, midiController)
 
-      console.log('MidiManager', '-', 'Added', element.controllerId);
-    });
+      console.log('MidiManager', '-', 'Added', element.controllerId)
+    })
   }
 }
