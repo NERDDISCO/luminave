@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 
-export class ConnectButton extends PolymerElement {
+class ConnectButton extends PolymerElement {
 
   constructor() {
     super();
@@ -23,3 +23,5 @@ export class ConnectButton extends PolymerElement {
     `
   }
 }
+
+customElements.define('connect-button', ConnectButton)
