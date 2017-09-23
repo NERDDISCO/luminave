@@ -70,7 +70,7 @@ class AppContent extends PolymerElement {
                     delay="1000"
                     items="3"></tap-button>
         <channel-grid on-update="handleGrid"
-                      channels={{this.channels}}></channel-grid>
+                      config="{{config}}"></channel-grid>
     </div>
     `
   }

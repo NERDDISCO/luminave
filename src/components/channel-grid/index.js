@@ -9,7 +9,7 @@ class ChannelGrid extends PolymerElement {
 
   ready() {
     super.ready()
-    console.log([this])
+    console.log(this.config)
   }
 
   handleUpdate(e) {
