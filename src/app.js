@@ -8,7 +8,7 @@ import '/src/components/channel-grid/index.js'
 
 import USBManager from '/src/core/USBManager.js'
 import StorageManager from '/src/core/StorageManager.js'
-import DeviceManager from '/src/core/DeviceManager.js'
+import DeviceManager from '/src/devices/DeviceManager.js'
 
 class AppContent extends PolymerElement {
 
@@ -23,6 +23,8 @@ class AppContent extends PolymerElement {
 
     window.usbManager = this.usb
     this.usb = new USBManager({ config: this.config })
+
+    this.deviceManager = new DeviceManager({ config: this.config });
   }
 
   ready() {
