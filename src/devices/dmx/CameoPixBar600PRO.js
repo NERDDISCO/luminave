@@ -1,8 +1,6 @@
-'use strict';
+import fivetwelve from '/libs/fivetwelve/index.js'
 
-var fivetwelve = require('fivetwelve/es5');
-
-import RgbWAUvParam from './../../util/RgbWAUvParam';
+// import RgbWAUvParam from './param/RgbWAUvParam.js'
 
 /**
  * The Cameo PixBar 600 PRO has 12 LEDs beside each other.
@@ -111,28 +109,28 @@ export default class CameoPixBar600PRO extends fivetwelve.DmxDevice {
         // led11: { rgbwauv: new RgbWAUvParam(63) },
         // led12: { rgbwauv: new RgbWAUvParam(69) },
       }
-    }));
+    }))
 
-    this.layout = {};
-    this.layout.width = 12;
-    this.layout.height = 1;
+    this.layout = {}
+    this.layout.width = 12
+    this.layout.height = 1
   }
 
   reset() {
-    console.log('asdf');
-    let defaultColor = 'rgb(0, 255, 0)';
+    console.log('asdf')
+    let defaultColor = 'rgb(0, 255, 0)'
 
-    this.led1.color = defaultColor;
-    this.led2.color = defaultColor;
-    this.led3.color = defaultColor;
-    this.led4.color = defaultColor;
-    this.led5.color = defaultColor;
-    this.led6.color = defaultColor;
-    this.led7.color = defaultColor;
-    this.led8.color = defaultColor;
-    this.led9.color = defaultColor;
-    this.led10.color = defaultColor;
-    this.led11.color = defaultColor;
-    this.led12.color = defaultColor;
+    this.led1.color = defaultColor
+    this.led2.color = defaultColor
+    this.led3.color = defaultColor
+    this.led4.color = defaultColor
+    this.led5.color = defaultColor
+    this.led6.color = defaultColor
+    this.led7.color = defaultColor
+    this.led8.color = defaultColor
+    this.led9.color = defaultColor
+    this.led10.color = defaultColor
+    this.led11.color = defaultColor
+    this.led12.color = defaultColor
   }
 }

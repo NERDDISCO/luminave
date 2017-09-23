@@ -1,6 +1,4 @@
-"use strict";
-
-var fivetwelve = require('fivetwelve/es5');
+import fivetwelve from '/libs/fivetwelve/index.js'
 
 export default class AdjStarburst extends fivetwelve.DmxDevice {
   constructor(options) {
@@ -29,10 +27,10 @@ export default class AdjStarburst extends fivetwelve.DmxDevice {
           counterClockwise: { range: [146, 255], values: [255, 0] }
         })
       }
-    }));
+    }))
 
-    this.layout = {};
-    this.layout.width = 1;
-    this.layout.height = 1;
+    this.layout = {}
+    this.layout.width = 1
+    this.layout.height = 1
   }
 }

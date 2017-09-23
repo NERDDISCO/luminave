@@ -1,12 +1,12 @@
 // @TODO: Automatically import every device from the "dmx"-folder
-// import CameoPixBar600PRO from './dmx/CameoPixBar600PRO.js'
-// import CameoFlat1RGBW from './dmx/CameoFlat1RGBW.js'
-// import CameoWookie200RGY from './dmx/CameoWookie200RGY.js'
-// import AdjStarburst from './dmx/AdjStarburst.js'
+import CameoPixBar600PRO from './dmx/CameoPixBar600PRO.js'
+import CameoFlat1RGBW from './dmx/CameoFlat1RGBW.js'
+import CameoWookie200RGY from './dmx/CameoWookie200RGY.js'
+import AdjStarburst from './dmx/AdjStarburst.js'
 import FunGenerationSeParQuadLedRgbUv from './dmx/FunGenerationSeParQuadLedRgbUv.js'
-// import MiniLed from './dmx/MiniLed.js'
-// import StairvilleAF150 from './dmx/StairvilleAF150.js'
-// import EuroliteB100 from './dmx/EuroliteB100.js'
+import MiniLed from './dmx/MiniLed.js'
+import StairvilleAF150 from './dmx/StairvilleAF150.js'
+import EuroliteB100 from './dmx/EuroliteB100.js'
 
 /**
  *

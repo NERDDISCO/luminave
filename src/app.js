@@ -24,7 +24,11 @@ class AppContent extends PolymerElement {
     window.usbManager = this.usb
     this.usb = new USBManager({ config: this.config })
 
-    this.deviceManager = new DeviceManager({ config: this.config });
+    this.deviceManager = new DeviceManager({
+      config: this.config,
+      output: this.usb.output
+    })
+    this.deviceManager.register()
   }
 
   ready() {

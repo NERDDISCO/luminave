@@ -1,6 +1,4 @@
-"use strict";
-
-var fivetwelve = require('fivetwelve/es5');
+import fivetwelve from '/libs/fivetwelve/index.js'
 
 export default class CameoFlat1RGBW extends fivetwelve.DmxDevice {
   constructor(options) {
@@ -11,10 +9,10 @@ export default class CameoFlat1RGBW extends fivetwelve.DmxDevice {
         color: new fivetwelve.param.RgbParam([3, 4, 5]),
         white: new fivetwelve.param.RangeParam(6, { min: 0, max: 255 })
       }
-    }));
+    }))
 
-    this.layout = {};
-    this.layout.width = 1;
-    this.layout.height = 1;
+    this.layout = {}
+    this.layout.width = 1
+    this.layout.height = 1
   }
 }

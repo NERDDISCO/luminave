@@ -1,6 +1,4 @@
-"use strict";
-
-var fivetwelve = require('fivetwelve/es5');
+import fivetwelve from '/libs/fivetwelve/index.js'
 
 export default class CameoWookie200RGY extends fivetwelve.DmxDevice {
   constructor(options) {
@@ -86,10 +84,10 @@ export default class CameoWookie200RGY extends fivetwelve.DmxDevice {
           speed: { range: [128, 255], values: [0, 255] }
         })
       }
-    }));
+    }))
 
-    this.layout = {};
-    this.layout.width = 1;
-    this.layout.height = 1;
+    this.layout = {}
+    this.layout.width = 1
+    this.layout.height = 1
   }
 }

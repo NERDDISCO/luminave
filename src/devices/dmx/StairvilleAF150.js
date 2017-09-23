@@ -1,6 +1,4 @@
-"use strict";
-
-var fivetwelve = require('fivetwelve/es5');
+import fivetwelve from '/libs/fivetwelve/index.js'
 
 export default class StairvilleAF150 extends fivetwelve.DmxDevice {
   constructor(options) {
@@ -8,10 +6,10 @@ export default class StairvilleAF150 extends fivetwelve.DmxDevice {
       params: {
         amount: new fivetwelve.param.RangeParam(1, { min: 0, max: 255 })
       }
-    }));
+    }))
 
-    this.layout = {};
-    this.layout.width = 1;
-    this.layout.height = 1;
+    this.layout = {}
+    this.layout.width = 1
+    this.layout.height = 1
   }
 }

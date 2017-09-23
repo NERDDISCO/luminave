@@ -149,12 +149,12 @@ export default class DmxOutput {
       // the `frameDuration % frameInterval` makes sure that a skipped frame
       // is just dropped instead of trying to be as fast as possible
       this.timer = setTimeout(this.loop,
-          frameInterval - (frameDuration % frameInterval));
+        frameInterval - (frameDuration % frameInterval));
     });
   }
 
   initUniverse(index) {
-    const buffer = new Buffer(512);
+    const buffer = new Uint8Array(512);
     buffer.fill(0);
 
     this.dmxBuffers[index] = buffer;

@@ -1,6 +1,4 @@
-"use strict";
-
-var fivetwelve = require('fivetwelve/es5');
+import fivetwelve from '/libs/fivetwelve/index.js'
 
 export default class MiniLed extends fivetwelve.DmxDevice {
   constructor(options) {
@@ -21,7 +19,7 @@ export default class MiniLed extends fivetwelve.DmxDevice {
         gobo: new fivetwelve.param.MappedParam(13, MiniLed.GOBOS)
         // left out: gobo-shake, gobo-wheel-rotate
       }
-    }));
+    }))
   }
 }
 
@@ -43,7 +41,7 @@ MiniLed.FIXED_COLORS = {
   violet: [204, 217],
   crape: [218, 231],
   changing: [232, 255]
-};
+}
 
 MiniLed.GOBOS = {
   clear: [0, 7],
@@ -56,4 +54,4 @@ MiniLed.GOBOS = {
   spiraltunnel: [56, 63],
   bars: [64, 71],
   flowers2: [72, 79]
-};
+}
