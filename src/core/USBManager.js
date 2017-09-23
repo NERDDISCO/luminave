@@ -59,19 +59,26 @@ export default class USBManager {
   }
 
 
-  update(values) {
-    // console.log(values)
+  // update(values) {
+  //   // console.log(values)
+  //
+  //   // values.fill(0, values.length, this.data.length)
+  //
+  //   // this.data[7 - 1] = 255
+  //   // this.data[10] = 255
+  //   //
+  //   // this.data[14 - 1] = 255
+  //   // this.data[16] = 255
+  //   console.log(this.data)
+  //
+  //   if (this.port) {
+  //     this.port.send(this.data)
+  //   }
+  // }
 
-    // values.fill(0, values.length, this.data.length)
-
-    // this.data[7 - 1] = 255
-    // this.data[10] = 255
-    //
-    // this.data[14 - 1] = 255
-    // this.data[16] = 255
-    console.log(this.data)
-
+  update(channel, value) {
     if (this.port) {
+      this.data[channel] = value
       this.port.send(this.data)
     }
   }

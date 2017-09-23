@@ -4,16 +4,18 @@ import '../channel-input/index.js'
 class ChannelGrid extends PolymerElement {
 
   constructor() {
-    super();
+    super()
   }
 
-  ready(){
+  ready() {
     super.ready()
   }
 
   handleUpdate(e) {
-    const {value, channel} = e.detail
+    const { value, channel } = e.detail
     console.log('value:', value, 'channel:', channel)
+
+    window.usbManager.update(channel, value)
   }
 
   static get template() {

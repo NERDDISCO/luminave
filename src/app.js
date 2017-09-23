@@ -9,9 +9,7 @@ import '/src/components/channel-grid/index.js'
 import USBManager from '/src/core/USBManager.js'
 import StorageManager from '/src/core/StorageManager.js'
 
-// const usbManager = new USBManager({})
-// usbManager.enable()
-//
+
 // window.usbManager = usbManager
 //
 // const storageManager = new StorageManager({})
