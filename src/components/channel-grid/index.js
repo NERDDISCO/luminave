@@ -13,7 +13,12 @@ class ChannelGrid extends PolymerElement {
 
   handleUpdate(e) {
     const {value, channel} = e.detail
-    console.log('value:', value, 'channel:', channel)
+    this.dispatchEvent(new CustomEvent('update', {
+      detail: {
+      value,
+        channel
+      }
+    }))
   }
 
   static get template() {
@@ -24,8 +29,8 @@ class ChannelGrid extends PolymerElement {
           display: flex;
           flex-wrap: wrap;
         }
-        .item {
-          flex: 0 0 20%;
+        channel-input {
+          flex: 0 0 100px;
         }
       </style>
       <div class="flex">
