@@ -53,7 +53,11 @@ export default class MidiController {
         controllerId: this.controllerId
       }
 
+
+
       console.log('MidiContoller|map', '-', 'noteon', eventData)
+
+      // this.dispatchEvent(new CustomEvent('MidiController', { detail: eventData }))
 
       // eventService.emit('MidiController', eventData)
 
