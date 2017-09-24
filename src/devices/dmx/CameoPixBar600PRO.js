@@ -117,8 +117,7 @@ export default class CameoPixBar600PRO extends fivetwelve.DmxDevice {
   }
 
   reset() {
-    console.log('asdf')
-    let defaultColor = 'rgb(0, 255, 0)'
+    const defaultColor = 'rgb(0, 255, 0)'
 
     this.led1.color = defaultColor
     this.led2.color = defaultColor

@@ -1,6 +1,4 @@
-const DEFAULT_OPTIONS = {
-  universeMapping: { 1: 1 }
-}
+const DEFAULT_OPTIONS = { universeMapping: { 1: 1 } }
 
 /**
  * A fivetwelve-driver for the enttec usbpro mk2-interface supporting both
@@ -31,7 +29,7 @@ export default class ArduinoLeonardoETHDriver {
   constructor(serialport, options = {}) {
     this.serialport = serialport
 
-    this.options = Object.assign({}, DEFAULT_OPTIONS, options);
+    this.options = Object.assign({}, DEFAULT_OPTIONS, options)
   }
 
   /**
@@ -52,28 +50,6 @@ export default class ArduinoLeonardoETHDriver {
   }
 
   /**
-   * Returns a Promise that is resolved once the serialport is opened.
-   * @returns {Promise<Serialport>} A promise resolving with the
-   *     node-serialport-instance.
-   * @private
-   */
-  // awaitSerialportOpened() {
-  //   if (this.serialport.isOpen()) {
-  //     return Promise.resolve(this.serialport)
-  //   }
-  //
-  //   return new Promise((resolve, reject) => {
-  //     this.serialport.on('open', error => {
-  //       if (error) {
-  //         return reject(error)
-  //       }
-  //
-  //       return resolve(this.serialport)
-  //     })
-  //   })
-  // }
-
-  /**
    * Sends a single packet to the usbpro.
    * @param {Buffer} data The message payload.
    * @returns {Promise} A promise indicating when the data has been sent.
@@ -86,12 +62,12 @@ export default class ArduinoLeonardoETHDriver {
   /**
    * Writes the raw data to the serialport.
    * @param {Buffer} buffer A buffer to be sent to the serialport.
-   * @returns {Promise} a promise that is resolved when the buffer was
-   *     completely sent.
+   * @returns {Promise} a promise that is resolved when the buffer was completely sent.
    * @private
    */
   write(buffer) {
-    if (this.serialport.serialport != null) {
+    // console.log("Arduino", buffer)
+    if (this.serialport.serialport !== null) {
       this.serialport.serialport.send(buffer)
     }
   }

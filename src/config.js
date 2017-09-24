@@ -7,7 +7,7 @@ export default {
     "useModV": true
   },
   "dmxInterface": {
-    "universeAmount": 2,
+    "universeAmount": 1,
     "driver": "fivetwelve-driver-usbpro/es5",
     "serialport": {
       "path": "/dev/cu.usbserial-EN193448"
@@ -26,20 +26,18 @@ export default {
   "log": {
     "separator": "-------------------------------"
   },
-  "animations": [
-    {
+  "animations": [{
       "animationId": "greenwall",
       "duration": 64,
       "name": "This is DnB",
       "timeline": [{
-          "name": "color",
-          "value": [0, 0, 0],
-          "keyframes": [
-            { "time": 0, "value": [0, 255, 0], "modV": true },
-            { "time": 64, "value": [0, 0, 0] }
-          ]
-        }
-      ]
+        "name": "color",
+        "value": [0, 0, 0],
+        "keyframes": [
+          { "time": 0, "value": [0, 255, 0], "modV": true },
+          { "time": 64, "value": [0, 0, 0] }
+        ]
+      }]
     },
 
     {
@@ -71,14 +69,13 @@ export default {
       "duration": 128,
       "name": "yellow",
       "timeline": [{
-          "name": "color",
-          "value": [0, 0, 0],
-          "keyframes": [
-            { "time": 0, "value": [255, 234, 0], "modV": true },
-            { "time": 128, "value": [0, 0, 0] }
-          ]
-        }
-      ]
+        "name": "color",
+        "value": [0, 0, 0],
+        "keyframes": [
+          { "time": 0, "value": [255, 234, 0], "modV": true },
+          { "time": 128, "value": [0, 0, 0] }
+        ]
+      }]
     },
 
     {
@@ -86,14 +83,13 @@ export default {
       "duration": 128,
       "name": "Single color",
       "timeline": [{
-          "name": "color",
-          "value": [0, 0, 0],
-          "keyframes": [
-            { "time": 0, "value": [0, 255, 0], "modV": true },
-            { "time": 128, "value": [0, 0, 0] }
-          ]
-        }
-      ]
+        "name": "color",
+        "value": [0, 0, 0],
+        "keyframes": [
+          { "time": 0, "value": [0, 255, 0], "modV": true },
+          { "time": 128, "value": [0, 0, 0] }
+        ]
+      }]
     },
 
     {
@@ -101,14 +97,13 @@ export default {
       "duration": 128,
       "name": "Single color",
       "timeline": [{
-          "name": "color",
-          "value": [0, 0, 0],
-          "keyframes": [
-            { "time": 0, "value": [0, 0, 255], "modV": true },
-            { "time": 128, "value": [0, 0, 0] }
-          ]
-        }
-      ]
+        "name": "color",
+        "value": [0, 0, 0],
+        "keyframes": [
+          { "time": 0, "value": [0, 0, 255], "modV": true },
+          { "time": 128, "value": [0, 0, 0] }
+        ]
+      }]
     },
 
     {
@@ -116,14 +111,13 @@ export default {
       "duration": 128,
       "name": "Single color",
       "timeline": [{
-          "name": "color",
-          "value": [0, 0, 0],
-          "keyframes": [
-            { "time": 0, "value": [255, 0, 255], "modV": true },
-            { "time": 128, "value": [0, 0, 0] }
-          ]
-        }
-      ]
+        "name": "color",
+        "value": [0, 0, 0],
+        "keyframes": [
+          { "time": 0, "value": [255, 0, 255], "modV": true },
+          { "time": 128, "value": [0, 0, 0] }
+        ]
+      }]
     },
 
     {
@@ -153,8 +147,7 @@ export default {
       "animationId": "uvbaby",
       "duration": 128,
       "name": "This is a funny animation",
-      "timeline": [
-        {
+      "timeline": [{
           "name": "uv",
           "value": 0,
           "keyframes": [
@@ -258,16 +251,15 @@ export default {
       "duration": 5000,
       "name": "This is a funny animation",
       "timeline": [{
-          "name": "amount",
-          "value": 0,
-          "keyframes": [
-            { "time": 0, "value": 255 },
-            { "time": 4500, "value": 255 },
-            { "time": 5000, "value": 0 }
+        "name": "amount",
+        "value": 0,
+        "keyframes": [
+          { "time": 0, "value": 255 },
+          { "time": 4500, "value": 255 },
+          { "time": 5000, "value": 0 }
         ]
-      }
-    ]
-  },
+      }]
+    },
 
     {
       "animationId": "bubblebubblebubble",
@@ -280,8 +272,8 @@ export default {
             { "time": 0, "value": "on" },
             { "time": 4500, "value": "on" },
             { "time": 5000, "value": "off" }
-      ]
-    },
+          ]
+        },
         {
           "name": "fan",
           "value": 0,
@@ -289,32 +281,27 @@ export default {
             { "time": 0, "value": "on" },
             { "time": 4500, "value": "on" },
             { "time": 5000, "value": "off" }
+          ]
+        }
       ]
     }
-  ]
-}
-],
+  ],
 
-  "scenes": [
-    {
+  "scenes": [{
       "sceneId": "left_1",
       "name": "This is my awesome first scene",
       "midi": {
         "controllerId": "korgnanopad2",
         "partId": "button1"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["fungeneration_ledspot_2"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "yellow"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["fungeneration_ledspot_2"],
+        "animations": [{
+          "start": 0,
+          "animationId": "yellow"
+        }]
+      }]
     },
 
     {
@@ -324,18 +311,14 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button2"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["fungeneration_ledspot_3"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "blue"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["fungeneration_ledspot_3"],
+        "animations": [{
+          "start": 0,
+          "animationId": "blue"
+        }]
+      }]
     },
 
     {
@@ -345,18 +328,14 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button3"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["cameo_ledspot_1"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "purple"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["cameo_ledspot_1"],
+        "animations": [{
+          "start": 0,
+          "animationId": "purple"
+        }]
+      }]
     },
 
     {
@@ -366,18 +345,14 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button6"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["fungeneration_ledspot_1"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "blue"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["fungeneration_ledspot_1"],
+        "animations": [{
+          "start": 0,
+          "animationId": "blue"
+        }]
+      }]
     },
 
     {
@@ -387,18 +362,14 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button5"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["fungeneration_ledspot_4"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "purple"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["fungeneration_ledspot_4"],
+        "animations": [{
+          "start": 0,
+          "animationId": "purple"
+        }]
+      }]
     },
 
     {
@@ -408,18 +379,14 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button4"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["cameo_ledspot_2"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "yellow"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["cameo_ledspot_2"],
+        "animations": [{
+          "start": 0,
+          "animationId": "yellow"
+        }]
+      }]
     },
 
 
@@ -432,18 +399,14 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button7"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["adj_planet"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "clockwise"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["adj_planet"],
+        "animations": [{
+          "start": 0,
+          "animationId": "clockwise"
+        }]
+      }]
     },
 
     {
@@ -453,18 +416,14 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button8"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["adj_planet"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "counterClockwise"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["adj_planet"],
+        "animations": [{
+          "start": 0,
+          "animationId": "counterClockwise"
+        }]
+      }]
     },
 
     {
@@ -474,18 +433,14 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button10"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["cameo_pixbar_1"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "greenwall"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["cameo_pixbar_1"],
+        "animations": [{
+          "start": 0,
+          "animationId": "greenwall"
+        }]
+      }]
     },
 
     {
@@ -495,18 +450,14 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button11"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["cameo_pixbar_1"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "whateverwall"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["cameo_pixbar_1"],
+        "animations": [{
+          "start": 0,
+          "animationId": "whateverwall"
+        }]
+      }]
     },
 
     {
@@ -516,18 +467,14 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button12"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["cameo_pixbar_1"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "whateverwall"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["cameo_pixbar_1"],
+        "animations": [{
+          "start": 0,
+          "animationId": "whateverwall"
+        }]
+      }]
     },
 
 
@@ -538,18 +485,14 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button16"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": ["fogmaschine"],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "fogfogfog"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": ["fogmaschine"],
+        "animations": [{
+          "start": 0,
+          "animationId": "fogfogfog"
+        }]
+      }]
     },
 
     {
@@ -559,27 +502,23 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button13"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": [
-            "fungeneration_ledspot_1",
-            "fungeneration_ledspot_2",
-            "fungeneration_ledspot_3",
-            "fungeneration_ledspot_4",
-            "cameo_ledspot_1",
-            "cameo_ledspot_2",
-            "cameo_pixbar_1",
-            "adj_planet"
-          ],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "allthelight"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": [
+          "fungeneration_ledspot_1",
+          "fungeneration_ledspot_2",
+          "fungeneration_ledspot_3",
+          "fungeneration_ledspot_4",
+          "cameo_ledspot_1",
+          "cameo_ledspot_2",
+          "cameo_pixbar_1",
+          "adj_planet"
+        ],
+        "animations": [{
+          "start": 0,
+          "animationId": "allthelight"
+        }]
+      }]
     },
 
     {
@@ -589,47 +528,40 @@ export default {
         "controllerId": "korgnanopad2",
         "partId": "button14"
       },
-      "layers": [
-        {
-          "layerId": "layer1",
-          "devices": [
-            "fungeneration_ledspot_1",
-            "fungeneration_ledspot_2",
-            "fungeneration_ledspot_3",
-            "fungeneration_ledspot_4",
-            "cameo_ledspot_1",
-            "cameo_ledspot_2",
-            "cameo_pixbar_1",
-            "adj_planet"
-          ],
-          "animations": [
-            {
-              "start": 0,
-              "animationId": "uvbaby"
-            }
-          ]
-        }
-      ]
+      "layers": [{
+        "layerId": "layer1",
+        "devices": [
+          "fungeneration_ledspot_1",
+          "fungeneration_ledspot_2",
+          "fungeneration_ledspot_3",
+          "fungeneration_ledspot_4",
+          "cameo_ledspot_1",
+          "cameo_ledspot_2",
+          "cameo_pixbar_1",
+          "adj_planet"
+        ],
+        "animations": [{
+          "start": 0,
+          "animationId": "uvbaby"
+        }]
+      }]
     }
 
 
   ],
   "devices": {
-    "dmx": [
-      {
+    "dmx": [{
         "deviceId": "cameo_pixbar_1",
         "type": "CameoPixBar600PRO",
         "name": "Cameo PixBar 600 PRO",
         "universe": 1,
         "address": 155,
-        "parts": [
-          {
-            "type": "led",
-            "partId": "led1",
-            "x": 0,
-            "y": 0
-          }
-        ]
+        "parts": [{
+          "type": "led",
+          "partId": "led1",
+          "x": 0,
+          "y": 0
+        }]
       },
       {
         "deviceId": "cameo_ledspot_1",
@@ -691,15 +623,15 @@ export default {
         "deviceId": "cameo_laser",
         "type": "CameoWookie200RGY",
         "name": "Cameo Wookie 200 RGY",
-        "universe": 2,
-        "address": 10
+        "universe": 1,
+        "address": 300
       },
       {
         "deviceId": "fogmaschine",
         "type": "StairvilleAF150",
         "name": "Stairville AF-150",
-        "universe": 2,
-        "address": 128
+        "universe": 1,
+        "address": 350
       },
       {
         "deviceId": "adj_planet",
@@ -709,132 +641,129 @@ export default {
         "address": 76
       }
     ],
-    "midi": [
-      {
-        "name": "nanoPAD2",
-        "manufacturer": "KORG INC.",
-        "controllerId": "korgnanopad2",
-        "input": "nanoPAD2 PAD",
-        "output": "nanoPAD2 CTRL",
-        "layout": {
-          "height": 2,
-          "width": 9,
-          "parts": [
-            {
-              "note": 37,
-              "type": "button",
-              "y": 0,
-              "x": 1,
-              "partId": "button1"
-            },
-            {
-              "note": 39,
-              "type": "button",
-              "y": 0,
-              "x": 2,
-              "partId": "button2"
-            },
-            {
-              "note": 41,
-              "type": "button",
-              "y": 0,
-              "x": 3,
-              "partId": "button3"
-            },
-            {
-              "note": 43,
-              "type": "button",
-              "y": 0,
-              "x": 4,
-              "partId": "button4"
-            },
-            {
-              "note": 45,
-              "type": "button",
-              "y": 0,
-              "x": 5,
-              "partId": "button5"
-            },
-            {
-              "note": 47,
-              "type": "button",
-              "y": 0,
-              "x": 6,
-              "partId": "button6"
-            },
-            {
-              "note": 49,
-              "type": "button",
-              "y": 0,
-              "x": 7,
-              "partId": "button7"
-            },
-            {
-              "note": 51,
-              "type": "button",
-              "y": 0,
-              "x": 8,
-              "partId": "button8"
-            },
-            {
-              "note": 36,
-              "type": "button",
-              "y": 1,
-              "x": 1,
-              "partId": "button9"
-            },
-            {
-              "note": 38,
-              "type": "button",
-              "y": 1,
-              "x": 2,
-              "partId": "button10"
-            },
-            {
-              "note": 40,
-              "type": "button",
-              "y": 1,
-              "x": 2,
-              "partId": "button11"
-            },
-            {
-              "note": 42,
-              "type": "button",
-              "y": 1,
-              "x": 2,
-              "partId": "button12"
-            },
-            {
-              "note": 44,
-              "type": "button",
-              "y": 1,
-              "x": 2,
-              "partId": "button13"
-            },
-            {
-              "note": 46,
-              "type": "button",
-              "y": 1,
-              "x": 2,
-              "partId": "button14"
-            },
-            {
-              "note": 48,
-              "type": "button",
-              "y": 1,
-              "x": 2,
-              "partId": "button15"
-            },
-            {
-              "note": 50,
-              "type": "button",
-              "y": 1,
-              "x": 2,
-              "partId": "button16"
-            }
-          ]
-        }
+    "midi": [{
+      "name": "nanoPAD2",
+      "manufacturer": "KORG INC.",
+      "controllerId": "korgnanopad2",
+      "input": "nanoPAD2 PAD",
+      "output": "nanoPAD2 CTRL",
+      "layout": {
+        "height": 2,
+        "width": 9,
+        "parts": [{
+            "note": 37,
+            "type": "button",
+            "y": 0,
+            "x": 1,
+            "partId": "button1"
+          },
+          {
+            "note": 39,
+            "type": "button",
+            "y": 0,
+            "x": 2,
+            "partId": "button2"
+          },
+          {
+            "note": 41,
+            "type": "button",
+            "y": 0,
+            "x": 3,
+            "partId": "button3"
+          },
+          {
+            "note": 43,
+            "type": "button",
+            "y": 0,
+            "x": 4,
+            "partId": "button4"
+          },
+          {
+            "note": 45,
+            "type": "button",
+            "y": 0,
+            "x": 5,
+            "partId": "button5"
+          },
+          {
+            "note": 47,
+            "type": "button",
+            "y": 0,
+            "x": 6,
+            "partId": "button6"
+          },
+          {
+            "note": 49,
+            "type": "button",
+            "y": 0,
+            "x": 7,
+            "partId": "button7"
+          },
+          {
+            "note": 51,
+            "type": "button",
+            "y": 0,
+            "x": 8,
+            "partId": "button8"
+          },
+          {
+            "note": 36,
+            "type": "button",
+            "y": 1,
+            "x": 1,
+            "partId": "button9"
+          },
+          {
+            "note": 38,
+            "type": "button",
+            "y": 1,
+            "x": 2,
+            "partId": "button10"
+          },
+          {
+            "note": 40,
+            "type": "button",
+            "y": 1,
+            "x": 2,
+            "partId": "button11"
+          },
+          {
+            "note": 42,
+            "type": "button",
+            "y": 1,
+            "x": 2,
+            "partId": "button12"
+          },
+          {
+            "note": 44,
+            "type": "button",
+            "y": 1,
+            "x": 2,
+            "partId": "button13"
+          },
+          {
+            "note": 46,
+            "type": "button",
+            "y": 1,
+            "x": 2,
+            "partId": "button14"
+          },
+          {
+            "note": 48,
+            "type": "button",
+            "y": 1,
+            "x": 2,
+            "partId": "button15"
+          },
+          {
+            "note": 50,
+            "type": "button",
+            "y": 1,
+            "x": 2,
+            "partId": "button16"
+          }
+        ]
       }
-    ]
+    }]
   }
 }

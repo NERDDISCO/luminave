@@ -16,7 +16,7 @@ export default class Render {
     this.lastTime = 0
   }
 
-  /**
+  /*
    * Start rendering all elements in "list" by using the desired fps
    */
   start(fps) {

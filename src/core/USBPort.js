@@ -54,6 +54,7 @@ export default class USBPort {
   }
 
   send(data) {
+    console.log("USBPort", data)
     // @TODO: What is this?
     return this.device.transferOut(4, data)
   }

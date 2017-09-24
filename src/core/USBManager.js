@@ -1,5 +1,5 @@
 import fivetwelve from '/libs/fivetwelve/index.js'
-import USBSerial from '/src/core/USBSerial.js'
+import USBSerial from './USBSerial.js'
 import ArduinoLeonardoETHDriver from '/src/devices/dmx/driver/ArduinoLeonardoETHDriver.js'
 
 /**
@@ -16,9 +16,6 @@ export default class USBManager {
     this.list = new Map()
 
     this.serial = new USBSerial({})
-
-    this.data = new Uint8Array(512)
-    this.data.fill(0)
 
     // @TODO: Move ALL OF THIS into it's own module
     const driver = new ArduinoLeonardoETHDriver({ serialport: this.port })
@@ -57,29 +54,13 @@ export default class USBManager {
     })
   }
 
-
-  // update(values) {
-  //   // console.log(values)
-  //
-  //   // values.fill(0, values.length, this.data.length)
-  //
-  //   // this.data[7 - 1] = 255
-  //   // this.data[10] = 255
-  //   //
-  //   // this.data[14 - 1] = 255
-  //   // this.data[16] = 255
-  //   console.log(this.data)
-  //
-  //   if (this.port) {
-  //     this.port.send(this.data)
-  //   }
-  // }
-
   update(channel, value) {
-    if (this.port) {
-      this.data[channel] = value
-      this.port.send(this.data, 1)
-    }
+    // @TODO: Fix for multiple universes
+    this.output.getBuffer(1)[channel] = value
+
+    // if (this.port) {
+    //   this.port.send(this.output.getBuffer(1), 1)
+    // }
   }
 
 }
