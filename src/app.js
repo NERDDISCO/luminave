@@ -7,6 +7,7 @@ import '/src/components/bpm-meter/index.js'
 import '/src/components/channel-grid/index.js'
 
 import USBManager from '/src/core/USBManager.js'
+import MidiManager from '/src/core/MidiManager.js'
 import StorageManager from '/src/core/StorageManager.js'
 import DeviceManager from '/src/devices/DeviceManager.js'
 import AnimationManager from '/src/core/AnimationManager.js'
@@ -25,6 +26,11 @@ class AppContent extends PolymerElement {
     this.config = getConfig()
     this.usb = new USBManager({ config: this.config })
     window.usbManager = this.usb
+
+    // Manage connected MIDI devices
+    this.midiManager = new MidiManager({ config: this.config });
+    // Expose it globally so we can use it in the console
+    window.midiManager = this.midiManager;
 
     this.deviceManager = new DeviceManager({
       config: this.config,

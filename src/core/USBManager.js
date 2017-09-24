@@ -20,7 +20,7 @@ export default class USBManager {
     this.port = null
 
     // @TODO: Move ALL OF THIS into it's own module
-    const driver = new ArduinoLeonardoETHDriver({ serialport: this.port })
+    const driver = new ArduinoLeonardoETHDriver(this.port, {})
     // Create the output by using the driver and set the amount of universes that are controlled by this interface
     // DmxOutput
     this.output = fivetwelve.default(driver, 1)
@@ -72,6 +72,9 @@ export default class USBManager {
   update(channel, value) {
     // @TODO: Fix for multiple universes
     this.output.getBuffer(1)[channel] = value
+
+    // @TODO: Remove after debugging
+    console.log(this.output.getBuffer(1))
   }
 
 }

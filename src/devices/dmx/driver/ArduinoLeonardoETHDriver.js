@@ -1,30 +1,16 @@
 const DEFAULT_OPTIONS = { universeMapping: { 1: 1 } }
 
 /**
- * A fivetwelve-driver for the enttec usbpro mk2-interface supporting both
- * dmx-outputs.
- *
- * @example
- *     import fivetwelve from 'fivetwelve'
- *     import Serialport from 'serialport'
- *
- *     // I read somewhere that connection settings like baudrate etc are not
- *     // required as it's just a virtual serialport or something like that
- *     const usbproSerialport = new Serialport('/dev/something')
- *
- *     // configure output for two universes:
- *     const output = fivetwelve(
- *         new ArduinoLeonardoETHDriver(usbproSerialport), 2)
+ * A fivetwelve driver for the Arduino Leonardo ETH with DMX512 isolated shield
+ * @see https://www.tindie.com/products/Conceptinetics/25kv-isolated-dmx-512-shield-for-arduino-r2/
  */
 export default class ArduinoLeonardoETHDriver {
 
   /**
    * Initializes the driver for the given serialport.
-   * @param {object} serialport A ready configured node-serialport instance.
-   *     Setting up the serialport-connection has to be done externally.
-
+   * @param {object} serialport A ready configured USBPort instance.
    * @param {object} options Options
-   * universeMapping: A mapping of fivetwelve universe-numbers to usbpro universes 1/2.
+   * universeMapping: A mapping of fivetwelve universe-numbers to universes.
    */
   constructor(serialport, options = {}) {
     this.serialport = serialport
@@ -66,9 +52,12 @@ export default class ArduinoLeonardoETHDriver {
    * @private
    */
   write(buffer) {
+    // @TODO: Remove
     // console.log("Arduino", buffer)
-    if (this.serialport.serialport !== null) {
-      this.serialport.serialport.send(buffer)
+
+    // Is serialport ready?
+    if (this.serialport !== null) {
+      this.serialport.send(buffer)
     }
   }
 }
