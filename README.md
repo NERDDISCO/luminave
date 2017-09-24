@@ -20,3 +20,11 @@ npm start
 // If you have go
 go run main.go
 ```
+
+
+## How does it work?
+
+* USBManager gets connection to the Arduino
+* DmxOutput can generate an array[512] out of all DmxDevices
+* The data of DmxOutput is send to Arduino via ArduinoLeonardoETHDriver
+* The ArduinoLeonardoETHDriver has a reference to the DMXPort
