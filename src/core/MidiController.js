@@ -1,6 +1,4 @@
-import WebMidi from '/node_modules/webmidi/index.js'
-
-/**
+/*
  * Handle the input / output port of a single MIDI controller.
  *
  * @param {string} controllerId - Unqiue identifier for this controller
@@ -38,6 +36,7 @@ export default class MidiController {
    * Handle "noteon" events
    */
   noteon(event) {
+
     const { data } = event
     const [
       foo,
@@ -56,7 +55,7 @@ export default class MidiController {
 
       console.log('MidiContoller|map', '-', 'noteon', eventData)
 
-      eventService.emit('MidiController', eventData)
+      // eventService.emit('MidiController', eventData)
 
     }
 

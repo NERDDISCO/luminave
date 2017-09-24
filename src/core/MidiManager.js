@@ -1,5 +1,4 @@
-import WebMidi from 'webmidi'
-import MidiController from './MidiController'
+import MidiController from './MidiController.js'
 
 /**
  * Manage (almost) all MIDI controller that are connected.
@@ -13,7 +12,7 @@ export default class MidiManager {
     this.isEnabled = false
 
     // List of MIDI controller
-    this.list = new Map()
+    this.list = new Map();
 
     // Enable Web MIDI
     WebMidi.enable(err => {
@@ -23,7 +22,7 @@ export default class MidiManager {
       } else {
         // MIDI input / output ports (from a single device) are connected to the computer
         WebMidi.addListener('connected', event => {
-          console.log(hasOwnProperty(event, 'input') ? 'input' : 'output', 'port for device', event.name, 'was added')
+          console.log(event.hasOwnProperty('input') ? 'input' : 'output', 'port for device', event.name, 'was added')
         })
 
         // Web MIDI is enabled

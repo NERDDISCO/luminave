@@ -5,8 +5,6 @@ import Property from './Property.js'
 
 export default class BasicTimeline {
   constructor(data) {
-    console.log('BasicTimeline', data)
-
     this.data = data
     this.properties = []
 
