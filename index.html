@@ -5,6 +5,22 @@
     <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="/node_modules/webmidi/webmidi.min.js"></script>
     <script type="module" src="/src/app.js"></script>
+    <style>
+      :root {
+        --focus-background: #464819;
+        --focus-color: #D3DE81;
+        --background: #0E1121;
+        --background-lighter: #211C46;
+        --background-barker: #08060D;
+        --color: #6E95C4;
+        --color-lighter: #8BC1FF;
+        --color-darker: #506D8E;
+      }
+      body {
+        background: var(--background);
+        color: var(--color);
+      }
+    </style>
   </head>
   <body>
     <my-app></my-app>

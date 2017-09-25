@@ -82,10 +82,6 @@ lit-html@^0.6.0:
   version "0.6.0"
   resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.6.0.tgz#3d756ea67f6d0cac1c0e78ef9e52d4335198b728"
 
-lodash@^4.17.4:
-  version "4.17.4"
-  resolved "https://registry.yarnpkg.com/lodash/-/lodash-4.17.4.tgz#78203a4d1c328ae1d86dca6460e369b57f4055ae"
-
 object-assign@^4.0.1:
   version "4.1.1"
   resolved "https://registry.yarnpkg.com/object-assign/-/object-assign-4.1.1.tgz#2109adc7965887cfc05cbbd442cac8bfbb360863"

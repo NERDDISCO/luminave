@@ -1,5 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import '../channel-input/index.js'
+import { html } from '/node_modules/lit-html/lit-html.js'
+import {DomRepeat as DomRepeat} from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js';
+import '../channel-input/index.js';
 
 class ChannelGrid extends PolymerElement {
 
@@ -9,7 +11,6 @@ class ChannelGrid extends PolymerElement {
 
   ready() {
     super.ready()
-    console.log(this.config)
   }
 
   handleUpdate(e) {
@@ -22,8 +23,12 @@ class ChannelGrid extends PolymerElement {
     }))
   }
 
+  connectedCallback() {
+    super.connectedCallback();
+     console.log(this.list)
+ }
+
   static get template() {
-    const items = Array.apply(null, new Array(512)).map((e, i) => i)
     return `
       <style>
         .flex {
@@ -31,13 +36,52 @@ class ChannelGrid extends PolymerElement {
           flex-wrap: wrap;
         }
         channel-input {
-          flex: 0 0 100px;
+          flex: 0 0 33.3%;
+        }
+
+        .view {
+          background: var(--background);
+          color: var(--color);
+        }
+        .item-id, .param, .spacer {
+          box-sizing: border-box;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          flex: 0;
+          font-size: 1em;
+          margin: 0;
+          padding: 0.5em;
+          font-family: monospace;
+          font-weight: normal;
+        }
+        .item-id {
+          flex-basis: 100%;
+        }
+        .param {
+          flex-basis: 100%;
         }
       </style>
-      <div class="flex">
-        ${items.map(e => `<channel-input channel="${e}" on-update="handleUpdate"></channel-input>`).join('')}
+      <div class="flex view">
+        <template is="dom-repeat" items="{{ list }}">
+          <span class="item-id">{{item.id}}</span>
+          <template is="dom-repeat" items="{{ item.params }}" as="param">
+            <span class="param">{{param.param}}</span>
+            <template is="dom-repeat" items="{{ param.channels }}" as="channel">
+              <channel-input channel$="{{channel}}" offset$="{{item.bufferOffset}}" on-update="handleUpdate"></channel-input>
+            </template> 
+          </template> 
+        </template> 
       </div>
     `
+  }
+  static get properties() {
+    return {
+      list: {
+          Type: Array,
+          notify: true
+      }
+    }
   }
 }
 

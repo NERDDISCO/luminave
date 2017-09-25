@@ -24,6 +24,7 @@ class AppContent extends PolymerElement {
 
     this.storage = new StorageManager()
     this.config = getConfig()
+
     this.usb = new USBManager({ config: this.config })
     window.usbManager = this.usb
 
@@ -61,6 +62,22 @@ class AppContent extends PolymerElement {
     this.render.start(this.config.global.fps)
 
     this.deviceManager.reset()
+    this.dmxList = [...this.deviceManager.list].map((e, i) => {
+      const [key, value] = e
+      return {
+        id: key,
+        channel: i,
+        bufferOffset: value.instance.bufferOffset,
+        deviceMapping: [...value.deviceMapping].map(e => e[1]),
+        instance: value.instance,
+        type: value.type,
+        params: Object.keys(value.instance.params).map(x => ({param: x, channels: value.instance.params[x].channels}))
+      }
+    })
+    // Dummy filter to show only ledspots
+    .filter(item => item.id.match('fungeneration'))
+    
+    this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
   }
 
   ready() {
@@ -92,30 +109,43 @@ class AppContent extends PolymerElement {
 
   static get template() {
     return `
-    <div>
-        <bpm-meter bpm="{{bpm}}"></bpm-meter>
-        <connect-button connected="{{connected}}"
-                        on-connect="handleConnect"
-                        on-disconnect="handleDisconnect"></connect-button>
-        <tap-button class="one"
-                    on-tap="handleTap"
-                    delay="1000"
-                    items="3"></tap-button>
-        <channel-grid on-update="handleGrid"
-                      config="{{config}}"></channel-grid>
+    <style>
+      .flex {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .left {
+        flex: 0 0 20em;
+      }
+
+      .right {
+        flex: 1 1 20em;
+      }
+    </style>
+    <div class="flex">
+        <section class="left">
+          <connect-button connected="{{connected}}"
+                          on-connect="handleConnect"
+                          on-disconnect="handleDisconnect"></connect-button>
+          <bpm-meter bpm="{{bpm}}"></bpm-meter>
+          <tap-button class="one"
+                      on-tap="handleTap"
+                      delay="1000"
+                      items="3"></tap-button>
+        </section>
+        <section class="right">
+          <channel-grid on-update="handleGrid"
+                        list="{{dmxList}}"></channel-grid>
+        </section>
     </div>
     `
   }
 }
 
-class RenderApp extends PolymerElement {
-
+class MyApp extends PolymerElement {
   static get template() {
-    return render(html `
-    <app-content></app-content>
-    `, document.body)
+    return render(html`<app-content></app-content>`,document.body)
   }
 }
-
+customElements.define('my-app', MyApp)
 customElements.define('app-content', AppContent)
-customElements.define('my-app', RenderApp)
