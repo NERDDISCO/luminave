@@ -38,7 +38,6 @@ export class TapButton extends PolymerElement {
     this.date.now = new Date()
     this.diff = this.date.now - this.date.then
     if (this.ticking) {
-      console.log(this.ticking, this.arr)
       this.arr.push(this.diff)
       if (this.arr.length > this.items) {
         const diffs = this.arr.reduce((result, t) => result += t)
@@ -55,7 +54,40 @@ export class TapButton extends PolymerElement {
 
   static get template() {
     return `
-        <button on-click="handleClick">TAP</button>
+    <style>
+      :host {
+        --height: 20em;
+        --background: var(--background-lighter);
+      }
+      button {
+          box-sizing: border-box;
+          height: var(--height);
+          width: calc(100% - 1em);
+          border: 0;
+          font-size: 1em;
+          line-height: calc(var(--height) - 1em);
+          margin: 0.5em;
+          padding: 0.5em 1em;
+          font-family: monospace;
+          border-radius: 0;
+          color: var(--color);
+          background: var(--background);
+          box-shadow: 0 0 0 1px var(--color);
+          cursor: pointer;
+        }
+
+        button:focus {
+          outline: 0;
+          --color: var(--focus-color);
+          --background: var(--focus-background);
+        }
+
+        button:active {
+          --background: var(--background-darker);
+          --color: var(--color-lighter);
+        }
+    </style>
+      <button on-click="handleClick">TAP</button>
     `
   }
 }
