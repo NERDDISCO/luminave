@@ -530,7 +530,14 @@ export default {
       },
       'layers': [{
         'layerId': 'layer1',
-        'devices': ['fungeneration_ledspot_1', 'fungeneration_ledspot_2', 'fungeneration_ledspot_3', 'fungeneration_ledspot_4', 'cameo_ledspot_1', 'cameo_ledspot_2', 'cameo_pixbar_1', 'adj_planet'],
+        'devices': ['fungeneration_ledspot_1',
+          'fungeneration_ledspot_2',
+          'fungeneration_ledspot_3',
+          'fungeneration_ledspot_4',
+          'cameo_ledspot_1',
+          'cameo_ledspot_2',
+          'cameo_pixbar_1',
+          'adj_planet'],
         'animations': [{
           'start': 0,
           'animationId': 'allthelight'
@@ -545,7 +552,14 @@ export default {
       },
       'layers': [{
         'layerId': 'layer1',
-        'devices': ['fungeneration_ledspot_1', 'fungeneration_ledspot_2', 'fungeneration_ledspot_3', 'fungeneration_ledspot_4', 'cameo_ledspot_1', 'cameo_ledspot_2', 'cameo_pixbar_1', 'adj_planet'],
+        'devices': ['fungeneration_ledspot_1',
+          'fungeneration_ledspot_2',
+          'fungeneration_ledspot_3',
+          'fungeneration_ledspot_4',
+          'cameo_ledspot_1',
+          'cameo_ledspot_2',
+          'cameo_pixbar_1',
+          'adj_planet'],
         'animations': [{
           'start': 0,
           'animationId': 'uvbaby'

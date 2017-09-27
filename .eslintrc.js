@@ -11,7 +11,7 @@ module.exports = {
         'array-bracket-newline': ['error', 'never'],
         'array-bracket-spacing': 'error',
         'array-callback-return': 'error',
-        'array-element-newline': ['error', 'never'],
+        'array-element-newline': 'off',
         'arrow-body-style': 'error',
         'arrow-parens': ['error', 'as-needed'],
         'arrow-spacing': 'off',
