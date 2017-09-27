@@ -23,12 +23,10 @@ module.exports = {
         'capitalized-comments': 'error',
         'class-methods-use-this': 'error',
         'comma-dangle': 'error',
-        'comma-spacing': [
-            'error', {
+        'comma-spacing': ['error', {
                 'after': true,
                 'before': false
-            }
-        ],
+            }],
         'comma-style': ['error', 'last'],
         'complexity': 'error',
         'computed-property-spacing': 'error',
@@ -59,12 +57,10 @@ module.exports = {
         'init-declarations': 'error',
         'jsx-quotes': 'error',
         'key-spacing': 'error',
-        'keyword-spacing': [
-            'error', {
+        'keyword-spacing': ['error', {
                 'after': true,
                 'before': true
-            }
-        ],
+            }],
         'line-comment-position': 'error',
         'linebreak-style': ['error', 'unix'],
         'lines-around-comment': 'error',
@@ -90,6 +86,7 @@ module.exports = {
         'no-caller': 'error',
         'no-catch-shadow': 'error',
         'no-confusing-arrow': 'error',
+        'no-console': 'off',
         'no-continue': 'error',
         'no-div-regex': 'error',
         'no-duplicate-imports': 'error',
