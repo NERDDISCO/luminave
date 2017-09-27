@@ -29,9 +29,9 @@ class AppContent extends PolymerElement {
     window.usbManager = this.usb
 
     // Manage connected MIDI devices
-    this.midiManager = new MidiManager({ config: this.config });
+    this.midiManager = new MidiManager({ config: this.config })
     // Expose it globally so we can use it in the console
-    window.midiManager = this.midiManager;
+    window.midiManager = this.midiManager
 
     this.deviceManager = new DeviceManager({
       config: this.config,
@@ -64,6 +64,7 @@ class AppContent extends PolymerElement {
     this.deviceManager.reset()
     this.dmxList = [...this.deviceManager.list].map((e, i) => {
       const [key, value] = e
+
       return {
         id: key,
         channel: i,
@@ -71,12 +72,15 @@ class AppContent extends PolymerElement {
         deviceMapping: [...value.deviceMapping].map(e => e[1]),
         instance: value.instance,
         type: value.type,
-        params: Object.keys(value.instance.params).map(x => ({param: x, channels: value.instance.params[x].channels}))
+        params: Object.keys(value.instance.params).map(x => ({
+ param: x,
+channels: value.instance.params[x].channels
+}))
       }
-    })
+    }).
     // Dummy filter to show only ledspots
-    .filter(item => item.id.match('fungeneration'))
-    
+    filter(item => item.id.match('fungeneration'))
+
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
   }
 
@@ -144,7 +148,7 @@ class AppContent extends PolymerElement {
 
 class MyApp extends PolymerElement {
   static get template() {
-    return render(html`<app-content></app-content>`,document.body)
+    return render(html`<app-content></app-content>`, document.body)
   }
 }
 customElements.define('my-app', MyApp)
