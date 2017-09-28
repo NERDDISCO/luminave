@@ -25,6 +25,7 @@ You need the following software in order to run VisionLord:
 
 * [go](https://golang.org/doc/install) (for the HTTPS server)
 * [node.js](https://nodejs.org/en/download/package-manager/) (for the dependencies)
+* [Arduino IDE](https://www.arduino.cc/en/Main/Software)
 
 ### Install dependencies
 
@@ -50,8 +51,16 @@ npm start
 
 ### IDE
 
-1. Find out which Arduino you are using or to which Arduino your microcontroller is compatible to
-2. [Use the instructions](https://www.arduino.cc/en/Guide/HomePage) provided for your model to configure Arduino IDE
+1. Install the libraries from "arduino/libraries" [into the Arduino library folder](https://www.arduino.cc/en/Guide/Libraries#toc5)
+2. Start the IDE
+3. Find out which Arduino you are using or to which Arduino your microcontroller is compatible to
+4. [Use the instructions](https://www.arduino.cc/en/Guide/HomePage) provided for your model to configure Arduino IDE
+5. Copy the code from arduino/sketch/LeonardoETH.ino into Arduino IDE
+6. Upload the code to the connected Arduino
+
+### Coding Reference
+
+* https://www.arduino.cc/en/Reference/HomePage
 
 ### Which Arduino do I have?
 
@@ -102,33 +111,33 @@ This will list all USB devices, for example (which means you have an "Arduino Mi
 
 #### Identify your USB device
 
-* `USB Product Name`:
+* `USB Product Name`: The exact name of the USB device
 * `idVendor`: The ID of the USB device Vendor (for example Arduino LLC)
 * `idProduct`: The ID of the USB device
 
-This value can be converted to hex.
-
-### Coding Reference
-
-* https://www.arduino.cc/en/Reference/HomePage
+`idVendor` & `idProduct` can be converted to hex in order to use them as a filter for WebUSB.
 
 ---
 
-## DMX512 Shields
-
-### 2.5kV Isolated DMX 512
+## Arduino Shield: 2.5kV Isolated DMX 512
 
 * Shield: https://www.tindie.com/products/Conceptinetics/25kv-isolated-dmx-512-shield-for-arduino-r2/
 * http://dmxshield.blogspot.de/2013/04/conceptinetics-dmx-library-for-arduino.html#comment-form
 
-#### Library
+### Library: Conceptinetics
 
 * [Documentation](https://sourceforge.net/p/dmxlibraryforar/wiki/)
 * [DMX library for Arduino](https://sourceforge.net/projects/dmxlibraryforar/)
+
+### Update to newer version
+
+The following steps are not needed (if you are using an Arduino Leonardo ETH), because you can find an updated version of the Conceptinetics lib already in the repo:
+
 * Install the lib into your Arduino library folder
 * Change the following lines in `Conceptinetics.h`
 ```
-// Fix some settings for Arduino Leonardo ETH  https://sourceforge.net/p/dmxlibraryforar/wiki/Getting%20DMX%20library%20to%20work%20on%20Arduino%20Leonardo/
+// Fix some settings for Arduino Leonardo ETH  
+// https://sourceforge.net/p/dmxlibraryforar/wiki/Getting%20DMX%20library%20to%20work%20on%20Arduino%20Leonardo/
 // Comment this line
 // #define USE_DMX_SERIAL_0
 
