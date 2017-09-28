@@ -12,7 +12,7 @@ Show light manager for DMX512 shows.
 * Only works in a browser that supports ES6 modules & WebUSB (>= Chrome 63)
 * In order to use WebUSB (even on localhost), you need a https server
 
-## Requirements
+# Software
 
 ### Chrome
 * Enable experimental flags
@@ -36,11 +36,65 @@ npm install
 
 ## Start HTTPS server
 
-Start the local HTTPS server which serves the index.html:
+Start the local HTTPS server on https://localhost:1337:
 
 ```
 npm start
 ```
+
+---
+
+# Hardware
+
+## Arduino
+
+### IDE
+
+1. Find out which Arduino you are using or to which Arduino your microcontroller is compatible to
+2. [Use the instructions](https://www.arduino.cc/en/Guide/HomePage) provided for your model to configure Arduino IDE
+3. Have fun!
+
+---
+
+### Coding Reference
+
+* https://www.arduino.cc/en/Reference/HomePage
+
+## DMX512 Shields
+
+### 2.5kV Isolated DMX 512
+
+* Shield: https://www.tindie.com/products/Conceptinetics/25kv-isolated-dmx-512-shield-for-arduino-r2/
+* http://dmxshield.blogspot.de/2013/04/conceptinetics-dmx-library-for-arduino.html#comment-form
+
+#### Library
+
+* Download the lib: https://sourceforge.net/projects/dmxlibraryforar/
+* Install the lib into your Arduino library folder
+* Make these changes in
+`
+// Fix some settings for Arduino Leonardo ETH  https://sourceforge.net/p/dmxlibraryforar/wiki/Getting%20DMX%20library%20to%20work%20on%20Arduino%20Leonardo/
+// Comment this line
+// #define USE_DMX_SERIAL_0
+
+// Uncomment this line
+#define USE_DMX_SERIAL_1
+
+// Decrease the length of the automatic baudrate breaks  
+// Comment this line
+// #define DMX_BREAK_RATE 	 	    49950
+
+// Uncomment this line
+#define DMX_BREAK_RATE 	 	    99900
+`
+
+* Set `DMX_BREAK_RATE` to `99900` in `Conceptinetics.h`
+* Documentation: https://sourceforge.net/p/dmxlibraryforar/wiki/
+
+
+
+---
+
 
 ## Use VisionLord
 
@@ -49,6 +103,8 @@ npm start
 * Click the "connect" button in the top left
 * Choose the "Arduino Leonardo" in the prompt
 
+
+---
 
 
 ## Concepts
