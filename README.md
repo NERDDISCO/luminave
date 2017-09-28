@@ -10,7 +10,7 @@ Show light manager for DMX512 shows.
 
 
 * Only works in a browser that supports ES6 modules & WebUSB (>= Chrome 63)
-* In order to use WebUSB (even on localhost), you need a https server
+* In order to use WebUSB (even on localhost), you need an HTTPS server
 
 # Software
 
