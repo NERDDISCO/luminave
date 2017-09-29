@@ -2,7 +2,7 @@
 #include <Conceptinetics.h>
 
 // @TODO: Add a description
-WebUSB WebUSBSerial(1, "localhost:8081");
+WebUSB WebUSBSerial(1, "localhost:1337");
 #define Serial WebUSBSerial
 
 // Amount of DMX channels
