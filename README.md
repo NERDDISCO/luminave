@@ -38,6 +38,7 @@ You need the following software in order to use VisionLord:
 * [node.js](https://nodejs.org/en/download/package-manager/) (for the dependencies)
 * [Arduino IDE](https://www.arduino.cc/en/Main/Software) (for uploading code to the Arduino)
 * Install the libraries from [arduino/libraries](arduino/libraries) [into the Arduino library folder](https://www.arduino.cc/en/Guide/Libraries#toc5)
+* Upgrade the Arduino IDE from USB 2.0 to 2.1: [Step 3](https://github.com/webusb/arduino#getting-started)
 
 ### Dependencies
 
@@ -61,11 +62,21 @@ npm start
 
 ## Arduino
 
+### Compatible board
+
+In order to use WebUSB, the Arduino board needs microcontroller that gives it full control over the USB hardware. The [ATmega32u4](http://www.microchip.com/wwwproducts/en/ATmega32U4) is one of them and is used in these boards:
+
+* Arduino Leonardo / Leonard ETH
+* Arduino Micro
+* Arduino Zero
+
 ### IDE
 
 1. Start the Arduino IDE
-2. Find out which Arduino you are using or to which Arduino your microcontroller is compatible to
-3. [Use the instructions](https://www.arduino.cc/en/Guide/HomePage) provided for your model to configure Arduino IDE
+2. [Find out which Arduino you are using or to which Arduino your microcontroller is compatible to](#which-arduino-do-i-have)
+3. [Use the instructions](https://www.arduino.cc/en/Guide/HomePage) provided for your model (for example [Leonardo / Micro](https://www.arduino.cc/en/Guide/ArduinoLeonardoMicro)) to configure the Arduino IDE
+  a. Select the model: Tools -> Board
+  b. Select the USB port: Tools -> Port
 4. Create a new sketch in Arduino IDE: File -> New
 5. Remove everything in the new sketch
 6. Copy the code from [arduino/sketch/LeonardoETH.ino](arduino/sketch/LeonardoETH.ino) into the new sketch
