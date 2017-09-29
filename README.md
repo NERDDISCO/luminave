@@ -9,25 +9,37 @@ Show light manager for DMX512 shows.
 [![WebMIDI](https://img.shields.io/badge/API-WebMIDI-1e88e5.svg?style=flat)](https://webaudio.github.io/web-midi-api/)
 
 
-* Only works in a browser that supports ES6 modules & WebUSB (>= Chrome 63)
+* Only works in a browser that supports ES6 modules & WebUSB (>= Chrome 61)
 * In order to use WebUSB (even on localhost), you need an HTTPS server
 
 # Software
 
-### Chrome
-* Enable experimental flags
+## Browser
+
+* VisionLord can only be used in Chrome 61+ right now
+
+### Chrome 61 + 62
+
+* Native support for ES6 modules
+* Enable flags for WebUSB and WebMIDI
   * chrome://flags/#enable-experimental-web-platform-features
   * chrome://flags/#enable-midi-manager-dynamic-instantiation
 
-### Install software
+### Chrome 63
 
-You need the following software in order to run VisionLord:
+* Enable flag for WebMIDI
+  * chrome://flags/#enable-midi-manager-dynamic-instantiation
+
+## Tools + IDE
+
+You need the following software in order to use VisionLord:
 
 * [go](https://golang.org/doc/install) (for the HTTPS server)
 * [node.js](https://nodejs.org/en/download/package-manager/) (for the dependencies)
-* [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+* [Arduino IDE](https://www.arduino.cc/en/Main/Software) (for uploading code to the Arduino)
+* Install the libraries from [arduino/libraries](arduino/libraries) [into the Arduino library folder](https://www.arduino.cc/en/Guide/Libraries#toc5)
 
-### Install dependencies
+### Dependencies
 
 Execute the following command to install all dependencies (for example Polymer) into a `node_modules` folder:
 
@@ -51,18 +63,27 @@ npm start
 
 ### IDE
 
-1. Install the libraries from "arduino/libraries" [into the Arduino library folder](https://www.arduino.cc/en/Guide/Libraries#toc5)
-2. Start the IDE
-3. Find out which Arduino you are using or to which Arduino your microcontroller is compatible to
-4. [Use the instructions](https://www.arduino.cc/en/Guide/HomePage) provided for your model to configure Arduino IDE
-5. Copy the code from arduino/sketch/LeonardoETH.ino into Arduino IDE
-6. Upload the code to the connected Arduino
+1. Start the Arduino IDE
+2. Find out which Arduino you are using or to which Arduino your microcontroller is compatible to
+3. [Use the instructions](https://www.arduino.cc/en/Guide/HomePage) provided for your model to configure Arduino IDE
+4. Create a new sketch in Arduino IDE: File -> New
+5. Remove everything in the new sketch
+6. Copy the code from [arduino/sketch/LeonardoETH.ino](arduino/sketch/LeonardoETH.ino) into the new sketch
+7. Upload the code to the connected Arduino: Sketch -> Upload
 
 ### Coding Reference
 
 * https://www.arduino.cc/en/Reference/HomePage
 
 ### Which Arduino do I have?
+
+#### Chrome
+
+Chrome provides a build-in [device-log](chrome://device-log) which can be used to identify the connected USB device:
+
+```
+[10:21:40] USB device added: vendor=1452 "Apple Inc.", product=4776 "iPhone", serial="2663daff1d0180593a51216d4d5967c03d12c67e", guid=c369da90-cda2-408e-9366-e45dbe419379
+```
 
 #### MacOS
 
