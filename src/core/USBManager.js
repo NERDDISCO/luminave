@@ -31,6 +31,10 @@ export default class USBManager {
    * Enable WebUSB and request a USBPort
    */
   enable() {
+    console.log(this.serial.getPorts().then(list => {
+      console.log(list)
+    }))
+
     this.serial.requestPort().then(selectedPort => {
 
       this.port = selectedPort
