@@ -9,16 +9,22 @@ export default class USBPort {
 
   connect() {
     return this.device.open().
-    // @TODO: What is this?
+    
+    // OS did not select a USB configuration yet
     then(() => {
       if (this.device.configuration === null) {
-        // @TODO: What is this?
+        // Select the first USB configuration
+        // = How is the device is powered?
+        // = What is its maximum power consumption?
+        // = How many interfaces does it have?
         return this.device.selectConfiguration(1)
       }
     }).
-    // @TODO: What is this?
+
+    // Get exclusive access to the interface
     then(() => this.device.claimInterface(2)).
-    // @TODO: What is this?
+
+    //
     then(() => this.device.controlTransferOut({
       'requestType': 'class',
       'recipient': 'interface',
@@ -54,7 +60,7 @@ export default class USBPort {
   }
 
   send(data) {
-    console.log("USBPort", data)
+    console.log('USBPort', data)
     // @TODO: What is this?
     return this.device.transferOut(4, data)
   }
