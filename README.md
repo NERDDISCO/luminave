@@ -75,8 +75,8 @@ In order to use WebUSB, the Arduino board needs microcontroller that gives it fu
 1. Start the Arduino IDE
 2. [Find out which Arduino you are using or to which Arduino your microcontroller is compatible to](#which-arduino-do-i-have)
 3. [Use the instructions](https://www.arduino.cc/en/Guide/HomePage) provided for your model (for example [Leonardo / Micro](https://www.arduino.cc/en/Guide/ArduinoLeonardoMicro)) to configure the Arduino IDE
-  a. Select the model: Tools -> Board
-  b. Select the USB port: Tools -> Port
+   1. Select the model: Tools -> Board
+   2. Select the USB port: Tools -> Port
 4. Create a new sketch in Arduino IDE: File -> New
 5. Remove everything in the new sketch
 6. Copy the code from [arduino/sketch/LeonardoETH.ino](arduino/sketch/LeonardoETH.ino) into the new sketch
