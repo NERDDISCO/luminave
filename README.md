@@ -93,7 +93,17 @@ In order to use WebUSB, the Arduino board needs microcontroller that gives it fu
 Chrome provides a build-in [device-log](chrome://device-log) which can be used to identify the connected USB device:
 
 ```
-[10:21:40] USB device added: vendor=1452 "Apple Inc.", product=4776 "iPhone", serial="2663daff1d0180593a51216d4d5967c03d12c67e", guid=c369da90-cda2-408e-9366-e45dbe419379
+[21:46:31] USB device added: vendor=10755 "Unknown", product=32832 "Arduino Leonardo ETH", serial="WUART", guid=fb98cfd4-48aa-4795-b439-ecc736986cee
+```
+
+* `vendor=10755`: The ID of the USB device Vendor
+* `product=32832`: The ID of the USB device
+* `"Arduino Leonardo ETH"`: The exact name of the USB device
+
+`vendor` & `product` can be [converted to hex](#convert-decimal-to-hex) in order to use them as a filter for WebUSB.
+
+```
+
 ```
 
 #### MacOS
@@ -141,8 +151,6 @@ This will list all USB devices, for example (which means you have an "Arduino Mi
         }
 ```
 
-#### Identify your USB device
-
 * `USB Product Name`: The exact name of the USB device
 * `idVendor`: The ID of the USB device Vendor (for example Arduino LLC)
 * `idProduct`: The ID of the USB device
@@ -188,8 +196,36 @@ The following steps are not needed (if you are using an Arduino Leonardo ETH), b
 
 ---
 
+## Convert decimal to hex
 
-## Use VisionLord
+In JavaScript you can convert a decimal number into a hex like this (e.g. in the console of your browser):
+
+```
+// vendor = 10755 -> 2a03
+let vendorId = 10755
+vendorId.toString(16)
+
+// productId = 32832 -> 8040
+let productId = 32832
+productId.toString(16)
+```
+
+These values with the prefix `0x` can be used as a filter when you request access to a specific USB device:
+
+```
+navigator.usb.requestDevice({
+  filters: [{
+      'vendorId': 0x2a03,
+      'productId': 0x8040
+  }]
+}).then(device => console.log(device))
+```
+
+---
+
+
+
+# Use VisionLord
 
 * Open the application in your browser: https://localhost:1337
 * Connect your Arduino device to the computer via USB
@@ -200,9 +236,9 @@ The following steps are not needed (if you are using an Arduino Leonardo ETH), b
 ---
 
 
-## Concepts
+# Concepts
 
-### Send data from the browser to the DMX512 interface
+## Send data from the browser to the DMX512 interface
 
 * USBManager gets connection to the Arduino
 * DmxOutput can generate an array[512] out of all DmxDevices
@@ -211,6 +247,6 @@ The following steps are not needed (if you are using an Arduino Leonardo ETH), b
 
 
 
-## Contributors
+# Contributors
 
 * [Gregor Adams](https://github.com/pixelass)
