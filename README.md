@@ -90,7 +90,7 @@ In order to use WebUSB, the Arduino board needs microcontroller that gives it fu
 
 #### Chrome
 
-Chrome provides a build-in [device-log](chrome://device-log) which can be used to identify the connected USB device:
+Chrome provides a build-in device-log `chrome://device-log` which can be used to identify the connected USB device:
 
 ```
 [21:46:31] USB device added: vendor=10755 "Unknown", product=32832 "Arduino Leonardo ETH", serial="WUART", guid=fb98cfd4-48aa-4795-b439-ecc736986cee
