@@ -102,9 +102,6 @@ Chrome provides a build-in [device-log](chrome://device-log) which can be used t
 
 `vendor` & `product` can be [converted to hex](#convert-decimal-to-hex) in order to use them as a filter for WebUSB.
 
-```
-
-```
 
 #### MacOS
 
@@ -155,7 +152,7 @@ This will list all USB devices, for example (which means you have an "Arduino Mi
 * `idVendor`: The ID of the USB device Vendor (for example Arduino LLC)
 * `idProduct`: The ID of the USB device
 
-`idVendor` & `idProduct` can be converted to hex in order to use them as a filter for WebUSB.
+`idVendor` & `idProduct` can be [converted to hex](#convert-decimal-to-hex) in order to use them as a filter for WebUSB.
 
 ---
 
