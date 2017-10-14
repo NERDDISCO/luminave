@@ -1,4 +1,4 @@
-import DmxParam from '../param/DmxParam.js';
+import DmxParam from '../param/DmxParam.js'
 
 /**
  * The dmx-device represents the basic functionality any dmx-device has,
@@ -10,6 +10,7 @@ import DmxParam from '../param/DmxParam.js';
  * will add the parameter-configuration for the specific device.
  */
 export default class DmxDevice {
+
   /**
    * Creates a new device-instance.
    * @param {object} options
@@ -26,30 +27,30 @@ export default class DmxDevice {
         address: arguments[0],
         params: arguments[1],
         universe: 1
-      };
+      }
     }
 
     /**
      * @private {Number}
      */
-    this.bufferOffset = options.address - 1;
+    this.bufferOffset = options.address - 1
 
     /**
      * @type {Buffer}
      */
-    this.dmxBuffer = null;
+    this.dmxBuffer = null
 
     /**
      * @private {number}
      */
-    this.universe = options.universe || 1;
+    this.universe = options.universe || 1
 
     /**
      * @type {Object.<String, DmxParam>}
      */
-    this.params = options.params;
+    this.params = options.params
 
-    this.attachParamProperties();
+    this.attachParamProperties()
   }
 
   /**
@@ -57,7 +58,9 @@ export default class DmxDevice {
    * @param {DmxOutput} output the output to write to.
    */
   setOutput(output) {
-    this.setDmxBuffer(output.getBuffer(this.universe));
+    if (output !== null) {
+      this.setDmxBuffer(output.getBuffer(this.universe))
+    }
   }
 
   /**
@@ -65,7 +68,7 @@ export default class DmxDevice {
    * @param {Buffer} dmxBuffer
    */
   setDmxBuffer(dmxBuffer) {
-    this.dmxBuffer = dmxBuffer;
+    this.dmxBuffer = dmxBuffer
   }
 
   /**
@@ -76,12 +79,12 @@ export default class DmxDevice {
    * @private
    */
   attachParamProperties(target = this, params = this.params) {
-    for (let name in params) {
+    for (const name in params) {
       if (!params.hasOwnProperty(name)) {
-        continue;
+        continue
       }
 
-      let param = params[name];
+      const param = params[name]
 
       // handle nested parameter-groups
       if (param instanceof DmxParam) {
@@ -89,10 +92,10 @@ export default class DmxDevice {
           enumerable: true,
           get: param.getValue.bind(param, this),
           set: param.setValue.bind(param, this)
-        });
+        })
       } else {
-        this[name] = {};
-        this.attachParamProperties(this[name], params[name]);
+        this[name] = {}
+        this.attachParamProperties(this[name], params[name])
       }
     }
   }
@@ -104,13 +107,13 @@ export default class DmxDevice {
    * @param {Object.<String, *>} params Parameter-names and (logical) values.
    */
   setParams(params) {
-    for (let name in params) {
+    for (const name in params) {
       if (!params.hasOwnProperty(name)) {
-        continue;
+        continue
       }
 
       if (name in this.params) {
-        this.params[name].setValue(this, params[name]);
+        this.params[name].setValue(this, params[name])
       }
     }
   }
@@ -122,17 +125,17 @@ export default class DmxDevice {
    * @returns {Object} The logical values for all device-parameters.
    */
   getParams() {
-    let ret = {};
+    const ret = {}
 
-    for (let name in this.params) {
+    for (const name in this.params) {
       if (!this.params.hasOwnProperty(name)) {
-        continue;
+        continue
       }
 
-      ret[name] = this.params[name].getValue(this);
+      ret[name] = this.params[name].getValue(this)
     }
 
-    return ret;
+    return ret
   }
 
 
@@ -143,15 +146,14 @@ export default class DmxDevice {
    */
   getChannelValue(channelNumber) {
     if (!Number.isInteger(channelNumber)) {
-      throw new Error(
-        'invalid channel-number: ' + channelNumber, 'INVALID_CHANNEL');
+      throw new Error(`invalid channel-number: ${channelNumber}`, 'INVALID_CHANNEL')
     }
 
     if (!this.dmxBuffer) {
-      return 0;
+      return 0
     }
 
-    return this.dmxBuffer[this.bufferOffset + channelNumber - 1];
+    return this.dmxBuffer[this.bufferOffset + channelNumber - 1]
   }
 
 
@@ -163,19 +165,18 @@ export default class DmxDevice {
    */
   setChannelValue(channelNumber, value) {
     if (!Number.isInteger(channelNumber)) {
-      throw new Error(
-        'invalid channel-number: ' + channelNumber, 'INVALID_CHANNEL');
+      throw new Error(`invalid channel-number: ${channelNumber}`, 'INVALID_CHANNEL')
     }
 
-    //console.log('set channel %s@%s (%s) to %s',
+    // console.log('set channel %s@%s (%s) to %s',
     //  channelNumber, this.bufferOffset + 1,
     //  this.bufferOffset + channelNumber, value);
 
     if (!this.dmxBuffer) {
-      return;
+      return
     }
 
-    this.dmxBuffer[this.bufferOffset + channelNumber - 1] = Math.round(value);
+    this.dmxBuffer[this.bufferOffset + channelNumber - 1] = Math.round(value)
   }
 
   /**

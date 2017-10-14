@@ -9,7 +9,7 @@ export default class USBPort {
 
   connect() {
     return this.device.open().
-    
+
     // OS did not select a USB configuration yet
     then(() => {
       if (this.device.configuration === null) {
@@ -60,8 +60,7 @@ export default class USBPort {
   }
 
   send(data) {
-    console.log('USBPort', data)
-    // @TODO: What is this?
+    // Send data to the USB device
     return this.device.transferOut(4, data)
   }
 

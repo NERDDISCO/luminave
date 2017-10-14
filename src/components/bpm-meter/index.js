@@ -3,7 +3,7 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 class BPMMeter extends PolymerElement {
 
   constructor() {
-    super();
+    super()
   }
 
   static get template() {

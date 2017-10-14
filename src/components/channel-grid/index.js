@@ -1,7 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { html } from '/node_modules/lit-html/lit-html.js'
-import {DomRepeat as DomRepeat} from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js';
-import '../channel-input/index.js';
+import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import '../channel-input/index.js'
 
 class ChannelGrid extends PolymerElement {
 
@@ -14,7 +14,7 @@ class ChannelGrid extends PolymerElement {
   }
 
   handleUpdate(e) {
-    const {value, channelId} = e.detail
+    const { value, channelId } = e.detail
     this.dispatchEvent(new CustomEvent('update', {
       detail: {
         value,
@@ -24,7 +24,7 @@ class ChannelGrid extends PolymerElement {
   }
 
   connectedCallback() {
-    super.connectedCallback();
+    super.connectedCallback()
      console.log(this.list)
  }
 
@@ -69,9 +69,9 @@ class ChannelGrid extends PolymerElement {
             <span class="param">{{param.param}}</span>
             <template is="dom-repeat" items="{{ param.channels }}" as="channel">
               <channel-input channel$="{{channel}}" offset$="{{item.bufferOffset}}" on-update="handleUpdate"></channel-input>
-            </template> 
-          </template> 
-        </template> 
+            </template>
+          </template>
+        </template>
       </div>
     `
   }

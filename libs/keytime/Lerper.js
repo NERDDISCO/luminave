@@ -1,5 +1,6 @@
 export default class Lerper {
   constructor() {
+    this.out = undefined
 
   }
 
@@ -7,16 +8,19 @@ export default class Lerper {
     if (typeof value1 === 'number' && typeof value2 === 'number') {
       return this.lerp(value1, value2, t)
       // Assume array
-    } else {
-      var len = Math.min(value1.length, value2.length)
-      out = out || new Array(len)
+    }
+      const len = Math.min(value1.length, value2.length)
 
-      for (var i = 0; i < len; i++) {
-        out[i] = this.lerp(value1[i], value2[i], t)
+      if (this.out === undefined) {
+        this.out = new Array(len)
       }
 
-      return out
-    }
+      for (let i = 0; i < len; i++) {
+        this.out[i] = this.lerp(value1[i], value2[i], t)
+      }
+
+      return this.out
+
   }
 
   lerp(v0, v1, t) {

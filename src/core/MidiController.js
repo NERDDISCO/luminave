@@ -37,12 +37,10 @@ export default class MidiController {
    */
   noteon(event) {
 
-    const {data} = event
-    const [
-      ,
-      note
-      // Velocity
-    ] = data
+    const { data } = event
+    const [,
+      note,
+      velocity] = data
 
     // Mapping exists for this note
     if (this.elementMapping.get(note) === undefined) {
@@ -53,10 +51,10 @@ export default class MidiController {
         controllerId: this.controllerId
       }
 
+      console.log('noteon', eventData)
 
-      console.log('MidiContoller|map', '-', 'noteon', eventData)
-
-      // This.dispatchEvent(new CustomEvent('MidiController', { detail: eventData }))
+      // @TODO: Fix
+      window.dispatchEvent(new CustomEvent('MidiController', { detail: eventData }))
 
       // EventService.emit('MidiController', eventData)
 

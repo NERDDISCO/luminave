@@ -1,25 +1,25 @@
 // import parseColor from 'parse-color';
 // import colorConvert from 'color-convert';
 
-class Color {
+export default class Color {
+
   /**
    * Creates a new color instance from a css color-string.
    * @param {String} color
    */
   constructor(color) {
-    this.set(color);
+    this.set(color)
   }
 
   set(color) {
     if (Array.isArray(color)) {
-      this.rgb = color;
+      this.rgb = color
     } else if (arguments.length === 3) {
-      this.rgb = Array.prototype.slice.call(arguments);
+      this.rgb = Array.prototype.slice.call(arguments)
     } else if (typeof color === 'string') {
-      console.log('string not implemented')
-      // this.rgb = parseColor(color).rgb;
+      this.rgb = color.replace(/[^\d,]/g, '').split(',')
     } else {
-      this.rgb = [0, 0, 0];
+      this.rgb = [0, 0, 0]
     }
   }
 
@@ -28,21 +28,21 @@ class Color {
    * @returns {string}
    */
   toString() {
-    return 'rgb(' + this.rgb.join(',') + ')';
+    return `rgb(${this.rgb.join(',')})`
   }
 }
 
 
-['r', 'g', 'b'].forEach(function(prop, idx) {
+['r', 'g', 'b'].forEach((prop, idx) => {
   Object.defineProperty(Color.prototype, prop, {
     get() {
-      return this.rgb[idx];
+      return this.rgb[idx]
     },
     set(value) {
-      this.rgb[idx] = value;
+      this.rgb[idx] = value
     }
-  });
-});
+  })
+})
 
 // Object.defineProperty(Color.prototype, 'hsl', {
 //   get() {
@@ -69,35 +69,31 @@ class Color {
 
 Object.defineProperty(Color.prototype, 'cmy', {
   get() {
-    return [
-      255 - this.rgb[0],
+    return [255 - this.rgb[0],
       255 - this.rgb[1],
-      255 - this.rgb[2]
-    ];
+      255 - this.rgb[2]]
   },
 
   set(value) {
-    this.rgb = [
-      255 - value[0],
+    this.rgb = [255 - value[0],
       255 - value[1],
-      255 - value[2]
-    ];
+      255 - value[2]]
   }
 });
 
-['c', 'm', 'y'].forEach(function(prop, idx) {
+['c', 'm', 'y'].forEach((prop, idx) => {
   Object.defineProperty(Color.prototype, prop, {
     get() {
-      return this.cmy[idx];
+      return this.cmy[idx]
     },
 
     set(value) {
-      let tmp = this.cmy;
-      tmp[idx] = value;
-      this.cmy = tmp;
+      const tmp = this.cmy
+      tmp[idx] = value
+      this.cmy = tmp
     }
-  });
-});
+  })
+})
 
 /**
  * Linear interpolation from a to b at point t.
@@ -108,7 +104,7 @@ Object.defineProperty(Color.prototype, 'cmy', {
  * @private
  */
 function lerp(a, b, t) {
-  return a * t + (1 - t) * b;
+  return a * t + (1 - t) * b
 }
 
 // /**
@@ -139,5 +135,3 @@ function lerp(a, b, t) {
 //
 //   return res;
 // };
-
-export default Color;

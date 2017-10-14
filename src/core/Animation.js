@@ -1,5 +1,6 @@
 import KeytimeDeluxe from './KeytimeDeluxe.js'
 import { modVService } from './ModVService.js'
+import Color from '/libs/fivetwelve/lib/util/Color.js'
 
 /**
  * A list of keyframes used to light up a list of devices to create an animation.
@@ -74,10 +75,10 @@ export default class Animation {
     if (this.isPlaying) {
 
       // The scene is started
-      if (progressScene >= this.start && progressScene <= (this.start + this.duration + (2 * delta))) {
+      if (progressScene >= this.start && progressScene <= this.start + this.duration + 2 * delta) {
 
         // If animationProgress is smaller than duration we know that duration is not reached yet
-        if ((this.progress + delta) <= (this.duration + delta)) {
+        if (this.progress + delta <= this.duration + delta) {
           // So we add the delta to animationProgress
           this.progress += delta
 
@@ -89,10 +90,10 @@ export default class Animation {
           // Set the values for every device
           this.devices.forEach((element, index, array) => {
 
-            let device = this.deviceManager.get(element)
+            const device = this.deviceManager.get(element)
 
             if (this.values.hasOwnProperty('color')) {
-              let color = new Color(this.values.color).rgb().string()
+              const color = new Color(this.values.color).toString()
 
               device.color = color
 
@@ -157,7 +158,7 @@ export default class Animation {
             }
 
             if (this.values.hasOwnProperty('led')) {
-
+              // @TODO: Implement
             }
 
             if (this.values.hasOwnProperty('motor')) {
@@ -211,18 +212,16 @@ export default class Animation {
 
   }
 
-  // @TODO: Implement
   pause() {
-
+    // @TODO: Implement
   }
 
-  // @TODO: Implement
+
   reset() {
-
+    // @TODO: Implement
   }
 
-  // @TODO: Implement
   reverse() {
-
+    // @TODO: Implement
   }
 }

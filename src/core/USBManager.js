@@ -31,7 +31,7 @@ export default class USBManager {
     this.serial.getPorts().then(list => {
 
       if (list[0] !== undefined && list[0].hasOwnProperty('device')) {
-        this.port = list[0]
+        [this.port] = list
         this.connect()
       }
 
@@ -58,12 +58,15 @@ export default class USBManager {
    * Connect to a selected USBPort
    */
   connect() {
+
+    this.output.driver.serialport = this.port
+
     this.port.connect().then(() => {
 
       // Receive data
       this.port.onReceive = data => {
         const textDecoder = new TextDecoder()
-        console.log(textDecoder.decode(data))
+        // console.log(textDecoder.decode(data))
       }
 
       // Receive error

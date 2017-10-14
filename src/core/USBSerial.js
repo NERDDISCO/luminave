@@ -26,16 +26,17 @@ export default class USBSerial {
 
   getPorts() {
     return navigator.usb.getDevices().
-    then(devices => {
-      this.devices = devices
-      devices.map(device => new USBPort(device))
-    })
+      then(devices => {
+        this.devices = devices
+
+        return devices.map(device => new USBPort({ device }))
+      })
   }
 
   requestPort() {
     // Request access to the USB device
     return navigator.usb.requestDevice({ filters: this.filters }).
-    then(device => new USBPort({ device }))
+      then(device => new USBPort({ device }))
   }
 
 

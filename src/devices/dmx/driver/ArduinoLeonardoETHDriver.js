@@ -28,6 +28,7 @@ export default class ArduinoLeonardoETHDriver {
   send(buffer, universe) {
     const usbProUniverse = this.options.universeMapping[universe]
 
+
     if (!usbProUniverse) {
       return Promise.resolve()
     }
@@ -52,12 +53,24 @@ export default class ArduinoLeonardoETHDriver {
    * @private
    */
   write(buffer) {
-    // @TODO: Remove
-    // console.log("Arduino", buffer)
+    // @TODO: DEBUG
+    // console.log('Arduino', buffer)
 
     // Is serialport ready?
     if (this.serialport !== null) {
-      this.serialport.send(buffer)
+
+      this.serialport.send(buffer).
+        then(result => {
+        // USBOutTransferResult - { bytesWritten: 512, status: "ok" }
+        // console.log('out', result)
+        if (result.status !== 'ok') {
+          console.error(result.status, result.data)
+        }
+      }, error => {
+        console.error(error)
+      })
+    } else {
+      console.error('🔥 NO SERIALPORT 🔥')
     }
   }
 }

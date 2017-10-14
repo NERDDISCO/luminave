@@ -4,6 +4,8 @@ import BasicTimeline from '/libs/keytime/BasicTimeline.js'
 export default class KeytimeDeluxe extends BasicTimeline {
   constructor(data) {
     super(data)
+
+    this.lerper = new Lerper()
   }
 
   interpolate(property, frame1, frame2, t) {
@@ -13,6 +15,6 @@ export default class KeytimeDeluxe extends BasicTimeline {
     }
 
     // Default interpolation
-    return Lerper.values(frame1.value, frame2.value, t)
+    return this.lerper.values(frame1.value, frame2.value, t)
   }
 }

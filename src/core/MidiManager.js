@@ -12,7 +12,7 @@ export default class MidiManager {
     this.isEnabled = false
 
     // List of MIDI controller
-    this.list = new Map();
+    this.list = new Map()
 
     // Enable Web MIDI
     WebMidi.enable(err => {
@@ -46,7 +46,7 @@ export default class MidiManager {
 
       this.list.set(element.controllerId, midiController)
 
-      console.log('MidiManager', '-', 'Added', element.controllerId)
+      console.log('Added', element.controllerId)
     })
   }
 }

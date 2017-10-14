@@ -5,6 +5,7 @@ import '/src/components/tap-button/index.js'
 import '/src/components/connect-button/index.js'
 import '/src/components/bpm-meter/index.js'
 import '/src/components/channel-grid/index.js'
+import '/src/components/midi-manager/index.js'
 
 import USBManager from '/src/core/USBManager.js'
 import MidiManager from '/src/core/MidiManager.js'
@@ -24,6 +25,7 @@ class AppContent extends PolymerElement {
 
     this.storage = new StorageManager()
     this.config = getConfig()
+    this.shit = 'testtest'
 
     this.usb = new USBManager({ config: this.config })
     window.usbManager = this.usb
@@ -31,7 +33,7 @@ class AppContent extends PolymerElement {
     // Manage connected MIDI devices
     this.midiManager = new MidiManager({ config: this.config })
     // Expose it globally so we can use it in the console
-    window.midiManager = this.midiManager
+    Window.midiManager = this.midiManager
 
     this.deviceManager = new DeviceManager({
       config: this.config,
@@ -84,6 +86,7 @@ channels: value.instance.params[x].channels
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
   }
 
+
   ready() {
     super.ready()
   }
@@ -131,11 +134,16 @@ channels: value.instance.params[x].channels
           <connect-button connected="{{connected}}"
                           on-connect="handleConnect"
                           on-disconnect="handleDisconnect"></connect-button>
+
+          <midi-manager class="two"
+                        config="{{config}}"></midi-manager>
+
           <bpm-meter bpm="{{bpm}}"></bpm-meter>
           <tap-button class="one"
                       on-tap="handleTap"
                       delay="1000"
                       items="3"></tap-button>
+
         </section>
         <section class="right">
           <channel-grid on-update="handleGrid"

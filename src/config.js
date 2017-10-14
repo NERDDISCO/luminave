@@ -1,5 +1,5 @@
 export default {
-  'name': 'jsconf-berlin-2017',
+  'name': 'jsconf-budapest-2017',
   'global': {
     'fps': 60,
     'dimmer': 255,
@@ -350,7 +350,7 @@ export default {
       },
       'layers': [{
         'layerId': 'layer1',
-        'devices': ['fungeneration_ledspot_2'],
+        'devices': ['fungeneration_ledspot_3'],
         'animations': [{
           'start': 0,
           'animationId': 'yellow'
@@ -632,7 +632,7 @@ export default {
         'type': 'CameoWookie200RGY',
         'name': 'Cameo Wookie 200 RGY',
         'universe': 1,
-        'address': 300
+        'address': 257
       }, {
         'deviceId': 'fogmaschine',
         'type': 'StairvilleAF150',
@@ -644,7 +644,7 @@ export default {
         'type': 'AdjStarburst',
         'name': 'ADJ Starburst',
         'universe': 1,
-        'address': 76
+        'address': 360
       }],
     'midi': [{
       'name': 'nanoPAD2',

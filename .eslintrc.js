@@ -20,7 +20,7 @@ module.exports = {
         'brace-style': ['error', '1tbs'],
         'callback-return': 'error',
         'camelcase': 'error',
-        'capitalized-comments': 'error',
+        'capitalized-comments': 'off',
         'class-methods-use-this': 'error',
         'comma-dangle': 'error',
         'comma-spacing': ['error', {
@@ -133,7 +133,7 @@ module.exports = {
         'no-process-env': 'error',
         'no-process-exit': 'error',
         'no-proto': 'error',
-        'no-prototype-builtins': 'error',
+        'no-prototype-builtins': 'off',
         'no-restricted-globals': 'error',
         'no-restricted-imports': 'error',
         'no-restricted-modules': 'error',

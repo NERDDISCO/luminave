@@ -1,12 +1,13 @@
 // var eases = require('./eases.js')
 import Lerper from './Lerper.js'
 import Property from './Property.js'
-// import vec3 from 'gl-vec3/set';
 
 export default class BasicTimeline {
   constructor(data) {
     this.data = data
     this.properties = []
+
+    this.lerper = new Lerper()
 
     if (this.data) {
       this.load(this.data)
@@ -23,13 +24,19 @@ export default class BasicTimeline {
   }
 
   indexOfName(list, name) {
-    for (var i = 0; i < list.length; i++)
-      if (list[i].name === name) return i
-    return -1
+    for (let i = 0; i < list.length; i++) {
+ if (list[i].name === name) {
+return i
+}
+}
+
+return -1
   }
 
   dispose() {
-    this.properties.forEach((item, index, array) => { item.dispose() })
+    this.properties.forEach((item, index, array) => {
+ item.dispose()
+})
     this.properties.length = 0
   }
 
@@ -58,13 +65,13 @@ export default class BasicTimeline {
    */
   property(prop) {
     const idx =
-      typeof prop === 'number' ?
-      prop :
-      this.indexOfName(this.properties, prop)
+      typeof prop === 'number'
+      ? prop
+      : this.indexOfName(this.properties, prop)
 
-    return idx < 0 ?
-      undefined :
-      this.properties[idx]
+    return idx < 0
+      ? undefined
+      : this.properties[idx]
   }
 
   /*
@@ -77,15 +84,11 @@ export default class BasicTimeline {
       return
     }
 
-    this.properties = this.data.map(function(d) {
-      return new Property(d)
-    })
+    this.properties = this.data.map(d => new Property(d))
   }
 
   export () {
-    return this.properties.map(function(p) {
-      return p.export()
-    })
+    return this.properties.map(p => p.export())
   }
 
   /*
@@ -93,7 +96,7 @@ export default class BasicTimeline {
    * interpolators (e.g. quaternions, paths, etc)
    */
   interpolate(property, frame1, frame2, t) {
-    return Lerper.lerp(frame1.value, frame2.value, t)
+    return this.lerper.lerp(frame1.value, frame2.value, t)
   }
 
   /*
@@ -102,29 +105,35 @@ export default class BasicTimeline {
   valueOf(time, property) {
     const keys = property.keyframes
     const v = keys.interpolation(time)
-    const { v0, v1, t } = v
+    const [v0, v1, t] = v
 
-    //return default value of property
-    if (v0 === -1 || v1 === -1)
+    // return default value of property
+    if (v0 === -1 || v1 === -1) {
       return property.value
-
-    var start = keys.frames[v0],
-      end = keys.frames[v1]
-
-    //frames match, return the first
-    if (v0 === v1)
-      return start.value
-
-    //ease and interpolate frames
-    else {
-      var easeName = end.ease
-      if (easeName) //remap time with easing equation
-        t = this.ease(easeName, t)
-      return this.interpolate(property, start, end, t)
     }
+
+
+    const start = keys.frames[v0]
+    const end = keys.frames[v1]
+
+    // frames match, return the first
+    if (v0 === v1) {
+      return start.value
+    }
+
+    // ease and interpolate frames
+
+      const easeName = end.ease
+      if (easeName) // remap time with easing equation
+        {
+t = this.ease(easeName, t)
+}
+
+return this.interpolate(property, start, end, t)
+
   }
 
-  //Convenience to get the values of all properties at a given time stamp
+  // Convenience to get the values of all properties at a given time stamp
   values(time, out) {
     if (!out) {
       out = {}
