@@ -19,11 +19,23 @@ export default class USBManager {
     // USBPort
     this.port = null
 
+    this.devices = null
+
     // @TODO: Move ALL OF THIS into it's own module
     const driver = new ArduinoLeonardoETHDriver(this.port, {})
     // Create the output by using the driver and set the amount of universes that are controlled by this interface
     // DmxOutput
     this.output = fivetwelve.default(driver, 1)
+
+    // Check for USB devices that are already paired
+    this.serial.getPorts().then(list => {
+
+      if (list[0] !== undefined && list[0].hasOwnProperty('device')) {
+        this.port = list[0]
+        this.connect()
+      }
+
+    })
   }
 
 
@@ -31,10 +43,6 @@ export default class USBManager {
    * Enable WebUSB and request a USBPort
    */
   enable() {
-    console.log(this.serial.getPorts().then(list => {
-      console.log(list)
-    }))
-
     this.serial.requestPort().then(selectedPort => {
 
       this.port = selectedPort
