@@ -14,10 +14,6 @@ WebUSB WebUSBSerial(1, "localhost:1337");
 // https://sourceforge.net/p/dmxlibraryforar/wiki/DMX%20Master/
 DMX_Master dmx_master(channels , 2);
 
-// Amount of incoming bytes via WebUSB
-// Array of bytes
-byte incoming[channels];
-
 
 // Run once on startup
 void setup() {
@@ -49,9 +45,9 @@ void setup() {
 // Run over and over again
 void loop() {
 
-  // // Amount of incoming bytes via WebUSB
-  // // Array of bytes
-  // byte incoming[channels];
+  // Amount of incoming bytes via WebUSB
+  // Array of bytes
+  byte incoming[channels];
 
   // WebUSB is available
   if (Serial.available() > 0) {
