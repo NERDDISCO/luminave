@@ -63,6 +63,10 @@ class AppContent extends PolymerElement {
     this.render.start(this.config.getConfig().global.fps)
 
     this.deviceManager.reset()
+
+
+    console.log(this.deviceManager.list)
+
     this.dmxList = [...this.deviceManager.list].map((e, i) => {
       const [key, value] = e
 
@@ -74,13 +78,13 @@ class AppContent extends PolymerElement {
         instance: value.instance,
         type: value.type,
         params: Object.keys(value.instance.params).map(x => ({
- param: x,
-channels: value.instance.params[x].channels
-}))
+          param: x,
+          channels: value.instance.params[x].channels
+        }))
       }
-    }).
-    // Dummy filter to show only ledspots
-    filter(item => item.id.match('fungeneration'))
+    })
+    // Dummy filter to show LED PAR
+    // filter(item => item.id.match('fungeneration'))
 
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
   }

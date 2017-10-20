@@ -568,35 +568,11 @@ export default {
     }],
   'devices': {
     'dmx': [{
-        'deviceId': 'cameo_pixbar_1',
-        'type': 'CameoPixBar600PRO',
-        'name': 'Cameo PixBar 600 PRO',
-        'universe': 1,
-        'address': 155,
-        'parts': [{
-          'type': 'led',
-          'partId': 'led1',
-          'x': 0,
-          'y': 0
-        }]
-      }, {
-        'deviceId': 'cameo_ledspot_1',
-        'type': 'CameoFlat1RGBW',
-        'name': 'Cameo Flat1 PAR RGBW',
-        'universe': 1,
-        'address': 25
-      }, {
-        'deviceId': 'cameo_ledspot_2',
-        'type': 'CameoFlat1RGBW',
-        'name': 'Cameo Flat1 PAR RGBW',
-        'universe': 1,
-        'address': 34
-      }, {
-        'deviceId': 'movinghead_1',
-        'type': 'MiniLed',
-        'name': 'Mini LED Moving head',
-        'universe': 1,
-        'address': 43
+      'deviceId': 'stairville_bowl_1',
+      'type': 'StairvilleBowlBeam604LEDCOBMovingHead',
+      'name': 'Stairville Bowl Beam 604 LED COB MovingHead',
+      'universe': 1,
+      'address': 13
       }, {
         'deviceId': 'fungeneration_ledspot_1',
         'type': 'FunGenerationSeParQuadLedRgbUv',
@@ -609,42 +585,13 @@ export default {
         'name': 'Fun Generation SePar Quad LED RGB UV',
         'universe': 1,
         'address': 7
-      }, {
-        'deviceId': 'fungeneration_ledspot_3',
-        'type': 'FunGenerationSeParQuadLedRgbUv',
-        'name': 'Fun Generation SePar Quad LED RGB UV',
-        'universe': 1,
-        'address': 13
-      }, {
-        'deviceId': 'fungeneration_ledspot_4',
-        'type': 'FunGenerationSeParQuadLedRgbUv',
-        'name': 'Fun Generation SePar Quad LED RGB UV',
-        'universe': 1,
-        'address': 19
-      }, {
-        'deviceId': 'bubblemaschine_1',
-        'type': 'EuroliteB100',
-        'name': 'Eurolite B-100',
-        'universe': 1,
-        'address': 256
-      }, {
-        'deviceId': 'cameo_laser',
-        'type': 'CameoWookie200RGY',
-        'name': 'Cameo Wookie 200 RGY',
-        'universe': 1,
-        'address': 257
-      }, {
+      },
+       {
         'deviceId': 'fogmaschine',
         'type': 'StairvilleAF150',
         'name': 'Stairville AF-150',
         'universe': 1,
-        'address': 350
-      }, {
-        'deviceId': 'adj_planet',
-        'type': 'AdjStarburst',
-        'name': 'ADJ Starburst',
-        'universe': 1,
-        'address': 360
+        'address': 46
       }],
     'midi': [{
       'name': 'nanoPAD2',

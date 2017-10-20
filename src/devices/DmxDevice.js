@@ -6,6 +6,7 @@ import AdjStarburst from './dmx/AdjStarburst.js'
 import FunGenerationSeParQuadLedRgbUv from './dmx/FunGenerationSeParQuadLedRgbUv.js'
 import MiniLed from './dmx/MiniLed.js'
 import StairvilleAF150 from './dmx/StairvilleAF150.js'
+import StairvilleBowlBeam604LEDCOBMovingHead from './dmx/StairvilleBowlBeam604LEDCOBMovingHead.js'
 import EuroliteB100 from './dmx/EuroliteB100.js'
 
 /**
@@ -29,12 +30,12 @@ export default class DmxDevice {
     this.deviceMapping = new Map()
     this.createMapping()
 
-    // The mapping exists
-    if (this.deviceMapping.get(this.type) !== undefined) {
-      // Create the instance of one specified device
-      this.instance = new(this.deviceMapping.get(this.type))(param)
+    // The mapping does not exist
+    if (this.deviceMapping.get(this.type) === undefined) {
+      throw new Error(`${this.type} is not defined in deviceMapping`)
     } else {
-      throw new Error(this.type + ' is not defined in deviceMapping')
+      // Create the instance of one specified device
+      this.instance = new (this.deviceMapping.get(this.type))(param)
     }
 
 
@@ -57,6 +58,7 @@ export default class DmxDevice {
     this.deviceMapping.set('FunGenerationSeParQuadLedRgbUv', FunGenerationSeParQuadLedRgbUv)
     this.deviceMapping.set('MiniLed', MiniLed)
     this.deviceMapping.set('StairvilleAF150', StairvilleAF150)
+    this.deviceMapping.set('StairvilleBowlBeam604LEDCOBMovingHead', StairvilleBowlBeam604LEDCOBMovingHead)
     this.deviceMapping.set('EuroliteB100', EuroliteB100)
   }
 }

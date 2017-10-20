@@ -36,6 +36,7 @@ export default class MidiController {
    * Handle "noteon" events
    */
   noteon(event) {
+    console.log(event)
 
     const { data } = event
     const [,
