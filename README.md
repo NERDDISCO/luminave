@@ -38,9 +38,7 @@ You need the following software in order to use VisionLord:
 * [node.js](https://nodejs.org/en/download/package-manager/) (for the dependencies)
 * [Arduino IDE](https://www.arduino.cc/en/Main/Software) (for uploading code to the Arduino)
 * Install the libraries from [arduino/libraries](arduino/libraries) into the [Arduino library folder](https://www.arduino.cc/en/Guide/Libraries#toc5)
-* Upgrade the Arduino IDE from USB 2.0 to 2.1 in [Step 3](https://github.com/webusb/arduino#getting-started):
-
-Go into the installation directory of your Arduino IDE and open `hardware/arduino/avr/cores/arduino/USBCore.h`. Then find the line `#define USB_VERSION 0x200` and change `0x200` to `0x210`.
+* Upgrade the Arduino IDE from USB 2.0 to 2.1 in [Step 3](https://github.com/webusb/arduino#getting-started): Go into the installation directory of your Arduino IDE and open `hardware/arduino/avr/cores/arduino/USBCore.h`. Then find the line `#define USB_VERSION 0x200` and change `0x200` to `0x210`.
 
 
 ### Dependencies
