@@ -263,6 +263,15 @@ The server is written in Go, so if you want to change the code you have to insta
 * Go into "server/" and excute `goreleaser --snapshot`
 * This will generate binaries for MacOS, Linux and Windows in 64bit
 
+
+---
+
+# WebUSB
+
+## Resources
+
+* https://speakerdeck.com/fadis/webusbdereiyagadi-maruwebkai-fa
+
 ---
 
 # Contributors

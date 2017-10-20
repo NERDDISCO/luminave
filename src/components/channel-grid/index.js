@@ -25,7 +25,6 @@ class ChannelGrid extends PolymerElement {
 
   connectedCallback() {
     super.connectedCallback()
-     console.log(this.list)
  }
 
   static get template() {

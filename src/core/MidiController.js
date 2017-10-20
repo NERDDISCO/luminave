@@ -44,7 +44,7 @@ export default class MidiController {
 
     // Mapping exists for this note
     if (this.elementMapping.get(note) === undefined) {
-      console.log('noteon', note)
+      console.log('noteon', note, velocity)
     } else {
       const eventData = {
         partId: this.elementMapping.get(note).partId,
@@ -55,16 +55,13 @@ export default class MidiController {
 
       // @TODO: Fix
       window.dispatchEvent(new CustomEvent('MidiController', { detail: eventData }))
-
-      // EventService.emit('MidiController', eventData)
-
     }
 
   }
 
   mapping() {
     // Create a mapping for the input elements of the controller
-    this.layout.parts.forEach((element, index, array) => {
+    this.layout.parts.forEach(element => {
       // MIDI note => partId
       this.elementMapping.set(element.note, element)
     })

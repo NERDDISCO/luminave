@@ -14,7 +14,7 @@ import DeviceManager from '/src/devices/DeviceManager.js'
 import AnimationManager from '/src/core/AnimationManager.js'
 import SceneManager from '/src/core/SceneManager.js'
 import Render from '/src/core/Render.js'
-import getConfig from '/src/core/GetConfig.js'
+import Configuration from '/src/core/Configuration.js'
 
 class AppContent extends PolymerElement {
 
@@ -24,44 +24,43 @@ class AppContent extends PolymerElement {
     this.connected = false
 
     this.storage = new StorageManager()
-    this.config = getConfig()
-    this.shit = 'testtest'
+    this.config = new Configuration()
 
-    this.usb = new USBManager({ config: this.config })
+    this.usb = new USBManager({ config: this.config.getConfig() })
     window.usbManager = this.usb
 
     // Manage connected MIDI devices
-    this.midiManager = new MidiManager({ config: this.config })
+    this.midiManager = new MidiManager({ config: this.config.getConfig() })
     // Expose it globally so we can use it in the console
-    Window.midiManager = this.midiManager
+    window.midiManager = this.midiManager
 
     this.deviceManager = new DeviceManager({
-      config: this.config,
+      config: this.config.getConfig(),
       output: this.usb.output
     })
     this.deviceManager.register()
 
     // Initialize all animations
     this.animationManager = new AnimationManager({
-      config: this.config,
+      config: this.config.getConfig(),
       deviceManager: this.deviceManager
     })
     this.animationManager.register()
 
     // Initialize all scenes
     this.sceneManager = new SceneManager({
-      config: this.config,
+      config: this.config.getConfig(),
       animationManager: this.animationManager
     })
     this.sceneManager.register()
 
     // Manage playback of all animations, scenes, timelines
     this.render = new Render({
-      config: this.config,
+      config: this.config.getConfig(),
       dmxUsbInterface: this.usb,
       sceneManager: this.sceneManager
     })
-    this.render.start(this.config.global.fps)
+    this.render.start(this.config.getConfig().global.fps)
 
     this.deviceManager.reset()
     this.dmxList = [...this.deviceManager.list].map((e, i) => {
@@ -136,7 +135,7 @@ channels: value.instance.params[x].channels
                           on-disconnect="handleDisconnect"></connect-button>
 
           <midi-manager class="two"
-                        config="{{config}}"></midi-manager>
+                        config="{{config.getConfig()}}"></midi-manager>
 
           <bpm-meter bpm="{{bpm}}"></bpm-meter>
           <tap-button class="one"
