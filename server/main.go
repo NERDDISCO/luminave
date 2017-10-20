@@ -22,9 +22,6 @@ func main() {
 		http.ServeFile(w, r, r.URL.Path[1:])
 	})
 
-	// HTTP
-	//log.Fatal(http.ListenAndServe(":8081", nil))
-
 	// HTTPS
 	log.Fatal(http.ListenAndServeTLS(":1337", "cert.pem", "key.pem", nil))
 }

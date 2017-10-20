@@ -41,3 +41,7 @@ jspm_packages
 
 # Certificates
 *.pem
+
+# Go Releases for the server
+server/dist/*.tar.gz
+server/dist/*_checksums.txt
