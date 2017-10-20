@@ -6,35 +6,43 @@ export default class StairvilleBowlBeam604LEDCOBMovingHead extends fivetwelve.Dm
       params: {
         pan: new fivetwelve.param.RangeParam(1, {
           min: 0,
-          max: 255,
-          rangeStart: 0,
-          rangeEnd: 255
+          max: 255
         }),
-        tilt: new fivetwelve.param.HiResParam(
-          [3, 4],
-          {
-            min: -115,
-            max: 90
-          }
-        ),
-        speed: new fivetwelve.param.RangeParam(5),
-        brightness: new fivetwelve.param.MultiRangeParam(6, {
-          default: {
-            range: [8, 134],
-            values: [1, 0]
-          },
-          strobe: {
-            range: [135, 239],
-            values: [0, 1]
-          }
+        panFine: new fivetwelve.param.RangeParam(2, {
+          min: 0,
+          max: 255
         }),
-        // strobe: new param.RangeParam(6, {rangeStart: 135, rangeEnd: 239}),
-        color: new fivetwelve.param.RgbParam([7, 8, 9])
-        // colorPreset: new fivetwelve.param.MappedParam(10, MiniLed.FIXED_COLORS),
-        // colorSpeed: new fivetwelve.param.RangeParam(11),
-        // left out here: movement macros
-        // gobo: new fivetwelve.param.MappedParam(13, MiniLed.GOBOS)
-        // left out: gobo-shake, gobo-wheel-rotate
+        tile: new fivetwelve.param.RangeParam(3, {
+          min: 0,
+          max: 255
+        }),
+        tileFine: new fivetwelve.param.RangeParam(4, {
+          min: 0,
+          max: 255
+        }),
+        panTilt: new fivetwelve.param.RangeParam(5, {
+          min: 0,
+          max: 255
+        }),
+        panEndless: new fivetwelve.param.RangeParam(6, {
+          min: 0,
+          max: 255
+        }),
+        tiltEndless: new fivetwelve.param.RangeParam(7, {
+          min: 0,
+          max: 255
+        })
+
+        // panTilt: new fivetwelve.param.MultiRangeParam(5, {
+        //   slowToFast: {
+        //     range: [0, 225],
+        //     values: [0, 225]
+        //   },
+        //   black: {
+        //     range: [226, 235],
+        //     values: [0, 1]
+        // }
+        // })
       }
     }))
   }

@@ -10,9 +10,11 @@ Show light manager for DMX512 shows.
 
 
 * Only works in a browser that supports ES6 modules & WebUSB (>= Chrome 61)
-* In order to use WebUSB (even on localhost), you need an HTTPS server
+* In order to use WebUSB (even on localhost), you need an [HTTPS server](#https-server)
 
 # Software
+
+You need the following software in order to use VisionLord:
 
 ## Browser
 
@@ -25,29 +27,36 @@ Show light manager for DMX512 shows.
   * chrome://flags/#enable-experimental-web-platform-features
   * chrome://flags/#enable-midi-manager-dynamic-instantiation
 
-### Chrome 63
+### Chrome 63+
 
 * Native support for WebUSB
 * Enable flag for WebMIDI
   * chrome://flags/#enable-midi-manager-dynamic-instantiation
 
-## Tools + IDE
+## node.js
 
-You need the following software in order to use VisionLord:
+To install the dependencies: [node.js](https://nodejs.org/en/download/package-manager/)
 
-* [node.js](https://nodejs.org/en/download/package-manager/) (for the dependencies)
-* [Arduino IDE](https://www.arduino.cc/en/Main/Software) (for uploading code to the Arduino)
-* Install the libraries from [arduino/libraries](arduino/libraries) into the [Arduino library folder](https://www.arduino.cc/en/Guide/Libraries#toc5)
-* Upgrade the Arduino IDE from USB 2.0 to 2.1 in [Step 3](https://github.com/webusb/arduino#getting-started): Go into the installation directory of your Arduino IDE and open `hardware/arduino/avr/cores/arduino/USBCore.h`. Then find the line `#define USB_VERSION 0x200` and change `0x200` to `0x210`.
+### npm Dependencies
 
-
-### Dependencies
-
-Execute the following command to install all dependencies (for example Polymer) into a `node_modules` folder:
+Execute the following command to install all dependencies (for example Polymer) into the `node_modules` folder:
 
 ```
 npm install
 ```
+
+## Arduino
+
+### Arduino IDE
+
+To develop Arduino Sketches in C++, push that code into the Arduino and run it: [Arduino IDE](https://www.arduino.cc/en/Main/Software)
+
+### Arduino Libraries
+
+Install the libraries from [arduino/libraries](arduino/libraries) into the [Arduino library folder](https://www.arduino.cc/en/Guide/Libraries#toc5)
+
+Then upgrade the Arduino IDE from USB 2.0 to 2.1: Go into the installation directory of your Arduino IDE and open `hardware/arduino/avr/cores/arduino/USBCore.h`. Then find the line `#define USB_VERSION 0x200` and change `0x200` to `0x210`. (@see [Step 3](https://github.com/webusb/arduino#getting-started))
+
 
 ## HTTPS server
 
