@@ -34,7 +34,6 @@ Show light manager for DMX512 shows.
 
 You need the following software in order to use VisionLord:
 
-* [go](https://golang.org/doc/install) (for the HTTPS server)
 * [node.js](https://nodejs.org/en/download/package-manager/) (for the dependencies)
 * [Arduino IDE](https://www.arduino.cc/en/Main/Software) (for uploading code to the Arduino)
 * Install the libraries from [arduino/libraries](arduino/libraries) [into the Arduino library folder](https://www.arduino.cc/en/Guide/Libraries#toc5)
@@ -48,13 +47,14 @@ Execute the following command to install all dependencies (for example Polymer) 
 npm install
 ```
 
-## Start HTTPS server
+## HTTPS server
 
 Start the local HTTPS server on https://localhost:1337:
 
 ```
 npm start
 ```
+
 
 ---
 
@@ -243,6 +243,24 @@ navigator.usb.requestDevice({
 * The ArduinoLeonardoETHDriver has a reference to the DMXPort
 
 
+---
+
+
+# Server
+
+Right now I'm using Go to provide a HTTPS server. You don't have to use Go in order to use VisionLord, you can use any server that can serve static HTML files over HTTPS.
+
+### Changes to the server
+
+The server is written in Go, so if you want to change the code you have to install [go](https://golang.org/doc/install)
+
+
+### Build a new version of the server
+
+* Install goreleaser
+* Go into "server/" and excute `goreleaser --snapshot`
+
+---
 
 # Contributors
 
