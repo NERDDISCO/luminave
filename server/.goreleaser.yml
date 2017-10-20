@@ -25,7 +25,7 @@ archive:
   # - Arch
   # - Arm (ARM version)
   # Default is `{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}`.
-  name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+  name_template: "{{ .Os }}_{{ .Arch }}"
 
 snapshot:
   # Allows you to change the name of the generated snapshot
@@ -34,4 +34,4 @@ snapshot:
   # - Tag
   # - Timestamp
   # Default is `SNAPSHOT-{{.Commit}}`.
-  name_template: 
+  name_template:
