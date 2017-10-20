@@ -10,6 +10,23 @@ builds:
       - amd64
 release:
   draft: true
+
+# Archive customization
+archive:
+  replacements:
+    darwin: macOS
+  # You can change the name of the archive.
+  # This is parsed with the Go template engine and the following variables
+  # are available:
+  # - ProjectName
+  # - Tag
+  # - Version (Git tag without `v` prefix)
+  # - Os
+  # - Arch
+  # - Arm (ARM version)
+  # Default is `{{ .ProjectName }}_{{ .Version }}_{{ .Os }}_{{ .Arch }}{{ if .Arm }}v{{ .Arm }}{{ end }}`.
+  name_template: "{{ .ProjectName }}_{{ .Os }}_{{ .Arch }}"
+
 snapshot:
   # Allows you to change the name of the generated snapshot
   # releases. The following variables are available:
@@ -17,4 +34,4 @@ snapshot:
   # - Tag
   # - Timestamp
   # Default is `SNAPSHOT-{{.Commit}}`.
-  name_template: SNAPSHOT-{{.Tag}}
+  name_template: 
