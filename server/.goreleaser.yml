@@ -10,3 +10,11 @@ builds:
       - amd64
 release:
   draft: true
+snapshot:
+  # Allows you to change the name of the generated snapshot
+  # releases. The following variables are available:
+  # - Commit
+  # - Tag
+  # - Timestamp
+  # Default is `SNAPSHOT-{{.Commit}}`.
+  name_template: SNAPSHOT-{{.Tag}}
