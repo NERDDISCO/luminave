@@ -1,16 +1,12 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { html } from '/node_modules/lit-html/lit-html.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
-import '../channel-item/index.js'
+import '../channel-input/index.js'
 
-class ChannelGrid extends PolymerElement {
+class DeviceList extends PolymerElement {
 
   constructor() {
     super()
-    this.array = [...Array(512).fill().map((x, i) => ({
-      channelId: i + 1,
-      id: 0,
-    }))]
   }
 
   ready() {
@@ -41,7 +37,6 @@ class ChannelGrid extends PolymerElement {
         channel-input {
           flex: 0 0 33.3%;
         }
-
         .view {
           background: var(--background);
           color: var(--color);
@@ -66,8 +61,14 @@ class ChannelGrid extends PolymerElement {
         }
       </style>
       <div class="flex view">
-        <template is="dom-repeat" items="{{ array }}" as="channel">
-          <channel-item channel$="{{channel.channelId}}"></channel-item>
+        <template is="dom-repeat" items="{{ list }}">
+          <span class="item-id">{{item.id}}</span>
+          <template is="dom-repeat" items="{{ item.params }}" as="param">
+            <span class="param">{{param.param}}</span>
+            <template is="dom-repeat" items="{{ param.channels }}" as="device">
+              <channel-input channel$="{{device}}" offset$="{{item.bufferOffset}}" on-update="handleUpdate"></channel-input>
+            </template>
+          </template>
         </template>
       </div>
     `
@@ -82,4 +83,4 @@ class ChannelGrid extends PolymerElement {
   }
 }
 
-customElements.define('channel-grid', ChannelGrid)
+customElements.define('device-list', DeviceList)
