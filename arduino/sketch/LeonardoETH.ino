@@ -24,8 +24,8 @@ void setup() {
   // @TODO: Why can I use everything without this?
   // Data rate in bits per second
   // https://www.arduino.cc/en/Serial/Begin
-  // nBytes (per message) * fps * bit (byte into bit conversion)
-  //Serial.begin(nBytes * 30 * 8);
+  // (bytes per message) * fps * bit (byte into bit conversion)
+  //Serial.begin(channels * 30 * 8);
   //Serial.begin(9600);
 
   // Write binary data to WebUSB
