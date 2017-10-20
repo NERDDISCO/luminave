@@ -56,9 +56,10 @@ export default class ArduinoLeonardoETHDriver {
     // @TODO: DEBUG
     // console.log('Arduino', buffer)
 
-    // Is serialport ready?
-    if (this.serialport !== null) {
-
+    // There is no serialport yet
+    if (this.serialport === null) {
+      console.error('🔥 NO SERIALPORT CONNECTED 🔥')
+    } else {
       this.serialport.send(buffer).
         then(result => {
         // USBOutTransferResult - { bytesWritten: 512, status: "ok" }
@@ -69,8 +70,6 @@ export default class ArduinoLeonardoETHDriver {
       }, error => {
         console.error(error)
       })
-    } else {
-      console.error('🔥 NO SERIALPORT 🔥')
     }
   }
 }
