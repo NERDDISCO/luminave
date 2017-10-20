@@ -1,0 +1,12 @@
+# .goreleaser.yml
+# Build customization
+builds:
+  - binary: visionlord-server
+    goos:
+      - windows
+      - darwin
+      - linux
+    goarch:
+      - amd64
+release:
+  draft: true
