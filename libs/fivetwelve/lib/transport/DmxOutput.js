@@ -20,9 +20,6 @@ export default class DmxOutput {
 
     this.dmxBuffers = [];
     this.dmxFrameCallbacks = [];
-
-    // prebind to `this` for easier usage in setTimeout
-    this.loop = this.loop.bind(this);
   }
 
   /**
@@ -89,22 +86,8 @@ export default class DmxOutput {
   }
 
   /**
-   * Starts the timer for sending data-frames.
-   * @param {Number} interval The number of frames per second with which data
-   *   will be handed over to the driver.
    */
-  start(interval) {
-    if (this.timer || !interval) {
-      return;
-    }
-
-    // only set the start-time the first time the system was started
-    if (!this.startTime) {
-      this.startTime = Date.now();
-    }
-    this.frameInterval = interval;
-    this.timer = setTimeout(this.loop, 0);
-    this.isRunning = true;
+  start() {
   }
 
   /**
@@ -112,17 +95,9 @@ export default class DmxOutput {
    * calling start().
    */
   stop() {
-    if (this.timer) {
-      clearTimeout(this.timer);
-    }
-
-    this.isRunning = false;
-    this.timer = this.frameInterval = null;
   }
 
   loop() {
-    const frameStartTime = Date.now();
-    const frameInterval = this.frameInterval;
 
     // invoke all requestDmxFrame callbacks
     if (this.dmxFrameCallbacks.length > 0) {

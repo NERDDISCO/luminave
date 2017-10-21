@@ -69,7 +69,7 @@ class AppContent extends PolymerElement {
       dmxUsbInterface: this.usb,
       sceneManager: this.sceneManager
     })
-    this.render.start(this.config.getConfig().global.fps)
+    // this.render.start(this.config.getConfig().global.fps)
 
     this.deviceManager.reset()
 
@@ -133,6 +133,9 @@ class AppContent extends PolymerElement {
     this.setState({
       timeCounter: now - time,
     })
+
+    this.render.run()
+
     requestAnimationFrame(this.setTime.bind(this))
   }
 
@@ -172,7 +175,7 @@ class AppContent extends PolymerElement {
 
   handleBluetoothConnect(e) {
     this.bluetooth.enable()
-    this.bluetoothConnected = 1
+    this.state.bluetoothConnected = true
   }
 
   handleBluetoothDisconnect(e) {
@@ -203,7 +206,7 @@ class AppContent extends PolymerElement {
           <connect-button connected="{{state.connected}}"
                           on-connect="handleConnect"
                           on-disconnect="handleDisconnect"></connect-button>
-          <connect-bluetooth-button connected="{{bluetoothConnected}}"
+          <connect-bluetooth-button connected="{{state.bluetoothConnected}}"
                           on-connect="handleBluetoothConnect"
                           on-disconnect="handleBluetoothDisconnect"></connect-bluetooth-button>
 

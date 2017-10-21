@@ -26,26 +26,20 @@ export default class Render {
     this.dmxUsbInterface.output.requestDmxFrame(time => this.loop(time))
 
     // Start the DMX output with the specified fps
-    this.dmxUsbInterface.output.start(1000 / fps)
+    this.dmxUsbInterface.output.start()
   }
 
-  loop(time) {
-    // Delta between the current call and the last time loop was called
-    this.delta = time - this.lastTime
-
+  run() {
     // terate over all scenes
     this.sceneManager.list.forEach(element => {
       // Run each scene
-      element.run(this.delta)
+      // element.run(this.delta)
+
+      // Call loop again
+      this.dmxUsbInterface.output.requestDmxFrame()
+
+      // Save the config with localStorage
+      this.configuration.sync()
     })
-
-    // Save the current time into lastTime so we can calculate the delta for the next call of loop
-    this.lastTime = time
-
-    // Call loop again
-    this.dmxUsbInterface.output.requestDmxFrame(this.loop.bind(this))
-
-    // Save the config with localStorage
-    this.configuration.sync()
   }
 }
