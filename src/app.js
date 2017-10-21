@@ -152,10 +152,8 @@ class AppContent extends PolymerElement {
     values.forEach(scene => {
       scene.children.forEach(layer => {
         layer.children.forEach(animation => {
-          Object.keys(animation.children).forEach(child => {
-
-            console.log(animation.children[child])
-
+          animation.children.forEach(prop => {
+            console.log(prop.children[0])
           })
         })
       })
@@ -174,11 +172,16 @@ class AppContent extends PolymerElement {
             id: layer.layerId,
             devices: layer.devices,
             children: layer.animations.map(animation => {
-              const progress = counter / this.state.measures * animation.duration
+              const progress = counter * this.state.measures / animation.duration
               const values = animation.timeline.values(progress)
               return {
                 id: animation.animationId,
-                children: values || []
+                children: Object.keys(values).map(key => {
+                  return {
+                    name: key,
+                    children: values[key]
+                  }
+                })
               }
             })
           }
