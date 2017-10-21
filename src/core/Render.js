@@ -18,17 +18,6 @@ export default class Render {
     this.lastTime = 0
   }
 
-  /*
-   * Start rendering all elements in "list" by using the desired fps
-   */
-  start(fps) {
-    // @TODO: Is this correct? Don't we need to just call loop?
-    this.dmxUsbInterface.output.requestDmxFrame(time => this.loop(time))
-
-    // Start the DMX output with the specified fps
-    this.dmxUsbInterface.output.start()
-  }
-
   run() {
     // terate over all scenes
     // this.sceneManager.list.forEach(element => {

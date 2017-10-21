@@ -97,6 +97,7 @@ class AppContent extends PolymerElement {
         id: key,
         channel: i,
         bufferOffset: value.instance.bufferOffset,
+        deviceId: value.instance.deviceId,
         type: value.type,
         params: Object.keys(value.instance.params).map(x => ({
           param: x,
@@ -110,7 +111,7 @@ class AppContent extends PolymerElement {
     })
 
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
-    console.log(this.scenesList)
+    // console.log(this.scenesList)
   }
 
   setState(newState) {
@@ -147,21 +148,37 @@ class AppContent extends PolymerElement {
 
   runTimeline(counter) {
     const values = this.getValues(counter)
+
+    values.forEach(scene => {
+      scene.children.forEach(layer => {
+        layer.children.forEach(animation => {
+          Object.keys(animation.children).forEach(child => {
+
+            console.log(animation.children[child])
+
+          })
+        })
+      })
+    })
+
+    // Render all DMX devices into a buffer
+    this.render.run()
   }
 
   getValues(counter) {
     const items = this.scenesList.map(scene => {
       return {
-        key: scene.key,
-        value: scene.value.layers.map(layer => {
+        id: scene.key,
+        children: scene.value.layers.map(layer => {
           return {
-            key: layer.layerId,
-            value: layer.animations.map(animation => {
+            id: layer.layerId,
+            devices: layer.devices,
+            children: layer.animations.map(animation => {
               const progress = counter / this.state.measures * animation.duration
               const values = animation.timeline.values(progress)
               return {
-                key: animation.animationId,
-                value: values
+                id: animation.animationId,
+                children: values || []
               }
             })
           }
@@ -169,8 +186,6 @@ class AppContent extends PolymerElement {
       }
     })
 
-    // Render all DMX devices into a buffer
-    this.render.run()
     return items
   }
 
