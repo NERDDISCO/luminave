@@ -3,6 +3,7 @@ import { html } from '/node_modules/lit-html/lit-html.js'
 import { render } from '/node_modules/lit-html/lib/lit-extended.js'
 import '/src/components/tap-button/index.js'
 import '/src/components/connect-button/index.js'
+import '/src/components/connect-bluetooth-button/index.js'
 import '/src/components/download-config-button/index.js'
 import '/src/components/bpm-meter/index.js'
 import '/src/components/channel-grid/index.js'
@@ -10,6 +11,7 @@ import '/src/components/device-list/index.js'
 import '/src/components/midi-manager/index.js'
 import '/src/components/timeline-item/index.js'
 
+import BluetoothManager from '/src/core/BluetoothManager.js'
 import USBManager from '/src/core/USBManager.js'
 import MidiManager from '/src/core/MidiManager.js'
 import StorageManager from '/src/core/StorageManager.js'
@@ -25,6 +27,7 @@ class AppContent extends PolymerElement {
     super()
     this.bpm = 0
     this.connected = 0
+    this.bluetoothConnected = 0
 
     this.storage = new StorageManager()
     this.configuration = new Configuration({
@@ -33,6 +36,8 @@ class AppContent extends PolymerElement {
     })
     this.config = this.configuration
     window.configuration = this.configuration
+
+    this.bluetooth = new BluetoothManager({ configuration: this.configuration })
 
     this.usb = new USBManager({ configuration: this.configuration })
     window.usbManager = this.usb
@@ -110,7 +115,7 @@ class AppContent extends PolymerElement {
       const usbDriver = event.detail
 
       // Connection status for USB DMX controller
-      this.configuration.getConfig().dmxInterface.connected = usbDriver.connected
+      this.configuration.data.dmxInterface.connected = usbDriver.connected
       this.connectionStatus(usbDriver.connected)
     })
   }
@@ -134,9 +139,17 @@ class AppContent extends PolymerElement {
 
   handleUpdate(e) {
     const { value, channelId } = e.detail
-
     this.usb.update(channelId, value)
   }
+
+  handleBluetoothConnect(e) {
+    this.bluetooth.enable()
+    this.bluetoothConnected = 1
+  }
+
+  handleBluetoothDisconnect(e) {
+  }
+
 
   handleDownload(e) {
     console.log(window.configuration.data)
@@ -162,6 +175,9 @@ class AppContent extends PolymerElement {
           <connect-button connected="{{connected}}"
                           on-connect="handleConnect"
                           on-disconnect="handleDisconnect"></connect-button>
+          <connect-bluetooth-button connected="{{bluetoothConnected}}"
+                          on-connect="handleBluetoothConnect"
+                          on-disconnect="handleBluetoothDisconnect"></connect-bluetooth-button>
 
           <download-config-button on-download="handleDownload"></download-config-button>
 
@@ -171,8 +187,8 @@ class AppContent extends PolymerElement {
           <bpm-meter bpm="{{bpm}}"></bpm-meter>
           <tap-button class="one"
                       on-tap="handleTap"
-                      delay="1000"
-                      items="3"
+                      delay="1500"
+                      items="2"
                       controllerId="korgnanopad2"
                       partId="button16"
                       ></tap-button>

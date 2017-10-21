@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 
-class ConnectButton extends PolymerElement {
+class ConnectBluetoothButton extends PolymerElement {
 
   constructor() {
     super()
@@ -12,14 +12,13 @@ class ConnectButton extends PolymerElement {
   handleClick(e) {
     if (this.connected){
       this.dispatchEvent(new CustomEvent('disconnect'))
-      this.dmxList
     } else {
       this.dispatchEvent(new CustomEvent('connect'))
     }
   }
 
   computeLabel(connected) {
-    return `USB ${connected ? '☀️' : '⛈'}`
+    return `Bluetooth ${connected ? '☀️' : '⛈'}`
   }
 
   computeVars(connected) {
@@ -71,4 +70,4 @@ class ConnectButton extends PolymerElement {
   }
 }
 
-customElements.define('connect-button', ConnectButton)
+customElements.define('connect-bluetooth-button', ConnectBluetoothButton)

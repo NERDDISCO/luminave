@@ -63,8 +63,6 @@ export default class ArduinoLeonardoETHDriver {
    * @private
    */
   write(buffer) {
-    // @TODO: DEBUG
-    // console.log('Arduino', buffer)
     return new Promise((resolve, reject) => {
       // Serialport is not connected
       if (this.serialport === null) {
