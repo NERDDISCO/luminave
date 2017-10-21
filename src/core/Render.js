@@ -31,7 +31,7 @@ export default class Render {
 
   run() {
     // terate over all scenes
-    this.sceneManager.list.forEach(element => {
+    // this.sceneManager.list.forEach(element => {
       // Run each scene
       // element.run(this.delta)
 
@@ -40,6 +40,6 @@ export default class Render {
 
       // Save the config with localStorage
       this.configuration.sync()
-    })
+    // })
   }
 }

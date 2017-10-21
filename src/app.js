@@ -144,6 +144,7 @@ class AppContent extends PolymerElement {
       })
     })
 
+    // Render all DMX devices into a buffer
     this.render.run()
 
     requestAnimationFrame(this.setTime.bind(this))

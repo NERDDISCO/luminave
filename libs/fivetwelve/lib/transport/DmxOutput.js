@@ -42,8 +42,8 @@ export default class DmxOutput {
    * @param {function(dt:Number)} callback A callback receiving the time since
    *   start() was called as argument.
    */
-  requestDmxFrame(callback) {
-    this.dmxFrameCallbacks.push(callback);
+  requestDmxFrame() {
+    return this.send()
   }
 
   /**
@@ -68,8 +68,6 @@ export default class DmxOutput {
    *     an immediately resolved promise if the driver doesn't return promises.
    */
   send() {
-    this.frameCount++;
-
     const results = this.dmxBuffers.map((buffer, index) => {
       if (!buffer) {
         return Promise.resolve();
@@ -83,49 +81,6 @@ export default class DmxOutput {
     }
 
     return Promise.resolve();
-  }
-
-  /**
-   */
-  start() {
-  }
-
-  /**
-   * Stops the timer for sending data-frames. Can always be started again by
-   * calling start().
-   */
-  stop() {
-  }
-
-  loop() {
-
-    // invoke all requestDmxFrame callbacks
-    if (this.dmxFrameCallbacks.length > 0) {
-      let dt = Date.now() - this.startTime,
-        callbacks = this.dmxFrameCallbacks;
-
-      // clear callbacks-list so callbacks can add new ones.
-      this.dmxFrameCallbacks = [];
-      callbacks.forEach(fn => fn(dt));
-    }
-
-    // send buffer and schedule next frame
-    this.send().then(() => {
-      const frameDuration = Date.now() - frameStartTime;
-
-      if (!this.isRunning) {
-        return;
-      }
-
-      if (frameDuration > frameInterval) {
-        console.log(`Skipped frame ${this.frameCount}`);
-      }
-
-      // the `frameDuration % frameInterval` makes sure that a skipped frame
-      // is just dropped instead of trying to be as fast as possible
-      this.timer = setTimeout(this.loop,
-        frameInterval - (frameDuration % frameInterval));
-    });
   }
 
   initUniverse(index) {
