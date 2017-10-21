@@ -54,9 +54,11 @@ export default class Animation {
           this.devices.forEach(element => {
 
             this.deviceManager.get(element).then(device => {
-              console.log(device)
 
               if (this.values.hasOwnProperty('color')) {
+
+                console.log(this.values.color)
+
                 const color = new Color(this.values.color).toString()
 
                 device.color = color
