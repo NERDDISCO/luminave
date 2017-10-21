@@ -11,10 +11,25 @@ class ConnectButton extends PolymerElement {
 
   handleClick(e) {
     if (this.connected){
-      this.dispatchEvent(new CustomEvent('disconnect', { detail: { connected: false } }))
+      this.dispatchEvent(new CustomEvent('disconnect'))
+      this.dmxList
     } else {
-      this.dispatchEvent(new CustomEvent('connect', { detail: { connected: true } }))
+      this.dispatchEvent(new CustomEvent('connect'))
     }
+  }
+
+  computeLabel(connected) {
+    return connected ? '☀️' : '⛈'
+  }
+
+  computeVars(connected) {
+    const vars = {
+      '--on': connected ? 1 : 0,
+      '--off': connected ? 0 : 1
+    }
+    return Object.keys(vars).map(key => {
+      return [key, vars[key]].join(':')
+    } ).join(';')
   }
 
   static get template() {
@@ -22,7 +37,7 @@ class ConnectButton extends PolymerElement {
         <style>
         button {
 
-          --background: hsla(120, 40%, 20%, var(--connected));
+          --background: rgba(calc(var(--off) * 150), calc(var(--on) * 150), 0, 1);
           /*--color: hsla(120, 40%, 60%, var(--connected));*/
 
             box-sizing: border-box;
@@ -43,15 +58,15 @@ class ConnectButton extends PolymerElement {
         button:focus {
           outline: 0;
           --color: var(--focus-color);
-          --background: var(--focus-background);
+          /* --background: var(--focus-background); */
         }
 
         button:active {
           --background: var(--background-darker);
-          --color: var(--color-lighter);
+          /* --color: var(--color-lighter); */
         }
       </style>
-      <button on-click="handleClick" style="--connected: [[connected]]">{{label}}</button>
+      <button on-click="handleClick" style="[[computeVars(connected)]]">[[computeLabel(connected)]]</button>
     `
   }
 }

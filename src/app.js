@@ -24,7 +24,7 @@ class AppContent extends PolymerElement {
   constructor() {
     super()
     this.bpm = 0
-    this.connected = false
+    this.connected = 0
 
     this.storage = new StorageManager()
     this.configuration = new Configuration({
@@ -94,10 +94,12 @@ class AppContent extends PolymerElement {
     })
 
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
-
-    this.listen()
   }
 
+  connectedCallback() {
+    super.connectedCallback()
+    this.listen()
+  }
 
   ready() {
     super.ready()
@@ -109,14 +111,12 @@ class AppContent extends PolymerElement {
 
       // Connection status for USB DMX controller
       this.configuration.getConfig().dmxInterface.connected = usbDriver.connected
-      this.connectionStatus(usbDriver.connected ? 1 : 0)
+      this.connectionStatus(usbDriver.connected)
     })
   }
 
   connectionStatus(status) {
     this.connected = status
-
-    this.label = `USB ${status ? '☀️' : '⛈'}`
   }
 
   handleTap(e) {
@@ -160,7 +160,6 @@ class AppContent extends PolymerElement {
     <div class="flex" style="--bpm: {{bpm}}">
         <section class="left">
           <connect-button connected="{{connected}}"
-                          label="{{label}}"
                           on-connect="handleConnect"
                           on-disconnect="handleDisconnect"></connect-button>
 
