@@ -30,7 +30,7 @@ export default class ArduinoLeonardoETHDriver {
 
 
     if (!usbProUniverse) {
-      return Promise.resolve()
+      return Promise.reject(new Error('No USB universum found'))
     }
 
     return this.sendPacket(buffer)
@@ -55,22 +55,18 @@ export default class ArduinoLeonardoETHDriver {
   write(buffer) {
     // @TODO: DEBUG
     // console.log('Arduino', buffer)
-
-    // There is no serialport yet
-    if (this.serialport === null) {
-      console.error('🔥 NO SERIALPORT CONNECTED 🔥')
-    } else {
-      this.serialport.send(buffer).
-        then(result => {
+    return new Promise((resolve, reject) => {
+      if (this.serialport === null) {
+        return reject(new Error('🔥 NO SERIALPORT CONNECTED 🔥'))
+      }
+      return this.serialport.send(buffer).then(result => {
         // USBOutTransferResult - { bytesWritten: 512, status: "ok" }
-        // console.log('out', result)
-        if (result.status !== 'ok') {
-          console.error(result.status, result.data)
+        if (result.status === 'ok') {
+          return resolve(result.data)
         }
-      }, error => {
-        console.error(error)
-        Promise.resolve()
-      })
-    }
+        return reject(new Error(`Status not "ok". Instead recieved status "${result.status}"`))
+      }).catch(reject)
+    })
+    // There is no serialport yet
   }
 }

@@ -5,7 +5,9 @@ import '/src/components/tap-button/index.js'
 import '/src/components/connect-button/index.js'
 import '/src/components/bpm-meter/index.js'
 import '/src/components/channel-grid/index.js'
+import '/src/components/device-list/index.js'
 import '/src/components/midi-manager/index.js'
+import '/src/components/timeline-item/index.js'
 
 import USBManager from '/src/core/USBManager.js'
 import MidiManager from '/src/core/MidiManager.js'
@@ -68,6 +70,7 @@ class AppContent extends PolymerElement {
 
     this.deviceManager.reset()
 
+
     this.dmxList = [...this.deviceManager.list].map((e, i) => {
       const [key, value] = e
 
@@ -75,8 +78,6 @@ class AppContent extends PolymerElement {
         id: key,
         channel: i,
         bufferOffset: value.instance.bufferOffset,
-        deviceMapping: [...value.deviceMapping].map(e => e[1]),
-        instance: value.instance,
         type: value.type,
         params: Object.keys(value.instance.params).map(x => ({
           param: x,
@@ -84,8 +85,10 @@ class AppContent extends PolymerElement {
         }))
       }
     })
-    // Dummy filter to show LED PAR
-    // filter(item => item.id.match('fungeneration'))
+    this.scenesList = [...this.sceneManager.list].map((e, i) => {
+      const [key, value] = e
+      return key
+    })
 
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
   }
@@ -111,9 +114,8 @@ class AppContent extends PolymerElement {
     this.usb.port = null
   }
 
-  handleGrid(e) {
+  handleUpdate(e) {
     const { value, channelId } = e.detail
-    console.log('value:', value, 'channelId:', channelId)
 
     this.usb.update(channelId, value)
   }
@@ -150,8 +152,10 @@ class AppContent extends PolymerElement {
 
         </section>
         <section class="right">
-          <channel-grid on-update="handleGrid"
-                        list="{{dmxList}}"></channel-grid>
+          <timeline-item scenes="{{scenesList}}"></timeline-item>
+          <channel-grid></channel-grid>
+          <device-list on-update="handleUpdate"
+                       list="{{dmxList}}"></device-list>
         </section>
     </div>
     `
