@@ -104,6 +104,7 @@ class AppContent extends PolymerElement {
     })
 
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
+    console.log(this.scenesList)
   }
 
   setState(newState) {
@@ -125,13 +126,22 @@ class AppContent extends PolymerElement {
   setTime(){
     const {time, bpm, measures, duration} = this.state
     const now = new Date()
+    const timeCounter = (now - time) / duration
     if (now - time > duration) {
       this.setState({
         time: now,
       })
     }
     this.setState({
-      timeCounter: now - time,
+      timeCounter
+    })
+    this.scenesList.forEach(scene => {
+      scene.value.layers.forEach(layer => {
+        layer.animations.forEach(animation => {
+          const progress = timeCounter / this.state.measures * animation.duration
+          const values = animation.timeline.values(progress)
+        })
+      })
     })
     requestAnimationFrame(this.setTime.bind(this))
   }

@@ -32,13 +32,31 @@ class TimelineItem extends PolymerElement {
     this.addItem(e.target)
   }
 
-  getProgress(time, duration) {
-    return time / duration
+  getTime(time, duration) {
+    return time * duration
   }
 
-   getActive(time, duration, measures) {
-    const activeTime = duration / this.measureCount * measures
-    return  time < activeTime ? 1 : 0
+  isActive(time, measures) {
+    const localDuration = 1 / this.measureCount * measures
+    return  time < localDuration ? 'active' : ''
+  }
+
+  isActiveFrame(time, measures, frameTime, frames, i) {
+    const localDuration = 1 / this.measureCount * measures
+    const end = this.getEnd(measures, frameTime, frames, i)
+    return time > (frameTime * localDuration) ? time < (end * localDuration) ? 'active' : '' : ''
+  }
+
+  getEnd(measures, frameTime, frames, i) {
+    const localDuration = 1 / this.measureCount * measures
+    const nextFrame = frames[i + 1]
+    const end = i < (frames.length - 1) ? nextFrame.time : frameTime
+    return end
+  }
+
+  getWidth(start, measures, frameTime, frames, i) {
+    const end = this.getEnd(measures, frameTime, frames, i)
+    return end - start
   }
 
   static get template() {
@@ -46,7 +64,7 @@ class TimelineItem extends PolymerElement {
      <style>
       :host {
         font-family: monospace;
-        --progress: {{getProgress(time, duration)}};
+        --progress: {{time}};
       }
 
       *, *::before, *::after {
@@ -63,9 +81,11 @@ class TimelineItem extends PolymerElement {
       }
 
       .progress {
-        position: relative;
-        height: 2em;
-        margin-left: 20em;
+        position: absolute;
+        top: 0;
+        right: 0;
+        bottom: 0;
+        left: 20em;
         box-shadow: inset 0 0 0 1px;
       }
 
@@ -127,42 +147,53 @@ class TimelineItem extends PolymerElement {
       .keyframe {
         position: absolute;
         z-index: 2;
-        top: 0.5em;
+        top: 50%;
         bottom: 0;
-        left: calc(var(--time) * 100%);
+        border-radius: 2px;
+        left: calc(var(--start) * 100%);
         height: 3em;
-        width: 3em;
-        border-radius: 50%;
-        transform: translateX(-50%);
+        width: calc((var(--end) - var(--start)) * 100%);
+        transform: translate(0, -50%);
+        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.6);
         cursor: pointer;
+        background: currentcolor;
+        color: rgba(150, 0, 0, 0.5);
       }
+
+      .keyframe.active {
+        color: rgba(0, 150, 0, 0.5);
+      }
+
       .keyframe::before {
         content: '';
         position: absolute;
         top: 50%;
-        left: 50%;
-        width: 5px;
-        height: 5px;
+        left: 0%;
+        width: 1em;
+        height: 1em;
         border-radius: 50%;
         transform: translate(-50%, -50%);
         background: currentcolor;
+        box-shadow: 0 0 0 0.5em rgba(0, 0, 0, 0.3);
       }
       .keyframe:hover {
         z-index: 4;
       }
 
-      .keyframe:hover .keyframe-label,
-      .keyframe:hover .keyframe-value {
+      .keyframe:hover .keyframe-label {
         display: block;
       }
 
       .keyframe-label {
         display: none;
         position: absolute;
-        top: 0;
-        left: 1em;
+        bottom: 1em;
+        left: 2em;
         padding: 0.25em 0.5em;
-        background: rgba(0, 0, 0, 0.3);
+        background: #fff;
+        color: #000;
+        border-radius: 2px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4), 0 4px 7px rgba(0, 0, 0, 0.6);
       }
 
       .animation-timeline {
@@ -171,7 +202,11 @@ class TimelineItem extends PolymerElement {
         height: 6em;
         box-shadow: inset 0 0 0 1px;
         width: calc(var(--duration) / {{measureCount}} * 100%);
-        background: rgba(calc(var(--active) * 100), calc(var(--active) * 100), 0, 0.3);
+        background: rgba(0, 0, 0, 0.4);
+      }
+
+      .animation-timeline.active {
+        background: rgba(150, 150, 0, 0.4);
       }
       .animations {
         position: relative;
@@ -209,7 +244,7 @@ class TimelineItem extends PolymerElement {
     </style>
     <div class="item">
       <div class="scenes">
-        <div>{{time}} / {{duration}}</div>
+        <div>{{getTime(time, duration)}}</div>
         <div class="progress">
           <div class="needle"></div>
         </div>
@@ -229,10 +264,12 @@ class TimelineItem extends PolymerElement {
                   <template is="dom-repeat" items="{{ layer.animations }}" as="animation">
                     <h3 class="animation-id">{{animation.animationId}}</h3>
                     <template is="dom-repeat" items="{{ animation.timeline.data }}" as="timeline">
-                      <div class="animation-timeline" style="--duration: {{animation.duration}}; --active: {{getActive(time, duration, animation.duration)}}">
+                      <div class$="animation-timeline {{isActive(time, animation.duration)}}"
+                           style$="--duration: {{animation.duration}};">
                         <h3 class="timeline-name">{{timeline.name}}</h3>
-                        <template is="dom-repeat" items="{{timeline.keyframes }}" as="keyframe">
-                          <div class="keyframe" style="--time: {{keyframe.time}}">
+                        <template is="dom-repeat" items="{{timeline.keyframes}}" as="keyframe">
+                          <div class$="keyframe {{isActiveFrame(time, animation.duration, keyframe.time, timeline.keyframes, index)}}"
+                               style$="--start: {{keyframe.time}}; --end: {{getEnd(animation.duration, keyframe.time, timeline.keyframes, index)}}">
                             <div class="keyframe-label">
                             {{timeline.name}}
                             <br/>
