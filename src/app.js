@@ -25,10 +25,6 @@ class AppContent extends PolymerElement {
 
   constructor() {
     super()
-    this.bpm = 0
-    this.connected = 0
-    this.bluetoothConnected = 0
-
     this.storage = new StorageManager()
     this.configuration = new Configuration({
       storage: this.storage,
@@ -77,6 +73,16 @@ class AppContent extends PolymerElement {
 
     this.deviceManager.reset()
 
+    const bpm = this.configuration.getConfig().global.bpm || 120
+    const measures = 8
+    this.state = {
+      bpm: bpm,
+      measures,
+      connected: false,
+      bluetoothConnected: false,
+      time: new Date(),
+      duration: ~~(60 / bpm * 1000 * measures)
+    }
 
     this.dmxList = [...this.deviceManager.list].map((e, i) => {
       const [key, value] = e
@@ -94,16 +100,40 @@ class AppContent extends PolymerElement {
     })
     this.scenesList = [...this.sceneManager.list].map((e, i) => {
       const [key, value] = e
-      console.log(value)
       return {key, value}
     })
 
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
   }
 
+  setState(newState) {
+    if (typeof this.state === 'object') {
+      Promise.resolve().then(()=> {
+        this.state = {...(this.state), ...newState}
+      })
+    } else {
+      throw new Error('no state is available. Please make sure to define an initital state in your constructor')
+    }
+  }
+
   connectedCallback() {
     super.connectedCallback()
     this.listen()
+    this.setTime()
+  }
+
+  setTime(){
+    const {time, bpm, measures, duration} = this.state
+    const now = new Date()
+    if (now - time > duration) {
+      this.setState({
+        time: now,
+      })
+    }
+    this.setState({
+      timeCounter: now - time,
+    })
+    requestAnimationFrame(this.setTime.bind(this))
   }
 
   ready() {
@@ -112,20 +142,18 @@ class AppContent extends PolymerElement {
 
   listen() {
     window.addEventListener('USBDriver', event => {
-      const usbDriver = event.detail
-
+      const {connected} = event.detail
       // Connection status for USB DMX controller
-      this.configuration.data.dmxInterface.connected = usbDriver.connected
-      this.connectionStatus(usbDriver.connected)
+      this.configuration.getConfig().dmxInterface.connected = connected
+      this.setState({connected})
     })
   }
 
-  connectionStatus(status) {
-    this.connected = status
-  }
-
   handleTap(e) {
-    this.bpm = e.detail.bpm
+    const {bpm} = e.detail
+    const duration = ~~(60 / bpm * 1000 * this.state.measures)
+    this.configuration.data.global.bpm = bpm
+    this.setState({bpm, duration})
   }
 
   handleConnect(e) {
@@ -170,9 +198,9 @@ class AppContent extends PolymerElement {
         flex: 1 1 20em;
       }
     </style>
-    <div class="flex" style="--bpm: {{bpm}}">
+    <div class="flex" style="--bpm: {{state.bpm}}">
         <section class="left">
-          <connect-button connected="{{connected}}"
+          <connect-button connected="{{state.connected}}"
                           on-connect="handleConnect"
                           on-disconnect="handleDisconnect"></connect-button>
           <connect-bluetooth-button connected="{{bluetoothConnected}}"
@@ -184,7 +212,7 @@ class AppContent extends PolymerElement {
           <!-- <midi-manager class="two"
                         config="{{config.getConfig()}}"></midi-manager>-->
 
-          <bpm-meter bpm="{{bpm}}"></bpm-meter>
+          <bpm-meter bpm="{{state.bpm}}"></bpm-meter>
           <tap-button class="one"
                       on-tap="handleTap"
                       delay="1500"
@@ -195,7 +223,11 @@ class AppContent extends PolymerElement {
 
         </section>
         <section class="right">
-          <timeline-item scenes="{{scenesList}}"></timeline-item>
+          <timeline-item scenes="{{scenesList}}"
+                         time="{{state.timeCounter}}"
+                         duration="{{state.duration}}"
+                         bpm="{{state.bpm}}"
+                         measure$="{{state.measures}}"></timeline-item>
           <!-- <channel-grid></channel-grid> -->
           <device-list on-update="handleUpdate"
                        list="{{dmxList}}"></device-list>
