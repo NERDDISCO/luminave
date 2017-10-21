@@ -57,15 +57,18 @@ export default class ArduinoLeonardoETHDriver {
     // console.log('Arduino', buffer)
     return new Promise((resolve, reject) => {
       if (this.serialport === null) {
-        return reject(new Error('🔥 NO SERIALPORT CONNECTED 🔥'))
+        console.error(new Error('🔥 NO SERIALPORT CONNECTED 🔥'))
       }
       return this.serialport.send(buffer).then(result => {
         // USBOutTransferResult - { bytesWritten: 512, status: "ok" }
-        if (result.status === 'ok') {
-          return resolve(result.data)
+        if (result.status !== 'ok') {
+          console.error(new Error(`Status not "ok". Instead recieved status "${result.status}"`))
         }
-        return reject(new Error(`Status not "ok". Instead recieved status "${result.status}"`))
-      }).catch(reject)
+        return resolve(result.data)
+      }).catch(error => {
+        console.error(error)
+        return resolve()
+      })
     })
     // There is no serialport yet
   }
