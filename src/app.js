@@ -157,7 +157,7 @@ class AppContent extends PolymerElement {
         flex: 1 1 20em;
       }
     </style>
-    <div class="flex">
+    <div class="flex" style="--bpm: {{bpm}}">
         <section class="left">
           <connect-button connected="{{connected}}"
                           label="{{label}}"
