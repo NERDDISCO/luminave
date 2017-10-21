@@ -1,5 +1,5 @@
 export default class StorageManager {
-  constructor(param) {
+  constructor() {
     this.storage = window.localStorage
   }
 

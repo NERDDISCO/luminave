@@ -24,7 +24,10 @@ class AppContent extends PolymerElement {
     this.connected = false
 
     this.storage = new StorageManager()
-    this.config = new Configuration()
+    this.config = new Configuration({
+      storage: this.storage,
+      restore: false
+    })
 
     this.usb = new USBManager({ config: this.config.getConfig() })
     window.usbManager = this.usb
@@ -56,16 +59,13 @@ class AppContent extends PolymerElement {
 
     // Manage playback of all animations, scenes, timelines
     this.render = new Render({
-      config: this.config.getConfig(),
+      config: this.config,
       dmxUsbInterface: this.usb,
       sceneManager: this.sceneManager
     })
     this.render.start(this.config.getConfig().global.fps)
 
     this.deviceManager.reset()
-
-
-    console.log(this.deviceManager.list)
 
     this.dmxList = [...this.deviceManager.list].map((e, i) => {
       const [key, value] = e

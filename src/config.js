@@ -350,7 +350,7 @@ export default {
       },
       'layers': [{
         'layerId': 'layer1',
-        'devices': ['fungeneration_ledspot_2'],
+        'devices': ['fungeneration_ledspot_1'],
         'animations': [{
           'start': 0,
           'animationId': 'yellow'
@@ -365,7 +365,7 @@ export default {
       },
       'layers': [{
         'layerId': 'layer1',
-        'devices': ['fungeneration_ledspot_3'],
+        'devices': ['fungeneration_ledspot_2'],
         'animations': [{
           'start': 0,
           'animationId': 'blue'

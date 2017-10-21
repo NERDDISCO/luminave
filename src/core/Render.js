@@ -3,7 +3,9 @@
  */
 export default class Render {
   constructor(param) {
-    this.config = param.config
+    this.config = param.config.getConfig()
+    this.configuration = param.config
+
     this.dmxUsbInterface = param.dmxUsbInterface
 
     // Reference to all scenes
@@ -21,7 +23,7 @@ export default class Render {
    */
   start(fps) {
     // @TODO: Is this correct? Don't we need to just call loop?
-    this.dmxUsbInterface.output.requestDmxFrame(this.loop.bind(this))
+    this.dmxUsbInterface.output.requestDmxFrame(time => this.loop(time))
 
     // Start the DMX output with the specified fps
     this.dmxUsbInterface.output.start(1000 / fps)
@@ -31,8 +33,8 @@ export default class Render {
     // Delta between the current call and the last time loop was called
     this.delta = time - this.lastTime
 
-    // Iterate over all scenes
-    this.sceneManager.list.forEach((element, key) => {
+    // terate over all scenes
+    this.sceneManager.list.forEach(element => {
       // Run each scene
       element.run(this.delta)
     })
@@ -42,5 +44,8 @@ export default class Render {
 
     // Call loop again
     this.dmxUsbInterface.output.requestDmxFrame(this.loop.bind(this))
+
+    // Save the config
+    this.configuration.save()
   }
 }

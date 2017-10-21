@@ -13,9 +13,9 @@ export default class DeviceManager {
   register() {
 
     // Initialize all dmx devices
-    this.config.devices.dmx.forEach((element, index, array) => {
+    this.config.devices.dmx.forEach(element => {
 
-      let device = new DmxDevice({
+      const device = new DmxDevice({
         type: element.type,
         output: this.output,
         universe: element.universe,
@@ -50,11 +50,19 @@ export default class DeviceManager {
   }
 
   get(deviceId) {
-    return this.list.get(deviceId).instance
+    return new Promise((resolve, reject) => {
+      if (this.list.get(deviceId) === undefined) {
+        reject(new Error(`device ${deviceId} is not connected`))
+      } else {
+        resolve(this.list.get(deviceId).instance)
+      }
+    })
+
+
   }
 
   reset() {
-    this.list.forEach((element, key, map) => {
+    this.list.forEach(element => {
 
       if (typeof element.reset === 'function') {
         element.reset()

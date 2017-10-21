@@ -1,10 +1,11 @@
-import Param from './DmxParam.js';
-import Color from '../util/Color.js';
+import Param from './DmxParam.js'
+import Color from '../util/Color.js'
 
 /**
  * RGB-Params are used to control a color-mixing-unit of a light-fixture.
  */
 export default class RgbParam extends Param {
+
   /**
    * Create a new RGB-Param.
    * @param {Array.<Number>} channels The assigned DMX-channels within the
@@ -13,20 +14,20 @@ export default class RgbParam extends Param {
    *   device.
    */
   constructor(channels, format = RgbParam.RGB) {
-    super(channels);
+    super(channels)
 
-    this.color = new Color(0, 0, 0);
-    this.format = format;
+    this.color = new Color(0, 0, 0)
+    this.format = format
   }
 
 
   setValue(device, color) {
-    this.color.set(color);
+    this.color.set(color)
 
-    let colorData = this.format === RgbParam.RGB ?
-        this.color.rgb : this.color.cmy;
-    for (var i = 0; i < 3; i++) {
-      device.setChannelValue(this.channels[i], colorData[i]);
+    const colorData = this.format === RgbParam.RGB
+        ? this.color.rgb : this.color.cmy
+    for (let i = 0; i < 3; i++) {
+      device.setChannelValue(this.channels[i], colorData[i])
     }
   }
 
@@ -34,24 +35,24 @@ export default class RgbParam extends Param {
   getValue(device) {
     // make sure color is initialized
     if (!this.color) {
-      this.color = new Color();
+      this.color = new Color()
     }
 
-    let channelValues = [
-      device.getChannelValue(this.channels[0]),
+    const channelValues = [device.getChannelValue(this.channels[0]),
       device.getChannelValue(this.channels[1]),
-      device.getChannelValue(this.channels[2])
-    ];
+      device.getChannelValue(this.channels[2])]
 
     if (this.format === RgbParam.RGB) {
-      this.color.rgb = channelValues;
+      this.color.rgb = channelValues
     } else if (this.format === RgbParam.CMY) {
-      this.color.cmy = channelValues;
+      this.color.cmy = channelValues
     }
 
-    return this.color;
+    console.log(this.color.rgb)
+
+    return this.color
   }
 }
 
-RgbParam.RGB = Symbol('RGB');
-RgbParam.CMY = Symbol('CMY');
+RgbParam.RGB = Symbol('RGB')
+RgbParam.CMY = Symbol('CMY')

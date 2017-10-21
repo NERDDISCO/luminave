@@ -31,6 +31,55 @@ export default class StairvilleBowlBeam604LEDCOBMovingHead extends fivetwelve.Dm
         tiltEndless: new fivetwelve.param.RangeParam(7, {
           min: 0,
           max: 255
+        }),
+        color: new fivetwelve.param.RgbParam([8, 9, 10]),
+        white: new fivetwelve.param.RangeParam(11, {
+          min: 0,
+          max: 255
+        }),
+        strobe: new fivetwelve.param.RangeParam(12, {
+          min: 0,
+          max: 255
+        }),
+        dimmer: new fivetwelve.param.RangeParam(13, {
+          min: 0,
+          max: 255
+        }),
+        colorMix: new fivetwelve.param.RangeParam(14, {
+          min: 0,
+          max: 255
+        }),
+        colorStatic: new fivetwelve.param.RangeParam(15, {
+          min: 0,
+          max: 255
+        }),
+        colorStaticDimmer: new fivetwelve.param.RangeParam(16, {
+          min: 0,
+          max: 255
+        }),
+        reset: new fivetwelve.param.RangeParam(17, {
+          min: 0,
+          max: 255
+        }),
+        ambient1Color: new fivetwelve.param.RgbParam([18, 19, 20]),
+        ambient2Color: new fivetwelve.param.RgbParam([21, 22, 23]),
+        ambient3Color: new fivetwelve.param.RgbParam([24, 25, 26]),
+        ambient4Color: new fivetwelve.param.RgbParam([27, 28, 29]),
+        ambientStrobe: new fivetwelve.param.RangeParam(30, {
+          min: 0,
+          max: 255
+        }),
+        ambientDimmer: new fivetwelve.param.RangeParam(31, {
+          min: 0,
+          max: 255
+        }),
+        ambientAutomatic: new fivetwelve.param.RangeParam(32, {
+          min: 0,
+          max: 255
+        }),
+        ambientAutomaticSpeed: new fivetwelve.param.RangeParam(33, {
+          min: 0,
+          max: 255
         })
 
         // panTilt: new fivetwelve.param.MultiRangeParam(5, {
