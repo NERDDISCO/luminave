@@ -23,8 +23,10 @@ class AppContent extends PolymerElement {
 
   constructor() {
     super()
-    this.bpm = 0
-    this.connected = 0
+    this.state = {
+      bpm: 0,
+      connected: false,
+    }
 
     this.storage = new StorageManager()
     this.configuration = new Configuration({
@@ -96,6 +98,14 @@ class AppContent extends PolymerElement {
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
   }
 
+  setState(newState) {
+    if (typeof this.state === 'object') {
+      this.state = {...(this.state), ...newState}
+    } else {
+      throw new Error('no state is available. Please make sure to define an initital state in your constructor')
+    }
+  }
+
   connectedCallback() {
     super.connectedCallback()
     this.listen()
@@ -115,12 +125,14 @@ class AppContent extends PolymerElement {
     })
   }
 
-  connectionStatus(status) {
-    this.connected = status
+  connectionStatus(connected) {
+    this.setState({connected})
   }
 
   handleTap(e) {
-    this.bpm = e.detail.bpm
+    this.setState({
+      bpm:  e.detail.bpm
+    })
   }
 
   handleConnect(e) {
@@ -157,9 +169,9 @@ class AppContent extends PolymerElement {
         flex: 1 1 20em;
       }
     </style>
-    <div class="flex" style="--bpm: {{bpm}}">
+    <div class="flex" style="--bpm: {{state.bpm}}">
         <section class="left">
-          <connect-button connected="{{connected}}"
+          <connect-button connected="{{state.connected}}"
                           on-connect="handleConnect"
                           on-disconnect="handleDisconnect"></connect-button>
 
@@ -168,7 +180,7 @@ class AppContent extends PolymerElement {
           <!-- <midi-manager class="two"
                         config="{{config.getConfig()}}"></midi-manager>-->
 
-          <bpm-meter bpm="{{bpm}}"></bpm-meter>
+          <bpm-meter bpm="{{state.bpm}}"></bpm-meter>
           <tap-button class="one"
                       on-tap="handleTap"
                       delay="1000"
