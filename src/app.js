@@ -115,7 +115,6 @@ class AppContent extends PolymerElement {
 
   connectionStatus(status) {
     this.connected = status
-
     this.label = `USB ${status ? '☀️' : '⛈'}`
   }
 
@@ -173,7 +172,10 @@ class AppContent extends PolymerElement {
           <tap-button class="one"
                       on-tap="handleTap"
                       delay="1000"
-                      items="3"></tap-button>
+                      items="3"
+                      controllerId="korgnanopad2"
+                      partId="button16"
+                      ></tap-button>
 
         </section>
         <section class="right">

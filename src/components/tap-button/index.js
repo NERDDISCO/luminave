@@ -2,7 +2,7 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 
 /**
  * The tap button renders a button to manually set the bpm.
- * It waits for a given number of positions. 
+ * It waits for a given number of positions.
  */
 export class TapButton extends PolymerElement {
   constructor() {
@@ -21,11 +21,18 @@ export class TapButton extends PolymerElement {
   ready() {
     super.ready()
     this.options = {
-      delay: this.attributes.delay || {value: 2000},
-      items: this.attributes.items || {value: 4}
+      delay: this.attributes.delay || { value: 2000 },
+      items: this.attributes.items || { value: 4 },
+      controllerId: this.attributes.controllerId || { value: '' },
+      partId: this.attributes.partId || { value: '' }
     }
+
     this.delay = this.options.delay.value
     this.items = this.options.items.value
+    this.controllerId = this.options.controllerId.value
+    this.partId = this.options.partId.value
+
+    this.listen()
   }
 
   handleClick() {
@@ -34,6 +41,11 @@ export class TapButton extends PolymerElement {
       this.ticking = false
       this.arr = []
     }, this.delay)
+
+    this.run()
+  }
+
+  run() {
     this.date.then = this.date.now
     this.date.now = new Date()
     this.diff = this.date.now - this.date.then
@@ -50,6 +62,27 @@ export class TapButton extends PolymerElement {
     } else {
       this.ticking = true
     }
+  }
+
+  /*
+   * Listen to events to start this Scene.
+   *
+   * @TODO: Does this make any sense at this position / class?
+   */
+  listen() {
+
+    window.addEventListener('MidiController', event => {
+      const data = event.detail
+
+      // Only allow the MIDI controller that was attachted to this scene
+      if (data.controllerId === this.controllerId) {
+
+        // Only allow a specific input element (button or knob) from the MIDI controller
+        if (data.partId === this.partId) {
+          this.run()
+        }
+      }
+    })
   }
 
   static get template() {
@@ -93,4 +126,3 @@ export class TapButton extends PolymerElement {
 }
 
 customElements.define('tap-button', TapButton)
-

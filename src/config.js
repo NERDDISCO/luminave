@@ -4,7 +4,8 @@ export default {
     'fps': 60,
     'dimmer': 255,
     'color': [0, 255, 0],
-    'useModV': true
+    'useModV': true,
+    'bpm': 0
   },
   'dmxInterface': {
     'universeAmount': 1,
@@ -506,21 +507,6 @@ export default {
         'animations': [{
           'start': 0,
           'animationId': 'whateverwall'
-        }]
-      }]
-    }, {
-      'sceneId': 'scene8',
-      'name': 'This is my awesome second scene',
-      'midi': {
-        'controllerId': 'korgnanopad2',
-        'partId': 'button16'
-      },
-      'layers': [{
-        'layerId': 'layer1',
-        'devices': ['fogmaschine'],
-        'animations': [{
-          'start': 0,
-          'animationId': 'fogfogfog'
         }]
       }]
     }, {
