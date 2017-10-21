@@ -87,7 +87,8 @@ class AppContent extends PolymerElement {
     })
     this.scenesList = [...this.sceneManager.list].map((e, i) => {
       const [key, value] = e
-      return key
+      console.log(value)
+      return {key, value}
     })
 
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
@@ -103,13 +104,13 @@ class AppContent extends PolymerElement {
   }
 
   handleConnect(e) {
-    this.connected = e.detail.connected
+    this.connected = true
 
     this.usb.enable()
   }
 
   handleDisconnect(e) {
-    this.connected = e.detail.connected
+    this.connected = false
     this.usb.port.disconnect()
     this.usb.port = null
   }
