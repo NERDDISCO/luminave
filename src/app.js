@@ -157,7 +157,8 @@ class AppContent extends PolymerElement {
 
 
           animation.children.forEach(prop => {
-            console.log(prop.children[0])
+            const [r, g, b] = prop.children
+            console.log(`${prop.name} (${layer.devices.join(', ')}): rgb(${~~(r)}, ${~~(g)}, ${~~(b)})`)
           })
         })
       })
