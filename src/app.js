@@ -89,7 +89,8 @@ class AppContent extends PolymerElement {
     })
     this.scenesList = [...this.sceneManager.list].map((e, i) => {
       const [key, value] = e
-      return key
+      console.log(value)
+      return {key, value}
     })
 
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)

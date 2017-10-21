@@ -26,7 +26,7 @@ export default {
   'log': { 'separator': '-------------------------------' },
   'animations': [{
       'animationId': 'greenwall',
-      'duration': 64,
+      'duration': 1,
       'name': 'This is DnB',
       'timeline': [{
         'name': 'color',
@@ -36,13 +36,13 @@ export default {
           'value': [0, 255, 0],
           'modV': true
           }, {
-           'time': 64,
+           'time': 1,
            'value': [0, 0, 0]
          }]
       }]
     }, {
       'animationId': 'whateverwall',
-      'duration': 64,
+      'duration': 1,
       'name': 'This is DnB',
       'timeline': [{
           'name': 'color',
@@ -52,11 +52,11 @@ export default {
             'value': [255, 255, 255],
             'modV': false
           }, {
-            'time': 48,
+            'time': 0.75,
             'value': [255, 255, 255],
             'modV': false
           }, {
-            'time': 64,
+            'time': 1,
             'value': [0, 0, 0]
           }]
         }, {
@@ -67,13 +67,13 @@ export default {
             'value': 255,
             'modV': false
           }, {
-            'time': 64,
+            'time': 1,
             'value': 0
           }]
         }]
     }, {
       'animationId': 'yellow',
-      'duration': 128,
+      'duration': 2,
       'name': 'yellow',
       'timeline': [{
         'name': 'color',
@@ -83,13 +83,13 @@ export default {
           'value': [255, 234, 0],
           'modV': true
         }, {
-          'time': 128,
+          'time': 1,
           'value': [0, 0, 0]
         }]
       }]
     }, {
       'animationId': 'green',
-      'duration': 128,
+      'duration': 2,
       'name': 'Single color',
       'timeline': [{
         'name': 'color',
@@ -99,13 +99,13 @@ export default {
           'value': [0, 255, 0],
           'modV': true
         }, {
-          'time': 128,
+          'time': 1,
           'value': [0, 0, 0]
         }]
       }]
     }, {
       'animationId': 'blue',
-      'duration': 128,
+      'duration': 2,
       'name': 'Single color',
       'timeline': [{
         'name': 'color',
@@ -115,13 +115,13 @@ export default {
           'value': [0, 0, 255],
           'modv': true
         }, {
-          'time': 128,
+          'time': 1,
           'value': [0, 0, 0]
         }]
       }]
     }, {
       'animationId': 'purple',
-      'duration': 128,
+      'duration': 2,
       'name': 'Single color',
       'timeline': [{
         'name': 'color',
@@ -131,13 +131,13 @@ export default {
           'value': [255, 0, 255],
           'modv': true
         }, {
-          'time': 128,
+          'time': 1,
           'value': [0, 0, 0]
         }]
       }]
     }, {
       'animationId': 'allthelight',
-      'duration': 384,
+      'duration': 3,
       'name': 'This is a funny animation',
       'timeline': [{
           'name': 'color',
@@ -147,7 +147,7 @@ export default {
           'value': [255, 0, 0],
           'modv': true
         }, {
-          'time': 384,
+          'time': 1,
           'value': [0, 0, 0]
         }]
         }, {
@@ -157,13 +157,13 @@ export default {
           'time': 0,
           'value': 'on'
         }, {
-          'time': 384,
+          'time': 1,
           'value': 'off'
         }]
         }]
     }, {
       'animationId': 'uvbaby',
-      'duration': 128,
+      'duration': 2,
       'name': 'This is a funny animation',
       'timeline': [{
           'name': 'uv',
@@ -173,10 +173,10 @@ export default {
           'value': 255,
           'modv': false
         }, {
-          'time': 64,
+          'time': 0.5,
           'value': 255
         }, {
-          'time': 128,
+          'time': 1,
           'value': 0
         }]
         }, {
@@ -186,13 +186,13 @@ export default {
           'time': 0,
           'value': 'on'
         }, {
-          'time': 800,
+          'time': 1,
           'value': 'off'
         }]
         }]
     }, {
       'animationId': 'clockwise',
-      'duration': 600,
+      'duration': 4,
       'name': 'Starburst running clockwise',
       'timeline': [{
           'name': 'color',
@@ -202,11 +202,11 @@ export default {
           'value': [255, 0, 0],
           'modv': true
         }, {
-          'time': 400,
+          'time': 0.6,
           'value': [255, 0, 0],
           'modv': true
         }, {
-          'time': 600,
+          'time': 1,
           'value': [0, 0, 0]
         }]
         }, {
@@ -217,7 +217,7 @@ export default {
           'value': 255,
           'modv': false
         }, {
-          'time': 600,
+          'time': 1,
           'value': 0
         }]
         }, {
@@ -227,7 +227,7 @@ export default {
           'time': 0,
           'value': 'clockwise(20)'
         }, {
-          'time': 600,
+          'time': 1,
           'value': 'stop'
         }]
         }, {
@@ -237,13 +237,13 @@ export default {
           'time': 0,
           'value': 'on'
         }, {
-          'time': 600,
+          'time': 1,
           'value': 'off'
         }]
         }]
     }, {
       'animationId': 'counterClockwise',
-      'duration': 600,
+      'duration': 4,
       'name': 'Starburst running counter-clockwise',
       'timeline': [{
           'name': 'color',
@@ -253,11 +253,11 @@ export default {
           'value': [255, 0, 255],
           'modv': true
         }, {
-          'time': 400,
+          'time': 0.6,
           'value': [255, 0, 255],
           'modv': true
         }, {
-          'time': 600,
+          'time': 1,
           'value': [0, 0, 0]
         }]
         }, {
@@ -268,7 +268,7 @@ export default {
           'value': 255,
           'modv': false
         }, {
-          'time': 600,
+          'time': 1,
           'value': 0
         }]
         }, {
@@ -278,7 +278,7 @@ export default {
           'time': 0,
           'value': 'counterClockwise(20)'
         }, {
-          'time': 600,
+          'time': 1,
           'value': 'stop'
         }]
         }, {
@@ -288,13 +288,13 @@ export default {
           'time': 0,
           'value': 'on'
         }, {
-          'time': 600,
+          'time': 1,
           'value': 'off'
         }]
         }]
     }, {
       'animationId': 'fogfogfog',
-      'duration': 5000,
+      'duration': 8,
       'name': 'This is a funny animation',
       'timeline': [{
         'name': 'amount',
@@ -303,16 +303,16 @@ export default {
           'time': 0,
           'value': 255
         }, {
-          'time': 4500,
+          'time': 0.8,
           'value': 255
         }, {
-          'time': 5000,
+          'time': 1,
           'value': 0
         }]
       }]
     }, {
       'animationId': 'bubblebubblebubble',
-      'duration': 5000,
+      'duration': 8,
       'name': 'This is a funny animation',
       'timeline': [{
           'name': 'motor',
@@ -321,10 +321,10 @@ export default {
           'time': 0,
           'value': 'on'
         }, {
-          'time': 4500,
+          'time': 0.8,
           'value': 'on'
         }, {
-          'time': 5000,
+          'time': 1,
           'value': 'off'
         }]
         }, {
@@ -334,10 +334,10 @@ export default {
           'time': 0,
           'value': 'on'
         }, {
-          'time': 4500,
+          'time': 0.8,
           'value': 'on'
         }, {
-          'time': 5000,
+          'time': 1,
           'value': 'off'
         }]
         }]

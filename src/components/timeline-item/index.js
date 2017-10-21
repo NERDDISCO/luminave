@@ -5,7 +5,8 @@ class TimelineItem extends PolymerElement {
 
   constructor() {
     super()
-    this.measures = [...Array(1).fill().map(x => {
+    this.measrureCount = 8
+    this.measures = [...Array(this.measrureCount).fill().map(x => {
       const steps = [...Array(4).fill().map(x => x)]
       return {
         steps
@@ -36,9 +37,12 @@ class TimelineItem extends PolymerElement {
           font-family: monospace;
       }
 
+      *, *::before, *::after {
+        box-sizing: border-box;
+      }
+
       .timeline {
         display: flex;
-        position: relative;
         position: absolute;
         top: 0;
         right: 0;
@@ -48,20 +52,19 @@ class TimelineItem extends PolymerElement {
 
       .step {
         position: relative;
-        border-right: 1px solid;
+        box-shadow: inset 0 0 0 1px;
         flex: 1;
         z-index: 1;
-        background: rgba(0, 0, 0, 0.1);
+        background: rgba(0, 0, 0, 0.5);
         cursor: pointer;
+        opacity: 0.1;
       }
 
       .step:hover {
-        background: rgba(0, 0, 0, 0.5);
+        opacity: 0.8;
       }
 
       .item {
-        display: flex;
-        flex-direction: column;
         position: relative;
       }
 
@@ -77,11 +80,100 @@ class TimelineItem extends PolymerElement {
 
       .scene {
         display: flex;
+        box-shadow: inset 0 0 0 1px;
       }
 
       .scene-label {
-        width: 200px;
-        padding: 2em 0.5em;
+        width: 20em;
+        height: 2em;
+        padding-left: 0.5em;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        align-self: flex-start;
+        box-shadow: inset 0 0 0 1px;
+      }
+
+      .keyframe {
+        position: absolute;
+        z-index: 2;
+        top: 0.5em;
+        bottom: 0;
+        left: calc(var(--time) * 100%);
+        height: 3em;
+        width: 3em;
+        border-radius: 50%;
+        transform: translateX(-50%);
+        cursor: pointer;
+      }
+      .keyframe::before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 5px;
+        height: 5px;
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+        background: currentcolor;
+      }
+      .keyframe:hover {
+        z-index: 4;
+      }
+
+      .keyframe:hover .keyframe-label,
+      .keyframe:hover .keyframe-value {
+        display: block;
+      }
+
+      .keyframe-label {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 1em;
+        padding: 0.25em 0.5em;
+        background: rgba(0, 0, 0, 0.3);
+      }
+
+      .animation-timeline {
+        position: relative;
+        display: flex;
+        height: 6em;
+        box-shadow: inset 0 0 0 1px;
+        width: calc(var(--duration) / {{measrureCount}} * 100%);
+        background: rgba(0, 0, 0, 0.3);
+      }
+      .animations {
+        position: relative;
+      }
+      .animation-id {
+        position: absolute;
+        margin: 0;
+        height: 2em;
+        top: 2em;
+        padding-left: 0.5em;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        width: 18em;
+        font-size: 1em;
+        right: 100%;
+        box-shadow: inset 0 0 0 1px;
+      }
+
+      .timeline-name {
+        position: absolute;
+        margin: 0;
+        bottom: 0;
+        height: 2em;
+        padding-left: 0.5em;
+        display: flex;
+        align-items: center;
+        align-content: center;
+        width: 16em;
+        font-size: 1em;
+        right: 100%;
+        box-shadow: inset 0 0 0 1px;
       }
 
     </style>
@@ -89,15 +181,36 @@ class TimelineItem extends PolymerElement {
       <div class="scenes">
         <template is="dom-repeat" items="{{ scenes }}" as="scene">
           <div class="scene">
-            <label class="scene-label">{{scene}}</label>
+            <label class="scene-label">{{scene.key}}</label>
             <div class="bar">
-             <div class="timeline">
+              <div class="timeline">
                 <template is="dom-repeat" items="{{ measures }}" as="measure">
                   <template is="dom-repeat" items="{{ measure.steps }}" as="step">
-                    <span class="step" on-click="handleClick"></span>
+                    <div class="step" on-click="handleClick"></div>
                   </template>
                 </template>
               </div>
+              <template is="dom-repeat" items="{{ scene.value.layers }}" as="layer">
+                <div class="animations">
+                  <template is="dom-repeat" items="{{ layer.animations }}" as="animation">
+                    <h3 class="animation-id">{{animation.animationId}}</h3>
+                    <template is="dom-repeat" items="{{ animation.timeline.data }}" as="timeline">
+                      <div class="animation-timeline" style="--duration: {{animation.duration}}">
+                        <h3 class="timeline-name">{{timeline.name}}</h3>
+                        <template is="dom-repeat" items="{{timeline.keyframes }}" as="keyframe">
+                          <div class="keyframe" style="--time: {{keyframe.time}}">
+                            <div class="keyframe-label">
+                            {{timeline.name}}
+                            <br/>
+                            {{keyframe.value}}
+                            </div>
+                          </div>
+                        </template>
+                      </div>
+                    </template>
+                  </template>
+                </div>
+              </template>
             </div>
           </div>
         </template>
