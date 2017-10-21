@@ -35,6 +35,8 @@ export default class ArduinoLeonardoETHDriver {
       return Promise.reject(new Error('No USB universum found'))
     }
 
+    window.dispatchEvent(new CustomEvent('USBDriver', { detail: this }))
+
     return this.sendPacket(buffer)
   }
 

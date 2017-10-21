@@ -45,7 +45,7 @@ export default class Render {
     // Call loop again
     this.dmxUsbInterface.output.requestDmxFrame(this.loop.bind(this))
 
-    // Save the config
-    this.configuration.save()
+    // Save the config with localStorage
+    this.configuration.sync()
   }
 }

@@ -22,7 +22,7 @@ export default class MidiManager {
       } else {
         // MIDI input / output ports (from a single device) are connected to the computer
         WebMidi.addListener('connected', event => {
-          console.log(event.hasOwnProperty('input') ? 'input' : 'output', 'port for device', event.name, 'was added')
+          console.log('Added', event.name, 'as', event.hasOwnProperty('input') ? 'input' : 'output')
         })
 
         // Web MIDI is enabled

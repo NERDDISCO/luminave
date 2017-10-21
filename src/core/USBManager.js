@@ -8,7 +8,8 @@ import ArduinoLeonardoETHDriver from '/src/devices/dmx/driver/ArduinoLeonardoETH
 export default class USBManager {
   constructor(param) {
 
-    this.config = param.config
+    this.configuration = param.configuration
+    this.config = this.configuration.getConfig()
 
     // List of MIDI controller
     this.list = new Map()
@@ -23,6 +24,7 @@ export default class USBManager {
 
     // @TODO: Move ALL OF THIS into it's own module
     const driver = new ArduinoLeonardoETHDriver(this.port, {})
+
     // Create the output by using the driver and set the amount of universes that are controlled by this interface
     // DmxOutput
     this.output = fivetwelve.default(driver, 1)
@@ -36,6 +38,8 @@ export default class USBManager {
       }
 
     })
+
+    // this.listen()
   }
 
 
@@ -88,8 +92,22 @@ export default class USBManager {
     // @TODO: Fix for multiple universes
     this.output.getBuffer(1)[channel] = value
 
+    window.configuration.data.dmxInterface.buffer = this.output.getBuffer(1)
+
     // @TODO: Remove after debugging
     console.log(this.output.getBuffer(1))
+  }
+
+  /*
+   * Listen to events from USBDriver
+   */
+  listen() {
+    window.addEventListener('USBDriver', event => {
+      const usbDriver = event.detail
+
+      // Connection status for USB DMX controller
+      window.configuration.data.dmxInterface.connected = usbDriver.connected
+    })
   }
 
 }

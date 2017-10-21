@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 
-class ConnectButton extends PolymerElement {
+class DownloadConfigButton extends PolymerElement {
 
   constructor() {
     super()
@@ -10,11 +10,7 @@ class ConnectButton extends PolymerElement {
   }
 
   handleClick(e) {
-    if (this.connected){
-      this.dispatchEvent(new CustomEvent('disconnect', { detail: { connected: false } }))
-    } else {
-      this.dispatchEvent(new CustomEvent('connect', { detail: { connected: true } }))
-    }
+    this.dispatchEvent(new CustomEvent('download', { detail: { e } }))
   }
 
   static get template() {
@@ -51,9 +47,9 @@ class ConnectButton extends PolymerElement {
           --color: var(--color-lighter);
         }
       </style>
-      <button on-click="handleClick" style="--connected: [[connected]]">{{label}}</button>
+      <button on-click="handleClick">Config</button>
     `
   }
 }
 
-customElements.define('connect-button', ConnectButton)
+customElements.define('download-config-button', DownloadConfigButton)

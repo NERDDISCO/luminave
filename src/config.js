@@ -8,8 +8,10 @@ export default {
   },
   'dmxInterface': {
     'universeAmount': 1,
-    'driver': 'fivetwelve-driver-usbpro/es5',
-    'serialport': { 'path': '/dev/cu.usbserial-EN193448' }
+    'driver': 'ArduinoLeonardoETHDriver',
+    'connected': false,
+    'serialport': { 'path': '/dev/cu.usbserial-EN193448' },
+    'buffer': ''
   },
   'server': {
     'port': 3000,

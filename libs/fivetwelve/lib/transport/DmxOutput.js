@@ -143,7 +143,7 @@ export default class DmxOutput {
       }
 
       if (frameDuration > frameInterval) {
-        console.error(`skipped frame ${this.frameCount}`);
+        console.log(`Skipped frame ${this.frameCount}`);
       }
 
       // the `frameDuration % frameInterval` makes sure that a skipped frame
