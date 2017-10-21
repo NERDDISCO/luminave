@@ -7,6 +7,7 @@ import '/src/components/bpm-meter/index.js'
 import '/src/components/channel-grid/index.js'
 import '/src/components/device-list/index.js'
 import '/src/components/midi-manager/index.js'
+import '/src/components/timeline-item/index.js'
 
 import USBManager from '/src/core/USBManager.js'
 import MidiManager from '/src/core/MidiManager.js'
@@ -68,6 +69,7 @@ class AppContent extends PolymerElement {
 
     this.deviceManager.reset()
 
+
     this.dmxList = [...this.deviceManager.list].map((e, i) => {
       const [key, value] = e
 
@@ -81,6 +83,10 @@ class AppContent extends PolymerElement {
           channels: value.instance.params[x].channels
         }))
       }
+    })
+    this.scenesList = [...this.sceneManager.list].map((e, i) => {
+      const [key, value] = e
+      return key
     })
 
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
@@ -109,7 +115,6 @@ class AppContent extends PolymerElement {
 
   handleUpdate(e) {
     const { value, channelId } = e.detail
-    console.log('value:', value, 'channelId:', channelId)
 
     this.usb.update(channelId, value)
   }
@@ -146,6 +151,7 @@ class AppContent extends PolymerElement {
 
         </section>
         <section class="right">
+          <timeline-item scenes="{{scenesList}}"></timeline-item>
           <channel-grid></channel-grid>
           <device-list on-update="handleUpdate"
                        list="{{dmxList}}"></device-list>
