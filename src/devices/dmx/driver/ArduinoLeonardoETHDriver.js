@@ -15,6 +15,8 @@ export default class ArduinoLeonardoETHDriver {
   constructor(serialport, options = {}) {
     this.serialport = serialport
 
+    this.connected = false
+
     this.options = Object.assign({}, DEFAULT_OPTIONS, options)
   }
 
@@ -43,7 +45,13 @@ export default class ArduinoLeonardoETHDriver {
    * @private
    */
   sendPacket(data) {
-    return this.write(data)
+    return this.write(data).then(result => {
+      this.connected = true
+      return Promise.resolve()
+    }).catch(error => {
+      this.connected = false
+      return Promise.resolve()
+    })
   }
 
   /**
@@ -56,19 +64,20 @@ export default class ArduinoLeonardoETHDriver {
     // @TODO: DEBUG
     // console.log('Arduino', buffer)
     return new Promise((resolve, reject) => {
+      // Serialport is not connected
       if (this.serialport === null) {
-        console.error(new Error('🔥 NO SERIALPORT CONNECTED 🔥'))
+        return reject(new Error('🔥 NO SERIALPORT CONNECTED 🔥'))
       }
+
       return this.serialport.send(buffer).then(result => {
         // USBOutTransferResult - { bytesWritten: 512, status: "ok" }
-        if (result.status !== 'ok') {
-          console.error(new Error(`Status not "ok". Instead recieved status "${result.status}"`))
+        if (result.status === 'ok') {
+          return resolve(result.data)
         }
-        return resolve(result.data)
-      }).catch(error => {
-        console.error(error)
-        return resolve()
-      })
+
+        return reject(new Error(`Status not "ok". Instead recieved status "${result.status}"`))
+
+      }).catch(reject)
     })
     // There is no serialport yet
   }

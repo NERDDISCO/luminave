@@ -153,7 +153,7 @@ class AppContent extends PolymerElement {
         </section>
         <section class="right">
           <timeline-item scenes="{{scenesList}}"></timeline-item>
-          <channel-grid></channel-grid>
+          <!-- <channel-grid></channel-grid> -->
           <device-list on-update="handleUpdate"
                        list="{{dmxList}}"></device-list>
         </section>
