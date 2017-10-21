@@ -21,6 +21,12 @@ import SceneManager from '/src/core/SceneManager.js'
 import Render from '/src/core/Render.js'
 import Configuration from '/src/core/Configuration.js'
 
+function flatten(arr) {
+  return arr.reduce(function (flat, toFlatten) {
+    return flat.concat(Array.isArray(toFlatten) ? flatten(toFlatten) : toFlatten);
+  }, []);
+}
+
 class AppContent extends PolymerElement {
 
   constructor() {
@@ -135,19 +141,37 @@ class AppContent extends PolymerElement {
     this.setState({
       timeCounter
     })
-    this.scenesList.forEach(scene => {
-      scene.value.layers.forEach(layer => {
-        layer.animations.forEach(animation => {
-          const progress = timeCounter / this.state.measures * animation.duration
-          const values = animation.timeline.values(progress)
+    this.runTimeline(timeCounter)
+    requestAnimationFrame(this.setTime.bind(this))
+  }
+
+  runTimeline(counter) {
+    const values = this.getValues(counter)
+  }
+
+  getValues(counter) {
+    const items = this.scenesList.map(scene => {
+      return {
+        key: scene.key,
+        value: scene.value.layers.map(layer => {
+          return {
+            key: layer.layerId,
+            value: layer.animations.map(animation => {
+              const progress = counter / this.state.measures * animation.duration
+              const values = animation.timeline.values(progress)
+              return {
+                key: animation.animationId,
+                value: values
+              }
+            })
+          }
         })
-      })
+      }
     })
 
     // Render all DMX devices into a buffer
     this.render.run()
-
-    requestAnimationFrame(this.setTime.bind(this))
+    return items
   }
 
   ready() {
