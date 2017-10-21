@@ -24,10 +24,11 @@ class AppContent extends PolymerElement {
     this.connected = false
 
     this.storage = new StorageManager()
-    this.config = new Configuration({
+    this.configuration = new Configuration({
       storage: this.storage,
-      restore: false
+      restore: true
     })
+    this.config = this.configuration
 
     this.usb = new USBManager({ config: this.config.getConfig() })
     window.usbManager = this.usb
@@ -38,7 +39,7 @@ class AppContent extends PolymerElement {
     window.midiManager = this.midiManager
 
     this.deviceManager = new DeviceManager({
-      config: this.config.getConfig(),
+      configuration: this.configuration,
       output: this.usb.output
     })
     this.deviceManager.register()

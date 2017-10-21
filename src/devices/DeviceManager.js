@@ -6,7 +6,8 @@ import DmxDevice from './DmxDevice.js'
 export default class DeviceManager {
   constructor(param) {
     this.list = new Map()
-    this.config = param.config
+    this.configuration = param.configuration
+    this.config = this.configuration.getConfig()
     this.output = param.output
   }
 
