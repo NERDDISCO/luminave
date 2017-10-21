@@ -50,6 +50,23 @@ class TimelineItem extends PolymerElement {
         bottom: 0;
       }
 
+      .progress {
+        height: 2em;
+        margin-left: 20em;
+        background: rgba(255, 255, 255, 0.5);
+        transform-origin: 0 0;
+        animation: move-progress calc(60s / var(--bpm) * {{measrureCount}}) linear infinite;
+      }
+
+      @keyframes move-progress {
+        0% {
+          transform: scale3d(0, 1, 1);
+        }
+        100% {
+          transform: scale3d(1, 1, 1);
+        }
+      }
+
       .step {
         position: relative;
         box-shadow: inset 0 0 0 1px;
@@ -179,6 +196,7 @@ class TimelineItem extends PolymerElement {
     </style>
     <div class="item">
       <div class="scenes">
+        <div class="progress"></div>
         <template is="dom-repeat" items="{{ scenes }}" as="scene">
           <div class="scene">
             <label class="scene-label">{{scene.key}}</label>
