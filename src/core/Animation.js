@@ -45,52 +45,16 @@ export default class Animation {
   }
 
   /*
-   * Play animation.
-   */
-  play(delta) {
-    this.isPlaying = true
-  }
-
-  /*
-   * Stop playback.
-   */
-  stop() {
-    this.isPlaying = false
-    this.progress = 0
-
-    // @TODO: Is this really ok? If we reset the device, all other animations for this device will also die :/
-    // Reset all devices
-    // this.devices.forEach((element, index, array) => {
-    //   this.deviceManager.get(element).color = new Color(this.timeline.value).rgb().string()
-    // })
-  }
-
-  /*
    * Run the animation for the associated devices.
    *
    * @BUG: When the animation is retriggered while it is running, the last color that was send to the device stays forever at the device.
    */
-  run(progressScene, delta) {
-
-    if (this.isPlaying) {
-
-      // The scene is started
-      if (progressScene >= this.start && progressScene <= this.start + this.duration + 2 * delta) {
-
-        // If animationProgress is smaller than duration we know that duration is not reached yet
-        if (this.progress + delta <= this.duration + delta) {
-          // So we add the delta to animationProgress
-          this.progress += delta
-
-          this.updateTimeline()
-
-          // Get the values from the timeline based on the progress of this animation
-          this.values = this.timeline.values(this.progress)
-
+  run() {
           // Set the values for every device
           this.devices.forEach(element => {
 
             this.deviceManager.get(element).then(device => {
+              console.log(device)
 
               if (this.values.hasOwnProperty('color')) {
                 const color = new Color(this.values.color).toString()
@@ -182,14 +146,6 @@ export default class Animation {
             })
 
           })
-
-        } else {
-          this.stop()
-          console.log('Animation', '-', this.animationId, 'stopped')
-        }
-
-      }
-    }
 
   }
 
