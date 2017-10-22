@@ -152,14 +152,9 @@ class AppContent extends PolymerElement {
     values.forEach(scene => {
       scene.children.forEach(layer => {
         layer.children.forEach(animation => {
-          animation.animation.values = animation.children
+          animation.animation.values = animation.values
           animation.animation.run()
 
-
-          animation.children.forEach(prop => {
-            const [r, g, b] = prop.children
-            console.log(`${prop.name} (${layer.devices.join(', ')}): rgb(${~~(r)}, ${~~(g)}, ${~~(b)})`)
-          })
         })
       })
     })
@@ -183,12 +178,7 @@ class AppContent extends PolymerElement {
                 id: animation.animationId,
                 devices: animation.devices,
                 animation: animation,
-                children: Object.keys(values).map(key => {
-                  return {
-                    name: key,
-                    children: values[key]
-                  }
-                })
+                values: values
               }
             })
           }
