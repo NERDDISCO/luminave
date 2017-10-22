@@ -61,11 +61,11 @@ class TimelineItem extends PolymerElement {
 
   addAnimation(e) {
     const {target} = e
-    const {layer} = target.dataset
-    this._addAnimation(layer)
+    const {layer, scene} = target.dataset
+    this._addAnimation(scene, layer)
   }
 
-  _addAnimation(layer) {
+  _addAnimation(scene, layer) {
     const animation = {
       'animationId': 'uniqueId',
       'duration': 4,
@@ -82,7 +82,7 @@ class TimelineItem extends PolymerElement {
         }]
       }]
     }
-    console.log(layer, animation)
+    console.log(scene, layer, animation)
 
   }
 
@@ -301,7 +301,7 @@ class TimelineItem extends PolymerElement {
               </div>
               <template is="dom-repeat" items="{{ scene.value.layers }}" as="layer">
                 <div class="animations">
-                  <div><button class="add-animation" on-click="addAnimation" data-layer$="{{layer.layerId}}">Add Animation</button></div>
+                  <div><button class="add-animation" on-click="addAnimation" data-layer$="{{layer.layerId}}" data-scene$="{{scene.key}}">Add Animation</button></div>
                   <template is="dom-repeat" items="{{ layer.animations }}" as="animation">
                     <h3 class="animation-id">{{animation.animationId}}</h3>
                     <template is="dom-repeat" items="{{ animation.timeline.data }}" as="timeline">
