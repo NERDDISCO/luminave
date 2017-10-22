@@ -6,7 +6,8 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
  */
 export class TapButton extends PolymerElement {
   constructor() {
-    super();
+    super()
+
     this.bpm = 0
     this.arr = []
     this.date = {
@@ -36,26 +37,29 @@ export class TapButton extends PolymerElement {
   }
 
   handleClick() {
+    this.run()
+  }
+
+  run() {
     clearTimeout(this.timer)
     this.timer = setTimeout(() => {
       this.ticking = false
       this.arr = []
     }, this.delay)
 
-    this.run()
-  }
-
-  run() {
     this.date.then = this.date.now
     this.date.now = new Date()
     this.diff = this.date.now - this.date.then
+
     if (this.ticking) {
       this.arr.push(this.diff)
+
       if (this.arr.length > this.items) {
         const diffs = this.arr.reduce((result, t) => result += t)
         this.arr.shift()
         this.average = diffs / this.arr.length
         this.bpm = ~~(60000 / this.average)
+
         this.dispatchEvent(new CustomEvent('tap', { detail: { bpm: this.bpm } }))
       }
 

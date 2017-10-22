@@ -315,7 +315,7 @@ class AppContent extends PolymerElement {
 
           <tap-button class="one"
                       on-tap="handleTap"
-                      delay="1500"
+                      delay="2000"
                       items="2"
                       controllerId="korgnanopad2"
                       partId="button16"

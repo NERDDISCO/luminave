@@ -13,7 +13,7 @@ class BPMMeter extends PolymerElement {
           box-sizing: border-box;
           font-size: 2em;
           padding: 1em;
-          width: 50%;
+          width: calc(100% - 1em);
           box-sizing: border-box;
           text-align: center;
           font-family: monospace;
