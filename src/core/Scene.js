@@ -115,6 +115,8 @@ export default class Scene {
     window.addEventListener('MidiController', event => {
       const data = event.detail
 
+      
+
       // Only allow the MIDI controller that was attachted to this scene
       if (data.controllerId === this.midi.controllerId) {
 

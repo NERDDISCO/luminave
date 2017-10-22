@@ -143,6 +143,18 @@ export default class Animation {
                 device.yellow = this.values.yellow
               }
 
+              if (this.values.hasOwnProperty('dimmer')) {
+                device.dimmer = this.values.dimmer
+              }
+
+              if (this.values.hasOwnProperty('tile')) {
+                device.tile = this.values.tile
+              }
+
+              if (this.values.hasOwnProperty('pan')) {
+                device.pan = this.values.pan
+              }
+
             }, error => {
               console.log(error)
             })

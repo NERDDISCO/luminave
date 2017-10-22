@@ -144,7 +144,7 @@ class AppContent extends PolymerElement {
     })
     setTimeout(() => {
       requestAnimationFrame(this.setTime.bind(this))
-    }, 0)
+    }, 1000 / 30)
 
 
     this.runTimeline(timeCounter)

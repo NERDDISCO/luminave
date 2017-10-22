@@ -144,10 +144,10 @@ export default {
         },
         {
           'time': 0.5,
-          'value': 255
+          'value': 50
         }, {
           'time': 1,
-          'value': 125
+          'value': 20
         }]
       }]
     },
@@ -183,10 +183,10 @@ export default {
         },
         {
           'time': 0.5,
-          'value': 255
+          'value': 50
         }, {
           'time': 1,
-          'value': 125
+          'value': 0
         }]
       },
       {
@@ -200,7 +200,42 @@ export default {
           'time': 1,
           'value': 255
         }]
-      }]
+      },
+      {
+        'name': 'tile',
+        'value': 0,
+        'keyframes': [{
+          'time': 0,
+          'value': 0
+        },{
+          'time': 0.4,
+          'value': 60
+        },{
+          'time': 0.7,
+          'value': 255
+        },{
+          'time': 1,
+          'value': 0
+        }]
+      },
+      {
+        'name': 'pan',
+        'value': 0,
+        'keyframes': [{
+          'time': 0,
+          'value': 0
+        },{
+          'time': 0.4,
+          'value': 120
+        },{
+          'time': 0.7,
+          'value': 140
+        },{
+          'time': 1,
+          'value': 0
+        }]
+      }
+    ]
     }, {
       'animationId': 'purple',
       'duration': 2,
