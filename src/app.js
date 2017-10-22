@@ -152,7 +152,7 @@ class AppContent extends PolymerElement {
     values.forEach(scene => {
       scene.children.forEach(layer => {
         layer.children.forEach(animation => {
-          animation.animation.values = animation.children
+          animation.animation.values = animation.values
           animation.animation.run()
         })
       })
@@ -177,12 +177,7 @@ class AppContent extends PolymerElement {
                 id: animation.animationId,
                 devices: animation.devices,
                 animation: animation,
-                children: Object.keys(values).map(key => {
-                  return {
-                    name: key,
-                    children: values[key]
-                  }
-                })
+                values: values
               }
             })
           }
