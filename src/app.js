@@ -34,7 +34,7 @@ class AppContent extends PolymerElement {
     this.storage = new StorageManager()
     this.configuration = new Configuration({
       storage: this.storage,
-      restore: false
+      restore: true
     })
     this.config = this.configuration
     window.configuration = this.configuration
@@ -79,8 +79,8 @@ class AppContent extends PolymerElement {
 
     this.deviceManager.reset()
 
-    const bpm = this.configuration.getConfig().global.bpm || 120
-    const measures = 8
+    const bpm = this.configuration.getConfig().global.bpm || 8
+    const measures = 10
     this.state = {
       bpm: bpm,
       measures,

@@ -60,7 +60,7 @@ export default class Animation {
 
                 const color = new Color(this.values.color).toString()
 
-                // console.log(color)
+                console.log(color)
 
                 device.color = color
 
