@@ -236,6 +236,14 @@ class AppContent extends PolymerElement {
   handleBluetoothDisconnect(e) {
   }
 
+  handlePlayTrigger(e) {
+    console.log(e)
+    this.setState({
+      time: new Date(),
+      timeCounter: 0
+    })
+  }
+
 
   handleDownload(e) {
     console.log(window.configuration.data)
@@ -258,6 +266,7 @@ class AppContent extends PolymerElement {
     </style>
     <div class="flex" style="--bpm: {{state.bpm}}">
         <section class="left">
+          <button on-click="handlePlayTrigger">Play</button>
           <connect-button connected="{{state.connected}}"
                           on-connect="handleConnect"
                           on-disconnect="handleDisconnect"></connect-button>
