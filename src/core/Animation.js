@@ -50,12 +50,14 @@ export default class Animation {
    * @BUG: When the animation is retriggered while it is running, the last color that was send to the device stays forever at the device.
    */
   run() {
+
           // Set the values for every device
           this.devices.forEach(element => {
 
             this.deviceManager.get(element).then(device => {
-
+              console.log(this.values)
               if (this.values.hasOwnProperty('color')) {
+
 
                 console.log(this.values.color)
 
