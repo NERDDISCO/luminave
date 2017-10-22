@@ -36,7 +36,10 @@ class AppContent extends PolymerElement {
     this.storage = new StorageManager()
     this.configuration = new Configuration({
       storage: this.storage,
-      restore: true
+
+      // true: Restore configuration from config.js
+      // false: Load configuration from localStorage
+      restore: false
     })
     this.config = this.configuration
     window.configuration = this.configuration
@@ -55,6 +58,7 @@ class AppContent extends PolymerElement {
       configuration: this.configuration,
       output: this.usb.output
     })
+    window.deviceManager = this.deviceManager
     this.deviceManager.register()
 
     // Initialize all animations
@@ -69,6 +73,7 @@ class AppContent extends PolymerElement {
       config: this.config.getConfig(),
       animationManager: this.animationManager
     })
+    window.sceneManager = this.sceneManager
     this.sceneManager.register()
 
     // Manage playback of all animations, scenes, timelines
@@ -77,7 +82,6 @@ class AppContent extends PolymerElement {
       dmxUsbInterface: this.usb,
       sceneManager: this.sceneManager
     })
-    // this.render.start(this.config.getConfig().global.fps)
 
     this.deviceManager.reset()
 
@@ -161,7 +165,7 @@ class AppContent extends PolymerElement {
 
     setTimeout(() => {
       requestAnimationFrame(this.setTime.bind(this))
-    }, 1000 / 30)
+    }, 1000 / window.configuration.data.global.fps)
 
 
   }
@@ -173,9 +177,10 @@ class AppContent extends PolymerElement {
       scene.children.forEach(layer => {
         this.render.run()
 
+        // Run calcualted colors from timeline into the devices attachted to each animation
         layer.children.forEach(animation => {
-          animation.animation.values = animation.values
-          animation.animation.run()
+          animation.instance.values = animation.values
+          animation.instance.run()
         })
       })
     })
@@ -198,7 +203,7 @@ class AppContent extends PolymerElement {
               return {
                 id: animation.animationId,
                 devices: animation.devices,
-                animation: animation,
+                instance: animation,
                 values: values
               }
             })

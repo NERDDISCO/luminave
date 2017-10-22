@@ -19,7 +19,7 @@ export default class Configuration {
       this.restoreConfig()
     } else {
       console.log('Load from localStorage')
-      this.config = this.storage.get('config')
+      this.data = this.storage.get('config')
     }
   }
 

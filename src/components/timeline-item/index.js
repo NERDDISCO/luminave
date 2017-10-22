@@ -1,5 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import Animation from '/src/core/Animation.js'
 
 class TimelineItem extends PolymerElement {
 
@@ -38,12 +39,14 @@ class TimelineItem extends PolymerElement {
 
   isActive(time, measures) {
     const localDuration = 1 / this.measureCount * measures
+
     return  time < localDuration ? 'active' : ''
   }
 
   isActiveFrame(time, measures, frameTime, frames, i) {
     const localDuration = 1 / this.measureCount * measures
     const end = this.getEnd(measures, frameTime, frames, i)
+
     return time > (frameTime * localDuration) ? time < (end * localDuration) ? 'active' : '' : ''
   }
 
@@ -66,10 +69,12 @@ class TimelineItem extends PolymerElement {
   }
 
   _addAnimation(scene, layer) {
-    const animation = {
+
+    const element = {
       'animationId': 'uniqueId',
       'duration': 4,
       'name': 'uniqueName',
+      'start': 0,
       'timeline': [{
         'name': 'color',
         'value': [0, 0, 0],
@@ -82,7 +87,32 @@ class TimelineItem extends PolymerElement {
         }]
       }]
     }
-    console.log(scene, layer, animation)
+
+    console.log(scene, layer, element)
+
+    /*
+     * Boilerplate code to put a new layer + animation into the config
+     */
+
+    // Add a new layer to scene
+    window.configuration.data.scenes[1].layers.push({
+      layerId: 'uniqueLayerId',
+
+      // The devices the animation should run on
+      devices: ['fungeneration_ledspot_1'],
+
+      // Add a new animation to the layer
+      animations: [{
+        animationId: 'uniqueId',
+        start: 0
+      }]
+    })
+
+    // Add the animation to the list of animations
+    window.configuration.data.animations.push(element)
+
+    // Save configuration into localStorage
+    window.configuration.sync()
 
   }
 

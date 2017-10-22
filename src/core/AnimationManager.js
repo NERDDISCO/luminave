@@ -15,9 +15,9 @@ export default class AnimationManager {
   }
 
   register() {
-    this.config.animations.forEach((element, index, array) => {
+    this.config.animations.forEach(element => {
 
-      let animation = new Animation({
+      const animation = new Animation({
         animationId: element.animationId,
         duration: element.duration,
         timeline: element.timeline,

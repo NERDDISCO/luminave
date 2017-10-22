@@ -28,7 +28,7 @@ export default class Render {
       this.dmxUsbInterface.output.requestDmxFrame()
 
       // Save the config with localStorage
-      this.configuration.sync()
+      // window.configuration.sync()
     // })
   }
 }

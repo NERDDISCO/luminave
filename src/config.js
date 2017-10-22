@@ -490,6 +490,14 @@ export default {
           'start': 0,
           'animationId': 'blue'
         }]
+      },
+      {
+        'layerId': 'layerBar',
+        'devices': ['fungeneration_ledspot_1'],
+        'animations': [{
+          'start': 0,
+          'animationId': 'yellow'
+        }]
       }]
   },
   {

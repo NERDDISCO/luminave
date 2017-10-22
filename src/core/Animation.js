@@ -10,11 +10,7 @@ import Color from '/libs/fivetwelve/lib/util/Color.js'
  * @param {Array} devices - List of DMX devices that will be used to show the keyframes of this animation
  * @param {Number} duration - How long does the animation run
  * @param {Number} start - When does the animation start in dependence of the progress of the parent Scene
- * @param {Number} speed - A factor to control the speed @TODO: USE IT!
  * @param {Array|Object} timeline - A list of keyframes
- *
- * @TODO: Relative duration: Every keyframe is relative to the animation duration
- * @TODO: Absolute duration: Every keyframe has it's own duration
  */
 export default class Animation {
 
@@ -24,7 +20,6 @@ export default class Animation {
     this.devices = param.devices || undefined
     this.duration = param.duration
     this.start = param.start || 0
-    this.speed = param.speed || 1
 
     // Progress in terms of time
     this.progress = 0
@@ -39,9 +34,6 @@ export default class Animation {
 
     // The values of the animation in terms of the point in time
     this.values = []
-
-    // Is this animation running?
-    this.isPlaying = false
   }
 
   /*
@@ -50,116 +42,116 @@ export default class Animation {
    * @BUG: When the animation is retriggered while it is running, the last color that was send to the device stays forever at the device.
    */
   run() {
+    // Set the values for every device
+    this.devices.forEach(element => {
 
-          // Set the values for every device
-          this.devices.forEach(element => {
+      // Get the device from the deviceManager
+      this.deviceManager.get(element).then(device => {
 
-            this.deviceManager.get(element).then(device => {
+        if (this.values.hasOwnProperty('color')) {
 
-              if (this.values.hasOwnProperty('color')) {
+          const normalizedColor = this.values.color.map(c => ~~(c))
+          const color = new Color(normalizedColor).toString()
 
-                const normalizedColor = this.values.color.map(c => ~~(c))
-                const color = new Color(normalizedColor).toString()
+          device.color = color
 
-                device.color = color
+          if (device.hasOwnProperty('led1')) {
+            device.led1.color = color
+            device.led2.color = color
+            device.led3.color = color
+            device.led4.color = color
+            device.led5.color = color
+            device.led6.color = color
+            device.led7.color = color
+            device.led8.color = color
+            device.led9.color = color
+            device.led10.color = color
+            device.led11.color = color
+            device.led12.color = color
+          }
 
-                if (device.hasOwnProperty('led1')) {
-                  device.led1.color = color
-                  device.led2.color = color
-                  device.led3.color = color
-                  device.led4.color = color
-                  device.led5.color = color
-                  device.led6.color = color
-                  device.led7.color = color
-                  device.led8.color = color
-                  device.led9.color = color
-                  device.led10.color = color
-                  device.led11.color = color
-                  device.led12.color = color
-                }
+        }
 
-              }
+        if (this.values.hasOwnProperty('uv')) {
+          device.uv = this.values.uv
 
-              if (this.values.hasOwnProperty('uv')) {
-                device.uv = this.values.uv
+          if (device.hasOwnProperty('led1')) {
+            device.led1.uv = this.values.uv
+            device.led2.uv = this.values.uv
+            device.led3.uv = this.values.uv
+            device.led4.uv = this.values.uv
+            device.led5.uv = this.values.uv
+            device.led6.uv = this.values.uv
+            device.led7.uv = this.values.uv
+            device.led8.uv = this.values.uv
+            device.led9.uv = this.values.uv
+            device.led10.uv = this.values.uv
+            device.led11.uv = this.values.uv
+            device.led12.uv = this.values.uv
+          }
+        }
 
-                if (device.hasOwnProperty('led1')) {
-                  device.led1.uv = this.values.uv
-                  device.led2.uv = this.values.uv
-                  device.led3.uv = this.values.uv
-                  device.led4.uv = this.values.uv
-                  device.led5.uv = this.values.uv
-                  device.led6.uv = this.values.uv
-                  device.led7.uv = this.values.uv
-                  device.led8.uv = this.values.uv
-                  device.led9.uv = this.values.uv
-                  device.led10.uv = this.values.uv
-                  device.led11.uv = this.values.uv
-                  device.led12.uv = this.values.uv
-                }
-              }
+        if (this.values.hasOwnProperty('rotate')) {
+          device.rotate = this.values.rotate
+        }
 
-              if (this.values.hasOwnProperty('rotate')) {
-                device.rotate = this.values.rotate
-              }
+        if (this.values.hasOwnProperty('strobe')) {
+          device.strobe = this.values.strobe
+        }
 
-              if (this.values.hasOwnProperty('strobe')) {
-                device.strobe = this.values.strobe
-              }
+        if (this.values.hasOwnProperty('brightness')) {
+          device.brightness = this.values.brightness
+        }
 
-              if (this.values.hasOwnProperty('brightness')) {
-                device.brightness = this.values.brightness
-              }
+        if (this.values.hasOwnProperty('pan')) {
+          device.pan = this.values.pan
+        }
 
-              if (this.values.hasOwnProperty('pan')) {
-                device.pan = this.values.pan
-              }
+        if (this.values.hasOwnProperty('tilt')) {
+          device.tilt = this.values.tilt
+        }
 
-              if (this.values.hasOwnProperty('tilt')) {
-                device.tilt = this.values.tilt
-              }
+        if (this.values.hasOwnProperty('amount')) {
+          device.amount = this.values.amount
+        }
 
-              if (this.values.hasOwnProperty('amount')) {
-                device.amount = this.values.amount
-              }
+        if (this.values.hasOwnProperty('led')) {
+          // @TODO: Implement
+        }
 
-              if (this.values.hasOwnProperty('led')) {
-                // @TODO: Implement
-              }
+        if (this.values.hasOwnProperty('motor')) {
+          device.motor = this.values.motor
+        }
 
-              if (this.values.hasOwnProperty('motor')) {
-                device.motor = this.values.motor
-              }
+        if (this.values.hasOwnProperty('fan')) {
+          device.fan = this.values.fan
+        }
 
-              if (this.values.hasOwnProperty('fan')) {
-                device.fan = this.values.fan
-              }
+        if (this.values.hasOwnProperty('gobo')) {
+          device.gobo = this.values.gobo
+        }
 
-              if (this.values.hasOwnProperty('gobo')) {
-                device.gobo = this.values.gobo
-              }
+        if (this.values.hasOwnProperty('yellow')) {
+          device.yellow = this.values.yellow
+        }
 
-              if (this.values.hasOwnProperty('yellow')) {
-                device.yellow = this.values.yellow
-              }
+        if (this.values.hasOwnProperty('dimmer')) {
+          device.dimmer = this.values.dimmer
+        }
 
-              if (this.values.hasOwnProperty('dimmer')) {
-                device.dimmer = this.values.dimmer
-              }
+        if (this.values.hasOwnProperty('tile')) {
+          device.tile = this.values.tile
+        }
 
-              if (this.values.hasOwnProperty('tile')) {
-                device.tile = this.values.tile
-              }
+        if (this.values.hasOwnProperty('pan')) {
+          device.pan = this.values.pan
+        }
 
-              if (this.values.hasOwnProperty('pan')) {
-                device.pan = this.values.pan
-              }
+      }, error => {
+        console.log(error)
+      })
 
-            }, error => {
-              console.log(error)
-            })
-
-          })
+    })
 
   }
 

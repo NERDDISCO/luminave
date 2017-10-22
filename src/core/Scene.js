@@ -43,7 +43,7 @@ export default class Scene {
   }
 
   register() {
-    this.config.layers.forEach((element, index, array) => {
+    this.config.layers.forEach(element => {
 
       const layer = new Layer({
         id: element.layerId,
@@ -64,7 +64,7 @@ export default class Scene {
   play() {
     this.isPlaying = true
 
-    this.layers.forEach((element, index, array) => {
+    this.layers.forEach(element => {
       // @TODO: Move this into this.stop()
       element.stop()
       element.play()
@@ -81,7 +81,6 @@ export default class Scene {
    * - Keep track of the progress
    */
   run(delta) {
-
     if (this.isPlaying) {
 
       this.progress += delta
