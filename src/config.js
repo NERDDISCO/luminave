@@ -115,7 +115,7 @@ export default {
     }, {
       'animationId': 'blue',
       'duration': 4,
-      'name': 'yellow',
+      'name': 'blue',
       'timeline': [{
         'name': 'color',
         'value': [0, 0, 0],
@@ -136,7 +136,7 @@ export default {
           'value': [255, 0, 0]
         }]
       }, {
-        'name': 'strobe',
+        'name': 'dimmer',
         'value': 0,
         'keyframes': [{
           'time': 0,
@@ -144,10 +144,61 @@ export default {
         },
         {
           'time': 0.5,
-          'value': 10
+          'value': 255
         }, {
           'time': 1,
+          'value': 125
+        }]
+      }]
+    },
+    {
+      'animationId': 'test3',
+      'duration': 4,
+      'name': 'test3',
+      'timeline': [{
+        'name': 'color',
+        'value': [0, 0, 0],
+        'keyframes': [{
+          'time': 0,
+          'value': [255, 0, 0]
+        }, {
+          'time': 0.1,
+          'value': [0, 255, 0]
+        }, {
+          'time': 0.3,
+          'value': [0, 0, 255]
+        }, {
+          'time': 0.65,
+          'value': [0, 255, 0]
+        }, {
+          'time': 1,
+          'value': [255, 0, 0]
+        }]
+      }, {
+        'name': 'dimmer',
+        'value': 0,
+        'keyframes': [{
+          'time': 0,
           'value': 0
+        },
+        {
+          'time': 0.5,
+          'value': 255
+        }, {
+          'time': 1,
+          'value': 125
+        }]
+      },
+      {
+        'name': 'strobe',
+        'value': 0,
+        'keyframes': [{
+          'time': 0,
+          'value': 255
+        },
+        {
+          'time': 1,
+          'value': 255
         }]
       }]
     }, {
@@ -391,11 +442,11 @@ export default {
       }]
   },
   {
-      'sceneId': 'test2',
+    'sceneId': 'test2',
       'name': 'This is my awesome first scene',
       'midi': {
         'controllerId': 'korgnanopad2',
-        'partId': 'button12'
+        'partId': 'button2'
       },
       'layers': [{
         'layerId': 'layer1',
@@ -403,6 +454,22 @@ export default {
         'animations': [{
           'start': 0,
           'animationId': 'blue'
+        }]
+      }]
+  },
+  {
+    'sceneId': 'test3',
+      'name': 'This is my awesome first scene',
+      'midi': {
+        'controllerId': 'korgnanopad2',
+        'partId': 'button3'
+      },
+      'layers': [{
+        'layerId': 'layer1',
+        'devices': ['stairville_bowl_1'],
+        'animations': [{
+          'start': 0,
+          'animationId': 'test3'
         }]
       }]
   }],

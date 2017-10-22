@@ -80,7 +80,7 @@ class AppContent extends PolymerElement {
     this.deviceManager.reset()
 
     const bpm = this.configuration.getConfig().global.bpm || 120
-    const measures = 8
+    const measures = 4
     this.state = {
       bpm: bpm,
       measures,
