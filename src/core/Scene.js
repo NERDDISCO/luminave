@@ -26,7 +26,7 @@ export default class Scene {
     // The layers of this scene
     this.layers = []
 
-    // Reference to the MIDI device that is associated with the scene
+    // Reference to the MIDI device thate is associated with the scene
     this.midi = this.config.midi
 
     // The progress in terms of time of this scene
@@ -115,7 +115,6 @@ export default class Scene {
     window.addEventListener('MidiController', event => {
       const data = event.detail
 
-      
 
       // Only allow the MIDI controller that was attachted to this scene
       if (data.controllerId === this.midi.controllerId) {

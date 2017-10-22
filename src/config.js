@@ -209,13 +209,13 @@ export default {
           'value': 0
         },{
           'time': 0.4,
-          'value': 60
+          'value': 0
         },{
           'time': 0.7,
-          'value': 255
+          'value': 0
         },{
           'time': 1,
-          'value': 0
+          'value': 255
         }]
       },
       {
@@ -223,16 +223,16 @@ export default {
         'value': 0,
         'keyframes': [{
           'time': 0,
-          'value': 0
+          'value': 50
         },{
           'time': 0.4,
           'value': 120
         },{
           'time': 0.7,
-          'value': 140
+          'value': 0
         },{
           'time': 1,
-          'value': 0
+          'value': 255
         }]
       }
     ]

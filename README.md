@@ -62,6 +62,8 @@ Then upgrade the Arduino IDE from USB 2.0 to 2.1: Go into the installation direc
 
 ## HTTPS server
 
+*Note:* The server is provided as binary in this repository.
+
 Start the local HTTPS server on https://localhost:1337:
 
 ```

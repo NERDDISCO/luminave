@@ -4,31 +4,18 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
  * The tap button renders a button to manually set the bpm.
  * It waits for a given number of positions.
  */
-export class TapButton extends PolymerElement {
+export class PauseButton extends PolymerElement {
   constructor() {
-    super();
-    this.bpm = 0
-    this.arr = []
-    this.date = {
-      then: new Date(),
-      now: new Date()
-    }
-    this.timer = setTimeout(() => {}, 0)
-    this.ticking = false
-    this.average = 0
+    super()
   }
 
   ready() {
     super.ready()
     this.options = {
-      delay: this.attributes.delay || { value: 2000 },
-      items: this.attributes.items || { value: 4 },
       controllerId: this.attributes.controllerId || { value: '' },
       partId: this.attributes.partId || { value: '' }
     }
 
-    this.delay = this.options.delay.value
-    this.items = this.options.items.value
     this.controllerId = this.options.controllerId.value
     this.partId = this.options.partId.value
 
@@ -36,32 +23,11 @@ export class TapButton extends PolymerElement {
   }
 
   handleClick() {
-    clearTimeout(this.timer)
-    this.timer = setTimeout(() => {
-      this.ticking = false
-      this.arr = []
-    }, this.delay)
-
     this.run()
   }
 
   run() {
-    this.date.then = this.date.now
-    this.date.now = new Date()
-    this.diff = this.date.now - this.date.then
-    if (this.ticking) {
-      this.arr.push(this.diff)
-      if (this.arr.length > this.items) {
-        const diffs = this.arr.reduce((result, t) => result += t)
-        this.arr.shift()
-        this.average = diffs / this.arr.length
-        this.bpm = ~~(60000 / this.average)
-        this.dispatchEvent(new CustomEvent('tap', { detail: { bpm: this.bpm } }))
-      }
-
-    } else {
-      this.ticking = true
-    }
+    this.dispatchEvent(new CustomEvent('pause', { detail: { } }))
   }
 
   /*
@@ -95,7 +61,7 @@ export class TapButton extends PolymerElement {
       button {
           box-sizing: border-box;
           height: var(--height);
-          width: calc(100% - 1em);
+          width: calc(50% - 1em);
           border: 0;
           font-size: 1em;
           line-height: calc(var(--height) - 1em);
@@ -120,9 +86,9 @@ export class TapButton extends PolymerElement {
           --color: var(--color-lighter);
         }
     </style>
-      <button on-click="handleClick">TAP</button>
+      <button on-click="handleClick">PAUSE</button>
     `
   }
 }
 
-customElements.define('tap-button', TapButton)
+customElements.define('pause-button', PauseButton)

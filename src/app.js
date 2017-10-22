@@ -3,6 +3,8 @@ import { html } from '/node_modules/lit-html/lit-html.js'
 import { render } from '/node_modules/lit-html/lib/lit-extended.js'
 import '/src/components/tap-button/index.js'
 import '/src/components/connect-button/index.js'
+import '/src/components/restart-button/index.js'
+import '/src/components/pause-button/index.js'
 import '/src/components/connect-bluetooth-button/index.js'
 import '/src/components/download-config-button/index.js'
 import '/src/components/bpm-meter/index.js'
@@ -86,6 +88,7 @@ class AppContent extends PolymerElement {
       measures,
       connected: false,
       bluetoothConnected: false,
+      paused: false,
       time: new Date(),
       duration: ~~(60 / bpm * 1000 * measures)
     }
@@ -130,24 +133,37 @@ class AppContent extends PolymerElement {
     this.setTime()
   }
 
-  setTime(){
-    const {time, bpm, measures, duration} = this.state
-    const now = new Date()
-    const timeCounter = (now - time) / duration
-    if (now - time > duration) {
+  /*
+   * Loop
+   */
+  setTime() {
+    const {time, bpm, measures, duration, paused} = this.state
+
+    // Paused
+    if (paused) {
+      // @TODO: Pause is not correct, it has to also save the current position that we paused so it can contiune at that position
+
+    // Running
+    } else {
+      const now = new Date()
+      const timeCounter = (now - time) / duration
+      if (now - time > duration) {
+        this.setState({
+          time: now,
+        })
+      }
       this.setState({
-        time: now,
+        timeCounter
       })
+
+      this.runTimeline(timeCounter)
     }
-    this.setState({
-      timeCounter
-    })
+
     setTimeout(() => {
       requestAnimationFrame(this.setTime.bind(this))
     }, 1000 / 30)
 
 
-    this.runTimeline(timeCounter)
   }
 
   runTimeline(counter) {
@@ -236,11 +252,18 @@ class AppContent extends PolymerElement {
   handleBluetoothDisconnect(e) {
   }
 
-  handlePlayTrigger(e) {
-    console.log(e)
+  handleRestart(e) {
     this.setState({
       time: new Date(),
       timeCounter: 0
+    })
+  }
+
+  handlePause(e) {
+    let {paused} = this.state
+
+    this.setState({
+      paused: !paused
     })
   }
 
@@ -266,7 +289,6 @@ class AppContent extends PolymerElement {
     </style>
     <div class="flex" style="--bpm: {{state.bpm}}">
         <section class="left">
-          <button on-click="handlePlayTrigger">Play</button>
           <connect-button connected="{{state.connected}}"
                           on-connect="handleConnect"
                           on-disconnect="handleDisconnect"></connect-button>
@@ -279,7 +301,18 @@ class AppContent extends PolymerElement {
           <!-- <midi-manager class="two"
                         config="{{config.getConfig()}}"></midi-manager>-->
 
-          <bpm-meter bpm="{{state.bpm}}"></bpm-meter>
+          <restart-button
+            on-restart="handleRestart"
+            controllerId="korgnanopad2"
+            partId="button15"
+          ></restart-button>
+
+          <pause-button
+            on-pause="handlePause"
+            controllerId="korgnanopad2"
+            partId="button14"
+          ></pause-button>
+
           <tap-button class="one"
                       on-tap="handleTap"
                       delay="1500"
@@ -287,6 +320,7 @@ class AppContent extends PolymerElement {
                       controllerId="korgnanopad2"
                       partId="button16"
                       ></tap-button>
+          <bpm-meter bpm="{{state.bpm}}"></bpm-meter>
 
         </section>
         <section class="right">

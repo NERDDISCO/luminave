@@ -10,9 +10,10 @@ class BPMMeter extends PolymerElement {
     return `
        <style>
         .meter {
+          box-sizing: border-box;
           font-size: 2em;
           padding: 1em;
-          width: 100%;
+          width: 50%;
           box-sizing: border-box;
           text-align: center;
           font-family: monospace;
