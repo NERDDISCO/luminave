@@ -25,6 +25,7 @@ export default class Configuration {
 
   restoreConfig() {
     this.storage.set('config', config)
+    console.log('Config was restored')
   }
 
   getConfig() {
@@ -44,6 +45,7 @@ export default class Configuration {
    */
   sync() {
     this.storage.set('config', this.data)
+    console.log('Synced config with localStorage')
   }
 
 }

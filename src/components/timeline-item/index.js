@@ -95,7 +95,7 @@ class TimelineItem extends PolymerElement {
      */
 
     // Add a new layer to scene
-    window.configuration.data.scenes[1].layers.push({
+    window.configuration.data.scenes[0].layers.push({
       layerId: 'uniqueLayerId',
 
       // The devices the animation should run on

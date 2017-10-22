@@ -7,6 +7,7 @@ import '/src/components/restart-button/index.js'
 import '/src/components/pause-button/index.js'
 import '/src/components/connect-bluetooth-button/index.js'
 import '/src/components/download-config-button/index.js'
+import '/src/components/restore-config-button/index.js'
 import '/src/components/bpm-meter/index.js'
 import '/src/components/channel-grid/index.js'
 import '/src/components/device-list/index.js'
@@ -272,6 +273,10 @@ class AppContent extends PolymerElement {
     })
   }
 
+handleRestore(e) {
+  window.configuration.restoreConfig()
+}
+
 
   handleDownload(e) {
     console.log(window.configuration.data)
@@ -302,6 +307,7 @@ class AppContent extends PolymerElement {
                           on-disconnect="handleBluetoothDisconnect"></connect-bluetooth-button>
 
           <download-config-button on-download="handleDownload"></download-config-button>
+          <restore-config-button on-restore="handleRestore"></restore-config-button>
 
           <!-- <midi-manager class="two"
                         config="{{config.getConfig()}}"></midi-manager>-->
