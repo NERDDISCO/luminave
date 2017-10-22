@@ -484,7 +484,7 @@ export default {
         'partId': 'button2'
       },
       'layers': [{
-        'layerId': 'layer1',
+        'layerId': 'layerFoo',
         'devices': ['fungeneration_ledspot_2'],
         'animations': [{
           'start': 0,
