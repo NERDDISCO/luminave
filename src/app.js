@@ -182,8 +182,7 @@ class AppContent extends PolymerElement {
               return {
                 id: animation.animationId,
                 devices: animation.devices,
-                animation: animation
-
+                animation: animation,
                 children: Object.keys(values).map(key => {
                   return {
                     name: key,
