@@ -81,11 +81,11 @@ export default {
         'value': [0, 0, 0],
         'keyframes': [{
           'time': 0,
-          'value': [255, 234, 0],
+          'value': [0, 255, 0],
           'modV': true
         }, {
           'time': 1,
-          'value': [0, 0, 0]
+          'value': [0, 255, 255]
         }]
       }]
     }, {

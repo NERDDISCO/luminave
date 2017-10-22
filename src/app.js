@@ -142,8 +142,9 @@ class AppContent extends PolymerElement {
     this.setState({
       timeCounter
     })
-    this.runTimeline(timeCounter)
     requestAnimationFrame(this.setTime.bind(this))
+
+    this.runTimeline(timeCounter)
   }
 
   runTimeline(counter) {
@@ -151,6 +152,8 @@ class AppContent extends PolymerElement {
 
     values.forEach(scene => {
       scene.children.forEach(layer => {
+        this.render.run()
+
         layer.children.forEach(animation => {
           animation.animation.values = animation.values
           animation.animation.run()
@@ -159,7 +162,7 @@ class AppContent extends PolymerElement {
     })
 
     // Render all DMX devices into a buffer
-    this.render.run()
+
   }
 
   getValues(counter) {
