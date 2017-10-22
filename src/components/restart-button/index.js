@@ -4,18 +4,9 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
  * The tap button renders a button to manually set the bpm.
  * It waits for a given number of positions.
  */
-export class TapButton extends PolymerElement {
+export class RestartButton extends PolymerElement {
   constructor() {
-    super();
-    this.bpm = 0
-    this.arr = []
-    this.date = {
-      then: new Date(),
-      now: new Date()
-    }
-    this.timer = setTimeout(() => {}, 0)
-    this.ticking = false
-    this.average = 0
+    super()
   }
 
   ready() {
