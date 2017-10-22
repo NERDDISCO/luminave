@@ -58,9 +58,8 @@ export default class Animation {
 
               if (this.values.hasOwnProperty('color')) {
 
-                const color = new Color(this.values.color).toString()
-
-                console.log(color)
+                const normalizedColor = this.values.color.map(c => ~~(c))
+                const color = new Color(normalizedColor).toString()
 
                 device.color = color
 

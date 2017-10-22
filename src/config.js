@@ -74,23 +74,31 @@ export default {
         }]
     }, {
       'animationId': 'yellow',
-      'duration': 2,
+      'duration': 4,
       'name': 'yellow',
       'timeline': [{
         'name': 'color',
         'value': [0, 0, 0],
         'keyframes': [{
           'time': 0,
-          'value': [255, 0, 0],
-          'modV': true
+          'value': [255, 0, 0]
+        }, {
+          'time': 0.1,
+          'value': [0, 255, 0]
+        }, {
+          'time': 0.6,
+          'value': [0, 0, 255]
+        }, {
+          'time': 0.95,
+          'value': [0, 255, 0]
         }, {
           'time': 1,
-          'value': [0, 0, 0]
+          'value': [255, 0, 0]
         }]
       }]
     }, {
       'animationId': 'green',
-      'duration': 2,
+      'duration': 4,
       'name': 'Single color',
       'timeline': [{
         'name': 'color',
@@ -106,18 +114,40 @@ export default {
       }]
     }, {
       'animationId': 'blue',
-      'duration': 2,
-      'name': 'Single color',
+      'duration': 4,
+      'name': 'yellow',
       'timeline': [{
         'name': 'color',
         'value': [0, 0, 0],
         'keyframes': [{
           'time': 0,
-          'value': [0, 0, 255],
-          'modv': true
+          'value': [255, 0, 0]
+        }, {
+          'time': 0.1,
+          'value': [0, 255, 0]
+        }, {
+          'time': 0.3,
+          'value': [0, 0, 255]
+        }, {
+          'time': 0.65,
+          'value': [0, 255, 0]
         }, {
           'time': 1,
-          'value': [0, 0, 0]
+          'value': [255, 0, 0]
+        }]
+      }, {
+        'name': 'strobe',
+        'value': 0,
+        'keyframes': [{
+          'time': 0,
+          'value': 0
+        },
+        {
+          'time': 0.5,
+          'value': 10
+        }, {
+          'time': 1,
+          'value': 0
         }]
       }]
     }, {
@@ -357,6 +387,22 @@ export default {
         'animations': [{
           'start': 0,
           'animationId': 'yellow'
+        }]
+      }]
+  },
+  {
+      'sceneId': 'test2',
+      'name': 'This is my awesome first scene',
+      'midi': {
+        'controllerId': 'korgnanopad2',
+        'partId': 'button12'
+      },
+      'layers': [{
+        'layerId': 'layer1',
+        'devices': ['fungeneration_ledspot_2'],
+        'animations': [{
+          'start': 0,
+          'animationId': 'blue'
         }]
       }]
   }],

@@ -79,8 +79,8 @@ class AppContent extends PolymerElement {
 
     this.deviceManager.reset()
 
-    const bpm = this.configuration.getConfig().global.bpm || 8
-    const measures = 10
+    const bpm = this.configuration.getConfig().global.bpm || 120
+    const measures = 8
     this.state = {
       bpm: bpm,
       measures,
@@ -142,7 +142,10 @@ class AppContent extends PolymerElement {
     this.setState({
       timeCounter
     })
-    requestAnimationFrame(this.setTime.bind(this))
+    setTimeout(() => {
+      requestAnimationFrame(this.setTime.bind(this))
+    }, 0)
+
 
     this.runTimeline(timeCounter)
   }
