@@ -70,7 +70,7 @@ class TimelineItem extends PolymerElement {
 
   _addAnimation(scene, layer) {
 
-    const element = {
+    const animation = {
       'animationId': 'uniqueId',
       'duration': 4,
       'name': 'uniqueName',
@@ -88,7 +88,7 @@ class TimelineItem extends PolymerElement {
       }]
     }
 
-    console.log(scene, layer, element)
+    console.log(scene, layer, animation)
 
     /*
      * Boilerplate code to put a new layer + animation into the config
@@ -108,8 +108,25 @@ class TimelineItem extends PolymerElement {
       }]
     })
 
+    // Add new property to animation
+    animation.timeline.push({
+      'name': 'dimmer',
+      'value': [0, 0, 0],
+      'keyframes': [{
+        'time': 0,
+        'value': 0
+      }, {
+        'time': 0.35,
+        'value': 255
+      },
+      {
+       'time': 1,
+       'value': 0
+     }]
+    })
+
     // Add the animation to the list of animations
-    window.configuration.data.animations.push(element)
+    window.configuration.data.animations.push(animation)
 
     // Save configuration into localStorage
     window.configuration.sync()
@@ -188,6 +205,7 @@ class TimelineItem extends PolymerElement {
       .scene {
         display: flex;
         box-shadow: inset 0 0 0 1px;
+        margin: 0 0 1em 0;
       }
 
       .scene-label {
