@@ -114,14 +114,25 @@ export default class Scene {
     window.addEventListener('MidiController', event => {
       const data = event.detail
 
-
       // Only allow the MIDI controller that was attachted to this scene
       if (data.controllerId === this.midi.controllerId) {
 
         // Only allow a specific input element (button or knob) from the MIDI controller
         if (data.partId === this.midi.partId) {
-          this.stop()
-          this.play()
+
+          // Stop the scene
+          if (this.config.active) {
+            this.config.active = false
+
+            console.log(this.id, 'was deactivated')
+
+          // Start the scene
+          } else {
+            this.config.active = true
+
+            console.log(this.id, 'was activated')
+          }
+
         }
       }
     })

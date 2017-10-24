@@ -119,7 +119,9 @@ class AppContent extends PolymerElement {
     })
 
     this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
-    // console.log(this.scenesList)
+
+    // this.scenesList[0].value.config.active = false
+    // console.log(this.scenesList[0].value.config.active)
   }
 
   setState(newState) {
@@ -152,28 +154,34 @@ class AppContent extends PolymerElement {
     } else {
       const now = new Date()
       const timeCounter = (now - time) / duration
+
       if (now - time > duration) {
         this.setState({
           time: now,
         })
       }
+
       this.setState({
         timeCounter
       })
 
-      this.runTimeline(timeCounter)
+      // this.runTimeline(timeCounter)
     }
 
     setTimeout(() => {
       requestAnimationFrame(this.setTime.bind(this))
     }, 1000 / window.configuration.data.global.fps)
 
-    const values = this.getValues(timeCounter, this.scenesList.filter(scene => Boolean(scene.value.config.active)))
+    const values = this.getValues(this.state.timeCounter, this.scenesList.filter(scene => Boolean(scene.value.config.active)))
     this.runTimeline(values)
   }
 
   runTimeline(scenes) {
+
+    // console.log(scenes.length, 'scenes are running')
+
     scenes.forEach(scene => {
+
       // if true disable to set inactive on next run
       // if "loop" don't do anything.
       if (scene.active === true) {
@@ -197,7 +205,7 @@ class AppContent extends PolymerElement {
     const items = scenes.map(scene => {
       return {
         id: scene.key,
-        active: scene.active,
+        active: scene.value.config.active,
         children: scene.value.layers.map(layer => {
           return {
             id: layer.layerId,
