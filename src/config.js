@@ -462,6 +462,7 @@ export default {
 
   'scenes': [{
       'sceneId': 'left_1',
+      'active': true,
       'name': 'This is my awesome first scene',
       'midi': {
         'controllerId': 'korgnanopad2',
@@ -478,6 +479,7 @@ export default {
   },
   {
     'sceneId': 'test2',
+      'active': false,
       'name': 'This is my awesome first scene',
       'midi': {
         'controllerId': 'korgnanopad2',

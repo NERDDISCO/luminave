@@ -87,7 +87,7 @@ class AppContent extends PolymerElement {
     this.deviceManager.reset()
 
     const bpm = this.configuration.getConfig().global.bpm || 120
-    const measures = 4
+    const measures = 8
     this.state = {
       bpm: bpm,
       measures,
@@ -168,13 +168,19 @@ class AppContent extends PolymerElement {
       requestAnimationFrame(this.setTime.bind(this))
     }, 1000 / window.configuration.data.global.fps)
 
-
+    const values = this.getValues(timeCounter, this.scenesList.filter(scene => Boolean(scene.value.config.active)))
+    this.runTimeline(values)
   }
 
-  runTimeline(counter) {
-    const values = this.getValues(counter)
+  runTimeline(scenes) {
+    scenes.forEach(scene => {
+      // if true disable to set inactive on next run
+      // if "loop" don't do anything.
+      if (scene.active === true) {
+        // @todo disable active
+        //scene.value.config.active = false
+      }
 
-    values.forEach(scene => {
       scene.children.forEach(layer => {
         this.render.run()
 
@@ -185,15 +191,13 @@ class AppContent extends PolymerElement {
         })
       })
     })
-
-    // Render all DMX devices into a buffer
-
   }
 
-  getValues(counter) {
-    const items = this.scenesList.map(scene => {
+  getValues(counter, scenes) {
+    const items = scenes.map(scene => {
       return {
         id: scene.key,
+        active: scene.active,
         children: scene.value.layers.map(layer => {
           return {
             id: layer.layerId,
