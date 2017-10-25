@@ -21,12 +21,12 @@ export const styles = `
 }
 
 .scene-label {
-  width: 10em;
-  padding-left: 0.5em;
+  padding: .25em .25em .25em .5em;
   display: flex;
   align-items: center;
   align-content: center;
   align-self: flex-start;
+  background: var(--focus-background)
 }
 
 `

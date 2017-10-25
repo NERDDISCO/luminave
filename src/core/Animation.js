@@ -139,6 +139,18 @@ export default class Animation {
           device.gobo = this.values.gobo
         }
 
+        if (this.values.hasOwnProperty('goboRotation')) {
+          device.goboRotation = this.values.goboRotation
+        }
+
+        if (this.values.hasOwnProperty('prism')) {
+          device.prism = this.values.prism
+        }
+
+        if (this.values.hasOwnProperty('focus')) {
+          device.focus = this.values.focus
+        }
+
         if (this.values.hasOwnProperty('yellow')) {
           device.yellow = this.values.yellow
         }

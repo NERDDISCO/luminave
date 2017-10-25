@@ -100,8 +100,8 @@ class AppContent extends PolymerElement {
 
     this.updateSceneList()
     this.updateDmxList()
-    this.sceneList[0].value.config.active = true
-    // console.log(this.scenesList[0].value.config.active)
+
+    // this.sceneList[0].value.config.active = true
   }
 
   get sceneList() {
@@ -197,7 +197,6 @@ class AppContent extends PolymerElement {
 
   runTimeline(scenes, loopEnd) {
 
-    // console.log(scenes.length, 'scenes are running')
     if (loopEnd) {
       this.sceneList.forEach((scene, i) => {
         if (this.sceneList[i].value.config.active === true) {

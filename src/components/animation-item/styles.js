@@ -10,7 +10,7 @@ export const styles = `
   top: 50%;
   bottom: 0;
   left: calc(var(--start) * 100%);
-  height: 3em;
+  height: 2em;
   width: calc((var(--end) - var(--start)) * 100%);
   transform: translate(0, -50%);
   box-shadow: inset 0 0 0 1px;
@@ -31,7 +31,7 @@ export const styles = `
 .animation-timeline {
   position: relative;
   display: flex;
-  height: 3em;
+  height: 2em;
   width: calc(var(--duration) / var(--loop-measures) * (100% - 10em));
 }
 

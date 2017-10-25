@@ -29,14 +29,6 @@ export default class Scene {
     // Reference to the MIDI device thate is associated with the scene
     this.midi = this.config.midi
 
-    // The progress in terms of time of this scene
-    this.progress = 0
-
-    // Is this scene playing?
-    this.isPlaying = false
-
-    this.count = 0
-
     this.register()
 
     this.listen()
@@ -61,49 +53,6 @@ export default class Scene {
     this.layers.push(layer)
   }
 
-  play() {
-    this.isPlaying = true
-
-    this.layers.forEach(element => {
-      // @TODO: Move this into this.stop()
-      element.stop()
-      element.play()
-    })
-  }
-
-  stop() {
-    this.isPlaying = false
-    this.progress = 0
-  }
-
-  /*
-   * - Iterate over all layers and run them
-   * - Keep track of the progress
-   */
-  run(delta) {
-    if (this.isPlaying) {
-
-      this.progress += delta
-
-      this.count = 0
-
-      this.layers.forEach((element, index, array) => {
-        element.run(this.progress, delta)
-
-        if (element.isPlaying === true) {
-          this.count++
-        }
-      })
-
-      if (this.count === 0) {
-        this.stop()
-
-        console.log('Scene', '-', this.id, 'stopped')
-      }
-
-    }
-  }
-
   /*
    * Listen to events to start this Scene.
    *
@@ -121,16 +70,14 @@ export default class Scene {
         if (data.partId === this.midi.partId) {
 
           // Stop the scene
-          if (this.config.active) {
+          if (this.config.active === 'loop') {
             this.config.active = false
-
-            console.log(this.id, 'was deactivated')
+             console.log(this.id, 'was deactivated')
 
           // Start the scene
           } else {
-            this.config.active = true
-
-            console.log(this.id, 'was activated')
+            this.config.active = 'loop'
+             console.log(this.id, 'was activated')
           }
 
         }
