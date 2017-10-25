@@ -477,23 +477,6 @@ export default {
     }],
 
   'scenes': [{
-      'sceneId': 'left_1',
-      'active': false,
-      'name': 'This is my awesome first scene',
-      'midi': {
-        'controllerId': 'korgnanopad2',
-        'partId': 'button1'
-      },
-      'layers': [{
-        'layerId': 'layer1',
-        'devices': ['fungeneration_ledspot_1'],
-        'animations': [{
-          'start': 0,
-          'animationId': 'yellow'
-        }]
-      }]
-  },
-  {
     'sceneId': 'test_movinghead_mx50',
       'name': 'This is my awesome first scene',
       'active': true,
