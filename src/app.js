@@ -101,6 +101,7 @@ class AppContent extends PolymerElement {
     this.updateSceneList()
     this.updateDmxList()
     this.sceneList[0].value.config.active = true
+    this.handleActivate = this.handleActivate.bind(this)
     // console.log(this.scenesList[0].value.config.active)
   }
 
@@ -200,9 +201,12 @@ class AppContent extends PolymerElement {
     // console.log(scenes.length, 'scenes are running')
     if (loopEnd) {
       this.sceneList.forEach((scene, i) => {
-        if (this.sceneList[i].value.config.active === true) {
+        if (this.sceneList[i].value.config.active === true &&
+            !this.sceneList[i].value.config.keepActive) {
           this.sceneList[i].value.config.active = false
-        }
+        } else if (this.sceneList[i].value.config.active === true) {
+          this.sceneList[i].value.config.keepActive = false
+        }// else is either false or 'loop'
       })
       this.updateSceneList()
     }
@@ -304,10 +308,17 @@ class AppContent extends PolymerElement {
     })
   }
 
-handleRestore(e) {
-  window.configuration.restoreConfig()
-}
+  handleRestore(e) {
+    window.configuration.restoreConfig()
+  }
 
+  handleActivate(e) {
+    const {active, scene} = e.detail
+    console.log(scene, active)
+    this.sceneManager.list.get(scene).config.active = !active
+    this.sceneManager.list.get(scene).config.keepActive = !active
+    this.updateSceneList()
+  }
 
   handleDownload(e) {
     console.log(window.configuration.data)
@@ -369,6 +380,7 @@ handleRestore(e) {
           <timeline-item scenes="{{sceneList}}"
                          time="{{state.timeCounter}}"
                          duration="{{state.duration}}"
+                         on-activate="handleActivate"
                          bpm="{{state.bpm}}"
                          measure$="{{state.measures}}"></timeline-item>
           <!-- <channel-grid></channel-grid> -->
