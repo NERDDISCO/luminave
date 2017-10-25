@@ -107,6 +107,22 @@ class TimelineItem extends PolymerElement {
 
   }
 
+  handleClick(e){
+    const {active, scene} = e.target.dataset
+    this.dispatchEvent(new CustomEvent('activate', {detail: {
+      scene,
+      active: active === 'yes' ? true : false,
+    }}))
+  }
+
+  activeLabel(active) {
+    return active ? 'deactivate' : 'activate'
+  }
+
+  activeState(active) {
+    return active ? 'yes' : 'no'
+  }
+
   static get template() {
     return `
      <style>
@@ -127,6 +143,7 @@ class TimelineItem extends PolymerElement {
       <timeline-grid measures="{{measures}}" progress="{{time}}"></timeline-grid>
       <div class="scenes">
         <template is="dom-repeat" items="{{ scenes }}" as="scene">
+          <button on-click="handleClick" data-scene$="{{scene.key}}" data-active$="{{activeState(scene.value.config.active)}}">{{activeLabel(scene.value.config.active)}}</button>
           <scene-item measures={{measureCount}} scene="{{scene}}" time="{{time}}"></scene-item>
         </template>
       </div>
