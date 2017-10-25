@@ -2,6 +2,9 @@ import fivetwelve from '/libs/fivetwelve/index.js'
 
 export default class StairvilleMhX50LedSpotMovingHead extends fivetwelve.DmxDevice {
 
+  /*
+   * @see https://www.thomann.de/gb/stairville_mhx50_led_spot_moving_head.htm
+   */
   constructor(options) {
     super(Object.assign(options, {
       params: {
