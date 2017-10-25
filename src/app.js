@@ -40,7 +40,7 @@ class AppContent extends PolymerElement {
 
       // true: Restore configuration from config.js
       // false: Load configuration from localStorage
-      restore: false
+      restore: true
     })
     this.config = this.configuration
     window.configuration = this.configuration
@@ -100,9 +100,14 @@ class AppContent extends PolymerElement {
 
     this.updateSceneList()
     this.updateDmxList()
-    
-    this.sceneList[0].value.config.active = true
-    this.handleActivate = this.handleActivate.bind(this)
+
+    // Scene playback:
+    // true: run once
+    // false: run not at all
+    // loop: infinite
+
+    // this.sceneList[0].value.config.active = true
+    // this.handleActivate = this.handleActivate.bind(this)
   }
 
   get sceneList() {
@@ -331,11 +336,12 @@ class AppContent extends PolymerElement {
         flex-wrap: wrap;
       }
       .left {
-        flex: 0 0 20em;
+        flex: 0 0 12em;
       }
 
       .right {
         flex: 1 1 20em;
+        padding-left: .25em;
       }
     </style>
     <div class="flex" style="--bpm: {{state.bpm}}">
@@ -368,7 +374,7 @@ class AppContent extends PolymerElement {
           <tap-button class="one"
                       on-tap="handleTap"
                       delay="2000"
-                      items="2"
+                      items="1"
                       controllerId="korgnanopad2"
                       partId="button16"
                       ></tap-button>

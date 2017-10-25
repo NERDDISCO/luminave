@@ -10,7 +10,7 @@ export const styles = `
   top: 50%;
   bottom: 0;
   left: calc(var(--start) * 100%);
-  height: 2em;
+  height: 1.5em;
   width: calc((var(--end) - var(--start)) * 100%);
   transform: translate(0, -50%);
   box-shadow: inset 0 0 0 1px;
@@ -31,18 +31,18 @@ export const styles = `
 .animation-timeline {
   position: relative;
   display: flex;
-  height: 2em;
+  height: 1.5em;
   width: calc(var(--duration) / var(--loop-measures) * (100% - 10em));
 }
 
 .animation-label {
   width: 10em;
-  padding: 0.5em;
+  padding: 0.25em;
 }
 
 .animation {
   display: flex;
-  margin: 0.5em 0;
+  margin: 0.25em 0;
   background: var(--background-darker);
   color: var(--color-lighter);
 }

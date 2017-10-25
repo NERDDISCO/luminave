@@ -24,40 +24,28 @@ export default {
       }
     }
   },
-  'animations': [{
-      'animationId': 'a_movingheadtest',
-      'duration': 6,
-      'name': 'Test the Stairville MX50',
-      'timeline': [{
-        'name': 'colorWheel',
-        'value': 'white',
-        'keyframes': [{
-          'time': 0,
-          'value': 'white',
-          'modV': true
-          }, {
-           'time': 0.5,
-           'value': 'green'
-          }, {
-            'time': 1,
-            'value': 'pink'
-          }]
-      }, {
-        'name': 'shutter',
-        'value': 'open',
-        'keyframes': [{
-          'time': 0,
-          'value': 'open',
-          'modV': true
-          }, {
-           'time': 0.5,
-           'value': 'closed'
-          }, {
-            'time': 1,
-            'value': 'strobe(80)'
-          }]
-      }]
-    }, {
+  'animations': [
+
+    {
+    'animationId': 'a_movingheadtest',
+    'duration': 6,
+    'name': 'Test the Stairville MX50',
+    'timeline': [{
+      'name': 'colorWheel',
+      'keyframes': [
+        { 'time': 0, 'value': 'white' },
+        { 'time': 0.5, 'value': 'green' },
+        { 'time': 1, 'value': 'pink' }
+      ]}, {
+        'name': 'gobo',
+        'keyframes': [
+          { 'time': 0, 'value': 'gobo2' },
+          { 'time': 0.5, 'value': 'gobo5Shake(0.5)' },
+          { 'time': 1, 'value': 'gobo5Shake(0.5)' }
+      ]}
+    ]},
+
+    {
       'animationId': 'fogfogfog',
       'duration': 8,
       'name': 'This is a funny animation',
