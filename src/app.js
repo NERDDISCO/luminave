@@ -165,7 +165,6 @@ class AppContent extends PolymerElement {
         timeCounter
       })
 
-      // this.runTimeline(timeCounter)
     }
 
     setTimeout(() => {

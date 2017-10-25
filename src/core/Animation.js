@@ -91,12 +91,20 @@ export default class Animation {
           }
         }
 
+        if (this.values.hasOwnProperty('colorWheel')) {
+          device.colorWheel = this.values.colorWheel
+        }
+
         if (this.values.hasOwnProperty('rotate')) {
           device.rotate = this.values.rotate
         }
 
         if (this.values.hasOwnProperty('strobe')) {
           device.strobe = this.values.strobe
+        }
+
+        if (this.values.hasOwnProperty('shutter')) {
+          device.shutter = this.values.shutter
         }
 
         if (this.values.hasOwnProperty('brightness')) {

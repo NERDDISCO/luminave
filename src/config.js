@@ -24,22 +24,38 @@ export default {
       }
     }
   },
-  'log': { 'separator': '-------------------------------' },
   'animations': [{
-      'animationId': 'greenwall',
-      'duration': 1,
-      'name': 'This is DnB',
+      'animationId': 'a_movingheadtest',
+      'duration': 6,
+      'name': 'Test the Stairville MX50',
       'timeline': [{
-        'name': 'color',
-        'value': [0, 0, 0],
+        'name': 'colorWheel',
+        'value': 'white',
         'keyframes': [{
           'time': 0,
-          'value': [0, 255, 0],
+          'value': 'white',
           'modV': true
           }, {
-           'time': 1,
-           'value': [0, 0, 0]
-         }]
+           'time': 0.5,
+           'value': 'green'
+          }, {
+            'time': 1,
+            'value': 'pink'
+          }]
+      }, {
+        'name': 'shutter',
+        'value': 'open',
+        'keyframes': [{
+          'time': 0,
+          'value': 'open',
+          'modV': true
+          }, {
+           'time': 0.5,
+           'value': 'closed'
+          }, {
+            'time': 1,
+            'value': 'strobe(80)'
+          }]
       }]
     }, {
       'animationId': 'whateverwall',
@@ -462,7 +478,7 @@ export default {
 
   'scenes': [{
       'sceneId': 'left_1',
-      'active': true,
+      'active': false,
       'name': 'This is my awesome first scene',
       'midi': {
         'controllerId': 'korgnanopad2',
@@ -478,51 +494,27 @@ export default {
       }]
   },
   {
-    'sceneId': 'test2',
-      'active': false,
+    'sceneId': 'test_movinghead_mx50',
       'name': 'This is my awesome first scene',
+      'active': true,
       'midi': {
         'controllerId': 'korgnanopad2',
         'partId': 'button2'
       },
       'layers': [{
-        'layerId': 'layerFoo',
-        'devices': ['fungeneration_ledspot_2'],
-        'animations': [{
-          'start': 0,
-          'animationId': 'blue'
-        }]
-      },
-      {
-        'layerId': 'layerBar',
-        'devices': ['fungeneration_ledspot_1'],
-        'animations': [{
-          'start': 0,
-          'animationId': 'yellow'
-        }]
-      }]
-  },
-  {
-    'sceneId': 'test3',
-      'name': 'This is my awesome first scene',
-      'midi': {
-        'controllerId': 'korgnanopad2',
-        'partId': 'button3'
-      },
-      'layers': [{
         'layerId': 'layer1',
-        'devices': ['stairville_bowl_1'],
+        'devices': ['stairville_mx50_1'],
         'animations': [{
           'start': 0,
-          'animationId': 'test3'
+          'animationId': 'a_movingheadtest'
         }]
       }]
   }],
   'devices': {
     'dmx': [{
-      'deviceId': 'stairville_bowl_1',
-      'type': 'StairvilleBowlBeam604LEDCOBMovingHead',
-      'name': 'Stairville Bowl Beam 604 LED COB MovingHead',
+      'deviceId': 'stairville_mx50_1',
+      'type': 'StairvilleMhX50LedSpotMovingHead',
+      'name': 'Stairville MH-X50 LED Spot Moving Head',
       'universe': 1,
       'address': 13
       }, {
@@ -532,13 +524,6 @@ export default {
         'universe': 1,
         'address': 1
       }, {
-        'deviceId': 'fungeneration_ledspot_2',
-        'type': 'FunGenerationSeParQuadLedRgbUv',
-        'name': 'Fun Generation SePar Quad LED RGB UV',
-        'universe': 1,
-        'address': 7
-      },
-       {
         'deviceId': 'fogmaschine',
         'type': 'StairvilleAF150',
         'name': 'Stairville AF-150',
