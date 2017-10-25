@@ -98,6 +98,36 @@ class AppContent extends PolymerElement {
       duration: ~~(60 / bpm * 1000 * measures)
     }
 
+    this.updateSceneList()
+    this.updateDmxList()
+    this.sceneList[0].value.config.active = true
+    // console.log(this.scenesList[0].value.config.active)
+  }
+
+  get sceneList() {
+    return this._sceneList
+  }
+
+  set sceneList(list) {
+    this._sceneList = list
+  }
+
+  get dmxList() {
+    return this._dmxList
+  }
+
+  set dmxList(list) {
+    this._dmxList = list
+  }
+
+  updateSceneList() {
+    this.sceneList = [...this.sceneManager.list].map((e, i) => {
+      const [key, value] = e
+      return {key, value}
+    })
+  }
+
+  updateDmxList() {
     this.dmxList = [...this.deviceManager.list].map((e, i) => {
       const [key, value] = e
 
@@ -112,16 +142,7 @@ class AppContent extends PolymerElement {
           channels: value.instance.params[x].channels
         }))
       }
-    })
-    this.scenesList = [...this.sceneManager.list].map((e, i) => {
-      const [key, value] = e
-      return {key, value}
-    })
-
-    this.dmxList.sort((a, b) => a.bufferOffset - b.bufferOffset)
-
-    // this.scenesList[0].value.config.active = false
-    // console.log(this.scenesList[0].value.config.active)
+    }).sort((a, b) => a.bufferOffset - b.bufferOffset)
   }
 
   setState(newState) {
@@ -145,6 +166,8 @@ class AppContent extends PolymerElement {
    */
   setTime() {
     const {time, bpm, measures, duration, paused} = this.state
+    const now = new Date()
+    const loopEnd = now - time > duration
 
     // Paused
     if (paused) {
@@ -152,10 +175,8 @@ class AppContent extends PolymerElement {
 
     // Running
     } else {
-      const now = new Date()
       const timeCounter = (now - time) / duration
-
-      if (now - time > duration) {
+      if (loopEnd) {
         this.setState({
           time: now,
         })
@@ -164,30 +185,29 @@ class AppContent extends PolymerElement {
       this.setState({
         timeCounter
       })
-
     }
 
     setTimeout(() => {
       requestAnimationFrame(this.setTime.bind(this))
     }, 1000 / window.configuration.data.global.fps)
 
-    const values = this.getValues(this.state.timeCounter, this.scenesList.filter(scene => Boolean(scene.value.config.active)))
-    this.runTimeline(values)
+    const values = this.getValues(this.state.timeCounter, this.sceneList.filter(scene => Boolean(scene.value.config.active)))
+    this.runTimeline(values, loopEnd)
   }
 
-  runTimeline(scenes) {
+  runTimeline(scenes, loopEnd) {
 
     // console.log(scenes.length, 'scenes are running')
+    if (loopEnd) {
+      this.sceneList.forEach((scene, i) => {
+        if (this.sceneList[i].value.config.active === true) {
+          this.sceneList[i].value.config.active = false
+        }
+      })
+      this.updateSceneList()
+    }
 
     scenes.forEach(scene => {
-
-      // if true disable to set inactive on next run
-      // if "loop" don't do anything.
-      if (scene.active === true) {
-        // @todo disable active
-        //scene.value.config.active = false
-      }
-
       scene.children.forEach(layer => {
         this.render.run()
 
@@ -346,7 +366,7 @@ handleRestore(e) {
 
         </section>
         <section class="right">
-          <timeline-item scenes="{{scenesList}}"
+          <timeline-item scenes="{{sceneList}}"
                          time="{{state.timeCounter}}"
                          duration="{{state.duration}}"
                          bpm="{{state.bpm}}"

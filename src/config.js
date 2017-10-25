@@ -479,7 +479,7 @@ export default {
   'scenes': [{
     'sceneId': 'test_movinghead_mx50',
       'name': 'This is my awesome first scene',
-      'active': true,
+      'active': 'loop',
       'midi': {
         'controllerId': 'korgnanopad2',
         'partId': 'button2'
