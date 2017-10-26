@@ -47,6 +47,11 @@ class AnimationItem extends PolymerElement {
                                               )}}"
                    style$="--start: {{keyframe.time}};
                            --end: {{getEnd(timeline.keyframes, index, keyframe.time)}}">
+                <div class="keyframe-label">
+                  <div class="keyframe-value">
+                    {{keyframe.value}}
+                  </div>
+                </div>
               </div>
             </template>
           </div>

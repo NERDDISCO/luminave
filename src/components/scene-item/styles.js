@@ -26,7 +26,7 @@ export const styles = `
   align-items: center;
   align-content: center;
   align-self: flex-start;
-  background: var(--focus-background)
+  background: var(--background-lighter)
 }
 
 `
