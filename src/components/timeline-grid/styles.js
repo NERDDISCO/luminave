@@ -20,6 +20,7 @@ export const styles = `
   bottom: 0;
   left: 10em;
   overflow: hidden;
+  pointer-events: none;
 }
 
 .needle {
@@ -42,12 +43,13 @@ export const styles = `
   z-index: 1;
   background: rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  opacity: 0.1;
+  opacity: 0.3;
 }
 
-.step:hover {
+/*.step:hover {
   opacity: 0.8;
 }
+*/
 
 
 .grid {
