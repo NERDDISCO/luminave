@@ -50,9 +50,9 @@ export default class MidiController {
         controllerId: this.controllerId
       }
 
-      console.log('noteon', eventData)
+      // @TODO: Hide behind a flag
+      // console.log('noteon', eventData)
 
-      // @TODO: Fix
       window.dispatchEvent(new CustomEvent('MidiController', { detail: eventData }))
     }
 

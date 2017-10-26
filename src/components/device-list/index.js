@@ -35,7 +35,7 @@ class DeviceList extends PolymerElement {
           flex-wrap: wrap;
         }
         channel-input {
-          flex: 0 0 33.3%;
+          flex: 0 0 100%;
         }
         .view {
           background: var(--background);

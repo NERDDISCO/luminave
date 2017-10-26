@@ -24,26 +24,162 @@ export default {
       }
     }
   },
+
+
+
+
+
+  /****************************************************************************
+
+    Animations
+
+  */
+
   'animations': [
 
     {
-    'animationId': 'a_movingheadtest',
+    'animationId': 'an_shutter_open',
     'duration': 6,
-    'name': 'Test the Stairville MX50',
+    'name': '',
     'timeline': [{
-      'name': 'colorWheel',
+      'name': 'shutter',
       'keyframes': [
-        { 'time': 0, 'value': 'white' },
-        { 'time': 0.5, 'value': 'green' },
-        { 'time': 1, 'value': 'pink' }
-      ]}, {
-        'name': 'gobo',
-        'keyframes': [
-          { 'time': 0, 'value': 'gobo2' },
-          { 'time': 0.5, 'value': 'gobo5Shake(0.5)' },
-          { 'time': 1, 'value': 'gobo5Shake(0.5)' }
-      ]}
-    ]},
+        { 'time': 0, 'value': 'open' },
+        { 'time': 1, 'value': 'open' }
+      ]
+    }]},
+
+    {
+    'animationId': 'an_goboOpen',
+    'duration': 6,
+    'name': '',
+    'timeline': [{
+      'name': 'goboOpen',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo' },
+        { 'time': 1, 'value': 'gobo' }
+      ]
+    }]},
+
+    {
+    'animationId': 'an_gobo2',
+    'duration': 6,
+    'name': '',
+    'timeline': [{
+      'name': 'gobo2',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo2' },
+        { 'time': 1, 'value': 'gobo2' }
+      ]
+    }]},
+
+    {
+    'animationId': 'an_gobo3',
+    'duration': 6,
+    'name': '',
+    'timeline': [{
+      'name': 'gobo3',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo3' },
+        { 'time': 1, 'value': 'gobo3' }
+      ]
+    }]},
+
+    {
+    'animationId': 'an_gobo4',
+    'duration': 6,
+    'name': '',
+    'timeline': [{
+      'name': 'gobo4',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo4' },
+        { 'time': 1, 'value': 'gobo4' }
+      ]
+    }]},
+
+    {
+    'animationId': 'an_gobo5',
+    'duration': 6,
+    'name': '',
+    'timeline': [{
+      'name': 'gobo5',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo5' },
+        { 'time': 1, 'value': 'gobo5' }
+      ]
+    }]},
+
+    {
+    'animationId': 'an_gobo6',
+    'duration': 6,
+    'name': '',
+    'timeline': [{
+      'name': 'gobo6',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo6' },
+        { 'time': 1, 'value': 'gobo6' }
+      ]
+    }]},
+
+    {
+    'animationId': 'an_gobo7',
+    'duration': 6,
+    'name': '',
+    'timeline': [{
+      'name': 'gobo7',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo7' },
+        { 'time': 1, 'value': 'gobo7' }
+      ]
+    }]},
+
+    {
+    'animationId': 'an_gobo8',
+    'duration': 6,
+    'name': '',
+    'timeline': [{
+      'name': 'gobo8',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo8' },
+        { 'time': 1, 'value': 'gobo8' }
+      ]
+    }]},
+
+    {
+    'animationId': 'an_strobe_slow',
+    'duration': 8,
+    'name': '',
+    'timeline': [{
+      'name': 'shutter',
+      'keyframes': [
+        { 'time': 0, 'value': 'shutter(20)' },
+        { 'time': 1, 'value': 'shutter(20)' }
+      ]
+    }]},
+
+    {
+    'animationId': 'an_strobe_average',
+    'duration': 8,
+    'name': '',
+    'timeline': [{
+      'name': 'shutter',
+      'keyframes': [
+        { 'time': 0, 'value': 'shutter(80)' },
+        { 'time': 1, 'value': 'shutter(80)' }
+      ]
+    }]},
+
+    {
+    'animationId': 'an_strobe_fast',
+    'duration': 8,
+    'name': '',
+    'timeline': [{
+      'name': 'shutter',
+      'keyframes': [
+        { 'time': 0, 'value': 'shutter(160)' },
+        { 'time': 1, 'value': 'shutter(160)' }
+      ]
+    }]},
 
     {
       'animationId': 'fogfogfog',
@@ -65,9 +201,19 @@ export default {
       }]
     }],
 
+
+
+
+
+/****************************************************************************
+
+  Scenes
+
+*/
+
   'scenes': [{
     'sceneId': 'test_movinghead_mx50',
-      'name': 'This is my awesome first scene',
+      'name': '',
       'active': 'loop',
       'midi': {
         'controllerId': 'korgnanopad2',
@@ -78,10 +224,16 @@ export default {
         'devices': ['stairville_mx50_1'],
         'animations': [{
           'start': 0,
-          'animationId': 'a_movingheadtest'
+          'animationId': 'an_shutter_open'
         }]
       }]
   }],
+
+
+
+
+
+
   'devices': {
     'dmx': [{
       'deviceId': 'stairville_mx50_1',

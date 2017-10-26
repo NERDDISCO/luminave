@@ -115,8 +115,16 @@ export default class Animation {
           device.pan = this.values.pan
         }
 
-        if (this.values.hasOwnProperty('tilt')) {
-          device.tilt = this.values.tilt
+        if (this.values.hasOwnProperty('panFine')) {
+          device.panFine = this.values.panFine
+        }
+
+        if (this.values.hasOwnProperty('tiltFine')) {
+          device.tiltFine = this.values.tiltFine
+        }
+
+        if (this.values.hasOwnProperty('responseSpeed')) {
+          device.responseSpeed = this.values.responseSpeed
         }
 
         if (this.values.hasOwnProperty('amount')) {
@@ -157,14 +165,6 @@ export default class Animation {
 
         if (this.values.hasOwnProperty('dimmer')) {
           device.dimmer = this.values.dimmer
-        }
-
-        if (this.values.hasOwnProperty('tile')) {
-          device.tile = this.values.tile
-        }
-
-        if (this.values.hasOwnProperty('pan')) {
-          device.pan = this.values.pan
         }
 
       }, error => {

@@ -368,7 +368,7 @@ class AppContent extends PolymerElement {
           <pause-button
             on-pause="handlePause"
             controllerId="korgnanopad2"
-            partId="button14"
+            partId=""
           ></pause-button>
 
           <tap-button class="one"
