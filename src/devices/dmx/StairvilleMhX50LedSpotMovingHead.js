@@ -34,7 +34,7 @@ export default class StairvilleMhX50LedSpotMovingHead extends fivetwelve.DmxDevi
         shutter: new fivetwelve.param.MultiRangeParam(7, {
           open: { range: [4, 7] },
           closed: { range: [0, 3] },
-          strobe: { range: [14, 100] }
+          strobe: { range: [14, 215] }
         }),
 
         dimmer: new fivetwelve.param.RangeParam(8, {
