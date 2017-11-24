@@ -24,8 +24,8 @@ export const styles = `
 .keyframe-label {
   position: absolute;
   top: 50%;
-  width: 2em;
-  height: 2em;
+  width: 1.5em;
+  height: 1.5em;
   border-radius: 50%;
   transform: translate(-50%, -50%);
   background: var(--background-darker);
@@ -65,7 +65,7 @@ export const styles = `
 .animation-timeline {
   position: relative;
   display: flex;
-  height: 3em;
+  height: 1.5em;
   width: calc(var(--duration) / var(--loop-measures) * (100% - 10em));
 }
 
