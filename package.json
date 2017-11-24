@@ -24,6 +24,8 @@
     "fivetwelve": "^1.0.0-alpha.1",
     "keytime": "^0.1.1",
     "lit-html": "^0.6.0",
+    "polymer-redux": "^1.0.4",
+    "redux": "^3.7.2",
     "webmidi": "2.0.0-rc.8"
   },
   "resolutions": {
@@ -32,6 +34,9 @@
   },
   "homepage": "https://github.com/NERDDISCO/VisionLord#readme",
   "devDependencies": {
-    "eslint": "^4.7.2"
+    "eslint": "^4.7.2",
+    "react": "^16.1.1",
+    "react-redux": "^5.0.6",
+    "redux-devtools": "^3.4.1"
   }
 }
