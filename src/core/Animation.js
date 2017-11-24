@@ -115,6 +115,10 @@ export default class Animation {
           device.pan = this.values.pan
         }
 
+        if (this.values.hasOwnProperty('tilt')) {
+          device.tilt = this.values.tilt
+        }
+
         if (this.values.hasOwnProperty('panFine')) {
           device.panFine = this.values.panFine
         }
