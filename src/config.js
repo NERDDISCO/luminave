@@ -2,7 +2,7 @@ export default {
   'name': 'jsconf-budapest-2017',
   'global': {
     'fps': 60,
-    'dimmer': 255,
+    'dimmer': 0,
     'color': [0, 255, 0],
     'useModV': true,
     'bpm': 0
@@ -38,23 +38,78 @@ export default {
   'animations': [
 
     {
-    'animationId': 'an_shutter_open',
+    'animationId': 'an_reset',
     'duration': 6,
     'name': '',
-    'timeline': [{
-      'name': 'shutter',
+    'timeline': [
+      { 'name': 'shutter',
+        'keyframes': [
+          { 'time': 0, 'value': 'open' },
+          { 'time': 1, 'value': 'open' }
+      ]},
+      { 'name': 'focus',
+        'keyframes': [
+          { 'time': 0, 'value': 145 },
+          { 'time': 1, 'value': 145 }
+      ]},
+      { 'name': 'responseSpeed',
+        'keyframes': [
+          { 'time': 0, 'value': 1 },
+          { 'time': 1, 'value': 1 }
+      ]},
+      { 'name': 'gobo',
+        'keyframes': [
+          { 'time': 0, 'value': 'goboOpen' },
+          { 'time': 1, 'value': 'goboOpen' }
+      ]}
+    ]},
+
+    {
+    'animationId': 'an_panTilt_line',
+    'duration': 8,
+    'name': '',
+    'timeline': [
+      { 'name': 'pan',
+        'keyframes': [
+          { 'time': 0, 'value': 126 },
+          { 'time': 1, 'value': 126 }
+        ]
+      },
+      { 'name': 'tilt',
+        'keyframes': [
+          { 'time': 0, 'value': '70' },
+          { 'time': 0.5, 'value': '210' },
+          { 'time': 1, 'value': '70' }
+        ]
+      }
+  ]},
+
+  {
+  'animationId': 'an_panTilt_line_reverse',
+  'duration': 8,
+  'name': '',
+  'timeline': [
+    { 'name': 'pan',
       'keyframes': [
-        { 'time': 0, 'value': 'open' },
-        { 'time': 1, 'value': 'open' }
+        { 'time': 0, 'value': 126 },
+        { 'time': 1, 'value': 126 }
       ]
-    }]},
+    },
+    { 'name': 'tilt',
+      'keyframes': [
+        { 'time': 0, 'value': '210' },
+        { 'time': 0.5, 'value': '70' },
+        { 'time': 1, 'value': '210' }
+      ]
+    }
+  ]},
 
     {
     'animationId': 'an_goboOpen',
     'duration': 6,
     'name': '',
     'timeline': [{
-      'name': 'goboOpen',
+      'name': 'gobo',
       'keyframes': [
         { 'time': 0, 'value': 'gobo' },
         { 'time': 1, 'value': 'gobo' }
@@ -66,7 +121,7 @@ export default {
     'duration': 6,
     'name': '',
     'timeline': [{
-      'name': 'gobo2',
+      'name': 'gobo',
       'keyframes': [
         { 'time': 0, 'value': 'gobo2' },
         { 'time': 1, 'value': 'gobo2' }
@@ -74,11 +129,28 @@ export default {
     }]},
 
     {
+    'animationId': 'an_gobo2_shake',
+    'duration': 6,
+    'name': '',
+    'timeline': [
+      {'name': 'gobo',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo2' },
+        { 'time': 1, 'value': 'gobo2' }
+      ]},
+      {'name': 'goboRotation',
+      'keyframes': [
+        { 'time': 0, 'value': 'positive(0.5)' },
+        { 'time': 1, 'value': 'positive(0.5)' }
+      ]}
+    ]},
+
+    {
     'animationId': 'an_gobo3',
     'duration': 6,
     'name': '',
     'timeline': [{
-      'name': 'gobo3',
+      'name': 'gobo',
       'keyframes': [
         { 'time': 0, 'value': 'gobo3' },
         { 'time': 1, 'value': 'gobo3' }
@@ -86,11 +158,28 @@ export default {
     }]},
 
     {
+    'animationId': 'an_gobo3_shake',
+    'duration': 6,
+    'name': '',
+    'timeline': [
+      {'name': 'gobo',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo3' },
+        { 'time': 1, 'value': 'gobo3' }
+      ]},
+      {'name': 'goboRotation',
+      'keyframes': [
+        { 'time': 0, 'value': 'positive(0.5)' },
+        { 'time': 1, 'value': 'positive(0.5)' }
+      ]}
+    ]},
+
+    {
     'animationId': 'an_gobo4',
     'duration': 6,
     'name': '',
     'timeline': [{
-      'name': 'gobo4',
+      'name': 'gobo',
       'keyframes': [
         { 'time': 0, 'value': 'gobo4' },
         { 'time': 1, 'value': 'gobo4' }
@@ -98,11 +187,30 @@ export default {
     }]},
 
     {
+    'animationId': 'an_gobo4_shake',
+    'duration': 8,
+    'name': '',
+    'timeline': [
+      {'name': 'gobo',
+      'keyframes': [
+        { 'time': 0, 'value': 'open' },
+        { 'time': 0.9, 'value': 'gobo4' },
+        { 'time': 1, 'value': 'gobo4' }
+      ]},
+      {'name': 'goboRotation',
+      'keyframes': [
+        { 'time': 0, 'value': 'positive(0.5)' },
+        { 'time': 0.9, 'value': 'fixed' },
+        { 'time': 1, 'value': 'fixed' }
+      ]}
+    ]},
+
+    {
     'animationId': 'an_gobo5',
     'duration': 6,
     'name': '',
     'timeline': [{
-      'name': 'gobo5',
+      'name': 'gobo',
       'keyframes': [
         { 'time': 0, 'value': 'gobo5' },
         { 'time': 1, 'value': 'gobo5' }
@@ -110,11 +218,28 @@ export default {
     }]},
 
     {
+    'animationId': 'an_gobo5_shake',
+    'duration': 6,
+    'name': '',
+    'timeline': [
+      {'name': 'gobo',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo5' },
+        { 'time': 1, 'value': 'gobo5' }
+      ]},
+      {'name': 'goboRotation',
+      'keyframes': [
+        { 'time': 0, 'value': 'positive(0.5)' },
+        { 'time': 1, 'value': 'positive(0.5)' }
+      ]}
+    ]},
+
+    {
     'animationId': 'an_gobo6',
     'duration': 6,
     'name': '',
     'timeline': [{
-      'name': 'gobo6',
+      'name': 'gobo',
       'keyframes': [
         { 'time': 0, 'value': 'gobo6' },
         { 'time': 1, 'value': 'gobo6' }
@@ -122,11 +247,28 @@ export default {
     }]},
 
     {
+    'animationId': 'an_gobo6_shake',
+    'duration': 6,
+    'name': '',
+    'timeline': [
+      {'name': 'gobo',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo6' },
+        { 'time': 1, 'value': 'gobo6' }
+      ]},
+      {'name': 'goboRotation',
+      'keyframes': [
+        { 'time': 0, 'value': 'positive(0.5)' },
+        { 'time': 1, 'value': 'positive(0.5)' }
+      ]}
+    ]},
+
+    {
     'animationId': 'an_gobo7',
     'duration': 6,
     'name': '',
     'timeline': [{
-      'name': 'gobo7',
+      'name': 'gobo',
       'keyframes': [
         { 'time': 0, 'value': 'gobo7' },
         { 'time': 1, 'value': 'gobo7' }
@@ -134,16 +276,50 @@ export default {
     }]},
 
     {
+    'animationId': 'an_gobo7_shake',
+    'duration': 6,
+    'name': '',
+    'timeline': [
+      {'name': 'gobo',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo7' },
+        { 'time': 1, 'value': 'gobo7' }
+      ]},
+      {'name': 'goboRotation',
+      'keyframes': [
+        { 'time': 0, 'value': 'positive(0.5)' },
+        { 'time': 1, 'value': 'positive(0.5)' }
+      ]}
+    ]},
+
+    {
     'animationId': 'an_gobo8',
     'duration': 6,
     'name': '',
     'timeline': [{
-      'name': 'gobo8',
+      'name': 'gobo',
       'keyframes': [
         { 'time': 0, 'value': 'gobo8' },
         { 'time': 1, 'value': 'gobo8' }
       ]
     }]},
+
+    {
+    'animationId': 'an_gobo8_shake',
+    'duration': 6,
+    'name': '',
+    'timeline': [
+      {'name': 'gobo',
+      'keyframes': [
+        { 'time': 0, 'value': 'gobo8' },
+        { 'time': 1, 'value': 'gobo8' }
+      ]},
+      {'name': 'goboRotation',
+      'keyframes': [
+        { 'time': 0, 'value': 'positive(0.5)' },
+        { 'time': 1, 'value': 'positive(0.5)' }
+      ]}
+    ]},
 
     {
     'animationId': 'an_strobe_slow',
@@ -182,24 +358,22 @@ export default {
     }]},
 
     {
-      'animationId': 'fogfogfog',
-      'duration': 8,
-      'name': 'This is a funny animation',
-      'timeline': [{
-        'name': 'amount',
-        'value': 0,
-        'keyframes': [{
-          'time': 0,
-          'value': 255
-        }, {
-          'time': 0.8,
-          'value': 255
-        }, {
-          'time': 1,
-          'value': 0
-        }]
-      }]
-    }],
+    'animationId': 'an_fog',
+    'duration': 8,
+    'name': '',
+    'timeline': [
+      { 'name': 'pump',
+      'keyframes': [
+        { 'time': 0, 'value': 255 },
+        { 'time': 1, 'value': 255 }
+      ]},
+      { 'name': 'fan',
+      'keyframes': [
+        { 'time': 0, 'value': 255 },
+        { 'time': 1, 'value': 255 }
+      ]}
+  ]},
+  ],
 
 
 
@@ -211,23 +385,73 @@ export default {
 
 */
 
-  'scenes': [{
-    'sceneId': 'test_movinghead_mx50',
+  'scenes': [
+    // {
+    //   'sceneId': 'test_movinghead_mx50',
+    //   'name': '',
+    //   'active': 'loop',
+    //   'midi': {
+    //     'controllerId': 'korgnanopad2',
+    //     'partId': 'button1'
+    //   },
+    //   'layers': [{
+    //     'layerId': 'layer1',
+    //     'devices': ['stairville_mx50_1', 'stairville_mx50_2', 'stairville_mx50_3', 'stairville_mx50_4', 'stairville_mx50_5', 'stairville_mx50_6'],
+    //     'animations': [{
+    //       'start': 0,
+    //       'animationId': 'an_shutter_open'
+    //     }]
+    //   }]
+    // },
+
+    {
+      'sceneId': 'intro',
       'name': '',
-      'active': 'loop',
-      'midi': {
-        'controllerId': 'korgnanopad2',
-        'partId': 'button1'
-      },
-      'layers': [{
-        'layerId': 'layer1',
-        'devices': ['stairville_mx50_1'],
-        'animations': [{
-          'start': 0,
-          'animationId': 'an_shutter_open'
-        }]
-      }]
-  }],
+      'active': false,
+      'midi': { 'controllerId': 'korgnanopad2', 'partId': 'button1' },
+      'layers': [
+        {'layerId': 'layer1',
+        'devices': ['stairville_mx50_1', 'stairville_mx50_2', 'stairville_mx50_3', 'stairville_mx50_4', 'stairville_mx50_5', 'stairville_mx50_6'],
+        'animations': [
+          { 'start': 0, 'animationId': 'an_gobo4_shake' },
+        ]}
+    ]},
+
+    {
+      'sceneId': 'intro2',
+      'name': '',
+      'active': false,
+      'midi': { 'controllerId': 'korgnanopad2', 'partId': 'button3' },
+      'layers': [
+        {'layerId': 'layer1',
+        'devices': ['stairville_mx50_1', 'stairville_mx50_2', 'stairville_mx50_3', 'stairville_mx50_4'],
+        'animations': [
+          { 'start': 0, 'animationId': 'an_gobo5_shake' }
+        ]},
+        {'layerId': 'layer2',
+        'devices': ['stairville_mx50_5', 'stairville_mx50_6'],
+        'animations': [
+          { 'start': 0, 'animationId': 'an_gobo6_shake' }
+        ]}
+    ]},
+
+    {
+      'sceneId': 'strobe',
+      'name': '',
+      'active': false,
+      'midi': { 'controllerId': 'korgnanopad2', 'partId': 'button4' },
+      'layers': [
+        {'layerId': 'layer1',
+        'devices': ['stairville_mx50_1', 'stairville_mx50_2', 'stairville_mx50_3', 'stairville_mx50_4', 'stairville_mx50_5', 'stairville_mx50_6'],
+        'animations': [
+          { 'start': 0, 'animationId': 'an_strobe_fast' },
+          { 'start': 0, 'animationId': 'an_strobe_fast' }
+        ]}
+    ]},
+
+
+
+],
 
 
 
@@ -235,19 +459,57 @@ export default {
 
 
   'devices': {
-    'dmx': [{
-      'deviceId': 'stairville_mx50_1',
-      'type': 'StairvilleMhX50LedSpotMovingHead',
-      'name': 'Stairville MH-X50 LED Spot Moving Head',
-      'universe': 1,
-      'address': 1
-      }, {
-        'deviceId': 'fogmaschine',
-        'type': 'StairvilleAF150',
-        'name': 'Stairville AF-150',
+    'dmx': [
+      // {
+      //   'deviceId': 'fogmaschine',
+      //   'type': 'InvolightStratus700',
+      //   'name': 'InvolightStratus700',
+      //   'universe': 1,
+      //   'address': 120
+      // },
+      {
+        'deviceId': 'stairville_mx50_1',
+        'type': 'StairvilleMhX50LedSpotMovingHead',
+        'name': 'Stairville MH-X50 LED Spot Moving Head',
         'universe': 1,
-        'address': 46
-      }],
+        'address': 1
+      },
+      {
+        'deviceId': 'stairville_mx50_2',
+        'type': 'StairvilleMhX50LedSpotMovingHead',
+        'name': 'Stairville MH-X50 LED Spot Moving Head',
+        'universe': 1,
+        'address': 20
+      },
+      {
+        'deviceId': 'stairville_mx50_3',
+        'type': 'StairvilleMhX50LedSpotMovingHead',
+        'name': 'Stairville MH-X50 LED Spot Moving Head',
+        'universe': 1,
+        'address': 40
+      },
+      {
+        'deviceId': 'stairville_mx50_4',
+        'type': 'StairvilleMhX50LedSpotMovingHead',
+        'name': 'Stairville MH-X50 LED Spot Moving Head',
+        'universe': 1,
+        'address': 60
+      },
+      {
+        'deviceId': 'stairville_mx50_5',
+        'type': 'StairvilleMhX50LedSpotMovingHead',
+        'name': 'Stairville MH-X50 LED Spot Moving Head',
+        'universe': 1,
+        'address': 80
+      },
+      {
+        'deviceId': 'stairville_mx50_6',
+        'type': 'StairvilleMhX50LedSpotMovingHead',
+        'name': 'Stairville MH-X50 LED Spot Moving Head',
+        'universe': 1,
+        'address': 100
+      }
+      ],
     'midi': [{
       'name': 'nanoPAD2',
       'manufacturer': 'KORG INC.',

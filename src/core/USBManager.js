@@ -23,11 +23,14 @@ export default class USBManager {
     this.devices = null
 
     // @TODO: Move ALL OF THIS into it's own module
-    const driver = new ArduinoLeonardoETHDriver(this.port, {})
+    // const driver = new ArduinoLeonardoETHDriver(this.port, {})
 
     // Create the output by using the driver and set the amount of universes that are controlled by this interface
     // DmxOutput
-    this.output = fivetwelve.default(driver, 1)
+    // this.output = fivetwelve.default(driver, 1)
+
+    // @TODO: Hack for JSConfBP
+    this.output = window.fivetwelve.output
 
     // Check for USB devices that are already paired
     this.serial.getPorts().then(list => {

@@ -55,9 +55,12 @@ class AppContent extends PolymerElement {
     // Expose it globally so we can use it in the console
     window.midiManager = this.midiManager
 
+
+
     this.deviceManager = new DeviceManager({
       configuration: this.configuration,
-      output: this.usb.output
+      // output: this.usb.output
+      output: window.fivetwelve.output
     })
     window.deviceManager = this.deviceManager
     this.deviceManager.register()
@@ -198,7 +201,11 @@ class AppContent extends PolymerElement {
     }, 1000 / window.configuration.data.global.fps)
 
     const values = this.getValues(this.state.timeCounter, this.sceneList.filter(scene => Boolean(scene.value.config.active)))
+
     this.runTimeline(values, loopEnd)
+
+    // @TODO: JSConfBP 2017
+    window.fivetwelve.output.send()
   }
 
   runTimeline(scenes, loopEnd) {
