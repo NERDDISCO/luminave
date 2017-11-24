@@ -5,6 +5,7 @@ export default class Lerper {
   }
 
   values(value1, value2, t) {
+
     if (typeof value1 === 'number' && typeof value2 === 'number') {
       return this.lerp(value1, value2, t)
       // Assume array
@@ -24,7 +25,7 @@ export default class Lerper {
   }
 
   lerp(v0, v1, t) {
-    return v0 * (1 - t) + v1 * t
+    return Math.floor((v0 * (1 - t)) + (v1 * t))
   }
 
   range(min, max, value) {
