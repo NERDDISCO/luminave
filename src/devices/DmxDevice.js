@@ -9,6 +9,7 @@ import StairvilleAF150 from './dmx/StairvilleAF150.js'
 import StairvilleBowlBeam604LEDCOBMovingHead from './dmx/StairvilleBowlBeam604LEDCOBMovingHead.js'
 import StairvilleMhX50LedSpotMovingHead from './dmx/StairvilleMhX50LedSpotMovingHead.js'
 import EuroliteB100 from './dmx/EuroliteB100.js'
+import InvolightStratus700 from './dmx/InvolightStratus700.js'
 
 /**
  *
@@ -62,5 +63,6 @@ export default class DmxDevice {
     this.deviceMapping.set('StairvilleBowlBeam604LEDCOBMovingHead', StairvilleBowlBeam604LEDCOBMovingHead)
     this.deviceMapping.set('StairvilleMhX50LedSpotMovingHead', StairvilleMhX50LedSpotMovingHead)
     this.deviceMapping.set('EuroliteB100', EuroliteB100)
+    this.deviceMapping.set('InvolightStratus700', InvolightStratus700)
   }
 }
