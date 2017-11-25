@@ -1,4 +1,5 @@
 import fivetwelve from '/libs/fivetwelve/index.js'
+// import * as fivetwelve from '/node_modules/fivetwelve/lib-es5/index.js'
 
 export default class AdjStarburst extends fivetwelve.DmxDevice {
   constructor(options) {
