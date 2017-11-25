@@ -1,5 +1,6 @@
 export default {
-  'name': 'jsconf-budapest-2017',
+  'name': 'new-years-eve-2017',
+
   'global': {
     'fps': 60,
     'dimmer': 255,
@@ -7,6 +8,7 @@ export default {
     'useModV': true,
     'bpm': 0
   },
+
   'dmxInterface': {
     'universeAmount': 1,
     'driver': 'ArduinoLeonardoETHDriver',
@@ -14,6 +16,7 @@ export default {
     'serialport': { 'path': '/dev/cu.usbserial-EN193448' },
     'buffer': ''
   },
+
   'server': {
     'port': 3000,
     'websocket': {
@@ -38,168 +41,75 @@ export default {
   'animations': [
 
     {
-    'animationId': 'an_shutter_open',
-    'duration': 6,
-    'name': '',
-    'timeline': [{
-      'name': 'shutter',
-      'keyframes': [
-        { 'time': 0, 'value': 'open' },
-        { 'time': 1, 'value': 'open' }
-      ]
-    }]},
-
-    {
-    'animationId': 'an_goboOpen',
-    'duration': 6,
-    'name': '',
-    'timeline': [{
-      'name': 'goboOpen',
-      'keyframes': [
-        { 'time': 0, 'value': 'gobo' },
-        { 'time': 1, 'value': 'gobo' }
-      ]
-    }]},
-
-    {
-    'animationId': 'an_gobo2',
-    'duration': 6,
-    'name': '',
-    'timeline': [{
-      'name': 'gobo2',
-      'keyframes': [
-        { 'time': 0, 'value': 'gobo2' },
-        { 'time': 1, 'value': 'gobo2' }
-      ]
-    }]},
-
-    {
-    'animationId': 'an_gobo3',
-    'duration': 6,
-    'name': '',
-    'timeline': [{
-      'name': 'gobo3',
-      'keyframes': [
-        { 'time': 0, 'value': 'gobo3' },
-        { 'time': 1, 'value': 'gobo3' }
-      ]
-    }]},
-
-    {
-    'animationId': 'an_gobo4',
-    'duration': 6,
-    'name': '',
-    'timeline': [{
-      'name': 'gobo4',
-      'keyframes': [
-        { 'time': 0, 'value': 'gobo4' },
-        { 'time': 1, 'value': 'gobo4' }
-      ]
-    }]},
-
-    {
-    'animationId': 'an_gobo5',
-    'duration': 6,
-    'name': '',
-    'timeline': [{
-      'name': 'gobo5',
-      'keyframes': [
-        { 'time': 0, 'value': 'gobo5' },
-        { 'time': 1, 'value': 'gobo5' }
-      ]
-    }]},
-
-    {
-    'animationId': 'an_gobo6',
-    'duration': 6,
-    'name': '',
-    'timeline': [{
-      'name': 'gobo6',
-      'keyframes': [
-        { 'time': 0, 'value': 'gobo6' },
-        { 'time': 1, 'value': 'gobo6' }
-      ]
-    }]},
-
-    {
-    'animationId': 'an_gobo7',
-    'duration': 6,
-    'name': '',
-    'timeline': [{
-      'name': 'gobo7',
-      'keyframes': [
-        { 'time': 0, 'value': 'gobo7' },
-        { 'time': 1, 'value': 'gobo7' }
-      ]
-    }]},
-
-    {
-    'animationId': 'an_gobo8',
-    'duration': 6,
-    'name': '',
-    'timeline': [{
-      'name': 'gobo8',
-      'keyframes': [
-        { 'time': 0, 'value': 'gobo8' },
-        { 'time': 1, 'value': 'gobo8' }
-      ]
-    }]},
-
-    {
-    'animationId': 'an_strobe_slow',
-    'duration': 8,
-    'name': '',
-    'timeline': [{
-      'name': 'shutter',
-      'keyframes': [
-        { 'time': 0, 'value': 'shutter(20)' },
-        { 'time': 1, 'value': 'shutter(20)' }
-      ]
-    }]},
-
-    {
-    'animationId': 'an_strobe_average',
-    'duration': 8,
-    'name': '',
-    'timeline': [{
-      'name': 'shutter',
-      'keyframes': [
-        { 'time': 0, 'value': 'shutter(80)' },
-        { 'time': 1, 'value': 'shutter(80)' }
-      ]
-    }]},
-
-    {
-    'animationId': 'an_strobe_fast',
-    'duration': 8,
-    'name': '',
-    'timeline': [{
-      'name': 'shutter',
-      'keyframes': [
-        { 'time': 0, 'value': 'shutter(160)' },
-        { 'time': 1, 'value': 'shutter(160)' }
-      ]
-    }]},
-
-    {
-      'animationId': 'fogfogfog',
+      'animationId': 'an_array',
       'duration': 8,
-      'name': 'This is a funny animation',
+      'name': 'An array of Integer values, usually used for RGB',
       'timeline': [{
-        'name': 'amount',
-        'value': 0,
-        'keyframes': [{
-          'time': 0,
-          'value': 255
-        }, {
-          'time': 0.8,
-          'value': 255
-        }, {
-          'time': 1,
-          'value': 0
-        }]
+        'name': 'color',
+        'keyframes': [
+          { 'time': 0, 'value': [0, 0, 0] },
+          { 'time': 0.25, 'value': [0, 0, 0] },
+          { 'time': 0.5, 'value': [255, 0, 0] },
+          { 'time': 0.75, 'value': [0, 0, 0] },
+          { 'time': .9, 'value': [0, 0, 0] }
+        ]
       }]
-    }],
+    },
+
+    {
+      'animationId': 'an_value',
+      'duration': 8,
+      'name': 'A single Integer value',
+      'timeline': [
+        {
+          'name': 'uv',
+          'keyframes': [
+            { 'time': 0, 'value': 0 },
+            { 'time': 0.5, 'value': 255 },
+            { 'time': .9, 'value': 0 }
+          ]
+        },
+        {
+          'name': 'strobe',
+          'keyframes': [
+            { 'time': 0, 'value': 0 },
+            { 'time': 0.4, 'value': 0 },
+            { 'time': 0.41, 'value': 50 },
+            { 'time': 0.6, 'value': 50 },
+            { 'time': 0.61, 'value': 0 },
+            { 'time': .9, 'value': 0 }
+          ]
+        }
+      ]
+    },
+
+    {
+      'animationId': 'an_property',
+      'duration': 8,
+      'name': 'A property of a DMX device, which is hardcoded',
+      'timeline': [{
+        'name': 'gobo',
+        'keyframes': [
+          { 'time': 0, 'value': 'gobo2' },
+          { 'time': 1, 'value': 'gobo2' }
+        ]
+      }]
+    },
+
+    {
+      'animationId': 'an_function',
+      'duration': 8,
+      'name': 'A value as part of a function, because the same DMX property can have different sub-functions on the same channel',
+      'timeline': [{
+        'name': 'goboRotation',
+        'keyframes': [
+          { 'time': 0, 'value': 'positive(0.5)' },
+          { 'time': 1, 'value': 'positive(0.75)' }
+        ]
+      }]
+    },
+
+  ], // / Animations
 
 
 
@@ -211,43 +121,76 @@ export default {
 
 */
 
-  'scenes': [{
-    'sceneId': 'test_movinghead_mx50',
+  'scenes': [
+    {
+      'sceneId': 'test_colors',
       'name': '',
-      'active': 'loop',
+      'active': false,
       'midi': {
         'controllerId': 'korgnanopad2',
         'partId': 'button1'
       },
-      'layers': [{
-        'layerId': 'layer1',
-        'devices': ['stairville_mx50_1'],
-        'animations': [{
-          'start': 0,
-          'animationId': 'an_shutter_open'
-        }]
-      }]
-  }],
+      'layers': [
+        {
+          'layerId': 'layer1',
+          'devices': ['fungeneration_par_1', 'fungeneration_par_2'],
+          'animations': [{
+            'start': 0,
+            'animationId': 'an_array'
+          }]
+        }
+      ]
+    },
+
+    {
+      'sceneId': 'test_uv',
+      'name': '',
+      'active': false,
+      'midi': {
+        'controllerId': 'korgnanopad2',
+        'partId': 'button2'
+      },
+      'layers': [
+        {
+          'layerId': 'layer1',
+          'devices': ['fungeneration_par_1', 'fungeneration_par_2'],
+          'animations': [{
+            'start': 0,
+            'animationId': 'an_value'
+          }]
+        }
+      ]
+    }
+
+  ], // / Scenes
 
 
 
 
+  /****************************************************************************
 
+    Devices
+
+  */
 
   'devices': {
-    'dmx': [{
-      'deviceId': 'stairville_mx50_1',
-      'type': 'StairvilleMhX50LedSpotMovingHead',
-      'name': 'Stairville MH-X50 LED Spot Moving Head',
-      'universe': 1,
-      'address': 1
-      }, {
-        'deviceId': 'fogmaschine',
-        'type': 'StairvilleAF150',
-        'name': 'Stairville AF-150',
+    'dmx': [
+      {
+        'deviceId': 'fungeneration_par_1',
+        'type': 'FunGenerationSeParQuadLedRgbUv',
+        'name': 'Fun Generation PAR 1',
         'universe': 1,
-        'address': 46
-      }],
+        'address': 1
+      },
+      {
+        'deviceId': 'fungeneration_par_2',
+        'type': 'FunGenerationSeParQuadLedRgbUv',
+        'name': 'Fun Generation PAR 2',
+        'universe': 1,
+        'address': 7
+      }
+    ], // / DMX
+
     'midi': [{
       'name': 'nanoPAD2',
       'manufacturer': 'KORG INC.',
@@ -355,6 +298,6 @@ export default {
             'partId': 'button16'
           }]
       }
-    }]
-  }
+    }] // / MIDI
+  } // / Devices
 }
