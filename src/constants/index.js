@@ -5,3 +5,4 @@ import { uuid } from '/libs/abcq/uuid.js'
  */
 
 export const SET_CHANNEL = uuid()
+export const SET_BPM = uuid()

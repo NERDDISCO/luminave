@@ -1,16 +1,11 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { html } from '/node_modules/lit-html/lit-html.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
-import '../channel-item/index.js'
 
 class ChannelGrid extends PolymerElement {
 
   constructor() {
     super()
-    this.array = [...Array(512).fill().map((x, i) => ({
-      channelId: i + 1,
-      id: 0,
-    }))]
   }
 
   ready() {
@@ -38,36 +33,18 @@ class ChannelGrid extends PolymerElement {
           display: flex;
           flex-wrap: wrap;
         }
-        channel-input {
-          flex: 0 0 33.3%;
+        .item {
+          flex: 0 0 2em;
         }
 
         .view {
           background: var(--background);
           color: var(--color);
         }
-        .item-id, .param, .spacer {
-          box-sizing: border-box;
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          flex: 0;
-          font-size: 1em;
-          margin: 0;
-          padding: 0.5em;
-          font-family: monospace;
-          font-weight: normal;
-        }
-        .item-id {
-          flex-basis: 100%;
-        }
-        .param {
-          flex-basis: 100%;
-        }
       </style>
       <div class="flex view">
         <template is="dom-repeat" items="{{ array }}" as="channel">
-          <channel-item channel$="{{channel.channelId}}"></channel-item>
+          <div class="item">{{channel}}</div>
         </template>
       </div>
     `

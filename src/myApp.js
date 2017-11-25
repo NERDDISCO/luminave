@@ -2,19 +2,18 @@ import { dedupingMixin } from '/node_modules/@polymer/polymer/lib/utils/mixin.js
 
 import { createStore, combineReducers } from '/libs/redux/index.js'
 
-import { SET_CHANNEL } from './constants/index.js'
-import { channels } from './reducers/index.js'
-import { setChannel } from './actions/index.js'
+import * as reducers from './reducers/index.js'
+import * as actions from './actions/index.js'
 
 const app = {}
 
 app.actions = {
-  setChannel
+  ...actions
 }
 
 const store = createStore(
   combineReducers({
-    channels
+    ...reducers
   })
 )
 

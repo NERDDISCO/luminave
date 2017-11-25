@@ -1,10 +1,11 @@
+import app from '../../myApp.js'
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 
 /**
  * The tap button renders a button to manually set the bpm.
  * It waits for a given number of positions.
  */
-export class TapButton extends PolymerElement {
+export class TapButton extends app.ReduxMixin(PolymerElement) {
   constructor() {
     super()
 
@@ -23,17 +24,11 @@ export class TapButton extends PolymerElement {
     super.ready()
     this.options = {
       delay: this.attributes.delay || { value: 2000 },
-      items: this.attributes.items || { value: 4 },
-      controllerId: this.attributes.controllerId || { value: '' },
-      partId: this.attributes.partId || { value: '' }
+      items: this.attributes.items || { value: 4 }
     }
 
     this.delay = this.options.delay.value
     this.items = this.options.items.value
-    this.controllerId = this.options.controllerId.value
-    this.partId = this.options.partId.value
-
-    this.listen()
   }
 
   handleClick() {
@@ -60,33 +55,12 @@ export class TapButton extends PolymerElement {
         this.average = diffs / this.arr.length
         this.bpm = ~~(60000 / this.average)
 
-        this.dispatchEvent(new CustomEvent('tap', { detail: { bpm: this.bpm } }))
+        this.dispatch(app.actions.setBpm(this.bpm))
       }
 
     } else {
       this.ticking = true
     }
-  }
-
-  /*
-   * Listen to events to start this Scene.
-   *
-   * @TODO: Does this make any sense at this position / class?
-   */
-  listen() {
-
-    window.addEventListener('MidiController', event => {
-      const data = event.detail
-
-      // Only allow the MIDI controller that was attachted to this scene
-      if (data.controllerId === this.controllerId) {
-
-        // Only allow a specific input element (button or knob) from the MIDI controller
-        if (data.partId === this.partId) {
-          this.run()
-        }
-      }
-    })
   }
 
   static get template() {
