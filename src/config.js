@@ -3,7 +3,7 @@ export default {
 
   'global': {
     'fps': 60,
-    'dimmer': 0,
+    'dimmer': 255,
     'color': [0, 255, 0],
     'useModV': true,
     'bpm': 0
@@ -48,10 +48,10 @@ export default {
         'name': 'color',
         'keyframes': [
           { 'time': 0, 'value': [0, 0, 0] },
-          { 'time': 0.25, 'value': [255, 0, 0] },
-          { 'time': 0.5, 'value': [0, 255, 0] },
-          { 'time': 0.75, 'value': [0, 0, 255] },
-          { 'time': 1, 'value': [0, 0, 0] }
+          { 'time': 0.25, 'value': [0, 0, 0] },
+          { 'time': 0.5, 'value': [255, 0, 0] },
+          { 'time': 0.75, 'value': [0, 0, 0] },
+          { 'time': .9, 'value': [0, 0, 0] }
         ]
       }]
     },
@@ -60,14 +60,27 @@ export default {
       'animationId': 'an_value',
       'duration': 8,
       'name': 'A single Integer value',
-      'timeline': [{
-        'name': 'uv',
-        'keyframes': [
-          { 'time': 0, 'value': 0 },
-          { 'time': 0.5, 'value': 255 },
-          { 'time': 1, 'value': 0 }
-        ]
-      }]
+      'timeline': [
+        {
+          'name': 'uv',
+          'keyframes': [
+            { 'time': 0, 'value': 0 },
+            { 'time': 0.5, 'value': 255 },
+            { 'time': .9, 'value': 0 }
+          ]
+        },
+        {
+          'name': 'strobe',
+          'keyframes': [
+            { 'time': 0, 'value': 0 },
+            { 'time': 0.4, 'value': 0 },
+            { 'time': 0.41, 'value': 50 },
+            { 'time': 0.6, 'value': 50 },
+            { 'time': 0.61, 'value': 0 },
+            { 'time': .9, 'value': 0 }
+          ]
+        }
+      ]
     },
 
     {
@@ -112,7 +125,7 @@ export default {
     {
       'sceneId': 'test_colors',
       'name': '',
-      'active': 'loop',
+      'active': false,
       'midi': {
         'controllerId': 'korgnanopad2',
         'partId': 'button1'
