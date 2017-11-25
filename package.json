@@ -34,9 +34,6 @@
   },
   "homepage": "https://github.com/NERDDISCO/VisionLord#readme",
   "devDependencies": {
-    "eslint": "^4.7.2",
-    "react": "^16.1.1",
-    "react-redux": "^5.0.6",
-    "redux-devtools": "^3.4.1"
+    "eslint": "^4.7.2"
   }
 }
