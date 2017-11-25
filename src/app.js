@@ -2,11 +2,9 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import { html } from '/node_modules/lit-html/lit-html.js'
 import { render } from '/node_modules/lit-html/lib/lit-extended.js'
 
-import app from './myApp.js'
-
 import './components/my-view/index.js'
 
-class MyApp extends app.ReduxMixin(PolymerElement) {
+class MyApp extends PolymerElement {
   constructor(){
     super()
 }

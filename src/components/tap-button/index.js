@@ -1,11 +1,12 @@
-import app from '../../myApp.js'
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import ReduxMixin from '../../reduxStore.js'
+import { setBpm } from '../../actions/index.js'
 
 /**
  * The tap button renders a button to manually set the bpm.
  * It waits for a given number of positions.
  */
-export class TapButton extends app.ReduxMixin(PolymerElement) {
+export class TapButton extends ReduxMixin(PolymerElement) {
   constructor() {
     super()
 
@@ -55,7 +56,7 @@ export class TapButton extends app.ReduxMixin(PolymerElement) {
         this.average = diffs / this.arr.length
         this.bpm = ~~(60000 / this.average)
 
-        this.dispatch(app.actions.setBpm(this.bpm))
+        this.dispatch(setBpm(this.bpm))
       }
 
     } else {
