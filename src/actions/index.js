@@ -15,6 +15,8 @@ import * as constants from '../constants/index.js'
 
 /*
  * Set the value for a DMX512 channel
+ *
+ * @TODO: Set the channel for a specific universe
  */
 export const setChannel = (channel, value) => ({
   channel,
