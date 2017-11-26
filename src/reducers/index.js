@@ -20,19 +20,19 @@ import * as constants from '../constants/index.js'
 /*
  * Update the DMX512 channels
  */
-export const channels = (state = [...Array(512)].map(() => 0), { type, channel, value }) => {
-    switch (type) {
-      case constants.SET_CHANNEL:
-          return (() => {
-            const s = [...state]
-            s[channel] = value
-
-            return s
-          })()
-      default:
-        return state
-    }
-  }
+// export const channels = (state = [...Array(512)].map(() => 0), { type, channel, value }) => {
+//     switch (type) {
+//       case constants.SET_CHANNEL:
+//           return (() => {
+//             const s = [...state]
+//             s[channel] = value
+//
+//             return s
+//           })()
+//       default:
+//         return state
+//     }
+//   }
 
 /*
  * Update the BPM
@@ -71,17 +71,27 @@ export const connectionManager = (
 /*
  * Handle the DMX512 universes
  */
-export const universeManager = (state = [], { type, universe, index }) => {
+export const universeManager = (state = [], { type, universe, index, universeId, channel, value }) => {
   switch (type) {
     case constants.ADD_UNIVERSE:
       return [...state, universe]
+
     case constants.REMOVE_UNIVERSE:
       return (() => {
         const newState = [...state]
         newState.splice(index, 1)
-        
+
         return newState
       })()
+
+    case constants.SET_CHANNEL:
+      return (() => {
+        const newState = [...state]
+        newState[universeId].channels[channel] = value
+
+        return newState
+      })()
+
     default:
       return state
   }
