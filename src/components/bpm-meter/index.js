@@ -8,20 +8,7 @@ class BPMMeter extends PolymerElement {
 
   static get template() {
     return `
-       <style>
-        .meter {
-          box-sizing: border-box;
-          font-size: 2em;
-          padding: 1em;
-          width: calc(100% - 1em);
-          box-sizing: border-box;
-          text-align: center;
-          font-family: monospace;
-          background: var(--background);
-          color: var(--color);
-        }
-      </style>
-        <div class="meter">[[bpm]]</div>
+      <div>[[bpm]]</div>
     `
   }
 }

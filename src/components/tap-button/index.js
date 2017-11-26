@@ -66,39 +66,6 @@ export class TapButton extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
-    <style>
-      :host {
-        --height: 3em;
-        --background: var(--background-lighter);
-      }
-      button {
-          box-sizing: border-box;
-          height: var(--height);
-          width: calc(100% - 1em);
-          border: 0;
-          font-size: 1em;
-          line-height: calc(var(--height) - 1em);
-          margin: 0.3em 0 0 0;
-          padding: 0.5em 1em;
-          font-family: monospace;
-          border-radius: 0;
-          color: var(--color);
-          background: var(--background);
-          box-shadow: 0 0 0 1px var(--color);
-          cursor: pointer;
-        }
-
-        button:focus {
-          outline: 0;
-          --color: var(--focus-color);
-          --background: var(--focus-background);
-        }
-
-        button:active {
-          --background: var(--background-darker);
-          --color: var(--color-lighter);
-        }
-    </style>
       <button on-click="handleClick">TAP</button>
     `
   }

@@ -1,25 +1,24 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 
 class ConnectButton extends PolymerElement {
-
-  constructor() {
-    super()
-  }
-  ready(){
-    super.ready()
-  }
-
   handleClick(e) {
+    console.log([this], this.connected)
     if (this.connected){
       this.dispatchEvent(new CustomEvent('disconnect'))
-      this.dmxList
     } else {
       this.dispatchEvent(new CustomEvent('connect'))
     }
   }
 
-  computeLabel(connected) {
-    return `USB ${connected ? '☀️' : '⛈'}`
+  static get properties() {
+    return {
+      label : {
+        type: String
+      },
+      connected: {
+        type: Boolean
+      }
+    }
   }
 
   computeVars(connected) {
@@ -36,16 +35,12 @@ class ConnectButton extends PolymerElement {
     return `
         <style>
         button {
-
           --background: rgba(calc(var(--off) * 150), calc(var(--on) * 150), 0, 1);
-          /*--color: hsla(120, 40%, 60%, var(--connected));*/
 
             box-sizing: border-box;
-            height: 2em;
             border: 0;
-            font-size: 1em;
-            line-height: 1em;
-            margin: 05.em;
+            font-size: inherit;
+            margin: 0.5em;
             padding: 0.5em 1em;
             font-family: monospace;
             border-radius: 0;
@@ -54,19 +49,8 @@ class ConnectButton extends PolymerElement {
             box-shadow: 0 0 0 1px var(--color);
             cursor: pointer;
           }
-
-        button:focus {
-          outline: 0;
-          --color: var(--focus-color);
-          /* --background: var(--focus-background); */
-        }
-
-        button:active {
-          --background: var(--background-darker);
-          /* --color: var(--color-lighter); */
-        }
       </style>
-      <button on-click="handleClick" style="[[computeVars(connected)]]">[[computeLabel(connected)]]</button>
+      <button on-click="handleClick" style="{{computeVars(connected)}}">[[label]]</button>
     `
   }
 }
