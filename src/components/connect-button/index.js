@@ -7,6 +7,9 @@ const actions = {
   bluetooth: connectBluetooth
 }
 
+/*
+ * Connect to an external system via USB or Bluetooth
+ */
 class ConnectButton extends ReduxMixin(PolymerElement) {
   handleClick(e) {
     this.connected = !this.connections[this.type].connected

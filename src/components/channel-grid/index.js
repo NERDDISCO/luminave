@@ -1,6 +1,9 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 
+/*
+ * Show DMX512 channels in a grid
+ */
 class ChannelGrid extends PolymerElement {
   static get template() {
     return `
