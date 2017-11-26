@@ -4,8 +4,8 @@ import { render } from '/node_modules/lit-html/lib/lit-extended.js'
 
 import './components/my-view/index.js'
 
-class MyApp extends PolymerElement {
-  constructor(){
+class VisionLord extends PolymerElement {
+  constructor() {
     super()
 }
 
@@ -17,4 +17,4 @@ class MyApp extends PolymerElement {
   }
 }
 
-customElements.define('my-app', MyApp)
+customElements.define('visionlord-master', VisionLord)
