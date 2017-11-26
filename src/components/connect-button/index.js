@@ -2,29 +2,15 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import ReduxMixin from '../../reduxStore.js'
 import { connectUsb, connectBluetooth } from '../../actions/index.js'
 
+const actions = {
+  usb: connectUsb,
+  bluetooth: connectBluetooth
+}
 
 class ConnectButton extends ReduxMixin(PolymerElement) {
   handleClick(e) {
-
-    switch (this.type) {
-      case 'usb':
-        this.connected = !this.usb
-        this.dispatch(connectUsb(!this.usb))
-        break
-      case 'bluetooth':
-        this.connected = !this.bluetooth
-        this.dispatch(connectBluetooth(!this.bluetooth))
-        break
-
-      default:
-
-    }
-  }
-
-  connectedCallback() {
-    super.connectedCallback()
-    this.dispatch(connectUsb(this.usb))
-    this.dispatch(connectBluetooth(this.bluetoth))
+    this.connected = !this.connections[this.type].connected
+    this.dispatch(actions[this.type](!this.connections[this.type].connected))
   }
 
   static get properties() {
@@ -35,19 +21,14 @@ class ConnectButton extends ReduxMixin(PolymerElement) {
       type: {
         type: String
       },
-      usb: {
-        type: Boolean,
-        statePath: 'connections.usb'
-      },
-      bluetooth: {
-        type: Boolean,
-        statePath: 'connections.bluetooth'
+      connections: {
+        type: Object,
+        statePath: 'connectionManager'
       }
     }
   }
 
   computeVars(connected) {
-    console.log(connected)
     const vars = {
       '--on': connected ? 1 : 0,
       '--off': connected ? 0 : 1

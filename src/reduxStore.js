@@ -8,7 +8,10 @@ import * as actions from './actions/index.js'
 export const store = createStore(
   combineReducers({
     ...reducers
+  }, {
+    connectManager: {usb: false, bluetooth: true}
   })
+
 )
 
 const reduxMixin = PolymerRedux(store)

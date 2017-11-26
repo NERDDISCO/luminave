@@ -14,11 +14,7 @@ class MyView extends ReduxMixin(PolymerElement) {
     return {
       universes: {
         type: Array,
-        statePath: 'universes'
-      },
-      channels: {
-        type: Array,
-        statePath: 'channels'
+        statePath: 'universeManager'
       },
       bpm: {
         type: Number,
@@ -47,9 +43,7 @@ class MyView extends ReduxMixin(PolymerElement) {
           <button on-click="removeUniverse" data-index$="{{index}}">Remove</button>
 
           <div>
-            <template is="dom-repeat" items="{{universe.channels}}" as="channel">
-              <div>{{channel}}</div>
-            </template>
+            <channel-grid array="{{universe.channels}}"></channel-grid>
           </div>
 
         </div>

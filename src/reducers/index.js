@@ -22,18 +22,18 @@ export const bpm = (state = 130, { type, bpm }) => {
   }
 }
 
-export const connections = (state = {}, { type, connected }) => {
+export const connectionManager = (state = { usb: { connected : false }, bluetooth : { connected : false }}, { type, connected }) => {
   switch (type) {
     case constants.CONNECT_USB:
-      return Object.assign({}, state, { usb: connected })
+      return Object.assign({}, state, { usb: { connected } })
     case constants.CONNECT_BLUETOOTH:
-      return Object.assign({}, state, { bluetooth: connected })
+      return Object.assign({}, state, { bluetooth: { connected } })
     default:
       return state
   }
 }
 
-export const universes = (state = [], { type, universe, index }) => {
+export const universeManager = (state = [], { type, universe, index }) => {
   switch (type) {
     case constants.ADD_UNIVERSE:
       return [...state, universe]
