@@ -1,7 +1,15 @@
 import { uuid } from '/libs/abcq/uuid.js'
 
 /*
- * Global constants that are generated UUIDs
+ *
+ * A collection of constants which are used to have a unique reference
+ * to every state in VisionLord
+ *
+ * Example:
+ ```
+  export const CONSTANT = uuid()
+ ```
+ *
  */
 
 export const SET_CHANNEL = uuid()
