@@ -247,7 +247,6 @@ navigator.usb.requestDevice({
 
 ---
 
-
 # Concepts
 
 ## Send data from the browser to the DMX512 interface

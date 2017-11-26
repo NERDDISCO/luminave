@@ -1,13 +1,30 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import ReduxMixin from '../../reduxStore.js'
+import { connectUsb, connectBluetooth } from '../../actions/index.js'
 
-class ConnectButton extends PolymerElement {
+
+class ConnectButton extends ReduxMixin(PolymerElement) {
   handleClick(e) {
-    console.log([this], this.connected)
-    if (this.connected){
-      this.dispatchEvent(new CustomEvent('disconnect'))
-    } else {
-      this.dispatchEvent(new CustomEvent('connect'))
+
+    switch (this.type) {
+      case 'usb':
+        this.connected = !this.usb
+        this.dispatch(connectUsb(!this.usb))
+        break
+      case 'bluetooth':
+        this.connected = !this.bluetooth
+        this.dispatch(connectBluetooth(!this.bluetooth))
+        break
+
+      default:
+
     }
+  }
+
+  connectedCallback() {
+    super.connectedCallback()
+    this.dispatch(connectUsb(this.usb))
+    this.dispatch(connectBluetooth(this.bluetoth))
   }
 
   static get properties() {
@@ -15,13 +32,22 @@ class ConnectButton extends PolymerElement {
       label : {
         type: String
       },
-      connected: {
-        type: Boolean
+      type: {
+        type: String
+      },
+      usb: {
+        type: Boolean,
+        statePath: 'connections.usb'
+      },
+      bluetooth: {
+        type: Boolean,
+        statePath: 'connections.bluetooth'
       }
     }
   }
 
   computeVars(connected) {
+    console.log(connected)
     const vars = {
       '--on': connected ? 1 : 0,
       '--off': connected ? 0 : 1

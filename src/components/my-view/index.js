@@ -1,14 +1,21 @@
+import { uuid } from '../../../libs/abcq/uuid.js'
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { setChannel, connectUsb, connectBluetooth } from '../../actions/index.js'
+import { setChannel, addUniverse, removeUniverse } from '../../actions/index.js'
+import { DEMO_UNIVERSE } from '../../constants/index.js'
 import '../channel-grid/index.js'
 import '../bpm-meter/index.js'
 import '../tap-button/index.js'
 import '../connect-button/index.js'
+import '../usb/index.js'
 
 class MyView extends ReduxMixin(PolymerElement) {
   static get properties() {
     return {
+      universes: {
+        type: Array,
+        statePath: 'universes'
+      },
       channels: {
         type: Array,
         statePath: 'channels'
@@ -16,42 +23,43 @@ class MyView extends ReduxMixin(PolymerElement) {
       bpm: {
         type: Number,
         statePath: 'bpm'
-      },
-      usb: {
-        type: Boolean,
-        statePath: 'connections.usb'
-      },
-      bluetooth: {
-        type: Boolean,
-        statePath: 'connections.bluetooth'
       }
     }
   }
 
-  connectUsb(e) {
-    this.dispatch(connectUsb(true))
+  addUniverse() {
+    const id = uuid()
+    this.dispatch(addUniverse({ id, channels: [...Array(512)].map(() => 0), name: `demo universe ${id}` }))
   }
 
-  disconnectUsb(e) {
-    this.dispatch(connectUsb(false))
-  }
-
-  connectBluetooth(e) {
-    this.dispatch(connectBluetooth(true))
-  }
-
-  disconnectBluetooth(e) {
-    this.dispatch(connectBluetooth(false))
+  removeUniverse(e) {
+    const {dataset} = e.target
+    this.dispatch(removeUniverse(parseInt(dataset.index, 10)))
   }
 
   static get template() {
     return `
-      <h1>USB: {{usb}}</h1>
-      <connect-button label="USB" on-connect="connectUsb" on-disconnect="disconnectUsb" connected="{{usb}}"></connect-button>
-      <connect-button label="BLUETOOTH" on-connect="connectBluetooth" on-disconnect="disconnectBluetooth" connected="{{bluetooth}}"></connect-button>
+      <button on-click="addUniverse">Add universe</button>
+
+      <template is="dom-repeat" items="{{universes}}" as="universe">
+        <div>
+          {{universe.name}}
+          <button on-click="removeUniverse" data-index$="{{index}}">Remove</button>
+
+          <div>
+            <template is="dom-repeat" items="{{universe.channels}}" as="channel">
+              <div>{{channel}}</div>
+            </template>
+          </div>
+
+        </div>
+      </template>
+
+      <usb-controller></usb-controller>
+      <connect-button type="usb" label="USB"></connect-button>
+      <connect-button type="bluetooth" label="BLUETOOTH"></connect-button>
       <bpm-meter bpm="{{bpm}}"></bpm-meter>
       <tap-button></tap-button>
-      <channel-grid array="{{channels}}"></channel-grid>
     `
   }
 }

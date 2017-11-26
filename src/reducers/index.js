@@ -32,3 +32,18 @@ export const connections = (state = {}, { type, connected }) => {
       return state
   }
 }
+
+export const universes = (state = [], { type, universe, index }) => {
+  switch (type) {
+    case constants.ADD_UNIVERSE:
+      return [...state, universe]
+    case constants.REMOVE_UNIVERSE:
+      return (() => {
+        const newState = [...state]
+        newState.splice(index, 1)
+        return newState
+      })()
+    default:
+      return state
+  }
+}

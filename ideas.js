@@ -1,5 +1,5 @@
-const channels = [...Array(512)].map(() => 0)
-const fixtures = [{}, {}]
+✅ const channels = [...Array(512)].map(() => 0)
+☀️ const fixtures = [{}, {}]
 // effects.js
 export const flash(n) => ({})
 export const fade(n) => ({})

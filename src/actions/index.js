@@ -20,3 +20,13 @@ export const connectBluetooth = connected => ({
   connected,
   type : constants.CONNECT_BLUETOOTH
 })
+
+export const addUniverse = universe => ({
+  universe,
+  type : constants.ADD_UNIVERSE
+})
+
+export const removeUniverse = index => ({
+  index,
+  type : constants.REMOVE_UNIVERSE
+})
