@@ -88,7 +88,7 @@ export const universeManager = (state = [], { type, universe, index, universeId,
       return (() => {
         const newState = [...state]
         newState[universeId].channels[channel] = value
-        
+
         return newState
       })()
 
@@ -109,6 +109,7 @@ export const sceneManager = (state = [], { type, scene, index }) => {
       return (() => {
         const newState = [...state]
         newState.splice(index, 1)
+        newState[universeId].channels = [...newState[universeId].channels]
 
         return newState
       })()

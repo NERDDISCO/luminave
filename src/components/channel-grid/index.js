@@ -1,10 +1,29 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import ReduxMixin from '../../reduxStore.js'
 
 /*
  * Show DMX512 channels in a grid
  */
-class ChannelGrid extends PolymerElement {
+class ChannelGrid extends ReduxMixin(PolymerElement) {
+  static get properties() {
+    return {
+      universe: {
+          type: Number
+      },
+      universes: {
+        type: Array,
+        statePath: 'universeManager'
+      }
+    }
+  }
+  getUniverse(universes, universe) {
+    if (universes) {
+      const {channels} = universes[universe]
+      return channels
+    }
+    return []
+  }
   static get template() {
     return `
       <style>
@@ -18,20 +37,13 @@ class ChannelGrid extends PolymerElement {
       </style>
 
       <div class="items">
-        <template is="dom-repeat" items="[[array]]" as="channel">
-          <div class="item">[[channel]]</div>
+        <template is="dom-repeat" items="{{getUniverse(universes, universe)}}" as="channel">
+          <div class="item">{{channel}}</div>
         </template>
       </div>
     `
   }
-  static get properties() {
-    return {
-      list: {
-          type: Array,
-          notify: true
-      }
-    }
-  }
+
 }
 
 customElements.define('channel-grid', ChannelGrid)
