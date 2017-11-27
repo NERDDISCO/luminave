@@ -18,7 +18,7 @@ class ChannelGrid extends ReduxMixin(PolymerElement) {
     }
   }
   getUniverse(universes, universe) {
-    if (universes) {
+    if (universes && universes[universe]) {
       const {channels} = universes[universe]
       return channels
     }

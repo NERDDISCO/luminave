@@ -16,9 +16,9 @@ import * as constants from '../constants/index.js'
 /*
  * Set the value for a DMX512 channel
  */
-export const setChannel = (universeId, channel, value) => ({
-  universeId,
-  channel,
+export const setChannel = (universeIndex, channelIndex, value) => ({
+  universeIndex,
+  channelIndex,
   value,
   type: constants.SET_CHANNEL
 })
@@ -58,8 +58,8 @@ export const addUniverse = universe => ({
 /*
  * Remove a DMX512 universe
  */
-export const removeUniverse = index => ({
-  index,
+export const removeUniverse = universeIndex => ({
+  universeIndex,
   type: constants.REMOVE_UNIVERSE
 })
 

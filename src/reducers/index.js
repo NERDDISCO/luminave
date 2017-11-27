@@ -1,5 +1,7 @@
 import * as constants from '../constants/index.js'
+const update = window.IMMUTABILITIYHELPER
 
+//const update = newContext()
 /*
  *
  * A collection of Redux reducers (= change application state based on Redux actions)
@@ -71,27 +73,14 @@ export const connectionManager = (
 /*
  * Handle the DMX512 universes
  */
-export const universeManager = (state = [], { type, universe, index, universeId, channel, value }) => {
+export const universeManager = (state = [], { type, universe, universeIndex, channelIndex, value }) => {
   switch (type) {
     case constants.ADD_UNIVERSE:
-      return [...state, universe]
-
+      return update(state, {$push: [universe]})
     case constants.REMOVE_UNIVERSE:
-      return (() => {
-        const newState = [...state]
-        newState.splice(index, 1)
-
-        return newState
-      })()
-
+      return update(state, {$splice: [[universeIndex, 1]]})
     case constants.SET_CHANNEL:
-      return (() => {
-        const newState = [...state]
-        newState[universeId].channels[channel] = value
-
-        return newState
-      })()
-
+      return update(state, {[universeIndex]: {channels: {$splice: [[channelIndex, 1, value]]}}})
     default:
       return state
   }

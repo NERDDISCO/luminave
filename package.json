@@ -34,6 +34,7 @@
   },
   "homepage": "https://github.com/NERDDISCO/VisionLord#readme",
   "devDependencies": {
-    "eslint": "^4.7.2"
+    "eslint": "^4.7.2",
+    "immutability-helper": "github:nerddisco/immutability-helper"
   }
 }
