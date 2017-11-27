@@ -27,7 +27,7 @@ class ChannelGrid extends PolymerElement {
   static get properties() {
     return {
       list: {
-          Type: Array,
+          type: Array,
           notify: true
       }
     }
