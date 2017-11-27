@@ -6,6 +6,7 @@ import '../tap-button/index.js'
 import '../connect-button/index.js'
 import '../usb/index.js'
 import '../universe-manager/index.js'
+import '../scene-manager/index.js'
 
 class MyView extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -24,6 +25,8 @@ class MyView extends ReduxMixin(PolymerElement) {
   static get template() {
     return `
       <universe-manager universes={{universeManager}}></universe-manager>
+
+      <scene-manager scenes={{sceneManager}}></scene-manager>
 
       <usb-controller></usb-controller>
 

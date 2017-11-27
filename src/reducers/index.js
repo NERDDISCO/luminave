@@ -88,6 +88,27 @@ export const universeManager = (state = [], { type, universe, index, universeId,
       return (() => {
         const newState = [...state]
         newState[universeId].channels[channel] = value
+        
+        return newState
+      })()
+
+    default:
+      return state
+  }
+}
+
+/*
+ * Handle the scenes
+ */
+export const sceneManager = (state = [], { type, scene, index }) => {
+  switch (type) {
+    case constants.ADD_SCENE:
+      return [...state, scene]
+
+    case constants.REMOVE_SCENE:
+      return (() => {
+        const newState = [...state]
+        newState.splice(index, 1)
 
         return newState
       })()
