@@ -1,5 +1,5 @@
+import update from '../../node_modules/immutability-helper/index.js'
 import * as constants from '../constants/index.js'
-const update = window.IMMUTABILITIYHELPER
 
 //const update = newContext()
 /*
