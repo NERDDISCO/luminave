@@ -4,7 +4,7 @@ import '../channel-grid/index.js'
 import '../bpm-meter/index.js'
 import '../tap-button/index.js'
 import '../connect-button/index.js'
-import '../usb/index.js'
+import '../usb-manager/index.js'
 import '../universe-manager/index.js'
 import '../scene-manager/index.js'
 
@@ -28,7 +28,7 @@ class MyView extends ReduxMixin(PolymerElement) {
 
       <scene-manager scenes={{sceneManager}}></scene-manager>
 
-      <usb-controller></usb-controller>
+      <usb-manager></usb-manager>
 
       <connect-button type="usb" label="USB"></connect-button>
       <connect-button type="bluetooth" label="BLUETOOTH"></connect-button>

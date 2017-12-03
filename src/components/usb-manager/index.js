@@ -1,7 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 
-class Usb extends ReduxMixin(PolymerElement) {
+class UsbManager extends ReduxMixin(PolymerElement) {
   static get properties() {
     return {
       usb: {
@@ -21,4 +21,4 @@ class Usb extends ReduxMixin(PolymerElement) {
   }
 }
 
-customElements.define('usb-controller', Usb)
+customElements.define('usb-manager', UsbManager)
