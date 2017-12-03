@@ -5,25 +5,15 @@ import ReduxMixin from '../../reduxStore.js'
 /*
  * Show DMX512 channels in a grid
  */
-class ChannelGrid extends ReduxMixin(PolymerElement) {
+class ChannelGrid extends PolymerElement {
   static get properties() {
     return {
-      universe: {
-          type: Number
-      },
-      universes: {
-        type: Array,
-        statePath: 'universeManager'
+      channels: {
+          type: Array
       }
     }
   }
-  getUniverse(universes, universe) {
-    if (universes && universes[universe]) {
-      const {channels} = universes[universe]
-      return channels
-    }
-    return []
-  }
+
   static get template() {
     return `
       <style>
@@ -37,8 +27,8 @@ class ChannelGrid extends ReduxMixin(PolymerElement) {
       </style>
 
       <div class="items">
-        <template is="dom-repeat" items="{{getUniverse(universes, universe)}}" as="channel">
-          <div class="item">{{channel}}</div>
+        <template is="dom-repeat" items="[[channels]]" as="channel">
+          <div class="item">[[channel]]</div>
         </template>
       </div>
     `

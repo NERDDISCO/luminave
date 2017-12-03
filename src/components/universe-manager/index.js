@@ -29,7 +29,6 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
   setChannel(e) {
     const { dataset } = e.target
     this.dispatch(setChannel(dataset.index, 0, Math.floor(Math.random() * 254)))
-    console.log(this.universes)
   }
 
   static get template() {
@@ -43,7 +42,7 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
           <button on-click="setChannel" data-index$="[[index]]">Set Channel</button>
 
           <div>
-            <channel-grid universe="[[index]]"></channel-grid>
+            <channel-grid channels="[[universe.channels]]"></channel-grid>
           </div>
 
         </div>
