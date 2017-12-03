@@ -11,10 +11,6 @@ import '../scene-manager/index.js'
 class MyView extends ReduxMixin(PolymerElement) {
   static get properties() {
     return {
-      universes: {
-        type: Array,
-        statePath: 'universeManager'
-      },
       bpm: {
         type: Number,
         statePath: 'bpm'

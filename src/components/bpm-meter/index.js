@@ -5,8 +5,13 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
  */
 class BPMMeter extends PolymerElement {
 
-  constructor() {
-    super()
+  static get properties() {
+    return {
+      bpm: {
+        type: Number,
+        statePath: 'bpm'
+      }
+    }
   }
 
   static get template() {

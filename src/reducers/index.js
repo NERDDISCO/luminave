@@ -1,7 +1,6 @@
 import update from '../../node_modules/immutability-helper/index.js'
 import * as constants from '../constants/index.js'
 
-//const update = newContext()
 /*
  *
  * A collection of Redux reducers (= change application state based on Redux actions)
@@ -18,23 +17,6 @@ import * as constants from '../constants/index.js'
    }
 ```
  */
-
-/*
- * Update the DMX512 channels
- */
-// export const channels = (state = [...Array(512)].map(() => 0), { type, channel, value }) => {
-//     switch (type) {
-//       case constants.SET_CHANNEL:
-//           return (() => {
-//             const s = [...state]
-//             s[channel] = value
-//
-//             return s
-//           })()
-//       default:
-//         return state
-//     }
-//   }
 
 /*
  * Update the BPM
