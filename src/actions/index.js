@@ -74,7 +74,7 @@ export const addScene = scene => ({
 /*
  * Remove a DMX512 universe
  */
-export const removeScene = index => ({
-  index,
+export const removeScene = sceneIndex => ({
+  sceneIndex,
   type: constants.REMOVE_SCENE
 })
