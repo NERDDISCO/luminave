@@ -1,3 +1,4 @@
+import PolymerRedux from '/node_modules/polymer-redux/polymer-redux.js'
 import { createStore, combineReducers } from '/libs/redux/index.js'
 import * as reducers from './reducers/index.js'
 

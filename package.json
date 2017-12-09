@@ -25,7 +25,7 @@
     "immutability-helper": "github:nerddisco/immutability-helper",
     "keytime": "^0.1.1",
     "lit-html": "^0.6.0",
-    "polymer-redux": "github:nerddisco/polymer-redux",
+    "polymer-redux": "git+https://github.com/tur-nr/polymer-redux.git#polymer-3",
     "redux": "^3.7.2",
     "webmidi": "2.0.0-rc.8"
   },
