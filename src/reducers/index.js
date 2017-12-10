@@ -58,11 +58,11 @@ export const connectionManager = (
 export const universeManager = (state = [], { type, universe, universeIndex, channelIndex, value }) => {
   switch (type) {
     case constants.ADD_UNIVERSE:
-      return update(state, {$push: [universe]})
+      return update(state, { $push: [universe] })
     case constants.REMOVE_UNIVERSE:
-      return update(state, {$splice: [[universeIndex, 1]]})
+      return update(state, { $splice: [[universeIndex, 1]] })
     case constants.SET_CHANNEL:
-      return update(state, {[universeIndex]: {channels: {$splice: [[channelIndex, 1, value]]}}})
+      return update(state, { [universeIndex]: { channels: { $splice: [[channelIndex, 1, value]] } } })
     default:
       return state
   }
@@ -74,9 +74,9 @@ export const universeManager = (state = [], { type, universe, universeIndex, cha
 export const sceneManager = (state = [], { type, scene, sceneIndex }) => {
   switch (type) {
     case constants.ADD_SCENE:
-      return update(state, {$push: [scene]})
+      return update(state, { $push: [scene] })
     case constants.REMOVE_SCENE:
-      return update(state, {$splice: [[sceneIndex, 1]]})
+      return update(state, { $splice: [[sceneIndex, 1]] })
     default:
       return state
   }
