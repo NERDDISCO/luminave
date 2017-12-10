@@ -26,8 +26,8 @@ export const setChannel = (universeIndex, channelIndex, value) => ({
 /*
  * Set the BPM
  */
-export const setBpm = bpm => ({
-  bpm,
+export const setBpm = value => ({
+  value,
   type: constants.SET_BPM
 })
 

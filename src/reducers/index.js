@@ -21,10 +21,10 @@ import * as constants from '../constants/index.js'
 /*
  * Update the BPM
  */
-export const bpm = (state = 130, { type, bpm }) => {
+export const bpm = (state = 130, { type, value }) => {
   switch (type) {
     case constants.SET_BPM:
-      return bpm
+      return value
     default:
       return state
   }
