@@ -56,6 +56,7 @@ export class TapButton extends ReduxMixin(PolymerElement) {
         this.average = diffs / this.arr.length
         this.bpm = ~~(60000 / this.average)
 
+        // @see https://tur-nr.github.io/polymer-redux/docs#dispatching-actions
         this.dispatch(setBpm(this.bpm))
       }
 
