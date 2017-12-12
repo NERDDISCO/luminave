@@ -28,7 +28,11 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
 
   setChannel(e) {
     const { dataset } = e.target
-    this.dispatch(setChannel(dataset.index, 0, Math.floor(Math.random() * 254)))
+    this.dispatch(setChannel(dataset.index, 0, Math.floor(Math.random() * 255)))
+    this.dispatch(setChannel(dataset.index, 1, Math.floor(Math.random() * 255)))
+    this.dispatch(setChannel(dataset.index, 2, Math.floor(Math.random() * 255)))
+    this.dispatch(setChannel(dataset.index, 3, Math.floor(Math.random() * 255)))
+    this.dispatch(setChannel(dataset.index, 4, Math.floor(Math.random() * 255)))
   }
 
   static get template() {

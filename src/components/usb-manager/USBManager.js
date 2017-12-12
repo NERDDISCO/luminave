@@ -1,26 +1,18 @@
 import fivetwelve from '/libs/fivetwelve/index.js'
 import USBSerial from './USBSerial.js'
-import ArduinoLeonardoETHDriver from '/src/devices/dmx/driver/ArduinoLeonardoETHDriver.js'
+import ArduinoLeonardoETHDriver from './ArduinoLeonardoETHDriver.js'
 
 /**
  * Manage USB ports.
  */
 export default class USBManager {
-  constructor(param) {
-
-    this.configuration = param.configuration
-    this.config = this.configuration.getConfig()
-
-    // List of MIDI controller
-    this.list = new Map()
+  constructor() {
 
     // USBSerial
     this.serial = new USBSerial({})
 
     // USBPort
     this.port = null
-
-    this.devices = null
 
     // @TODO: Move ALL OF THIS into it's own module
     const driver = new ArduinoLeonardoETHDriver(this.port, {})
@@ -69,7 +61,7 @@ export default class USBManager {
 
       // Receive data
       this.port.onReceive = data => {
-        const textDecoder = new TextDecoder()
+        // const textDecoder = new TextDecoder()
         // console.log(textDecoder.decode(data))
       }
 
@@ -88,14 +80,8 @@ export default class USBManager {
    *
    * @TODO: Does this make any sense here? Shouldn't it be moved into the driver?
    */
-  update(channel, value) {
-    // @TODO: Fix for multiple universes
-    this.output.getBuffer(1)[channel] = value
-
-    window.configuration.data.dmxInterface.buffer = this.output.getBuffer(1)
-
-    // @TODO: Remove after debugging
-    console.log(this.output.getBuffer(1))
+  update(universe) {
+    this.output.driver.send(universe)
   }
 
   /*
@@ -106,6 +92,7 @@ export default class USBManager {
       const usbDriver = event.detail
 
       // Connection status for USB DMX controller
+      // @TODO: Use state
       window.configuration.data.dmxInterface.connected = usbDriver.connected
     })
   }

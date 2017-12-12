@@ -25,8 +25,7 @@ class MyView extends ReduxMixin(PolymerElement) {
       <scene-manager scenes={{sceneManager}}></scene-manager>
 
       <usb-manager></usb-manager>
-
-      <connect-button type="usb" label="USB"></connect-button>
+      
       <connect-button type="bluetooth" label="BLUETOOTH"></connect-button>
 
       <bpm-meter bpm="[[bpm]]"></bpm-meter>

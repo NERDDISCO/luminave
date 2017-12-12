@@ -27,17 +27,9 @@ export default class ArduinoLeonardoETHDriver {
    * @returns {Promise} A promise that will be resolved when the buffer is
    *   completely sent.
    */
-  send(buffer, universe) {
-    const usbProUniverse = this.options.universeMapping[universe]
-
-
-    if (!usbProUniverse) {
-      return Promise.reject(new Error('No USB universum found'))
-    }
-
+  send(universe) {
     window.dispatchEvent(new CustomEvent('USBDriver', { detail: this }))
-
-    return this.sendPacket(buffer)
+    return this.sendPacket(universe)
   }
 
   /**
@@ -47,11 +39,17 @@ export default class ArduinoLeonardoETHDriver {
    * @private
    */
   sendPacket(data) {
-    return this.write(data).then(result => {
+    const buffer = Uint8Array.from(data)
+
+    return this.write(buffer).then(result => {
       this.connected = true
+
       return Promise.resolve()
-    }).catch(error => {
+
+    }).
+    catch(error => {
       this.connected = false
+
       return Promise.resolve()
     })
   }
