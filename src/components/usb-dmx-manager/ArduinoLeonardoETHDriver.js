@@ -10,46 +10,26 @@ export default class ArduinoLeonardoETHDriver {
    * Initializes the driver for the given serialport.
    * @param {object} serialport A ready configured USBPort instance.
    * @param {object} options Options
-   * universeMapping: A mapping of fivetwelve universe-numbers to universes.
    */
   constructor(serialport, options = {}) {
     this.serialport = serialport
-
-    this.connected = false
-
     this.options = Object.assign({}, DEFAULT_OPTIONS, options)
   }
 
   /**
    * Sends the given values to the dmx-interface over the serialport.
-   * @param {Buffer} buffer A buffer with the dmx-values to be sent.
-   * @param {Number} universe The 1-based universe-number.
-   * @returns {Promise} A promise that will be resolved when the buffer is
-   *   completely sent.
+   * @param {Array} universe A buffer with the dmx-values to be sent.
+   * @returns {Promise} A promise that will be resolved when the buffer is completely sent.
    */
   send(universe) {
-    window.dispatchEvent(new CustomEvent('USBDriver', { detail: this }))
-    return this.sendPacket(universe)
-  }
-
-  /**
-   * Sends a single packet to the usbpro.
-   * @param {Buffer} data The message payload.
-   * @returns {Promise} A promise indicating when the data has been sent.
-   * @private
-   */
-  sendPacket(data) {
-    const buffer = Uint8Array.from(data)
+    const buffer = Uint8Array.from(universe)
 
     return this.write(buffer).then(result => {
-      this.connected = true
-
       return Promise.resolve()
-
     }).
     catch(error => {
-      this.connected = false
-
+      // @TODO: Handle the error because its an indicator why no data is send to the Arduino via USB
+      // and this helps a LOT if nothing is working
       return Promise.resolve()
     })
   }
@@ -67,15 +47,18 @@ export default class ArduinoLeonardoETHDriver {
         return reject(new Error('🔥 NO SERIALPORT CONNECTED 🔥'))
       }
 
+      // Send data to USB
       return this.serialport.send(buffer).then(result => {
+
         // USBOutTransferResult - { bytesWritten: 512, status: "ok" }
         if (result.status === 'ok') {
-          return resolve(result.data)
+          return resolve(result)
         }
 
-        return reject(new Error(`Status not "ok". Instead recieved status "${result.status}"`))
+        return reject(new Error(`Status not "ok". Instead received status "${result.status}"`))
 
-      }).catch(reject)
+      }).
+      catch(reject)
     })
     // There is no serialport yet
   }

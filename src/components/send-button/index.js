@@ -13,12 +13,8 @@ class ConnectButton extends ReduxMixin(PolymerElement) {
 
   static get properties() {
     return {
-      label : {
-        type: String
-      },
-      type: {
-        type: String
-      },
+      label: { type: String },
+      type: { type: String },
       connections: {
         type: Object,
         statePath: 'connectionManager'
@@ -31,6 +27,7 @@ class ConnectButton extends ReduxMixin(PolymerElement) {
       '--on': connected ? 1 : 0,
       '--off': connected ? 0 : 1
     }
+    
     return Object.keys(vars).map(key => {
       return [key, vars[key]].join(':')
     } ).join(';')

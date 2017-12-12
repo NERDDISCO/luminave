@@ -11,24 +11,21 @@ const actions = {
  * Connect to an external system via USB or Bluetooth
  */
 class ConnectButton extends ReduxMixin(PolymerElement) {
-  handleClick(e) {
-    this.connected = !this.connections[this.type].connected
-    this.dispatch(actions[this.type](!this.connections[this.type].connected))
-  }
 
   static get properties() {
     return {
-      label : {
-        type: String
-      },
-      type: {
-        type: String
-      },
+      label: { type: String },
+      type: { type: String },
       connections: {
         type: Object,
-        statePath: 'connectionManager'
+        statePath: 'connectionManager',
+        observer: 'connectionChanged'
       }
     }
+  }
+
+  connectionChanged() {
+    this.connected = this.connections[this.type].connected
   }
 
   computeVars(connected) {
@@ -45,7 +42,8 @@ class ConnectButton extends ReduxMixin(PolymerElement) {
     return `
         <style>
         button {
-          --background: rgba(calc(var(--off) * 150), calc(var(--on) * 150), 0, 1);
+          --background: rgba(calc(var(--off) * 50), calc(var(--on) * 50), 0, 1);
+          --color: rgba(calc(var(--off) * 255), calc(var(--on) * 255), 0, 1);
 
             box-sizing: border-box;
             border: 0;
@@ -60,7 +58,7 @@ class ConnectButton extends ReduxMixin(PolymerElement) {
             cursor: pointer;
           }
       </style>
-      <button on-click="handleClick" style="{{computeVars(connected)}}">[[label]]</button>
+      <button style="{{computeVars(connected)}}">[[label]]</button>
     `
   }
 }

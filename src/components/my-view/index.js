@@ -4,7 +4,7 @@ import '../channel-grid/index.js'
 import '../bpm-meter/index.js'
 import '../tap-button/index.js'
 import '../connect-button/index.js'
-import '../usb-manager/index.js'
+import '../usb-dmx-manager/index.js'
 import '../universe-manager/index.js'
 import '../scene-manager/index.js'
 
@@ -20,16 +20,14 @@ class MyView extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
-      <universe-manager universes={{universeManager}}></universe-manager>
-
-      <scene-manager scenes={{sceneManager}}></scene-manager>
-
-      <usb-manager></usb-manager>
-      
-      <connect-button type="bluetooth" label="BLUETOOTH"></connect-button>
+      <usb-dmx-manager></usb-dmx-manager>
 
       <bpm-meter bpm="[[bpm]]"></bpm-meter>
       <tap-button></tap-button>
+
+      <universe-manager universes={{universeManager}}></universe-manager>
+
+      <scene-manager scenes={{sceneManager}}></scene-manager>
     `
   }
 }
