@@ -6,6 +6,7 @@ import '../tap-button/index.js'
 import '../connect-button/index.js'
 import '../usb-dmx-manager/index.js'
 import '../universe-manager/index.js'
+import '../fixture-manager/index.js'
 import '../scene-manager/index.js'
 
 class MyView extends ReduxMixin(PolymerElement) {
@@ -24,6 +25,8 @@ class MyView extends ReduxMixin(PolymerElement) {
 
       <bpm-meter bpm="[[bpm]]"></bpm-meter>
       <tap-button></tap-button>
+
+      <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
 
       <universe-manager universes={{universeManager}}></universe-manager>
 

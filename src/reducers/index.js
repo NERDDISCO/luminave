@@ -81,3 +81,19 @@ export const sceneManager = (state = [], { type, scene, sceneIndex }) => {
       return state
   }
 }
+
+/*
+ * Handle the DMX512 fixtures
+ */
+export const fixtureManager = (state = [], { type, fixture, fixtureIndex, channelIndex, value }) => {
+  switch (type) {
+    case constants.ADD_FIXTURE:
+      return update(state, { $push: [fixture] })
+    case constants.REMOVE_FIXTURE:
+      return update(state, { $splice: [[fixtureIndex, 1]] })
+    case constants.SET_CHANNEL:
+      return update(state, { [fixtureIndex]: { channels: { $splice: [[channelIndex, 1, value]] } } })
+    default:
+      return state
+  }
+}

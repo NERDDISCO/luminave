@@ -78,3 +78,19 @@ export const removeScene = sceneIndex => ({
   sceneIndex,
   type: constants.REMOVE_SCENE
 })
+
+/*
+ * Add a fixture
+ */
+export const addFixture = fixture => ({
+  fixture,
+  type: constants.ADD_FIXTURE
+})
+
+/*
+ * Remove a fixture
+ */
+export const removeFixture = fixtureIndex => ({
+  fixtureIndex,
+  type: constants.REMOVE_FIXTURE
+})
