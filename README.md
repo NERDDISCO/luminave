@@ -235,6 +235,20 @@ navigator.usb.requestDevice({
 
 ---
 
+# Development
+
+## Add new component
+
+* Create a new component in src/components
+* Create new actions in src/action/index.js
+* Create new constants in src/constans/index.js
+* Create new reducers based on your actions in src/reducers/index.js
+* Add you component to the visionlord-dashboard component to load it
+
+
+
+---
+
 
 
 # Use VisionLord
