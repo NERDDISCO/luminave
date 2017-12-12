@@ -2,7 +2,7 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import { html } from '/node_modules/lit-html/lit-html.js'
 import { render } from '/node_modules/lit-html/lib/lit-extended.js'
 
-import './components/my-view/index.js'
+import './components/visionlord-dashboard/index.js'
 
 class VisionLord extends PolymerElement {
   constructor() {
@@ -12,9 +12,9 @@ class VisionLord extends PolymerElement {
   static get template() {
     return render(html`
       <div><h1>VisionLord<h1></div>
-      <my-view></my-view>
+      <visionlord-dashboard></visionlord-dashboard>
     `, document.body)
   }
 }
 
-customElements.define('visionlord-master', VisionLord)
+customElements.define('vision-lord', VisionLord)

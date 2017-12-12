@@ -9,7 +9,7 @@ import '../universe-manager/index.js'
 import '../fixture-manager/index.js'
 import '../scene-manager/index.js'
 
-class MyView extends ReduxMixin(PolymerElement) {
+class VisionLordDashboard extends ReduxMixin(PolymerElement) {
   static get properties() {
     return {
       bpm: {
@@ -35,4 +35,4 @@ class MyView extends ReduxMixin(PolymerElement) {
   }
 }
 
-customElements.define('my-view', MyView)
+customElements.define('visionlord-dashboard', VisionLordDashboard)
