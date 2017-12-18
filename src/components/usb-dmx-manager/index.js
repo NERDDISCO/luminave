@@ -59,6 +59,9 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
 
   universeChanged() {
     if (this.universes[0] !== undefined) {
+      // Note: This is usually done by fivetwelve.DmxOutput
+
+      // Send channel data to USB DMX controller
       this.output.driver.send(this.universes[0].channels)
     }
   }

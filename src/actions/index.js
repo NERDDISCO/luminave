@@ -24,6 +24,15 @@ export const setChannel = (universeIndex, channelIndex, value) => ({
 })
 
 /*
+ * Set the value for a DMX512 channel
+ */
+export const getChannel = (universeIndex, channelIndex) => ({
+  universeIndex,
+  channelIndex,
+  type: constants.GET_CHANNEL
+})
+
+/*
  * Set the BPM
  */
 export const setBpm = value => ({

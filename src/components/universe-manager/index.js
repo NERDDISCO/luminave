@@ -26,15 +26,6 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
     this.dispatch(removeUniverse(parseInt(dataset.index, 10)))
   }
 
-  setChannel(e) {
-    const { dataset } = e.target
-    this.dispatch(setChannel(dataset.index, 0, Math.floor(Math.random() * 255)))
-    this.dispatch(setChannel(dataset.index, 1, Math.floor(Math.random() * 255)))
-    this.dispatch(setChannel(dataset.index, 2, Math.floor(Math.random() * 255)))
-    this.dispatch(setChannel(dataset.index, 3, Math.floor(Math.random() * 255)))
-    this.dispatch(setChannel(dataset.index, 4, Math.floor(Math.random() * 255)))
-  }
-
   static get template() {
     return `
       <button on-click="addUniverse">Add universe</button>
@@ -43,7 +34,8 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
         <div>
           [[universe.name]]
           <button on-click="removeUniverse" data-index$="[[index]]">Remove</button>
-          <button on-click="setChannel" data-index$="[[index]]">Set Channel</button>
+
+          <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
 
           <div>
             <channel-grid channels="[[universe.channels]]"></channel-grid>

@@ -26,8 +26,6 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
       <bpm-meter bpm="[[bpm]]"></bpm-meter>
       <tap-button></tap-button>
 
-      <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
-
       <universe-manager universes={{universeManager}}></universe-manager>
 
       <scene-manager scenes={{sceneManager}}></scene-manager>

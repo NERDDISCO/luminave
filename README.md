@@ -5,13 +5,14 @@ Show light manager for DMX512 shows.
 [![polymer 3](https://img.shields.io/badge/polymer-3.0_preview-f50057.svg?style=flat)](https://www.polymer-project.org/blog/2017-08-22-npm-modules)
 [![ES6 modules](https://img.shields.io/badge/ES6-modules-44aa44.svg?style=flat)](https://www.polymer-project.org/blog/2017-08-22-npm-modules)
 
+
 [![WebUSB](https://img.shields.io/badge/API-WebUSB-1e88e5.svg?style=flat)](https://wicg.github.io/webusb/)
 [![WebMIDI](https://img.shields.io/badge/API-WebMIDI-1e88e5.svg?style=flat)](https://webaudio.github.io/web-midi-api/)
 [![WebBluetooth](https://img.shields.io/badge/API-WebBluetooth-1e88e5.svg?style=flat)](https://webbluetoothcg.github.io/web-bluetooth/)
 [![localStorage](https://img.shields.io/badge/API-localStorage-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
 
-* Only works in a browser that supports ES6 modules & WebUSB (>= Chrome 61)
+* Only works in a browser that supports ES6 modules & WebUSB & dynamic import()
 * In order to use WebUSB (even on localhost), you need an [HTTPS server](#https-server)
 
 # Software
@@ -34,6 +35,7 @@ You need the following software in order to use VisionLord:
 * Native support for WebUSB
 * Enable flag for WebMIDI
   * chrome://flags/#enable-midi-manager-dynamic-instantiation
+* [Dynamic import()](https://developers.google.com/web/updates/2017/11/dynamic-import)
 
 ## node.js
 
