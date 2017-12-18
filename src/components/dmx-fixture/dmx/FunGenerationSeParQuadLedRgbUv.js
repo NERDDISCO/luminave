@@ -1,6 +1,7 @@
 import fivetwelve from '/libs/fivetwelve/index.js'
+import DmxDevice from '../DmxDevice.js'
 
-export default class FunGenerationSeParQuadLedRgbUv extends fivetwelve.DmxDevice {
+export default class FunGenerationSeParQuadLedRgbUv extends DmxDevice {
   constructor(options) {
     super(Object.assign({}, options, {
       params: {
@@ -9,10 +10,6 @@ export default class FunGenerationSeParQuadLedRgbUv extends fivetwelve.DmxDevice
         dimmer: new fivetwelve.param.RangeParam(5, { min: 0, max: 255 }),
         strobe: new fivetwelve.param.RangeParam(6, { min: 0, max: 255 })
       }
-    }));
-
-    this.layout = {};
-    this.layout.width = 1;
-    this.layout.height = 1;
+    }))
   }
 }

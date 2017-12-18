@@ -63,6 +63,8 @@ export const universeManager = (state = [], { type, universe, universeIndex, cha
       return update(state, { $splice: [[universeIndex, 1]] })
     case constants.SET_CHANNEL:
       return update(state, { [universeIndex]: { channels: { $splice: [[channelIndex, 1, value]] } } })
+    case constants.GET_CHANNEL:
+      return state
     default:
       return state
   }
@@ -85,14 +87,12 @@ export const sceneManager = (state = [], { type, scene, sceneIndex }) => {
 /*
  * Handle the DMX512 fixtures
  */
-export const fixtureManager = (state = [], { type, fixture, fixtureIndex, channelIndex, value }) => {
+export const fixtureManager = (state = [], { type, fixture, fixtureIndex }) => {
   switch (type) {
     case constants.ADD_FIXTURE:
       return update(state, { $push: [fixture] })
     case constants.REMOVE_FIXTURE:
       return update(state, { $splice: [[fixtureIndex, 1]] })
-    case constants.SET_CHANNEL:
-      return update(state, { [fixtureIndex]: { channels: { $splice: [[channelIndex, 1, value]] } } })
     default:
       return state
   }
