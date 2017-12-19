@@ -55,56 +55,34 @@ export default class DmxFixture extends fivetwelve.DmxDevice {
    * Returns a list of properties (e.g. color, dimmer, pan, tilt...) for this fixture
    */
   getParamsList() {
-    const list = []
+    return Object.entries(this.params)
+      // ignore non DMX until implemented. A simple filter will do for now
+      // @TODO use switch case or similar
+      // @TODO Handle nested DmxParam's
+      .filter(([name, param]) => param instanceof DmxParam)
+      .map(([name, param]) => {
 
-    for (const name in this.params) {
-      if (!this.params.hasOwnProperty(name)) {
-        continue
-      }
+        const { min = 0, max = 0, map = {}, channels } = param
 
-      const param = this.params[name]
-      let mapping = ['']
-      let min = 0
-      let max = 0
+        // handle (map|mapping) inconsistency.
+        // if mapping is available we can use its keys
+        // if map is used (fallback defined above) we need to prefix it with an empty string
+        // {@see https://github.com/NERDDISCO/VisionLord/commit/e54cbaedb35d8e2ce8c858688d01a03626f78d63#diff-fbbc7eb32e6a63e1dd48789843a0192fR78}
+        const mapping = param.mapping ?
+          Object.keys(param.mapping) : ['', ...Object.keys(map)]
 
-      // @see MappedParam
-      if (param.hasOwnProperty('map')) {
-        mapping = mapping.concat(Object.keys(param.map))
-      }
-
-      // @see MultiRangeParam
-      if (param.hasOwnProperty('mapping')) {
-        mapping = Object.keys(param.mapping)
-      }
-
-      // @see HiResParam
-      if (param.hasOwnProperty('min')) {
-        min = param.min
-        max = param.max
-      }
-
-      // handle nested parameter-groups
-      if (param instanceof DmxParam) {
-        list.push({
-          name,
-          channels: param.channels,
-          mapping,
+        return {
           min,
           max,
+          name,
+          channels,
+          mapping,
           isRgb: param instanceof RgbParam,
           isRange: param instanceof RangeParam,
           isMapped: param instanceof MappedParam,
           isMultiRange: param instanceof MultiRangeParam,
           isHiRes: param instanceof HiResParam
-        })
-      } else {
-        console.log('not implemented')
-        // @TODO: Handle nested params
-        // this[name] = {}
-        // this.attachParamProperties(this[name], params[name])
-      }
-    }
-
-    return list
+        }
+      })
   }
 }

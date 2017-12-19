@@ -28,15 +28,12 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
     // @TODO: SUPER HACKY AND MAGIC NUMBERS!!! 🔥🤓
     const [, form] = e.path
     const { elements } = form
-    let valid = true
 
     // Validate every field of the form
-    for (let i = 0; i < elements.length; i++) {
-      valid = valid && elements[i].validity.valid
-    }
+    const isValid = Array.from(elements).filter(element => element.validity.valid).length === elements.length
 
     // Add the fixture
-    if (valid) {
+    if (isValid) {
       const id = uuid()
       const universe = 0
 
@@ -68,12 +65,14 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
     const { elements } = e.target
 
-    for (let i = 0; i < elements.length; i++) {
+    Array.from(elements).map(element => {
       // Reset input
-      if (elements[i].tagName === 'INPUT') {
-        elements[i].value = ''
+      if (element.tagName === 'INPUT') {
+        element.value = ''
       }
-    }
+
+      return element
+    })
   }
 
   static get template() {

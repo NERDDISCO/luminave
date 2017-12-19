@@ -19,15 +19,8 @@ class DmxFixtureProperty extends ReduxMixin(PolymerElement) {
   }
 
   handleColorChange(e) {
-    let { value } = e.target
-
-    // #XXXXXX -> ["XX", "XX", "XX"]
-    value = value.match(/[A-Za-z0-9]{2}/g)
-
-    // ["XX", "XX", "XX"] -> [n, n, n]
-    value = value.map(v => {
-      return parseInt(v, 16)
-    })
+    // Convert hex color to RGB
+    const value = e.target.value.match(/[A-Za-z0-9]{2}/g).map(v => parseInt(v, 16))
 
     this.dispatchEvent(new CustomEvent('change', {
       detail: {
