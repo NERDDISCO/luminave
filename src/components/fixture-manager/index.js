@@ -63,9 +63,9 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
   handleSubmit(e) {
     e.preventDefault()
 
-    const { elements } = e.target
+    const elements = [...e.target.elements]
 
-    Array.from(elements).map(element => {
+    elements.forEach(element => {
       // Reset input
       if (element.tagName === 'INPUT') {
         element.value = ''
