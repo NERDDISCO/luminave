@@ -22,11 +22,24 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
-      <usb-dmx-manager></usb-dmx-manager>
-      <storage-manager></storage-manager>
+      <style>
+        .grid {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          width: 100vw;
+        }
+      </style>
 
-      <bpm-meter bpm="[[bpm]]"></bpm-meter>
-      <tap-button></tap-button>
+      <div class="grid">
+        <usb-dmx-manager></usb-dmx-manager>
+        <storage-manager></storage-manager>
+
+        <div>
+          <bpm-meter bpm="[[bpm]]"></bpm-meter>
+          <tap-button></tap-button>
+        </div>
+      </div>
 
       <universe-manager universes={{universeManager}}></universe-manager>
 

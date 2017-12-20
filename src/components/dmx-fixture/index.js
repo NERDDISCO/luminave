@@ -52,22 +52,25 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
     return `
     <style>
       .grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        display: flex;
+        flex-direction: row;
+        width: 100vw;
       }
 
       .property {
-        margin: .5em 0;
+        margin: 0 .25em;
       }
     </style>
 
         <div>
-          Name: [[name]] <br>
-          Type: [[type]] <br>
-          Weight: [[fixture.weight]] kg<br>
-          Channels: [[fixture.channels]] <br>
-          Universe: [[universe]] <br>
-          Address: [[address]] <br><br>
+          <div class="grid">
+            <div class="property">Name: [[name]]</div>
+            <div class="property">Type: [[type]]</div>
+            <div class="property">Weight: [[fixture.weight]] kg</div>
+            <div class="property">Channels: [[fixture.channels]]</div>
+            <div class="property">Address: [[address]] </div>
+            <div class="property">Universe: [[universe]]</div>
+          </div>
 
           <div class="grid">
             <template is="dom-repeat" items="{{properties}}" as="property">

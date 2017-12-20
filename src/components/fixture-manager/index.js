@@ -82,13 +82,14 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
     return `
     <style>
       .grid {
-        width: 50vw;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
       }
 
       .fixture {
-        width: 30vw;
+        border: 1px solid var(--color-lighter);
+        margin: 0 0 .25em 0;
       }
 
     </style>
