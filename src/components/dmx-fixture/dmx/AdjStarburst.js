@@ -1,16 +1,19 @@
-import fivetwelve from '/libs/fivetwelve/index.js'
-// import * as fivetwelve from '/node_modules/fivetwelve/lib-es5/index.js'
+import RgbParam from '/libs/fivetwelve/lib/param/RgbParam.js'
+import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
+import MultiRangeParam from '/libs/fivetwelve/lib/param/MultiRangeParam.js'
 
-export default class AdjStarburst extends fivetwelve.DmxDevice {
+import DmxDevice from '../DmxDevice.js'
+
+export default class AdjStarburst extends DmxDevice {
   constructor(options) {
     super(Object.assign({}, options, {
       params: {
-        color: new fivetwelve.param.RgbParam([1, 2, 3]),
-        white: new fivetwelve.param.RangeParam(4, { min: 0, max: 255 }),
-        yellow: new fivetwelve.param.RangeParam(5, { min: 0, max: 255 }),
-        uv: new fivetwelve.param.RangeParam(6, { min: 0, max: 255 }),
+        color: new RgbParam([1, 2, 3]),
+        white: new RangeParam(4, { min: 0, max: 255 }),
+        yellow: new RangeParam(5, { min: 0, max: 255 }),
+        uv: new RangeParam(6, { min: 0, max: 255 }),
 
-        strobe: new fivetwelve.param.MultiRangeParam(7, {
+        strobe: new MultiRangeParam(7, {
           off: { range: [0, 7] },
           on: { range: [8, 15], values: [8, 15] },
           slowToFast: { range: [16, 131], values: [16, 131] },
@@ -19,9 +22,9 @@ export default class AdjStarburst extends fivetwelve.DmxDevice {
           random: { range: [240, 247], values: [240, 247] },
         }),
 
-        dimmer: new fivetwelve.param.RangeParam(8, { min: 0, max: 255 }),
+        dimmer: new RangeParam(8, { min: 0, max: 255 }),
 
-        rotate: new fivetwelve.param.MultiRangeParam(9, {
+        rotate: new MultiRangeParam(9, {
           off: { range: [0, 30] },
           clockwise: { range: [31, 140], values: [0, 255] },
           stop: { range: [141, 145] },
@@ -33,5 +36,8 @@ export default class AdjStarburst extends fivetwelve.DmxDevice {
     this.layout = {}
     this.layout.width = 1
     this.layout.height = 1
+
+    this.channels = 9
+    this.weight = 3.65
   }
 }

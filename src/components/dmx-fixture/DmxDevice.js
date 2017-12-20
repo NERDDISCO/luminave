@@ -12,7 +12,7 @@ import HiResParam from '/libs/fivetwelve/lib/param/HiResParam.js'
 /**
  *
  */
-export default class DmxFixture extends fivetwelve.DmxDevice {
+export default class DmxDevice extends fivetwelve.DmxDevice {
   constructor(options) {
     super(options)
 

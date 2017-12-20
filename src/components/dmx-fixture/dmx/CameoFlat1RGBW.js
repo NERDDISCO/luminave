@@ -1,18 +1,24 @@
-import fivetwelve from '/libs/fivetwelve/index.js'
+import RgbParam from '/libs/fivetwelve/lib/param/RgbParam.js'
+import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
 
-export default class CameoFlat1RGBW extends fivetwelve.DmxDevice {
+import DmxDevice from '../DmxDevice.js'
+
+export default class CameoFlatPar1RGBW extends DmxDevice {
   constructor(options) {
     super(Object.assign({}, options, {
       params: {
-        dimmer: new fivetwelve.param.RangeParam(1, { min: 0, max: 255 }),
-        strobe: new fivetwelve.param.RangeParam(2, { min: 0, max: 255 }),
-        color: new fivetwelve.param.RgbParam([3, 4, 5]),
-        white: new fivetwelve.param.RangeParam(6, { min: 0, max: 255 })
+        dimmer: new RangeParam(1, { min: 0, max: 255 }),
+        strobe: new RangeParam(2, { min: 0, max: 255 }),
+        color: new RgbParam([3, 4, 5]),
+        white: new RangeParam(6, { min: 0, max: 255 })
       }
     }))
 
     this.layout = {}
     this.layout.width = 1
     this.layout.height = 1
+
+    this.channels = 6
+    this.weight = 1.2
   }
 }

@@ -1,14 +1,16 @@
-import fivetwelve from '/libs/fivetwelve/index.js'
+import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
 
-export default class EuroliteB100 extends fivetwelve.DmxDevice {
+import DmxDevice from '../DmxDevice.js'
+
+export default class EuroliteB100 extends DmxDevice {
   constructor(options) {
     super(Object.assign({}, options, {
       params: {
-        motor: new fivetwelve.param.MappedParam(1, {
+        motor: new MappedParam(1, {
           off: [0, 127],
           on: [128, 255]
         }),
-        fan: new fivetwelve.param.MappedParam(2, {
+        fan: new MappedParam(2, {
           off: [0, 127],
           on: [128, 255]
         }),
@@ -18,5 +20,8 @@ export default class EuroliteB100 extends fivetwelve.DmxDevice {
     this.layout = {}
     this.layout.width = 1
     this.layout.height = 1
+
+    this.channels = 2
+    this.weight = 2.3
   }
 }

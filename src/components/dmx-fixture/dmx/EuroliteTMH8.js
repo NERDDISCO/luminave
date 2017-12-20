@@ -1,4 +1,9 @@
-import fivetwelve from '/libs/fivetwelve/index.js'
+import RgbParam from '/libs/fivetwelve/lib/param/RgbParam.js'
+import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
+import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
+import MultiRangeParam from '/libs/fivetwelve/lib/param/MultiRangeParam.js'
+import HiResParam from '/libs/fivetwelve/lib/param/HiResParam.js'
+
 import DmxDevice from '../DmxDevice.js'
 
 /*
@@ -8,21 +13,24 @@ export default class EuroliteTMH8 extends DmxDevice {
   constructor(options) {
     super(Object.assign(options, {
       params: {
-        pan: new fivetwelve.param.HiResParam([1, 2], { min: -270, max: 270 }),
-        tilt: new fivetwelve.param.HiResParam([3, 4], { min: -115, max: 115 }),
-        speed: new fivetwelve.param.RangeParam(5, { min: 0, max: 255 }),
-        brightness: new fivetwelve.param.MultiRangeParam(6, {
+        pan: new HiResParam([1, 2], { min: -270, max: 270 }),
+        tilt: new HiResParam([3, 4], { min: -115, max: 115 }),
+        speed: new RangeParam(5, { min: 0, max: 255 }),
+        brightness: new MultiRangeParam(6, {
           dimmer: { range: [8, 134], values: [0, 255] },
           strobe: { range: [135, 232], values: [0, 255] }
         }),
-        color: new fivetwelve.param.RgbParam([7, 8, 9]),
-        white: new fivetwelve.param.RangeParam(10, { min: 0, max: 255 }),
-        // colorMacro: new fivetwelve.param.MappedParam(11, EuroliteTMH8.FIXED_COLORS),
-        colorSpeed: new fivetwelve.param.RangeParam(12, { min: 0, max: 255 }),
-        movement: new fivetwelve.param.MappedParam(13, EuroliteTMH8.MOVEMENTS),
-        gobo: new fivetwelve.param.MappedParam(14, EuroliteTMH8.GOBOS)
+        color: new RgbParam([7, 8, 9]),
+        white: new RangeParam(10, { min: 0, max: 255 }),
+        // colorMacro: new MappedParam(11, EuroliteTMH8.FIXED_COLORS),
+        colorSpeed: new RangeParam(12, { min: 0, max: 255 }),
+        movement: new MappedParam(13, EuroliteTMH8.MOVEMENTS),
+        gobo: new MappedParam(14, EuroliteTMH8.GOBOS)
       }
     }))
+
+    this.channels = 14
+    this.weight = 3
   }
 }
 

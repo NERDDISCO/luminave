@@ -64,6 +64,8 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
         <div>
           Name: [[name]] <br>
           Type: [[type]] <br>
+          Weight: [[fixture.weight]] kg<br>
+          Channels: [[fixture.channels]] <br>
           Universe: [[universe]] <br>
           Address: [[address]] <br><br>
 

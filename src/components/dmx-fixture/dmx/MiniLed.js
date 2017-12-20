@@ -1,25 +1,34 @@
-import fivetwelve from '/libs/fivetwelve/index.js'
+import RgbParam from '/libs/fivetwelve/lib/param/RgbParam.js'
+import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
+import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
+import MultiRangeParam from '/libs/fivetwelve/lib/param/MultiRangeParam.js'
+import HiResParam from '/libs/fivetwelve/lib/param/HiResParam.js'
 
-export default class MiniLed extends fivetwelve.DmxDevice {
+import DmxDevice from '../DmxDevice.js'
+
+export default class MiniLed extends DmxDevice {
   constructor(options) {
     super(Object.assign(options, {
       params: {
-        pan: new fivetwelve.param.HiResParam([1, 2], { min: -270, max: 270 }),
-        tilt: new fivetwelve.param.HiResParam([3, 4], { min: -115, max: 90 }),
-        speed: new fivetwelve.param.RangeParam(5),
-        brightness: new fivetwelve.param.MultiRangeParam(6, {
+        pan: new HiResParam([1, 2], { min: -270, max: 270 }),
+        tilt: new HiResParam([3, 4], { min: -115, max: 90 }),
+        speed: new RangeParam(5),
+        brightness: new MultiRangeParam(6, {
           default: { range: [8, 134], values: [1, 0] },
           strobe: { range: [135, 239], values: [0, 1] }
         }),
         // strobe: new param.RangeParam(6, {rangeStart: 135, rangeEnd: 239}),
-        color: new fivetwelve.param.RgbParam([7, 8, 9]),
-        colorPreset: new fivetwelve.param.MappedParam(10, MiniLed.FIXED_COLORS),
-        colorSpeed: new fivetwelve.param.RangeParam(11),
+        color: new RgbParam([7, 8, 9]),
+        colorPreset: new MappedParam(10, MiniLed.FIXED_COLORS),
+        colorSpeed: new RangeParam(11),
         // left out here: movement macros
-        gobo: new fivetwelve.param.MappedParam(13, MiniLed.GOBOS)
+        gobo: new MappedParam(13, MiniLed.GOBOS)
         // left out: gobo-shake, gobo-wheel-rotate
       }
     }))
+
+    this.channels = 13
+    this.weight = 3
   }
 }
 

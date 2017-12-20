@@ -1,25 +1,28 @@
-import fivetwelve from '/libs/fivetwelve/index.js'
+import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
+import MultiRangeParam from '/libs/fivetwelve/lib/param/MultiRangeParam.js'
 
-export default class CameoWookie200RGY extends fivetwelve.DmxDevice {
+import DmxDevice from '../DmxDevice.js'
+
+export default class CameoWookie200RGY extends DmxDevice {
   constructor(options) {
     super(Object.assign({}, options, {
       params: {
 
-        mode: new fivetwelve.param.MappedParam(1, {
+        mode: new MappedParam(1, {
           off: [0, 63],
           auto: [64, 127],
           sound: [128, 191],
           dmx: [192, 255]
         }),
 
-        colors: new fivetwelve.param.MappedParam(2, {
+        colors: new MappedParam(2, {
           original: [0, 63],
           red: [64, 127],
           green: [128, 191],
           yellow: [192, 255]
         }),
 
-        pattern: new fivetwelve.param.MappedParam(3, {
+        pattern: new MappedParam(3, {
           1: [0, 7],
           2: [8, 15],
           3: [16, 23],
@@ -54,32 +57,32 @@ export default class CameoWookie200RGY extends fivetwelve.DmxDevice {
           32: [248, 255]
         }),
 
-        zoom: new fivetwelve.param.MultiRangeParam(4, {
+        zoom: new MultiRangeParam(4, {
           manual: { range: [0, 127], values: [0, 255] },
           loop: { range: [128, 255], values: [0, 255] }
         }),
 
-        xAxisRolling: new fivetwelve.param.MultiRangeParam(5, {
+        xAxisRolling: new MultiRangeParam(5, {
           manual: { range: [0, 127], values: [0, 255] },
           speed: { range: [128, 255], values: [0, 255] }
         }),
 
-        yAxisRolling: new fivetwelve.param.MultiRangeParam(6, {
+        yAxisRolling: new MultiRangeParam(6, {
           manual: { range: [0, 127], values: [0, 255] },
           speed: { range: [128, 255], values: [0, 255] }
         }),
 
-        zAxisRolling: new fivetwelve.param.MultiRangeParam(7, {
+        zAxisRolling: new MultiRangeParam(7, {
           manual: { range: [0, 127], values: [0, 255] },
           speed: { range: [128, 255], values: [0, 255] }
         }),
 
-        xAxisMoving: new fivetwelve.param.MultiRangeParam(8, {
+        xAxisMoving: new MultiRangeParam(8, {
           manual: { range: [0, 127], values: [0, 255] },
           speed: { range: [128, 255], values: [0, 255] }
         }),
 
-        yAxisMoving: new fivetwelve.param.MultiRangeParam(9, {
+        yAxisMoving: new MultiRangeParam(9, {
           manual: { range: [0, 127], values: [0, 255] },
           speed: { range: [128, 255], values: [0, 255] }
         })
@@ -89,5 +92,8 @@ export default class CameoWookie200RGY extends fivetwelve.DmxDevice {
     this.layout = {}
     this.layout.width = 1
     this.layout.height = 1
+
+    this.channels = 9
+    this.weight = 2
   }
 }

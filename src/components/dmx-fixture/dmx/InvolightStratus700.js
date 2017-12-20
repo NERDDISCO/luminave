@@ -1,11 +1,16 @@
-import fivetwelve from '/libs/fivetwelve/index.js'
+import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
 
-export default class InvolightStratus700 extends fivetwelve.DmxDevice {
+import DmxDevice from '../DmxDevice.js'
+
+export default class InvolightStratus700 extends DmxDevice {
   constructor(options) {
     options.params = {
-      fan: new fivetwelve.param.RangeParam(1),
-      pump: new fivetwelve.param.RangeParam(2)
+      fan: new RangeParam(1),
+      pump: new RangeParam(2)
     }
     super(options)
+
+    this.channels = 2
+    this.weight = 8.5
   }
 }

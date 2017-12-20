@@ -12,7 +12,10 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
   constructor() {
     super()
 
-    this.types = ['', 'EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv']
+    this.types = ['', 'EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
+      'AdjStarburst', 'CameoFlatPar1RGBW', 'CameoPixBar600PRO', 'CameoWookie200RGY',
+      'StairvilleAF150', 'StairvilleBowlBeam604LEDCOBMovingHead']
+    this.types.sort()
   }
 
   static get properties() {

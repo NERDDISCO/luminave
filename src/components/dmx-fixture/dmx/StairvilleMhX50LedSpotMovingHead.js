@@ -1,6 +1,10 @@
-import fivetwelve from '/libs/fivetwelve/index.js'
+import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
+import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
+import MultiRangeParam from '/libs/fivetwelve/lib/param/MultiRangeParam.js'
 
-export default class StairvilleMhX50LedSpotMovingHead extends fivetwelve.DmxDevice {
+import DmxDevice from '../DmxDevice.js'
+
+export default class StairvilleMhX50LedSpotMovingHead extends DmxDevice {
 
   /*
    * @see https://www.thomann.de/gb/stairville_mhx50_led_spot_moving_head.htm
@@ -8,43 +12,43 @@ export default class StairvilleMhX50LedSpotMovingHead extends fivetwelve.DmxDevi
   constructor(options) {
     super(Object.assign(options, {
       params: {
-        pan: new fivetwelve.param.RangeParam(1, {
+        pan: new RangeParam(1, {
           min: 0,
           max: 255
         }),
-        tilt: new fivetwelve.param.RangeParam(2, {
+        tilt: new RangeParam(2, {
           min: 0,
           max: 255
         }),
-        panFine: new fivetwelve.param.RangeParam(3, {
+        panFine: new RangeParam(3, {
           min: 0,
           max: 255
         }),
-        tiltFine: new fivetwelve.param.RangeParam(4, {
+        tiltFine: new RangeParam(4, {
           min: 0,
           max: 255
         }),
-        responseSpeed: new fivetwelve.param.RangeParam(5, {
+        responseSpeed: new RangeParam(5, {
           min: 0,
           max: 255
         }),
 
-        colorWheel: new fivetwelve.param.MappedParam(6, StairvilleMhX50LedSpotMovingHead.FIXED_COLORS),
+        colorWheel: new MappedParam(6, StairvilleMhX50LedSpotMovingHead.FIXED_COLORS),
 
-        shutter: new fivetwelve.param.MultiRangeParam(7, {
+        shutter: new MultiRangeParam(7, {
           open: { range: [4, 7] },
           closed: { range: [0, 3] },
           strobe: { range: [14, 215] }
         }),
 
-        dimmer: new fivetwelve.param.RangeParam(8, {
+        dimmer: new RangeParam(8, {
           min: 0,
           max: 255
         }),
 
-        gobo: new fivetwelve.param.MultiRangeParam(9, StairvilleMhX50LedSpotMovingHead.FIXED_GOBO),
+        gobo: new MultiRangeParam(9, StairvilleMhX50LedSpotMovingHead.FIXED_GOBO),
 
-        goboRotation: new fivetwelve.param.MultiRangeParam(10, {
+        goboRotation: new MultiRangeParam(10, {
           fixed: { range: [0, 63] },
           positive: { range: [64, 147] },
           negative: { range: [148, 231] },
@@ -54,17 +58,20 @@ export default class StairvilleMhX50LedSpotMovingHead extends fivetwelve.DmxDevi
         // @TODO: special functions: 11
         // @TODO: build in programs functions: 12
 
-        prism: new fivetwelve.param.MultiRangeParam(13, {
+        prism: new MultiRangeParam(13, {
           fixed: { range: [248, 255] },
           rotate: { range: [8, 247] }
         }),
 
-        focus: new fivetwelve.param.RangeParam(14, {
+        focus: new RangeParam(14, {
           min: 0,
           max: 255
         })
       }
     }))
+
+    this.channels = 14
+    this.weight = 8
   }
 
 }
