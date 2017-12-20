@@ -8,6 +8,7 @@ import '../usb-dmx-manager/index.js'
 import '../universe-manager/index.js'
 import '../fixture-manager/index.js'
 import '../scene-manager/index.js'
+import '../storage-manager/index.js'
 
 class VisionLordDashboard extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -22,6 +23,7 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
   static get template() {
     return `
       <usb-dmx-manager></usb-dmx-manager>
+      <storage-manager></storage-manager>
 
       <bpm-meter bpm="[[bpm]]"></bpm-meter>
       <tap-button></tap-button>
