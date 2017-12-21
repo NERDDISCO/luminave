@@ -7,10 +7,10 @@ export default class CameoFlatPar1RGBW extends DmxDevice {
   constructor(options) {
     super(Object.assign({}, options, {
       params: {
-        dimmer: new RangeParam(1, { min: 0, max: 255 }),
-        strobe: new RangeParam(2, { min: 0, max: 255 }),
         color: new RgbParam([3, 4, 5]),
-        white: new RangeParam(6, { min: 0, max: 255 })
+        white: new RangeParam(6, { min: 0, max: 255 }),
+        dimmer: new RangeParam(1, { min: 0, max: 255 }),
+        strobe: new RangeParam(2, { min: 0, max: 255 })
       }
     }))
 
