@@ -77,6 +77,8 @@ export const sceneManager = (state = [], { type, scene, sceneIndex }) => {
   switch (type) {
     case constants.ADD_SCENE:
       return update(state, { $push: [scene] })
+    case constants.RUN_SCENE:
+      return update(state, { [sceneIndex]: { isRunning: { $set: true } } })
     case constants.REMOVE_SCENE:
       return update(state, { $splice: [[sceneIndex, 1]] })
     default:

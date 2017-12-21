@@ -1,10 +1,10 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { uuid } from '../../../libs/abcq/uuid.js'
-import { addScene, removeScene } from '../../actions/index.js'
+import { addScene, runScene, removeScene } from '../../actions/index.js'
 
 /*
- *
+ * Handle a list of scenes
  */
 class SceneManager extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -18,7 +18,20 @@ class SceneManager extends ReduxMixin(PolymerElement) {
 
   addScene() {
     const id = uuid()
-    this.dispatch(addScene({ id, scenes: [], name: `demo scene ${id}` }))
+    this.dispatch(addScene({ id, animations: [], name: `demo scene ${id}`, isRunning: false }))
+  }
+
+  addAnimation() {
+    // @TODO: Implement
+  }
+
+  removeAnimation() {
+    // @TODO: Implement
+  }
+
+  runScene(e) {
+    const { dataset } = e.target
+    this.dispatch(runScene(parseInt(dataset.index, 10)))
   }
 
   removeScene(e) {
@@ -33,7 +46,10 @@ class SceneManager extends ReduxMixin(PolymerElement) {
       <template is="dom-repeat" items="{{scenes}}" as="scene">
         <div>
           [[scene.name]]
+          <button on-click="runScene" data-index$="[[index]]">Run</button>
           <button on-click="removeScene" data-index$="[[index]]">Remove</button>
+
+          <!-- @TODO: <animation-grid> -->
         </div>
       </template>
     `

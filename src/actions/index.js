@@ -81,6 +81,14 @@ export const addScene = scene => ({
 })
 
 /*
+ * Start the playback of a scene
+ */
+export const runScene = sceneIndex => ({
+  sceneIndex,
+  type: constants.RUN_SCENE
+})
+
+/*
  * Remove a DMX512 universe
  */
 export const removeScene = sceneIndex => ({
