@@ -87,6 +87,22 @@ export const sceneManager = (state = [], { type, scene, sceneIndex }) => {
 }
 
 /*
+ * Handle the animations
+ */
+export const animationManager = (state = [], { type, animation, animationIndex }) => {
+  switch (type) {
+    case constants.ADD_ANIMATION:
+      return update(state, { $push: [animation] })
+    case constants.RUN_ANIMATION:
+      return update(state, { [animationIndex]: { isRunning: { $set: true } } })
+    case constants.REMOVE_ANIMATION:
+      return update(state, { $splice: [[animationIndex, 1]] })
+    default:
+      return state
+  }
+}
+
+/*
  * Handle the DMX512 fixtures
  */
 export const fixtureManager = (state = [], { type, fixture, fixtureIndex }) => {

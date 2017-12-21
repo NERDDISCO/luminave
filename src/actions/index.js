@@ -97,6 +97,30 @@ export const removeScene = sceneIndex => ({
 })
 
 /*
+ * Add a animation
+ */
+export const addAnimation = animation => ({
+  animation,
+  type: constants.ADD_ANIMATION
+})
+
+/*
+ * Start the playback of a animation
+ */
+export const runAnimation = animationIndex => ({
+  animationIndex,
+  type: constants.RUN_ANIMATION
+})
+
+/*
+ * Remove a DMX512 universe
+ */
+export const removeAnimation = animationIndex => ({
+  animationIndex,
+  type: constants.REMOVE_ANIMATION
+})
+
+/*
  * Add a fixture
  */
 export const addFixture = fixture => ({
