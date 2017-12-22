@@ -121,6 +121,15 @@ export const removeAnimation = animationIndex => ({
 })
 
 /*
+ * Add a keyframe
+ */
+export const addKeyframe = (animationIndex, keyframe) => ({
+  animationIndex,
+  keyframe,
+  type: constants.ADD_KEYFRAME
+})
+
+/*
  * Add a fixture
  */
 export const addFixture = fixture => ({

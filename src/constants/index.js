@@ -26,6 +26,7 @@ export const REMOVE_SCENE = uuid()
 export const ADD_ANIMATION = uuid()
 export const RUN_ANIMATION = uuid()
 export const REMOVE_ANIMATION = uuid()
+export const ADD_KEYFRAME = uuid()
 export const ADD_FIXTURE = uuid()
 export const REMOVE_FIXTURE = uuid()
 export const STORAGE_STATE = 'VisionLordConfig'

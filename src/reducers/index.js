@@ -89,10 +89,12 @@ export const sceneManager = (state = [], { type, scene, sceneIndex }) => {
 /*
  * Handle the animations
  */
-export const animationManager = (state = [], { type, animation, animationIndex }) => {
+export const animationManager = (state = [], { type, animation, animationIndex, keyframe }) => {
   switch (type) {
     case constants.ADD_ANIMATION:
       return update(state, { $push: [animation] })
+    case constants.ADD_KEYFRAME:
+      return update(state, { [animationIndex]: { keyframes: { $merge: keyframe } } })
     case constants.RUN_ANIMATION:
       return update(state, { [animationIndex]: { isRunning: { $set: true } } })
     case constants.REMOVE_ANIMATION:

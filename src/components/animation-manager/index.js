@@ -1,7 +1,8 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
-import { addAnimation, runAnimation, removeAnimation } from '../../actions/index.js'
+import { addAnimation, runAnimation, removeAnimation, addKeyframe } from '../../actions/index.js'
+import '../keyframe-grid/index.js'
 
 /*
  * Handle a list of animations
@@ -41,6 +42,8 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
     /*
     vs
 
+    This is how Keytime wants the timeline / keyframes
+
     'timeline': [{
       'name': 'color',
       'keyframes': [
@@ -65,6 +68,21 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
     this.dispatch(removeAnimation(parseInt(dataset.index, 10)))
   }
 
+  addKeyframe(e) {
+    const { dataset } = e.target
+
+    this.dispatch(addKeyframe(
+      parseInt(dataset.index, 10),
+      {
+        '0': {
+          color: [255, 0, 0],
+          dimmer: 200
+        }
+      }
+    ))
+
+  }
+
   static get template() {
     return `
       <button on-click="addAnimation">Add animation</button>
@@ -77,9 +95,9 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
           <button on-click="runAnimation" data-index$="[[index]]">Run</button>
           <button on-click="removeAnimation" data-index$="[[index]]">Remove</button>
 
-          Keyframes: [[animation.keyframes]]
+          <button on-click="addKeyframe" data-index$="[[index]]">Add keyframe</button>
 
-          <!-- @TODO: <keyframes-grid> -->
+          <keyframe-grid keyframes="{{animation.keyframes}}"></keyframe-grid>
         </div>
       </template>
     `
