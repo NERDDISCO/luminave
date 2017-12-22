@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { uuid } from '../../../libs/abcq/uuid.js'
+import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addFixture, removeFixture } from '../../actions/index.js'
 import '../dmx-fixture/index.js'
 
@@ -37,7 +37,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
     // Add the fixture
     if (isValid) {
-      const id = uuid()
+      const id = uuidV1()
       const universe = 0
 
       this.dispatch(addFixture({

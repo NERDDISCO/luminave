@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { uuid } from '../../../libs/abcq/uuid.js'
+import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addScene, runScene, removeScene } from '../../actions/index.js'
 
 /*
@@ -17,7 +17,7 @@ class SceneManager extends ReduxMixin(PolymerElement) {
   }
 
   addScene() {
-    const id = uuid()
+    const id = uuidV1()
     this.dispatch(addScene({ id, animations: [], name: `demo scene ${id}`, isRunning: false }))
   }
 

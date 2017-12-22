@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { uuid } from '../../../libs/abcq/uuid.js'
+import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { setChannel, addUniverse, removeUniverse } from '../../actions/index.js'
 
 /*
@@ -17,7 +17,7 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
   }
 
   addUniverse() {
-    const id = uuid()
+    const id = uuidV1()
     this.dispatch(addUniverse({ id, channels: [...Array(512)].map(() => 0), name: `demo universe ${id}` }))
   }
 
