@@ -33,7 +33,6 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
           dimmer: 200
         }
       },
-      fixtures: [],
       duration: 5,
       name: `demo animation ${id}`,
       isRunning: false

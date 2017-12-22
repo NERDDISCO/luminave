@@ -18,7 +18,14 @@ class SceneManager extends ReduxMixin(PolymerElement) {
 
   addScene() {
     const id = uuidV1()
-    this.dispatch(addScene({ id, animations: [], name: `demo scene ${id}`, isRunning: false }))
+    this.dispatch(addScene({
+      id,
+      fixtures: [],
+      animations: [],
+      duration: 8,
+      name: `demo scene ${id}`,
+      isRunning: false
+    }))
   }
 
   addAnimation() {
@@ -26,6 +33,14 @@ class SceneManager extends ReduxMixin(PolymerElement) {
   }
 
   removeAnimation() {
+    // @TODO: Implement
+  }
+
+  addFixture() {
+    // @TODO: Implement
+  }
+
+  removeFixture() {
     // @TODO: Implement
   }
 
@@ -49,7 +64,8 @@ class SceneManager extends ReduxMixin(PolymerElement) {
           <button on-click="runScene" data-index$="[[index]]">Run</button>
           <button on-click="removeScene" data-index$="[[index]]">Remove</button>
 
-          <!-- @TODO: <animation-grid> -->
+          <!-- @TODO: <animation-list> -->
+          <!-- @TODO: <fixture-list> -->
         </div>
       </template>
     `
