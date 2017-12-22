@@ -5,6 +5,8 @@ import { addAnimation, runAnimation, removeAnimation } from '../../actions/index
 
 /*
  * Handle a list of animations
+ *
+ * @TODO: Use KeytimeDeluxe from './KeytimeDeluxe.js' to handle the keyframe interpolation
  */
 class AnimationManager extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -35,6 +37,22 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
       name: `demo animation ${id}`,
       isRunning: false
     }))
+
+    /*
+    vs
+
+    'timeline': [{
+      'name': 'color',
+      'keyframes': [
+        { 'time': 0, 'value': [0, 0, 0] },
+        { 'time': 0.25, 'value': [0, 0, 0] },
+        { 'time': 0.5, 'value': [255, 0, 0] },
+        { 'time': 0.75, 'value': [0, 0, 0] },
+        { 'time': .9, 'value': [0, 0, 0] }
+      ]
+    }]
+
+    */
   }
 
   runAnimation(e) {
