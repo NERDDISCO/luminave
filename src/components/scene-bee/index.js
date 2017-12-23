@@ -62,7 +62,6 @@ class SceneBee extends ReduxMixin(PolymerElement) {
   static get template() {
     return `
       <div>
-        <h3>[[name]]</h3>
         <!-- @TODO: <animation-list> -->
         <!-- @TODO: <fixture-list> -->
 

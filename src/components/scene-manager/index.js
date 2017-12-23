@@ -57,20 +57,30 @@ class SceneManager extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
+      <style>
+        h3 {
+          margin-bottom: 0em;
+          margin-top: 1em;
+          border-top: 2px solid var(--background-darker);
+        }
+      </style>
+
       <h2>Scenes</h2>
 
       <button on-click="addScene">Add scene</button>
 
       <template is="dom-repeat" items="{{scenes}}" as="scene">
 
+        <h3>[[scene.name]]</h3>
+
+        <button on-click="removeScene" data-index$="[[index]]">Remove scene</button>
+        <button on-click="runScene" data-index$="[[index]]">Run scene</button>
+
         <scene-bee
           index$="[[index]]"
           name="[[scene.name]]"
           fixtures="[[scene.fixtures]]"
           animations="[[scene.animations]]"></scene-bee>
-
-        <button on-click="removeScene" data-index$="[[index]]">Remove scene</button>
-        <button on-click="runScene" data-index$="[[index]]">Run scene</button>
 
       </template>
     `
