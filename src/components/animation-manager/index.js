@@ -23,16 +23,32 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
     const id = uuidV1()
     this.dispatch(addAnimation({
       id,
-      keyframes: {
+      keyframes:
+      {
         '0': {
           color: [255, 0, 0],
           dimmer: 255
+        },
+        '0.25': {
+          color: [0, 0, 255]
         },
         '1': {
           color: [0, 255, 0],
           dimmer: 200
         }
       },
+
+      /*
+      [{
+        '0': keyframes0,
+        '1': keyframes0.25
+      },
+      {
+        '0': keyframes0.25,
+        '1': keyframes1
+      }]
+      */
+
       duration: 5,
       name: `demo animation ${id}`,
       isRunning: false
