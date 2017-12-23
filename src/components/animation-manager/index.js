@@ -84,6 +84,8 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
+      <h2>Animations</h2>
+
       <button on-click="addAnimation">Add animation</button>
 
       <template is="dom-repeat" items="{{animations}}" as="animation">
