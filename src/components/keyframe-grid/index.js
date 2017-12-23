@@ -11,19 +11,15 @@ class KeyframeGrid extends PolymerElement {
     }
   }
 
-  _toArray(obj, deep) {
+  _toArray(object) {
     const array = []
 
-    for (const key in obj) {
-      if (deep || obj.hasOwnProperty(key)) {
-        array.push({
-          key,
-          value: obj[key]
-        })
-      }
+    for (const key in object) {
+      array.push({
+        key,
+        value: object[key]
+      })
     }
-
-    console.log(array)
 
     return array
   }
