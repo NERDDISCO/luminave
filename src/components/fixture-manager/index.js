@@ -5,7 +5,7 @@ import { addFixture, removeFixture } from '../../actions/index.js'
 import '../dmx-fixture/index.js'
 
 /*
- *
+ * Handle DMX fixtures
  */
 class FixtureManager extends ReduxMixin(PolymerElement) {
 
@@ -43,7 +43,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
       this.dispatch(addFixture({
         id,
         type: this.type,
-        name: `fixture ${id}`,
+        name: this.name,
         universe,
         address: this.address
       }))
@@ -61,6 +61,10 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
   handleAddress(e) {
     this.address = e.target.value
+  }
+
+  handleName(e) {
+    this.name = e.target.value
   }
 
   handleSubmit(e) {
@@ -102,6 +106,9 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
         </select>
 
         <input name="address" type="number" min="1" max="255" on-change="handleAddress" required></input>
+
+        <input name="name" type="text" on-change="handleName" required></input>
+
         <button on-click="addFixture">Add fixture</button>
       </form>
 
