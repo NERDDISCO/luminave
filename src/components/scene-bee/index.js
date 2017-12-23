@@ -9,6 +9,7 @@ class SceneBee extends ReduxMixin(PolymerElement) {
   static get properties() {
     return {
       name: String,
+      duration: Number,
       index: Number,
       fixtures: Array,
       fixtureManager: {

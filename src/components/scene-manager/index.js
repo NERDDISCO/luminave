@@ -17,18 +17,6 @@ class SceneManager extends ReduxMixin(PolymerElement) {
     }
   }
 
-  addScene() {
-    const id = uuidV1()
-    this.dispatch(addScene({
-      id,
-      fixtures: [],
-      animations: [],
-      duration: 8,
-      name: `demo scene ${id}`,
-      isRunning: false
-    }))
-  }
-
   addAnimation() {
     // @TODO: Implement
   }
@@ -55,6 +43,33 @@ class SceneManager extends ReduxMixin(PolymerElement) {
     this.dispatch(removeScene(parseInt(dataset.index, 10)))
   }
 
+  handleSubmit(e) {
+    // Prevent sending data to server
+    e.preventDefault()
+
+    // Reset all fields
+    e.target.reset()
+
+    const id = uuidV1()
+
+    this.dispatch(addScene({
+      id,
+      fixtures: [],
+      animations: [],
+      duration: this.duration,
+      name: this.name,
+      isRunning: false
+    }))
+  }
+
+  handleName(e) {
+    this.name = e.target.value
+  }
+
+  handleDuration(e) {
+    this.duration = e.target.value
+  }
+
   static get template() {
     return `
       <style>
@@ -67,11 +82,21 @@ class SceneManager extends ReduxMixin(PolymerElement) {
 
       <h2>Scenes</h2>
 
-      <button on-click="addScene">Add scene</button>
+      <form on-submit="handleSubmit">
+        <label for="name">Name</label>
+        <input name="name" type="text" on-change="handleName" required></input>
+
+        <label for="duration">Duration</label>
+        <input name="duration" type="number" min="0" on-change="handleDuration" required></input>
+
+        <button type="submit">Add scene</button>
+      </form>
+
+
 
       <template is="dom-repeat" items="{{scenes}}" as="scene">
 
-        <h3>[[scene.name]]</h3>
+        <h3>[[scene.name]] ([[scene.duration]])</h3>
 
         <button on-click="removeScene" data-index$="[[index]]">Remove scene</button>
         <button on-click="runScene" data-index$="[[index]]">Run scene</button>
@@ -79,6 +104,7 @@ class SceneManager extends ReduxMixin(PolymerElement) {
         <scene-bee
           index$="[[index]]"
           name="[[scene.name]]"
+          duration="[[scene.duration]]"
           fixtures="[[scene.fixtures]]"
           animations="[[scene.animations]]"></scene-bee>
 
