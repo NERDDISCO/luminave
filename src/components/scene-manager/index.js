@@ -2,6 +2,7 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import ReduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addScene, runScene, removeScene } from '../../actions/index.js'
+import '../scene-bee/index.js'
 
 /*
  * Handle a list of scenes
@@ -56,17 +57,21 @@ class SceneManager extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
+      <h2>Scenes</h2>
+
       <button on-click="addScene">Add scene</button>
 
       <template is="dom-repeat" items="{{scenes}}" as="scene">
-        <div>
-          [[scene.name]]
-          <button on-click="runScene" data-index$="[[index]]">Run</button>
-          <button on-click="removeScene" data-index$="[[index]]">Remove</button>
 
-          <!-- @TODO: <animation-list> -->
-          <!-- @TODO: <fixture-list> -->
-        </div>
+        <scene-bee
+          index$="[[index]]"
+          name="[[scene.name]]"
+          fixtures="[[scene.fixtures]]"
+          animations="[[scene.animations]]"></scene-bee>
+
+        <button on-click="removeScene" data-index$="[[index]]">Remove scene</button>
+        <button on-click="runScene" data-index$="[[index]]">Run scene</button>
+
       </template>
     `
   }

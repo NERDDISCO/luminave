@@ -73,7 +73,7 @@ export const universeManager = (state = [], { type, universe, universeIndex, cha
 /*
  * Handle the scenes
  */
-export const sceneManager = (state = [], { type, scene, sceneIndex }) => {
+export const sceneManager = (state = [], { type, scene, sceneIndex, animationId, fixtureId }) => {
   switch (type) {
     case constants.ADD_SCENE:
       return update(state, { $push: [scene] })
@@ -81,6 +81,10 @@ export const sceneManager = (state = [], { type, scene, sceneIndex }) => {
       return update(state, { [sceneIndex]: { isRunning: { $set: true } } })
     case constants.REMOVE_SCENE:
       return update(state, { $splice: [[sceneIndex, 1]] })
+    case constants.ADD_ANIMATION_TO_SCENE:
+      return update(state, { [sceneIndex]: { animations: { $push: [animationId] } } })
+    case constants.ADD_FIXTURE_TO_SCENE:
+      return update(state, { [sceneIndex]: { fixtures: { $push: [fixtureId] } } })
     default:
       return state
   }
