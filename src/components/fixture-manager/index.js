@@ -27,27 +27,17 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
     }
   }
 
-  addFixture(e) {
-    // @TODO: SUPER HACKY AND MAGIC NUMBERS!!! 🔥🤓
-    const [, form] = e.path
-    const { elements } = form
+  addFixture() {
+    const id = uuidV1()
+    const universe = 0
 
-    // Validate every field of the form
-    const isValid = Array.from(elements).filter(element => element.validity.valid).length === elements.length
-
-    // Add the fixture
-    if (isValid) {
-      const id = uuidV1()
-      const universe = 0
-
-      this.dispatch(addFixture({
-        id,
-        type: this.type,
-        name: this.name,
-        universe,
-        address: this.address
-      }))
-    }
+    this.dispatch(addFixture({
+      id,
+      type: this.type,
+      name: this.name,
+      universe,
+      address: this.address
+    }))
   }
 
   removeFixture(e) {
@@ -68,18 +58,13 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
   }
 
   handleSubmit(e) {
+    // Prevent sending data to server
     e.preventDefault()
 
-    const elements = [...e.target.elements]
+    // Reset all fields
+    e.target.reset()
 
-    elements.forEach(element => {
-      // Reset input
-      if (element.tagName === 'INPUT') {
-        element.value = ''
-      }
-
-      return element
-    })
+    this.addFixture()
   }
 
   static get template() {
@@ -109,7 +94,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
         <input name="name" type="text" on-change="handleName" required></input>
 
-        <button on-click="addFixture">Add fixture</button>
+        <button type="submit">Add fixture</button>
       </form>
 
       <div class="grid">
