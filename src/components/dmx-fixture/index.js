@@ -33,6 +33,7 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
   static get properties() {
     return {
       name: { type: String },
+      id: { type: String },
       type: { type: String },
       address: { type: Number },
       universe: { type: Number },
@@ -64,7 +65,7 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
 
         <div>
           <div class="grid">
-            <div class="property">Name: [[name]]</div>
+            <div class="property" title="[[id]]">Name: [[name]]</div>
             <div class="property">Type: [[type]]</div>
             <div class="property">Weight: [[fixture.weight]] kg</div>
             <div class="property">Channels: [[fixture.channels]]</div>

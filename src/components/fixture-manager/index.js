@@ -103,6 +103,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
           <div class="fixture">
             <dmx-fixture
               name="[[fixture.name]]"
+              id="[[fixture.id]]"
               type="[[fixture.type]]"
               address="[[fixture.address]]"
               universe="[[fixture.universe]]"></dmx-fixture>
