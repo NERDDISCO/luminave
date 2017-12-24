@@ -3,6 +3,7 @@ import ReduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addFixture, removeFixture } from '../../actions/index.js'
 import '../dmx-fixture/index.js'
+import { FIXTURE_TYPES } from '../../constants/index.js'
 
 /*
  * Handle DMX fixtures
@@ -12,9 +13,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
   constructor() {
     super()
 
-    this.types = ['', 'EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
-      'AdjStarburst', 'CameoFlatPar1RGBW', 'CameoPixBar600PRO', 'CameoWookie200RGY',
-      'StairvilleAF150', 'StairvilleBowlBeam604LEDCOBMovingHead']
+    this.types = FIXTURE_TYPES
     this.types.sort()
   }
 
@@ -77,6 +76,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
       <form on-submit="handleSubmit">
         <label for="type">Type</label>
         <select name="type" on-change="handleSelectedType" required>
+          <option value=""></option>
           <template is="dom-repeat" items="{{types}}" as="type">
             <option value="[[type]]">[[type]]</option>
           </template>
