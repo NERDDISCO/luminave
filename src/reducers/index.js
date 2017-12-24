@@ -93,12 +93,18 @@ export const sceneManager = (state = [], { type, scene, sceneIndex, animationId,
 /*
  * Handle the animations
  */
-export const animationManager = (state = [], { type, animation, animationIndex, keyframe }) => {
+export const animationManager = (state = [], { type, animation, animationIndex, keyframeStep, keyframeProperty, keyframeValue }) => {
   switch (type) {
     case constants.ADD_ANIMATION:
       return update(state, { $push: [animation] })
-    case constants.ADD_KEYFRAME:
-      return update(state, { [animationIndex]: { keyframes: { $merge: keyframe } } })
+    case constants.ADD_KEYFRAME: {
+
+      // Keyframe might already have steps
+      const oldSteps = state[animationIndex].keyframes[keyframeStep] || {}
+      const newStep = { [keyframeProperty]: keyframeValue }
+
+      return update(state, { [animationIndex]: { keyframes: { $merge: {[keyframeStep]: {...oldSteps, ...newStep} } } } })
+    }
     case constants.RUN_ANIMATION:
       return update(state, { [animationIndex]: { isRunning: { $set: true } } })
     case constants.REMOVE_ANIMATION:

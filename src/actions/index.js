@@ -141,9 +141,11 @@ export const removeAnimation = animationIndex => ({
 /*
  * Add a keyframe
  */
-export const addKeyframe = (animationIndex, keyframe) => ({
+export const addKeyframe = (animationIndex, keyframeStep, keyframeProperty, keyframeValue) => ({
   animationIndex,
-  keyframe,
+  keyframeStep,
+  keyframeProperty,
+  keyframeValue,
   type: constants.ADD_KEYFRAME
 })
 

@@ -22,25 +22,11 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
   }
 
   handleKeyframeSubmit(e) {
-    // Prevent sending data to server
+    // Prevent sending data to server & reset all fields
     e.preventDefault()
-
-    // Reset all fields
     e.target.reset()
 
-    let step = {}
-    const keyframe = {}
-
-    // Keyframe on step does not exist
-    if (this.keyframes[this.step] === undefined) {
-      step = { [this.property]: this.value }
-    } else {
-      step = Object.assign(this.keyframes[this.step], { [this.property]: this.value })
-    }
-
-    keyframe[this.step] = step
-
-    this.dispatch(addKeyframe(this.index, keyframe))
+    this.dispatch(addKeyframe(this.index, this.step, this.property, this.value))
   }
 
   handleStep(e) {

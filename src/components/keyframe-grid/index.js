@@ -14,14 +14,20 @@ class KeyframeGrid extends PolymerElement {
   _toArray(object) {
     const array = []
 
-    for (const key in object) {
+    for (const step in object) {
       array.push({
-        key,
-        value: object[key]
+        step: parseFloat(step),
+        value: object[step]
       })
     }
 
+    array.sort((a, b) => a.step - b.step)
+
     return array
+  }
+
+  _toJson(object) {
+    return JSON.stringify(object)
   }
 
   static get template() {
@@ -38,7 +44,7 @@ class KeyframeGrid extends PolymerElement {
 
       <div class="items">
         <template is="dom-repeat" items="[[_toArray(keyframes)]]" as="keyframe">
-          <div class="item">key: [[keyframe.key]] <br> value: [[keyframe.value]]</div>
+          <div class="item">step: [[keyframe.step]] <br> [[_toJson(keyframe.value)]]</div>
         </template>
       </div>
     `
