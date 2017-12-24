@@ -1,12 +1,21 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { addKeyframe } from '../../actions/index.js'
+import { FIXTURE_PROPERTIES } from '../../constants/index.js'
 import '../keyframe-grid/index.js'
 
 /*
  * Handle a list of scenes
  */
 class AnimationBee extends ReduxMixin(PolymerElement) {
+
+  constructor() {
+    super()
+
+    this.properties = FIXTURE_PROPERTIES
+    this.properties.sort()
+  }
+
   static get properties() {
     return {
       name: String,
@@ -33,8 +42,8 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
     this.step = e.target.value
   }
 
-  handleProperty(e) {
-    this.property = e.target.value
+  handleSelectedProperty(e) {
+    this.property = e.target.selectedOptions[0].value
   }
 
   handleValue(e) {
@@ -51,7 +60,12 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
           <input name="name" type="text" on-change="handleStep" required></input>
 
           <label for="property">Property</label>
-          <input name="property" type="text" on-change="handleProperty" required></input>
+          <select name="property" on-change="handleSelectedProperty" required>
+            <option value=""></option>
+            <template is="dom-repeat" items="{{properties}}" as="property">
+              <option value="[[property]]">[[property]]</option>
+            </template>
+          </select>
 
           <label for="value">Value</label>
           <input name="value" type="text" on-change="handleValue" required></input>
