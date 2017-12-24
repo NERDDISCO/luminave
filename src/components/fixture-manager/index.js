@@ -27,19 +27,6 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
     }
   }
 
-  addFixture() {
-    const id = uuidV1()
-    const universe = 0
-
-    this.dispatch(addFixture({
-      id,
-      type: this.type,
-      name: this.name,
-      universe,
-      address: this.address
-    }))
-  }
-
   removeFixture(e) {
     const { dataset } = e.target
     this.dispatch(removeFixture(parseInt(dataset.index, 10)))
@@ -58,13 +45,18 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
   }
 
   handleSubmit(e) {
-    // Prevent sending data to server
+    // Prevent sending data to server & reset all fields
     e.preventDefault()
-
-    // Reset all fields
     e.target.reset()
 
-    this.addFixture()
+    // @TODO: Set the universe individually
+    this.dispatch(addFixture({
+      id: uuidV1(),
+      type: this.type,
+      name: this.name,
+      universe: 0,
+      address: this.address
+    }))
   }
 
   static get template() {
@@ -80,7 +72,6 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
         border: 1px solid var(--color-lighter);
         margin: 0 0 .25em 0;
       }
-
     </style>
 
       <form on-submit="handleSubmit">
