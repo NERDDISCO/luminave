@@ -84,14 +84,17 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
     </style>
 
       <form on-submit="handleSubmit">
+        <label for="type">Type</label>
         <select name="type" on-change="handleSelectedType" required>
           <template is="dom-repeat" items="{{types}}" as="type">
             <option value="[[type]]">[[type]]</option>
           </template>
         </select>
 
+        <label for="address">Address</label>
         <input name="address" type="number" min="1" max="255" on-change="handleAddress" required></input>
 
+        <label for="name">Name</label>
         <input name="name" type="text" on-change="handleName" required></input>
 
         <button type="submit">Add fixture</button>
