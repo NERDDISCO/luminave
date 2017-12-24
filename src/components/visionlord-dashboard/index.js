@@ -10,6 +10,7 @@ import '../fixture-manager/index.js'
 import '../scene-manager/index.js'
 import '../storage-manager/index.js'
 import '../animation-manager/index.js'
+import '../midi-manager/index.js'
 
 class VisionLordDashboard extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -51,6 +52,10 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
       <hr>
 
       <animation-manager animations="{{animationManager}}"></animation-manager>
+
+      <hr>
+
+      <midi-manager controllers="{{midiManager}}"></midi-manager>
     `
   }
 }

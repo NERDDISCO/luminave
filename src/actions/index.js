@@ -164,3 +164,19 @@ export const removeFixture = fixtureIndex => ({
   fixtureIndex,
   type: constants.REMOVE_FIXTURE
 })
+
+/*
+ * Add a MIDI controller
+ */
+export const addMidi = controller => ({
+  controller,
+  type: constants.ADD_MIDI
+})
+
+/*
+ * Remove a MIDI controller
+ */
+export const removeMidi = controllerIndex => ({
+  controllerIndex,
+  type: constants.REMOVE_MIDI
+})
