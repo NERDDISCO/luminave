@@ -30,6 +30,7 @@ export const REMOVE_ANIMATION = uuid()
 export const ADD_KEYFRAME = uuid()
 export const ADD_FIXTURE = uuid()
 export const REMOVE_FIXTURE = uuid()
+export const ENABLE_MIDI = uuid()
 export const ADD_MIDI = uuid()
 export const REMOVE_MIDI = uuid()
 

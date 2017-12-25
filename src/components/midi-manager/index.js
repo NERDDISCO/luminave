@@ -1,8 +1,9 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
+import WebMidi from '../../../libs/webmidi/index.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
-import { addMidi, removeMidi } from '../../actions/index.js'
-import '../dmx-fixture/index.js'
+import { addMidi, removeMidi, enableMidi } from '../../actions/index.js'
+import '../midi-controller/index.js'
 
 /*
  * Handle DMX fixtures
@@ -12,24 +13,23 @@ class MidiManager extends ReduxMixin(PolymerElement) {
   constructor() {
     super()
 
-    this.isEnabled = false
+    // Web MIDI is disabled
+    this.dispatch(enableMidi(false))
 
-    // @TODO: Move this into it's own component
     // Enable Web MIDI
     WebMidi.enable(err => {
 
       if (err) {
-        console.log('Web MIDI API could not be enabled:', err)
+        console.error('Web MIDI API could not be enabled:', err)
       } else {
-        console.log('Web MIDI is enabled')
-
         // MIDI input / output ports (from a single device) are connected to the computer
-        WebMidi.addListener('connected', event => {
-          console.log('Added', event.name, 'as', event.hasOwnProperty('input') ? 'input' : 'output')
+        WebMidi.addListener('connected', e => {
+          const { manufacturer, name, id } = e
+          console.log('MIDIController added:', 'Manufacturer:', manufacturer, '| Name:', name, '| ID:', id)
         })
 
         // Web MIDI is enabled
-        this.isEnabled = true
+        this.dispatch(enableMidi(true))
       }
 
     })
@@ -39,7 +39,7 @@ class MidiManager extends ReduxMixin(PolymerElement) {
     return {
       controllers: {
         type: Array,
-        statePath: 'midiManager'
+        statePath: 'midiManager.controllers'
       }
     }
   }
@@ -47,6 +47,10 @@ class MidiManager extends ReduxMixin(PolymerElement) {
   removeMidi(e) {
     const { dataset } = e.target
     this.dispatch(removeMidi(parseInt(dataset.index, 10)))
+  }
+
+  handleController(e) {
+    console.log('handleController', e)
   }
 
   handleName(e) {
@@ -81,7 +85,7 @@ class MidiManager extends ReduxMixin(PolymerElement) {
       output: this.output,
       width: this.width,
       height: this.height,
-      mapping: [],
+      mapping: []
     }))
   }
 
@@ -131,13 +135,13 @@ class MidiManager extends ReduxMixin(PolymerElement) {
 
         <template is="dom-repeat" items="{{controllers}}" as="controller">
           <div>
-            <ul>
-              <li>[[controller.name]]</li>
-              <li>[[controller.input]]</li>
-              <li>[[controller.output]]</li>
-              <li>[[controller.width]]</li>
-              <li>[[controller.height]]</li>
-            </ul>
+            <midi-controller
+              id="[[controller.id]]"
+              name="[[controller.name]]"
+              inputname="[[controller.input]]"
+              outputname="[[controller.output]]"
+              width="[[controller.width]]"
+              height="[[controller.height]]"></midi-controller>
 
             <button on-click="removeMidi" data-index$="[[index]]">Remove</button>
           </div>

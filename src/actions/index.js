@@ -180,3 +180,11 @@ export const removeMidi = controllerIndex => ({
   controllerIndex,
   type: constants.REMOVE_MIDI
 })
+
+/*
+ * Enable WebMIDI
+ */
+export const enableMidi = enabled => ({
+  enabled,
+  type: constants.ENABLE_MIDI
+})

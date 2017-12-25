@@ -131,12 +131,17 @@ export const fixtureManager = (state = [], { type, fixture, fixtureIndex }) => {
 /*
  * Handle the MIDI controller
  */
-export const midiManager = (state = [], { type, controller, controllerIndex }) => {
+export const midiManager = (state = {
+  controllers: [],
+  enabled: false
+}, { type, controller, controllerIndex, enabled }) => {
   switch (type) {
+    case constants.ENABLE_MIDI:
+      return update(state, { enabled: { $set: enabled } })
     case constants.ADD_MIDI:
-      return update(state, { $push: [controller] })
+      return update(state, { controllers: { $push: [controller] } })
     case constants.REMOVE_MIDI:
-      return update(state, { $splice: [[controllerIndex, 1]] })
+      return update(state, { controllers: { $splice: [[controllerIndex, 1]] } })
     default:
       return state
   }
