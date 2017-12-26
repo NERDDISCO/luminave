@@ -72,7 +72,9 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
         }
 
         .item {
-          background: rgba(calc(var(--isLearning) * 255), 255, 255, 1);
+          --on: calc(255 * var(--isLearning));
+
+          background: rgb(255, var(--on), var(--on));
         }
       </style>
 
