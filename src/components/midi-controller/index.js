@@ -26,7 +26,9 @@ class MidiController extends ReduxMixin(PolymerElement) {
       const elements = this.width * this.height
 
       for (let i = 0; i < elements; i++) {
-        this.dispatch(addMidiMapping(this.index, i, {}))
+        this.dispatch(addMidiMapping(this.index, i, {
+          scenes: []
+        }))
       }
     }
   }

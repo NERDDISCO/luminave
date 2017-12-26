@@ -207,3 +207,13 @@ export const addMidiMapping = (controllerIndex, mappingIndex, mapping) => ({
   mapping,
   type: constants.ADD_MIDI_MAPPING
 })
+
+/*
+ * Add a animation to the scene
+ */
+export const addSceneToMidi = (controllerIndex, mappingIndex, sceneId) => ({
+  controllerIndex,
+  mappingIndex,
+  sceneId,
+  type: constants.ADD_SCENE_TO_MIDI
+})

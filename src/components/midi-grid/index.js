@@ -1,7 +1,8 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
-import { learnMidi } from '../../actions/index.js'
+import { learnMidi, addSceneToMidi } from '../../actions/index.js'
+import '../midi-scenes/index.js'
 
 /*
  * Show MIDI buttons in a grid
@@ -16,6 +17,10 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
       learnIndex: {
         type: Number,
         statePath: 'midiManager.learning'
+      },
+      sceneManager: {
+        type: Array,
+        statePath: 'sceneManager'
       }
     }
   }
@@ -63,6 +68,26 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
     return `Button ${index + 1}`
   }
 
+  _toJson(object) {
+    return JSON.stringify(object)
+  }
+
+  handleSceneSubmit(e) {
+    // Prevent sending data to server & reset all fields
+    e.preventDefault()
+    e.target.reset()
+
+    const { dataset } = e.target
+    const index = parseInt(dataset.index, 10)
+
+    this.dispatch(addSceneToMidi(this.controllerindex, index, this.sceneId))
+  }
+
+  handleSelectedScene(e) {
+    this.sceneId = e.target.selectedOptions[0].value
+  }
+
+
   static get template() {
     return `
       <style>
@@ -80,12 +105,28 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
 
       <div class="container" style="{{computeGridVars(width)}}">
 
-        <template is="dom-repeat" items=[[_toArray(mapping)]] as="element">
+        <template is="dom-repeat" items={{_toArray(mapping)}} as="element">
           <div class="item" style="{{computeItemVars(index, learnIndex)}}">
             [[_toLabel(index)]]
             <br>
             Note: [[element.note]]
             <button on-click="handleLearn" data-index$="[[index]]">Learn</button>
+
+
+            <form on-submit="handleSceneSubmit" data-index$="[[index]]">
+              <select name="type" on-change="handleSelectedScene" required>
+                <option value=""></option>
+
+                <template is="dom-repeat" items="{{sceneManager}}" as="scene">
+                  <option value="[[scene.id]]">[[scene.name]]</option>
+                </template>
+              </select>
+
+              <button type="submit">Add scene</button>
+            </form>
+
+            <midi-scenes scenes$="{{element.scenes}}"></midi-scenes>
+
           </div>
         </template>
 
