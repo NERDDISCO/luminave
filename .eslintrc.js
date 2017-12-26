@@ -47,7 +47,7 @@ module.exports = {
         'generator-star-spacing': 'error',
         'getter-return': 'error',
         'global-require': 'error',
-        'guard-for-in': 'error',
+        'guard-for-in': 'off',
         'handle-callback-err': 'error',
         'id-blacklist': 'error',
         'id-length': 'off',
