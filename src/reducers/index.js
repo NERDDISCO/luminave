@@ -142,7 +142,7 @@ export const midiManager = (state = {
     case constants.ADD_MIDI:
       return update(state, { controllers: { $push: [controller] } })
     case constants.ADD_MIDI_MAPPING:
-      // Keyframe might already have steps
+      // Mapping might already exist
       const old = state.controllers[controllerIndex].mapping[mappingIndex] || {}
 
       return update(state, { controllers: { [controllerIndex]: { mapping: { $merge: { [mappingIndex]: {...old, ...mapping} } } } } })
