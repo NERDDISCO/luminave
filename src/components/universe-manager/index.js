@@ -28,18 +28,21 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
+      <h2>Universes</h2>
+
       <button on-click="addUniverse">Add universe</button>
 
       <template is="dom-repeat" items="{{universes}}" as="universe">
         <div>
-          [[universe.name]]
+          <h3>[[universe.name]]</h3>
           <button on-click="removeUniverse" data-index$="[[index]]">Remove</button>
-
-          <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
 
           <div>
             <channel-grid channels="[[universe.channels]]"></channel-grid>
           </div>
+
+          <h4>Fixtures</h4>
+          <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
 
         </div>
       </template>

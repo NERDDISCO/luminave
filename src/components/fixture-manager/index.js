@@ -91,6 +91,8 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
         <button type="submit">Add fixture</button>
       </form>
 
+      <br>
+
       <div class="grid">
 
         <template is="dom-repeat" items="{{fixtures}}" as="fixture">
