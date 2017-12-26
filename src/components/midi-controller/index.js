@@ -1,6 +1,8 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import WebMidi from '../../../libs/webmidi/index.js'
+import '../midi-grid/index.js'
+import { learnMidi, addMidiMapping } from '../../actions/index.js'
 
 /*
  * Handle MIDI controller
@@ -14,18 +16,32 @@ class MidiController extends ReduxMixin(PolymerElement) {
 
     this.input = null
     this.output = null
+  }
 
-    this.mapping = {}
+  ready() {
+    super.ready()
+
+    // Initialize mapping
+    if (Object.keys(this.mapping).length === 0) {
+      const elements = this.width * this.height
+
+      for (let i = 0; i < elements; i++) {
+        this.dispatch(addMidiMapping(this.index, i, {}))
+      }
+    }
   }
 
   static get properties() {
     return {
       name: String,
+      id: String,
+      index: Number,
       inputname: String,
       outputname: String,
       width: Number,
       height: Number,
       connected: Boolean,
+      mapping: Object,
       midiManager: {
         type: Object,
         statePath: 'midiManager'
@@ -87,20 +103,27 @@ class MidiController extends ReduxMixin(PolymerElement) {
       note,
       velocity] = data
 
-    // Mapping exists for this note
-    if (this.mapping[note] === undefined) {
-      console.log('Event: noteon |', 'Note:', note)
-    } else {
-      const eventData = {
-        partId: this.mapping[note].partId,
-        id: this.id
-      }
+    if (this.midiManager.learning !== -1) {
 
-      // @TODO: Hide behind a flag
-      console.log('noteon', eventData)
+      const mapping = { note }
+      this.dispatch(addMidiMapping(this.index, this.midiManager.learning, mapping))
 
-      window.dispatchEvent(new CustomEvent('MidiController', { detail: eventData }))
+      this.dispatch(learnMidi(-1))
     }
+
+    // // Mapping does not exist for this note
+    // if (this.mapping[note] === undefined) {
+    //   console.log('Event: noteon |', 'Note:', note)
+    // } else {
+    //   const eventData = {
+    //     partId: this.mapping[note].partId,
+    //     id: this.id
+    //   }
+    //
+    //   console.log('trigger event', eventData)
+    //
+    //   // window.dispatchEvent(new CustomEvent('MidiController', { detail: eventData }))
+    // }
 
   }
 
@@ -112,9 +135,14 @@ class MidiController extends ReduxMixin(PolymerElement) {
         <ul>
           <li>input: [[inputname]]</li>
           <li>output: [[outputname]]</li>
-          <li>width: [[width]]</li>
-          <li>height: [[height]]</li>
         </ul>
+
+        <midi-grid
+          width="[[width]]"
+          height="[[height]]"
+          mapping="[[mapping]]"
+          controllerindex="[[index]]"></midi-grid>
+
       </div>
     `
   }

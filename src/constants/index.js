@@ -33,6 +33,8 @@ export const REMOVE_FIXTURE = uuid()
 export const ENABLE_MIDI = uuid()
 export const ADD_MIDI = uuid()
 export const REMOVE_MIDI = uuid()
+export const ADD_MIDI_MAPPING = uuid()
+export const LEARN_MIDI = uuid()
 
 /*
  * localStorage

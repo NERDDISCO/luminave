@@ -78,3 +78,20 @@ const seclectedFixtures = [{
     duration: 60000
   }]
 }]
+
+const midiManger = {
+  enabled: true,
+  controllers: [{
+    id: '489-491-491',
+    name: 'nanoPAD2',
+    input: 'nanoPAD2 PAD',
+    output: 'nanoPAD2 CTRL',
+    width: 8,
+    height: 2,
+    mapping: {
+      0: {
+        note: 35
+      }
+    }
+  }]
+}

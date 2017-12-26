@@ -133,13 +133,21 @@ export const fixtureManager = (state = [], { type, fixture, fixtureIndex }) => {
  */
 export const midiManager = (state = {
   controllers: [],
-  enabled: false
-}, { type, controller, controllerIndex, enabled }) => {
+  enabled: false,
+  learning: false
+}, { type, controller, controllerIndex, enabled, mapping, mappingIndex }) => {
   switch (type) {
     case constants.ENABLE_MIDI:
       return update(state, { enabled: { $set: enabled } })
     case constants.ADD_MIDI:
       return update(state, { controllers: { $push: [controller] } })
+    case constants.ADD_MIDI_MAPPING:
+      // Keyframe might already have steps
+      const old = state.controllers[controllerIndex].mapping[mappingIndex] || {}
+
+      return update(state, { controllers: { [controllerIndex]: { mapping: { $merge: { [mappingIndex]: {...old, ...mapping} } } } } })
+    case constants.LEARN_MIDI:
+      return update(state, { learning: { $set: mappingIndex } })
     case constants.REMOVE_MIDI:
       return update(state, { controllers: { $splice: [[controllerIndex, 1]] } })
     default:

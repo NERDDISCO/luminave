@@ -188,3 +188,22 @@ export const enableMidi = enabled => ({
   enabled,
   type: constants.ENABLE_MIDI
 })
+
+/*
+ * Learn WebMIDI
+ */
+export const learnMidi = mappingIndex => ({
+  mappingIndex,
+  type: constants.LEARN_MIDI
+})
+
+
+/*
+ * Add a MIDI mapping for a specific input (e.g. button) from a MIDI controller
+ */
+export const addMidiMapping = (controllerIndex, mappingIndex, mapping) => ({
+  controllerIndex,
+  mappingIndex,
+  mapping,
+  type: constants.ADD_MIDI_MAPPING
+})
