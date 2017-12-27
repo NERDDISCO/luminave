@@ -106,6 +106,15 @@ export const addAnimationToScene = (sceneIndex, animationId) => ({
 })
 
 /*
+ * Remove a animation from the scene
+ */
+export const removeAnimationFromScene = (sceneIndex, animationIndex) => ({
+  sceneIndex,
+  animationIndex,
+  type: constants.REMOVE_ANIMATION_FROM_SCENE
+})
+
+/*
  * Add a fixture to the scene
  */
 export const addFixtureToScene = (sceneIndex, fixtureId) => ({
