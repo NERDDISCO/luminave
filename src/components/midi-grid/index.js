@@ -1,8 +1,8 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
-import { learnMidi, addSceneToMidi } from '../../actions/index.js'
-import '../midi-scenes/index.js'
+import { learnMidi, addSceneToMidi, removeSceneFromMidi } from '../../actions/index.js'
+import '../scene-list/index.js'
 
 /*
  * Show MIDI buttons in a grid
@@ -54,6 +54,25 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
     this.dispatch(learnMidi(mappingIndex))
   }
 
+  handleAddScene(e) {
+    const { event, sceneId } = e.detail
+    const { dataset } = e.target
+
+    // Prevent sending data to server & reset all fields
+    event.preventDefault()
+    event.target.reset()
+
+    this.dispatch(addSceneToMidi(this.controllerindex, parseInt(dataset.index, 10), sceneId))
+  }
+
+  handleRemoveScene(e) {
+    const { sceneIndex } = e.detail
+    const { dataset } = e.target
+    const mappingIndex = parseInt(dataset.index, 10)
+
+    this.dispatch(removeSceneFromMidi(this.controllerindex, mappingIndex, sceneIndex))
+  }
+
   _toArray(object) {
     const array = []
 
@@ -67,26 +86,6 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
   _toLabel(index) {
     return `Button ${index + 1}`
   }
-
-  _toJson(object) {
-    return JSON.stringify(object)
-  }
-
-  handleSceneSubmit(e) {
-    // Prevent sending data to server & reset all fields
-    e.preventDefault()
-    e.target.reset()
-
-    const { dataset } = e.target
-    const index = parseInt(dataset.index, 10)
-
-    this.dispatch(addSceneToMidi(this.controllerindex, index, this.sceneId))
-  }
-
-  handleSelectedScene(e) {
-    this.sceneId = e.target.selectedOptions[0].value
-  }
-
 
   static get template() {
     return `
@@ -112,20 +111,12 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
             Note: [[element.note]]
             <button on-click="handleLearn" data-index$="[[index]]">Learn</button>
 
-
-            <form on-submit="handleSceneSubmit" data-index$="[[index]]">
-              <select name="type" on-change="handleSelectedScene" required>
-                <option value=""></option>
-
-                <template is="dom-repeat" items="{{sceneManager}}" as="scene">
-                  <option value="[[scene.id]]">[[scene.name]]</option>
-                </template>
-              </select>
-
-              <button type="submit">Add scene</button>
-            </form>
-
-            <midi-scenes scenes$="{{element.scenes}}"></midi-scenes>
+            <scene-list
+              on-add-scene="handleAddScene"
+              on-remove-scene="handleRemoveScene"
+              data-index$="[[index]]"
+              scenes$="{{element.scenes}}"
+              scene-manager="[[sceneManager]]"></scene-list>
 
           </div>
         </template>

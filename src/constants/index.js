@@ -36,6 +36,7 @@ export const REMOVE_MIDI = uuid()
 export const ADD_MIDI_MAPPING = uuid()
 export const LEARN_MIDI = uuid()
 export const ADD_SCENE_TO_MIDI = uuid()
+export const REMOVE_SCENE_FROM_MIDI = uuid()
 
 /*
  * localStorage

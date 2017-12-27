@@ -209,11 +209,21 @@ export const addMidiMapping = (controllerIndex, mappingIndex, mapping) => ({
 })
 
 /*
- * Add a animation to the scene
+ * Add a scene to a MIDI controller
  */
 export const addSceneToMidi = (controllerIndex, mappingIndex, sceneId) => ({
   controllerIndex,
   mappingIndex,
   sceneId,
   type: constants.ADD_SCENE_TO_MIDI
+})
+
+/*
+ * Remove a scene from a MIDI controller
+ */
+export const removeSceneFromMidi = (controllerIndex, mappingIndex, sceneIndex) => ({
+  controllerIndex,
+  mappingIndex,
+  sceneIndex,
+  type: constants.REMOVE_SCENE_FROM_MIDI
 })
