@@ -1,6 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { addAnimationToScene, addFixtureToScene } from '../../actions/index.js'
+import { addAnimationToScene, addFixtureToScene, removeFixtureFromScene } from '../../actions/index.js'
+import '../fixture-list/index.js'
 
 /*
  * Handle a list of scenes
@@ -46,26 +47,25 @@ class SceneBee extends ReduxMixin(PolymerElement) {
     this.animationId = e.target.selectedOptions[0].value
   }
 
-  handleFixtureSubmit(e) {
-    // Prevent sending data to server
-    e.preventDefault()
+  handleAddFixture(e) {
+    const { event, fixtureId } = e.detail
 
-    // Reset all fields
-    e.target.reset()
+    // Prevent sending data to server & reset all fields
+    event.preventDefault()
+    event.target.reset()
 
-    this.dispatch(addFixtureToScene(this.index, this.fixtureId))
+    this.dispatch(addFixtureToScene(this.index, fixtureId))
   }
 
-  handleSelectedFixture(e) {
-    this.fixtureId = e.target.selectedOptions[0].value
+  handleRemoveFixture(e) {
+    const { fixtureIndex } = e.detail
+
+    this.dispatch(removeFixtureFromScene(this.index, fixtureIndex))
   }
 
   static get template() {
     return `
       <div>
-        <!-- @TODO: <animation-list> -->
-        <!-- @TODO: <fixture-list> -->
-
         <h4>Animations</h4>
 
         <form on-submit="handleAnimationSubmit">
@@ -87,21 +87,12 @@ class SceneBee extends ReduxMixin(PolymerElement) {
 
         <h4>Fixtures</h4>
 
-        <form on-submit="handleFixtureSubmit">
-          <select name="type" on-change="handleSelectedFixture" required>
-            <option value=""></option>
-
-            <template is="dom-repeat" items="{{fixtureManager}}" as="fixture">
-              <option value="[[fixture.id]]">[[fixture.name]]</option>
-            </template>
-          </select>
-
-          <button type="submit">Add fixture</button>
-        </form>
-
-        <template is="dom-repeat" items="{{fixtures}}" as="fixture">
-          [[fixture]]
-        </template>
+        <fixture-list
+          on-add-fixture="handleAddFixture"
+          on-remove-fixture="handleRemoveFixture"
+          data-index$="[[index]]"
+          fixtures="{{fixtures}}"
+          fixture-manager="[[fixtureManager]]"></fixture-list>
       </div>
     `
   }
