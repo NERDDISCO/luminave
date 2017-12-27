@@ -17,22 +17,6 @@ class SceneManager extends ReduxMixin(PolymerElement) {
     }
   }
 
-  addAnimation() {
-    // @TODO: Implement
-  }
-
-  removeAnimation() {
-    // @TODO: Implement
-  }
-
-  addFixture() {
-    // @TODO: Implement
-  }
-
-  removeFixture() {
-    // @TODO: Implement
-  }
-
   runScene(e) {
     const { dataset } = e.target
     this.dispatch(runScene(parseInt(dataset.index, 10)))
@@ -44,16 +28,12 @@ class SceneManager extends ReduxMixin(PolymerElement) {
   }
 
   handleSubmit(e) {
-    // Prevent sending data to server
+    // Prevent sending data to server & reset all fields
     e.preventDefault()
-
-    // Reset all fields
     e.target.reset()
 
-    const id = uuidV1()
-
     this.dispatch(addScene({
-      id,
+      id: uuidV1(),
       fixtures: [],
       animations: [],
       duration: this.duration,
