@@ -11,6 +11,7 @@ import '../scene-manager/index.js'
 import '../storage-manager/index.js'
 import '../animation-manager/index.js'
 import '../midi-manager/index.js'
+import '../timeline-manager/index.js'
 
 class VisionLordDashboard extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -44,6 +45,10 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
       </div>
 
       <universe-manager universes={{universeManager}}></universe-manager>
+
+      <hr>
+
+      <timeline-manager></timeline-manager>
 
       <hr>
 

@@ -95,3 +95,11 @@ const midiManger = {
     }
   }]
 }
+
+const timelineManager = {
+  playing: true,
+  scenes: [
+    '123-123-123'
+  ],
+  live: true // true = add a scene and when it's done it's removed / false = add a scene and keep it after it's done
+}

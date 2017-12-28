@@ -245,3 +245,28 @@ export const removeSceneFromMidi = (controllerIndex, mappingIndex, sceneIndex) =
   sceneIndex,
   type: constants.REMOVE_SCENE_FROM_MIDI
 })
+
+/*
+ * Control playback of the timeline
+ */
+export const playTimeline = playing => ({
+  playing,
+  type: constants.PLAY_TIMELINE
+})
+
+
+/*
+ * Add a scene to the timeline
+ */
+export const addSceneToTimeline = sceneId => ({
+  sceneId,
+  type: constants.ADD_SCENE_TO_TIMELINE
+})
+
+/*
+ * Remove a scene from the timeline
+ */
+export const removeSceneFromTimeline = sceneId => ({
+  sceneId,
+  type: constants.REMOVE_SCENE_FROM_TIMELINE
+})
