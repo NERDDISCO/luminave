@@ -44,11 +44,11 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
         </div>
       </div>
 
-      <universe-manager universes={{universeManager}}></universe-manager>
+      <timeline-manager></timeline-manager>
 
       <hr>
 
-      <timeline-manager></timeline-manager>
+      <universe-manager universes={{universeManager}}></universe-manager>
 
       <hr>
 

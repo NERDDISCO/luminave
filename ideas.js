@@ -1,3 +1,53 @@
+
+
+
+/* ToDo
+
+- add scene to timeline based on midi input
+- calculate progress in every scene instead of timeline-manager in order to loop or remove from timeline
+- integrate modV
+
+
+*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ✅ const channels = [...Array(512)].map(() => 0)
 ☀️ const fixtures = [{}, {}]
 // effects.js
@@ -60,11 +110,6 @@ const animations = [
      { 'time': .9, 'value': [0, 0, 0] }
    ]
  }]
-
-
- /* Idea:
- - Iterate over properties and use setFixtureProperties action to set the property for every device
- */
 
  // Internally we split the keyframes into sub keyframes to have more control over them
 
