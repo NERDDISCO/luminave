@@ -34,37 +34,28 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
     }
   }
 
-
   /*
+   * Convert the keyframes into an array that Keytime understands:
+   *
+   keyframes: {
+     '0': {
+       dimmer: 255
+     },
+     '1': {
+       dimmer: 35
+     }
+   }
 
-  keyframes: {
-    '0': {
-      dimmer: 255
-    },
-    '0.25': {
-      color: [0, 0, 255]
-    },
-    '1': {
-      color: [0, 255, 0],
-      dimmer: 200
-    }
-  }
+   =>
 
-  'timeline': [{
-    'name': 'color',
-    'keyframes': [
-      { 'time': 0, 'value': [0, 0, 0] },
-      { 'time': 0.25, 'value': [0, 0, 0] },
-      { 'time': 0.5, 'value': [255, 0, 0] },
-      { 'time': 0.75, 'value': [0, 0, 0] },
-      { 'time': .9, 'value': [0, 0, 0] }
-    ]
-  }]
-
-
-  */
-
-  // @TODO: steps are not sorted
+   [{
+     'name': 'dimmer',
+     'keyframes': [
+       { 'time': 0, 'value': 255 },
+       { 'time': 1, 'value': 35}
+     ]
+   }]
+   */
   computeTimeline(keyframes) {
     const keyframesArray = this._toArray(keyframes)
     let properties = []
@@ -111,23 +102,13 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
       })
     }
 
-    array.sort((a, b) => a.step - b.step)
-
-    return array
+    return array.sort((a, b) => a.time - b.time)
   }
 
   testKeytime() {
     const progress = Math.random()
-
     const interpolatedProperties = this.timeline.values(progress)
-
     this.dispatch(setFixtureProperties('6a411750-ebb8-11e7-8006-77b470e0e719', interpolatedProperties))
-
-    // // Iterate over all properties
-    // Object.entries(interpolatedProperties).map(([name, value]) => {
-    //   console.log(name, value)
-    // })
-
   }
 
 
