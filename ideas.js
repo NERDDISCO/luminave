@@ -140,3 +140,9 @@ const timelineManager = {
   ],
   live: true // true = add a scene and when it's done it's removed / false = add a scene and keep it after it's done
 }
+
+
+// @see https://github.com/NERDDISCO/VisionLord/blob/40d7495d51f2edd8d4e563f1199854cb7c86141b/src/core/BluetoothManager.js
+const bluetoothManager = {
+  devices: []
+}
