@@ -2,7 +2,7 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import ReduxMixin from '../../reduxStore.js'
 import WebMidi from '../../../libs/webmidi/index.js'
 import '../midi-grid/index.js'
-import { learnMidi, addMidiMapping } from '../../actions/index.js'
+import { learnMidi, addMidiMapping, addSceneToTimeline } from '../../actions/index.js'
 
 /*
  * Handle MIDI controller
@@ -101,31 +101,27 @@ class MidiController extends ReduxMixin(PolymerElement) {
    */
   noteon(event) {
     const { data } = event
-    const [,
-      note,
-      velocity] = data
+    const [, note, velocity] = data
 
     if (this.midiManager.learning !== -1) {
 
       const mapping = { note }
       this.dispatch(addMidiMapping(this.index, this.midiManager.learning, mapping))
 
+      // Disable learning
       this.dispatch(learnMidi(-1))
     }
 
-    // // Mapping does not exist for this note
-    // if (this.mapping[note] === undefined) {
-    //   console.log('Event: noteon |', 'Note:', note)
-    // } else {
-    //   const eventData = {
-    //     partId: this.mapping[note].partId,
-    //     id: this.id
-    //   }
-    //
-    //   console.log('trigger event', eventData)
-    //
-    //   // window.dispatchEvent(new CustomEvent('MidiController', { detail: eventData }))
-    // }
+    // Iterate over all mappings
+    Object.values(this.mapping)
+      .filter(element => element.note === note)
+      .map(element => {
+
+        element.scenes.map(sceneId => {
+          this.dispatch(addSceneToTimeline(sceneId))
+        })
+
+      })
 
   }
 

@@ -3,10 +3,15 @@
 
 /* ToDo
 
-- add scene to timeline based on midi input
+- active midi with action: setMidiActive(midiControllerId, note, active)
+----> check based on state of mapping if active or noteon
+- add a type to midi input:
+--- normal: remove scene after duration is done = active = false immidieatly because we can add the scene over and over again
+--- loop: loop scene until button is pressed again
+--- pressed: loop the scene until button is released (this means we also have to listen to noteoff)
+- remove scene from timeline based on midi input
 - calculate progress in every scene instead of timeline-manager in order to loop or remove from timeline
 - integrate modV
-
 
 */
 
