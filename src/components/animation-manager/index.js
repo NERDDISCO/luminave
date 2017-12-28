@@ -8,45 +8,6 @@ import '../animation-bee/index.js'
  * Handle a list of animations
  *
  * @TODO: Use KeytimeDeluxe from './KeytimeDeluxe.js' to handle the keyframe interpolation
-
-Our data model (simple as possible)
- '0': {
-   color: [255, 0, 0],
-   dimmer: 255
- },
- '0.25': {
-   color: [0, 0, 255]
- },
- '1': {
-   color: [0, 255, 0],
-   dimmer: 200
- }
-
-
- This is how Keytime wants the timeline / keyframes
-
- 'timeline': [{
-   'name': 'color',
-   'keyframes': [
-     { 'time': 0, 'value': [0, 0, 0] },
-     { 'time': 0.25, 'value': [0, 0, 0] },
-     { 'time': 0.5, 'value': [255, 0, 0] },
-     { 'time': 0.75, 'value': [0, 0, 0] },
-     { 'time': .9, 'value': [0, 0, 0] }
-   ]
- }]
-
- Internally we split the keyframes into sub keyframes to have more control
-
- [{
-   '0': keyframes0,
-   '1': keyframes0.25
- },
- {
-   '0': keyframes0.25,
-   '1': keyframes1
- }]
-
  */
 class AnimationManager extends ReduxMixin(PolymerElement) {
   static get properties() {

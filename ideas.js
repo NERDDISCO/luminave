@@ -25,17 +25,18 @@ const animations = [
     name: 'flash and fade',
     id: 'FLASH_FADE',
     data: {
+      // (simple as possible)
       keyframes: {
         ...flash(0, 0.5, 3),
-        '0.5': {
-          RED: 20,
-          GREEN: 20,
-          BLUE: 100
+        '0': {
+          dimmer: 255
         },
-         '1': {
-          RED: 0,
-          GREEN: 0,
-          BLUE: 0
+        '0.25': {
+          color: [0, 0, 255]
+        },
+        '1': {
+          color: [0, 255, 0],
+          dimmer: 200
         }
       }
     }
@@ -46,6 +47,42 @@ const animations = [
     data: {/*  animation data */}
   }
 ]
+
+// This is how Keytime wants the timeline / keyframes
+
+ 'timeline': [{
+   'name': 'color',
+   'keyframes': [
+     { 'time': 0, 'value': [0, 0, 0] },
+     { 'time': 0.25, 'value': [0, 0, 0] },
+     { 'time': 0.5, 'value': [255, 0, 0] },
+     { 'time': 0.75, 'value': [0, 0, 0] },
+     { 'time': .9, 'value': [0, 0, 0] }
+   ]
+ }]
+
+
+ /* Idea:
+ - Integrate Keytime into Animation
+ - Push progress into animation.timeline.values(progress) to get all values from all properties
+ - Iterate over properties and use setFixtureProperties action to set the property for every device
+ */
+
+ // Internally we split the keyframes into sub keyframes to have more control over them
+
+keyframes =
+ [{
+   '0': 'keyframes0',
+   '1': 'keyframes0.25'
+ },
+ {
+   '0': 'keyframes0.25',
+   '1': 'keyframes1'
+ }]
+
+
+
+
 
 const scenes = [{
   name: 'intro scene',
