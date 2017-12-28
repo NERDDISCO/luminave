@@ -103,6 +103,19 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
       return update(state, { $push: [animation] })
     case constants.ADD_KEYFRAME: {
 
+      // Is not a number
+      if (isNaN(keyframeValue)) {
+        // Is RGB?
+        if (keyframeValue.includes(',')) {
+          keyframeValue = keyframeValue.split(',').map(color => parseInt(color))
+        } else {
+          console.warn(keyframeValue, 'for', keyframeProperty, 'is not handled')
+        }
+      } else {
+        // Is an Integer
+        keyframeValue = parseInt(keyframeValue, 10)
+      }
+
       // Keyframe might already have steps
       const oldSteps = state[animationIndex].keyframes[keyframeStep] || {}
       const newStep = { [keyframeProperty]: keyframeValue }
@@ -121,10 +134,22 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
 /*
  * Handle the DMX512 fixtures
  */
-export const fixtureManager = (state = [], { type, fixture, fixtureIndex }) => {
+export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtureId, properties }) => {
   switch (type) {
     case constants.ADD_FIXTURE:
       return update(state, { $push: [fixture] })
+
+    case constants.SET_FIXTURE_PROPERTIES: {
+
+      const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
+      // Properties might already been set
+      const oldProperties = state[fixtureIndex].properties
+
+      // @TODO: Only add properties that the device can understand based on the instance
+
+      return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties} } } })
+    }
+
     case constants.REMOVE_FIXTURE:
       return update(state, { $splice: [[fixtureIndex, 1]] })
     default:

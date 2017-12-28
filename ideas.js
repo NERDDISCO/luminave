@@ -63,8 +63,6 @@ const animations = [
 
 
  /* Idea:
- - Integrate Keytime into Animation
- - Push progress into animation.timeline.values(progress) to get all values from all properties
  - Iterate over properties and use setFixtureProperties action to set the property for every device
  */
 

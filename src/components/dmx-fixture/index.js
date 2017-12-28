@@ -25,7 +25,7 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       })
 
       this.fixture = fixture
-      this.properties = fixture.getParamsList()
+      this._properties = fixture.getParamsList()
       this.offset = this.address - 1
    });
   }
@@ -37,11 +37,27 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       type: { type: String },
       address: { type: Number },
       universe: { type: Number },
+      properties: {
+        type: Object,
+        observer: 'changedProperties'
+      },
       fixtures: {
         type: Array,
         statePath: 'fixtureManager'
       }
     }
+  }
+
+  changedProperties() {
+
+    if (this.fixture === undefined) return
+
+    // Iterate over all properties
+    Object.entries(this.properties).map(([name, value]) => {
+      if (typeof this.fixture[name] !== undefined) {
+        this.fixture[name] = value
+      }
+    })
   }
 
   handleChange(e) {
@@ -74,7 +90,7 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
           </div>
 
           <div class="grid">
-            <template is="dom-repeat" items="{{properties}}" as="property">
+            <template is="dom-repeat" items="{{_properties}}" as="property">
               <dmx-fixture-property
                 on-change="handleChange"
 

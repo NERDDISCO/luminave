@@ -48,8 +48,6 @@ export default class RgbParam extends Param {
       this.color.cmy = channelValues
     }
 
-    console.log(this.color.rgb)
-
     return this.color
   }
 }

@@ -176,6 +176,15 @@ export const addFixture = fixture => ({
 })
 
 /*
+ * Set the properties of a fixture
+ */
+export const setFixtureProperties = (fixtureId, properties) => ({
+  fixtureId,
+  properties,
+  type: constants.SET_FIXTURE_PROPERTIES
+})
+
+/*
  * Remove a fixture
  */
 export const removeFixture = fixtureIndex => ({

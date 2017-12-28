@@ -1,9 +1,9 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { addKeyframe } from '../../actions/index.js'
+import { addKeyframe, setFixtureProperties } from '../../actions/index.js'
 import { FIXTURE_PROPERTIES } from '../../constants/index.js'
 import '../keyframe-grid/index.js'
-import '/libs/keytime/KeytimeDeluxe.js'
+import KeytimeDeluxe from '/libs/keytime/KeytimeDeluxe.js'
 
 /*
  * Handle a list of scenes
@@ -66,8 +66,6 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
 
   // @TODO: steps are not sorted
   computeTimeline(keyframes) {
-    console.log(keyframes)
-
     const keyframesArray = this._toArray(keyframes)
     let properties = []
 
@@ -100,9 +98,7 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
       return property
     })
 
-    console.log(timeline)
-
-    return timeline
+    return new KeytimeDeluxe(timeline)
   }
 
   _toArray(object) {
@@ -118,6 +114,20 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
     array.sort((a, b) => a.step - b.step)
 
     return array
+  }
+
+  testKeytime() {
+    const progress = Math.random()
+
+    const interpolatedProperties = this.timeline.values(progress)
+
+    this.dispatch(setFixtureProperties('6a411750-ebb8-11e7-8006-77b470e0e719', interpolatedProperties))
+
+    // // Iterate over all properties
+    // Object.entries(interpolatedProperties).map(([name, value]) => {
+    //   console.log(name, value)
+    // })
+
   }
 
 
@@ -145,6 +155,8 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
     return `
       <div>
         <h4>Keyframes</h4>
+
+        <button on-click="testKeytime">Test Keytime</button>
 
         <form on-submit="handleKeyframeSubmit">
           <label for="name">Step</label>

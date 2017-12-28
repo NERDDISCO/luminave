@@ -29,7 +29,7 @@ export default class DmxDevice extends fivetwelve.DmxDevice {
       throw new Error(`invalid channel-number: ${channelNumber}`, 'INVALID_CHANNEL')
     }
 
-    console.log('getChannelValue', store.getState().universeManager[0].channels[this.bufferOffset + channelNumber - 1])
+    // console.log('getChannelValue', store.getState().universeManager[0].channels[this.bufferOffset + channelNumber - 1])
 
     return store.getState().universeManager[0].channels[this.bufferOffset + channelNumber - 1]
   }
@@ -45,7 +45,7 @@ export default class DmxDevice extends fivetwelve.DmxDevice {
       throw new Error(`invalid channel-number: ${channelNumber}`, 'INVALID_CHANNEL')
     }
 
-    console.log('setChannelValue', this.universe, this.bufferOffset + channelNumber - 1, value)
+    // console.log('setChannelValue', this.universe, this.bufferOffset + channelNumber - 1, value)
 
     store.dispatch(setChannel(this.universe, this.bufferOffset + channelNumber - 1, value))
   }
