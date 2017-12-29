@@ -85,6 +85,7 @@ class MidiManager extends ReduxMixin(PolymerElement) {
       output: this.output,
       width: this.width,
       height: this.height,
+      // @TODO: Transform this into an array, because I can't use the Object at all in other components
       mapping: {}
     }))
   }

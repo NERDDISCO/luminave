@@ -37,12 +37,14 @@ export const ENABLE_MIDI = uuid()
 export const ADD_MIDI = uuid()
 export const REMOVE_MIDI = uuid()
 export const ADD_MIDI_MAPPING = uuid()
+export const SET_MIDI_MAPPING_ACTIVE = uuid()
 export const LEARN_MIDI = uuid()
 export const ADD_SCENE_TO_MIDI = uuid()
 export const REMOVE_SCENE_FROM_MIDI = uuid()
 export const ADD_SCENE_TO_TIMELINE = uuid()
 export const REMOVE_SCENE_FROM_TIMELINE = uuid()
 export const PLAY_TIMELINE = uuid()
+export const RESET_TIMELINE = uuid()
 
 /*
  * localStorage

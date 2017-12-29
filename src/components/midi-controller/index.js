@@ -2,7 +2,7 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import ReduxMixin from '../../reduxStore.js'
 import WebMidi from '../../../libs/webmidi/index.js'
 import '../midi-grid/index.js'
-import { learnMidi, addMidiMapping, addSceneToTimeline } from '../../actions/index.js'
+import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimeline, setMidiMappingActive } from '../../actions/index.js'
 
 /*
  * Handle MIDI controller
@@ -27,7 +27,8 @@ class MidiController extends ReduxMixin(PolymerElement) {
 
       for (let i = 0; i < elements; i++) {
         this.dispatch(addMidiMapping(this.index, i, {
-          scenes: []
+          scenes: [],
+          active: false
         }))
       }
     }
@@ -103,26 +104,45 @@ class MidiController extends ReduxMixin(PolymerElement) {
     const { data } = event
     const [, note, velocity] = data
 
-    if (this.midiManager.learning !== -1) {
+    // Learning is active
+    if (this.midiManager.learning > -1) {
 
       const mapping = { note }
       this.dispatch(addMidiMapping(this.index, this.midiManager.learning, mapping))
 
       // Disable learning
       this.dispatch(learnMidi(-1))
+
+    // Handle mappped input
+    } else {
+
+      // I have to do this because I need the mappingIndex AND this.mapping is an object.
+      // So please think of something that is easier to read
+      for (const mappingIndex in this.mapping) {
+        const element = this.mapping[mappingIndex]
+
+        if (element.note === note) {
+          element.active = !element.active
+
+          // Set active state of element
+          this.dispatch(setMidiMappingActive(this.index, mappingIndex, element.active))
+
+          if (element.active) {
+            // Add all scenes to the timeline
+            element.scenes.map(sceneId => {
+              this.dispatch(addSceneToTimeline(sceneId))
+            })
+          } else {
+            // Remove all scenes from the timeline
+            element.scenes.map(sceneId => {
+              this.dispatch(removeSceneFromTimeline(sceneId))
+            })
+          }
+
+        }
+      }
+
     }
-
-    // Iterate over all mappings
-    Object.values(this.mapping)
-      .filter(element => element.note === note)
-      .map(element => {
-
-        element.scenes.map(sceneId => {
-          this.dispatch(addSceneToTimeline(sceneId))
-        })
-
-      })
-
   }
 
   static get template() {

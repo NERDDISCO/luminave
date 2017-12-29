@@ -164,7 +164,7 @@ export const midiManager = (state = {
   controllers: [],
   enabled: false,
   learning: false
-}, { type, controller, controllerIndex, enabled, mapping, mappingIndex, sceneId, sceneIndex }) => {
+}, { type, controller, controllerIndex, enabled, mapping, mappingIndex, sceneId, sceneIndex, active }) => {
   switch (type) {
     case constants.ENABLE_MIDI:
       return update(state, { enabled: { $set: enabled } })
@@ -176,6 +176,8 @@ export const midiManager = (state = {
 
       return update(state, { controllers: { [controllerIndex]: { mapping: { $merge: { [mappingIndex]: {...old, ...mapping} } } } } })
     }
+    case constants.SET_MIDI_MAPPING_ACTIVE:
+      return update(state, { controllers: { [controllerIndex]: { mapping: { [mappingIndex]: { active: { $set: active } } } } } })
     case constants.ADD_SCENE_TO_MIDI:
       return update(state, { controllers: { [controllerIndex]: { mapping: { [mappingIndex]: { scenes: { $push: [sceneId] } } } } } })
     case constants.REMOVE_SCENE_FROM_MIDI:
@@ -203,8 +205,10 @@ export const timelineManager = (state = {
     case constants.ADD_SCENE_TO_TIMELINE:
       return update(state, { scenes: { $push: [sceneId] } })
     case constants.REMOVE_SCENE_FROM_TIMELINE:
-      const sceneIndex = state.timeline.indexOf(sceneId)
+      const sceneIndex = state.scenes.indexOf(sceneId)
       return update(state, { scenes: { $splice: [[sceneIndex, 1]] } })
+    case constants.RESET_TIMELINE:
+      return update(state, { scenes: { $set : [] } })
     default:
       return state
   }

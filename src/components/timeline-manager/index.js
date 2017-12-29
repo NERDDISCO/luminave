@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { playTimeline } from '../../actions/index.js'
+import { playTimeline, resetTimeline } from '../../actions/index.js'
 import '../timeline-scene/index.js'
 
 /*
@@ -58,6 +58,10 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
     this.dispatch(playTimeline(!this.isPlaying))
   }
 
+  handleReset() {
+    this.dispatch(resetTimeline())
+  }
+
   observePlaying() {
     if (this.isPlaying) {
       console.log('playing')
@@ -98,6 +102,7 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
       <button on-click="handlePlay">[[playLabel]]</button>
       [[progress]]
+      <button on-click="handleReset">Reset</button>
 
       <br>
 

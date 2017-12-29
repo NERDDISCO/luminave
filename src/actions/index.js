@@ -236,6 +236,16 @@ export const addMidiMapping = (controllerIndex, mappingIndex, mapping) => ({
 })
 
 /*
+ * Set the active state of a  MIDI mapping for a specific input (e.g. button)
+ */
+export const setMidiMappingActive = (controllerIndex, mappingIndex, active) => ({
+  controllerIndex,
+  mappingIndex,
+  active,
+  type: constants.SET_MIDI_MAPPING_ACTIVE
+})
+
+/*
  * Add a scene to a MIDI controller
  */
 export const addSceneToMidi = (controllerIndex, mappingIndex, sceneId) => ({
@@ -261,6 +271,13 @@ export const removeSceneFromMidi = (controllerIndex, mappingIndex, sceneIndex) =
 export const playTimeline = playing => ({
   playing,
   type: constants.PLAY_TIMELINE
+})
+
+/*
+ * Reset the timeline and remove everything
+ */
+export const resetTimeline = () => ({
+  type: constants.RESET_TIMELINE
 })
 
 
