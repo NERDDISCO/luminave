@@ -39,10 +39,11 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
    * Change CSS properties based on properties of the component that can be
    * changed during runtime
    */
-  computeItemVars(index, learnIndex) {
+  computeItemVars(element, index, learnIndex) {
     const isLearning = index === learnIndex
     const vars = {
-      '--isLearning': isLearning ? 0 : 1
+      '--isLearning': isLearning ? 0 : 1,
+      '--isActive': element.active ? 0 : 1
     }
 
     return Object.keys(vars).map(key => [key, vars[key]].join(':')).join(';')
@@ -96,8 +97,12 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
         }
 
         .item {
-          --on: calc(255 * var(--isLearning));
+          --on: calc(255 * var(--isActive));
+          background: rgb( var(--on), 255, var(--on));
+        }
 
+        .item .learn {
+          --on: calc(255 * var(--isLearning));
           background: rgb(255, var(--on), var(--on));
         }
       </style>
@@ -105,11 +110,11 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
       <div class="container" style="{{computeGridVars(width)}}">
 
         <template is="dom-repeat" items={{_toArray(mapping)}} as="element">
-          <div class="item" style="{{computeItemVars(index, learnIndex)}}">
+          <div class="item" style="{{computeItemVars(element, index, learnIndex)}}">
             [[_toLabel(index)]]
             <br>
             Note: [[element.note]]
-            <button on-click="handleLearn" data-index$="[[index]]">Learn</button>
+            <button class="learn" on-click="handleLearn" data-index$="[[index]]">Learn</button>
 
             <scene-list
               on-add-scene="handleAddScene"

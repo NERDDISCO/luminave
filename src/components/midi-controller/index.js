@@ -158,7 +158,7 @@ class MidiController extends ReduxMixin(PolymerElement) {
         <midi-grid
           width="[[width]]"
           height="[[height]]"
-          mapping="[[mapping]]"
+          mapping$="[[mapping]]"
           controllerindex="[[index]]"></midi-grid>
 
       </div>

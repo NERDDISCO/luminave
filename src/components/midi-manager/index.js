@@ -140,7 +140,7 @@ class MidiManager extends ReduxMixin(PolymerElement) {
               id="[[controller.id]]"
               index="[[index]]"
               name="[[controller.name]]"
-              mapping="[[controller.mapping]]"
+              mapping$="[[controller.mapping]]"
               inputname="[[controller.input]]"
               outputname="[[controller.output]]"
               width="[[controller.width]]"
