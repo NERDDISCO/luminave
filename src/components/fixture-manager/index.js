@@ -22,8 +22,20 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
       fixtures: {
         type: Array,
         statePath: 'fixtureManager'
+      },
+      live: {
+        type: Boolean,
+        statePath: 'live'
+      },
+      editMode: {
+        type: Boolean,
+        computed: 'computeEditMode(live)'
       }
     }
+  }
+
+  computeEditMode(live) {
+    return !live
   }
 
   removeFixture(e) {
@@ -61,56 +73,66 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
-    <style>
-      .grid {
-        width: 100vw;
-        display: flex;
-        flex-direction: column;
-      }
+      <template is="dom-if" if="[[editMode]]">
 
-      .fixture {
-        border: 1px solid var(--color-lighter);
-        margin: 0 0 .25em 0;
-      }
-    </style>
+        <style>
+          .grid {
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+          }
 
-      <form on-submit="handleSubmit">
-        <label for="type">Type</label>
-        <select name="type" on-change="handleSelectedType" required>
-          <option value=""></option>
-          <template is="dom-repeat" items="{{types}}" as="type">
-            <option value="[[type]]">[[type]]</option>
+          .fixture {
+            border: 1px solid var(--color-lighter);
+            margin: 0 0 .25em 0;
+          }
+        </style>
+
+
+        <h2>Fixtures</h2>
+
+        <form on-submit="handleSubmit">
+          <label for="type">Type</label>
+          <select name="type" on-change="handleSelectedType" required>
+            <option value=""></option>
+            <template is="dom-repeat" items="{{types}}" as="type">
+              <option value="[[type]]">[[type]]</option>
+            </template>
+          </select>
+
+          <label for="address">Address</label>
+          <input name="address" type="number" min="1" max="255" on-change="handleAddress" required></input>
+
+          <label for="name">Name</label>
+          <input name="name" type="text" on-change="handleName" required></input>
+
+          <button type="submit">Add fixture</button>
+        </form>
+
+        <br>
+
+        <div class="grid">
+
+      </template>
+
+          <template is="dom-repeat" items="{{fixtures}}" as="fixture">
+              <dmx-fixture
+                class="fixture"
+                name="[[fixture.name]]"
+                properties="[[fixture.properties]]"
+                id="[[fixture.id]]"
+                type="[[fixture.type]]"
+                address="[[fixture.address]]"
+                universe="[[fixture.universe]]"></dmx-fixture>
+
+              <template is="dom-if" if="[[editMode]]">
+                <button on-click="removeFixture" data-index$="[[index]]">Remove</button>
+              </template>
           </template>
-        </select>
 
-        <label for="address">Address</label>
-        <input name="address" type="number" min="1" max="255" on-change="handleAddress" required></input>
-
-        <label for="name">Name</label>
-        <input name="name" type="text" on-change="handleName" required></input>
-
-        <button type="submit">Add fixture</button>
-      </form>
-
-      <br>
-
-      <div class="grid">
-
-        <template is="dom-repeat" items="{{fixtures}}" as="fixture">
-          <div class="fixture">
-            <dmx-fixture
-              name="[[fixture.name]]"
-              properties="[[fixture.properties]]"
-              id="[[fixture.id]]"
-              type="[[fixture.type]]"
-              address="[[fixture.address]]"
-              universe="[[fixture.universe]]"></dmx-fixture>
-
-            <button on-click="removeFixture" data-index$="[[index]]">Remove</button>
-          </div>
-        </template>
-
-      </div>
+      <template is="dom-if" if="[[editMode]]">
+        </div>
+      </template>
     `
   }
 }

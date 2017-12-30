@@ -65,6 +65,12 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
       <template is="dom-if" if="[[editMode]]">
         <universe-manager universes={{universeManager}}></universe-manager>
         <hr>
+      </template>
+
+      <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
+
+      <template is="dom-if" if="[[editMode]]">
+        <hr>
         <scene-manager scenes={{sceneManager}}></scene-manager>
         <hr>
         <animation-manager animations="{{animationManager}}"></animation-manager>

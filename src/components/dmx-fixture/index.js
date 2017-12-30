@@ -44,8 +44,20 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       fixtures: {
         type: Array,
         statePath: 'fixtureManager'
+      },
+      live: {
+        type: Boolean,
+        statePath: 'live'
+      },
+      editMode: {
+        type: Boolean,
+        computed: 'computeEditMode(live)'
       }
     }
+  }
+
+  computeEditMode(live) {
+    return !live
   }
 
   changedProperties() {
@@ -67,17 +79,19 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
-    <style>
-      .grid {
-        display: flex;
-        flex-direction: row;
-        width: 100vw;
-      }
+      <template is="dom-if" if="[[editMode]]">
 
-      .property {
-        margin: 0 .25em;
-      }
-    </style>
+        <style>
+          .grid {
+            display: flex;
+            flex-direction: row;
+            width: 100vw;
+          }
+
+          .property {
+            margin: 0 .25em;
+          }
+        </style>
 
         <div>
           <div class="grid">
@@ -106,6 +120,8 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
           </div>
 
         </div>
+
+      </template>
     `
   }
 }
