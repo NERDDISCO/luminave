@@ -12,8 +12,20 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
       universes: {
         type: Array,
         statePath: 'universeManager'
+      },
+      live: {
+        type: Boolean,
+        statePath: 'live'
+      },
+      editMode: {
+        type: Boolean,
+        computed: 'computeEditMode(live)'
       }
     }
+  }
+
+  computeEditMode(live) {
+    return !live
   }
 
   addUniverse() {
@@ -41,9 +53,11 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
             <channel-grid channels="[[universe.channels]]"></channel-grid>
           </div>
 
-          <h4>Fixtures</h4>
-          <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
-
+          <template is="dom-if" if="[[editMode]]">
+            <h4>Fixtures</h4>
+            <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
+          </template>
+          
         </div>
       </template>
     `

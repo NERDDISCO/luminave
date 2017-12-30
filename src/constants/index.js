@@ -14,6 +14,7 @@ import { uuid } from '/libs/abcq/uuid.js'
 export const SET_CHANNEL = uuid()
 export const GET_CHANNEL = uuid()
 export const SET_BPM = uuid()
+export const SET_LIVE = uuid()
 export const CONNECT_USB = uuid()
 export const CONNECT_BLUETOOTH = uuid()
 export const ADD_UNIVERSE = uuid()

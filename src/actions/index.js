@@ -296,3 +296,11 @@ export const removeSceneFromTimeline = sceneId => ({
   sceneId,
   type: constants.REMOVE_SCENE_FROM_TIMELINE
 })
+
+/*
+ * Set the LIVE mode
+ */
+export const setLive = value => ({
+  value,
+  type: constants.SET_LIVE
+})

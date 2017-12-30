@@ -31,6 +31,18 @@ export const bpm = (state = 130, { type, value }) => {
 }
 
 /*
+ * Update the LIVE mode
+ */
+export const live = (state = false, { type, value }) => {
+  switch (type) {
+    case constants.SET_LIVE:
+      return update(state, { $set: value })
+    default:
+      return state
+  }
+}
+
+/*
  * Handle the connections to USB & Bluetooth
  */
 export const connectionManager = (

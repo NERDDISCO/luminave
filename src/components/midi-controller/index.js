@@ -53,8 +53,20 @@ class MidiController extends ReduxMixin(PolymerElement) {
         type: Boolean,
         statePath: 'midiManager.enabled',
         observer: 'midiEnabledChanged'
+      },
+      live: {
+        type: Boolean,
+        statePath: 'live'
+      },
+      editMode: {
+        type: Boolean,
+        computed: 'computeEditMode(live)'
       }
     }
+  }
+
+  computeEditMode(live) {
+    return !live
   }
 
   midiEnabledChanged() {
@@ -150,10 +162,12 @@ class MidiController extends ReduxMixin(PolymerElement) {
       <div>
         <h3>[[name]] ([[connected]])</h3>
 
-        <ul>
-          <li>input: [[inputname]]</li>
-          <li>output: [[outputname]]</li>
-        </ul>
+        <template is="dom-if" if="[[editMode]]">
+          <ul>
+            <li>input: [[inputname]]</li>
+            <li>output: [[outputname]]</li>
+          </ul>
+        </template>
 
         <midi-grid
           width="[[width]]"

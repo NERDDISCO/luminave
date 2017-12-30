@@ -40,8 +40,20 @@ class MidiManager extends ReduxMixin(PolymerElement) {
       controllers: {
         type: Array,
         statePath: 'midiManager.controllers'
+      },
+      live: {
+        type: Boolean,
+        statePath: 'live'
+      },
+      editMode: {
+        type: Boolean,
+        computed: 'computeEditMode(live)'
       }
     }
+  }
+
+  computeEditMode(live) {
+    return !live
   }
 
   removeMidi(e) {
@@ -111,7 +123,9 @@ class MidiManager extends ReduxMixin(PolymerElement) {
       }
     </style>
 
-    <h2>MIDI controllers</h2>
+    <template is="dom-if" if="[[editMode]]">
+
+      <h2>MIDI controllers</h2>
 
       <form on-submit="handleSubmit">
         <label for="name">Name</label>
@@ -132,6 +146,8 @@ class MidiManager extends ReduxMixin(PolymerElement) {
         <button type="submit">Add controller</button>
       </form>
 
+    </template>
+
       <div class="grid">
 
         <template is="dom-repeat" items="{{controllers}}" as="controller">
@@ -146,7 +162,9 @@ class MidiManager extends ReduxMixin(PolymerElement) {
               width="[[controller.width]]"
               height="[[controller.height]]"></midi-controller>
 
-            <button on-click="removeMidi" data-index$="[[index]]">Remove</button>
+            <template is="dom-if" if="[[editMode]]">
+              <button on-click="removeMidi" data-index$="[[index]]">Remove</button>
+            </template>
           </div>
         </template>
 

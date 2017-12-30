@@ -1,6 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import { DomIf } from '/node_modules/@polymer/polymer/lib/elements/dom-if.js'
 import { learnMidi, addSceneToMidi, removeSceneFromMidi } from '../../actions/index.js'
 import '../scene-list/index.js'
 
@@ -21,8 +22,20 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
       sceneManager: {
         type: Array,
         statePath: 'sceneManager'
+      },
+      live: {
+        type: Boolean,
+        statePath: 'live'
+      },
+      editMode: {
+        type: Boolean,
+        computed: 'computeEditMode(live)'
       }
     }
+  }
+
+  computeEditMode(live) {
+    return !live
   }
 
   /*
@@ -112,9 +125,12 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
         <template is="dom-repeat" items={{_toArray(mapping)}} as="element">
           <div class="item" style="{{computeItemVars(element, index, learnIndex)}}">
             [[_toLabel(index)]]
-            <br>
-            Note: [[element.note]]
-            <button class="learn" on-click="handleLearn" data-index$="[[index]]">Learn</button>
+
+            <template is="dom-if" if="[[editMode]]">
+              <br>
+              Note: [[element.note]]
+              <button class="learn" on-click="handleLearn" data-index$="[[index]]">Learn</button>
+            </template>
 
             <scene-list
               on-add-scene="handleAddScene"

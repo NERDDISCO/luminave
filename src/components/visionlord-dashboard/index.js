@@ -12,6 +12,7 @@ import '../storage-manager/index.js'
 import '../animation-manager/index.js'
 import '../midi-manager/index.js'
 import '../timeline-manager/index.js'
+import '../live-mode/index.js'
 
 class VisionLordDashboard extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -19,8 +20,20 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
       bpm: {
         type: Number,
         statePath: 'bpm'
+      },
+      live: {
+        type: Boolean,
+        statePath: 'live'
+      },
+      editMode: {
+        type: Boolean,
+        computed: 'computeEditMode(live)'
       }
     }
+  }
+
+  computeEditMode(live) {
+    return !live
   }
 
   static get template() {
@@ -42,23 +55,21 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
           <bpm-meter bpm="[[bpm]]"></bpm-meter>
           <tap-button></tap-button>
         </div>
+
+        <live-mode></live-mode>
       </div>
 
       <timeline-manager></timeline-manager>
-
       <hr>
 
-      <universe-manager universes={{universeManager}}></universe-manager>
-
-      <hr>
-
-      <scene-manager scenes={{sceneManager}}></scene-manager>
-
-      <hr>
-
-      <animation-manager animations="{{animationManager}}"></animation-manager>
-
-      <hr>
+      <template is="dom-if" if="[[editMode]]">
+        <universe-manager universes={{universeManager}}></universe-manager>
+        <hr>
+        <scene-manager scenes={{sceneManager}}></scene-manager>
+        <hr>
+        <animation-manager animations="{{animationManager}}"></animation-manager>
+        <hr>
+      </template>
 
       <midi-manager controllers="{{midiManager}}"></midi-manager>
     `
