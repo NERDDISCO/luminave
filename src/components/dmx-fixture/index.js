@@ -67,8 +67,6 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
 
   changedProperties() {
 
-    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
-
     if (this.fixture === undefined) return
 
     // Iterate over all properties

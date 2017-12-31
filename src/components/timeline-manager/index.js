@@ -96,7 +96,7 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
         requestAnimationFrame(this.loop.bind(this))
 
         this.dispatch(sendUniverseToUsb(now))
-      }, 1000 / 1)
+      }, 1000 / 30)
 
     }
   }

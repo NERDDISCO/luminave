@@ -144,8 +144,6 @@ return this.interpolate(property, start, end, t)
       out[prop.name] = this.valueOf(time, prop)
     }
 
-    console.log('out', JSON.stringify(out), out)
-
     return out
   }
 

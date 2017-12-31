@@ -53,7 +53,10 @@ class TimelineAnimation extends ReduxMixin(PolymerElement) {
    }]
    */
   computeTimeline(keyframes) {
+    keyframes = {...keyframes}
+
     const keyframesArray = this._toArray(keyframes)
+
     let properties = []
 
     for (const step in keyframes) {
@@ -87,7 +90,7 @@ class TimelineAnimation extends ReduxMixin(PolymerElement) {
 
     const shit = new KeytimeDeluxe(timeline)
 
-    // console.log(shit)
+    console.log(shit)
 
     return shit
   }
@@ -106,12 +109,17 @@ class TimelineAnimation extends ReduxMixin(PolymerElement) {
   }
 
   changedProgress() {
+    // console.log('timelineAnimation RIGHT', JSON.stringify(this.getState().fixtureManager[0].properties.color))
 
-    const interpolatedProperties = this.timeline.values(~~(this.progress * 10) / 10)
+    let shit = {}
 
-    console.log(~~(this.progress * 10) / 10, JSON.stringify(interpolatedProperties))
+    // @TODO: This is wrong
+    const bullshit = this.progress
 
-    console.log(JSON.stringify(this.getState().fixtureManager[3]))
+    const interpolatedProperties = this.timeline.values(bullshit, shit)
+
+    // console.log('timelineAnimation WRONG', JSON.stringify(this.getState().fixtureManager[0].properties.color))
+
 
     for (let i = 0; i < this.fixtureIds.length; i++) {
       this.dispatch(setFixtureProperties(this.fixtureIds[i], interpolatedProperties))

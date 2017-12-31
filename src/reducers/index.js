@@ -99,11 +99,11 @@ export const universeManager = (state = [], { type, universe, universeIndex, cha
       return update(state, { $splice: [[universeIndex, 1]] })
     case constants.SET_CHANNEL:
       // Only update channel if value changed
-      if (state[universeIndex].channels[channelIndex] !== value) {
+      // if (state[universeIndex].channels[channelIndex] !== value) {
         return update(state, { [universeIndex]: { channels: { $splice: [[channelIndex, 1, value]] } } })
-      } else {
-        return state
-      }
+      // } else {
+        // return state
+      // }
     case constants.GET_CHANNEL:
       return state
     default:
@@ -182,15 +182,15 @@ export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtur
 
     case constants.SET_FIXTURE_PROPERTIES: {
 
+
+
       const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
       // Properties might already been set
       const oldProperties = state[fixtureIndex].properties
 
-      console.log('SET FIXTURE PROPERTIES', JSON.stringify(properties), JSON.stringify(oldProperties), 'index', fixtureIndex)
-
       // @TODO: Only add properties that the device can understand based on the instance
 
-      return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties} } } })
+      return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties, shit: new Date()} } } })
     }
 
     case constants.REMOVE_FIXTURE:
