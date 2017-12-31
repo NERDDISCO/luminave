@@ -274,6 +274,14 @@ export const playTimeline = playing => ({
 })
 
 /*
+ * Set the progress of the timeline
+ */
+export const setTimelineProgress = progress => ({
+  progress,
+  type: constants.SET_TIMELINE_PROGRESS
+})
+
+/*
  * Reset the timeline and remove everything
  */
 export const resetTimeline = () => ({

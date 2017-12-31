@@ -59,7 +59,7 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
 
         <live-mode></live-mode>
 
-        <modv-manager></modv-manager>
+        <!--<modv-manager></modv-manager>-->
       </div>
 
       <timeline-manager></timeline-manager>

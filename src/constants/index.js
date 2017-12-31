@@ -46,6 +46,7 @@ export const ADD_SCENE_TO_TIMELINE = uuid()
 export const REMOVE_SCENE_FROM_TIMELINE = uuid()
 export const PLAY_TIMELINE = uuid()
 export const RESET_TIMELINE = uuid()
+export const SET_TIMELINE_PROGRESS = uuid()
 export const SEND_UNIVERSE_TO_USB = uuid()
 export const SET_MODV_COLOR = uuid()
 

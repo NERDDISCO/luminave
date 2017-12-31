@@ -189,8 +189,9 @@ export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtur
       const oldProperties = state[fixtureIndex].properties
 
       // @TODO: Only add properties that the device can understand based on the instance
+      return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties} } } })
 
-      return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties, shit: new Date()} } } })
+      // return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties, shit: new Date()} } } })
     }
 
     case constants.REMOVE_FIXTURE:
@@ -240,18 +241,22 @@ export const midiManager = (state = {
  */
 export const timelineManager = (state = {
   scenes: [],
-  playing: false
-}, { type, sceneId, playing }) => {
+  playing: false,
+  progress: 0
+}, { type, sceneId, playing, progress }) => {
   switch (type) {
     case constants.PLAY_TIMELINE:
       return update(state, { playing: { $set: playing } })
     case constants.ADD_SCENE_TO_TIMELINE:
       return update(state, { scenes: { $push: [sceneId] } })
-    case constants.REMOVE_SCENE_FROM_TIMELINE:
+    case constants.REMOVE_SCENE_FROM_TIMELINE: {
       const sceneIndex = state.scenes.indexOf(sceneId)
       return update(state, { scenes: { $splice: [[sceneIndex, 1]] } })
+    }
     case constants.RESET_TIMELINE:
       return update(state, { scenes: { $set : [] } })
+    case constants.SET_TIMELINE_PROGRESS:
+      return update(state, { progress: { $set: progress } })
     default:
       return state
   }

@@ -30,12 +30,12 @@ class StorageManager extends reduxMixin(PolymerElement) {
     super.ready()
 
     // Listen to every change in redux store
-    // store.subscribe(() => {
-    //   // Save the state into localStorage when in editMode, otherwise it's super slow
-    //   if (this.editMode) {
-    //     localStorage.setItem(STORAGE_STATE, JSON.stringify(store.getState()))
-    //   }
-    // })
+    store.subscribe(() => {
+      // Save the state into localStorage when in editMode, otherwise it's super slow
+      if (this.editMode) {
+        localStorage.setItem(STORAGE_STATE, JSON.stringify(store.getState()))
+      }
+    })
   }
 
   resetStorage() {
