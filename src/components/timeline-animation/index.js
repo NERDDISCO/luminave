@@ -1,6 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { setFixtureProperties } from '../../actions/index.js'
+import { addToFixtureBatch } from '../../utils/index.js'
 // import KeytimeDeluxe from '/libs/keytime/KeytimeDeluxe.js'
 
 /*
@@ -42,7 +43,7 @@ class TimelineAnimation extends ReduxMixin(PolymerElement) {
     const interpolatedProperties = this.timeline.values(this.computeProgress())
 
     for (let i = 0; i < this.fixtureIds.length; i++) {
-      this.dispatch(setFixtureProperties(this.fixtureIds[i], interpolatedProperties))
+      addToFixtureBatch(this.fixtureIds[i], interpolatedProperties)
     }
   }
 

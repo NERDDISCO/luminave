@@ -26,6 +26,15 @@ export const setChannel = (universeIndex, channelIndex, value) => ({
 /*
  * Set the value for a DMX512 channel
  */
+export const setChannels = (universeIndex, channels) => ({
+  universeIndex,
+  channels,
+  type: constants.SET_CHANNELS
+})
+
+/*
+ * Set the value for a DMX512 channel
+ */
 export const getChannel = (universeIndex, channelIndex) => ({
   universeIndex,
   channelIndex,
@@ -182,6 +191,14 @@ export const setFixtureProperties = (fixtureId, properties) => ({
   fixtureId,
   properties,
   type: constants.SET_FIXTURE_PROPERTIES
+})
+
+/*
+ * Set the properties of all fixtures
+ */
+export const setAllFixtureProperties = fixtureBatch => ({
+  fixtureBatch,
+  type: constants.SET_ALL_FIXTURE_PROPERTIES
 })
 
 /*

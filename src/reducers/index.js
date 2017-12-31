@@ -91,7 +91,7 @@ export const connectionManager = (
 /*
  * Handle the DMX512 universes
  */
-export const universeManager = (state = [], { type, universe, universeIndex, channelIndex, value }) => {
+export const universeManager = (state = [], { type, universe, universeIndex, channelIndex, value, channels }) => {
   switch (type) {
     case constants.ADD_UNIVERSE:
       return update(state, { $push: [universe] })
@@ -101,6 +101,13 @@ export const universeManager = (state = [], { type, universe, universeIndex, cha
       // Only update channel if value changed
       // if (state[universeIndex].channels[channelIndex] !== value) {
         return update(state, { [universeIndex]: { channels: { $splice: [[channelIndex, 1, value]] } } })
+      // } else {
+        // return state
+      // }
+    case constants.SET_CHANNELS:
+      // Only update channel if value changed
+      // if (state[universeIndex].channels[channelIndex] !== value) {
+        return update(state, { [universeIndex]: { channels: { $set: channels } } })
       // } else {
         // return state
       // }
@@ -175,21 +182,49 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
 /*
  * Handle the DMX512 fixtures
  */
-export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtureId, properties }) => {
+export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtureId, properties, fixtureBatch }) => {
   switch (type) {
     case constants.ADD_FIXTURE:
       return update(state, { $push: [fixture] })
 
     case constants.SET_FIXTURE_PROPERTIES: {
-
-
-
       const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
       // Properties might already been set
       const oldProperties = state[fixtureIndex].properties
 
       // @TODO: Only add properties that the device can understand based on the instance
       return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties} } } })
+
+      // return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties, shit: new Date()} } } })
+    }
+
+    case constants.SET_ALL_FIXTURE_PROPERTIES: {
+
+      const createFixtureArray = obj => {
+        return Object.keys(obj)
+          .map(fixtureId => ({
+            ...obj[fixtureId],
+            realIndex: state.findIndex(fixture => fixture.id === fixtureId ),
+            fixtureId
+          }))
+          .sort((a, b) => {
+            return a.realIndex > b.realIndex
+          })
+      }
+
+      const fixtureArray = createFixtureArray(fixtureBatch)
+
+      return state.map((fixture, i) => {
+        return update(state[i], { properties: { $merge: fixtureArray[i].properties } })
+      })
+
+      // const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
+      // // Properties might already been set
+      // const oldProperties = state[fixtureIndex].properties
+      //
+      // // @TODO: Only add properties that the device can understand based on the instance
+      // return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties} } } })
+
 
       // return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties, shit: new Date()} } } })
     }

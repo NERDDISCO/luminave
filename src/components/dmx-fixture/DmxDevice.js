@@ -1,5 +1,6 @@
 import { store } from '/src/reduxStore.js'
 import { setChannel } from '/src/actions/index.js'
+import { addToBatch } from '/src/utils/index.js'
 
 import fivetwelve from '/libs/fivetwelve/index.js'
 import DmxParam from '/libs/fivetwelve/lib/param/DmxParam.js'
@@ -47,7 +48,9 @@ export default class DmxDevice extends fivetwelve.DmxDevice {
 
     // console.log('setChannelValue', this.universe, this.bufferOffset + channelNumber - 1, value)
 
-    store.dispatch(setChannel(this.universe, this.bufferOffset + channelNumber - 1, value))
+    addToBatch(this.bufferOffset + channelNumber - 1, Math.floor(value))
+
+    //store.dispatch(setChannel(this.universe, this.bufferOffset + channelNumber - 1, value))
   }
 
 

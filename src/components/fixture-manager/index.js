@@ -71,10 +71,6 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
     }))
   }
 
-  _toJson(object) {
-    return JSON.stringify(object, null, 4)
-  }
-
   static get template() {
     return `
       <template is="dom-if" if="[[editMode]]">
@@ -120,16 +116,12 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
       </template>
 
-          <template is="dom-repeat" items="{{fixtures}}" as="fixture">
-
-          <pre>
-          [[_toJson(fixture)]]
-          </pre>
+          <template is="dom-repeat" items="[[fixtures]]" as="fixture">
 
               <dmx-fixture
                 class="fixture"
                 name="[[fixture.name]]"
-                properties$="{{fixture.properties}}"
+                properties="[[fixture.properties]]"
                 id="[[fixture.id]]"
                 type="[[fixture.type]]"
                 address="[[fixture.address]]"

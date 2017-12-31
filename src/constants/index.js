@@ -12,6 +12,7 @@ import { uuid } from '/libs/abcq/uuid.js'
  * State
  */
 export const SET_CHANNEL = uuid()
+export const SET_CHANNELS = uuid()
 export const GET_CHANNEL = uuid()
 export const SET_BPM = uuid()
 export const SET_LIVE = uuid()
@@ -33,6 +34,7 @@ export const REMOVE_ANIMATION = uuid()
 export const ADD_KEYFRAME = uuid()
 export const ADD_FIXTURE = uuid()
 export const SET_FIXTURE_PROPERTIES = uuid()
+export const SET_ALL_FIXTURE_PROPERTIES = uuid()
 export const REMOVE_FIXTURE = uuid()
 export const ENABLE_MIDI = uuid()
 export const ADD_MIDI = uuid()

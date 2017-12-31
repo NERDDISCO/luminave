@@ -39,8 +39,8 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       address: { type: Number },
       universe: { type: Number },
       properties: {
-        type: Object,
-        observer: 'changedProperties'
+        type: Object
+        // observer: 'changedProperties'
       },
       fixtures: {
         type: Array,
@@ -57,8 +57,17 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       modvManager: {
         type: Object,
         statePath: 'modvManager'
-      }
+      },
+      timelineManagerProgress: {
+        type: Object,
+        statePath: 'timelineManager.progress',
+        observer: 'observeTimelineManager'
+      },
     }
+  }
+
+  observeTimelineManager() {
+    this.changedProperties()
   }
 
   computeEditMode(live) {
