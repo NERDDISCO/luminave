@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { playTimeline, resetTimeline } from '../../actions/index.js'
+import { playTimeline, resetTimeline, sendUniverseToUsb } from '../../actions/index.js'
 import '../timeline-scene/index.js'
 
 /*
@@ -92,7 +92,12 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
       this.progress = timeCounter * this.measures
 
-      requestAnimationFrame(this.loop.bind(this))
+      setTimeout(() => {
+        requestAnimationFrame(this.loop.bind(this))
+
+        this.dispatch(sendUniverseToUsb(now))
+      }, 1000 / 1)
+
     }
   }
 
@@ -106,8 +111,8 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
       <br>
 
-      <template is="dom-repeat" items="{{timelineManager.scenes}}" as="sceneId">
-        <timeline-scene scene$="[[getScene(sceneId)]]" timeline-progress="{{progress}}"></timeline-scene>
+      <template is="dom-repeat" items="[[timelineManager.scenes]]" as="sceneId">
+        <timeline-scene scene$="[[getScene(sceneId)]]" timeline-progress="[[progress]]"></timeline-scene>
       </template>
     `
   }

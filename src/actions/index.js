@@ -298,9 +298,25 @@ export const removeSceneFromTimeline = sceneId => ({
 })
 
 /*
- * Set the LIVE mode
+ * Set live mode
  */
 export const setLive = value => ({
   value,
   type: constants.SET_LIVE
+})
+
+/*
+ * Send the universe to the USB DMX controller
+ */
+export const sendUniverseToUsb = value => ({
+  value,
+  type: constants.SEND_UNIVERSE_TO_USB
+})
+
+/*
+ * Set the color from modV
+ */
+export const setModvColor = color => ({
+  color,
+  type: constants.SET_MODV_COLOR
 })

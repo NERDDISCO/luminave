@@ -51,10 +51,20 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
       },
       universes: {
         type: Array,
-        statePath: 'universeManager',
-        observer: 'universeChanged'
+        statePath: 'universeManager'
+        // @TODO: This is too expensive, we have to find something else
+        // observer: 'universeChanged'
+      },
+      lastTransmission: {
+        type: Object,
+        statePath: 'usbManager.lastTransmission',
+        observer: 'observeLastTransmission'
       }
     }
+  }
+
+  observeLastTransmission() {
+    this.output.driver.send(this.universes[0].channels)
   }
 
   universeChanged() {

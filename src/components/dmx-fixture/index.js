@@ -5,6 +5,7 @@ import { setChannel, addFixture, removeFixture } from '../../actions/index.js'
 import DmxDevice from './DmxDevice.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../dmx-fixture-property/index.js'
+import CameoPixBar600PRO from './dmx/CameoPixBar600PRO.js'
 
 
 /*
@@ -52,6 +53,10 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       editMode: {
         type: Boolean,
         computed: 'computeEditMode(live)'
+      },
+      modvManager: {
+        type: Object,
+        statePath: 'modvManager'
       }
     }
   }
@@ -62,12 +67,28 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
 
   changedProperties() {
 
+    console.log('AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA')
+
     if (this.fixture === undefined) return
 
     // Iterate over all properties
     Object.entries(this.properties).map(([name, value]) => {
       if (typeof this.fixture[name] !== undefined) {
         this.fixture[name] = value
+
+        if (name === 'color') {
+          // console.log(this.modvManager.color)
+        }
+
+        // @TODO: Remove Super hack
+        if (this.fixture instanceof CameoPixBar600PRO) {
+
+          if (name === 'color') {
+            this.fixture.setColor(value)
+          } else if (name === 'uv') {
+            this.fixture.setUv(value)
+          }
+        }
       }
     })
   }

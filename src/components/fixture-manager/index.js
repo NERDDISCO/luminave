@@ -71,6 +71,10 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
     }))
   }
 
+  _toJson(object) {
+    return JSON.stringify(object, null, 4)
+  }
+
   static get template() {
     return `
       <template is="dom-if" if="[[editMode]]">
@@ -83,6 +87,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
           }
 
           .fixture {
+            display: block;
             border: 1px solid var(--color-lighter);
             margin: 0 0 .25em 0;
           }
@@ -101,7 +106,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
           </select>
 
           <label for="address">Address</label>
-          <input name="address" type="number" min="1" max="255" on-change="handleAddress" required></input>
+          <input name="address" type="number" min="1" max="512" on-change="handleAddress" required></input>
 
           <label for="name">Name</label>
           <input name="name" type="text" on-change="handleName" required></input>
@@ -116,10 +121,15 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
       </template>
 
           <template is="dom-repeat" items="{{fixtures}}" as="fixture">
+
+          <pre>
+          [[_toJson(fixture)]]
+          </pre>
+
               <dmx-fixture
                 class="fixture"
                 name="[[fixture.name]]"
-                properties="[[fixture.properties]]"
+                properties$="{{fixture.properties}}"
                 id="[[fixture.id]]"
                 type="[[fixture.type]]"
                 address="[[fixture.address]]"

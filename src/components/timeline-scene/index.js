@@ -15,10 +15,6 @@ class TimelineScene extends ReduxMixin(PolymerElement) {
         type: Number,
         computed: 'computeProgress(timelineProgress)'
       },
-      fixtureManager: {
-        type: Array,
-        statePath: 'fixtureManager'
-      },
       animationManager: {
         type: Array,
         statePath: 'animationManager'
@@ -47,13 +43,13 @@ class TimelineScene extends ReduxMixin(PolymerElement) {
       <div>
         <h3>[[scene.name]] | [[scene.duration]]</h3>
 
-        [[progress]]
+         [[progress]]
 
         <template is="dom-repeat" items="[[scene.animations]]" as="animationId">
           <timeline-animation
             animation$="[[getAnimation(animationId)]]"
             fixture-ids$="[[scene.fixtures]]"
-            progress$="[[progress]]"></timeline-animation>
+            progress="[[progress]]"></timeline-animation>
         </template>
       </div>
     `

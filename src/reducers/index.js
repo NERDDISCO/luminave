@@ -43,6 +43,30 @@ export const live = (state = false, { type, value }) => {
 }
 
 /*
+ * USB DMX Controller
+ */
+export const usbManager = (state = { lastTransmission: 0 }, { type, value }) => {
+  switch (type) {
+    case constants.SEND_UNIVERSE_TO_USB:
+      return update(state, { lastTransmission: { $set: value } } )
+    default:
+      return state
+  }
+}
+
+/*
+ * modV Manager
+ */
+export const modvManager = (state = { color: [0, 0, 0] }, { type, color }) => {
+  switch (type) {
+    case constants.SET_MODV_COLOR:
+      return update(state, { color: { $set: color } } )
+    default:
+      return state
+  }
+}
+
+/*
  * Handle the connections to USB & Bluetooth
  */
 export const connectionManager = (
@@ -74,7 +98,12 @@ export const universeManager = (state = [], { type, universe, universeIndex, cha
     case constants.REMOVE_UNIVERSE:
       return update(state, { $splice: [[universeIndex, 1]] })
     case constants.SET_CHANNEL:
-      return update(state, { [universeIndex]: { channels: { $splice: [[channelIndex, 1, value]] } } })
+      // Only update channel if value changed
+      if (state[universeIndex].channels[channelIndex] !== value) {
+        return update(state, { [universeIndex]: { channels: { $splice: [[channelIndex, 1, value]] } } })
+      } else {
+        return state
+      }
     case constants.GET_CHANNEL:
       return state
     default:
@@ -156,6 +185,8 @@ export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtur
       const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
       // Properties might already been set
       const oldProperties = state[fixtureIndex].properties
+
+      console.log('SET FIXTURE PROPERTIES', JSON.stringify(properties), JSON.stringify(oldProperties), 'index', fixtureIndex)
 
       // @TODO: Only add properties that the device can understand based on the instance
 
