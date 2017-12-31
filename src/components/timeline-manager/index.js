@@ -95,8 +95,6 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
       this.dispatch(setTimelineProgress(this.progress))
 
-
-
       setTimeout(() => {
         requestAnimationFrame(this.loop.bind(this))
 
