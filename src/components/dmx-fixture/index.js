@@ -5,7 +5,8 @@ import { setChannel, addFixture, removeFixture } from '../../actions/index.js'
 import DmxDevice from './DmxDevice.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../dmx-fixture-property/index.js'
-
+import CameoPixBar600PRO from './dmx/CameoPixBar600PRO.js'
+import { colors } from '../../utils/index.js'
 
 /*
  *
@@ -38,8 +39,8 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       address: { type: Number },
       universe: { type: Number },
       properties: {
-        type: Object,
-        observer: 'changedProperties'
+        type: Object
+        // observer: 'changedProperties'
       },
       fixtures: {
         type: Array,
@@ -52,8 +53,21 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       editMode: {
         type: Boolean,
         computed: 'computeEditMode(live)'
-      }
+      },
+      modvManager: {
+        type: Object,
+        statePath: 'modvManager'
+      },
+      timelineManagerProgress: {
+        type: Object,
+        statePath: 'timelineManager.progress',
+        observer: 'observeTimelineManager'
+      },
     }
+  }
+
+  observeTimelineManager() {
+    this.changedProperties()
   }
 
   computeEditMode(live) {
@@ -63,11 +77,30 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
   changedProperties() {
 
     if (this.fixture === undefined) return
+    if (this.properties === undefined) return
+
+
 
     // Iterate over all properties
     Object.entries(this.properties).map(([name, value]) => {
       if (typeof this.fixture[name] !== undefined) {
-        this.fixture[name] = value
+
+
+        if (name === 'color') {
+          value = colors.modv.average
+          this.fixture[name] = value
+        } else {
+          this.fixture[name] = value
+        }
+
+        // @TODO: Remove Super hack
+        if (this.fixture instanceof CameoPixBar600PRO) {
+          if (name === 'color') {
+            this.fixture.setColor(value)
+          } else if (name === 'uv') {
+            this.fixture.setUv(value)
+          }
+        }
       }
     })
   }

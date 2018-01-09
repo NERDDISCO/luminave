@@ -1,5 +1,5 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import { store } from '../../reduxStore.js'
+import { store, reduxMixin } from '../../reduxStore.js'
 import { STORAGE_STATE } from '/src/constants/index.js'
 
 /*
@@ -7,15 +7,34 @@ import { STORAGE_STATE } from '/src/constants/index.js'
  *
  * @TODO: Use https://github.com/PolymerElements/app-storage instead
  */
-class StorageManager extends PolymerElement {
+class StorageManager extends reduxMixin(PolymerElement) {
+
+  static get properties() {
+    return {
+      live: {
+        type: Boolean,
+        statePath: 'live'
+      },
+      editMode: {
+        type: Boolean,
+        computed: 'computeEditMode(live)'
+      }
+    }
+  }
+
+  computeEditMode(live) {
+    return !live
+  }
 
   ready() {
     super.ready()
 
     // Listen to every change in redux store
     store.subscribe(() => {
-      // Save the state into localStorage
-      localStorage.setItem(STORAGE_STATE, JSON.stringify(store.getState()))
+      // Save the state into localStorage when in editMode, otherwise it's super slow
+      if (this.editMode) {
+        localStorage.setItem(STORAGE_STATE, JSON.stringify(store.getState()))
+      }
     })
   }
 
@@ -36,7 +55,7 @@ class StorageManager extends PolymerElement {
 
   static get template() {
     return `
-      <button on-click="resetStorage">Reset storage</button>
+      <!--<button on-click="resetStorage">Reset storage</button>-->
     `
   }
 }

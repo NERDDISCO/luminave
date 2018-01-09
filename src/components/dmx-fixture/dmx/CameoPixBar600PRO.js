@@ -13,6 +13,8 @@ export default class CameoPixBar600PRO extends DmxDevice {
         dimmer: new RangeParam(1, { min: 0, max: 255 }),
         strobe: new RangeParam(2, { min: 0, max: 255 }),
 
+        color: new RgbParam([3, 4, 5]),
+
         led1: {
           color: new RgbParam([3, 4, 5]),
           white: new RangeParam(6, { min: 0, max: 255 }),
@@ -108,20 +110,33 @@ export default class CameoPixBar600PRO extends DmxDevice {
     this.weight = 6
   }
 
-  // reset() {
-    // const defaultColor = 'rgb(0, 255, 0)'
-    //
-    // this.led1.color = defaultColor
-    // this.led2.color = defaultColor
-    // this.led3.color = defaultColor
-    // this.led4.color = defaultColor
-    // this.led5.color = defaultColor
-    // this.led6.color = defaultColor
-    // this.led7.color = defaultColor
-    // this.led8.color = defaultColor
-    // this.led9.color = defaultColor
-    // this.led10.color = defaultColor
-    // this.led11.color = defaultColor
-    // this.led12.color = defaultColor
-  // }
+  setColor(value) {
+    this.led1.color = value
+    this.led2.color = value
+    this.led3.color = value
+    this.led4.color = value
+    this.led5.color = value
+    this.led6.color = value
+    this.led7.color = value
+    this.led8.color = value
+    this.led9.color = value
+    this.led10.color = value
+    this.led11.color = value
+    this.led12.color = value
+  }
+
+  setUv(value) {
+    this.led1.uv = value
+    this.led2.uv = value
+    this.led3.uv = value
+    this.led4.uv = value
+    this.led5.uv = value
+    this.led6.uv = value
+    this.led7.uv = value
+    this.led8.uv = value
+    this.led9.uv = value
+    this.led10.uv = value
+    this.led11.uv = value
+    this.led12.uv = value
+  }
 }

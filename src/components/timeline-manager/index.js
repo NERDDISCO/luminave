@@ -1,6 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { playTimeline, resetTimeline } from '../../actions/index.js'
+import { playTimeline, resetTimeline, sendUniverseToUsb, setTimelineProgress, setChannels, setAllFixtureProperties } from '../../actions/index.js'
+import { batch, fixtureBatch, clearFixtureBatch } from '/src/utils/index.js'
 import '../timeline-scene/index.js'
 
 /*
@@ -92,7 +93,22 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
       this.progress = timeCounter * this.measures
 
-      requestAnimationFrame(this.loop.bind(this))
+      this.dispatch(setTimelineProgress(this.progress))
+
+      setTimeout(() => {
+        requestAnimationFrame(this.loop.bind(this))
+
+        this.dispatch(setAllFixtureProperties({...fixtureBatch}))
+
+        clearFixtureBatch()
+
+        this.dispatch(setChannels(0, [...batch]))
+
+        // clearBatch()
+
+        this.dispatch(sendUniverseToUsb(now))
+      }, 1000 / 30)
+
     }
   }
 
@@ -106,8 +122,8 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
       <br>
 
-      <template is="dom-repeat" items="{{timelineManager.scenes}}" as="sceneId">
-        <timeline-scene scene$="[[getScene(sceneId)]]" timeline-progress="{{progress}}"></timeline-scene>
+      <template is="dom-repeat" items="[[timelineManager.scenes]]" as="sceneId">
+        <timeline-scene scene$="[[getScene(sceneId)]]"></timeline-scene>
       </template>
     `
   }

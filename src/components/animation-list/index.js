@@ -41,6 +41,16 @@ class AnimationList extends PolymerElement {
 
   static get template() {
     return `
+      <style>
+        .items {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .item {
+          flex: 0 0 2em;
+        }
+      </style>
+
       <form on-submit="handleAnimationSubmit">
         <select name="type" on-change="handleSelectedAnimation" required>
           <option value=""></option>
@@ -53,10 +63,12 @@ class AnimationList extends PolymerElement {
         <button type="submit">Add animation</button>
       </form>
 
+      <div class="items">
       <template is="dom-repeat" items="{{animations}}" as="animationId">
-        <animation-list-item animation="{{getAnimation(animationId)}}"></animation-list-item>
+        <animation-list-item class="item" animation="{{getAnimation(animationId)}}"></animation-list-item>
         <button on-click="handleRemoveAnimation" animation-index="[[index]]">x</button>
       </template>
+      </div>
     `
   }
 

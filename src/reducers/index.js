@@ -43,6 +43,30 @@ export const live = (state = false, { type, value }) => {
 }
 
 /*
+ * USB DMX Controller
+ */
+export const usbManager = (state = { lastTransmission: 0 }, { type, value }) => {
+  switch (type) {
+    case constants.SEND_UNIVERSE_TO_USB:
+      return update(state, { lastTransmission: { $set: value } } )
+    default:
+      return state
+  }
+}
+
+/*
+ * modV Manager
+ */
+export const modvManager = (state = { color: [0, 0, 0] }, { type, color }) => {
+  switch (type) {
+    case constants.SET_MODV_COLOR:
+      return update(state, { color: { $set: color } } )
+    default:
+      return state
+  }
+}
+
+/*
  * Handle the connections to USB & Bluetooth
  */
 export const connectionManager = (
@@ -67,14 +91,26 @@ export const connectionManager = (
 /*
  * Handle the DMX512 universes
  */
-export const universeManager = (state = [], { type, universe, universeIndex, channelIndex, value }) => {
+export const universeManager = (state = [], { type, universe, universeIndex, channelIndex, value, channels }) => {
   switch (type) {
     case constants.ADD_UNIVERSE:
       return update(state, { $push: [universe] })
     case constants.REMOVE_UNIVERSE:
       return update(state, { $splice: [[universeIndex, 1]] })
     case constants.SET_CHANNEL:
-      return update(state, { [universeIndex]: { channels: { $splice: [[channelIndex, 1, value]] } } })
+      // Only update channel if value changed
+      // if (state[universeIndex].channels[channelIndex] !== value) {
+        return update(state, { [universeIndex]: { channels: { $splice: [[channelIndex, 1, value]] } } })
+      // } else {
+        // return state
+      // }
+    case constants.SET_CHANNELS:
+      // Only update channel if value changed
+      // if (state[universeIndex].channels[channelIndex] !== value) {
+        return update(state, { [universeIndex]: { channels: { $set: channels } } })
+      // } else {
+        // return state
+      // }
     case constants.GET_CHANNEL:
       return state
     default:
@@ -146,20 +182,55 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
 /*
  * Handle the DMX512 fixtures
  */
-export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtureId, properties }) => {
+export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtureId, properties, fixtureBatch }) => {
   switch (type) {
     case constants.ADD_FIXTURE:
       return update(state, { $push: [fixture] })
 
     case constants.SET_FIXTURE_PROPERTIES: {
-
       const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
       // Properties might already been set
       const oldProperties = state[fixtureIndex].properties
 
       // @TODO: Only add properties that the device can understand based on the instance
-
       return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties} } } })
+
+      // return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties, shit: new Date()} } } })
+    }
+
+    case constants.SET_ALL_FIXTURE_PROPERTIES: {
+
+      const createFixtureArray = obj => {
+        return Object.keys(obj)
+          .map(fixtureId => ({
+            ...obj[fixtureId],
+            realIndex: state.findIndex(fixture => fixture.id === fixtureId ),
+            fixtureId
+          }))
+          .sort((a, b) => {
+            return a.realIndex > b.realIndex
+          })
+      }
+
+      const fixtureArray = createFixtureArray(fixtureBatch)
+
+      return state.map((fixture, i) => {
+        if (fixtureArray[i] !== undefined) {
+          return update(state[i], { properties: { $merge: fixtureArray[i].properties } })
+        } else {
+          return state[i]
+        }
+      })
+
+      // const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
+      // // Properties might already been set
+      // const oldProperties = state[fixtureIndex].properties
+      //
+      // // @TODO: Only add properties that the device can understand based on the instance
+      // return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties} } } })
+
+
+      // return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties, shit: new Date()} } } })
     }
 
     case constants.REMOVE_FIXTURE:
@@ -209,18 +280,22 @@ export const midiManager = (state = {
  */
 export const timelineManager = (state = {
   scenes: [],
-  playing: false
-}, { type, sceneId, playing }) => {
+  playing: false,
+  progress: 0
+}, { type, sceneId, playing, progress }) => {
   switch (type) {
     case constants.PLAY_TIMELINE:
       return update(state, { playing: { $set: playing } })
     case constants.ADD_SCENE_TO_TIMELINE:
       return update(state, { scenes: { $push: [sceneId] } })
-    case constants.REMOVE_SCENE_FROM_TIMELINE:
+    case constants.REMOVE_SCENE_FROM_TIMELINE: {
       const sceneIndex = state.scenes.indexOf(sceneId)
       return update(state, { scenes: { $splice: [[sceneIndex, 1]] } })
+    }
     case constants.RESET_TIMELINE:
       return update(state, { scenes: { $set : [] } })
+    case constants.SET_TIMELINE_PROGRESS:
+      return update(state, { progress: { $set: progress } })
     default:
       return state
   }

@@ -41,6 +41,16 @@ class FixtureList extends PolymerElement {
 
   static get template() {
     return `
+      <style>
+        .items {
+          display: flex;
+          flex-wrap: wrap;
+        }
+        .item {
+          flex: 0 0 2em;
+        }
+      </style>
+
       <form on-submit="handleFixtureSubmit">
         <select name="type" on-change="handleSelectedFixture" required>
           <option value=""></option>
@@ -53,10 +63,12 @@ class FixtureList extends PolymerElement {
         <button type="submit">Add fixture</button>
       </form>
 
+      <div class="items">
       <template is="dom-repeat" items="{{fixtures}}" as="fixtureId">
-        <fixture-list-item fixture="{{getFixture(fixtureId)}}"></fixture-list-item>
+        <fixture-list-item class="item" fixture="{{getFixture(fixtureId)}}"></fixture-list-item>
         <button on-click="handleRemoveFixture" fixture-index="[[index]]">x</button>
       </template>
+      </div>
     `
   }
 

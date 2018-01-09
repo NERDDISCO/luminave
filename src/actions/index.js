@@ -26,6 +26,15 @@ export const setChannel = (universeIndex, channelIndex, value) => ({
 /*
  * Set the value for a DMX512 channel
  */
+export const setChannels = (universeIndex, channels) => ({
+  universeIndex,
+  channels,
+  type: constants.SET_CHANNELS
+})
+
+/*
+ * Set the value for a DMX512 channel
+ */
 export const getChannel = (universeIndex, channelIndex) => ({
   universeIndex,
   channelIndex,
@@ -185,6 +194,14 @@ export const setFixtureProperties = (fixtureId, properties) => ({
 })
 
 /*
+ * Set the properties of all fixtures
+ */
+export const setAllFixtureProperties = fixtureBatch => ({
+  fixtureBatch,
+  type: constants.SET_ALL_FIXTURE_PROPERTIES
+})
+
+/*
  * Remove a fixture
  */
 export const removeFixture = fixtureIndex => ({
@@ -274,6 +291,14 @@ export const playTimeline = playing => ({
 })
 
 /*
+ * Set the progress of the timeline
+ */
+export const setTimelineProgress = progress => ({
+  progress,
+  type: constants.SET_TIMELINE_PROGRESS
+})
+
+/*
  * Reset the timeline and remove everything
  */
 export const resetTimeline = () => ({
@@ -298,9 +323,25 @@ export const removeSceneFromTimeline = sceneId => ({
 })
 
 /*
- * Set the LIVE mode
+ * Set live mode
  */
 export const setLive = value => ({
   value,
   type: constants.SET_LIVE
+})
+
+/*
+ * Send the universe to the USB DMX controller
+ */
+export const sendUniverseToUsb = value => ({
+  value,
+  type: constants.SEND_UNIVERSE_TO_USB
+})
+
+/*
+ * Set the color from modV
+ */
+export const setModvColor = color => ({
+  color,
+  type: constants.SET_MODV_COLOR
 })

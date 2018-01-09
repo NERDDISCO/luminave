@@ -12,10 +12,10 @@ export default class KeytimeDeluxe extends BasicTimeline {
   }
 
   interpolate(property, frame1, frame2, t) {
-    // Custom interpolation :D
-    if (typeof frame1.value === 'string') {
-      return frame1.value
-    }
+    // // Custom interpolation :D
+    // if (typeof frame1.value === 'string') {
+    //   return frame1.value
+    // }
 
     // Default interpolation
     return this.lerper.values(frame1.value, frame2.value, t)

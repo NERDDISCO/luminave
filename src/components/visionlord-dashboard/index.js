@@ -13,6 +13,7 @@ import '../animation-manager/index.js'
 import '../midi-manager/index.js'
 import '../timeline-manager/index.js'
 import '../live-mode/index.js'
+import '../modv-manager/index.js'
 
 class VisionLordDashboard extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -57,6 +58,8 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
         </div>
 
         <live-mode></live-mode>
+
+        <modv-manager></modv-manager>
       </div>
 
       <timeline-manager></timeline-manager>

@@ -83,6 +83,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
           }
 
           .fixture {
+            display: block;
             border: 1px solid var(--color-lighter);
             margin: 0 0 .25em 0;
           }
@@ -101,7 +102,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
           </select>
 
           <label for="address">Address</label>
-          <input name="address" type="number" min="1" max="255" on-change="handleAddress" required></input>
+          <input name="address" type="number" min="1" max="512" on-change="handleAddress" required></input>
 
           <label for="name">Name</label>
           <input name="name" type="text" on-change="handleName" required></input>
@@ -115,7 +116,8 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
       </template>
 
-          <template is="dom-repeat" items="{{fixtures}}" as="fixture">
+          <template is="dom-repeat" items="[[fixtures]]" as="fixture">
+
               <dmx-fixture
                 class="fixture"
                 name="[[fixture.name]]"
