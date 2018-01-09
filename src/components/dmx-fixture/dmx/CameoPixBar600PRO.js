@@ -13,7 +13,7 @@ export default class CameoPixBar600PRO extends DmxDevice {
         dimmer: new RangeParam(1, { min: 0, max: 255 }),
         strobe: new RangeParam(2, { min: 0, max: 255 }),
 
-        color: new RgbParam([3, 4, 5, 9, 10, 11]),
+        color: new RgbParam([3, 4, 5]),
 
         led1: {
           color: new RgbParam([3, 4, 5]),
@@ -139,21 +139,4 @@ export default class CameoPixBar600PRO extends DmxDevice {
     this.led11.uv = value
     this.led12.uv = value
   }
-
-  // reset() {
-    // const defaultColor = 'rgb(0, 255, 0)'
-    //
-    // this.led1.color = defaultColor
-    // this.led2.color = defaultColor
-    // this.led3.color = defaultColor
-    // this.led4.color = defaultColor
-    // this.led5.color = defaultColor
-    // this.led6.color = defaultColor
-    // this.led7.color = defaultColor
-    // this.led8.color = defaultColor
-    // this.led9.color = defaultColor
-    // this.led10.color = defaultColor
-    // this.led11.color = defaultColor
-    // this.led12.color = defaultColor
-  // }
 }
