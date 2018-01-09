@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { reduxMixin } from '../../reduxStore.js'
-import { setModvColor } from '../../actions/index.js'
+import { modvcolor } from '../../utils/index.js'
 
 /*
  * Handle the connection to modV
@@ -42,10 +42,8 @@ class ModvManager extends reduxMixin(PolymerElement) {
     socket.addEventListener('message', event => {
       const { data } = event
 
-      const json = JSON.parse(data)
-      console.log(json.average)
-
-      this.dispatch(setModvColor(json.average))
+      // Save color into global object instead of dispatch it into state because of performance issues
+      modvcolor(JSON.parse(data))
     })
 
     this.connected = true

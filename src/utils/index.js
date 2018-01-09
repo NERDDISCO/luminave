@@ -18,3 +18,13 @@ export const addToFixtureBatch = (fixtureId, properties) => {
 export const clearFixtureBatch = () => {
   Object.keys(fixtureBatch).forEach(key => { delete fixtureBatch[key] })
 }
+
+export const colors = {
+  modv: {
+    average: [0, 0, 0]
+  }
+}
+
+export const modvcolor = color => {
+  colors['modv'] = color
+}
