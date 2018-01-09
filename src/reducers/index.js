@@ -215,7 +215,11 @@ export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtur
       const fixtureArray = createFixtureArray(fixtureBatch)
 
       return state.map((fixture, i) => {
-        return update(state[i], { properties: { $merge: fixtureArray[i].properties } })
+        if (fixtureArray[i] !== undefined) {
+          return update(state[i], { properties: { $merge: fixtureArray[i].properties } })
+        } else {
+          return state[i]
+        }
       })
 
       // const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)

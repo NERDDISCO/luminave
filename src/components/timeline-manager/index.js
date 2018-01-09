@@ -1,7 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { playTimeline, resetTimeline, sendUniverseToUsb, setTimelineProgress, setChannels, setAllFixtureProperties } from '../../actions/index.js'
-import { batch, fixtureBatch } from '/src/utils/index.js'
+import { batch, fixtureBatch, clearFixtureBatch } from '/src/utils/index.js'
 import '../timeline-scene/index.js'
 
 /*
@@ -98,7 +98,9 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
       setTimeout(() => {
         requestAnimationFrame(this.loop.bind(this))
 
-        this.dispatch(setAllFixtureProperties(fixtureBatch))
+        this.dispatch(setAllFixtureProperties({...fixtureBatch}))
+
+        clearFixtureBatch()
 
         this.dispatch(setChannels(0, [...batch]))
 
