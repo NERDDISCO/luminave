@@ -31,7 +31,13 @@ class DmxFixtureProperty extends ReduxMixin(PolymerElement) {
   }
 
   handleInputChange(e) {
-    const { value } = e.target
+    let { value } = e.target
+
+    if (isNaN(value)) {
+      // String
+    } else {
+      value = parseInt(value, 10)
+    }
 
     this.dispatchEvent(new CustomEvent('change', {
       detail: {
