@@ -1,7 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { uuid } from '../../../libs/abcq/uuid.js'
-import { setChannel, addFixture, removeFixture, setChannels, sendUniverseToUsb } from '../../actions/index.js'
+import { setChannel, addFixture, removeFixture, setChannels, sendUniverseToUsb, setFixtureProperties } from '../../actions/index.js'
 import DmxDevice from './DmxDevice.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../dmx-fixture-property/index.js'
@@ -58,6 +58,7 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
         type: Object,
         statePath: 'modvManager'
       },
+      // @TODO: use usbManager.lastTransmission instead
       timelineManagerProgress: {
         type: Object,
         statePath: 'timelineManager.progress',
@@ -78,8 +79,6 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
 
     if (this.fixture === undefined) return
     if (this.properties === undefined) return
-
-
 
     // Iterate over all properties
     Object.entries(this.properties).map(([name, value]) => {
@@ -112,6 +111,9 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
     const { name, value } = e.detail
     // Set the property of the fixture which will also set the values on the corresponding channels
     this.fixture[name] = value
+
+    // @TODO: Do I need this here?
+    this.dispatch(setFixtureProperties(this.id, { [name]: value }))
 
     // Send all values of all channels to universe 0
     this.dispatch(setChannels(0, [...batch]))
