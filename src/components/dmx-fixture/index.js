@@ -1,15 +1,15 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { uuid } from '../../../libs/abcq/uuid.js'
-import { setChannel, addFixture, removeFixture } from '../../actions/index.js'
+import { setChannel, addFixture, removeFixture, setChannels, sendUniverseToUsb } from '../../actions/index.js'
 import DmxDevice from './DmxDevice.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../dmx-fixture-property/index.js'
 import CameoPixBar600PRO from './dmx/CameoPixBar600PRO.js'
-import { colors } from '../../utils/index.js'
+import { colors, batch } from '../../utils/index.js'
 
 /*
- *
+ * A single DMX fixture with all properties
  */
 class DmxFixture extends ReduxMixin(PolymerElement) {
 
@@ -105,9 +105,19 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
     })
   }
 
+  /*
+   * A property gets changed on the fixture using the UI
+   */
   handleChange(e) {
     const { name, value } = e.detail
+    // Set the property of the fixture which will also set the values on the corresponding channels
     this.fixture[name] = value
+
+    // Send all values of all channels to universe 0
+    this.dispatch(setChannels(0, [...batch]))
+
+    // Send the universe to the USB DMX controller
+    this.dispatch(sendUniverseToUsb(new Date()))
   }
 
   static get template() {
