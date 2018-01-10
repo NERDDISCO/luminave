@@ -93,13 +93,22 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
       this.progress = timeCounter * this.measures
 
+      // @TODO: Is this a problem?
+      // Everything is waiting for the progress to change:
+      // * dmx-fixture to update the properties of a fixture
+      // * timeline-animation to use the progress to calculate interpolated properties of an animation
       this.dispatch(setTimelineProgress(this.progress))
 
       setTimeout(() => {
         requestAnimationFrame(this.loop.bind(this))
 
+        // Set the values of all fixtures which triggers setting the value of the specific channels of each fixture
+        // These properties are used in dmx-fixture to update the properties of the fixture instance
+        // dmx-fixture gets triggered when setTimelineProgress is dispatched
         this.dispatch(setAllFixtureProperties({...fixtureBatch}))
 
+        // Is this really needed? Shouldn't we just reset the batch all the time instead of the properties?
+        // Also: This is removing the properties from the fixtureBatch, but is not resetting the properties on the fixture itself
         clearFixtureBatch()
 
         this.dispatch(setChannels(0, [...batch]))
