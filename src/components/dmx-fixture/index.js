@@ -82,24 +82,19 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
 
     // Iterate over all properties
     Object.entries(this.properties).map(([name, value]) => {
+
+      // Property exists for the fixture
       if (typeof this.fixture[name] !== undefined) {
 
-
-        if (name === 'color') {
+        // Overwrite the color of every fixture when a connection to modV was established
+        if (name === 'color' && this.modvManager.connected) {
           value = colors.modv.average
-          this.fixture[name] = value
-        } else {
-          this.fixture[name] = value
         }
 
-        // @TODO: Remove Super hack
-        if (this.fixture instanceof CameoPixBar600PRO) {
-          if (name === 'color') {
-            this.fixture.setColor(value)
-          } else if (name === 'uv') {
-            this.fixture.setUv(value)
-          }
-        }
+        this.fixture[name] = value
+
+        // @TODO: Remove workaround
+        this.updateCameoPixBar600PRO(name, value)
       }
     })
   }
@@ -112,6 +107,9 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
     // Set the property of the fixture which will also set the values on the corresponding channels
     this.fixture[name] = value
 
+    // @TODO: Remove workaround
+    this.updateCameoPixBar600PRO(name, value)
+
     // @TODO: Do I need this here?
     this.dispatch(setFixtureProperties(this.id, { [name]: value }))
 
@@ -120,6 +118,22 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
 
     // Send the universe to the USB DMX controller
     this.dispatch(sendUniverseToUsb(new Date()))
+  }
+
+  /*
+   * This is a hack to update the Cameo PixBar 600 PRO, because it has 12 LEDs
+   * and they can be controlled individually
+   *
+   * @TODO: Use the LEDs individually instead
+   */
+  updateCameoPixBar600PRO(name, value) {
+    if (this.fixture instanceof CameoPixBar600PRO) {
+      if (name === 'color') {
+        this.fixture.setColor(value)
+      } else if (name === 'uv') {
+        this.fixture.setUv(value)
+      }
+    }
   }
 
   static get template() {
@@ -158,9 +172,7 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
                 type="[[property.type]]"
                 channels="[[property.channels]]"
 
-                class="property"
-              >
-              </dmx-fixture-property>
+                class="property"></dmx-fixture-property>
             </template>
           </div>
 

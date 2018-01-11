@@ -345,3 +345,11 @@ export const setModvColor = color => ({
   color,
   type: constants.SET_MODV_COLOR
 })
+
+/*
+ * Connect / disconnect to modV
+ */
+export const connectModv = connected => ({
+  connected,
+  type: constants.CONNECT_MODV
+})

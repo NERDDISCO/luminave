@@ -57,8 +57,13 @@ export const usbManager = (state = { lastTransmission: 0 }, { type, value }) => 
 /*
  * modV Manager
  */
-export const modvManager = (state = { color: [0, 0, 0] }, { type, color }) => {
+export const modvManager = (state = {
+    color: [0, 0, 0],
+    connected: false
+  }, { type, color, connected }) => {
   switch (type) {
+    case constants.CONNECT_MODV:
+      return update(state, { connected: { $set: connected } } )
     case constants.SET_MODV_COLOR:
       return update(state, { color: { $set: color } } )
     default:
