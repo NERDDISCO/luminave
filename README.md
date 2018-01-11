@@ -11,9 +11,55 @@ Show light manager for DMX512 shows.
 [![WebBluetooth](https://img.shields.io/badge/API-WebBluetooth-1e88e5.svg?style=flat)](https://webbluetoothcg.github.io/web-bluetooth/)
 [![localStorage](https://img.shields.io/badge/API-localStorage-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
+## Features
 
-* Only works in a browser that supports ES6 modules & WebUSB & dynamic import()
-* In order to use WebUSB (even on localhost), you need an [HTTPS server](#https-server)
+* Handle one DMX512 universe
+* Add fixtures of different types (using the [DmxDevive](https://github.com/beyondscreen/fivetwelve/blob/master/lib/device/DmxDevice.js) implementation of [fivetwelve](https://github.com/beyondscreen/fivetwelve)) to have an abstraction of the fixture and to be able to use properties instead of setting the values on the channels itself. So for example you can set the `color` property, which accepts an RGB value as `[255, 0, 125]` and fivetwelve knows how to split that into the corresponding channels
+* You can change the properties of a fixture with various input fields depending on which property you want to change
+* Add animations, which can contain a variable amount of keyframes. Each keyframe can have a variable amount of fixture properties. In terms of code this looks like this:
+```
+{
+  "0": {
+    "color": [255, 0, 0],
+    "dimmer": 255
+  },
+  "1": {
+    "color": [0, 0, 255],
+    "dimmer": 255
+  }
+}
+```
+* The animation itself has no idea about time, it always goes from 0 to 1. You can add as many steps inbetween as you want
+* Scenes are the way to go to bring fixtures and animations together
+* Connect a MIDI controller via USB to your computer and add it as a MIDI controller into VisionLord. With "MIDI learn" you can push a button on your MIDI controller and VisionLord saves the corresponding note into it's config, so you don't have to manually find out what note is on with button
+* Add scenes to MIDI controller buttons to activate them when the MIDI button is pushed
+* When a scene is active it is added to the timeline. The timeline handles all scenes and can be started / stopped
+* Connect to a USB DMX controller that implements the WebUSB specification
+* Connect to a modV WebSocket bridge to get colors from modV instead of setting the colors yourself
+
+
+# Use VisionLord
+
+* Start the local HTTPS server with `npm start` in the root of the project
+
+## modV
+
+If you want to use modV you have to start the local WebSocket server too:
+
+### In VisionLord
+
+* Go into the `modV` folder
+* Start the server with `npm start`
+* Click the "connect" button of the modV component in the VisionLord UI
+
+### In modV
+
+* Drop the "grabCanvas" component into the list of modules
+* This should connect to the local WebSocket server
+
+
+---
+
 
 # Software
 
@@ -305,3 +351,9 @@ The server is written in Go, so if you want to change the code you have to insta
 # Contributors
 
 * [Gregor Adams](https://github.com/pixelass)
+
+# Thanks to
+
+* [Gregor Adams](https://github.com/pixelass) for working with me on VisionLord, hours and hours of pair-programming and knowledge transfer, partner in debugging the most ugly performance problems and everything else ❤️
+* [Martin Schuhfuss](https://github.com/usefulthink) for fivetwelve and a lot of DMX512 knowledge ❤️
+* [Sam Wray](https://github.com/2xaa) for creating [modV](https://github.com/2xAA/modV) and helping me to integrate modV into everything related to NERD DISCO
