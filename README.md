@@ -3,12 +3,13 @@
 Show light manager for DMX512 shows.
 
 [![polymer 3](https://img.shields.io/badge/polymer-3.0_preview-f50057.svg?style=flat)](https://www.polymer-project.org/blog/2017-08-22-npm-modules)
-[![ES6 modules](https://img.shields.io/badge/ES6-modules-44aa44.svg?style=flat)](https://www.polymer-project.org/blog/2017-08-22-npm-modules)
+[![Redux](https://img.shields.io/badge/Redux-3.7.2-9f33ff.svg?style=flat)](https://redux.js.org/)
 
-
+[![ES6 modules](https://img.shields.io/badge/ES6-modules-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 [![WebUSB](https://img.shields.io/badge/API-WebUSB-1e88e5.svg?style=flat)](https://wicg.github.io/webusb/)
 [![WebMIDI](https://img.shields.io/badge/API-WebMIDI-1e88e5.svg?style=flat)](https://webaudio.github.io/web-midi-api/)
 [![WebBluetooth](https://img.shields.io/badge/API-WebBluetooth-1e88e5.svg?style=flat)](https://webbluetoothcg.github.io/web-bluetooth/)
+[![WebSocket](https://img.shields.io/badge/API-WebSocket-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 [![localStorage](https://img.shields.io/badge/API-localStorage-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
 ## Features
@@ -17,16 +18,16 @@ Show light manager for DMX512 shows.
 * Add fixtures of different types (using the [DmxDevive](https://github.com/beyondscreen/fivetwelve/blob/master/lib/device/DmxDevice.js) implementation of [fivetwelve](https://github.com/beyondscreen/fivetwelve)) to have an abstraction of the fixture and to be able to use properties instead of setting the values on the channels itself. So for example you can set the `color` property, which accepts an RGB value as `[255, 0, 125]` and fivetwelve knows how to split that into the corresponding channels
 * You can change the properties of a fixture with various input fields depending on which property you want to change
 * Add animations, which can contain a variable amount of keyframes. Each keyframe can have a variable amount of fixture properties. In terms of code this looks like this:
-```
+```json
 {
-  "0": {
-    "color": [255, 0, 0],
-    "dimmer": 255
-  },
-  "1": {
-    "color": [0, 0, 255],
-    "dimmer": 255
-  }
+    "0": {
+      "color": [255, 0, 0],
+      "dimmer": 255
+    },
+    "1": {
+      "color": [0, 0, 50],
+      "dimmer": 120
+    }
 }
 ```
 * The animation itself has no idea about time, it always goes from 0 to 1. You can add as many steps inbetween as you want
