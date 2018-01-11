@@ -1,6 +1,8 @@
 const ws = require('nodejs-websocket')
 const port = 3000
 
+console.log('Create a WebSocket server on port', port)
+
 /*
  * Create a WebSocket server
  */
@@ -12,17 +14,18 @@ const port = 3000
     connection.on('text', dmxData => {
       dmxData = JSON.parse(dmxData)
 
+      // Broadcast to all connected clients
       server.connections.forEach(con => {
 
+        // The client connection came from VisionLord
         if (con.path === '/visionLord') {
-          console.log(dmxData)
           con.sendText(JSON.stringify(dmxData))
         }
       })
     })
 
     connection.on('close', (code, reason) => {
-      console.log('Connection closed:', reason)
+      console.log('Connection closed:', code, reason)
     })
 
     connection.on('error', error => {
