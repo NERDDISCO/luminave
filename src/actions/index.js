@@ -339,6 +339,14 @@ export const sendUniverseToUsb = value => ({
 })
 
 /*
+ * Send the universe to fivetwelve bridge
+ */
+export const sendUniverseToFivetwelve = value => ({
+  value,
+  type: constants.SEND_UNIVERSE_TO_FIVETWELVE
+})
+
+/*
  * Set the color from modV
  */
 export const setModvColor = color => ({
@@ -352,4 +360,12 @@ export const setModvColor = color => ({
 export const connectModv = connected => ({
   connected,
   type: constants.CONNECT_MODV
+})
+
+/*
+ * Connect / disconnect to fivetwelve-bridge
+ */
+export const connectFivetwelve = connected => ({
+  connected,
+  type: constants.CONNECT_FIVETWELVE
 })

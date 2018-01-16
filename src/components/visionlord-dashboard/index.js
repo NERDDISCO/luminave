@@ -14,6 +14,7 @@ import '../midi-manager/index.js'
 import '../timeline-manager/index.js'
 import '../live-mode/index.js'
 import '../modv-manager/index.js'
+import '../fivetwelve-manager/index.js'
 
 class VisionLordDashboard extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -60,6 +61,7 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
         <live-mode></live-mode>
 
         <modv-manager></modv-manager>
+        <fivetwelve-manager></fivetwelve-manager>
       </div>
 
       <timeline-manager></timeline-manager>

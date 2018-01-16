@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { playTimeline, resetTimeline, sendUniverseToUsb, setTimelineProgress, setChannels, setAllFixtureProperties } from '../../actions/index.js'
+import { playTimeline, resetTimeline, sendUniverseToUsb, sendUniverseToFivetwelve, setTimelineProgress, setChannels, setAllFixtureProperties } from '../../actions/index.js'
 import { batch, fixtureBatch, clearFixtureBatch } from '/src/utils/index.js'
 import '../timeline-scene/index.js'
 
@@ -116,6 +116,8 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
         // clearBatch()
 
         this.dispatch(sendUniverseToUsb(now))
+
+        this.dispatch(sendUniverseToFivetwelve(now))
       }, 1000 / 30)
 
     }

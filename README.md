@@ -37,11 +37,13 @@ Show light manager for DMX512 shows.
 * When a scene is active it is added to the timeline. The timeline handles all scenes and can be started / stopped
 * Connect to a USB DMX controller that implements the WebUSB specification
 * Connect to a modV WebSocket bridge to get colors from modV instead of setting the colors yourself
+* Connect to a fivetwelve WebSocket bridge to send your universe to a DMX controller that is controlled by fivetwelve
 
 
 # Use VisionLord
 
 * Start the local HTTPS server with `npm start` in the root of the project
+* Open https://localhost:1337 in Chrome and accept the unsigned certificate
 
 ## modV
 
@@ -58,6 +60,16 @@ If you want to use modV you have to start the local WebSocket server too:
 * Drop the "grabCanvas" component into the list of modules
 * This should connect to the local WebSocket server
 
+
+## fivetwelve
+
+If you want to use fivetwelve:
+
+* Download and install [fivetwelve-bridge](https://github.com/usefulthink/fivetwelve-bridge/)
+* Start the WebSocket server provided by fivetwelve-bridge with `npm start`
+* In VisionLord: Click the "connect" button of the fivetwelve component
+
+If you start the timeline all data is also send to fivetwelve
 
 ---
 

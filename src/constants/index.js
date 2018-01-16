@@ -52,6 +52,8 @@ export const SET_TIMELINE_PROGRESS = uuid()
 export const SEND_UNIVERSE_TO_USB = uuid()
 export const SET_MODV_COLOR = uuid()
 export const CONNECT_MODV = uuid()
+export const CONNECT_FIVETWELVE = uuid()
+export const SEND_UNIVERSE_TO_FIVETWELVE = uuid()
 
 /*
  * localStorage
