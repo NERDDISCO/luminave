@@ -1,10 +1,14 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import fivetwelve from '/libs/fivetwelve/index.js'
 import USBPort from './USBPort.js'
 import ArduinoLeonardoETHDriver from './ArduinoLeonardoETHDriver.js'
 import { connectUsb } from '../../actions/index.js'
 
+/*
+ * Handle the connection to a USB DMX controller using WebUSB
+ * Tested with Arduino Leonardo ETH, but should be compatible with every Arduino
+ * that can be used as a USB device
+ */
 class UsbDmxManager extends ReduxMixin(PolymerElement) {
 
   constructor() {
@@ -14,23 +18,17 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
     this.port = null
 
     // @TODO: Move ALL OF THIS into it's own module
-    const driver = new ArduinoLeonardoETHDriver(this.port, {})
-
-    // Create the output by using the driver and set the amount of universes that are controlled by this interface
-    // DmxOutput
-    this.output = fivetwelve.default(driver, 1)
+    this.driver = new ArduinoLeonardoETHDriver(this.port, {})
 
     // Only request the port for specific devices
     this.usbDeviceFilter = [
       // Arduino LLC (9025)
-      { 'vendorId': 0x2341, 'productId': 0x8036 },
+      { vendorId: 0x2341, productId: 0x8036 },
       // Arduino LLC (9025)
-      { 'vendorId': 0x2341, 'productId': 0x8037 },
+      { vendorId: 0x2341, productId: 0x8037 },
       // Arduino LLC (10755), Leonardo ETH (32832)
-      { 'vendorId': 0x2a03,'productId': 0x8040 }
+      { vendorId: 0x2a03, productId: 0x8040 }
     ]
-
-    this.usbDevices = null
 
     // Check for USB devices that are already paired
     this.getUsbPorts().then(list => {
@@ -52,9 +50,8 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
       universes: {
         type: Array,
         statePath: 'universeManager'
-        // @TODO: This is too expensive, we have to find something else
-        // observer: 'universeChanged'
       },
+      // This is changing every time someone wants to send the universe to the USB DMX controller
       lastTransmission: {
         type: Object,
         statePath: 'usbManager.lastTransmission',
@@ -64,16 +61,8 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
   }
 
   observeLastTransmission() {
-    this.output.driver.send(this.universes[0].channels)
-  }
-
-  universeChanged() {
-    if (this.universes[0] !== undefined) {
-      // Note: This is usually done by fivetwelve.DmxOutput
-
-      // Send channel data to USB DMX controller
-      this.output.driver.send(this.universes[0].channels)
-    }
+    // Send universe 0 to the USB DMX controller
+    this.driver.send(this.universes[0].channels)
   }
 
   handleConnectButtonClick() {
@@ -131,7 +120,7 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
    */
   connect() {
 
-    this.output.driver.serialport = this.port
+    this.driver.serialport = this.port
 
     this.port.connect().then(() => {
 
@@ -148,14 +137,12 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
       this.port.onReceiveError = error => {
         // USB is disconnected
         this.dispatch(connectUsb(false))
-
         console.log(error)
       }
 
     }, error => {
       // USB is disconnected
       this.dispatch(connectUsb(false))
-
       console.error(error)
     })
   }
