@@ -12,8 +12,8 @@ export default class CameoPixBar600PRO extends DmxDevice {
       params: {
         dimmer: new RangeParam(1, { min: 0, max: 255 }),
         strobe: new RangeParam(2, { min: 0, max: 255 }),
-
         color: new RgbParam([3, 4, 5]),
+        uv: new RangeParam(8, { min: 0, max: 255 }), 
 
         led1: {
           color: new RgbParam([3, 4, 5]),
