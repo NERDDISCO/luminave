@@ -3,16 +3,76 @@
 Show light manager for DMX512 shows.
 
 [![polymer 3](https://img.shields.io/badge/polymer-3.0_preview-f50057.svg?style=flat)](https://www.polymer-project.org/blog/2017-08-22-npm-modules)
-[![ES6 modules](https://img.shields.io/badge/ES6-modules-44aa44.svg?style=flat)](https://www.polymer-project.org/blog/2017-08-22-npm-modules)
+[![Redux](https://img.shields.io/badge/Redux-3.7.2-9f33ff.svg?style=flat)](https://redux.js.org/)
 
+[![ES6 modules](https://img.shields.io/badge/ES6-modules-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 [![WebUSB](https://img.shields.io/badge/API-WebUSB-1e88e5.svg?style=flat)](https://wicg.github.io/webusb/)
 [![WebMIDI](https://img.shields.io/badge/API-WebMIDI-1e88e5.svg?style=flat)](https://webaudio.github.io/web-midi-api/)
 [![WebBluetooth](https://img.shields.io/badge/API-WebBluetooth-1e88e5.svg?style=flat)](https://webbluetoothcg.github.io/web-bluetooth/)
+[![WebSocket](https://img.shields.io/badge/API-WebSocket-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 [![localStorage](https://img.shields.io/badge/API-localStorage-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
+## Features
 
-* Only works in a browser that supports ES6 modules & WebUSB (>= Chrome 61)
-* In order to use WebUSB (even on localhost), you need an [HTTPS server](#https-server)
+* Handle one DMX512 universe
+* Add fixtures of different types (using the [DmxDevice](https://github.com/beyondscreen/fivetwelve/blob/master/lib/device/DmxDevice.js) implementation of [fivetwelve](https://github.com/beyondscreen/fivetwelve)) to have an abstraction of the fixture and to be able to use properties instead of setting the values on the channels itself. So for example you can set the `color` property, which accepts an RGB value as `[255, 0, 125]` and fivetwelve knows how to split that into the corresponding channels
+* You can change the properties of a fixture with various input fields depending on which property you want to change
+* Add animations, which can contain a variable amount of keyframes. Each keyframe can have a variable amount of fixture properties. In terms of code this looks like this:
+```json
+{
+    "0": {
+      "color": [255, 0, 0],
+      "dimmer": 255
+    },
+    "1": {
+      "color": [0, 0, 50],
+      "dimmer": 120
+    }
+}
+```
+* The animation itself has no idea about time, it always goes from 0 to 1. You can add as many steps inbetween as you want
+* Scenes are the way to go to bring fixtures and animations together
+* Connect a MIDI controller via USB to your computer and add it as a MIDI controller into VisionLord. With "MIDI learn" you can push a button on your MIDI controller and VisionLord saves the corresponding note into it's config, so you don't have to manually find out what note is on with button
+* Add scenes to MIDI controller buttons to activate them when the MIDI button is pushed
+* When a scene is active it is added to the timeline. The timeline handles all scenes and can be started / stopped
+* Connect to a USB DMX controller that implements the WebUSB specification
+* Connect to a modV WebSocket bridge to get colors from modV instead of setting the colors yourself
+* Connect to a fivetwelve WebSocket bridge to send your universe to a DMX controller that is controlled by fivetwelve
+
+
+# Use VisionLord
+
+* Start the local HTTPS server with `npm start` in the root of the project
+* Open https://localhost:1337 in Chrome and accept the unsigned certificate
+
+## modV
+
+If you want to use modV you have to start the local WebSocket server too:
+
+### In VisionLord
+
+* Go into the `modV` folder
+* Start the server with `npm start`
+* Click the "connect" button of the modV component in the VisionLord UI
+
+### In modV
+
+* Drop the "grabCanvas" component into the list of modules
+* This should connect to the local WebSocket server
+
+
+## fivetwelve
+
+If you want to use fivetwelve:
+
+* Download and install [fivetwelve-bridge](https://github.com/usefulthink/fivetwelve-bridge/)
+* Start the WebSocket server provided by fivetwelve-bridge with `npm start`
+* In VisionLord: Click the "connect" button of the fivetwelve component
+
+If you start the timeline all data is also send to fivetwelve
+
+---
+
 
 # Software
 
@@ -34,6 +94,7 @@ You need the following software in order to use VisionLord:
 * Native support for WebUSB
 * Enable flag for WebMIDI
   * chrome://flags/#enable-midi-manager-dynamic-instantiation
+* [Dynamic import()](https://developers.google.com/web/updates/2017/11/dynamic-import)
 
 ## node.js
 
@@ -235,6 +296,20 @@ navigator.usb.requestDevice({
 
 ---
 
+# Development
+
+## Add new component
+
+* Create a new component in src/components
+* Create new actions in src/action/index.js
+* Create new constants in src/constans/index.js
+* Create new reducers based on your actions in src/reducers/index.js
+* Add you component to the visionlord-dashboard component to load it
+
+
+
+---
+
 
 
 # Use VisionLord
@@ -246,7 +321,6 @@ navigator.usb.requestDevice({
 
 
 ---
-
 
 # Concepts
 
@@ -290,3 +364,9 @@ The server is written in Go, so if you want to change the code you have to insta
 # Contributors
 
 * [Gregor Adams](https://github.com/pixelass)
+
+# Thanks to
+
+* [Gregor Adams](https://github.com/pixelass) for working with me on VisionLord, hours and hours of pair-programming and knowledge transfer, partner in debugging the most ugly performance problems and everything else ❤️
+* [Martin Schuhfuss](https://github.com/usefulthink) for fivetwelve and a lot of DMX512 knowledge ❤️
+* [Sam Wray](https://github.com/2xaa) for creating [modV](https://github.com/2xAA/modV) and helping me to integrate modV into everything related to NERD DISCO

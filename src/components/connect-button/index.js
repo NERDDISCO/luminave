@@ -1,25 +1,31 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import ReduxMixin from '../../reduxStore.js'
+import { connectUsb, connectBluetooth } from '../../actions/index.js'
 
-class ConnectButton extends PolymerElement {
+const actions = {
+  usb: connectUsb,
+  bluetooth: connectBluetooth
+}
 
-  constructor() {
-    super()
-  }
-  ready(){
-    super.ready()
-  }
+/*
+ * Connect to an external system via USB or Bluetooth
+ */
+class ConnectButton extends ReduxMixin(PolymerElement) {
 
-  handleClick(e) {
-    if (this.connected){
-      this.dispatchEvent(new CustomEvent('disconnect'))
-      this.dmxList
-    } else {
-      this.dispatchEvent(new CustomEvent('connect'))
+  static get properties() {
+    return {
+      label: { type: String },
+      type: { type: String },
+      connections: {
+        type: Object,
+        statePath: 'connectionManager',
+        observer: 'connectionChanged'
+      }
     }
   }
 
-  computeLabel(connected) {
-    return `USB ${connected ? '☀️' : '⛈'}`
+  connectionChanged() {
+    this.connected = this.connections[this.type].connected
   }
 
   computeVars(connected) {
@@ -36,16 +42,13 @@ class ConnectButton extends PolymerElement {
     return `
         <style>
         button {
-
-          --background: rgba(calc(var(--off) * 150), calc(var(--on) * 150), 0, 1);
-          /*--color: hsla(120, 40%, 60%, var(--connected));*/
+          --background: rgba(calc(var(--off) * 50), calc(var(--on) * 50), 0, 1);
+          --color: rgba(calc(var(--off) * 255), calc(var(--on) * 255), 0, 1);
 
             box-sizing: border-box;
-            height: 2em;
             border: 0;
-            font-size: 1em;
-            line-height: 1em;
-            margin: 05.em;
+            font-size: inherit;
+            margin: 0.5em;
             padding: 0.5em 1em;
             font-family: monospace;
             border-radius: 0;
@@ -54,19 +57,8 @@ class ConnectButton extends PolymerElement {
             box-shadow: 0 0 0 1px var(--color);
             cursor: pointer;
           }
-
-        button:focus {
-          outline: 0;
-          --color: var(--focus-color);
-          /* --background: var(--focus-background); */
-        }
-
-        button:active {
-          --background: var(--background-darker);
-          /* --color: var(--color-lighter); */
-        }
       </style>
-      <button on-click="handleClick" style="[[computeVars(connected)]]">[[computeLabel(connected)]]</button>
+      <button style="{{computeVars(connected)}}">[[label]]</button>
     `
   }
 }

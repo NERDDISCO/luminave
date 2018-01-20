@@ -1,27 +1,22 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 
+/*
+ * Show BPM (Beats per Minute)
+ */
 class BPMMeter extends PolymerElement {
 
-  constructor() {
-    super()
+  static get properties() {
+    return {
+      bpm: {
+        type: Number,
+        statePath: 'bpm'
+      }
+    }
   }
 
   static get template() {
     return `
-       <style>
-        .meter {
-          box-sizing: border-box;
-          font-size: 2em;
-          padding: 1em;
-          width: calc(100% - 1em);
-          box-sizing: border-box;
-          text-align: center;
-          font-family: monospace;
-          background: var(--background);
-          color: var(--color);
-        }
-      </style>
-        <div class="meter">[[bpm]]</div>
+      <div>[[bpm]]</div>
     `
   }
 }

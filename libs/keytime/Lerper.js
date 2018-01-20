@@ -5,7 +5,6 @@ export default class Lerper {
   }
 
   values(value1, value2, t) {
-
     if (typeof value1 === 'number' && typeof value2 === 'number') {
       return this.lerp(value1, value2, t)
       // Assume array

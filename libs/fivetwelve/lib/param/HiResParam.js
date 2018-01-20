@@ -21,6 +21,9 @@ export default class HiResParam extends DmxParam {
 
     this.logical2Dmx = rangeMapper(min, max, 0, uint16MaxVal);
     this.dmx2Logical = rangeMapper(0, uint16MaxVal, min, max);
+
+    this.min = min
+    this.max = max
   }
 
   /**

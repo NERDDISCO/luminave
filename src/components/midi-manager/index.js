@@ -1,80 +1,176 @@
-/* @TODO: Implement
+import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import ReduxMixin from '../../reduxStore.js'
+import WebMidi from '../../../libs/webmidi/index.js'
+import { uuidV1 } from '../../../libs/abcq/uuid.js'
+import { addMidi, removeMidi, enableMidi } from '../../actions/index.js'
+import '../midi-controller/index.js'
 
-
-purpose: Manage a list of MidiController and manage Web MIDI by using the WebMIDI.js lib
-current implementation: core/MidiManager.js
-
-
-<midi-manager list="midiDeviceList" on-update="handleUpdate" />
-
-
-midiDeviceList = MidiManager.list
-on-update = add Midi devices to MidiManger.list
-
--> every element of midiDeviceList should be a midi-controller component
+/*
+ * Handle DMX fixtures
  */
+class MidiManager extends ReduxMixin(PolymerElement) {
 
+  constructor() {
+    super()
 
- import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
- import MidiManager from '/src/core/MidiManager.js'
+    // Web MIDI is disabled
+    this.dispatch(enableMidi(false))
 
- /**
-  * The tap button renders a button to manually set the bpm.
-  * It waits for a given number of positions.
-  */
- export class MidiManagerComponent extends PolymerElement {
-   constructor() {
-     super()
-   }
+    // Enable Web MIDI
+    WebMidi.enable(err => {
 
-   ready() {
-     super.ready()
+      if (err) {
+        console.error('Web MIDI API could not be enabled:', err)
+      } else {
+        // MIDI input / output ports (from a single device) are connected to the computer
+        WebMidi.addListener('connected', e => {
+          const { manufacturer, name, id, input } = e
+          console.log('MIDIController added:', 'Manufacturer:', manufacturer, '| Name:', name, '| ID:', id, '| Type:', input === undefined ? 'output' : 'input')
+        })
 
-     // This.midiManager = new MidiManager({ config: this.config })
-   }
+        // Web MIDI is enabled
+        this.dispatch(enableMidi(true))
+      }
 
-   handleClick() {
-     console.log('click')
-   }
+    })
+  }
 
-   static get template() {
-     return `
-     <style>
-       :host {
-         --height: 20em;
-         --background: var(--background-lighter);
-       }
-       button {
-           box-sizing: border-box;
-           height: var(--height);
-           width: calc(100% - 1em);
-           border: 0;
-           font-size: 1em;
-           line-height: calc(var(--height) - 1em);
-           margin: 0.5em;
-           padding: 0.5em 1em;
-           font-family: monospace;
-           border-radius: 0;
-           color: var(--color);
-           background: var(--background);
-           box-shadow: 0 0 0 1px var(--color);
-           cursor: pointer;
-         }
+  static get properties() {
+    return {
+      controllers: {
+        type: Array,
+        statePath: 'midiManager.controllers'
+      },
+      live: {
+        type: Boolean,
+        statePath: 'live'
+      },
+      editMode: {
+        type: Boolean,
+        computed: 'computeEditMode(live)'
+      }
+    }
+  }
 
-         button:focus {
-           outline: 0;
-           --color: var(--focus-color);
-           --background: var(--focus-background);
-         }
+  computeEditMode(live) {
+    return !live
+  }
 
-         button:active {
-           --background: var(--background-darker);
-           --color: var(--color-lighter);
-         }
-     </style>
-       <button>MIDI Manager</button>
-     `
-   }
- }
+  removeMidi(e) {
+    const { dataset } = e.target
+    this.dispatch(removeMidi(parseInt(dataset.index, 10)))
+  }
 
- customElements.define('midi-manager', MidiManagerComponent)
+  handleController(e) {
+    console.log('handleController', e)
+  }
+
+  handleName(e) {
+    this.name = e.target.value
+  }
+
+  handleInput(e) {
+    this.input = e.target.value
+  }
+
+  handleOutput(e) {
+    this.output = e.target.value
+  }
+
+  handleWidth(e) {
+    this.width = e.target.value
+  }
+
+  handleHeight(e) {
+    this.height = e.target.value
+  }
+
+  handleSubmit(e) {
+    // Prevent sending data to server & reset all fields
+    e.preventDefault()
+    e.target.reset()
+
+    this.dispatch(addMidi({
+      id: uuidV1(),
+      name: this.name,
+      input: this.input,
+      output: this.output,
+      width: this.width,
+      height: this.height,
+      // @TODO: Transform this into an array, because I can't use the Object at all in other components
+      mapping: {}
+    }))
+  }
+
+  static get template() {
+    return `
+    <style>
+      .grid {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .fixture {
+        border: 1px solid var(--color-lighter);
+        margin: 0 0 .25em 0;
+      }
+
+      h3 {
+        margin-bottom: 0em;
+        margin-top: 1em;
+        border-top: 2px solid var(--background-darker);
+      }
+    </style>
+
+    <template is="dom-if" if="[[editMode]]">
+
+      <h2>MIDI controllers</h2>
+
+      <form on-submit="handleSubmit">
+        <label for="name">Name</label>
+        <input name="name" type="text" on-change="handleName" required></input>
+
+        <label for="input">Input</label>
+        <input name="input" type="text" on-change="handleInput" required></input>
+
+        <label for="output">Output</label>
+        <input name="output" type="text" on-change="handleOutput" required></input>
+
+        <label for="width">Width</label>
+        <input name="width" type="number" min="1" max="255" on-change="handleWidth" required></input>
+
+        <label for="height">Height</label>
+        <input name="height" type="number" min="1" max="255" on-change="handleHeight" required></input>
+
+        <button type="submit">Add controller</button>
+      </form>
+
+    </template>
+
+      <div class="grid">
+
+        <template is="dom-repeat" items="{{controllers}}" as="controller">
+          <div>
+            <midi-controller
+              id="[[controller.id]]"
+              index="[[index]]"
+              name="[[controller.name]]"
+              mapping$="[[controller.mapping]]"
+              inputname="[[controller.input]]"
+              outputname="[[controller.output]]"
+              width="[[controller.width]]"
+              height="[[controller.height]]"></midi-controller>
+
+            <template is="dom-if" if="[[editMode]]">
+              <button on-click="removeMidi" data-index$="[[index]]">Remove</button>
+            </template>
+          </div>
+        </template>
+
+      </div>
+    `
+  }
+}
+
+customElements.define('midi-manager', MidiManager)
