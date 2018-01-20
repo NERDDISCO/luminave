@@ -5,7 +5,7 @@ export const addToBatch = (channel, value) => {
 }
 
 export const clearBatch = () => {
-  batch.splice(0, batch.length)
+  batch.fill(0)
 }
 
 export const fixtureBatch = {}
@@ -17,6 +17,12 @@ export const addToFixtureBatch = (fixtureId, properties) => {
 
 export const clearFixtureBatch = () => {
   Object.keys(fixtureBatch).forEach(key => { delete fixtureBatch[key] })
+}
+
+export const clearFixtureInBatch = fixtureId => {
+  if (fixtureBatch[fixtureId] !== undefined) {
+    fixtureBatch[fixtureId].properties = {}
+  }
 }
 
 export const colors = {

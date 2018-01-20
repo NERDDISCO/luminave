@@ -202,6 +202,14 @@ export const setAllFixtureProperties = fixtureBatch => ({
 })
 
 /*
+ * Reset the properties of a fixture
+ */
+export const resetFixtureProperties = fixtureId => ({
+  fixtureId,
+  type: constants.RESET_FIXTURE_PROPERTIES
+})
+
+/*
  * Remove a fixture
  */
 export const removeFixture = fixtureIndex => ({

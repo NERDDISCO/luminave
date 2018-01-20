@@ -2,7 +2,8 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import ReduxMixin from '../../reduxStore.js'
 import WebMidi from '../../../libs/webmidi/index.js'
 import '../midi-grid/index.js'
-import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimeline, setMidiMappingActive } from '../../actions/index.js'
+import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimeline, setMidiMappingActive, resetFixtureProperties } from '../../actions/index.js'
+import { clearFixtureInBatch } from '../../utils/index.js'
 
 /*
  * Handle MIDI controller
@@ -45,6 +46,10 @@ class MidiController extends ReduxMixin(PolymerElement) {
       height: Number,
       connected: Boolean,
       mapping: Object,
+      sceneManager: {
+        type: Array,
+        statePath: 'sceneManager'
+      },
       midiManager: {
         type: Object,
         statePath: 'midiManager'
@@ -109,6 +114,10 @@ class MidiController extends ReduxMixin(PolymerElement) {
     }
   }
 
+  getScene(sceneId) {
+    return this.sceneManager.filter(scene => scene.id === sceneId)[0]
+  }
+
   /*
    * Handle "noteon" events
    */
@@ -147,6 +156,14 @@ class MidiController extends ReduxMixin(PolymerElement) {
           } else {
             // Remove all scenes from the timeline
             element.scenes.map(sceneId => {
+
+              // @TODO Move this to somewhere where it makes sense so that others can reuse this functionality
+              this.getScene(sceneId).fixtures.map(fixtureId => {
+                this.dispatch(resetFixtureProperties(fixtureId))
+
+                clearFixtureInBatch(fixtureId)
+              })
+
               this.dispatch(removeSceneFromTimeline(sceneId))
             })
           }

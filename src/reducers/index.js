@@ -1,5 +1,6 @@
 import update from '../../node_modules/immutability-helper/index.js'
 import * as constants from '../constants/index.js'
+import { clearFixtureInBatch } from '../utils/index.js'
 
 /*
  *
@@ -252,6 +253,16 @@ export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtur
 
 
       // return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties, shit: new Date()} } } })
+    }
+
+    case constants.RESET_FIXTURE_PROPERTIES: {
+      // Clean up the fixtureBatch
+      clearFixtureInBatch(fixtureId)
+
+      const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
+
+      // @TODO: Only remove the properties that are part of the scene / animation
+      return update(state, { [fixtureIndex]: { properties: { $set: {} } } })
     }
 
     case constants.REMOVE_FIXTURE:
