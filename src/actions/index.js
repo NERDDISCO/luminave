@@ -1,4 +1,6 @@
 import * as constants from '../constants/index.js'
+import * as selectors from '../selectors/index.js'
+import * as utils from '../utils/index.js'
 
 /*
  *
@@ -329,6 +331,24 @@ export const removeSceneFromTimeline = sceneId => ({
   sceneId,
   type: constants.REMOVE_SCENE_FROM_TIMELINE
 })
+
+/*
+ * Remove a scene fromt he timeline and also reset all fixtures assigned to that scene
+ */
+export const removeSceneFromTimelineAndResetFixtures = sceneId => {
+  return (dispatch, getState) => {
+
+    // Get the fixtures of the scene
+    selectors.getScene(getState(), { sceneId }).fixtures.map(fixtureId => {
+      // Reset the propeties of the fixture in the state & batch
+      dispatch(resetFixtureProperties(fixtureId))
+      utils.clearFixtureInBatch(fixtureId)
+    })
+
+    // Remove the scene from the timelline
+    dispatch(removeSceneFromTimeline(sceneId))
+  }
+}
 
 /*
  * Set live mode
