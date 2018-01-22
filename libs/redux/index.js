@@ -6,3 +6,4 @@ export default redux
 
 export const createStore = redux.createStore
 export const combineReducers = redux.combineReducers
+export const applyMiddleware = redux.applyMiddleware
