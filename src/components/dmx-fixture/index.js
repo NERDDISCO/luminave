@@ -1,7 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { uuid } from '../../../libs/abcq/uuid.js'
-import { setChannel, addFixture, removeFixture, setChannels, sendUniverseToUsb, setFixtureProperties } from '../../actions/index.js'
+import { setChannel, addFixture, removeFixture, setChannels, sendUniverseToUsb, sendUniverseToFivetwelve, setFixtureProperties } from '../../actions/index.js'
 import DmxDevice from './DmxDevice.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../dmx-fixture-property/index.js'
@@ -118,6 +118,9 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
 
     // Send the universe to the USB DMX controller
     this.dispatch(sendUniverseToUsb(new Date()))
+
+    // Send the universe to fivetwelve
+    this.dispatch(sendUniverseToFivetwelve(new Date()))
   }
 
   /*
