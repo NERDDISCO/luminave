@@ -30,9 +30,8 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
   }
 
   handleKeyframeSubmit(e) {
-    // Prevent sending data to server & reset all fields
+    // Prevent sending data to server
     e.preventDefault()
-    e.target.reset()
 
     this.dispatch(addKeyframe(this.index, this.step, this.property, this.value))
   }
