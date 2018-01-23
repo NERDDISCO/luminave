@@ -26,8 +26,6 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       })
 
       this.fixture = fixture
-      this._properties = fixture.getParamsList()
-      this.offset = this.address - 1
    });
   }
 
@@ -38,9 +36,13 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       type: { type: String },
       address: { type: Number },
       universe: { type: Number },
+      fixture : { type: Object },
       properties: {
         type: Object
-        // observer: 'changedProperties'
+      },
+      _properties: {
+        type: Object,
+        computed: 'computeProperties(fixture)'
       },
       fixtures: {
         type: Array,
@@ -65,6 +67,11 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
         observer: 'observeTimelineManager'
       },
     }
+  }
+
+  // @TODO: I thought this might fix https://github.com/NERDDISCO/VisionLord/issues/11, but it doesn't
+  computeProperties(fixture) {
+    return fixture.getParamsList()
   }
 
   observeTimelineManager() {
