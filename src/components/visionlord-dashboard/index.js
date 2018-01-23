@@ -15,6 +15,7 @@ import '../timeline-manager/index.js'
 import '../live-mode/index.js'
 import '../modv-manager/index.js'
 import '../fivetwelve-manager/index.js'
+import '../config-manager/index.js'
 
 class VisionLordDashboard extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -52,6 +53,7 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
       <div class="grid">
         <usb-dmx-manager></usb-dmx-manager>
         <storage-manager></storage-manager>
+        <config-manager></config-manager>
 
         <div>
           <bpm-meter bpm="[[bpm]]"></bpm-meter>
