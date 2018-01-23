@@ -100,11 +100,20 @@ export const runScene = sceneIndex => ({
 })
 
 /*
- * Remove a DMX512 universe
+ * Remove a scene
  */
 export const removeScene = sceneIndex => ({
   sceneIndex,
   type: constants.REMOVE_SCENE
+})
+
+/*
+ * Set the name of a scene
+ */
+export const setSceneName = (sceneIndex, sceneName) => ({
+  sceneIndex,
+  sceneName,
+  type: constants.SET_SCENE_NAME
 })
 
 /*

@@ -13,8 +13,28 @@ class SceneManager extends ReduxMixin(PolymerElement) {
       scenes: {
         type: Array,
         statePath: 'sceneManager'
+      },
+      sortedScenes: {
+        type: Array,
+        computed: 'sortScenes(scenes)'
       }
     }
+  }
+
+  sortScenes(scenes) {
+    return scenes.sort((a, b) => {
+      const nameA = a.name.toUpperCase()
+      const nameB = b.name.toUpperCase()
+
+      if (nameA < nameB) {
+        return -1
+      } else if (nameA > nameB) {
+        return 1
+      }
+
+      // names must be equal
+      return 0
+    })
   }
 
   runScene(e) {
@@ -81,13 +101,8 @@ class SceneManager extends ReduxMixin(PolymerElement) {
 
       <div class="grid">
 
-        <template is="dom-repeat" items="{{scenes}}" as="scene">
+        <template is="dom-repeat" items="{{sortedScenes}}" as="scene">
           <div>
-
-            <h3>[[scene.name]] ([[scene.duration]])</h3>
-
-            <button on-click="removeScene" data-index$="[[index]]">Remove</button>
-            <button on-click="runScene" scene-id="[[scene.id]]">Run</button>
 
             <scene-bee
               index$="[[index]]"

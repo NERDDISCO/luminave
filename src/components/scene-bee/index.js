@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene } from '../../actions/index.js'
+import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene } from '../../actions/index.js'
 import '../fixture-list/index.js'
 import '../animation-list/index.js'
 
@@ -57,9 +57,19 @@ class SceneBee extends ReduxMixin(PolymerElement) {
     this.dispatch(removeFixtureFromScene(this.index, fixtureIndex))
   }
 
+  handleNameChange(e) {
+    const sceneName = e.target.value
+    this.dispatch(setSceneName(this.index, sceneName))
+  }
+
   static get template() {
     return `
       <div>
+        <h3><input name="name" type="text" on-change="handleNameChange" value="[[name]]"></input> ([[duration]])</h3>
+
+        <button on-click="removeScene" data-index$="[[index]]">Remove</button>
+        <button on-click="runScene" scene-id="[[scene.id]]">Run</button>
+
         <h4>Animations</h4>
         <animation-list
           on-add-animation="handleAddAnimation"
