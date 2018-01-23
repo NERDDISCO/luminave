@@ -112,6 +112,11 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
         .item {
           --on: calc(255 * var(--isActive));
           background: rgb( var(--on), 255, var(--on));
+          border: 1px solid rgba(0, 0, 0, 0.25);
+          margin: 0.05em;
+          min-height: 1.5em;
+          color: #000;
+          text-align: center;
         }
 
         .item .learn {
@@ -124,9 +129,9 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
 
         <template is="dom-repeat" items={{_toArray(mapping)}} as="element">
           <div class="item" style="{{computeItemVars(element, index, learnIndex)}}">
-            [[_toLabel(index)]]
 
             <template is="dom-if" if="[[editMode]]">
+              [[_toLabel(index)]]
               <br>
               Note: [[element.note]]
               <button class="learn" on-click="handleLearn" data-index$="[[index]]">Learn</button>

@@ -57,6 +57,12 @@ class SceneManager extends ReduxMixin(PolymerElement) {
           margin-top: 1em;
           border-top: 2px solid var(--background-darker);
         }
+        .grid {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+          flex-wrap: wrap;
+        }
       </style>
 
       <h2>Scenes</h2>
@@ -73,21 +79,27 @@ class SceneManager extends ReduxMixin(PolymerElement) {
 
 
 
-      <template is="dom-repeat" items="{{scenes}}" as="scene">
+      <div class="grid">
 
-        <h3>[[scene.name]] ([[scene.duration]])</h3>
+        <template is="dom-repeat" items="{{scenes}}" as="scene">
+          <div>
 
-        <button on-click="removeScene" data-index$="[[index]]">Remove</button>
-        <button on-click="runScene" scene-id="[[scene.id]]">Run</button>
+            <h3>[[scene.name]] ([[scene.duration]])</h3>
 
-        <scene-bee
-          index$="[[index]]"
-          name="[[scene.name]]"
-          duration="[[scene.duration]]"
-          fixtures="[[scene.fixtures]]"
-          animations="[[scene.animations]]"></scene-bee>
+            <button on-click="removeScene" data-index$="[[index]]">Remove</button>
+            <button on-click="runScene" scene-id="[[scene.id]]">Run</button>
 
-      </template>
+            <scene-bee
+              index$="[[index]]"
+              name="[[scene.name]]"
+              duration="[[scene.duration]]"
+              fixtures="[[scene.fixtures]]"
+              animations="[[scene.animations]]"></scene-bee>
+
+          </div>
+        </template>
+
+      </div>
     `
   }
 }

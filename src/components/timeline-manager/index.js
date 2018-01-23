@@ -130,6 +130,14 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
+      <style>
+        .grid {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-around;
+        }
+      </style>
+
       <h2>Timeline</h2>
 
       <button on-click="handlePlay">[[playLabel]]</button>
@@ -138,9 +146,11 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
       <br>
 
-      <template is="dom-repeat" items="[[timelineManager.scenes]]" as="sceneId">
-        <timeline-scene scene$="[[getScene(sceneId)]]"></timeline-scene>
-      </template>
+      <div class="grid">
+        <template is="dom-repeat" items="[[timelineManager.scenes]]" as="sceneId">
+          <timeline-scene scene$="[[getScene(sceneId)]]"></timeline-scene>
+        </template>
+      </div>
     `
   }
 }

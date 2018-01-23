@@ -56,6 +56,18 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
+    <style>
+      .grid {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        flex-wrap: wrap;
+      }
+      .animation {
+        width: 30vw;
+      }
+    </style>
+
       <h2>Animations</h2>
 
       <form on-submit="handleSubmit">
@@ -68,21 +80,25 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
         <button type="submit">Add animation</button>
       </form>
 
-      <template is="dom-repeat" items="{{animations}}" as="animation">
-        <div>
-          <h3>[[animation.name]] (duration: [[animation.duration]])</h3>
+      <div class="grid">
 
-          <button on-click="runAnimation" data-index$="[[index]]">Run</button>
-          <button on-click="removeAnimation" data-index$="[[index]]">Remove</button>
+        <template is="dom-repeat" items="{{animations}}" as="animation">
+          <div class="animation">
+            <h3>[[animation.name]] (duration: [[animation.duration]])</h3>
 
-          <animation-bee
-            index$="[[index]]"
-            name="[[animation.name]]"
-            duration="[[animation.duration]]"
-            keyframes="[[animation.keyframes]]""></animation-bee>
+            <button on-click="runAnimation" data-index$="[[index]]">Run</button>
+            <button on-click="removeAnimation" data-index$="[[index]]">Remove</button>
 
-        </div>
-      </template>
+            <animation-bee
+              index$="[[index]]"
+              name="[[animation.name]]"
+              duration="[[animation.duration]]"
+              keyframes="[[animation.keyframes]]""></animation-bee>
+
+          </div>
+        </template>
+
+      </div>
     `
   }
 }

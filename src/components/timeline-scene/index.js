@@ -28,7 +28,7 @@ class TimelineScene extends ReduxMixin(PolymerElement) {
   static get template() {
     return `
       <div>
-        <h3>[[scene.name]] | [[scene.duration]]</h3>
+        <h3>[[scene.name]]</h3>
 
         <template is="dom-repeat" items="[[scene.animations]]" as="animationId">
           <timeline-animation
