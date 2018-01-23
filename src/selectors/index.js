@@ -11,3 +11,7 @@
  export const getScene = (state, properties) => {
    return state.sceneManager.filter(scene => scene.id === properties.sceneId)[0]
  }
+
+ export const getAllFixtures = state => {
+   return state.fixtureManager
+ }

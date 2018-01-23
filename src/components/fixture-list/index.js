@@ -14,16 +14,23 @@ class FixtureList extends PolymerElement {
   }
 
   handleFixtureSubmit(e) {
-    this.dispatchEvent(new CustomEvent('add-fixture', {
+
+    const { path } = e
+    const [ form ] = path
+    const [ select ] = form
+
+    const fixtureIds = [...select.selectedOptions].map(fixture => fixture.value)
+
+    this.dispatchEvent(new CustomEvent('add-fixtures', {
       detail: {
         event: e,
-        fixtureId: this.fixtureId
+        fixtureIds
       }
     }))
   }
 
-  handleSelectedFixture(e) {
-    this.fixtureId = e.target.selectedOptions[0].value
+  handleSelectedFixtures(e) {
+    this.fixtureIds = e.target.selectedOptions
   }
 
   handleRemoveFixture(e) {
@@ -52,7 +59,7 @@ class FixtureList extends PolymerElement {
       </style>
 
       <form on-submit="handleFixtureSubmit">
-        <select name="type" on-change="handleSelectedFixture" required>
+        <select name="type" on-change="handleSelectedFixtures" required multiple>
           <option value=""></option>
 
           <template is="dom-repeat" items="{{fixtureManager}}" as="fixture">

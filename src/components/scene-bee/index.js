@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { addAnimationToScene, addFixtureToScene, removeFixtureFromScene, removeAnimationFromScene } from '../../actions/index.js'
+import { addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene } from '../../actions/index.js'
 import '../fixture-list/index.js'
 import '../animation-list/index.js'
 
@@ -42,14 +42,13 @@ class SceneBee extends ReduxMixin(PolymerElement) {
     this.dispatch(removeAnimationFromScene(this.index, animationIndex))
   }
 
-  handleAddFixture(e) {
-    const { event, fixtureId } = e.detail
+  handleAddFixtures(e) {
+    const { event, fixtureIds } = e.detail
 
     // Prevent sending data to server & reset all fields
     event.preventDefault()
-    event.target.reset()
 
-    this.dispatch(addFixtureToScene(this.index, fixtureId))
+    this.dispatch(addFixturesToScene(this.index, fixtureIds))
   }
 
   handleRemoveFixture(e) {
@@ -72,7 +71,7 @@ class SceneBee extends ReduxMixin(PolymerElement) {
 
         <h4>Fixtures</h4>
         <fixture-list
-          on-add-fixture="handleAddFixture"
+          on-add-fixtures="handleAddFixtures"
           on-remove-fixture="handleRemoveFixture"
           data-index$="[[index]]"
           fixtures="{{fixtures}}"
