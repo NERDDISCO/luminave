@@ -2,7 +2,6 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import ReduxMixin from '../../reduxStore.js'
 import { setFixtureProperties } from '../../actions/index.js'
 import { addToFixtureBatch } from '../../utils/index.js'
-// import KeytimeDeluxe from '/libs/keytime/KeytimeDeluxe.js'
 
 /*
  * Handle an animation in a timeline
@@ -26,17 +25,11 @@ class TimelineAnimation extends ReduxMixin(PolymerElement) {
         statePath: 'timelineManager.progress',
         observer: 'observeTimelineManager'
       },
-//      timeline: {
-//        type: Object,
-//        computed: 'computeTimeline(animation.keyframes)'
-//      }
+      timeline: {
+        type: Object,
+        computed: 'computeTimeline(animation.keyframes)'
+      }
     }
-  }
-
-  ready() {
-    super.ready()
-
-    this.timeline = this.computeTimeline(this.animation.keyframes)
   }
 
   observeTimelineManager() {
@@ -105,9 +98,7 @@ class TimelineAnimation extends ReduxMixin(PolymerElement) {
       return property
     })
 
-    const shit = new keytime(timeline)
-
-    return shit
+    return new keytime(timeline)
   }
 
   _toArray(object) {
@@ -132,29 +123,8 @@ class TimelineAnimation extends ReduxMixin(PolymerElement) {
     return progress
   }
 
-  // changedProgress() {
-  //
-  //   if (this.timeline === undefined) return
-  //
-  //   // console.log('timelineAnimation RIGHT', JSON.stringify(this.getState().fixtureManager[0].properties.color))
-  //
-  //   // @TODO: This is wrong
-  //   const interpolatedProperties = this.timeline.values(this.progress)
-  //
-  //   // console.log('timelineAnimation WRONG', JSON.stringify(this.getState().fixtureManager[0].properties.color))
-  //
-  //
-  //   for (let i = 0; i < this.fixtureIds.length; i++) {
-  //     this.dispatch(setFixtureProperties(this.fixtureIds[i], interpolatedProperties))
-  //   }
-  // }
-
   static get template() {
-    return `
-      <div>
-        <h4>[[animation.name]]</h4>
-      </div>
-    `
+    return ``
   }
 }
 
