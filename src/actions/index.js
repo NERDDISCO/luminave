@@ -135,6 +135,15 @@ export const addFixtureToScene = (sceneIndex, fixtureId) => ({
 })
 
 /*
+ * Add a fixtures to the scene
+ */
+export const addFixturesToScene = (sceneIndex, fixtureIds) => {
+  return (dispatch, getState) => {
+    fixtureIds.map(fixtureId => dispatch(addFixtureToScene(sceneIndex, fixtureId)))
+  }
+}
+
+/*
  * Add a fixture to the scene
  */
 export const removeFixtureFromScene = (sceneIndex, fixtureIndex) => ({
@@ -142,6 +151,23 @@ export const removeFixtureFromScene = (sceneIndex, fixtureIndex) => ({
   fixtureIndex,
   type: constants.REMOVE_FIXTURE_FROM_SCENE
 })
+
+
+/*
+ * Reset all properties of all fixtures
+ */
+export const resetAllFixtures = () => {
+  return (dispatch, getState) => {
+
+    // Get the fixtures of the scene
+    selectors.getAllFixtures(getState(), {}).map(fixture => {
+      utils.clearFixtureInBatch(fixture.id)
+
+      // Reset the propeties of the fixture in the state & batch
+      dispatch(resetFixtureProperties(fixture.id))
+    })
+  }
+}
 
 /*
  * Add a animation
@@ -340,9 +366,10 @@ export const removeSceneFromTimelineAndResetFixtures = sceneId => {
 
     // Get the fixtures of the scene
     selectors.getScene(getState(), { sceneId }).fixtures.map(fixtureId => {
+      utils.clearFixtureInBatch(fixtureId)
+
       // Reset the propeties of the fixture in the state & batch
       dispatch(resetFixtureProperties(fixtureId))
-      utils.clearFixtureInBatch(fixtureId)
     })
 
     // Remove the scene from the timelline
