@@ -169,10 +169,12 @@ export const sceneManager = (state = [], { type, scene, sceneIndex, sceneName, a
 /*
  * Handle the animations
  */
-export const animationManager = (state = [], { type, animation, animationIndex, keyframeStep, keyframeProperty, keyframeValue }) => {
+export const animationManager = (state = [], { type, animation, animationIndex, animationName, keyframeStep, keyframeProperty, keyframeValue }) => {
   switch (type) {
     case constants.ADD_ANIMATION:
       return update(state, { $push: [animation] })
+    case constants.SET_ANIMATION_NAME:
+      return update(state, { [animationIndex]: { name: { $set: animationName } } })
     case constants.ADD_KEYFRAME: {
 
       // Is not a number
