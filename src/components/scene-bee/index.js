@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene } from '../../actions/index.js'
+import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene } from '../../actions/index.js'
 import '../fixture-list/index.js'
 import '../animation-list/index.js'
 
@@ -12,6 +12,7 @@ class SceneBee extends ReduxMixin(PolymerElement) {
     return {
       name: String,
       duration: Number,
+      id: String,
       index: Number,
       fixtures: Array,
       fixtureManager: {
@@ -24,6 +25,15 @@ class SceneBee extends ReduxMixin(PolymerElement) {
         statePath: 'animationManager'
       }
     }
+  }
+
+  runScene(e) {
+    this.dispatch(addSceneToTimeline(this.id))
+  }
+
+  removeScene(e) {
+    const { dataset } = e.target
+    this.dispatch(removeScene(parseInt(dataset.index, 10)))
   }
 
   handleAddAnimation(e) {

@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { addKeyframe, setAnimationName } from '../../actions/index.js'
+import { addKeyframe, setAnimationName, removeAnimation } from '../../actions/index.js'
 import { FIXTURE_PROPERTIES } from '../../constants/index.js'
 import '../keyframe-grid/index.js'
 
@@ -27,6 +27,10 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
         statePath: 'animationManager'
       }
     }
+  }
+
+  removeAnimation(e) {
+    this.dispatch(removeAnimation(parseInt(this.index, 10)))
   }
 
   handleKeyframeSubmit(e) {
