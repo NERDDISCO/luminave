@@ -202,6 +202,17 @@ export const removeAnimation = animationIndex => ({
   type: constants.REMOVE_ANIMATION
 })
 
+
+/*
+ * Set the name of a scene
+ */
+export const setAnimationName = (animationIndex, animationName) => ({
+  animationIndex,
+  animationName,
+  type: constants.SET_ANIMATION_NAME
+})
+
+
 /*
  * Add a keyframe
  */

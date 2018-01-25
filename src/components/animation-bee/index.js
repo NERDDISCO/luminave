@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { addKeyframe } from '../../actions/index.js'
+import { addKeyframe, setAnimationName } from '../../actions/index.js'
 import { FIXTURE_PROPERTIES } from '../../constants/index.js'
 import '../keyframe-grid/index.js'
 
@@ -48,28 +48,47 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
     this.value = e.target.value
   }
 
+  handleNameChange(e) {
+    const animationName = e.target.value
+    this.dispatch(setAnimationName(this.index, animationName))
+  }
+
   static get template() {
     return `
+      <style>
+        .name {
+          display: inline-block;
+          width: 100%;
+          margin: 0;
+          padding: .35em .15em;
+          border: 0;
+          background: rgba(0, 0, 0, 1);
+          color: #fff;
+        }
+      </style>
+
       <div>
-        <h4>Keyframes</h4>
+        <input class="name" name="name" type="text" on-change="handleNameChange" value="[[name]]"></input>
+        <button on-click="removeAnimation" data-index$="[[index]]">Remove</button>
+
+        <br><br>
 
         <form on-submit="handleKeyframeSubmit">
-          <label for="name">Step</label>
-          <input name="name" type="text" on-change="handleStep" required></input>
+          <input name="step" type="number" min="0" max="1" step="any" on-change="handleStep" required placeholder="Step"></input>
 
-          <label for="property">Property</label>
           <select name="property" on-change="handleSelectedProperty" required>
-            <option value=""></option>
+            <option value="" disabled selected>Property</option>
             <template is="dom-repeat" items="{{properties}}" as="property">
               <option value="[[property]]">[[property]]</option>
             </template>
           </select>
 
-          <label for="value">Value</label>
-          <input name="value" type="text" on-change="handleValue" required></input>
+          <input name="value" type="text" on-change="handleValue" required placeholder="Value"></input>
 
           <button type="submit">Add keyframe</button>
         </form>
+
+        <br>
 
         <keyframe-grid keyframes="{{keyframes}}"></keyframe-grid>
       </div>
