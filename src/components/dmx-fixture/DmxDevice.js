@@ -48,7 +48,7 @@ export default class DmxDevice extends fivetwelve.DmxDevice {
 
     // console.log('setChannelValue', this.universe, this.bufferOffset + channelNumber - 1, value)
 
-    addToBatch(this.bufferOffset + channelNumber - 1, Math.floor(value))
+    addToBatch(this.bufferOffset + channelNumber - 1, Math.round(value))
 
     //store.dispatch(setChannel(this.universe, this.bufferOffset + channelNumber - 1, value))
   }
