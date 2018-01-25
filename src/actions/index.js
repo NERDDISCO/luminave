@@ -169,7 +169,7 @@ export const resetAllFixtures = () => {
   return (dispatch, getState) => {
 
     // Get the fixtures of the scene
-    selectors.getAllFixtures(getState(), {}).map(fixture => {
+    selectors.getFixtures(getState()).map(fixture => {
       utils.clearFixtureInBatch(fixture.id)
 
       // Reset the propeties of the fixture in the state & batch
