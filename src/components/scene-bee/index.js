@@ -64,8 +64,24 @@ class SceneBee extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
+    <style>
+      h4 {
+        margin: 0.25em 0;
+      }
+
+      .name {
+        display: inline-block;
+        width: 100%;
+        margin: 0;
+        padding: .35em .15em;
+        border: 0;
+        background: rgba(0, 0, 0, 1);
+        color: #fff;
+      }
+    </style>
+
       <div>
-        <h3><input name="name" type="text" on-change="handleNameChange" value="[[name]]"></input> ([[duration]])</h3>
+        <input class="name" name="name" type="text" on-change="handleNameChange" value="[[name]]"></input>
 
         <button on-click="removeScene" data-index$="[[index]]">Remove</button>
         <button on-click="runScene" scene-id="[[scene.id]]">Run</button>

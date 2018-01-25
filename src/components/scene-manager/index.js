@@ -47,9 +47,8 @@ class SceneManager extends ReduxMixin(PolymerElement) {
   }
 
   handleSubmit(e) {
-    // Prevent sending data to server & reset all fields
+    // Prevent sending data to server
     e.preventDefault()
-    e.target.reset()
 
     this.dispatch(addScene({
       id: uuidV1(),
@@ -72,16 +71,17 @@ class SceneManager extends ReduxMixin(PolymerElement) {
   static get template() {
     return `
       <style>
-        h3 {
-          margin-bottom: 0em;
-          margin-top: 1em;
-          border-top: 2px solid var(--background-darker);
+        .container {
+          --width: 6;
+          display: grid;
+          grid-template-columns: repeat(var(--width), auto);
         }
-        .grid {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-around;
-          flex-wrap: wrap;
+
+        .item {
+          border: 1px solid rgba(0, 0, 0, 0.25);
+          margin: 0.15em;
+          min-height: 1.5em;
+          overflow: hidden;
         }
       </style>
 
@@ -99,10 +99,10 @@ class SceneManager extends ReduxMixin(PolymerElement) {
 
 
 
-      <div class="grid">
+      <div class="container">
 
         <template is="dom-repeat" items="{{sortedScenes}}" as="scene">
-          <div>
+          <div class="item">
 
             <scene-bee
               index$="[[index]]"

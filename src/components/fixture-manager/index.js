@@ -74,22 +74,21 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
+    <style>
+      .grid {
+        width: 100vw;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .fixture {
+        display: block;
+        border: 1px solid var(--color-lighter);
+        margin: 0 0 .25em 0;
+      }
+    </style>
+
       <template is="dom-if" if="[[editMode]]">
-
-        <style>
-          .grid {
-            width: 100vw;
-            display: flex;
-            flex-direction: column;
-          }
-
-          .fixture {
-            display: block;
-            border: 1px solid var(--color-lighter);
-            margin: 0 0 .25em 0;
-          }
-        </style>
-
 
         <h2>Fixtures</h2>
 
