@@ -1,7 +1,8 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
-import { addScene, addSceneToTimeline, removeScene } from '../../actions/index.js'
+import { addScene } from '../../actions/index.js'
+import { getScenesSorted } from '../../selectors/index.js'
 import '../scene-bee/index.js'
 
 /*
@@ -12,38 +13,9 @@ class SceneManager extends ReduxMixin(PolymerElement) {
     return {
       scenes: {
         type: Array,
-        statePath: 'sceneManager'
-      },
-      sortedScenes: {
-        type: Array,
-        computed: 'sortScenes(scenes)'
+        statePath: getScenesSorted
       }
     }
-  }
-
-  sortScenes(scenes) {
-    return scenes.sort((a, b) => {
-      const nameA = a.name.toUpperCase()
-      const nameB = b.name.toUpperCase()
-
-      if (nameA < nameB) {
-        return -1
-      } else if (nameA > nameB) {
-        return 1
-      }
-
-      // names must be equal
-      return 0
-    })
-  }
-
-  runScene(e) {
-    this.dispatch(addSceneToTimeline(e.target.sceneId))
-  }
-
-  removeScene(e) {
-    const { dataset } = e.target
-    this.dispatch(removeScene(parseInt(dataset.index, 10)))
   }
 
   handleSubmit(e) {
@@ -83,6 +55,13 @@ class SceneManager extends ReduxMixin(PolymerElement) {
           min-height: 1.5em;
           overflow: hidden;
         }
+
+        h2 {
+          font-size: 3em;
+          background: #000;
+          color: #fff;
+          padding: .25em;
+        }
       </style>
 
       <h2>Scenes</h2>
@@ -97,16 +76,17 @@ class SceneManager extends ReduxMixin(PolymerElement) {
         <button type="submit">Add scene</button>
       </form>
 
-
+      <br>
 
       <div class="container">
 
-        <template is="dom-repeat" items="{{sortedScenes}}" as="scene">
+        <template is="dom-repeat" items="{{scenes}}" as="scene">
           <div class="item">
 
             <scene-bee
               index$="[[index]]"
               name="[[scene.name]]"
+              id="[[scene.id]]"
               duration="[[scene.duration]]"
               fixtures="[[scene.fixtures]]"
               animations="[[scene.animations]]"></scene-bee>

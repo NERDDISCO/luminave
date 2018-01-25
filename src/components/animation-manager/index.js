@@ -1,7 +1,8 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
-import { addAnimation, runAnimation, removeAnimation } from '../../actions/index.js'
+import { addAnimation } from '../../actions/index.js'
+import { getAnimationsSorted } from '../../selectors/index.js'
 import '../animation-bee/index.js'
 
 /*
@@ -14,7 +15,7 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
     return {
       animations: {
         type: Array,
-        statePath: 'animationManager'
+        statePath: getAnimationsSorted
       }
     }
   }
@@ -22,9 +23,6 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
   handleSubmit(e) {
     // Prevent sending data to server
     e.preventDefault()
-
-    // Reset all fields
-    e.target.reset()
 
     const id = uuidV1()
 
@@ -44,27 +42,20 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
     this.duration = e.target.value
   }
 
-  runAnimation(e) {
-    const { dataset } = e.target
-    this.dispatch(runAnimation(parseInt(dataset.index, 10)))
-  }
-
-  removeAnimation(e) {
-    const { dataset } = e.target
-    this.dispatch(removeAnimation(parseInt(dataset.index, 10)))
-  }
-
   static get template() {
     return `
     <style>
-      .grid {
-        display: flex;
-        flex-direction: row;
-        justify-content: space-around;
-        flex-wrap: wrap;
+      .container {
+        --width: 8;
+        display: grid;
+        grid-template-columns: repeat(var(--width), auto);
       }
-      .animation {
-        width: 30vw;
+
+      .item {
+        border: 1px solid rgba(0, 0, 0, 0.25);
+        margin: 0.15em;
+        min-height: 1.5em;
+        overflow: hidden;
       }
     </style>
 
@@ -80,14 +71,12 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
         <button type="submit">Add animation</button>
       </form>
 
-      <div class="grid">
+      <br>
+
+      <div class="container">
 
         <template is="dom-repeat" items="{{animations}}" as="animation">
-          <div class="animation">
-            <h3>[[animation.name]] (duration: [[animation.duration]])</h3>
-
-            <button on-click="runAnimation" data-index$="[[index]]">Run</button>
-            <button on-click="removeAnimation" data-index$="[[index]]">Remove</button>
+          <div class="item">
 
             <animation-bee
               index$="[[index]]"
