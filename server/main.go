@@ -12,7 +12,7 @@ import (
 var port string
 
 func init() {
-  flag.StringVar(&port, "port", "1337", "Set the HTTP port")
+  flag.StringVar(&port, "port", ":1337", "Set the HTTP port")
 }
 
 func main() {
