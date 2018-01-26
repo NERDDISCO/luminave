@@ -106,7 +106,6 @@ class MidiManager extends ReduxMixin(PolymerElement) {
     return `
     <style>
       .grid {
-        width: 100vw;
         display: flex;
         flex-direction: column;
       }

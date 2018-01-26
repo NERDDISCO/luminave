@@ -117,6 +117,7 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
           min-height: 1.5em;
           color: #000;
           text-align: center;
+          overflow: hidden;
         }
 
         .item .learn {

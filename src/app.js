@@ -11,8 +11,19 @@ class VisionLord extends PolymerElement {
 
   static get template() {
     return render(html`
-      <div><h1>VisionLord<h1></div>
+
+      <style>
+        .space {
+          padding: .5em;
+        }
+      </style>
+      
+      <div class="space">
+
+      <h1>VisionLord</h1>
       <visionlord-dashboard></visionlord-dashboard>
+
+      </div>
     `, document.body)
   }
 }

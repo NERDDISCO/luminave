@@ -154,7 +154,6 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
           .grid {
             display: flex;
             flex-direction: row;
-            width: 100vw;
           }
 
           .property {

@@ -76,6 +76,10 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
     }
   }
 
+  normalizeProgress(progress) {
+    return progress.toFixed(2)
+  }
+
   loop() {
     if (this.isPlaying) {
       // @TODO: move into state
@@ -134,21 +138,27 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
         .grid {
           display: flex;
           flex-direction: row;
-          justify-content: space-around;
+        }
+
+        .item {
+          margin: 0 .25em;
         }
       </style>
 
       <h2>Timeline</h2>
 
-      <button on-click="handlePlay">[[playLabel]]</button>
-      [[progress]]
       <button on-click="handleReset">Reset</button>
+      <button on-click="handlePlay">[[playLabel]]</button>
+      [[normalizeProgress(progress)]]
+
 
       <br>
 
       <div class="grid">
         <template is="dom-repeat" items="[[timelineManager.scenes]]" as="sceneId">
-          <timeline-scene scene$="[[getScene(sceneId)]]"></timeline-scene>
+          <div class="item">
+            <timeline-scene scene$="[[getScene(sceneId)]]"></timeline-scene>
+          </div>
         </template>
       </div>
     `
