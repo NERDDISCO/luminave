@@ -364,6 +364,7 @@ The server is written in Go, so if you want to change the code you have to insta
 # Contributors
 
 * [Gregor Adams](https://github.com/pixelass)
+* [Kevin Gimbel](https://github.com/kevingimbel)
 
 # Thanks to
 
