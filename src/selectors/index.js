@@ -5,7 +5,7 @@ import { createSelector } from '/node_modules/reselect/src/index.js'
  * same code to access the state over and over again. It also helps to have a central position
  * on how to access the state
  *
- * @TODO: Use reselect
+ * We also make use of reselect which makes it possible to use a selector as a statePath inside any component
  * -> https://github.com/reactjs/reselect
  * -> https://redux.js.org/docs/recipes/ComputingDerivedData.html
  */

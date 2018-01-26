@@ -7,8 +7,6 @@ import '../animation-bee/index.js'
 
 /*
  * Handle a list of animations
- *
- * @TODO: Use KeytimeDeluxe from './KeytimeDeluxe.js' to handle the keyframe interpolation
  */
 class AnimationManager extends ReduxMixin(PolymerElement) {
   static get properties() {

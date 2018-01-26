@@ -6,9 +6,6 @@ import '../timeline-scene/index.js'
 
 /*
  * Handle the elements in a timeline
- *
- * @TODO: Live mode: true: Added scenes are removed when they are over | false: Scenes stay forever
- * @TODO: Add the same scene behind if the same scene is already in the timeline
  */
 class TimelineManager extends ReduxMixin(PolymerElement) {
   constructor() {

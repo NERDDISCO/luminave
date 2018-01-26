@@ -58,8 +58,6 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
   handleSubmit(e) {
     // Prevent sending data to server
     e.preventDefault()
-    // @TODO Move this into a new component
-    // e.target.reset()
 
     // @TODO: Set the universe individually
     this.dispatch(addFixture({
