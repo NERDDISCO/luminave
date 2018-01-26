@@ -84,6 +84,21 @@ export const removeUniverse = universeIndex => ({
 })
 
 /*
+ * Reset the DMX512 universe and all fixtures
+ */
+export const resetUniverseAndFixtures = universeIndex => {
+  return (dispatch, getState) => {
+    dispatch(resetAllFixtures())
+
+    // Update the channels of universe x with the batch of values collected for the fixtures
+    dispatch(setChannels(universeIndex, [...utils.batch]))
+
+    // Reset the batch so that if a scene is done the values for the attachted fixtures are also reset
+    utils.clearBatch()
+  }
+}
+
+/*
  * Add a scene
  */
 export const addScene = scene => ({

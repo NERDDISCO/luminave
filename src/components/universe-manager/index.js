@@ -1,8 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
-import { setChannels, addUniverse, removeUniverse, resetAllFixtures } from '../../actions/index.js'
-import { batch, clearBatch } from '../../utils/index.js'
+import { addUniverse, removeUniverse, resetUniverseAndFixtures } from '../../actions/index.js'
 
 /*
  *
@@ -27,14 +26,9 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
     this.dispatch(removeUniverse(parseInt(dataset.index, 10)))
   }
 
-  resetUniverse() {
-    this.dispatch(resetAllFixtures())
-
-    // Update the channels of universe 0 with the batch of values collected for the fixtures
-    this.dispatch(setChannels(0, [...batch]))
-
-    // Reset the batch so that if a scene is done the values for the attachted fixtures are also reset
-    clearBatch()
+  resetUniverse(e) {
+    const { dataset } = e.target
+    this.dispatch(resetUniverseAndFixtures(parseInt(dataset.index, 10)))
   }
 
   static get template() {
