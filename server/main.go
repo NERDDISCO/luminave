@@ -1,33 +1,33 @@
 package main
 
 import (
+	"flag"
+	"fmt"
 	"github.com/kabukky/httpscerts"
 	"log"
 	"net/http"
-  "flag"
-  "strings"
-  "fmt"
+	"strings"
 )
 
 var port string
 
 func init() {
-  flag.StringVar(&port, "port", ":1337", "Set the HTTP port")
+	flag.StringVar(&port, "port", ":1337", "Set the HTTP port")
 }
 
 func main() {
-  flag.Parse()
+	flag.Parse()
 
-  // Check if a port is set
-  if port != "" {
-    // Check if there is a colon (:) inside
-    index := strings.Index(port, ":")
-    // If not, prepend one
-    if index == -1 {
-      // Port needs to be in the format ":1234" so we prepand a ":"
-      port = ":" + port
-    }
-  }
+	// Check if a port is set
+	if port != "" {
+		// Check if there is a colon (:) inside
+		index := strings.Index(port, ":")
+		// If not, prepend one
+		if index == -1 {
+			// Port needs to be in the format ":1234" so we prepand a ":"
+			port = ":" + port
+		}
+	}
 
 	// Check if the cert files are available.
 	err := httpscerts.Check("cert.pem", "key.pem")
