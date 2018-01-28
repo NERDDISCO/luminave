@@ -73,7 +73,7 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
         <hr>
       </template>
 
-      <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
+      <midi-manager controllers="{{midiManager}}"></midi-manager>
 
       <template is="dom-if" if="[[editMode]]">
         <hr>
@@ -83,7 +83,7 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
         <hr>
       </template>
 
-      <midi-manager controllers="{{midiManager}}"></midi-manager>
+      <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
     `
   }
 }
