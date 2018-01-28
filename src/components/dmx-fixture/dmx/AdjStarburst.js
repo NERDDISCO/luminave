@@ -13,7 +13,7 @@ export default class AdjStarburst extends DmxDevice {
         yellow: new RangeParam(5, { min: 0, max: 255 }),
         uv: new RangeParam(6, { min: 0, max: 255 }),
 
-        stupidStrobe: new MultiRangeParam(7, {
+        strobeMacro: new MultiRangeParam(7, {
           off: { range: [0, 7] },
           on: { range: [8, 15], values: [8, 15] },
           slowToFast: { range: [16, 131], values: [16, 131] },
