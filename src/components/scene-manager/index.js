@@ -43,8 +43,17 @@ class SceneManager extends ReduxMixin(PolymerElement) {
   static get template() {
     return `
       <style>
-        .container {
+        :host {
           --width: 6;
+        }
+
+        @media (min-width: 1024px) {
+          :host {
+            --width: 10;
+          }
+        }
+
+        .container {
           display: grid;
           grid-template-columns: repeat(var(--width), auto);
         }

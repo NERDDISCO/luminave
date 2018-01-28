@@ -39,12 +39,13 @@ class KeyframeGrid extends PolymerElement {
         }
         .item {
           flex: 0 0 2em;
+          font-size: 0.8em;
         }
       </style>
 
       <div class="items">
         <template is="dom-repeat" items="[[_toArray(keyframes)]]" as="keyframe">
-          <div class="item">step: [[keyframe.step]] <br> [[_toJson(keyframe.value)]]</div>
+          <div class="item">[[keyframe.step]]: [[_toJson(keyframe.value)]]</div>
         </template>
       </div>
     `
