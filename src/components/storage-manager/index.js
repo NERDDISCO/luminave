@@ -45,6 +45,10 @@ class StorageManager extends reduxMixin(PolymerElement) {
     window.location.reload(true)
   }
 
+  printStorage() {
+    console.log(store.getState())
+  }
+
   /*
    * Create a downloadable version of the config by using a Data URL
    * @see https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/Data_URIs
@@ -56,6 +60,7 @@ class StorageManager extends reduxMixin(PolymerElement) {
   static get template() {
     return `
       <!--<button on-click="resetStorage">Reset storage</button>-->
+      <button on-click="printStorage">Print storage</button>
     `
   }
 }
