@@ -182,6 +182,9 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
         // Is RGB?
         if (keyframeValue.includes(',')) {
           keyframeValue = keyframeValue.split(',').map(color => parseInt(color))
+        // Is not empty String
+        } else if (keyframeValue.length !== 0) {
+
         } else {
           console.warn(keyframeValue, 'for', keyframeProperty, 'is not handled')
         }
@@ -226,37 +229,17 @@ export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtur
 
     case constants.SET_ALL_FIXTURE_PROPERTIES: {
 
-      const createFixtureArray = obj => {
-        return Object.keys(obj)
-          .map(fixtureId => ({
-            ...obj[fixtureId],
-            realIndex: state.findIndex(fixture => fixture.id === fixtureId ),
-            fixtureId
-          }))
-          .sort((a, b) => {
-            return a.realIndex > b.realIndex
-          })
-      }
-
-      const fixtureArray = createFixtureArray(fixtureBatch)
-
       return state.map((fixture, i) => {
-        if (fixtureArray[i] !== undefined) {
-          return update(state[i], { properties: { $merge: fixtureArray[i].properties } })
+
+        // fixtureBatch contains properties for the fixture in state
+        if (fixtureBatch[fixture.id] !== undefined) {
+          return update(state[i], { properties: { $merge: fixtureBatch[fixture.id].properties } })
         } else {
           return state[i]
         }
+
       })
 
-      // const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
-      // // Properties might already been set
-      // const oldProperties = state[fixtureIndex].properties
-      //
-      // // @TODO: Only add properties that the device can understand based on the instance
-      // return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties} } } })
-
-
-      // return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties, shit: new Date()} } } })
     }
 
     case constants.RESET_FIXTURE_PROPERTIES: {
