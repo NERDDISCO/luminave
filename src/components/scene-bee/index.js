@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene } from '../../actions/index.js'
+import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene, resetUniverseAndFixtures } from '../../actions/index.js'
 import '../fixture-list/index.js'
 import '../animation-list/index.js'
 
@@ -50,6 +50,10 @@ class SceneBee extends ReduxMixin(PolymerElement) {
     const { animationIndex } = e.detail
 
     this.dispatch(removeAnimationFromScene(this.index, animationIndex))
+
+    // #35: Reset fixture properties after animation was removed
+    // @TODO: Only reset the fixtures that are attached to the scene
+    this.dispatch(resetUniverseAndFixtures(0))
   }
 
   handleAddFixtures(e) {
