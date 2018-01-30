@@ -1,6 +1,5 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { setFixtureProperties } from '../../actions/index.js'
 import { addToFixtureBatch } from '../../utils/index.js'
 
 /*
@@ -12,31 +11,15 @@ class TimelineAnimation extends ReduxMixin(PolymerElement) {
       duration: Number,
       fixtureIds: Array,
       animation: Object,
-      animationManager: {
-        type: Array,
-        statePath: 'animationManager'
-      },
-      fixtureManager: {
+      timeline: {
         type: Object,
-        statePath: 'fixtureManager'
+        computed: 'computeTimeline(animation.keyframes)'
       },
       timelineManagerProgress: {
         type: Object,
         statePath: 'timelineManager.progress',
         observer: 'observeTimelineManager'
-      },
-      timeline: {
-        type: Object,
-        computed: 'computeTimeline(animation.keyframes)'
       }
-    }
-  }
-
-  observeTimelineManager() {
-    const interpolatedProperties = this.timeline.values(this.computeProgress())
-
-    for (let i = 0; i < this.fixtureIds.length; i++) {
-      addToFixtureBatch(this.fixtureIds[i], interpolatedProperties)
     }
   }
 
@@ -112,6 +95,15 @@ class TimelineAnimation extends ReduxMixin(PolymerElement) {
     }
 
     return array.sort((a, b) => a.time - b.time)
+  }
+
+  // @TODO: Performance: Calculate the interpolatedProperties in a pure class instead of using a component
+  observeTimelineManager() {
+    const interpolatedProperties = this.timeline.values(this.computeProgress())
+
+    for (let i = 0; i < this.fixtureIds.length; i++) {
+      addToFixtureBatch(this.fixtureIds[i], interpolatedProperties)
+    }
   }
 
   computeProgress() {

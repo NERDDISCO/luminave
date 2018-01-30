@@ -13,7 +13,13 @@ import { createSelector } from '/node_modules/reselect/src/index.js'
 export const getScenes = state => state.sceneManager
 export const getAnimations = state => state.animationManager
 export const getFixtures = state => state.fixtureManager
+export const getTimeline = state => state.timelineManager
+export const getTimelineSceneIds = state => state.timelineManager.scenes
 
+export const getAnimation = (state, properties) => {
+  return getAnimations(state)
+    .filter(animation => animation.id === properties.animationId)[0]
+}
 
 /*
  * Sort animations by animation.name
@@ -38,7 +44,8 @@ export const getAnimationsSorted = createSelector(
 )
 
 export const getScene = (state, properties) => {
-  return state.sceneManager.filter(scene => scene.id === properties.sceneId)[0]
+  return getScenes(state)
+    .filter(scene => scene.id === properties.sceneId)[0]
 }
 
 /*
@@ -62,3 +69,16 @@ export const getScenesSorted = createSelector(
     })
   }
 )
+
+/*
+ * Get scenes that are part of the timeline
+ */
+ export const getTimelineScenes = createSelector(
+   getScenes,
+   getTimelineSceneIds,
+   (scenes, timelineSceneIds) => {
+     return scenes.filter(scene => {
+       return timelineSceneIds.includes(scene.id)
+     })
+   }
+ )

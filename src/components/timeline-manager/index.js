@@ -3,6 +3,7 @@ import ReduxMixin from '../../reduxStore.js'
 import { playTimeline, resetTimeline, sendUniverseToUsb, sendUniverseToFivetwelve, setTimelineProgress, setChannels, setAllFixtureProperties, resetUniverseAndFixtures } from '../../actions/index.js'
 import { batch, clearBatch, fixtureBatch, clearFixtureBatch } from '/src/utils/index.js'
 import '../timeline-scene/index.js'
+import { getTimelineScenes } from '../../selectors/index.js'
 
 /*
  * Handle the elements in a timeline
@@ -23,13 +24,9 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
         type: Number,
         statePath: 'bpm'
       },
-      timelineManager: {
-        type: Object,
-        statePath: 'timelineManager'
-      },
-      sceneManager: {
+      timelineScenes: {
         type: Array,
-        statePath: 'sceneManager'
+        statePath: getTimelineScenes
       },
       isPlaying: {
         type: Boolean,
@@ -41,10 +38,6 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
         computed: 'computePlayLabel(isPlaying)'
       }
     }
-  }
-
-  getScene(sceneId) {
-    return this.sceneManager.filter(scene => scene.id === sceneId)[0]
   }
 
   computePlayLabel(isPlaying) {
@@ -153,9 +146,9 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
       <br>
 
       <div class="grid">
-        <template is="dom-repeat" items="[[timelineManager.scenes]]" as="sceneId">
+        <template is="dom-repeat" items="[[timelineScenes]]" as="scene">
           <div class="item">
-            <timeline-scene scene$="[[getScene(sceneId)]]"></timeline-scene>
+            <timeline-scene scene$="[[scene]]"></timeline-scene>
           </div>
         </template>
       </div>
