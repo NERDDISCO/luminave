@@ -24,8 +24,13 @@ class MidiManager extends ReduxMixin(PolymerElement) {
       } else {
         // MIDI input / output ports (from a single device) are connected to the computer
         WebMidi.addListener('connected', e => {
-          const { manufacturer, name, id, input } = e
-          console.log('MIDIController added:', 'Manufacturer:', manufacturer, '| Name:', name, '| ID:', id, '| Type:', input === undefined ? 'output' : 'input')
+          const { manufacturer, name, id, type } = e.port
+          console.log('MIDIController added:', 'Manufacturer:', manufacturer, '| Name:', name, '| ID:', id, '| Type:', type)
+        })
+
+        WebMidi.addListener('disconnected', e => {
+          const { manufacturer, name, type, id } = e.port
+          console.log('MIDIController removed:', 'Manufacturer:', manufacturer, '| Name:', name, '| ID:', id, '| Type:', type)
         })
 
         // Web MIDI is enabled

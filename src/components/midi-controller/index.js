@@ -80,19 +80,19 @@ class MidiController extends ReduxMixin(PolymerElement) {
       // MIDI input / output ports (from a single device) are connected to the computer
       WebMidi.addListener('connected', e => {
 
-        const { name, input, output } = e
+        const { port } = e
+        const { name, type } = port
 
-        if (name === this.inputname) {
-          this.input = input
+        // The connected event is triggered twice for input, that's why we need to check
+        // if this.input is already defined or not, @see https://github.com/NERDDISCO/VisionLord/issues/14
+        if (name === this.inputname && type === 'input' && this.input === null) {
+          this.input = port
 
           // Listen to "noteon" events
           this.input.addListener('noteon', 'all', this.noteon.bind(this))
 
-        } else if (name === this.outputname) {
-          // @TODO: This might be a problem, because the output is only added
-          // after the device was attachted, not when the page is reloaded
-          // use WebMidi.getOutputByName(outputname) instead
-          this.output = output
+        } else if (name === this.outputname && type === 'output') {
+          this.output = port
         }
 
         this.connected = true
@@ -100,12 +100,12 @@ class MidiController extends ReduxMixin(PolymerElement) {
 
       // MIDI input / output ports (from a single device) are disconnected to the computer
       WebMidi.addListener('disconnected', e => {
-        const { name } = e
+        const { name, type } = e.port
 
-        if (name === this.inputname) {
-          console.log('removed', 'input')
-        } else if (name === this.outputname) {
-          console.log('removed', 'output')
+        if (name === this.inputname && type === 'input') {
+          this.input = null
+        } else if (name === this.outputname && type === 'output') {
+          this.output = null
         }
 
         this.connected = false
