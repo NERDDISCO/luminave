@@ -1,5 +1,6 @@
 const ws = require('nodejs-websocket')
-const port = 3000
+const [, , _port] = process.argv
+const port = _port || 3000
 
 console.log('Create a WebSocket server on port', port)
 
@@ -8,7 +9,7 @@ console.log('Create a WebSocket server on port', port)
  */
  const server = ws.createServer(connection => {
 
-    console.log('New connection')
+    console.log('New connection by', connection.path)
 
     // Receive data
     connection.on('text', dmxData => {
@@ -24,8 +25,11 @@ console.log('Create a WebSocket server on port', port)
       })
     })
 
-    connection.on('close', (code, reason) => {
-      console.log('Connection closed:', code, reason)
+    /*
+     * WebSocket Close Codes: https://www.iana.org/assignments/websocket/websocket.xml#close-code-number
+     */
+    connection.on('close', code => {
+      console.log('Connection closed by', connection.path, 'with code', code)
     })
 
     connection.on('error', error => {
