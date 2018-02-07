@@ -16,6 +16,15 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
     this.measures = 20
 
     this.timeoutId = undefined
+
+    document.addEventListener('keypress', e => {
+      const { code } = e
+      // console.log(`Keypress code: ${code}`)
+
+      if (code === 'Space') {
+        this.handlePlay()
+      }
+    })
   }
 
   static get properties() {
