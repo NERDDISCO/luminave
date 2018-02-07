@@ -2,7 +2,7 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import ReduxMixin from '../../reduxStore.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../timeline-animation/index.js'
-import { getAnimation } from '../../selectors/index.js'
+import { getAnimation, getSceneAnimations } from '../../selectors/index.js'
 
 /*
  * Handle a scene in a timeline
@@ -10,7 +10,12 @@ import { getAnimation } from '../../selectors/index.js'
 class TimelineScene extends ReduxMixin(PolymerElement) {
   static get properties() {
     return {
-      scene: Object
+      scene: Object,
+      sceneAnimations: {
+        type: Array,
+        // @TODO: This is firing all the time when having at least 2 animations. With 1 it's only firing once
+        statePath: getSceneAnimations
+      }
       // @TODO: This might be resolved after https://github.com/tur-nr/polymer-redux/issues/126 is resolved
       // sceneAnimations: {
       //   type: Array,
@@ -33,7 +38,7 @@ class TimelineScene extends ReduxMixin(PolymerElement) {
     return `
       <div>
         <h3>[[scene.name]]</h3>
-<!--
+        
         <template is="dom-repeat" items="[[sceneAnimations]]" as="animation">
 
           <timeline-animation
@@ -41,8 +46,7 @@ class TimelineScene extends ReduxMixin(PolymerElement) {
             fixture-ids$="[[scene.fixtures]]"
             duration="[[scene.duration]]"></timeline-animation>
         </template>
--->
-
+<!--
         <template is="dom-repeat" items="[[scene.animations]]" as="animationId">
 
           <timeline-animation
@@ -50,7 +54,7 @@ class TimelineScene extends ReduxMixin(PolymerElement) {
             fixture-ids$="[[scene.fixtures]]"
             duration="[[scene.duration]]"></timeline-animation>
         </template>
-
+-->
       </div>
     `
   }

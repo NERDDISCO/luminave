@@ -48,6 +48,8 @@ export const getScene = (state, properties) => {
     .filter(scene => scene.id === properties.sceneId)[0]
 }
 
+export const getSceneId = (state, properties) => properties.scene
+
 /*
  * Sort scenes by scene.name
  */
@@ -66,6 +68,18 @@ export const getScenesSorted = createSelector(
 
       // names must be equal
       return 0
+    })
+  }
+)
+
+/*
+ * Get the animations of a specific scene
+ */
+export const getSceneAnimations = createSelector(
+  getSceneId, getAnimations,
+  (scene, animations) => {
+    return animations.filter(animation => {
+      return scene.animations.includes(animation.id)
     })
   }
 )

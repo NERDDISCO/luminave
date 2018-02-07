@@ -25,7 +25,7 @@
     "immutability-helper": "github:nerddisco/immutability-helper",
     "keytime": "^0.1.1",
     "lit-html": "^0.6.0",
-    "polymer-redux": "git+https://github.com/tur-nr/polymer-redux.git#polymer-3",
+    "polymer-redux": "file:///Users/timpietrusky/Development/workspaces/node/polymer-redux",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
