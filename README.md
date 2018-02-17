@@ -2,17 +2,47 @@
 
 Show light manager for DMX512 shows.
 
-[![polymer 3](https://img.shields.io/badge/polymer-3.0_preview-f50057.svg?style=flat)](https://www.polymer-project.org/blog/2017-08-22-npm-modules)
-[![Redux](https://img.shields.io/badge/Redux-3.7.2-9f33ff.svg?style=flat)](https://redux.js.org/)
+## Stable
 
-[![ES6 modules](https://img.shields.io/badge/ES6-modules-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
-[![WebUSB](https://img.shields.io/badge/API-WebUSB-1e88e5.svg?style=flat)](https://wicg.github.io/webusb/)
-[![WebMIDI](https://img.shields.io/badge/API-WebMIDI-1e88e5.svg?style=flat)](https://webaudio.github.io/web-midi-api/)
-[![WebBluetooth](https://img.shields.io/badge/API-WebBluetooth-1e88e5.svg?style=flat)](https://webbluetoothcg.github.io/web-bluetooth/)
-[![WebSocket](https://img.shields.io/badge/API-WebSocket-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
-[![localStorage](https://img.shields.io/badge/API-localStorage-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+ [![1.0.0](https://img.shields.io/badge/VisionLord-1.0-00f557.svg?style=flat)](https://github.com/NERDDISCO/VisionLord/releases/tag/1.0.0)
 
-## Features
+## Requirements
+
+* Chrome 63+ (native WebUSB)
+* node.js ([How to install](https://nodejs.org/en/download/package-manager/))
+
+## Setup
+
+```bash
+# clone VisionLord
+git clone git@github.com:NERDDISCO/VisionLord.git
+
+# go into directory
+cd VisionLord
+
+# install dependencies
+npm install
+```
+
+## Run
+
+Start the local HTTPS server on https://localhost:1337:
+
+❗️accept the unsigned certificate❗️
+
+```bash
+npm start
+```
+
+### Add WebUSB DMX512 controller
+
+* Connect your Arduino to the computer via USB
+* Click the "USB" button in the top left in VisionLord
+* Choose the "Arduino Leonardo" in the prompt
+
+---
+
+# Features
 
 * Handle one DMX512 universe
 * Add fixtures of different types (using the [DmxDevice](https://github.com/beyondscreen/fivetwelve/blob/master/lib/device/DmxDevice.js) implementation of [fivetwelve](https://github.com/beyondscreen/fivetwelve)) to have an abstraction of the fixture and to be able to use properties instead of setting the values on the channels itself. So for example you can set the `color` property, which accepts an RGB value as `[255, 0, 125]` and fivetwelve knows how to split that into the corresponding channels
@@ -39,11 +69,23 @@ Show light manager for DMX512 shows.
 * Connect to a modV WebSocket bridge to get colors from modV instead of setting the colors yourself
 * Connect to a fivetwelve WebSocket bridge to send your universe to a DMX controller that is controlled by fivetwelve
 
+---
 
-# Use VisionLord
+# Technologies
 
-* Start the local HTTPS server with `npm start` in the root of the project
-* Open https://localhost:1337 in Chrome and accept the unsigned certificate
+[![polymer 3](https://img.shields.io/badge/polymer-3.0_preview-f50057.svg?style=flat)](https://www.polymer-project.org/blog/2017-08-22-npm-modules)
+[![Redux](https://img.shields.io/badge/Redux-3.7.2-9f33ff.svg?style=flat)](https://redux.js.org/)
+
+[![ES6 modules](https://img.shields.io/badge/ES6-modules-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
+[![WebUSB](https://img.shields.io/badge/API-WebUSB-1e88e5.svg?style=flat)](https://wicg.github.io/webusb/)
+[![WebMIDI](https://img.shields.io/badge/API-WebMIDI-1e88e5.svg?style=flat)](https://webaudio.github.io/web-midi-api/)
+[![WebBluetooth](https://img.shields.io/badge/API-WebBluetooth-1e88e5.svg?style=flat)](https://webbluetoothcg.github.io/web-bluetooth/)
+[![WebSocket](https://img.shields.io/badge/API-WebSocket-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
+[![localStorage](https://img.shields.io/badge/API-localStorage-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
+
+---
+
+# Integration
 
 ## modV
 
@@ -96,17 +138,6 @@ You need the following software in order to use VisionLord:
   * chrome://flags/#enable-midi-manager-dynamic-instantiation
 * [Dynamic import()](https://developers.google.com/web/updates/2017/11/dynamic-import)
 
-## node.js
-
-To install the dependencies: [node.js](https://nodejs.org/en/download/package-manager/)
-
-### npm Dependencies
-
-Execute the following command to install all dependencies (for example Polymer) into the `node_modules` folder:
-
-```
-npm install
-```
 
 ## Arduino
 
@@ -119,18 +150,6 @@ To develop Arduino Sketches in C++, push that code into the Arduino and run it: 
 Install the libraries from [arduino/libraries](arduino/libraries) into the [Arduino library folder](https://www.arduino.cc/en/Guide/Libraries#toc5)
 
 Then upgrade the Arduino IDE from USB 2.0 to 2.1: Go into the installation directory of your Arduino IDE and open `hardware/arduino/avr/cores/arduino/USBCore.h`. Then find the line `#define USB_VERSION 0x200` and change `0x200` to `0x210`. (@see [Step 3](https://github.com/webusb/arduino#getting-started))
-
-
-## HTTPS server
-
-*Note:* The server is provided as binary in this repository.
-
-Start the local HTTPS server on https://localhost:1337:
-
-```
-npm start
-```
-
 
 ---
 
@@ -293,44 +312,6 @@ navigator.usb.requestDevice({
   }]
 }).then(device => console.log(device))
 ```
-
----
-
-# Development
-
-## Add new component
-
-* Create a new component in src/components
-* Create new actions in src/action/index.js
-* Create new constants in src/constans/index.js
-* Create new reducers based on your actions in src/reducers/index.js
-* Add you component to the visionlord-dashboard component to load it
-
-
-
----
-
-
-
-# Use VisionLord
-
-* Open the application in your browser: https://localhost:1337
-* Connect your Arduino device to the computer via USB
-* Click the "connect" button in the top left
-* Choose the "Arduino Leonardo" in the prompt
-
-
----
-
-# Concepts
-
-## Send data from the browser to the DMX512 interface
-
-* USBManager gets connection to the Arduino
-* DmxOutput can generate an array[512] out of all DmxDevices
-* The data of DmxOutput is send to Arduino via ArduinoLeonardoETHDriver
-* The ArduinoLeonardoETHDriver has a reference to the DMXPort
-
 
 ---
 
