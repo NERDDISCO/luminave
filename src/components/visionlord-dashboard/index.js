@@ -81,9 +81,8 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
         <hr>
         <animation-manager animations="{{animationManager}}"></animation-manager>
         <hr>
+        <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
       </template>
-
-      <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
     `
   }
 }

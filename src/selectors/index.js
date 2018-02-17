@@ -82,3 +82,11 @@ export const getScenesSorted = createSelector(
      })
    }
  )
+
+/*
+ * Get a specific fixture by using the fixtureId
+ */
+export const getFixture = (state, properties) => {
+  return getFixtures(state)
+    .filter(fixture => fixture.id === properties.fixtureId)[0]
+}

@@ -2,7 +2,7 @@ import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
 import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
 import MultiRangeParam from '/libs/fivetwelve/lib/param/MultiRangeParam.js'
 
-import DmxDevice from '../DmxDevice.js'
+import DmxDevice from './DmxDevice.js'
 
 export default class StairvilleMhX50LedSpotMovingHead extends DmxDevice {
 

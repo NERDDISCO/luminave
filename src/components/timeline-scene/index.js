@@ -10,18 +10,8 @@ import { getAnimation } from '../../selectors/index.js'
 class TimelineScene extends ReduxMixin(PolymerElement) {
   static get properties() {
     return {
-      scene: Object
-      // @TODO: This might be resolved after https://github.com/tur-nr/polymer-redux/issues/126 is resolved
-      // sceneAnimations: {
-      //   type: Array,
-      //   statePath(state) {
-      //     console.log('asdfasdf')
-      //
-      //     return getAnimations(state).filter(animation => {
-      //       return this.scene.animations.includes(animation.id)
-      //     })
-      //   }
-      // }
+      scene: Object,
+      progress: Number
     }
   }
 
@@ -31,24 +21,23 @@ class TimelineScene extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
+      <style>
+        h3 {
+          font-size: 1em;
+          margin: 0;
+        }
+      </style>
+
       <div>
         <h3>[[scene.name]]</h3>
-<!--
-        <template is="dom-repeat" items="[[sceneAnimations]]" as="animation">
-
-          <timeline-animation
-            animation$="[[animation]]"
-            fixture-ids$="[[scene.fixtures]]"
-            duration="[[scene.duration]]"></timeline-animation>
-        </template>
--->
 
         <template is="dom-repeat" items="[[scene.animations]]" as="animationId">
 
           <timeline-animation
             animation$="[[_getAnimation(animationId)]]"
             fixture-ids$="[[scene.fixtures]]"
-            duration="[[scene.duration]]"></timeline-animation>
+            duration="[[scene.duration]]"
+            progress="[[progress]]"></timeline-animation>
         </template>
 
       </div>

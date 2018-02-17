@@ -1,10 +1,9 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
 
 /*
  * A scene list item
  */
-class SceneListItem extends ReduxMixin(PolymerElement) {
+class SceneListItem extends PolymerElement {
   static get properties() {
     return {
       scene: Object

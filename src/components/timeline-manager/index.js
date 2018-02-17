@@ -1,9 +1,10 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { playTimeline, resetTimeline, sendUniverseToUsb, sendUniverseToFivetwelve, setTimelineProgress, setChannels, setAllFixtureProperties, resetUniverseAndFixtures } from '../../actions/index.js'
-import { batch, clearBatch, fixtureBatch, clearFixtureBatch } from '/src/utils/index.js'
+import { batch, clearBatch, fixtureBatch, clearFixtureBatch, colors } from '/src/utils/index.js'
 import '../timeline-scene/index.js'
-import { getTimelineScenes } from '../../selectors/index.js'
+import { getTimelineScenes, getFixtures } from '../../selectors/index.js'
+import * as Fixtures from '../../utils/dmx-fixtures.js'
 
 /*
  * Handle the elements in a timeline
@@ -21,7 +22,9 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
       const { code } = e
       // console.log(`Keypress code: ${code}`)
 
-      if (code === 'Space') {
+      // Start playback when active element is the body
+      if (code === 'Space' && e.target === document.body) {
+        e.preventDefault()
         this.handlePlay()
       }
     })
@@ -45,6 +48,21 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
       playLabel: {
         type: String,
         computed: 'computePlayLabel(isPlaying)'
+      },
+
+      allFixtures: {
+        type: Array,
+        statePath: getFixtures
+      },
+
+      timelineFixtures: {
+        type: Object,
+        computed: 'computeFixtures(allFixtures)'
+      },
+
+      modvConnected: {
+        type: Boolean,
+        statePath: 'modvManager.connected'
       }
     }
   }
@@ -62,10 +80,11 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
     this.dispatch(resetUniverseAndFixtures(0))
   }
 
+  // @TODO: Save the current progress into state
+  // this.dispatch(setTimelineProgress(this.progress))
   observePlaying() {
     if (this.isPlaying) {
       console.log('playing')
-      // @TODO: move into state
       this.time = new Date()
 
       this.loop()
@@ -82,7 +101,6 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
   loop() {
     if (this.isPlaying) {
-      // @TODO: move into state
       this.duration = ~~(60 / this.bpm * 1000 * this.measures)
 
       // const {time, duration, paused} = this.state
@@ -95,22 +113,22 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
         this.time = now
       }
 
-      this.progress = timeCounter * this.measures
+      this.progress = this.normalizeProgress(timeCounter * this.measures)
 
-      // @TODO: Is this a problem?
-      // Everything is waiting for the progress to change:
-      // * dmx-fixture to update the properties of a fixture
-      // * timeline-animation to use the progress to calculate interpolated properties of an animation
-      this.dispatch(setTimelineProgress(this.progress))
+      for (const fixtureId in fixtureBatch) {
+        const interpolatedProperties = fixtureBatch[fixtureId].properties
+        const fixture = this.timelineFixtures[fixtureId]
 
-      // Set the values of all fixtures which triggers setting the value of the specific channels of each fixture
-      // These properties are used in dmx-fixture to update the properties of the fixture instance
-      // dmx-fixture gets triggered when setTimelineProgress is dispatched
-      this.dispatch(setAllFixtureProperties({...fixtureBatch}))
+          for (const propertyName in interpolatedProperties) {
+            // @TODO: only set properties that the fixture understands
+            fixture[propertyName] = interpolatedProperties[propertyName]
+          }
 
-      // Is this really needed? Shouldn't we just reset the batch all the time instead of the properties?
-      // Also: This is removing the properties from the fixtureBatch, but is not resetting the properties on the fixture itself
-      // clearFixtureBatch()
+          // Overwrite the color of every fixture when a connection to modV was established
+          if (this.modvConnected && fixture.hasOwnProperty('color')) {
+            fixture['color'] = colors.modv.average
+          }
+      }
 
       // Update the channels of universe 0 with the batch of values collected for the fixtures
       this.dispatch(setChannels(0, [...batch]))
@@ -119,10 +137,10 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
       clearBatch()
 
       // Send the universe to the UsbDmxManager
-      this.dispatch(sendUniverseToUsb(now))
+      window.dispatchEvent(new CustomEvent('send-universe-to-usb-dmx-controller', { detail: { now } }))
 
       // Send the universe to the FivetwelveManager
-      this.dispatch(sendUniverseToFivetwelve(now))
+      window.dispatchEvent(new CustomEvent('send-universe-to-fivetwelve', { detail: { now } }))
 
       this.timeoutId = setTimeout(() => {
         // Get the next frame
@@ -132,16 +150,39 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
     }
   }
 
+  computeFixtures(allFixtures) {
+    // Clear fixtures
+    const fixtures = {}
+
+    // Get the fixtures based on the fixtureId that is attachted to the scene
+    allFixtures.forEach(fixture => {
+
+      fixtures[fixture.id] =
+        new Fixtures[fixture.type]({
+          address: fixture.address,
+          universe: fixture.universe
+        })
+
+    })
+
+    return fixtures
+  }
+
   static get template() {
     return `
       <style>
         .grid {
           display: flex;
           flex-direction: row;
+
+          min-height: 2em;
+          overflow: scroll;
         }
 
         .item {
-          margin: 0 .25em;
+          margin: 0 .1em;
+          padding: .1em;
+          border: 1px solid #ccc;
         }
       </style>
 
@@ -149,15 +190,14 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
       <button on-click="handleReset">Reset</button>
       <button on-click="handlePlay">[[playLabel]]</button>
-      [[normalizeProgress(progress)]]
-
+      [[progress]]
 
       <br>
 
       <div class="grid">
         <template is="dom-repeat" items="[[timelineScenes]]" as="scene">
           <div class="item">
-            <timeline-scene scene$="[[scene]]"></timeline-scene>
+            <timeline-scene scene$="[[scene]]" progress="[[progress]]"></timeline-scene>
           </div>
         </template>
       </div>

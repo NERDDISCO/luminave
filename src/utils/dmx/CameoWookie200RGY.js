@@ -1,7 +1,7 @@
 import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
 import MultiRangeParam from '/libs/fivetwelve/lib/param/MultiRangeParam.js'
 
-import DmxDevice from '../DmxDevice.js'
+import DmxDevice from './DmxDevice.js'
 
 export default class CameoWookie200RGY extends DmxDevice {
   constructor(options) {

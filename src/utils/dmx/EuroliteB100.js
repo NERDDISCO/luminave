@@ -1,6 +1,6 @@
 import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
 
-import DmxDevice from '../DmxDevice.js'
+import DmxDevice from './DmxDevice.js'
 
 export default class EuroliteB100 extends DmxDevice {
   constructor(options) {

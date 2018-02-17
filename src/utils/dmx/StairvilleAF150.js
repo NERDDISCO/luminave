@@ -1,6 +1,6 @@
 import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
 
-import DmxDevice from '../DmxDevice.js'
+import DmxDevice from './DmxDevice.js'
 
 export default class StairvilleAF150 extends DmxDevice {
   constructor(options) {

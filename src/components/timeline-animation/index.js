@@ -1,24 +1,27 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
 import { addToFixtureBatch } from '../../utils/index.js'
+import { getFixture } from '../../selectors/index.js'
+import { store } from '../../reduxStore.js'
 
 /*
  * Handle an animation in a timeline
  */
-class TimelineAnimation extends ReduxMixin(PolymerElement) {
+class TimelineAnimation extends PolymerElement {
   static get properties() {
     return {
       duration: Number,
+
+      progress: {
+        type: Number,
+        observer: 'observeProgress'
+      },
+
       fixtureIds: Array,
+
       animation: Object,
       timeline: {
         type: Object,
         computed: 'computeTimeline(animation.keyframes)'
-      },
-      timelineManagerProgress: {
-        type: Object,
-        statePath: 'timelineManager.progress',
-        observer: 'observeTimelineManager'
       }
     }
   }
@@ -97,8 +100,7 @@ class TimelineAnimation extends ReduxMixin(PolymerElement) {
     return array.sort((a, b) => a.time - b.time)
   }
 
-  // @TODO: Performance: Calculate the interpolatedProperties in a pure class instead of using a component
-  observeTimelineManager() {
+  observeProgress() {
     const interpolatedProperties = this.timeline.values(this.computeProgress())
 
     for (let i = 0; i < this.fixtureIds.length; i++) {
@@ -107,7 +109,7 @@ class TimelineAnimation extends ReduxMixin(PolymerElement) {
   }
 
   computeProgress() {
-    let progress = this.timelineManagerProgress / this.duration
+    let progress = this.progress / this.duration
     if (progress > 1.0) {
       progress = 1
     }

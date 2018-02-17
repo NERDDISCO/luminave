@@ -1,6 +1,4 @@
-import { store } from '/src/reduxStore.js'
-import { setChannel } from '/src/actions/index.js'
-import { addToBatch } from '/src/utils/index.js'
+import { addToBatch, batch } from '/src/utils/index.js'
 
 import fivetwelve from '/libs/fivetwelve/index.js'
 import DmxParam from '/libs/fivetwelve/lib/param/DmxParam.js'
@@ -30,9 +28,11 @@ export default class DmxDevice extends fivetwelve.DmxDevice {
       throw new Error(`invalid channel-number: ${channelNumber}`, 'INVALID_CHANNEL')
     }
 
-    // console.log('getChannelValue', store.getState().universeManager[0].channels[this.bufferOffset + channelNumber - 1])
+    // console.log('getChannelValue', [...store.getState().universeManager[0].channels], [...batch])
 
-    return store.getState().universeManager[0].channels[this.bufferOffset + channelNumber - 1]
+    return batch[this.bufferOffset + channelNumber - 1]
+
+    // return store.getState().universeManager[0].channels[this.bufferOffset + channelNumber - 1]
   }
 
   /**

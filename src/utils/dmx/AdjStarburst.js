@@ -2,7 +2,7 @@ import RgbParam from '/libs/fivetwelve/lib/param/RgbParam.js'
 import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
 import MultiRangeParam from '/libs/fivetwelve/lib/param/MultiRangeParam.js'
 
-import DmxDevice from '../DmxDevice.js'
+import DmxDevice from './DmxDevice.js'
 
 export default class AdjStarburst extends DmxDevice {
   constructor(options) {

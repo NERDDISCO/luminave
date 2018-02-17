@@ -2,8 +2,7 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import ReduxMixin from '../../reduxStore.js'
 import WebMidi from '../../../libs/webmidi/index.js'
 import '../midi-grid/index.js'
-import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive, resetFixtureProperties } from '../../actions/index.js'
-import { clearFixtureInBatch } from '../../utils/index.js'
+import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
 
 /*
  * Handle MIDI controller
@@ -46,13 +45,9 @@ class MidiController extends ReduxMixin(PolymerElement) {
       height: Number,
       connected: Boolean,
       mapping: Object,
-      sceneManager: {
-        type: Array,
-        statePath: 'sceneManager'
-      },
-      midiManager: {
-        type: Object,
-        statePath: 'midiManager'
+      midiLearning: {
+        type: Number,
+        statePath: 'midiManager.learning'
       },
       midiEnabled: {
         type: Boolean,
@@ -122,16 +117,20 @@ class MidiController extends ReduxMixin(PolymerElement) {
     const [, note, velocity] = data
 
     // Learning is active
-    if (this.midiManager.learning > -1) {
+    if (this.midiLearning > -1) {
 
       const mapping = { note }
-      this.dispatch(addMidiMapping(this.index, this.midiManager.learning, mapping))
+      this.dispatch(addMidiMapping(this.index, this.midiLearning, mapping))
 
       // Disable learning
       this.dispatch(learnMidi(-1))
 
     // Handle mappped input
     } else {
+
+      // @TODO: This is complete bullshit!
+      // Please use a filter or an array or something, but DONT iterate over the mapping EVERY FUCKING TIME OMG
+      // THIS IS ONLY BECAUSE THE MAPPING IS AN OBJECT :/
 
       // I have to do this because I need the mappingIndex AND this.mapping is an object.
       // So please think of something that is easier to read
@@ -156,6 +155,7 @@ class MidiController extends ReduxMixin(PolymerElement) {
             })
           }
 
+          break
         }
       }
 
