@@ -1,3 +1,7 @@
+1.0.0 / 2018-02-17
+==================
+
+  * perf(everything): Optimazations for performance
 
 0.2.0 / 2018-02-17
 ==================
