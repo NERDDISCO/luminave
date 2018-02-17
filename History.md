@@ -1,4 +1,182 @@
 
+0.2.0 / 2018-02-17
+==================
+
+  * feat(timeline): Start playback with space
+  * refactor(config): Added latest scenes & animations
+  * refactor: Port configurable and improved comments
+  * fix(midi): Handle MIDI connect in every situation
+  * fix(webusb): Set initial data to 0
+  * feat(keytime): Interpolate MultiRangeParam
+  * refactor(timeline): Use selectors
+  * fix(scene): Reset fixture when removing animation
+  * refactor(dashboard): Switched positions
+  * feat(storage): Print the current storage
+  * style(browser): Improved styling
+  * refactor(fixture): Renamed stupidStrobe
+  * refactor(dependency): Keytime & buffer
+  * refactor(keytime): Added browser-version of keytime & added improvements
+  * feat(buffer): Added browser-version of buffer
+  * refactor(config): More fixtures, scenes & animations
+  * fix(state): Set correct fixture properties
+  * docs(contributor): Added Kevin Gimbel
+  * Merge pull request #31 from kevingimbel/patch-3/makePortConfigurable
+  * misc(go-fmt): Format code with 'go fmt'
+  * fix(server): Fix port definition to be ':1337' by default
+  * feat(server): Make server port configurable
+  * refactor(todo): Moved TODOs into GitHub
+  * feat(timeline): Reset universe and fixtures
+  * refactor(style): Improved layout
+  * refactor(reselect): Use selectors
+  * refactor(action): Renamed getAllFixtures into getFixtures
+  * build(reselect): Added reselect
+  * refactor(action): Added remove & run
+  * feat(animation): Set animation name
+  * refactor(style): Added grid layout
+  * feat(animation): Set name of animation
+  * fix(keyframe): Use Math.round
+  * feat(scene): Set name of scene
+  * refactor(style): Show components in flexbox
+  * feat(config): Added config-manager
+  * feat(universe): Reset universe
+  * fix(timeline): Reset timeline for animation
+  * feat(scene): Add multiple fixtures
+  * fix(fixture): Attempt to fix #11
+  * refactor(animation): Don't reset the form
+  * feat(fixture): Add / reset fixtures
+  * feat(redux): Added selectors
+  * feat(timeline): Remove scene + fixtures from timeline
+  * feat(state): Added redux-thunk
+  * refactor(fixture): Send universe to fivetwelve
+  * Merge pull request #25 from NERDDISCO/feat/redux
+  * feat(fixture): Reset fixture properties
+  * fix(timeline): Don't trigger another loop
+  * refactor(usb): Clean up
+  * feat(fixture): Added UV property
+  * feat(fivetwelve): Send universe to fivetwelve
+  * docs(fivetwelve): Fixed typo
+  * docs(badge): Added badges
+  * feat(modv): Connect to modV
+  * docs(howto): Added features and howto use modV
+  * docs(modv): Added comments & log messages
+  * refactor(fixture): Set fixture properties
+  * feat(fixture): Check for integer
+  * docs(timeline): Explain the loop
+  * refactor(config): Backup with all fixtures
+  * fix(fixture): Set property
+  * Merge branch 'feat/reduxFUCKINGBROKEN' into feat/redux
+  * perf(fixture): Set all fixture properties at once
+  * perf(modv): modV in global object
+  * refactor(fixture): Clean up
+  * fix(config): Clean & working
+  * refactor(style): Added flex layout
+  * fix(config): Working config
+  * fix(everything): Fixed everything with batches
+  * fix(timeline): Moved progress into animation
+  * refactor(bullshit): bullshit
+  * refactor(everything): super broken
+  * fix(fixture): Initialize fixture in live mode
+  * feat(live): Added live mode
+  * feat(midi): Visualize active MIDI button
+  * feat(timeline): Remove scenes from timeline
+  * feat(midi): Add scene to timeline
+  * feat(timeline): Play scenes in a loop
+  * refactor(animation): Code cleanup
+  * feat(fixture): Set fixture properties
+  * chore(core): Removed old code
+  * docs(bluetooth): Added bluetoothManager idea
+  * feat(animation): Convert keyframes to keytime
+  * chore(eslint): Disabled dot-location
+  * docs(timeline): Handle keyframes
+  * feat(timeline): Handle scenes in a timeline
+  * style(scene): Optimized code
+  * feat(scene): Show list of animations
+  * feat(scene): Show list of fixtures
+  * feat(midi): Show list of scenes
+  * feat(midi): Add scene to MIDI
+  * feat(midi): Change background while learning
+  * docs(config): Added nanoPAD2 configuration
+  * docs(midi): Fixed comment
+  * feat(midi): Learn midi & midi-grid
+  * chore(eslint): Disabled guard-for-in
+  * style(universe): Added headlines
+  * feat(midi): Added midi-controller
+  * feat(midi): Added midi-manager
+  * feat(keyframe): Select property from FIXTURE_PROPERTIES
+  * feat(constant): Moved global lists into constants
+  * refactor(fixture): Simplified addFixture
+  * feat(fixture): Added labels to addFixture
+  * feat(keyframe): Add keyframe to state
+  * chore(eslint): Set max-params to 5
+  * feat(config): VisionLordConfig example
+  * feat(animation): animation-bee and addKeyframe
+  * feat(scene): Set name & duration
+  * refactor(scene): Improved style
+  * docs(animation): Reference data model
+  * refactor(keyframe): Optimization
+  * feat(scene): Added scene-bee component
+  * feat(fixture): Added id
+  * style(dashboard): Seperate the components
+  * feat(animation): Headline
+  * refactor(fixture-manager): Simpliefied fixture creation
+  * feat(fixture): Set name
+  * refactor(data): Changed data model
+  * feat(keyframes): Add and show keyframes
+  * feat(uuid): Generate real UUID v1
+  * refactor(cleanup): Remove unused classes
+  * docs(animation): How does Keytime work
+  * feat(storage): Download storage
+  * feat(animations): Added animation-manager
+  * feat(scenes): Added run button
+  * fix(fixture): Renamed CameoFlatPar1RGBW
+  * fix(localStorage): Unique identifier
+  * feat(flex): Added style
+  * feat(fixture): Transformed into VisionLord style
+  * feat(storage): Added storage-manager
+  * refactor(fixtures): Use spread operator
+  * perf(fixtures): Improved performance
+  * Merge branch 'feat/redux' of github.com:NERDDISCO/VisionLord into feat/redux
+  * Merged.
+  * Merged.
+  * feat(fixtures): Added dmx fixtures
+  * feat(fixtures): Added dmx fixtures
+  * refactor(dashboard): Renamed my-view into visionlord-dashboard
+  * docs(development): How to add a component
+  * feat(fixture-manager): Create a Fixture Manager
+  * refactor(usb): Cleaned up usb-dmx-manager
+  * feat(usb-manager): Moved USB classes to usb-manager
+  * docs(bpm): Added comment for dispatch
+  * refactor(bpm): Renamed bpm to value
+  * style(linter): Syntax cleaning
+  * feat(state): New version of polymer-redux
+  * refactor: Clean up
+  * refactor(usb): Renamed usb to usb-manager
+  * refactor(state): Clean up code
+  * fix(channel-grid): Removed ducktape code
+  * refactor(dependencies): added newer fork of immutability-helper
+  * refactor: use immutability helper
+  * fix(state): set channels on universes
+  * feat(scenes): Added scenes
+  * fix(property): Fixed type
+  * feat(universe): Set channel for universe
+  * feat(universe): Set channel for universe
+  * docs: Basic description
+  * refactor(redux-mixin): Remove unused actions
+  * docs(universe): TODO: Set the channel for a specific universe
+  * refactor(data-binding): One-way data binding
+  * refactor(app): Renamed my-app to visionlord-master
+  * docs(state): How does Redux work
+  * refactor(state): Introduce managers
+  * feat(universe): Add & remove universes
+  * feat(connections): Test usb & bluetooth connect buttons
+  * refactor: Simplified prototype
+  * feat(state): Integrate old components
+  * feat(state): polymer-redux state example
+  * Merge branch 'master' of github.com:NERDDISCO/VisionLord into feat/redux
+  * build(devDependencies): Removed redux-devtools
+  * Merge branch 'master' into feat/redux
+  * Added redux.
+
 0.1.0 / 2018-01-20
 ==================
 
