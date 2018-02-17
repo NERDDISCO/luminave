@@ -10,14 +10,6 @@ class FivetwelveManager extends reduxMixin(PolymerElement) {
 
   static get properties() {
     return {
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      },
       connected: {
         type: Boolean,
         statePath: 'fivetwelveManager.connected'
@@ -26,22 +18,8 @@ class FivetwelveManager extends reduxMixin(PolymerElement) {
       connectedLabel: {
         type: String,
         computed: 'computeConnectedLabel(connected)'
-      },
-      lastTransmission: {
-        type: Object,
-        statePath: 'fivetwelveManager.lastTransmission',
-        observer: 'observeLastTransmission'
       }
     }
-  }
-
-
-  observeLastTransmission() {
-    this.send(0)
-  }
-
-  computeEditMode(live) {
-    return !live
   }
 
   computeConnectedLabel(connected) {
@@ -58,13 +36,34 @@ class FivetwelveManager extends reduxMixin(PolymerElement) {
     if (this.connected) {
       this.createWebsocket()
     }
+
+    window.addEventListener('send-universe-to-fivetwelve', this.listenSendUniverse.bind(this))
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback()
+
+    this.disconnect()
+
+    window.removeEventListener('send-universe-to-fivetwelve', this.listenSendUniverse.bind(this))
+  }
+
+  listenSendUniverse(e) {
+    this.handleSend()
+  }
+
+  disconnect() {
+    // Close active WebSocket connection
+    if (this.connected) {
+      this.socket.close()
+      this.dispatch(connectFivetwelve(false))
+    }
   }
 
   handleClick() {
     // Close active WebSocket connection
     if (this.connected) {
-      this.socket.close()
-      this.dispatch(connectFivetwelve(false))
+      this.disconnect()
 
     // Create new WebSocket connection
     } else {

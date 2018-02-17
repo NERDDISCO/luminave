@@ -21,7 +21,8 @@ export const clearFixtureBatch = () => {
 
 export const clearFixtureInBatch = fixtureId => {
   if (fixtureBatch[fixtureId] !== undefined) {
-    fixtureBatch[fixtureId].properties = {}
+    Reflect.deleteProperty(fixtureBatch, fixtureId)
+    // fixtureBatch[fixtureId].properties = {}
   }
 }
 

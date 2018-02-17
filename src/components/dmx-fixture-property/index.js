@@ -1,5 +1,4 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import { DomIf } from '/node_modules/@polymer/polymer/lib/elements/dom-if.js'
 
@@ -7,7 +6,7 @@ import { DomIf } from '/node_modules/@polymer/polymer/lib/elements/dom-if.js'
 /*
  *
  */
-class DmxFixtureProperty extends ReduxMixin(PolymerElement) {
+class DmxFixtureProperty extends PolymerElement {
 
   static get properties() {
     return {

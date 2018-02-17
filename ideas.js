@@ -1,3 +1,17 @@
+/*
+
+
+* update midi-manager mapping to be an array instead of an object
+ -> BUT what happens with the grid?
+ -> we can't transform the mapping object into an array when it's changing
+ because of the active state of a button when it's pressed. MAYBE save the active state
+ into another element of the midi controller? not into the mapping itself? so
+ the active state can be updated individually and doesn't trigger the mapping 
+
+*/
+
+
+
 ✅ const channels = [...Array(512)].map(() => 0)
 ☀️ const fixtures = [{}, {}]
 // effects.js

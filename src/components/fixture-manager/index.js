@@ -22,20 +22,8 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
       fixtures: {
         type: Array,
         statePath: 'fixtureManager'
-      },
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
       }
     }
-  }
-
-  computeEditMode(live) {
-    return !live
   }
 
   removeFixture(e) {
@@ -85,8 +73,6 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
       }
     </style>
 
-      <template is="dom-if" if="[[editMode]]">
-
         <h2>Fixtures</h2>
 
         <form on-submit="handleSubmit">
@@ -111,8 +97,6 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
         <div class="grid">
 
-      </template>
-
           <template is="dom-repeat" items="[[fixtures]]" as="fixture">
 
               <dmx-fixture
@@ -124,14 +108,10 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
                 address="[[fixture.address]]"
                 universe="[[fixture.universe]]"></dmx-fixture>
 
-              <template is="dom-if" if="[[editMode]]">
                 <button on-click="removeFixture" data-index$="[[index]]">Remove</button>
-              </template>
           </template>
 
-      <template is="dom-if" if="[[editMode]]">
         </div>
-      </template>
     `
   }
 }

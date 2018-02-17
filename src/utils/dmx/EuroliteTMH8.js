@@ -4,7 +4,7 @@ import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
 import MultiRangeParam from '/libs/fivetwelve/lib/param/MultiRangeParam.js'
 import HiResParam from '/libs/fivetwelve/lib/param/HiResParam.js'
 
-import DmxDevice from '../DmxDevice.js'
+import DmxDevice from './DmxDevice.js'
 
 /*
  * @see https://www.thomann.de/gb/eurolite_led_tmh_8_moving_head_spot.htm

@@ -1,7 +1,7 @@
 import RgbParam from '/libs/fivetwelve/lib/param/RgbParam.js'
 import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
 
-import DmxDevice from '../DmxDevice.js'
+import DmxDevice from './DmxDevice.js'
 
 export default class FunGenerationSeParQuadLedRgbUv extends DmxDevice {
   constructor(options) {

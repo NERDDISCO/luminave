@@ -2,7 +2,7 @@ import RgbParam from '/libs/fivetwelve/lib/param/RgbParam.js'
 import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
 import HiResParam from '/libs/fivetwelve/lib/param/HiResParam.js'
 
-import DmxDevice from '../DmxDevice.js'
+import DmxDevice from './DmxDevice.js'
 
 export default class StairvilleBowlBeam604LEDCOBMovingHead extends DmxDevice {
   constructor(options) {

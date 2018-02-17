@@ -179,6 +179,8 @@ export const removeFixtureFromScene = (sceneIndex, fixtureIndex) => ({
 
 /*
  * Reset all properties of all fixtures
+ *
+ * THIS IS DANGEROUS!!! PLEASE DON'T USE IT!
  */
 export const resetAllFixtures = () => {
   return (dispatch, getState) => {
@@ -402,9 +404,6 @@ export const removeSceneFromTimelineAndResetFixtures = sceneId => {
     // Get the fixtures of the scene
     selectors.getScene(getState(), { sceneId }).fixtures.map(fixtureId => {
       utils.clearFixtureInBatch(fixtureId)
-
-      // Reset the propeties of the fixture in the state & batch
-      dispatch(resetFixtureProperties(fixtureId))
     })
 
     // Remove the scene from the timelline

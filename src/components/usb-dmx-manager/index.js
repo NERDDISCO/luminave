@@ -50,17 +50,21 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
       universes: {
         type: Array,
         statePath: 'universeManager'
-      },
-      // This is changing every time someone wants to send the universe to the USB DMX controller
-      lastTransmission: {
-        type: Object,
-        statePath: 'usbManager.lastTransmission',
-        observer: 'observeLastTransmission'
       }
     }
   }
 
-  observeLastTransmission() {
+  connectedCallback() {
+    super.connectedCallback()
+    window.addEventListener('send-universe-to-usb-dmx-controller', this.listenSendUniverse.bind(this))
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback()
+    window.removeEventListener('send-universe-to-usb-dmx-controller', this.listenSendUniverse.bind(this))
+  }
+
+  listenSendUniverse(e) {
     // Send universe 0 to the USB DMX controller
     this.driver.send(this.universes[0].channels)
   }

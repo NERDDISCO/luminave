@@ -1,7 +1,7 @@
 import RgbParam from '/libs/fivetwelve/lib/param/RgbParam.js'
 import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
 
-import DmxDevice from '../DmxDevice.js'
+import DmxDevice from './DmxDevice.js'
 
 /**
  * The Cameo PixBar 600 PRO has 12 LEDs beside each other.
@@ -12,8 +12,12 @@ export default class CameoPixBar600PRO extends DmxDevice {
       params: {
         dimmer: new RangeParam(1, { min: 0, max: 255 }),
         strobe: new RangeParam(2, { min: 0, max: 255 }),
-        color: new RgbParam([3, 4, 5]),
-        uv: new RangeParam(8, { min: 0, max: 255 }), 
+
+        // @TODO: color this hacked, see below
+        // color: new RgbParam([3, 4, 5]),
+
+        // @TODO: color this hacked, see below
+        // uv: new RangeParam(8, { min: 0, max: 255 }),
 
         led1: {
           color: new RgbParam([3, 4, 5]),
@@ -110,7 +114,10 @@ export default class CameoPixBar600PRO extends DmxDevice {
     this.weight = 6
   }
 
-  setColor(value) {
+  /*
+   * Set Color on all LEDs at once
+   */
+  set color(value) {
     this.led1.color = value
     this.led2.color = value
     this.led3.color = value
@@ -125,7 +132,10 @@ export default class CameoPixBar600PRO extends DmxDevice {
     this.led12.color = value
   }
 
-  setUv(value) {
+  /*
+   * Set UV on all LEDs at once
+   */
+  set uv(value) {
     this.led1.uv = value
     this.led2.uv = value
     this.led3.uv = value

@@ -21,11 +21,7 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
       name: String,
       duration: Number,
       index: Number,
-      keyframes: Object,
-      animationManager: {
-        type: Array,
-        statePath: 'animationManager'
-      }
+      keyframes: Object
     }
   }
 

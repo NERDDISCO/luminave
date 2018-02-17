@@ -13,7 +13,7 @@ export const store = createStore(
 )
 
 // @see https://github.com/tur-nr/polymer-redux#polymerredux
-export const reduxMixin = PolymerRedux(store)
+export const reduxMixin = PolymerRedux(store, { enableStateChangedEvent: false })
 
 // ReduxMixin
 // @see https://github.com/tur-nr/polymer-redux#redux-mixin
