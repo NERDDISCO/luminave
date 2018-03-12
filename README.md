@@ -87,20 +87,37 @@ npm start
 
 # Integration
 
+The integrations for modV and Dekk are provided by VisionLord, so running `npm start` will also start the servers to create a connection between VisionLord and Dekk & modV. You can also start them manually
+
 ## modV
 
 If you want to use modV you have to start the local WebSocket server too:
 
 ### In VisionLord
 
-* Go into the `modV` folder
-* Start the server with `npm start`
+* Start the server with `npm run modv-integration`
 * Click the "connect" button of the modV component in the VisionLord UI
 
 ### In modV
 
 * Drop the "grabCanvas" component into the list of modules
-* This should connect to the local WebSocket server
+* This should connect to the local WebSocket server on localhost:3000
+
+
+
+## Dekk
+
+If you want to use [Dekk](https://github.com/sinnerschrader/dekk) you have to start the local WebSocket server too:
+
+### In VisionLord
+
+* Start the server with `npm run dekk-integration`
+* Click the "connect" button of the dekk component in the VisionLord UI
+
+### In dekk
+
+* Connect to the WebSocket server on localhost:3001
+
 
 
 ## fivetwelve
