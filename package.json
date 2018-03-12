@@ -11,7 +11,10 @@
   },
   "scripts": {
     "test": "mocha --recursive test/",
-    "start": "./server/start.sh"
+    "start": "concurrently --kill-others \"npm run server\" \"npm run dekk-integration\" \"npm run modv-integration\"",
+    "server": "./server/start.sh",
+    "dekk-integration": "cd integration/dekk && npm start",
+    "modv-integration": "cd integration/modV && npm start"
   },
   "repository": {
     "type": "git",
@@ -21,6 +24,7 @@
     "@polymer/polymer": "^3.0.0-pre.1",
     "@reactivex/rxjs": "^5.4.3",
     "@webcomponents/webcomponentsjs": "^1.0.13",
+    "concurrently": "^3.5.1",
     "fivetwelve": "^1.0.0-alpha.1",
     "immutability-helper": "github:nerddisco/immutability-helper",
     "keytime": "^0.1.1",
