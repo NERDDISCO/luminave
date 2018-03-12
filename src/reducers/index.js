@@ -73,6 +73,23 @@ export const modvManager = (state = {
 }
 
 /*
+ * Dekk Manager
+ */
+export const dekkManager = (state = {
+    data: {},
+    connected: false
+  }, { type, data, connected }) => {
+  switch (type) {
+    case constants.CONNECT_DEKK:
+      return update(state, { connected: { $set: connected } } )
+    case constants.SET_DEKK_DATA:
+      return update(state, { data: { $set: data } } )
+    default:
+      return state
+  }
+}
+
+/*
  * fivetwelve Manager
  */
 export const fivetwelveManager = (state = {

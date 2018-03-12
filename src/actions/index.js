@@ -452,6 +452,22 @@ export const connectModv = connected => ({
 })
 
 /*
+ * Set the data from Dekk
+ */
+export const setDekkColor = color => ({
+  color,
+  type: constants.SET_DEKK_DATA
+})
+
+/*
+ * Connect / disconnect to Dekk
+ */
+export const connectDekk = connected => ({
+  connected,
+  type: constants.CONNECT_DEKK
+})
+
+/*
  * Connect / disconnect to fivetwelve-bridge
  */
 export const connectFivetwelve = connected => ({

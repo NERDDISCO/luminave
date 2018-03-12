@@ -16,6 +16,7 @@ import '../live-mode/index.js'
 import '../modv-manager/index.js'
 import '../fivetwelve-manager/index.js'
 import '../config-manager/index.js'
+import '../dekk-manager/index.js'
 
 class VisionLordDashboard extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -52,7 +53,6 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
       <div class="grid">
         <usb-dmx-manager></usb-dmx-manager>
         <storage-manager></storage-manager>
-        <config-manager></config-manager>
 
         <div>
           <bpm-meter bpm="[[bpm]]"></bpm-meter>
@@ -62,6 +62,7 @@ class VisionLordDashboard extends ReduxMixin(PolymerElement) {
         <live-mode></live-mode>
 
         <modv-manager></modv-manager>
+        <dekk-manager></dekk-manager>
         <fivetwelve-manager></fivetwelve-manager>
       </div>
 

@@ -35,3 +35,11 @@ export const colors = {
 export const modvcolor = color => {
   colors['modv'] = color
 }
+
+export const dekkData = {
+
+}
+
+export const dekk = data => {
+  dekkData = data
+}
