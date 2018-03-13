@@ -1,7 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
-import { addFixture, removeFixture } from '../../actions/index.js'
+import { addFixture, removeFixtureFromEverywhere } from '../../actions/index.js'
 import '../dmx-fixture/index.js'
 import { FIXTURE_TYPES } from '../../constants/index.js'
 
@@ -28,7 +28,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
   removeFixture(e) {
     const { dataset } = e.target
-    this.dispatch(removeFixture(parseInt(dataset.index, 10)))
+    this.dispatch(removeFixtureFromEverywhere(dataset.id))
   }
 
   handleSelectedType(e) {
@@ -108,7 +108,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
                 address="[[fixture.address]]"
                 universe="[[fixture.universe]]"></dmx-fixture>
 
-                <button on-click="removeFixture" data-index$="[[index]]">Remove</button>
+                <button on-click="removeFixture" data-id$="[[fixture.id]]">Remove</button>
           </template>
 
         </div>

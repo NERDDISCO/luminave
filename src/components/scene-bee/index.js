@@ -68,7 +68,7 @@ class SceneBee extends ReduxMixin(PolymerElement) {
   handleRemoveFixture(e) {
     const { fixtureIndex } = e.detail
 
-    this.dispatch(removeFixtureFromScene(this.index, fixtureIndex))
+    this.dispatch(removeFixtureFromScene(this.id, fixtureIndex))
   }
 
   handleNameChange(e) {

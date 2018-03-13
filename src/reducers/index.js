@@ -1,5 +1,6 @@
 import update from '../../node_modules/immutability-helper/index.js'
 import * as constants from '../constants/index.js'
+import * as selectors from '../selectors/index.js'
 import { clearFixtureInBatch } from '../utils/index.js'
 
 /*
@@ -160,7 +161,7 @@ export const universeManager = (state = [], { type, universe, universeIndex, cha
 /*
  * Handle the scenes
  */
-export const sceneManager = (state = [], { type, scene, sceneIndex, sceneName, animationId, animationIndex, fixtureId, fixtureIndex }) => {
+export const sceneManager = (state = [], { type, scene, sceneIndex, sceneName, sceneId, animationId, animationIndex, fixtureId, fixtureIndex }) => {
   switch (type) {
     case constants.ADD_SCENE:
       return update(state, { $push: [scene] })
@@ -176,8 +177,10 @@ export const sceneManager = (state = [], { type, scene, sceneIndex, sceneName, a
       return update(state, { [sceneIndex]: { animations: { $splice: [[animationIndex, 1]] } } })
     case constants.ADD_FIXTURE_TO_SCENE:
       return update(state, { [sceneIndex]: { fixtures: { $push: [fixtureId] } } })
-    case constants.REMOVE_FIXTURE_FROM_SCENE:
+    case constants.REMOVE_FIXTURE_FROM_SCENE: {
+      const sceneIndex = state.findIndex(scene => scene.id === sceneId)
       return update(state, { [sceneIndex]: { fixtures: { $splice: [[fixtureIndex, 1]] } } })
+    }
     default:
       return state
   }

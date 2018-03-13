@@ -170,8 +170,8 @@ export const addFixturesToScene = (sceneIndex, fixtureIds) => {
 /*
  * Add a fixture to the scene
  */
-export const removeFixtureFromScene = (sceneIndex, fixtureIndex) => ({
-  sceneIndex,
+export const removeFixtureFromScene = (sceneId, fixtureIndex) => ({
+  sceneId,
   fixtureIndex,
   type: constants.REMOVE_FIXTURE_FROM_SCENE
 })
@@ -281,6 +281,28 @@ export const removeFixture = fixtureIndex => ({
   fixtureIndex,
   type: constants.REMOVE_FIXTURE
 })
+
+/*
+ * Remove a fixture from everywhere
+ */
+export const removeFixtureFromEverywhere = fixtureId => {
+  return (dispatch, getState) => {
+
+    const fixtureIndex = selectors.getFixtures(getState()).findIndex(fixture => fixture.id === fixtureId)
+
+    // Remove fixture from batch
+    utils.clearFixtureInBatch(fixtureId)
+
+    // Remove fixture from all scenes
+    selectors.getScenes(getState()).map(scene => {
+      if (scene.fixtures.indexOf(fixtureId) > -1) {
+        dispatch(removeFixtureFromScene(scene.id, scene.fixtures.indexOf(fixtureId)))
+      }
+    })
+
+    dispatch(removeFixture(fixtureIndex))
+  }
+}
 
 /*
  * Add a MIDI controller
