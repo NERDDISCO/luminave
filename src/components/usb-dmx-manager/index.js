@@ -73,11 +73,16 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
 
     // Disconnect from USB controller
     if (this.usbConnection.connected) {
-      this.port.disconnect().then(() => {
-        // Disconnected
-      }, error => {
-        console.error(error)
-      })
+
+      if (this.port === null) {
+        this.dispatch(connectUsb(false))
+      } else {
+        this.port.disconnect().then(() => {
+          // Disconnected
+        }, error => {
+          console.error(error)
+        })
+      }
 
     // Pair with USB controller
     } else {
