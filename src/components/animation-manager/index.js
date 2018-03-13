@@ -55,6 +55,14 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
         min-height: 1.5em;
         overflow: hidden;
       }
+
+      h2 {
+        font-size: 3em;
+        background: #000;
+        color: #fff;
+        padding: .25em;
+        text-transform: uppercase;
+      }
     </style>
 
       <h2>Animations</h2>

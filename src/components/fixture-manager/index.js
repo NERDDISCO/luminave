@@ -71,6 +71,14 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
         border: 1px solid var(--color-lighter);
         margin: 0 0 .25em 0;
       }
+
+      h2 {
+        font-size: 3em;
+        background: #000;
+        color: #fff;
+        padding: .25em;
+        text-transform: uppercase;
+      }
     </style>
 
         <h2>Fixtures</h2>

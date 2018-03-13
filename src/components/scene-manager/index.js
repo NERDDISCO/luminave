@@ -70,6 +70,7 @@ class SceneManager extends ReduxMixin(PolymerElement) {
           background: #000;
           color: #fff;
           padding: .25em;
+          text-transform: uppercase;
         }
       </style>
 
