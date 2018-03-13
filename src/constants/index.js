@@ -70,10 +70,11 @@ export const STORAGE_STATE = 'VisionLordConfig'
  */
 export const FIXTURE_TYPES = ['EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
   'AdjStarburst', 'CameoFlatPar1RGBW', 'CameoPixBar600PRO', 'CameoWookie200RGY',
-  'StairvilleAF150', 'StairvilleBowlBeam604LEDCOBMovingHead']
+  'StairvilleAF150', 'StairvilleBowlBeam604LEDCOBMovingHead', 'JsFestMovingHeadWash']
 
 export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
   'yellow', 'uv', 'rotate', 'pan', 'tilt', 'speed', 'brightness', 'colorSpeed',
   'movement', 'gobo', 'amount', 'mode', 'colors', 'pattern', 'zoom',
   'xAxisRolling', 'yAxisRolling', 'zAxisRolling', 'xAxisMoving', 'yAxisMoving',
-  'panTilt', 'panEndless', 'tiltEndless', 'sound', 'colorMacro', 'strobeMacro']
+  'panTilt', 'panEndless', 'tiltEndless', 'sound', 'colorMacro', 'strobeMacro',
+  'scanSpeed', 'rgbwMacro', 'resetAuto']
