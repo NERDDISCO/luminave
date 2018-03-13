@@ -84,7 +84,7 @@ class DmxFixtureProperty extends PolymerElement {
       </template>
 
       <template is="dom-if" if="[[property.isHiRes]]">
-        <input type="number" on-change="handleInputChange" title="[[property.mapping]]" min="[[property.min]]" max="[[property.max]]">
+        <input type="number" on-change="handleInputChange" title="[[property.min]] to [[property.max]]" min="[[property.min]]" max="[[property.max]]">
       </template>
     </div>
     `
