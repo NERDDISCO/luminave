@@ -1,0 +1,51 @@
+<div>Sender</div>
+
+<button id="send">Send</button>
+
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.1.js"></script>
+<script>(()=>{
+  function publish() {
+
+      pubnub = new PubNub({
+          publishKey: 'pub-c-f558a6a9-db45-43ce-a9ad-ea2bea9a6ff3',
+          subscribeKey: 'sub-c-3bc5978e-14c6-11e8-bb84-266dd58d78d1',
+          keepAlive: true
+      })
+
+      function publishSampleMessage(now) {
+          var publishConfig = {
+              channel : "hello_world",
+              message : now,
+              sendByPost: false, // true to send via post
+              storeInHistory: false //override default storage options
+          }
+          pubnub.publish(publishConfig, function(status, response) {
+              console.log(Date.now() - now);
+          })
+      }
+
+      pubnub.addListener({
+          status: function(statusEvent) {
+              if (statusEvent.category === "PNConnectedCategory") {
+                console.log('connected')
+              }
+          },
+          presence: function(presenceEvent) {
+              // handle presence
+          }
+      })
+
+      document.getElementById('send').addEventListener('click', (e) => {
+
+        const now = Date.now()
+
+        console.log(now)
+
+        publishSampleMessage(now)
+      })
+  };
+
+
+
+  publish()
+})();</script>

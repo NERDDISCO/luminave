@@ -1,0 +1,32 @@
+<div>Receiver</div>
+
+<script src="https://cdn.pubnub.com/sdk/javascript/pubnub.4.20.1.js"></script>
+<script>(()=>{
+  function publish() {
+
+      pubnub = new PubNub({
+          subscribeKey : 'sub-c-3bc5978e-14c6-11e8-bb84-266dd58d78d1',
+          keepAlive: true
+      })
+
+      pubnub.addListener({
+          status: function(statusEvent) {
+              if (statusEvent.category === "PNConnectedCategory") {
+                console.log('connected')
+              }
+          },
+          message: function(message) {
+              console.log(Date.now() - message.message, 'ms');
+          },
+          presence: function(presenceEvent) {
+              // handle presence
+          }
+      })
+
+      pubnub.subscribe({
+          channels: ['hello_world']
+      });
+  };
+
+  publish()
+})();</script>
