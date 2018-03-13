@@ -1,0 +1,1986 @@
+{
+  "animationManager": [
+    {
+      "id": "f2893400-05ce-11e8-a164-4fc75ee75916",
+      "keyframes": {
+        "0": {
+          "brightness": "dimmer(255)"
+        },
+        "1": {
+          "brightness": "dimmer(255)"
+        }
+      },
+      "duration": "5",
+      "name": "brightness 8"
+    },
+    {
+      "id": "db0e8750-03b0-11e8-9b09-5bf135e07352",
+      "keyframes": {
+        "0": {
+          "rotate": "clockwise(0)"
+        },
+        "1": {
+          "rotate": "clockwise(0)"
+        }
+      },
+      "duration": "5",
+      "name": "clockwise fast"
+    },
+    {
+      "id": "cde42ad0-03b0-11e8-9b09-5bf135e07352",
+      "keyframes": {
+        "0": {
+          "rotate": "clockwise(255)"
+        },
+        "1": {
+          "rotate": "clockwise(255)"
+        }
+      },
+      "duration": "5",
+      "name": "clockwise slow"
+    },
+    {
+      "id": "6fbf9fc0-0090-11e8-bd41-9df9da3f5b3e",
+      "keyframes": {
+        "0": {
+          "color": [
+            0,
+            0,
+            255
+          ]
+        },
+        "1": {
+          "color": [
+            0,
+            0,
+            255
+          ]
+        }
+      },
+      "duration": "5",
+      "name": "color BLUE"
+    },
+    {
+      "id": "f1ec3580-0090-11e8-8a5c-a39788fb3ce0",
+      "keyframes": {
+        "0": {
+          "color": [
+            0,
+            255,
+            0
+          ]
+        },
+        "1": {
+          "color": [
+            0,
+            255,
+            0
+          ]
+        }
+      },
+      "duration": "5",
+      "name": "color GREEN"
+    },
+    {
+      "id": "babffe30-ffa9-11e7-ae97-6308e56de9bd",
+      "keyframes": {
+        "0": {
+          "color": [
+            255,
+            0,
+            0
+          ]
+        },
+        "1": {
+          "color": [
+            255,
+            0,
+            0
+          ]
+        }
+      },
+      "duration": "5",
+      "name": "color RED"
+    },
+    {
+      "id": "ca192190-ffa9-11e7-ae97-6308e56de9bd",
+      "keyframes": {
+        "0": {
+          "dimmer": 20
+        },
+        "1": {
+          "dimmer": 20
+        }
+      },
+      "duration": "5",
+      "name": "dimmer 1"
+    },
+    {
+      "id": "3a362bf0-064c-11e8-9b71-ef711b3a8717",
+      "keyframes": {
+        "0": {
+          "dimmer": 0
+        },
+        "1": {
+          "dimmer": 255
+        }
+      },
+      "duration": "5",
+      "name": "dimmer 1 to 8"
+    },
+    {
+      "id": "7b22f8f0-ffc1-11e7-af85-8fb4d0708efc",
+      "keyframes": {
+        "0": {
+          "dimmer": 60
+        },
+        "1": {
+          "dimmer": 60
+        }
+      },
+      "duration": "5",
+      "name": "dimmer 2"
+    },
+    {
+      "id": "53818e60-ffc1-11e7-af85-8fb4d0708efc",
+      "keyframes": {
+        "0": {
+          "dimmer": 70
+        },
+        "1": {
+          "dimmer": 70
+        }
+      },
+      "duration": "5",
+      "name": "dimmer 3"
+    },
+    {
+      "id": "0f057ad0-0093-11e8-9e3e-4d571a5e26ec",
+      "keyframes": {
+        "0": {
+          "dimmer": 90
+        },
+        "1": {
+          "dimmer": 90
+        }
+      },
+      "duration": "5",
+      "name": "dimmer 4"
+    },
+    {
+      "id": "22baa550-0093-11e8-af16-078197a407eb",
+      "keyframes": {
+        "0": {
+          "dimmer": 130
+        },
+        "1": {
+          "dimmer": 130
+        }
+      },
+      "duration": "5",
+      "name": "dimmer 5"
+    },
+    {
+      "id": "24a7a840-0093-11e8-af16-078197a407eb",
+      "keyframes": {
+        "0": {
+          "dimmer": 160
+        },
+        "1": {
+          "dimmer": 160
+        }
+      },
+      "duration": "5",
+      "name": "dimmer 6"
+    },
+    {
+      "id": "2685b710-0093-11e8-af16-078197a407eb",
+      "keyframes": {
+        "0": {
+          "dimmer": 190
+        },
+        "1": {
+          "dimmer": 190
+        }
+      },
+      "duration": "5",
+      "name": "dimmer 7"
+    },
+    {
+      "id": "2804b5f0-0093-11e8-af16-078197a407eb",
+      "keyframes": {
+        "0": {
+          "dimmer": 255
+        },
+        "1": {
+          "dimmer": 255
+        }
+      },
+      "duration": "5",
+      "name": "dimmer 8"
+    },
+    {
+      "id": "4db8fc40-05d2-11e8-8404-799e90fa70f7",
+      "keyframes": {
+        "0": {
+          "gobo": "shards"
+        },
+        "1": {
+          "gobo": "shards"
+        }
+      },
+      "duration": "5",
+      "name": "MH-Gobo-Shards"
+    },
+    {
+      "id": "3e63ed00-05d1-11e8-a164-4fc75ee75916",
+      "keyframes": {
+        "0": {
+          "pan": 20,
+          "tilt": -105
+        },
+        "1": {
+          "pan": 20,
+          "tilt": -105
+        },
+        "0.5": {
+          "pan": 160
+        }
+      },
+      "duration": "5",
+      "name": "MH-movement 1"
+    },
+    {
+      "id": "7cb1b030-02eb-11e8-8ade-e7916ae17d81",
+      "keyframes": {
+        "0": {
+          "panEndless": 255,
+          "tiltEndless": 255
+        },
+        "1": {
+          "panEndless": 255,
+          "tiltEndless": 255
+        }
+      },
+      "duration": "5",
+      "name": "move endless fast"
+    },
+    {
+      "id": "6a693fa0-02ec-11e8-85ea-31f9599ac7dc",
+      "keyframes": {
+        "0": {
+          "panEndless": 175,
+          "tiltEndless": 175
+        },
+        "1": {
+          "tiltEndless": 175,
+          "panEndless": 175
+        }
+      },
+      "duration": "5",
+      "name": "move endless slow"
+    },
+    {
+      "id": "2b507270-02ec-11e8-8ade-e7916ae17d81",
+      "keyframes": {
+        "0": {
+          "pan": -270,
+          "tilt": -270
+        },
+        "1": {
+          "pan": 270,
+          "tilt": 270
+        }
+      },
+      "duration": "5",
+      "name": "move fast"
+    },
+    {
+      "id": "6d8f85e0-02ec-11e8-85ea-31f9599ac7dc",
+      "keyframes": {
+        "0": {
+          "pan": -125,
+          "tilt": -125
+        },
+        "1": {
+          "tilt": 125,
+          "pan": 125
+        }
+      },
+      "duration": "5",
+      "name": "move slow"
+    },
+    {
+      "id": "86f16880-02ee-11e8-a089-e1892b5ee27b",
+      "keyframes": {
+        "0": {
+          "strobeMacro": "on"
+        },
+        "1": {
+          "strobeMacro": "on"
+        }
+      },
+      "duration": "5",
+      "name": "on"
+    },
+    {
+      "id": "bcd38370-01ef-11e8-aaac-2733c730d5ff",
+      "keyframes": {
+        "0": {
+          "color": [
+            255,
+            0,
+            0
+          ]
+        },
+        "1": {
+          "color": [
+            255,
+            0,
+            0
+          ]
+        },
+        "0.14": {
+          "color": [
+            255,
+            127,
+            0
+          ]
+        },
+        "0.28": {
+          "color": [
+            255,
+            255,
+            0
+          ]
+        },
+        "0.42": {
+          "color": [
+            0,
+            255,
+            0
+          ]
+        },
+        "0.57": {
+          "color": [
+            0,
+            0,
+            255
+          ]
+        },
+        "0.71": {
+          "color": [
+            75,
+            0,
+            130
+          ]
+        },
+        "0.85": {
+          "color": [
+            148,
+            0,
+            211
+          ]
+        }
+      },
+      "duration": "5",
+      "name": "Rainbow"
+    },
+    {
+      "id": "d6d3a2d0-078c-11e8-afab-d580e35f1fa6",
+      "keyframes": {
+        "0": {
+          "amount": 255
+        },
+        "1": {
+          "amount": 255
+        }
+      },
+      "duration": "5",
+      "name": "smoke 8"
+    },
+    {
+      "id": "2f4d4e30-ffad-11e7-831f-29cd2a134119",
+      "keyframes": {
+        "0": {
+          "strobe": 20
+        },
+        "1": {
+          "strobe": 20
+        }
+      },
+      "duration": "5",
+      "name": "strobe 1"
+    },
+    {
+      "id": "18f90460-0095-11e8-865c-d1114da16cd4",
+      "keyframes": {
+        "0": {
+          "strobe": 40
+        },
+        "1": {
+          "strobe": 40
+        }
+      },
+      "duration": "5",
+      "name": "strobe 2"
+    },
+    {
+      "id": "1aa5f110-0095-11e8-865c-d1114da16cd4",
+      "keyframes": {
+        "0": {
+          "strobe": 60
+        },
+        "1": {
+          "strobe": 60
+        }
+      },
+      "duration": "5",
+      "name": "strobe 3"
+    },
+    {
+      "id": "1b411fa0-0095-11e8-865c-d1114da16cd4",
+      "keyframes": {
+        "0": {
+          "strobe": 90
+        },
+        "1": {
+          "strobe": 90
+        }
+      },
+      "duration": "5",
+      "name": "strobe 4"
+    },
+    {
+      "id": "1bcd5a10-0095-11e8-865c-d1114da16cd4",
+      "keyframes": {
+        "0": {
+          "strobe": 130
+        },
+        "1": {
+          "strobe": 130
+        }
+      },
+      "duration": "5",
+      "name": "strobe 5"
+    },
+    {
+      "id": "1c48a490-0095-11e8-865c-d1114da16cd4",
+      "keyframes": {
+        "0": {
+          "strobe": 160
+        },
+        "1": {
+          "strobe": 160
+        }
+      },
+      "duration": "5",
+      "name": "strobe 6"
+    },
+    {
+      "id": "1ccd8c00-0095-11e8-865c-d1114da16cd4",
+      "keyframes": {
+        "0": {
+          "strobe": 190
+        },
+        "1": {
+          "strobe": 190
+        }
+      },
+      "duration": "5",
+      "name": "strobe 7"
+    },
+    {
+      "id": "1d6fbf70-0095-11e8-865c-d1114da16cd4",
+      "keyframes": {
+        "0": {
+          "strobe": 255
+        },
+        "1": {
+          "strobe": 255
+        }
+      },
+      "duration": "5",
+      "name": "strobe 8"
+    },
+    {
+      "id": "844b2970-fe95-11e7-902f-358f311ff4a3",
+      "keyframes": {
+        "0": {
+          "uv": 255
+        },
+        "1": {
+          "uv": 255
+        }
+      },
+      "duration": "5",
+      "name": "UV"
+    }
+  ],
+  "bpm": 309,
+  "connectionManager": {
+    "usb": {
+      "connected": true
+    },
+    "bluetooth": {
+      "connected": false
+    }
+  },
+  "dekkManager": {
+    "data": {},
+    "connected": false
+  },
+  "fivetwelveManager": {
+    "connected": false,
+    "lastTransmission": "2018-02-07T05:56:08.130Z"
+  },
+  "fixtureManager": [
+    {
+      "id": "08254300-f691-11e7-81fb-4fbd30811baf",
+      "type": "CameoPixBar600PRO",
+      "name": "PixBar",
+      "universe": 0,
+      "address": "1",
+      "properties": {}
+    },
+    {
+      "id": "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+      "type": "FunGenerationSeParQuadLedRgbUv",
+      "name": "FG1",
+      "universe": 0,
+      "address": "83",
+      "properties": {}
+    },
+    {
+      "id": "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+      "type": "FunGenerationSeParQuadLedRgbUv",
+      "name": "FG2",
+      "universe": 0,
+      "address": "122",
+      "properties": {}
+    },
+    {
+      "id": "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+      "type": "FunGenerationSeParQuadLedRgbUv",
+      "name": "FG3",
+      "universe": 0,
+      "address": "137",
+      "properties": {}
+    },
+    {
+      "id": "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d",
+      "type": "FunGenerationSeParQuadLedRgbUv",
+      "name": "FG4",
+      "universe": 0,
+      "address": "157",
+      "properties": {}
+    },
+    {
+      "id": "35787db0-02e7-11e8-b59e-f3a7ce3db3ce",
+      "type": "StairvilleBowlBeam604LEDCOBMovingHead",
+      "name": "Bowl",
+      "universe": 0,
+      "address": "89",
+      "properties": {}
+    },
+    {
+      "id": "4bf41b30-02e7-11e8-b59e-f3a7ce3db3ce",
+      "type": "EuroliteTMH8",
+      "name": "MH",
+      "universe": 0,
+      "address": "143",
+      "properties": {}
+    },
+    {
+      "id": "50c30430-02ee-11e8-a089-e1892b5ee27b",
+      "type": "AdjStarburst",
+      "name": "Deathstar",
+      "universe": 0,
+      "address": "171",
+      "properties": {}
+    },
+    {
+      "id": "e87b23f0-05d4-11e8-8f2d-5df5a6c39057",
+      "type": "CameoWookie200RGY",
+      "name": "Laser",
+      "universe": 0,
+      "address": "128",
+      "properties": {}
+    },
+    {
+      "id": "c76dd540-078c-11e8-afab-d580e35f1fa6",
+      "type": "StairvilleAF150",
+      "name": "Smoke",
+      "universe": 0,
+      "address": "511",
+      "properties": {}
+    },
+    {
+      "id": "26895080-0bcb-11e8-aaec-d9b404f33cae",
+      "type": "CameoPixBar600PRO",
+      "name": "TEST PIXBAR 1",
+      "universe": 0,
+      "address": "180",
+      "properties": {}
+    },
+    {
+      "id": "302be5d0-0bcb-11e8-aaec-d9b404f33cae",
+      "type": "CameoPixBar600PRO",
+      "name": "TEST PIXBAR 2",
+      "universe": 0,
+      "address": "254",
+      "properties": {}
+    },
+    {
+      "id": "38955ee0-0bcb-11e8-aaec-d9b404f33cae",
+      "type": "CameoPixBar600PRO",
+      "name": "TEST PIXBAR 3",
+      "universe": 0,
+      "address": "328",
+      "properties": {}
+    },
+    {
+      "id": "3f800020-0bcb-11e8-aaec-d9b404f33cae",
+      "type": "CameoPixBar600PRO",
+      "name": "TEST PIXBAR 4",
+      "universe": 0,
+      "address": "402",
+      "properties": {}
+    }
+  ],
+  "live": false,
+  "midiManager": {
+    "controllers": [
+      {
+        "id": "eba1e850-edcb-11e7-84a3-8f9260ff7912",
+        "name": "Launchpad Mini",
+        "input": "Launchpad Mini",
+        "output": "Launchpad Mini",
+        "width": "8",
+        "height": "8",
+        "mapping": {
+          "0": {
+            "scenes": [
+              "e8efe040-ffa9-11e7-8af4-a114aca47e22"
+            ],
+            "active": false,
+            "note": 0
+          },
+          "1": {
+            "scenes": [
+              "9365e8f0-ffc1-11e7-af85-8fb4d0708efc"
+            ],
+            "active": false,
+            "note": 1
+          },
+          "2": {
+            "scenes": [
+              "8fc2d190-ffc1-11e7-af85-8fb4d0708efc"
+            ],
+            "active": false,
+            "note": 2
+          },
+          "3": {
+            "scenes": [
+              "a8e7dbc0-0093-11e8-b408-037d008ccf0c"
+            ],
+            "active": false,
+            "note": 3
+          },
+          "4": {
+            "scenes": [
+              "bdb83a40-0093-11e8-865c-d1114da16cd4"
+            ],
+            "active": false,
+            "note": 4
+          },
+          "5": {
+            "scenes": [
+              "c01f7640-0093-11e8-865c-d1114da16cd4"
+            ],
+            "active": false,
+            "note": 5
+          },
+          "6": {
+            "scenes": [
+              "c0d88d10-0093-11e8-865c-d1114da16cd4"
+            ],
+            "active": false,
+            "note": 6
+          },
+          "7": {
+            "scenes": [
+              "c17c4720-0093-11e8-865c-d1114da16cd4"
+            ],
+            "active": false,
+            "note": 7
+          },
+          "8": {
+            "scenes": [
+              "e21a4da0-ffa9-11e7-8af4-a114aca47e22"
+            ],
+            "active": false,
+            "note": 16
+          },
+          "9": {
+            "scenes": [
+              "7da16ff0-0091-11e8-9e3e-4d571a5e26ec"
+            ],
+            "active": false,
+            "note": 17
+          },
+          "10": {
+            "scenes": [
+              "757d6450-0091-11e8-9e3e-4d571a5e26ec"
+            ],
+            "active": false,
+            "note": 18
+          },
+          "11": {
+            "scenes": [
+              "496ab970-01f0-11e8-aaac-2733c730d5ff"
+            ],
+            "active": false,
+            "note": 19
+          },
+          "12": {
+            "scenes": [
+              "81976cb0-ffa9-11e7-acb0-03672edd681e"
+            ],
+            "active": false,
+            "note": 20
+          },
+          "13": {
+            "scenes": [],
+            "active": false,
+            "note": 21
+          },
+          "14": {
+            "scenes": [],
+            "active": false,
+            "note": 22
+          },
+          "15": {
+            "scenes": [],
+            "active": false,
+            "note": 23
+          },
+          "16": {
+            "scenes": [
+              "9694fd10-ffa6-11e7-9c52-9f77c2288ea5"
+            ],
+            "active": false,
+            "note": 32
+          },
+          "17": {
+            "scenes": [
+              "1845c2e0-05d8-11e8-8516-31211a3a24f1"
+            ],
+            "active": false,
+            "note": 33
+          },
+          "18": {
+            "scenes": [
+              "099a3bb0-0095-11e8-865c-d1114da16cd4"
+            ],
+            "active": false,
+            "note": 34
+          },
+          "19": {
+            "scenes": [
+              "0d97f630-0095-11e8-865c-d1114da16cd4"
+            ],
+            "active": false,
+            "note": 35
+          },
+          "20": {
+            "scenes": [
+              "0e391830-0095-11e8-865c-d1114da16cd4"
+            ],
+            "active": false,
+            "note": 36
+          },
+          "21": {
+            "scenes": [
+              "0ed46dd0-0095-11e8-865c-d1114da16cd4"
+            ],
+            "active": false,
+            "note": 37
+          },
+          "22": {
+            "scenes": [
+              "0f7b8340-0095-11e8-865c-d1114da16cd4"
+            ],
+            "active": false,
+            "note": 38
+          },
+          "23": {
+            "scenes": [
+              "1026de70-0095-11e8-865c-d1114da16cd4"
+            ],
+            "active": false,
+            "note": 39
+          },
+          "24": {
+            "scenes": [
+              "46b89410-02e8-11e8-b59e-f3a7ce3db3ce"
+            ],
+            "active": false,
+            "note": 48
+          },
+          "25": {
+            "scenes": [
+              "a0e54ec0-02ec-11e8-85ea-31f9599ac7dc"
+            ],
+            "active": false,
+            "note": 49
+          },
+          "26": {
+            "scenes": [
+              "09175960-03b1-11e8-b6c0-9396dc1a56dd"
+            ],
+            "active": false,
+            "note": 50
+          },
+          "27": {
+            "scenes": [
+              "a7196b70-0353-11e8-8c5d-5507eb44d300"
+            ],
+            "active": false,
+            "note": 51
+          },
+          "28": {
+            "scenes": [
+              "c3f0f330-05ce-11e8-a164-4fc75ee75916"
+            ],
+            "active": false,
+            "note": 52
+          },
+          "29": {
+            "scenes": [
+              "0c525530-05d7-11e8-8f2d-5df5a6c39057"
+            ],
+            "active": false,
+            "note": 53
+          },
+          "30": {
+            "scenes": [
+              "3554d570-078f-11e8-9f7c-5b4e97919fab"
+            ],
+            "active": false,
+            "note": 54
+          },
+          "31": {
+            "scenes": [],
+            "active": false,
+            "note": 55
+          },
+          "32": {
+            "scenes": [],
+            "active": false,
+            "note": 64
+          },
+          "33": {
+            "scenes": [],
+            "active": false,
+            "note": 65
+          },
+          "34": {
+            "scenes": [],
+            "active": false,
+            "note": 66
+          },
+          "35": {
+            "scenes": [],
+            "active": false,
+            "note": 67
+          },
+          "36": {
+            "scenes": [],
+            "active": false,
+            "note": 68
+          },
+          "37": {
+            "scenes": [],
+            "active": false,
+            "note": 69
+          },
+          "38": {
+            "scenes": [],
+            "active": false,
+            "note": 70
+          },
+          "39": {
+            "scenes": [],
+            "active": false,
+            "note": 71
+          },
+          "40": {
+            "scenes": [],
+            "active": false,
+            "note": 80
+          },
+          "41": {
+            "scenes": [],
+            "active": false,
+            "note": 81
+          },
+          "42": {
+            "scenes": [],
+            "active": false,
+            "note": 82
+          },
+          "43": {
+            "scenes": [],
+            "active": false,
+            "note": 83
+          },
+          "44": {
+            "scenes": [],
+            "active": false,
+            "note": 84
+          },
+          "45": {
+            "scenes": [],
+            "active": false,
+            "note": 85
+          },
+          "46": {
+            "scenes": [],
+            "active": false,
+            "note": 86
+          },
+          "47": {
+            "scenes": [],
+            "active": false,
+            "note": 87
+          },
+          "48": {
+            "scenes": [],
+            "active": false,
+            "note": 96
+          },
+          "49": {
+            "scenes": [],
+            "active": false,
+            "note": 97
+          },
+          "50": {
+            "scenes": [],
+            "active": false,
+            "note": 98
+          },
+          "51": {
+            "scenes": [],
+            "active": false,
+            "note": 99
+          },
+          "52": {
+            "scenes": [],
+            "active": false,
+            "note": 100
+          },
+          "53": {
+            "scenes": [],
+            "active": false,
+            "note": 101
+          },
+          "54": {
+            "scenes": [],
+            "active": false,
+            "note": 102
+          },
+          "55": {
+            "scenes": [],
+            "active": false,
+            "note": 103
+          },
+          "56": {
+            "scenes": [
+            ],
+            "active": false,
+            "note": 112
+          },
+          "57": {
+            "scenes": [],
+            "active": false,
+            "note": 113
+          },
+          "58": {
+            "scenes": [],
+            "active": false,
+            "note": 114
+          },
+          "59": {
+            "scenes": [],
+            "active": false,
+            "note": 115
+          },
+          "60": {
+            "scenes": [],
+            "active": false,
+            "note": 116
+          },
+          "61": {
+            "scenes": [],
+            "active": false,
+            "note": 117
+          },
+          "62": {
+            "scenes": [],
+            "active": false,
+            "note": 118
+          },
+          "63": {
+            "scenes": [
+              "eaa221b0-078c-11e8-afab-d580e35f1fa6"
+            ],
+            "active": false,
+            "note": 119
+          }
+        }
+      }
+    ],
+    "enabled": true,
+    "learning": -1
+  },
+  "modvManager": {
+    "color": [
+      1,
+      0,
+      0
+    ],
+    "connected": false
+  },
+  "sceneManager": [
+    {
+      "id": "757d6450-0091-11e8-9e3e-4d571a5e26ec",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d",
+        "35787db0-02e7-11e8-b59e-f3a7ce3db3ce",
+        "4bf41b30-02e7-11e8-b59e-f3a7ce3db3ce",
+        "50c30430-02ee-11e8-a089-e1892b5ee27b"
+      ],
+      "animations": [
+        "6fbf9fc0-0090-11e8-bd41-9df9da3f5b3e"
+      ],
+      "duration": "20",
+      "name": "COLOR BLUE",
+      "isRunning": false
+    },
+    {
+      "id": "7da16ff0-0091-11e8-9e3e-4d571a5e26ec",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d",
+        "35787db0-02e7-11e8-b59e-f3a7ce3db3ce",
+        "4bf41b30-02e7-11e8-b59e-f3a7ce3db3ce",
+        "50c30430-02ee-11e8-a089-e1892b5ee27b"
+      ],
+      "animations": [
+        "f1ec3580-0090-11e8-8a5c-a39788fb3ce0"
+      ],
+      "duration": "20",
+      "name": "COLOR GREEN",
+      "isRunning": false
+    },
+    {
+      "id": "496ab970-01f0-11e8-aaac-2733c730d5ff",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d",
+        "35787db0-02e7-11e8-b59e-f3a7ce3db3ce",
+        "4bf41b30-02e7-11e8-b59e-f3a7ce3db3ce",
+        "50c30430-02ee-11e8-a089-e1892b5ee27b"
+      ],
+      "animations": [
+        "bcd38370-01ef-11e8-aaac-2733c730d5ff"
+      ],
+      "duration": "20",
+      "name": "COLOR Rainbow",
+      "isRunning": false
+    },
+    {
+      "id": "e21a4da0-ffa9-11e7-8af4-a114aca47e22",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d",
+        "35787db0-02e7-11e8-b59e-f3a7ce3db3ce",
+        "4bf41b30-02e7-11e8-b59e-f3a7ce3db3ce",
+        "50c30430-02ee-11e8-a089-e1892b5ee27b"
+      ],
+      "animations": [
+        "babffe30-ffa9-11e7-ae97-6308e56de9bd"
+      ],
+      "duration": "20",
+      "name": "COLOR RED",
+      "isRunning": false
+    },
+    {
+      "id": "e8efe040-ffa9-11e7-8af4-a114aca47e22",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "ca192190-ffa9-11e7-ae97-6308e56de9bd"
+      ],
+      "duration": "20",
+      "isRunning": false,
+      "name": "DIMMER 1"
+    },
+    {
+      "id": "9365e8f0-ffc1-11e7-af85-8fb4d0708efc",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "7b22f8f0-ffc1-11e7-af85-8fb4d0708efc"
+      ],
+      "duration": "20",
+      "name": "DIMMER 2",
+      "isRunning": false
+    },
+    {
+      "id": "8fc2d190-ffc1-11e7-af85-8fb4d0708efc",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "53818e60-ffc1-11e7-af85-8fb4d0708efc"
+      ],
+      "duration": "20",
+      "name": "DIMMER 3",
+      "isRunning": false
+    },
+    {
+      "id": "a8e7dbc0-0093-11e8-b408-037d008ccf0c",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "0f057ad0-0093-11e8-9e3e-4d571a5e26ec"
+      ],
+      "duration": "20",
+      "name": "DIMMER 4",
+      "isRunning": false
+    },
+    {
+      "id": "bdb83a40-0093-11e8-865c-d1114da16cd4",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "22baa550-0093-11e8-af16-078197a407eb"
+      ],
+      "duration": "20",
+      "name": "DIMMER 5",
+      "isRunning": false
+    },
+    {
+      "id": "c01f7640-0093-11e8-865c-d1114da16cd4",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "24a7a840-0093-11e8-af16-078197a407eb"
+      ],
+      "duration": "20",
+      "name": "DIMMER 6",
+      "isRunning": false
+    },
+    {
+      "id": "c0d88d10-0093-11e8-865c-d1114da16cd4",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "2685b710-0093-11e8-af16-078197a407eb"
+      ],
+      "duration": "20",
+      "name": "DIMMER 7",
+      "isRunning": false
+    },
+    {
+      "id": "c17c4720-0093-11e8-865c-d1114da16cd4",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "2804b5f0-0093-11e8-af16-078197a407eb"
+      ],
+      "duration": "20",
+      "name": "DIMMER 8",
+      "isRunning": false
+    },
+    {
+      "id": "3554d570-078f-11e8-9f7c-5b4e97919fab",
+      "fixtures": [
+        "e87b23f0-05d4-11e8-8f2d-5df5a6c39057"
+      ],
+      "animations": [
+        "1ff72b10-078f-11e8-9f7c-5b4e97919fab"
+      ],
+      "duration": "20",
+      "name": "LASER GREEN",
+      "isRunning": false
+    },
+    {
+      "id": "0c525530-05d7-11e8-8f2d-5df5a6c39057",
+      "fixtures": [
+        "e87b23f0-05d4-11e8-8f2d-5df5a6c39057"
+      ],
+      "animations": [
+        "47796b40-05d6-11e8-8f2d-5df5a6c39057"
+      ],
+      "duration": "20",
+      "name": "LASER RED",
+      "isRunning": false
+    },
+    {
+      "id": "c3f0f330-05ce-11e8-a164-4fc75ee75916",
+      "fixtures": [
+        "4bf41b30-02e7-11e8-b59e-f3a7ce3db3ce"
+      ],
+      "animations": [
+        "f2893400-05ce-11e8-a164-4fc75ee75916",
+        "3e63ed00-05d1-11e8-a164-4fc75ee75916",
+        "4db8fc40-05d2-11e8-8404-799e90fa70f7"
+      ],
+      "duration": "20",
+      "name": "MovingHead Slow",
+      "isRunning": false
+    },
+    {
+      "id": "eaa221b0-078c-11e8-afab-d580e35f1fa6",
+      "fixtures": [
+        "c76dd540-078c-11e8-afab-d580e35f1fa6"
+      ],
+      "animations": [
+        "d6d3a2d0-078c-11e8-afab-d580e35f1fa6"
+      ],
+      "duration": "20",
+      "name": "SMOKE 8",
+      "isRunning": false
+    },
+    {
+      "id": "9694fd10-ffa6-11e7-9c52-9f77c2288ea5",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "2f4d4e30-ffad-11e7-831f-29cd2a134119"
+      ],
+      "duration": "20",
+      "name": "STROBE 1",
+      "isRunning": false
+    },
+    {
+      "id": "1845c2e0-05d8-11e8-8516-31211a3a24f1",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "18f90460-0095-11e8-865c-d1114da16cd4"
+      ],
+      "duration": "20",
+      "name": "STROBE 2",
+      "isRunning": false
+    },
+    {
+      "id": "099a3bb0-0095-11e8-865c-d1114da16cd4",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "1aa5f110-0095-11e8-865c-d1114da16cd4"
+      ],
+      "duration": "20",
+      "name": "STROBE 3",
+      "isRunning": false
+    },
+    {
+      "id": "0d97f630-0095-11e8-865c-d1114da16cd4",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "1b411fa0-0095-11e8-865c-d1114da16cd4"
+      ],
+      "duration": "20",
+      "name": "STROBE 4",
+      "isRunning": false
+    },
+    {
+      "id": "0e391830-0095-11e8-865c-d1114da16cd4",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "1bcd5a10-0095-11e8-865c-d1114da16cd4"
+      ],
+      "duration": "20",
+      "name": "STROBE 5",
+      "isRunning": false
+    },
+    {
+      "id": "0ed46dd0-0095-11e8-865c-d1114da16cd4",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "1c48a490-0095-11e8-865c-d1114da16cd4"
+      ],
+      "duration": "20",
+      "name": "STROBE 6",
+      "isRunning": false
+    },
+    {
+      "id": "0f7b8340-0095-11e8-865c-d1114da16cd4",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "1ccd8c00-0095-11e8-865c-d1114da16cd4"
+      ],
+      "duration": "20",
+      "name": "STROBE 7",
+      "isRunning": false
+    },
+    {
+      "id": "1026de70-0095-11e8-865c-d1114da16cd4",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d"
+      ],
+      "animations": [
+        "1d6fbf70-0095-11e8-865c-d1114da16cd4"
+      ],
+      "duration": "20",
+      "name": "STROBE 8",
+      "isRunning": false
+    },
+    {
+      "id": "81976cb0-ffa9-11e7-acb0-03672edd681e",
+      "fixtures": [
+        "08254300-f691-11e7-81fb-4fbd30811baf",
+        "1b6ab170-ffb5-11e7-9ee2-f197a856e809",
+        "85baba20-ffb5-11e7-9b2c-2351c0d27d1d",
+        "974def00-ffb5-11e7-9b2c-2351c0d27d1d",
+        "9b7578a0-ffb5-11e7-9b2c-2351c0d27d1d",
+        "35787db0-02e7-11e8-b59e-f3a7ce3db3ce",
+        "4bf41b30-02e7-11e8-b59e-f3a7ce3db3ce",
+        "50c30430-02ee-11e8-a089-e1892b5ee27b"
+      ],
+      "animations": [
+        "844b2970-fe95-11e7-902f-358f311ff4a3"
+      ],
+      "duration": "20",
+      "name": "UV",
+      "isRunning": false
+    }
+  ],
+  "timelineManager": {
+    "scenes": [],
+    "playing": false,
+    "progress": 12.814833891321143
+  },
+  "universeManager": [
+    {
+      "id": "91ccf720-03ab-11e8-a879-99ed019cfc33",
+      "channels": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "name": "demo universe 91ccf720-03ab-11e8-a879-99ed019cfc33"
+    }
+  ],
+  "usbManager": {
+    "lastTransmission": "2018-02-07T05:56:08.130Z"
+  }
+}
