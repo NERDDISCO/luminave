@@ -48,6 +48,12 @@ export const getScene = (state, properties) => {
     .filter(scene => scene.id === properties.sceneId)[0]
 }
 
+// @TODO: This will be a problem because name is not unique
+export const getSceneByName = (state, properties) => {
+  return getScenes(state)
+    .filter(scene => scene.name === properties.name)[0]
+}
+
 /*
  * Sort scenes by scene.name
  */

@@ -411,6 +411,9 @@ export const addSceneToTimeline = sceneId => ({
 
 /*
  * Remove a scene from the timeline
+ *
+ * Don't use this directly, use #removeSceneFromTimelineAndResetFixtures
+ * to also reset the fixtures
  */
 export const removeSceneFromTimeline = sceneId => ({
   sceneId,
@@ -476,8 +479,8 @@ export const connectModv = connected => ({
 /*
  * Set the data from Dekk
  */
-export const setDekkColor = color => ({
-  color,
+export const setDekkData = data => ({
+  data,
   type: constants.SET_DEKK_DATA
 })
 

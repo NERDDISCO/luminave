@@ -1,7 +1,8 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { reduxMixin } from '../../reduxStore.js'
-import { connectDekk } from '../../actions/index.js'
-import { dekk } from '../../utils/index.js'
+import { connectDekk, setDekkData, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures } from '../../actions/index.js'
+import { dekk, dekkData } from '../../utils/index.js'
+import { getSceneByName } from '../../selectors/index.js'
 
 /*
  * Handle the connection to Dekk
@@ -21,6 +22,10 @@ class DekkManager extends reduxMixin(PolymerElement) {
       connected: {
         type: Boolean,
         statePath: 'dekkManager.connected'
+      },
+      data: {
+        type: Object,
+        statePath: 'dekkManager.data'
       },
       url: String,
       connectedLabel: {
@@ -90,10 +95,35 @@ class DekkManager extends reduxMixin(PolymerElement) {
     this.socket.addEventListener('message', event => {
       const { data } = event
 
-      // Save color into global object instead of dispatch it into state because of performance issues
-      dekk(JSON.parse(data))
+      // @TODO: Remove scenes when component gets loaded
+      // Remove scenes
+      this.changeScenes(this.data.scenes, 'remove')
 
-      console.log(dekk)
+      // Save data into state
+      this.dispatch(setDekkData({ scenes: JSON.parse(data) }))
+
+      // Add scenes
+      this.changeScenes(this.data.scenes, 'add')
+    })
+  }
+
+  changeScenes(sceneNames, action) {
+    // Dekk will give us an array of scene names
+    sceneNames.map(name => {
+      // Retrieve the scene in VisionLord
+      const scene = getSceneByName(this.getState(), { name })
+
+      if (scene === undefined) {
+        console.log(`Scene "${name}" doesn't exist`)
+      } else {
+        if (action === 'remove') {
+          this.dispatch(removeSceneFromTimelineAndResetFixtures(scene.id))
+        } else if (action === 'add') {
+          // @TODO: TimelineManager: Don't add the same scene x+1 times
+          // https://github.com/NERDDISCO/VisionLord/issues/16
+          this.dispatch(addSceneToTimeline(scene.id))
+        }
+      }
     })
   }
 
