@@ -1,4 +1,29 @@
 
+2.0.0 / 2018-03-24
+==================
+
+  * refactor(name): Changed to luminave
+  * refactor(dekk): Change scenes
+  * fix(usb-dmx-manager): Port is null
+  * refactor(fixture): Show min/max in title
+  * refactor(style): Improve headlines
+  * refactor(jsfest): Add default position
+  * refactor(jsfest): Added MH for testing
+  * feat(jsfest): Added fixture
+  * feat(fixture): Remove fixture from everywhere
+  * feat(config): JSFest 2018
+  * build(start): Added concurrently
+  * refactor(config): Performance testing
+  * feat(integration): Added dekk integration
+  * feat(dekk): Added dekk-manager
+  * fix(polymer-redux): Fixed dependency
+  * Merge branch 'master' of github.com:NERDDISCO/VisionLord
+  * refactor(polymer-redux): Removed unused options
+  * docs(version)
+  * docs(screenshot)
+  * docs(screenshot): Dashboard
+  * Added 1.0.0 screenshot
+
 1.0.0 / 2018-02-17
 ==================
 
