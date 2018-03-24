@@ -79,7 +79,7 @@ class MidiController extends ReduxMixin(PolymerElement) {
         const { name, type } = port
 
         // The connected event is triggered twice for input, that's why we need to check
-        // if this.input is already defined or not, @see https://github.com/NERDDISCO/VisionLord/issues/14
+        // if this.input is already defined or not, @see https://github.com/NERDDISCO/luminave/issues/14
         if (name === this.inputname && type === 'input' && this.input === null) {
           this.input = port
 

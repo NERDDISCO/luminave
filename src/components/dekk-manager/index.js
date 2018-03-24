@@ -1,7 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { reduxMixin } from '../../reduxStore.js'
 import { connectDekk, setDekkData, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures } from '../../actions/index.js'
-import { dekk, dekkData } from '../../utils/index.js'
 import { getSceneByName } from '../../selectors/index.js'
 
 /*
@@ -47,7 +46,7 @@ class DekkManager extends reduxMixin(PolymerElement) {
     super.connectedCallback()
 
     // Set the URL of the server we want to create a connection to
-    this.url = 'ws://localhost:3001/visionLord'
+    this.url = 'ws://localhost:3001/luminave'
 
     // Try to create the connection when the component is loaded
     if (this.connected) {
@@ -110,7 +109,7 @@ class DekkManager extends reduxMixin(PolymerElement) {
   changeScenes(sceneNames, action) {
     // Dekk will give us an array of scene names
     sceneNames.map(name => {
-      // Retrieve the scene in VisionLord
+      // Retrieve the scene
       const scene = getSceneByName(this.getState(), { name })
 
       if (scene === undefined) {
@@ -120,7 +119,7 @@ class DekkManager extends reduxMixin(PolymerElement) {
           this.dispatch(removeSceneFromTimelineAndResetFixtures(scene.id))
         } else if (action === 'add') {
           // @TODO: TimelineManager: Don't add the same scene x+1 times
-          // https://github.com/NERDDISCO/VisionLord/issues/16
+          // https://github.com/NERDDISCO/luminave/issues/16
           this.dispatch(addSceneToTimeline(scene.id))
         }
       }

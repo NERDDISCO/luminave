@@ -1,10 +1,11 @@
-# VisionLord
+# luminave
 
-Show light manager for DMX512 shows.
 
- [![1.0.0](https://img.shields.io/badge/Stable-1.0-00f557.svg?style=flat)](https://github.com/NERDDISCO/VisionLord/releases/tag/1.0.0)
+Manage all the Light.
 
- ![VisionLord 1.0.0](https://github.com/NERDDISCO/VisionLord/raw/master/Screen%20Shot%202018-02-17%20at%2004.57.55.png)
+ [![1.0.0](https://img.shields.io/badge/Stable-1.0-00f557.svg?style=flat)](https://github.com/NERDDISCO/luminave/releases/tag/1.0.0)
+
+ ![luminave 1.0.0](https://github.com/NERDDISCO/luminave/raw/master/Screen%20Shot%202018-02-17%20at%2004.57.55.png)
 
 ## Requirements
 
@@ -14,11 +15,11 @@ Show light manager for DMX512 shows.
 ## Setup
 
 ```bash
-# clone VisionLord
-git clone git@github.com:NERDDISCO/VisionLord.git
+# clone luminave
+git clone git@github.com:NERDDISCO/luminave.git
 
 # go into directory
-cd VisionLord
+cd luminave
 
 # install dependencies
 npm install
@@ -37,7 +38,7 @@ npm start
 ### Add WebUSB DMX512 controller
 
 * Connect your Arduino to the computer via USB
-* Click the "USB" button in the top left in VisionLord
+* Click the "USB" button in the top left in luminave
 * Choose the "Arduino Leonardo" in the prompt
 
 ---
@@ -62,7 +63,7 @@ npm start
 ```
 * The animation itself has no idea about time, it always goes from 0 to 1. You can add as many steps inbetween as you want
 * Scenes are the way to go to bring fixtures and animations together
-* Connect a MIDI controller via USB to your computer and add it as a MIDI controller into VisionLord. With "MIDI learn" you can push a button on your MIDI controller and VisionLord saves the corresponding note into it's config, so you don't have to manually find out what note is on with button
+* Connect a MIDI controller via USB to your computer and add it as a MIDI controller into luminave. With "MIDI learn" you can push a button on your MIDI controller and luminave saves the corresponding note into it's config, so you don't have to manually find out what note is on with button
 * Add scenes to MIDI controller buttons to activate them when the MIDI button is pushed
 * When a scene is active it is added to the timeline. The timeline handles all scenes and can be started / stopped
 * Connect to a USB DMX controller that implements the WebUSB specification
@@ -87,16 +88,16 @@ npm start
 
 # Integration
 
-The integrations for modV and Dekk are provided by VisionLord, so running `npm start` will also start the servers to create a connection between VisionLord and Dekk & modV. You can also start them manually
+The integrations for modV and Dekk are provided by luminave, so running `npm start` will also start the servers to create a connection between luminave and Dekk & modV. You can also start them manually
 
 ## modV
 
 If you want to use modV you have to start the local WebSocket server too:
 
-### In VisionLord
+### In luminave
 
 * Start the server with `npm run modv-integration`
-* Click the "connect" button of the modV component in the VisionLord UI
+* Click the "connect" button of the modV component in the luminave UI
 
 ### In modV
 
@@ -109,10 +110,10 @@ If you want to use modV you have to start the local WebSocket server too:
 
 If you want to use [Dekk](https://github.com/sinnerschrader/dekk) you have to start the local WebSocket server too:
 
-### In VisionLord
+### In luminave
 
 * Start the server with `npm run dekk-integration`
-* Click the "connect" button of the dekk component in the VisionLord UI
+* Click the "connect" button of the dekk component in the luminave UI
 
 ### In dekk
 
@@ -126,7 +127,7 @@ If you want to use fivetwelve:
 
 * Download and install [fivetwelve-bridge](https://github.com/usefulthink/fivetwelve-bridge/)
 * Start the WebSocket server provided by fivetwelve-bridge with `npm start`
-* In VisionLord: Click the "connect" button of the fivetwelve component
+* In luminave: Click the "connect" button of the fivetwelve component
 
 If you start the timeline all data is also send to fivetwelve
 
@@ -135,11 +136,11 @@ If you start the timeline all data is also send to fivetwelve
 
 # Software
 
-You need the following software in order to use VisionLord:
+You need the following software in order to use luminave:
 
 ## Browser
 
-* VisionLord can only be used in Chrome 61+ right now
+* luminave can only be used in Chrome 61+ right now
 
 ### Chrome 61 + 62
 
@@ -335,7 +336,7 @@ navigator.usb.requestDevice({
 
 # Server
 
-Right now I'm using Go to provide a HTTPS server. You don't have to use Go in order to use VisionLord, you can use any server that can serve static HTML files over HTTPS.
+Right now I'm using Go to provide a HTTPS server. You don't have to use Go in order to use luminave, you can use any server that can serve static HTML files over HTTPS.
 
 ### Changes to the server
 
@@ -366,6 +367,6 @@ The server is written in Go, so if you want to change the code you have to insta
 
 # Thanks to
 
-* [Gregor Adams](https://github.com/pixelass) for working with me on VisionLord, hours and hours of pair-programming and knowledge transfer, partner in debugging the most ugly performance problems and everything else ❤️
+* [Gregor Adams](https://github.com/pixelass) for working with me on luminave, hours and hours of pair-programming and knowledge transfer, partner in debugging the most ugly performance problems and everything else ❤️
 * [Martin Schuhfuss](https://github.com/usefulthink) for fivetwelve and a lot of DMX512 knowledge ❤️
 * [Sam Wray](https://github.com/2xaa) for creating [modV](https://github.com/2xAA/modV) and helping me to integrate modV into everything related to NERD DISCO

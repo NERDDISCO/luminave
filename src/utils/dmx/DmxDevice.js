@@ -70,7 +70,7 @@ export default class DmxDevice extends fivetwelve.DmxDevice {
         // handle (map|mapping) inconsistency.
         // if mapping is available we can use its keys
         // if map is used (fallback defined above) we need to prefix it with an empty string
-        // {@see https://github.com/NERDDISCO/VisionLord/commit/e54cbaedb35d8e2ce8c858688d01a03626f78d63#diff-fbbc7eb32e6a63e1dd48789843a0192fR78}
+        // {@see https://github.com/NERDDISCO/luminave/commit/e54cbaedb35d8e2ce8c858688d01a03626f78d63#diff-fbbc7eb32e6a63e1dd48789843a0192fR78}
         const mapping = param.mapping ?
           Object.keys(param.mapping) : ['', ...Object.keys(map)]
 

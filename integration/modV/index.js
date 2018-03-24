@@ -18,8 +18,8 @@ console.log('modv-integration', '|', 'WebSocket server on port', port)
       // Broadcast to all connected clients
       server.connections.forEach(con => {
 
-        // The client connection came from VisionLord
-        if (con.path === '/visionLord') {
+        // The client connection came from luminave
+        if (con.path === '/luminave') {
           con.sendText(JSON.stringify(dmxData))
         }
       })

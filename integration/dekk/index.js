@@ -9,7 +9,7 @@ console.log('dekk-integration', '|', 'WebSocket server on port', port)
  *
  * Based on where the connection is coming from the path should be:
  * /dekk = from Dekk
- * /visionLord = from VisionLord
+ * /luminave = from luminave
  */
  const server = ws.createServer(connection => {
 
@@ -22,8 +22,8 @@ console.log('dekk-integration', '|', 'WebSocket server on port', port)
       // Broadcast to all connected clients
       server.connections.forEach(con => {
 
-        // The client connection came from VisionLord
-        if (con.path === '/visionLord') {
+        // The client connection came from luminave
+        if (con.path === '/luminave') {
           con.sendText(JSON.stringify(data))
         }
       })

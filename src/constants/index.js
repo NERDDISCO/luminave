@@ -3,7 +3,7 @@ import { uuid } from '/libs/abcq/uuid.js'
 /*
  *
  * A collection of constants which are used to:
- * - have a unique reference to every state in VisionLord
+ * - have a unique reference to every state
  * - access the localStorage
  * - define global lists
  */
@@ -63,7 +63,7 @@ export const SEND_UNIVERSE_TO_FIVETWELVE = uuid()
 /*
  * localStorage
  */
-export const STORAGE_STATE = 'VisionLordConfig'
+export const STORAGE_STATE = 'LuminaveConfig'
 
 /*
  * Global lists

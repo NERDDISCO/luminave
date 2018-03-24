@@ -42,7 +42,7 @@ class ModvManager extends reduxMixin(PolymerElement) {
     super.connectedCallback()
 
     // Set the URL of the server we want to create a connection to
-    this.url = 'ws://localhost:3000/visionLord'
+    this.url = 'ws://localhost:3000/luminave'
 
     // Try to create the connection when the component is loaded
     if (this.connected) {

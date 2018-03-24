@@ -36,7 +36,7 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
     })
   }
 
-  // @TODO: I thought this might fix https://github.com/NERDDISCO/VisionLord/issues/11, but it doesn't
+  // @TODO: I thought this might fix https://github.com/NERDDISCO/luminave/issues/11, but it doesn't
   computeProperties(fixture) {
     return fixture.getParamsList()
   }
