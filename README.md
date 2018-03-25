@@ -1,11 +1,8 @@
-# luminave
-
+ ![luminave 2.0.0](https://github.com/NERDDISCO/luminave/raw/master/luminave_glitch.gif)
 
 Manage all the Light.
 
- [![1.0.0](https://img.shields.io/badge/Stable-1.0-00f557.svg?style=flat)](https://github.com/NERDDISCO/luminave/releases/tag/1.0.0)
-
- ![luminave 1.0.0](https://github.com/NERDDISCO/luminave/raw/master/Screen%20Shot%202018-02-17%20at%2004.57.55.png)
+ [![2.0.0](https://img.shields.io/badge/Stable-2.0-00f557.svg?style=flat)](https://github.com/NERDDISCO/luminave/releases/tag/2.0.0)
 
 ## Requirements
 
