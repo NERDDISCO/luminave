@@ -7,7 +7,7 @@
   "license": "MIT",
   "flat": true,
   "bugs": {
-    "url": "https://github.com/NERDDISCO/VisionLord/issues"
+    "url": "https://github.com/NERDDISCO/luminave/issues"
   },
   "scripts": {
     "test": "mocha --recursive test/",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/NERDDISCO/VisionLord.git"
+    "url": "git+https://github.com/NERDDISCO/luminave.git"
   },
   "dependencies": {
     "@polymer/polymer": "^3.0.0-pre.1",
@@ -34,13 +34,23 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "uuid": "^3.1.0",
-    "webmidi": "^2.0.0"
+    "webmidi": "^2.0.0",
+    "webusb-dmx512-controller": "^1.0.0-rc.6"
   },
   "resolutions": {
     "@webcomponents/webcomponentsjs": "Z1.0.13",
-    "color-convert": "0.6.0"
+    "color-convert": "0.6.0",
+    "symbol-observable": "1.2.0",
+    "chalk": "2.4.0",
+    "supports-color": "5.4.0",
+    "ansi-styles": "3.2.1",
+    "has-ansi": "2.0.0",
+    "strip-ansi": "4.0.0",
+    "ansi-regex": "3.0.0",
+    "has-flag": "3.0.0",
+    "acorn": "5.5.3"
   },
-  "homepage": "https://github.com/NERDDISCO/VisionLord#readme",
+  "homepage": "https://github.com/NERDDISCO/luminave#readme",
   "devDependencies": {
     "eslint": "^4.7.2"
   }
