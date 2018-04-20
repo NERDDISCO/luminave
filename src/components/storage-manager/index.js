@@ -59,8 +59,8 @@ class StorageManager extends reduxMixin(PolymerElement) {
 
   static get template() {
     return `
-      <!--<button on-click="resetStorage">Reset storage</button>-->
-      <button on-click="printStorage">Print storage</button>
+      <!--<button on-click="resetStorage">Reset storage</button>
+      <button on-click="printStorage">Print storage</button>-->
     `
   }
 }
