@@ -97,7 +97,10 @@ class ModvManager extends reduxMixin(PolymerElement) {
 
   static get template() {
     return `
-      modV: <button on-click="handleClick">[[connectedLabel]]</button>
+        <template is="dom-if" if="[[connected]]">
+          ✅
+        </template>
+        modV: <button on-click="handleClick">[[connectedLabel]]</button>
     `
   }
 }
