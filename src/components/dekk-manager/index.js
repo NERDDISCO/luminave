@@ -107,21 +107,31 @@ class DekkManager extends reduxMixin(PolymerElement) {
   }
 
   changeScenes(sceneNames, action) {
+    const arrayType = Array.isArray(sceneNames) ? sceneNames : [sceneNames]
+    
     // Dekk will give us an array of scene names
-    sceneNames.map(name => {
+    arrayType.map(name => {
       // Retrieve the scene
       const scene = getSceneByName(this.getState(), { name })
 
       if (scene === undefined) {
         console.log(`Scene "${name}" doesn't exist`)
       } else {
-        if (action === 'remove') {
-          this.dispatch(removeSceneFromTimelineAndResetFixtures(scene.id))
-        } else if (action === 'add') {
-          // @TODO: TimelineManager: Don't add the same scene x+1 times
-          // https://github.com/NERDDISCO/luminave/issues/16
-          this.dispatch(addSceneToTimeline(scene.id))
+
+        switch (action) {
+          case 'remove':
+            this.dispatch(removeSceneFromTimelineAndResetFixtures(scene.id))
+            break
+
+          case 'add':
+            // @TODO: TimelineManager: Don't add the same scene x+1 times
+            // https://github.com/NERDDISCO/luminave/issues/16
+            this.dispatch(addSceneToTimeline(scene.id))
+            break
+
+          default:
         }
+
       }
     })
   }
