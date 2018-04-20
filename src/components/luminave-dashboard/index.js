@@ -52,7 +52,6 @@ class LuminaveDashboard extends ReduxMixin(PolymerElement) {
 
       <div class="grid">
         <usb-dmx-manager></usb-dmx-manager>
-        <storage-manager></storage-manager>
 
         <div>
           <bpm-meter bpm="[[bpm]]"></bpm-meter>
@@ -64,6 +63,7 @@ class LuminaveDashboard extends ReduxMixin(PolymerElement) {
         <modv-manager></modv-manager>
         <dekk-manager></dekk-manager>
         <fivetwelve-manager></fivetwelve-manager>
+        <storage-manager></storage-manager>
       </div>
 
       <timeline-manager></timeline-manager>
