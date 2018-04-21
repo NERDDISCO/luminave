@@ -1,44 +1,36 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import USBPort from './USBPort.js'
-import ArduinoLeonardoETHDriver from './ArduinoLeonardoETHDriver.js'
+import Controller from '/node_modules/webusb-dmx512-controller/controller.js'
 import { connectUsb } from '../../actions/index.js'
 
 /*
- * Handle the connection to a USB DMX controller using WebUSB
- * Tested with Arduino Leonardo ETH, but should be compatible with every Arduino
- * that can be used as a USB device
+ * Handle the connection to a WebUSB DMX512 Controller
+ * @see https://github.com/NERDDISCO/webusb-dmx512-controller
  */
 class UsbDmxManager extends ReduxMixin(PolymerElement) {
 
   constructor() {
     super()
 
-    // USBPort
-    this.port = null
-
-    // @TODO: Move ALL OF THIS into it's own module
-    this.driver = new ArduinoLeonardoETHDriver(this.port, {})
-
-    // Only request the port for specific devices
-    this.usbDeviceFilter = [
-      // Arduino LLC (9025)
-      { vendorId: 0x2341, productId: 0x8036 },
-      // Arduino LLC (9025)
-      { vendorId: 0x2341, productId: 0x8037 },
-      // Arduino LLC (10755), Leonardo ETH (32832)
-      { vendorId: 0x2a03, productId: 0x8040 }
-    ]
-
-    // Check for USB devices that are already paired
-    this.getUsbPorts().then(list => {
-      if (list[0] !== undefined && list[0].hasOwnProperty('device')) {
-        [this.port] = list
-
-        // Auto connect
-        this.connect()
-      }
+    this.controller = new Controller({
+      filters: [
+        // Arduino LLC (9025)
+        { vendorId: 0x2341, productId: 0x8036 },
+        // Arduino LLC (9025)
+        { vendorId: 0x2341, productId: 0x8037 },
+        // Arduino LLC (10755), Leonardo ETH (32832)
+        { vendorId: 0x2a03, productId: 0x8040 }
+      ]
     })
+
+    // Automatically connect to already paired WebUSB DMX512 Controller
+    this.controller.autoConnect()
+      .then(() => {
+        this.connect()
+      })
+      .catch(error => {
+        console.log(error)
+      })
   }
 
   static get properties() {
@@ -66,7 +58,10 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
 
   listenSendUniverse(e) {
     // Send universe 0 to the USB DMX controller
-    this.driver.send(this.universes[0].channels)
+    this.controller.send(this.universes[0].channels)
+    .catch(error => {
+      console.error(error)
+    })
   }
 
   handleConnectButtonClick() {
@@ -74,11 +69,12 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
     // Disconnect from USB controller
     if (this.usbConnection.connected) {
 
-      if (this.port === null) {
+      if (this.controller.device === undefined) {
         this.dispatch(connectUsb(false))
       } else {
-        this.port.disconnect().then(() => {
+        this.controller.disconnect().then(() => {
           // Disconnected
+          this.dispatch(connectUsb(false))
         }, error => {
           console.error(error)
         })
@@ -91,35 +87,14 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
   }
 
   /*
-   * Get a list of USB devices that are already paired
-   */
-  getUsbPorts() {
-    return navigator.usb.getDevices().
-      then(devices => {
-        this.devices = devices
-
-        return devices.map(device => new USBPort({ device }))
-      })
-  }
-
-  /*
-   * Get access to USB devices that match the provided filters
-   */
-  requestUsbPort() {
-    // Request access to the USB device
-    return navigator.usb.requestDevice({ filters: this.usbDeviceFilter }).
-      then(device => new USBPort({ device }))
-  }
-
-  /*
    * Enable WebUSB and request a USBPort
    */
   enable() {
-    this.requestUsbPort().then(selectedPort => {
-      this.port = selectedPort
+    this.controller.enable().then(() => {
+      // Create a connection to the selected Arduino
       this.connect()
-    }).
-    catch(error => {
+    })
+    .catch(error => {
       console.error(error)
     })
   }
@@ -129,25 +104,23 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
    */
   connect() {
 
-    this.driver.serialport = this.port
-
-    this.port.connect().then(() => {
+    this.controller.connect().then(() => {
 
       // USB is connected
       this.dispatch(connectUsb(true))
 
-      // Receive data
-      this.port.onReceive = data => {
-        // const textDecoder = new TextDecoder()
-        // console.log(textDecoder.decode(data))
-      }
-
-      // Receive error
-      this.port.onReceiveError = error => {
-        // USB is disconnected
-        this.dispatch(connectUsb(false))
-        console.log(error)
-      }
+      // // Receive data
+      // this.controller.device.onReceive = data => {
+      //   // const textDecoder = new TextDecoder()
+      //   // console.log(textDecoder.decode(data))
+      // }
+      //
+      // // Receive error
+      // this.controller.device.onReceiveError = error => {
+      //   // USB is disconnected
+      //   this.dispatch(connectUsb(false))
+      //   console.log(error)
+      // }
 
     }, error => {
       // USB is disconnected
