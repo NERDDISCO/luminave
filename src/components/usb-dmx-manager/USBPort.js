@@ -1,5 +1,7 @@
-/*
+/**
  * USB port on the computer
+ *
+ * @deprecated Please remove this after webusb-dmx512-controller/controller.js is feature complete
  */
 export default class USBPort {
 

@@ -3,6 +3,8 @@ const DEFAULT_OPTIONS = { universeMapping: { 1: 1 } }
 /**
  * A fivetwelve driver for the Arduino Leonardo ETH with DMX512 isolated shield
  * @see https://www.tindie.com/products/Conceptinetics/25kv-isolated-dmx-512-shield-for-arduino-r2/
+ *
+ * @deprecated Please remove this after webusb-dmx512-controller/controller.js is feature complete
  */
 export default class ArduinoLeonardoETHDriver {
 
