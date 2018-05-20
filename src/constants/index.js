@@ -74,7 +74,7 @@ export const FIXTURE_TYPES = ['EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
 
 export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
   'yellow', 'uv', 'rotate', 'pan', 'tilt', 'speed', 'brightness', 'colorSpeed',
-  'movement', 'gobo', 'amount', 'mode', 'colors', 'pattern', 'zoom',
+  'movement', 'gobo', 'amount', 'mode', 'modvColor', 'colors', 'pattern', 'zoom',
   'xAxisRolling', 'yAxisRolling', 'zAxisRolling', 'xAxisMoving', 'yAxisMoving',
   'panTilt', 'panEndless', 'tiltEndless', 'sound', 'colorMacro', 'strobeMacro',
   'scanSpeed', 'rgbwMacro', 'resetAuto']

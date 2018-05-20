@@ -1,7 +1,7 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
 import { playTimeline, resetTimeline, sendUniverseToUsb, sendUniverseToFivetwelve, setTimelineProgress, setChannels, setAllFixtureProperties, resetUniverseAndFixtures } from '../../actions/index.js'
-import { batch, clearBatch, fixtureBatch, clearFixtureBatch, colors } from '/src/utils/index.js'
+import { batch, clearBatch, fixtureBatch, clearFixtureBatch, modvData } from '/src/utils/index.js'
 import '../timeline-scene/index.js'
 import { getTimelineScenes, getFixtures } from '../../selectors/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
@@ -126,7 +126,20 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
           // Overwrite the color of every fixture when a connection to modV was established
           if (this.modvConnected && fixture.hasOwnProperty('color')) {
-            fixture['color'] = colors.modv.average
+
+            // Set a specific color from modV
+            if (fixture.hasOwnProperty('modvColor')) {
+
+              // @TODO: Fix precision error
+              fixture.modvColor = Math.round(fixture.modvColor)
+
+              // Set the color
+              fixture.color = modvData.colors.slice((fixture.modvColor - 1) * 3, ((fixture.modvColor - 1) * 3) + 3)
+
+            // Use average color from modV
+            } else {
+              fixture.color = modvData.average
+            }
           }
       }
 

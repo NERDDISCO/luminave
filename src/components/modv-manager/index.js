@@ -1,7 +1,8 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { reduxMixin } from '../../reduxStore.js'
 import { connectModv } from '../../actions/index.js'
-import { modvcolor } from '../../utils/index.js'
+import { setModvData, modvData } from '../../utils/index.js'
+import '../color-grid/index.js'
 
 /*
  * Handle the connection to modV
@@ -26,7 +27,9 @@ class ModvManager extends reduxMixin(PolymerElement) {
       connectedLabel: {
         type: String,
         computed: 'computeConnectedLabel(connected)'
-      }
+      },
+      averageColor: Array,
+      colors: Array
     }
   }
 
@@ -91,14 +94,17 @@ class ModvManager extends reduxMixin(PolymerElement) {
       const { data } = event
 
       // Save color into global object instead of dispatch it into state because of performance issues
-      modvcolor(JSON.parse(data))
+      setModvData(JSON.parse(data))
+
+      this.averageColor = modvData.average
+      this.colors = modvData.colors
     })
   }
 
   static get template() {
     return `
         <template is="dom-if" if="[[connected]]">
-          ✅
+          <color-grid width="4" height="1" colors="[[colors]]"></color-grid>
         </template>
         modV: <button on-click="handleClick">[[connectedLabel]]</button>
     `

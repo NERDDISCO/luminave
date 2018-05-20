@@ -26,12 +26,12 @@ export const clearFixtureInBatch = fixtureId => {
   }
 }
 
-export const colors = {
-  modv: {
-    average: [0, 0, 0]
-  }
+export const modvData = {
+  average: [0, 0, 0],
+  colors: []
 }
 
-export const modvcolor = color => {
-  colors['modv'] = color
+export const setModvData = data => {
+  modvData.average = data.average
+  modvData.colors = data.colors
 }
