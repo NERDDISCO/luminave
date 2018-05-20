@@ -57,11 +57,13 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
   }
 
   listenSendUniverse(e) {
-    // Send universe 0 to the USB DMX controller
-    this.controller.send(this.universes[0].channels)
-    .catch(error => {
-      console.error(error)
-    })
+    if (this.usbConnection.connected) {
+      // Send universe 0 to the USB DMX controller
+      this.controller.send(this.universes[0].channels)
+      .catch(error => {
+        console.error(error)
+      })
+    }
   }
 
   handleConnectButtonClick() {
