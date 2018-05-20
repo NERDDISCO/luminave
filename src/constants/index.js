@@ -70,7 +70,8 @@ export const STORAGE_STATE = 'LuminaveConfig'
  */
 export const FIXTURE_TYPES = ['EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
   'AdjStarburst', 'CameoFlatPar1RGBW', 'CameoPixBar600PRO', 'CameoWookie200RGY',
-  'StairvilleAF150', 'StairvilleBowlBeam604LEDCOBMovingHead', 'JsFestMovingHeadWash']
+  'StairvilleAF150', 'StairvilleBowlBeam604LEDCOBMovingHead', 'JsFestMovingHeadWash',
+  'StairvilleOutdoorStageParTri']
 
 export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
   'yellow', 'uv', 'rotate', 'pan', 'tilt', 'speed', 'brightness', 'colorSpeed',

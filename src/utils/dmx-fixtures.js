@@ -8,3 +8,4 @@ export { default as FunGenerationSeParQuadLedRgbUv } from './dmx/FunGenerationSe
 export { default as JsFestMovingHeadWash } from './dmx/JsFestMovingHeadWash.js'
 export { default as StairvilleAF150 } from './dmx/StairvilleAF150.js'
 export { default as StairvilleBowlBeam604LEDCOBMovingHead } from './dmx/StairvilleBowlBeam604LEDCOBMovingHead.js'
+export { default as StairvilleOutdoorStageParTri } from './dmx/StairvilleOutdoorStageParTri.js'
