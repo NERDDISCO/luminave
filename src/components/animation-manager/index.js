@@ -56,16 +56,7 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
         overflow: hidden;
       }
 
-      h2 {
-        font-size: 3em;
-        background: #000;
-        color: #fff;
-        padding: .25em;
-        text-transform: uppercase;
-      }
     </style>
-
-      <h2>Animations</h2>
 
       <form on-submit="handleSubmit">
         <label for="name">Name</label>

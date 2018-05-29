@@ -1,22 +1,19 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import '/node_modules/@polymer/paper-tabs/paper-tab.js'
+import '/node_modules/@polymer/paper-tabs/paper-tabs.js'
+import '/node_modules/@polymer/iron-pages/iron-pages.js'
+
 import ReduxMixin from '../../reduxStore.js'
-import '../channel-grid/index.js'
-import '../bpm-meter/index.js'
-import '../tap-button/index.js'
-import '../connect-button/index.js'
-import '../usb-dmx-manager/index.js'
 import '../universe-manager/index.js'
 import '../fixture-manager/index.js'
 import '../scene-manager/index.js'
-import '../storage-manager/index.js'
 import '../animation-manager/index.js'
 import '../midi-manager/index.js'
 import '../timeline-manager/index.js'
-import '../live-mode/index.js'
-import '../modv-manager/index.js'
-import '../fivetwelve-manager/index.js'
-import '../config-manager/index.js'
-import '../dekk-manager/index.js'
+import '../ui-spacer/index.js'
+
+import '../luminave-status/index.js'
+
 
 class LuminaveDashboard extends ReduxMixin(PolymerElement) {
   static get properties() {
@@ -43,46 +40,77 @@ class LuminaveDashboard extends ReduxMixin(PolymerElement) {
   static get template() {
     return `
       <style>
-        .grid {
-          display: flex;
-          flex-direction: row;
-          justify-content: space-around;
-        }
+          paper-tabs {
+            display: inline-block;
+            background-color: var(--dark-primary-color);
+            color: var(--paper-toolbar-color);
+            font-size: 1em;
+          }
       </style>
 
-      <div class="grid">
-        <usb-dmx-manager></usb-dmx-manager>
-
-        <div>
-          <bpm-meter bpm="[[bpm]]"></bpm-meter>
-          <tap-button></tap-button>
-        </div>
-
-        <live-mode></live-mode>
-
-        <modv-manager></modv-manager>
-        <dekk-manager></dekk-manager>
-        <fivetwelve-manager></fivetwelve-manager>
-        <storage-manager></storage-manager>
-      </div>
+      <luminave-status></luminave-status>
 
       <timeline-manager></timeline-manager>
-      <hr>
 
-      <template is="dom-if" if="[[editMode]]">
-        <universe-manager universes={{universeManager}}></universe-manager>
-        <hr>
+      <ui-spacer></ui-spacer>
+
+      <template is="dom-if" if="[[live]]">
+        <div>
+          <paper-tabs selected="{{selected}}">
+            <paper-tab>Universes</paper-tab>
+            <paper-tab>MIDI Controller</paper-tab>
+          </paper-tabs>
+
+          <iron-pages selected="{{selected}}">
+            <div>
+              <ui-spacer></ui-spacer>
+              <universe-manager universes={{universeManager}}></universe-manager>
+            </div>
+            <div>
+              <ui-spacer></ui-spacer>
+              <midi-manager controllers="{{midiManager}}"></midi-manager>
+            </div>
+          </iron-pages>
+        </div>
       </template>
 
-      <midi-manager controllers="{{midiManager}}"></midi-manager>
+
 
       <template is="dom-if" if="[[editMode]]">
-        <hr>
-        <scene-manager scenes={{sceneManager}}></scene-manager>
-        <hr>
-        <animation-manager animations="{{animationManager}}"></animation-manager>
-        <hr>
-        <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
+
+        <div>
+          <paper-tabs selected="{{selected}}">
+            <paper-tab>Universes</paper-tab>
+            <paper-tab>MIDI Controller</paper-tab>
+            <paper-tab>Scenes</paper-tab>
+            <paper-tab>Animations</paper-tab>
+            <paper-tab>Fixtures</paper-tab>
+          </paper-tabs>
+
+          <iron-pages selected="{{selected}}">
+            <div>
+              <ui-spacer></ui-spacer>
+              <universe-manager universes={{universeManager}}></universe-manager>
+            </div>
+            <div>
+              <ui-spacer></ui-spacer>
+              <midi-manager controllers="{{midiManager}}"></midi-manager>
+            </div>
+            <div>
+              <ui-spacer></ui-spacer>
+              <scene-manager scenes={{sceneManager}}></scene-manager>
+            </div>
+            <div>
+              <ui-spacer></ui-spacer>
+              <animation-manager animations="{{animationManager}}"></animation-manager>
+            </div>
+            <div>
+              <ui-spacer></ui-spacer>
+              <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
+            </div>
+          </iron-pages>
+        </div>
+
       </template>
     `
   }

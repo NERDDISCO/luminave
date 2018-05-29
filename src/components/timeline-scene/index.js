@@ -24,6 +24,7 @@ class TimelineScene extends ReduxMixin(PolymerElement) {
       <style>
         h3 {
           font-size: 1em;
+          font-weight: normal;
           margin: 0;
         }
       </style>

@@ -1,31 +1,36 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>VisionLord</title>
+    <title>luminave</title>
     <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <script src="/node_modules/webmidi/webmidi.min.js"></script>
     <script src="/node_modules/redux/dist/redux.min.js"></script>
     <script src="/libs/keytime/index.js"></script>
     <script src="/libs/buffer/index.js"></script>
     <script src="/libs/uuid/v1.js"></script>
+    <link rel="import" href="dark-side/dark-side.html">
     <script type="module" src="/src/app.js"></script>
     <style>
       :root {
         --focus-background: #464819;
         --focus-color: #D3DE81;
         --background: #fff;
-        --background-lighter: #211C46;
-        --background-darker: #2d323b;
-        --color: #111;
-        --color-lighter: #8BC1FF;
-        --color-darker: #b0bbc6;
+        --background-light: #F5F5F5;
+        --background-dark: #424b4b;
+        --background-primary: #35c9a4;
+        --background-warning: #da4453;
+        --color: #bdced7;
+        --color-light: #fff;
+        --color-dark: #6b6b6b;
+        --padding-basic: .5em;
       }
       body {
         margin: 0;
-        background: var(--background);
-        color: var(--color);
-        font: 0.9em sans-serif;
+        /* background: var(--background); */
+        /* color: var(--color); */
+        /* font: 0.9em sans-serif; */
       }
+
     </style>
   </head>
   <body>

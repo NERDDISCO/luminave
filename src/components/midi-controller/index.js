@@ -164,6 +164,12 @@ class MidiController extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
+      <style>
+        h3 {
+          margin-top: 0;
+        }
+      </style>
+
       <div>
         <h3>[[name]] ([[connected]])</h3>
 

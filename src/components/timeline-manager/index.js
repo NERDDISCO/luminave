@@ -6,6 +6,8 @@ import '../timeline-scene/index.js'
 import { getTimelineScenes, getFixtures } from '../../selectors/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 
+import '../luminave-elements/button.js'
+
 /*
  * Handle the elements in a timeline
  */
@@ -189,30 +191,64 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
           flex-direction: row;
 
           min-height: 2em;
-          overflow: scroll;
+        }
+
+        .timeline {
+          background-color: var(--background-dark);
+          color: var(--color-light);
+          padding: var(--padding-basic);
+        }
+
+        .scenes {
+          position: relative;
+          margin-top: calc(var(--padding-basic) * 2);
+          padding: calc(var(--padding-basic) * 3) var(--padding-basic) var(--padding-basic) var(--padding-basic);
+          border: 3px solid var(--background-light);
+        }
+
+        .scenes::before {
+          content: 'Scenes';
+          position: absolute;
+          top: calc(var(--padding-basic) * -3);
+          overflow: visible;
+          background: var(--background-light);
+          color: var(--color-dark);
+          padding: var(--padding-basic);
+        }
+
+        .scenes .item:first-child {
+          margin-left: 0;
+          border-left: none;
         }
 
         .item {
           margin: 0 .1em;
-          padding: .1em;
-          border: 1px solid #ccc;
+          padding: var(--padding-basic);
+          border-left: 3px solid var(--background-light);
+          color: var(--color-light);
         }
       </style>
 
-      <h2>Timeline</h2>
+      <div class="timeline">
 
-      <button on-click="handleReset">Reset</button>
-      <button on-click="handlePlay">[[playLabel]]</button>
-      [[progress]]
+        <luminave-button class="primary" on-click="handlePlay">[[playLabel]]</luminave-button>
+        [[progress]]
+        <luminave-button on-click="handleReset">Reset</luminave-button>
 
-      <br>
+        <ui-spacer></ui-spacer>
 
-      <div class="grid">
-        <template is="dom-repeat" items="[[timelineScenes]]" as="scene">
-          <div class="item">
-            <timeline-scene scene$="[[scene]]" progress="[[progress]]"></timeline-scene>
+        <div class="scenes">
+
+          <div class="grid">
+            <template is="dom-repeat" items="[[timelineScenes]]" as="scene">
+              <div class="item">
+                <timeline-scene scene$="[[scene]]" progress="[[progress]]"></timeline-scene>
+              </div>
+            </template>
           </div>
-        </template>
+
+        </div>
+
       </div>
     `
   }

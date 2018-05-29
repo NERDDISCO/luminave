@@ -2,6 +2,7 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import ReduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addUniverse, removeUniverse, resetUniverseAndFixtures } from '../../actions/index.js'
+import '../channel-grid/index.js'
 
 /*
  *
@@ -12,13 +13,25 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
       universes: {
         type: Array,
         statePath: 'universeManager'
+      },
+      live: {
+        type: Boolean,
+        statePath: 'live'
+      },
+      editMode: {
+        type: Boolean,
+        computed: 'computeEditMode(live)'
       }
     }
   }
 
+  computeEditMode(live) {
+    return !live
+  }
+
   addUniverse() {
     const id = uuidV1()
-    this.dispatch(addUniverse({ id, channels: [...Array(512)].map(() => 0), name: `demo universe ${id}` }))
+    this.dispatch(addUniverse({ id, channels: [...Array(512)].map(() => 0), name: `${id}` }))
   }
 
   removeUniverse(e) {
@@ -33,15 +46,18 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
 
   static get template() {
     return `
-      <h2>Universes</h2>
-
-      <button on-click="addUniverse">Add universe</button>
+      <template is="dom-if" if="[[editMode]]">
+        <button on-click="addUniverse">Add universe</button>
+      </template>
 
       <template is="dom-repeat" items="{{universes}}" as="universe">
         <div>
-          <h3>[[universe.name]]</h3>
+          <template is="dom-if" if="[[editMode]]">
+            <h3>[[universe.name]]</h3>
+            <button on-click="removeUniverse" data-index$="[[index]]">Remove</button>
+          </template>
+
           <button on-click="resetUniverse" data-index$="[[index]]">Reset</button>
-          <button on-click="removeUniverse" data-index$="[[index]]">Remove</button>
 
           <div>
             <channel-grid channels="[[universe.channels]]"></channel-grid>

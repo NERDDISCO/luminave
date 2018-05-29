@@ -125,19 +125,9 @@ class MidiManager extends ReduxMixin(PolymerElement) {
         margin-top: 1em;
         border-top: 2px solid var(--background-darker);
       }
-
-      h2 {
-        font-size: 3em;
-        background: #000;
-        color: #fff;
-        padding: .25em;
-        text-transform: uppercase;
-      }
     </style>
 
     <template is="dom-if" if="[[editMode]]">
-
-      <h2>MIDI controller</h2>
 
       <form on-submit="handleSubmit">
         <label for="name">Name</label>

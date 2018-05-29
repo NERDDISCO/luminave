@@ -67,12 +67,19 @@ class ColorGrid extends PolymerElement {
 
         .item {
           background: rgb( var(--red), var(--green), var(--blue));
-          border: 1px solid rgba(0, 0, 0, 0.25);
-          margin: 0.05em;
           min-height: 1.5em;
+          border-right: 3px solid var(--background-dark);
           color: #000;
           text-align: center;
           overflow: hidden;
+        }
+
+        .container .item:first-child {
+          margin: 0 0 0 var(--padding-basic);
+        }
+
+        .container .item:last-child {
+          margin: 0 var(--padding-basic) 0 0;
         }
       </style>
 

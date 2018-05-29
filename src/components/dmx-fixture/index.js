@@ -77,7 +77,6 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
 
         <div>
           <div class="grid">
-            <div class="property" title="[[id]]">Name: [[name]]</div>
             <div class="property">Type: [[type]]</div>
             <div class="property">Weight: [[fixture.weight]] kg</div>
             <div class="property">Channels: [[fixture.channels]]</div>

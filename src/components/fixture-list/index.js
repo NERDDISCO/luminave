@@ -71,10 +71,10 @@ class FixtureList extends PolymerElement {
       </form>
 
       <div class="items">
-      <template is="dom-repeat" items="{{fixtures}}" as="fixtureId">
-        <fixture-list-item class="item" fixture="{{getFixture(fixtureId)}}"></fixture-list-item>
-        <button on-click="handleRemoveFixture" fixture-index="[[index]]">x</button>
-      </template>
+        <template is="dom-repeat" items="{{fixtures}}" as="fixtureId">
+          <fixture-list-item class="item" fixture="{{getFixture(fixtureId)}}"></fixture-list-item>
+          <button on-click="handleRemoveFixture" fixture-index="[[index]]">x</button>
+        </template>
       </div>
     `
   }

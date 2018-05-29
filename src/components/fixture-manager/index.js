@@ -61,27 +61,41 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
   static get template() {
     return `
     <style>
-      .grid {
-        display: flex;
-        flex-direction: column;
+      :host {
+        --width: 3;
       }
 
-      .fixture {
-        display: block;
-        border: 1px solid var(--color-lighter);
-        margin: 0 0 .25em 0;
+      @media (min-width: 1024px) {
+        :host {
+          --width: 3;
+        }
       }
 
-      h2 {
-        font-size: 3em;
-        background: #000;
-        color: #fff;
-        padding: .25em;
-        text-transform: uppercase;
+      .container {
+        display: grid;
+        grid-template-columns: repeat(var(--width), auto);
+        row-gap: var(--padding-basic);
+        column-gap: var(--padding-basic);
       }
+
+      .item {
+        position: relative;
+        margin-top: calc(var(--padding-basic) * 2);
+        padding: calc(var(--padding-basic) * 3) var(--padding-basic) var(--padding-basic) var(--padding-basic);
+        border: 3px solid var(--background-light);
+      }
+
+      .item::before {
+        content: attr(data-name);
+        position: absolute;
+        top: calc(var(--padding-basic) * -3);
+        overflow: visible;
+        background: var(--background-light);
+        color: var(--color-dark);
+        padding: var(--padding-basic);
+      }
+
     </style>
-
-        <h2>Fixtures</h2>
 
         <form on-submit="handleSubmit">
           <label for="type">Type</label>
@@ -103,20 +117,21 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
         <br>
 
-        <div class="grid">
+        <div class="container">
 
           <template is="dom-repeat" items="[[fixtures]]" as="fixture">
 
-              <dmx-fixture
-                class="fixture"
-                name="[[fixture.name]]"
-                properties="[[fixture.properties]]"
-                id="[[fixture.id]]"
-                type="[[fixture.type]]"
-                address="[[fixture.address]]"
-                universe="[[fixture.universe]]"></dmx-fixture>
+              <div class="item" data-name$="[[fixture.name]]">
+                <dmx-fixture
+                  name="[[fixture.name]]"
+                  properties="[[fixture.properties]]"
+                  id="[[fixture.id]]"
+                  type="[[fixture.type]]"
+                  address="[[fixture.address]]"
+                  universe="[[fixture.universe]]"></dmx-fixture>
 
                 <button on-click="removeFixture" data-id$="[[fixture.id]]">Remove</button>
+              </div>
           </template>
 
         </div>
