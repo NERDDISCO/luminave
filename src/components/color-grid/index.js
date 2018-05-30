@@ -57,36 +57,45 @@ class ColorGrid extends PolymerElement {
     return colorChunks
   }
 
+  computeLabel(index) {
+    return index + 1
+  }
+
   static get template() {
     return `
       <style>
         .container {
           display: grid;
-          grid-template-columns: repeat(var(--width), auto);
+          grid-template-rows: repeat(var(--width), auto);
+          grid-auto-flow: column;
+          column-gap: 0;
+          row-gap: var(--padding-basic);
         }
 
         .item {
           background: rgb( var(--red), var(--green), var(--blue));
-          min-height: 1.5em;
-          border-right: 3px solid var(--background-dark);
-          color: #000;
-          text-align: center;
-          overflow: hidden;
+          height: 25px;
+          width: 55px;
         }
 
-        .container .item:first-child {
-          margin: 0 0 0 var(--padding-basic);
-        }
-
-        .container .item:last-child {
-          margin: 0 var(--padding-basic) 0 0;
+        .label {
+          font-size: .8em;
+          padding: 0 0 0 calc(var(--padding-basic));
+          background: var(--background-dark);
+          color: var(--color-light);
+          height: 100%;
+          min-width: 20px;
+          display: inline-block;
+          vertical-align: top;
         }
       </style>
 
       <div class="container" style="{{computeGridVars(width)}}">
 
         <template is="dom-repeat" items={{_toColorArray(colors)}} as="element">
-          <div class="item" style="{{computeItemVars(element.color)}}"></div>
+          <div class="item" style="{{computeItemVars(element.color)}}">
+            <span class="label">{{computeLabel(index)}}</span>
+          </div>
         </template>
 
       </div>
