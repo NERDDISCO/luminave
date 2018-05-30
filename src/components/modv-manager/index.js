@@ -2,7 +2,6 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import { reduxMixin } from '../../reduxStore.js'
 import { connectModv } from '../../actions/index.js'
 import { setModvData, modvData } from '../../utils/index.js'
-import '../color-grid/index.js'
 
 /*
  * Handle the connection to modV
@@ -98,14 +97,16 @@ class ModvManager extends reduxMixin(PolymerElement) {
 
       this.averageColor = modvData.average
       this.colors = modvData.colors
+
+      const now = new Date()
+
+      // Received data from modV
+      window.dispatchEvent(new CustomEvent('received-data-from-modv', { detail: { now } }))
     })
   }
 
   static get template() {
     return `
-        <template is="dom-if" if="[[connected]]">
-          <color-grid width="4" height="1" colors="[[colors]]"></color-grid>
-        </template>
         modV: <button on-click="handleClick">[[connectedLabel]]</button>
     `
   }
