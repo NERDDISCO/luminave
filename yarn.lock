@@ -101,7 +101,7 @@
     "@polymer/iron-selector" "^3.0.0-pre.1"
     "@polymer/polymer" "^3.0.0-pre.1"
 
-"@polymer/iron-resizable-behavior@3.0.0-pre.1", "@polymer/iron-resizable-behavior@^3.0.0-pre.1":
+"@polymer/iron-resizable-behavior@3.0.0-pre.1", "@polymer/iron-resizable-behavior@^3.0.0-pre.1", "@polymer/iron-resizable-behavior@^3.0.0-pre.19":
   version "3.0.0-pre.1"
   resolved "https://registry.yarnpkg.com/@polymer/iron-resizable-behavior/-/iron-resizable-behavior-3.0.0-pre.1.tgz#1a6c0276329fdb41818c5e1356f9a8089cf3fbdb"
   dependencies:
@@ -113,7 +113,7 @@
   dependencies:
     "@polymer/polymer" "^3.0.0-pre.1"
 
-"@polymer/iron-selector@3.0.0-pre.1", "@polymer/iron-selector@^3.0.0-pre.1":
+"@polymer/iron-selector@3.0.0-pre.1", "@polymer/iron-selector@^3.0.0-pre.1", "@polymer/iron-selector@^3.0.0-pre.19":
   version "3.0.0-pre.1"
   resolved "https://registry.yarnpkg.com/@polymer/iron-selector/-/iron-selector-3.0.0-pre.1.tgz#e495c3f5ba5498ccfeccb94dded536d10807fb7c"
   dependencies:
@@ -124,6 +124,14 @@
   resolved "https://registry.yarnpkg.com/@polymer/iron-validatable-behavior/-/iron-validatable-behavior-3.0.0-pre.1.tgz#2d1f05e69738e003a761769036d1aece32a7a266"
   dependencies:
     "@polymer/iron-meta" "^3.0.0-pre.1"
+    "@polymer/polymer" "^3.0.0-pre.1"
+
+"@polymer/neon-animation@3.0.0-pre.1", "@polymer/neon-animation@^3.0.0-pre.1":
+  version "3.0.0-pre.1"
+  resolved "https://registry.yarnpkg.com/@polymer/neon-animation/-/neon-animation-3.0.0-pre.1.tgz#a9c538c5d969f034375ff14cf24b1aa500adba52"
+  dependencies:
+    "@polymer/iron-resizable-behavior" "^3.0.0-pre.1"
+    "@polymer/iron-selector" "^3.0.0-pre.1"
     "@polymer/polymer" "^3.0.0-pre.1"
 
 "@polymer/paper-behaviors@3.0.0-pre.1", "@polymer/paper-behaviors@^3.0.0-pre.1":
@@ -183,7 +191,15 @@
     "@polymer/paper-styles" "^3.0.0-pre.1"
     "@polymer/polymer" "^3.0.0-pre.1"
 
-"@polymer/polymer@3.0.0-pre.1", "@polymer/polymer@^3.0.0-pre.1":
+"@polymer/paper-tooltip@3.0.0-pre.1":
+  version "3.0.0-pre.1"
+  resolved "https://registry.yarnpkg.com/@polymer/paper-tooltip/-/paper-tooltip-3.0.0-pre.1.tgz#3eac850fc60f559d85daca94b78ef342ced0ff3f"
+  dependencies:
+    "@polymer/neon-animation" "^3.0.0-pre.1"
+    "@polymer/paper-styles" "^3.0.0-pre.1"
+    "@polymer/polymer" "^3.0.0-pre.1"
+
+"@polymer/polymer@3.0.0-pre.1", "@polymer/polymer@^3.0.0", "@polymer/polymer@^3.0.0-pre.1":
   version "3.0.0-pre.1"
   resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.0.0-pre.1.tgz#9fc26b5259aad9265f324ced02de715991d2eabe"
   dependencies:
@@ -196,7 +212,7 @@
   dependencies:
     symbol-observable "1.0.1"
 
-"@webcomponents/shadycss@1.2.1", "@webcomponents/shadycss@^1.0.0":
+"@webcomponents/shadycss@1.2.1", "@webcomponents/shadycss@^1.0.0", "@webcomponents/shadycss@^1.2.0":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.2.1.tgz#6e4a88534657807c8398b4bc196d0ca492182d54"
 

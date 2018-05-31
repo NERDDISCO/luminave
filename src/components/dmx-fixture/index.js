@@ -6,6 +6,10 @@ import '../dmx-fixture-property/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 import { batch } from '../../utils/index.js'
 
+import '/node_modules/@polymer/iron-icons/iron-icons.js'
+import '/node_modules/@polymer/iron-icons/maps-icons.js'
+import '/node_modules/@polymer/paper-tooltip/paper-tooltip.js'
+
 /*
  * A single DMX fixture with all properties
  */
@@ -87,12 +91,18 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
 
         <div>
           <div class="grid">
+            <div>
+              <iron-icon icon="info-outline" id="info"></iron-icon>
+              <paper-tooltip for="info">
+                [[type]] | [[fixture.weight]] kg | [[fixture.channels]] Channels
+              </paper-tooltip>
+            </div>
+
             <form id="fixtureMetaProperties" on-submit="handleSubmit">
-              <div class="property">[[type]]</div>
-              <div class="property">[[fixture.weight]] kg</div>
-              <div class="property">Channels: [[fixture.channels]]</div>
-              <div class="property">Address: <input name="address" type="number" min="0" max="512" value="[[address]]"/></div>
-              <button type="submit">Update</button>
+              <div>
+                <paper-tooltip for="address">Address</paper-tooltip>
+                <input id="address" name="address" type="number" min="0" max="512" value="[[address]]"/>
+              </div>
             </form>
           </div>
 
