@@ -3,6 +3,7 @@ import ReduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addFixture, removeFixtureFromEverywhere } from '../../actions/index.js'
 import '../dmx-fixture/index.js'
+import * as Fixtures from '../../utils/dmx-fixtures.js'
 import { FIXTURE_TYPES } from '../../constants/index.js'
 
 /*
@@ -31,31 +32,61 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
     this.dispatch(removeFixtureFromEverywhere(dataset.id))
   }
 
-  handleSelectedType(e) {
-    this.type = e.target.selectedOptions[0].value
-  }
-
-  handleAddress(e) {
-    this.address = e.target.value
-  }
-
-  handleName(e) {
-    this.name = e.target.value
-  }
-
   handleSubmit(e) {
     // Prevent sending data to server
     e.preventDefault()
 
+    // Get data out of the form
+    const data = new FormData(e.target)
+
+    const type = data.get('type')
+    const name = data.get('name')
     // @TODO: Set the universe individually
-    this.dispatch(addFixture({
-      id: uuidV1(),
-      type: this.type,
-      name: this.name,
-      universe: 0,
-      address: this.address,
-      properties: {}
-    }))
+    const universe = 0
+    const address = parseInt(data.get('address'), 10)
+    const amount = parseInt(data.get('amount'), 10)
+
+    // Amount was not specified, so we just add one fixture
+    if (isNaN(amount)) {
+      this.dispatch(addFixture({
+        id: uuidV1(),
+        type,
+        name,
+        universe,
+        address,
+        properties: {}
+      }))
+
+    // Add multiple fixtures specified by amount
+    } else {
+      // Create an instance of the fixture
+      const bulkFixture = new Fixtures[type]({
+        address,
+        universe
+      })
+
+      // Use the total amount of channels of the fixture as the offset
+      const offset = bulkFixture.channels
+
+      // Add multiple fixtures
+      for (let i = 0; i < amount; i++) {
+        const bulkAddress = address + (offset * i)
+
+        this.dispatch(addFixture({
+          id: uuidV1(),
+          type,
+          name: `${name} ${i + 1}`,
+          universe,
+          address: bulkAddress,
+          properties: {}
+        }))
+      }
+    }
+
+
+
+
+
   }
 
   static get template() {
@@ -99,7 +130,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
         <form on-submit="handleSubmit">
           <label for="type">Type</label>
-          <select name="type" on-change="handleSelectedType" required>
+          <select name="type" required>
             <option value=""></option>
             <template is="dom-repeat" items="{{types}}" as="type">
               <option value="[[type]]">[[type]]</option>
@@ -107,12 +138,15 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
           </select>
 
           <label for="address">Address</label>
-          <input name="address" type="number" min="1" max="512" on-change="handleAddress" required></input>
+          <input name="address" type="number" min="1" max="512" required></input>
 
           <label for="name">Name</label>
-          <input name="name" type="text" on-change="handleName" required></input>
+          <input name="name" type="text" required></input>
 
-          <button type="submit">Add fixture</button>
+          <label for="amount">Amount</label>
+          <input name="amount" type="number" min="1" max="512"></input>
+
+          <button type="submit">Add</button>
         </form>
 
         <br>
