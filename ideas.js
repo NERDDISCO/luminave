@@ -1,12 +1,19 @@
 /*
 
+change the address of a fixture
+improve the layout of the fixtures
+make fixtures searchable
+move json generation into worker
+add a bulk of Fixtures
+
+
 
 * update midi-manager mapping to be an array instead of an object
  -> BUT what happens with the grid?
  -> we can't transform the mapping object into an array when it's changing
  because of the active state of a button when it's pressed. MAYBE save the active state
  into another element of the midi controller? not into the mapping itself? so
- the active state can be updated individually and doesn't trigger the mapping 
+ the active state can be updated individually and doesn't trigger the mapping
 
 */
 
