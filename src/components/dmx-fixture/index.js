@@ -1,6 +1,6 @@
 import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
 import ReduxMixin from '../../reduxStore.js'
-import { setChannels, sendUniverseToUsb, sendUniverseToFivetwelve, setFixtureProperties } from '../../actions/index.js'
+import { setChannels, setFixtureAddress } from '../../actions/index.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../dmx-fixture-property/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
@@ -34,6 +34,16 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       address: this.address,
       universe: this.universe
     })
+  }
+
+  handleSubmit(e) {
+    e.preventDefault()
+
+    // Get data out of the form
+    const data = new FormData(e.target)
+    const address = parseInt(data.get('address'), 10)
+
+    this.dispatch(setFixtureAddress(this.id, address))
   }
 
   // @TODO: I thought this might fix https://github.com/NERDDISCO/luminave/issues/11, but it doesn't
@@ -77,11 +87,13 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
 
         <div>
           <div class="grid">
-            <div class="property">Type: [[type]]</div>
-            <div class="property">Weight: [[fixture.weight]] kg</div>
-            <div class="property">Channels: [[fixture.channels]]</div>
-            <div class="property">Address: [[address]] </div>
-            <div class="property">Universe: [[universe]]</div>
+            <form id="fixtureMetaProperties" on-submit="handleSubmit">
+              <div class="property">[[type]]</div>
+              <div class="property">[[fixture.weight]] kg</div>
+              <div class="property">Channels: [[fixture.channels]]</div>
+              <div class="property">Address: <input name="address" type="number" min="0" max="512" value="[[address]]"/></div>
+              <button type="submit">Update</button>
+            </form>
           </div>
 
           <div class="grid">

@@ -250,6 +250,15 @@ export const addFixture = fixture => ({
 })
 
 /*
+ * Set the address of a fixture
+ */
+export const setFixtureAddress = (fixtureId, fixtureAddress) => ({
+  fixtureId,
+  fixtureAddress,
+  type: constants.SET_FIXTURE_ADDRESS
+})
+
+/*
  * Set the properties of a fixture
  */
 export const setFixtureProperties = (fixtureId, properties) => ({

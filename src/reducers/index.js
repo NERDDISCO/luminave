@@ -231,10 +231,16 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
 /*
  * Handle the DMX512 fixtures
  */
-export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtureId, properties, fixtureBatch }) => {
+export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtureId, fixtureAddress, properties, fixtureBatch }) => {
   switch (type) {
     case constants.ADD_FIXTURE:
       return update(state, { $push: [fixture] })
+
+
+    case constants.SET_FIXTURE_ADDRESS: {
+      const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
+      return update(state, { [fixtureIndex]: { address: { $set: fixtureAddress } } })
+    }
 
     case constants.SET_FIXTURE_PROPERTIES: {
       const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
