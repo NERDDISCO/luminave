@@ -93,12 +93,12 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
     return `
     <style>
       :host {
-        --width: 3;
+        --width: 4;
       }
 
       @media (min-width: 1024px) {
         :host {
-          --width: 3;
+          --width: 6;
         }
       }
 
