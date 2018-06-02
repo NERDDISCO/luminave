@@ -80,3 +80,9 @@ export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
   'xAxisRolling', 'yAxisRolling', 'zAxisRolling', 'xAxisMoving', 'yAxisMoving',
   'panTilt', 'panEndless', 'tiltEndless', 'sound', 'colorMacro', 'strobeMacro',
   'scanSpeed', 'rgbwMacro', 'resetAuto']
+
+export const MIDI_TYPE_BUTTON = 'Button'
+export const MIDI_TYPE_KNOB = 'Knob'
+export const MIDI_TYPE_FADER = 'Fader'
+export const MIDI_TYPE_EMPTY = 'Empty'
+export const MIDI_TYPES = [MIDI_TYPE_BUTTON, MIDI_TYPE_KNOB, MIDI_TYPE_FADER, MIDI_TYPE_EMPTY]

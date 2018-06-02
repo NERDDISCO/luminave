@@ -22,13 +22,17 @@ class MidiController extends ReduxMixin(PolymerElement) {
     super.ready()
 
     // Initialize mapping
-    if (Object.keys(this.mapping).length === 0) {
+    if (this.mapping.length === 0) {
       const elements = this.width * this.height
 
       for (let i = 0; i < elements; i++) {
         this.dispatch(addMidiMapping(this.index, i, {
           scenes: [],
-          active: false
+          note: -1,
+          label: '',
+          type: '',
+          active: false,
+          value: 0
         }))
       }
     }
@@ -44,7 +48,7 @@ class MidiController extends ReduxMixin(PolymerElement) {
       width: Number,
       height: Number,
       connected: Boolean,
-      mapping: Object,
+      mapping: Array,
       midiLearning: {
         type: Number,
         statePath: 'midiManager.learning'
@@ -86,6 +90,9 @@ class MidiController extends ReduxMixin(PolymerElement) {
           // Listen to "noteon" events
           this.input.addListener('noteon', 'all', this.noteon.bind(this))
 
+          // Listen to "controlchange" events
+          this.input.addListener('controlchange', 'all', this.controlchange.bind(this))
+
         } else if (name === this.outputname && type === 'output') {
           this.output = port
         }
@@ -114,7 +121,7 @@ class MidiController extends ReduxMixin(PolymerElement) {
    */
   noteon(event) {
     const { data } = event
-    const [, note, velocity] = data
+    const [channel, note, velocity] = data
 
     // Learning is active
     if (this.midiLearning > -1) {
@@ -128,37 +135,64 @@ class MidiController extends ReduxMixin(PolymerElement) {
     // Handle mappped input
     } else {
 
-      // @TODO: This is complete bullshit!
-      // Please use a filter or an array or something, but DONT iterate over the mapping EVERY FUCKING TIME OMG
-      // THIS IS ONLY BECAUSE THE MAPPING IS AN OBJECT :/
+      const mappingIndex = this.mapping.findIndex(element => element.note === note)
 
-      // I have to do this because I need the mappingIndex AND this.mapping is an object.
-      // So please think of something that is easier to read
-      for (const mappingIndex in this.mapping) {
+      // Found a mapping
+      if (mappingIndex > -1) {
+
+        // Get the element
         const element = this.mapping[mappingIndex]
 
-        if (element.note === note) {
-          element.active = !element.active
+        // Change the active status of the element (pressed vs not pressed)
+        element.active = !element.active
 
-          // Set active state of element
-          this.dispatch(setMidiMappingActive(this.index, mappingIndex, element.active))
+        // Set active state of element
+        this.dispatch(setMidiMappingActive(this.index, mappingIndex, element.active))
 
-          if (element.active) {
-            // Add all scenes to the timeline
-            element.scenes.map(sceneId => {
-              this.dispatch(addSceneToTimeline(sceneId))
-            })
-          } else {
-            // Remove all scenes from the timeline
-            element.scenes.map(sceneId => {
-              this.dispatch(removeSceneFromTimelineAndResetFixtures(sceneId))
-            })
-          }
+        if (element.active) {
+          // Add all scenes to the timeline
+          element.scenes.map(sceneId => this.dispatch(addSceneToTimeline(sceneId)))
 
-          break
+          // Button light: on
+          this.output.send(144, [note, 127])
+        } else {
+          // Remove all scenes from the timeline
+          element.scenes.map(sceneId => this.dispatch(removeSceneFromTimelineAndResetFixtures(sceneId)))
+
+          // Button light: off
+          this.output.send(144, [note, 0])
         }
       }
 
+    }
+  }
+
+  controlchange(event) {
+    const { data } = event
+    const [, note, velocity] = data
+
+    // Learning is active
+    if (this.midiLearning > -1) {
+
+      const mapping = { note }
+      this.dispatch(addMidiMapping(this.index, this.midiLearning, mapping))
+
+      // Disable learning
+      this.dispatch(learnMidi(-1))
+
+    // Handle mappped input
+    } else {
+      const mappingIndex = this.mapping.findIndex(element => element.note === note)
+
+      // Found a mapping
+      if (mappingIndex > -1) {
+        // this.mapping[mappingIndex].value = velocity
+
+        // @TODO Move this into utils and load from there
+        // const value = velocity
+        // const mapping = { value }
+        // this.dispatch(addMidiMapping(this.index, mappingIndex, mapping))
+      }
     }
   }
 

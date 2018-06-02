@@ -2,18 +2,27 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import ReduxMixin from '../../reduxStore.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import { DomIf } from '/node_modules/@polymer/polymer/lib/elements/dom-if.js'
-import { learnMidi, addSceneToMidi, removeSceneFromMidi } from '../../actions/index.js'
+import { learnMidi, addSceneToMidi, removeSceneFromMidi, addMidiMapping } from '../../actions/index.js'
 import '../scene-list/index.js'
+import { MIDI_TYPES, MIDI_TYPE_BUTTON, MIDI_TYPE_KNOB, MIDI_TYPE_FADER, MIDI_TYPE_EMPTY } from '../../constants/index.js'
 
 /*
  * Show MIDI buttons in a grid
  */
 class MidiGrid extends ReduxMixin(PolymerElement) {
+
+  constructor() {
+    super()
+
+    this.types = MIDI_TYPES
+    this.types.sort()
+  }
+
   static get properties() {
     return {
       width: Number,
       height: Number,
-      mapping: Object,
+      mapping: Array,
       controllerindex: Number,
       learnIndex: {
         type: Number,
@@ -87,18 +96,40 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
     this.dispatch(removeSceneFromMidi(this.controllerindex, mappingIndex, sceneIndex))
   }
 
-  _toArray(object) {
-    const array = []
+  handleLabelChange(e) {
+    const label = e.target.value
+    const { dataset } = e.target
+    const mappingIndex = parseInt(dataset.index, 10)
 
-    for (const mappingIndex in object) {
-      array.push(object[mappingIndex])
-    }
-
-    return array
+    const mapping = { label }
+    this.dispatch(addMidiMapping(this.controllerindex, mappingIndex, mapping))
   }
 
-  _toLabel(index) {
-    return `Button ${index + 1}`
+  handleType(e) {
+    e.preventDefault()
+
+    const data = new FormData(e.target)
+    const type = data.get('type')
+    const mappingIndex = parseInt(data.get('mappingIndex'), 10)
+
+    const mapping = { type }
+    this.dispatch(addMidiMapping(this.controllerindex, mappingIndex, mapping))
+  }
+
+  selectedType(elementType, type) {
+    return elementType === type ? 'selected' : ''
+  }
+
+  showValueForType(type) {
+    if (type === MIDI_TYPE_KNOB || type === MIDI_TYPE_FADER) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  isNotEmpty(type) {
+    return type !== MIDI_TYPE_EMPTY
   }
 
   static get template() {
@@ -128,22 +159,51 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
 
       <div class="container" style="{{computeGridVars(width)}}">
 
-        <template is="dom-repeat" items={{_toArray(mapping)}} as="element">
+        <template is="dom-repeat" items={{mapping}} as="element">
           <div class="item" style="{{computeItemVars(element, index, learnIndex)}}">
 
-            <template is="dom-if" if="[[editMode]]">
-              [[_toLabel(index)]]
-              <br>
-              Note: [[element.note]]
-              <button class="learn" on-click="handleLearn" data-index$="[[index]]">Learn</button>
+            <template is="dom-if" if="[[live]]">
+              [[element.label]]
             </template>
 
-            <scene-list
-              on-add-scene="handleAddScene"
-              on-remove-scene="handleRemoveScene"
-              data-index$="[[index]]"
-              scenes$="{{element.scenes}}"
-              scene-manager="[[sceneManager]]"></scene-list>
+<!--
+            <template is="dom-if" if="[[showValueForType(element.type)]]">
+              [[element.value]]
+            </template>
+-->
+
+            <template is="dom-if" if="[[editMode]]">
+              <template is="dom-if" if="[[isNotEmpty(element.type)]]">
+                <input class="name" name="label" type="text" on-change="handleLabelChange" value="[[element.label]]" data-index$="[[index]]"></input>
+                <br>
+              </template>
+
+              <form on-submit="handleType">
+                <input name="mappingIndex" type="hidden" value="[[index]]"></input>
+                <select name="type" required>
+                  <option value=""></option>
+                  <template is="dom-repeat" items="{{types}}" as="type">
+                    <option value="[[type]]" selected="[[selectedType(element.type, type)]]">[[type]]</option>
+                  </template>
+                </select>
+                <button type="submit">Change</button>
+              </form>
+
+              <template is="dom-if" if="[[isNotEmpty(element.type)]]">
+                <br>
+                Note: [[element.note]]
+                <button class="learn" on-click="handleLearn" data-index$="[[index]]">Learn</button>
+              </template
+            </template>
+
+            <template is="dom-if" if="[[isNotEmpty(element.type)]]">
+              <scene-list
+                on-add-scene="handleAddScene"
+                on-remove-scene="handleRemoveScene"
+                data-index$="[[index]]"
+                scenes$="{{element.scenes}}"
+                scene-manager="[[sceneManager]]"></scene-list>
+            </template>
 
           </div>
         </template>
