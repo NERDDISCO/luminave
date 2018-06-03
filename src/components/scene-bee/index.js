@@ -85,12 +85,7 @@ class SceneBee extends ReduxMixin(PolymerElement) {
 
       .name {
         display: inline-block;
-        width: 100%;
         margin: 0;
-        padding: .35em .15em;
-        border: 0;
-        background: rgba(0, 0, 0, 1);
-        color: #fff;
       }
     </style>
 
@@ -100,7 +95,6 @@ class SceneBee extends ReduxMixin(PolymerElement) {
         <button on-click="removeScene" data-index$="[[index]]">Remove</button>
         <button on-click="runScene" scene-id="[[scene.id]]">Run</button>
 
-        <h4>Animations</h4>
         <animation-list
           on-add-animation="handleAddAnimation"
           on-remove-animation="handleRemoveAnimation"
@@ -109,7 +103,6 @@ class SceneBee extends ReduxMixin(PolymerElement) {
           animation-manager$="[[animationManager]]"></animation-list>
 
 
-        <h4>Fixtures</h4>
         <fixture-list
           on-add-fixtures="handleAddFixtures"
           on-remove-fixture="handleRemoveFixture"
