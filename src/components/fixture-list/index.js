@@ -56,10 +56,15 @@ class FixtureList extends PolymerElement {
         .item {
           flex: 0 0 2em;
         }
+
+        .fixture-list {
+          width: 120px;
+          height: 120px;
+        }
       </style>
 
       <form on-submit="handleFixtureSubmit">
-        <select name="type" on-change="handleSelectedFixtures" required multiple>
+        <select name="type" on-change="handleSelectedFixtures" class="fixture-list" required multiple>
           <option value=""></option>
 
           <template is="dom-repeat" items="{{fixtureManager}}" as="fixture">
