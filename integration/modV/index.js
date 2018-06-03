@@ -38,4 +38,4 @@ console.log('modv-integration', '|', 'WebSocket server on port', port)
         throw error
       }
     })
-}).listen(port)
+}).listen(port, '0.0.0.0')
