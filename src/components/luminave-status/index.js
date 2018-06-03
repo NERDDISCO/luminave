@@ -7,6 +7,7 @@ import '../fivetwelve-manager/index.js'
 import '../dekk-manager/index.js'
 import './indicator.js'
 import '../color-grid/index.js'
+import '../ui-spacer/index.js'
 
 import { modvData } from '../../utils/index.js'
 
@@ -89,12 +90,16 @@ class LuminaveStatus extends ReduxMixin(PolymerElement) {
 
         <div class="item">
           <luminave-status-indicator status="[[modvConnected]]">modV</luminave-status-indicator>
-          <template is="dom-if" if="[[modvConnected]]">
-            <color-grid width="4" height="1" colors="[[modvColors]]"></color-grid>
-          </template>
         </div>
         <luminave-status-indicator status="[[fivetwelveConnected]]">fivetwelve</luminave-status-indicator>
       </div>
+
+      <ui-spacer></ui-spacer>
+      <ui-spacer></ui-spacer>
+
+      <template is="dom-if" if="[[modvConnected]]">
+        <color-grid rows="4" colors="[[modvColors]]"></color-grid>
+      </template>
     `
   }
 }

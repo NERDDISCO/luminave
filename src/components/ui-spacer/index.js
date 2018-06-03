@@ -2,6 +2,8 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 
 /*
  * A spacer to be used to make some space between components
+ *
+ * @TODO: Fix the problem that setting the height has no effect
  */
 class UiSpacer extends PolymerElement {
 
