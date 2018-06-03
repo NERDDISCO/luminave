@@ -13,7 +13,7 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
     return {
       animations: {
         type: Array,
-        statePath: getAnimationsSorted
+        statePath: 'animationManager'
       }
     }
   }
@@ -22,22 +22,44 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
     // Prevent sending data to server
     e.preventDefault()
 
-    const id = uuidV1()
+    // Get data out of the form
+    const data = new FormData(e.target)
 
-    this.dispatch(addAnimation({
-      id,
-      keyframes: {},
-      duration: this.duration,
-      name: this.name
-    }))
-  }
+    const duration = parseInt(data.get('duration'), 10)
+    const name = data.get('name')
+    const amount = parseInt(data.get('amount'), 10)
 
-  handleName(e) {
-    this.name = e.target.value
-  }
+    // Amount was not specified, so we just add one fixture
+    if (isNaN(amount)) {
+      this.dispatch(addAnimation({
+        id: uuidV1(),
+        keyframes: {},
+        duration,
+        name
+      }))
 
-  handleDuration(e) {
-    this.duration = e.target.value
+    // Add multiple animations specified by amount
+    } else {
+
+      // Add multiple animations
+      for (let i = 0; i < amount; i++) {
+        const animationIndex = i + 1
+
+        // @TODO: Allow default keyframes than only modvColor
+        const keyframes = {
+          0: { modvColor: animationIndex },
+          1: { modvColor: animationIndex }
+        }
+
+        this.dispatch(addAnimation({
+          id: uuidV1(),
+          keyframes,
+          duration,
+          name: `${name}${animationIndex}`
+        }))
+      }
+    }
+
   }
 
   static get template() {
@@ -60,12 +82,15 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
 
       <form on-submit="handleSubmit">
         <label for="name">Name</label>
-        <input name="name" type="text" on-change="handleName" required></input>
+        <input name="name" type="text" required></input>
 
         <label for="duration">Duration</label>
-        <input name="duration" type="number" min="0" on-change="handleDuration" required></input>
+        <input name="duration" type="number" min="0" required></input>
 
-        <button type="submit">Add animation</button>
+        <label for="amount">Amount</label>
+        <input name="amount" type="number" min="1" max="512"></input>
+
+        <button type="submit">Add</button>
       </form>
 
       <br>
