@@ -75,7 +75,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
         this.dispatch(addFixture({
           id: uuidV1(),
           type,
-          name: `${name} ${i + 1}`,
+          name: `${name}${bulkAddress}`,
           universe,
           address: bulkAddress,
           properties: {}
@@ -98,14 +98,14 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
 
       @media (min-width: 1024px) {
         :host {
-          --width: 6;
+          --width: 12;
         }
       }
 
       .container {
         display: grid;
         grid-template-columns: repeat(var(--width), auto);
-        row-gap: var(--padding-basic);
+        row-gap: calc(var(--padding-basic) * 2);
         column-gap: var(--padding-basic);
       }
 
@@ -113,7 +113,8 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
         position: relative;
         margin-top: calc(var(--padding-basic) * 2);
         padding: calc(var(--padding-basic) * 3) var(--padding-basic) var(--padding-basic) var(--padding-basic);
-        border: 3px solid var(--background-light);
+        border: 3px solid var(--background-dark);
+        background: var(--background-dark);
       }
 
       .item::before {
@@ -121,8 +122,8 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
         position: absolute;
         top: calc(var(--padding-basic) * -3);
         overflow: visible;
-        background: var(--background-light);
-        color: var(--color-dark);
+        background: var(--background-dark);
+        color: var(--color-light);
         padding: var(--padding-basic);
       }
 
@@ -141,7 +142,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
           <input name="address" type="number" min="1" max="512" required></input>
 
           <label for="name">Name</label>
-          <input name="name" type="text" required></input>
+          <input name="name" type="text"></input>
 
           <label for="amount">Amount</label>
           <input name="amount" type="number" min="1" max="512"></input>
