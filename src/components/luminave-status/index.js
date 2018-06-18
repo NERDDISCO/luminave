@@ -98,7 +98,7 @@ class LuminaveStatus extends ReduxMixin(PolymerElement) {
       <ui-spacer></ui-spacer>
 
       <template is="dom-if" if="[[modvConnected]]">
-        <color-grid rows="4" colors="[[modvColors]]"></color-grid>
+        <!--<color-grid rows="4" colors="[[modvColors]]"></color-grid>-->
       </template>
     `
   }
