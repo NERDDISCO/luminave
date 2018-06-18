@@ -1,4 +1,5 @@
 import { createSelector } from '/node_modules/reselect/src/index.js'
+import { collator } from '../utils/index.js'
 
 /*
  * Selectors help you to retrieve data from the state so you don't have to write the
@@ -9,7 +10,6 @@ import { createSelector } from '/node_modules/reselect/src/index.js'
  * -> https://github.com/reactjs/reselect
  * -> https://redux.js.org/docs/recipes/ComputingDerivedData.html
  */
-
 export const getScenes = state => state.sceneManager
 export const getAnimations = state => state.animationManager
 export const getFixtures = state => state.fixtureManager
@@ -26,21 +26,7 @@ export const getAnimation = (state, properties) => {
  */
 export const getAnimationsSorted = createSelector(
   getAnimations,
-  (animations) => {
-    return animations.sort((a, b) => {
-      const nameA = a.name.toUpperCase()
-      const nameB = b.name.toUpperCase()
-
-      if (nameA < nameB) {
-        return -1
-      } else if (nameA > nameB) {
-        return 1
-      }
-
-      // names must be equal
-      return 0
-    })
-  }
+  animations => animations.sort((a, b) => collator.compare(a.name, b.name))
 )
 
 export const getScene = (state, properties) => {
@@ -59,21 +45,7 @@ export const getSceneByName = (state, properties) => {
  */
 export const getScenesSorted = createSelector(
   getScenes,
-  (scenes) => {
-    return scenes.sort((a, b) => {
-      const nameA = a.name.toUpperCase()
-      const nameB = b.name.toUpperCase()
-
-      if (nameA < nameB) {
-        return -1
-      } else if (nameA > nameB) {
-        return 1
-      }
-
-      // names must be equal
-      return 0
-    })
-  }
+  scenes => scenes.sort((a, b) => collator.compare(a.name, b.name))
 )
 
 /*

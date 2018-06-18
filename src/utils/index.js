@@ -35,3 +35,11 @@ export const setModvData = data => {
   modvData.average = data.average
   modvData.colors = data.colors
 }
+
+/**
+ * Collator used for a natural sort
+ */
+export const collator = new Intl.Collator('en', {
+  numeric: true,
+  sensitivity: 'base'
+})

@@ -15,7 +15,7 @@ class SceneManager extends ReduxMixin(PolymerElement) {
       scenes: {
         type: Array,
         // @TODO: getScenesSorted has to be fixed in order to support "scene1, scene2, scene10" in correct order
-        statePath: 'sceneManager'
+        statePath: getScenesSorted
       },
       fixtureManager: {
         type: Array,

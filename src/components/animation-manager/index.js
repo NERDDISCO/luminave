@@ -13,7 +13,7 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
     return {
       animations: {
         type: Array,
-        statePath: 'animationManager'
+        statePath: getAnimationsSorted
       }
     }
   }
