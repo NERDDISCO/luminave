@@ -1,10 +1,22 @@
 /*
 
-change the address of a fixture
+
+in modv: load luminave-connector into index.js to use the color grabbing method and
+change it so it can also draw stuff onto canvas so that I can see where it grabs the stuff,
+maybe the number? yes that would be nice
+
+
+mapping component to create a grid of fixtures and map the fixtures to a input (modV)
+so that it's not required anymore to create x scenes and x animations to map x fixtures to them
+
+-> Save the mapping into different mappings which can be added to a scene and the scene can be executed
+-> clone a mapping to reuse it
+
+save config to file and load config from file
 improve the layout of the fixtures
 make fixtures searchable
 move json generation into worker
-add a bulk of Fixtures
+scene groups
 
 
 
