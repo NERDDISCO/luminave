@@ -28,16 +28,18 @@ class SceneList extends ReduxMixin(PolymerElement) {
   }
 
   handleSceneSubmit(e) {
-    this.dispatchEvent(new CustomEvent('add-scene', {
+    e.preventDefault()
+
+    // Get data out of the form
+    const data = new FormData(e.target)
+    const sceneIds = data.getAll('scenes')
+
+    this.dispatchEvent(new CustomEvent('add-scenes', {
       detail: {
         event: e,
-        sceneId: this.sceneId
+        sceneIds
       }
     }))
-  }
-
-  handleSelectedScene(e) {
-    this.sceneId = e.target.selectedOptions[0].value
   }
 
   handleRemoveScene(e) {
@@ -57,15 +59,15 @@ class SceneList extends ReduxMixin(PolymerElement) {
     return `
       <template is="dom-if" if="[[editMode]]">
         <form on-submit="handleSceneSubmit">
-          <select name="type" on-change="handleSelectedScene" required>
-            <option value=""></option>
+          <select name="scenes" required multiple>
+            <option value=""></option>
 
             <template is="dom-repeat" items="{{sceneManager}}" as="scene">
               <option value="[[scene.id]]">[[scene.name]]</option>
             </template>
           </select>
 
-          <button type="submit">Add scene</button>
+          <button type="submit">Add</button>
         </form>
       </template>
 

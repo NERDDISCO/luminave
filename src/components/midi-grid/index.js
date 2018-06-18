@@ -2,7 +2,7 @@ import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polyme
 import ReduxMixin from '../../reduxStore.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import { DomIf } from '/node_modules/@polymer/polymer/lib/elements/dom-if.js'
-import { learnMidi, addSceneToMidi, removeSceneFromMidi, addMidiMapping } from '../../actions/index.js'
+import { learnMidi, addScenesToMidi, removeSceneFromMidi, addMidiMapping } from '../../actions/index.js'
 import '../scene-list/index.js'
 import { MIDI_TYPES, MIDI_TYPE_BUTTON, MIDI_TYPE_KNOB, MIDI_TYPE_FADER, MIDI_TYPE_EMPTY } from '../../constants/index.js'
 
@@ -77,15 +77,15 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
     this.dispatch(learnMidi(mappingIndex))
   }
 
-  handleAddScene(e) {
-    const { event, sceneId } = e.detail
+  handleAddScenes(e) {
+    const { event, sceneIds } = e.detail
     const { dataset } = e.target
 
     // Prevent sending data to server & reset all fields
     event.preventDefault()
     event.target.reset()
 
-    this.dispatch(addSceneToMidi(this.controllerindex, parseInt(dataset.index, 10), sceneId))
+    this.dispatch(addScenesToMidi(this.controllerindex, parseInt(dataset.index, 10), sceneIds))
   }
 
   handleRemoveScene(e) {
@@ -198,7 +198,7 @@ class MidiGrid extends ReduxMixin(PolymerElement) {
 
             <template is="dom-if" if="[[isNotEmpty(element.type)]]">
               <scene-list
-                on-add-scene="handleAddScene"
+                on-add-scenes="handleAddScenes"
                 on-remove-scene="handleRemoveScene"
                 data-index$="[[index]]"
                 scenes$="{{element.scenes}}"
