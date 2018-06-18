@@ -129,14 +129,22 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
           // Overwrite the color of every fixture when a connection to modV was established
           if (this.modvConnected && fixture.hasOwnProperty('color')) {
 
+            // @TODO: When modvConnected, but no color value yet, we still set the color
+
             // Set a specific color from modV
             if (fixture.hasOwnProperty('modvColor')) {
 
-              // @TODO: Fix precision error
+              // @TODO: Fix precision error = No interpolation for values that don't change
               fixture.modvColor = Math.round(fixture.modvColor)
 
+              const color = modvData.colors.slice((fixture.modvColor - 1) * 3, ((fixture.modvColor - 1) * 3) + 3)
+
               // Set the color
-              fixture.color = modvData.colors.slice((fixture.modvColor - 1) * 3, ((fixture.modvColor - 1) * 3) + 3)
+              // @TODO: This is still overwriting the color that was previously set on the device
+              // which means it's totally useless
+              fixture.color = color.length === 3
+                ? color
+                : fixture.color
 
             // Use average color from modV
             } else {
