@@ -1,13 +1,13 @@
- ![luminave 2.0.0](docs/images/luminave_logo.gif)
+ ![luminave 3.0.0](docs/images/luminave_logo.gif)
 
-[![2.0.0](https://img.shields.io/badge/Stable-2.0-00f557.svg?style=flat)](https://github.com/NERDDISCO/luminave/releases/tag/2.0.0)
+[![3.0.0](https://img.shields.io/badge/Stable-2.0.0-00f557.svg?style=flat)](https://github.com/NERDDISCO/luminave/releases/tag/3.0.0)
 
 Use luminave to manage all the lights with your web browser and create stunning visual experiences.
 
 * *lumi* = "Light" in different languages
 * *nave* = "A hub of a wheel"
 
-[![polymer 3](https://img.shields.io/badge/polymer-3.0_preview-f50057.svg?style=flat)](https://www.polymer-project.org/blog/2017-08-22-npm-modules)
+[![polymer 3](https://img.shields.io/badge/polymer-3.0.0-f50057.svg?style=flat)](https://www.polymer-project.org/)
 [![Redux](https://img.shields.io/badge/Redux-3.7.2-9f33ff.svg?style=flat)](https://redux.js.org/)
 [![ES6 modules](https://img.shields.io/badge/ES6-modules-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 [![WebUSB](https://img.shields.io/badge/API-WebUSB-1e88e5.svg?style=flat)](https://wicg.github.io/webusb/)
@@ -32,6 +32,8 @@ git clone git@github.com:NERDDISCO/luminave.git
 cd luminave
 
 # install dependencies
+yarn
+# or
 npm install
 ```
 
@@ -87,7 +89,7 @@ npm start
 [Do you want to create your own WebUSB DMX512 Controller?](https://github.com/NERDDISCO/webusb-dmx512-controller)
 
 
-## modV 1.0
+## modV
 
 If you want to use modV you have to start the local WebSocket server too:
 
@@ -96,10 +98,15 @@ If you want to use modV you have to start the local WebSocket server too:
 * Start the server with `npm run modv-integration`
 * Click the "connect" button of the modV component in the luminave UI
 
-### In modV
+### In modV 1.0
 
 * Drop the "grabCanvas" component into the list of modules
 * This should connect to the local WebSocket server on localhost:3000
+
+
+### In modV 2.0
+
+* Activate the "grab-canvas" plugin
 
 
 
@@ -131,33 +138,18 @@ When you start the timeline all data is also send to fivetwelve.
 ---
 
 
-# Development
+# Contribution
 
-## luminave
+Please read the [Contribution guideline](.github/CONTRIBUTING.md). 
 
-There is nothing special right now you have to take care about. Run the application, make your changes and create a PR.
+##  Contributors
 
-## Server
-
-Right now I'm using Go to provide a HTTPS server. You don't have to use Go in order to use luminave, you can use any server that can serve static HTML files over HTTPS.
-
-### Changes to the server
-
-The server is written in Go, so if you want to change the code you have to install [go](https://golang.org/doc/install)
-
-### Build a new version of the server
-
-* Install [goreleaser](https://goreleaser.com/)
-* Go into "server/" and excute `goreleaser --snapshot`
-* This will generate binaries for MacOS, Linux and Windows in 64bit
+* [Gregor Adams](https://github.com/pixelass)
+* [Kevin Gimbel](https://github.com/kevingimbel)
 
 
 ---
 
-# Contributors
-
-* [Gregor Adams](https://github.com/pixelass)
-* [Kevin Gimbel](https://github.com/kevingimbel)
 
 # Thanks to
 
