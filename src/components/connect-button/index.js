@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { connectUsb, connectBluetooth } from '../../actions/index.js'
 
 const actions = {
@@ -10,7 +10,7 @@ const actions = {
 /*
  * Connect to an external system via USB or Bluetooth
  */
-class ConnectButton extends ReduxMixin(PolymerElement) {
+class ConnectButton extends reduxMixin(PolymerElement) {
 
   static get properties() {
     return {
@@ -39,7 +39,7 @@ class ConnectButton extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
         <style>
         button {
           --background: rgba(calc(var(--off) * 50), calc(var(--on) * 50), 0, 1);

@@ -1,11 +1,11 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { setLive } from '../../actions/index.js'
 
 /*
  * Handle the LIVE mode
  */
-class LiveMode extends ReduxMixin(PolymerElement) {
+class LiveMode extends reduxMixin(PolymerElement) {
 
   static get properties() {
     return {
@@ -29,7 +29,7 @@ class LiveMode extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <div>
         Mode: <button on-click="handleLive">[[liveLabel]]</button>
       </div>

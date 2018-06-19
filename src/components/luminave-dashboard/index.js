@@ -1,9 +1,9 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 import '/node_modules/@polymer/paper-tabs/paper-tab.js'
 import '/node_modules/@polymer/paper-tabs/paper-tabs.js'
 import '/node_modules/@polymer/iron-pages/iron-pages.js'
 
-import ReduxMixin from '../../reduxStore.js'
+import reduxMixin from '../../reduxStore.js'
 import '../universe-manager/index.js'
 import '../fixture-manager/index.js'
 import '../scene-manager/index.js'
@@ -15,7 +15,7 @@ import '../ui-spacer/index.js'
 import '../luminave-status/index.js'
 
 
-class LuminaveDashboard extends ReduxMixin(PolymerElement) {
+class LuminaveDashboard extends reduxMixin(PolymerElement) {
   static get properties() {
     return {
       bpm: {
@@ -38,7 +38,7 @@ class LuminaveDashboard extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <style>
           paper-tabs {
             display: inline-block;

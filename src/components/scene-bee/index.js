@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene, resetUniverseAndFixtures } from '../../actions/index.js'
 import '../fixture-list/index.js'
 import '../animation-list/index.js'
@@ -7,7 +7,7 @@ import '../animation-list/index.js'
 /*
  * Handle a list of scenes
  */
-class SceneBee extends ReduxMixin(PolymerElement) {
+class SceneBee extends reduxMixin(PolymerElement) {
   static get properties() {
     return {
       name: String,
@@ -77,7 +77,7 @@ class SceneBee extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
     <style>
       h4 {
         margin: 0.25em 0;

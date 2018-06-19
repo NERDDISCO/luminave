@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import { DomIf } from '/node_modules/@polymer/polymer/lib/elements/dom-if.js'
 import '../scene-list-item/index.js'
@@ -7,7 +7,7 @@ import '../scene-list-item/index.js'
 /*
  * A list of scenes
  */
-class SceneList extends ReduxMixin(PolymerElement) {
+class SceneList extends reduxMixin(PolymerElement) {
   static get properties() {
     return {
       scenes: Array,
@@ -56,7 +56,7 @@ class SceneList extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <template is="dom-if" if="[[editMode]]">
         <form on-submit="handleSceneSubmit">
           <select name="scenes" required multiple>

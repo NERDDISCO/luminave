@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { setChannels, setFixtureAddress } from '../../actions/index.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../dmx-fixture-property/index.js'
@@ -13,7 +13,7 @@ import '/node_modules/@polymer/paper-tooltip/paper-tooltip.js'
 /*
  * A single DMX fixture with all properties
  */
-class DmxFixture extends ReduxMixin(PolymerElement) {
+class DmxFixture extends reduxMixin(PolymerElement) {
 
   static get properties() {
     return {
@@ -76,7 +76,7 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
         <style>
           .grid {
             display: flex;

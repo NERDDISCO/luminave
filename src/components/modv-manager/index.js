@@ -1,4 +1,4 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { reduxMixin } from '../../reduxStore.js'
 import { connectModv } from '../../actions/index.js'
 import { setModvData, modvData } from '../../utils/index.js'
@@ -106,7 +106,7 @@ class ModvManager extends reduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
         modV: <button on-click="handleClick">[[connectedLabel]]</button>
     `
   }

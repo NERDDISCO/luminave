@@ -1,4 +1,4 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { reduxMixin } from '../../reduxStore.js'
 import { connectFivetwelve } from '../../actions/index.js'
 import { batch } from '../../utils/index.js'
@@ -137,7 +137,7 @@ class FivetwelveManager extends reduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       fivetwelve: <button on-click="handleClick">[[connectedLabel]]</button>
 
       <button on-click="handleSend">Send</button>

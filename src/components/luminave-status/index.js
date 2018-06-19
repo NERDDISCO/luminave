@@ -1,6 +1,6 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 
-import ReduxMixin from '../../reduxStore.js'
+import reduxMixin from '../../reduxStore.js'
 import '../usb-dmx-manager/index.js'
 import '../modv-manager/index.js'
 import '../fivetwelve-manager/index.js'
@@ -12,7 +12,7 @@ import '../ui-spacer/index.js'
 import { modvData } from '../../utils/index.js'
 
 
-class LuminaveStatus extends ReduxMixin(PolymerElement) {
+class LuminaveStatus extends reduxMixin(PolymerElement) {
   static get properties() {
     return {
       bpm: {
@@ -62,7 +62,7 @@ class LuminaveStatus extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <style>
         .grid {
           display: flex;

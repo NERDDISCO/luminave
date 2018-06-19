@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addFixture, removeFixtureFromEverywhere } from '../../actions/index.js'
 import '../dmx-fixture/index.js'
@@ -9,7 +9,7 @@ import { FIXTURE_TYPES } from '../../constants/index.js'
 /*
  * Handle DMX fixtures
  */
-class FixtureManager extends ReduxMixin(PolymerElement) {
+class FixtureManager extends reduxMixin(PolymerElement) {
 
   constructor() {
     super()
@@ -90,7 +90,7 @@ class FixtureManager extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
     <style>
       :host {
         --width: 4;

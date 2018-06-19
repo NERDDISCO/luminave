@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { playTimeline, resetTimeline, sendUniverseToUsb, sendUniverseToFivetwelve, setTimelineProgress, setChannels, setAllFixtureProperties, resetUniverseAndFixtures } from '../../actions/index.js'
 import { batch, clearBatch, fixtureBatch, clearFixtureBatch, modvData } from '/src/utils/index.js'
 import '../timeline-scene/index.js'
@@ -11,7 +11,7 @@ import '../luminave-elements/button.js'
 /*
  * Handle the elements in a timeline
  */
-class TimelineManager extends ReduxMixin(PolymerElement) {
+class TimelineManager extends reduxMixin(PolymerElement) {
   constructor() {
     super()
 
@@ -192,7 +192,7 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <style>
         .grid {
           display: flex;

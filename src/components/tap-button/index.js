@@ -1,12 +1,12 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { setBpm } from '../../actions/index.js'
 
 /**
  * The tap button renders a button to manually set the bpm.
  * It waits for a given number of positions.
  */
-export class TapButton extends ReduxMixin(PolymerElement) {
+export class TapButton extends reduxMixin(PolymerElement) {
   constructor() {
     super()
 
@@ -66,7 +66,7 @@ export class TapButton extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <button on-click="handleClick">TAP</button>
     `
   }

@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addScene } from '../../actions/index.js'
 import { getScenesSorted } from '../../selectors/index.js'
@@ -9,7 +9,7 @@ import '../scene-bee/index.js'
  * Handle a list of scenes
  * @TODO: Allow adding multiple animations aswell
  */
-class SceneManager extends ReduxMixin(PolymerElement) {
+class SceneManager extends reduxMixin(PolymerElement) {
   static get properties() {
     return {
       scenes: {
@@ -104,7 +104,7 @@ class SceneManager extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <style>
         :host {
           --width: 4;

@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addAnimation } from '../../actions/index.js'
 import { getAnimationsSorted } from '../../selectors/index.js'
@@ -8,7 +8,7 @@ import '../animation-bee/index.js'
 /*
  * Handle a list of animations
  */
-class AnimationManager extends ReduxMixin(PolymerElement) {
+class AnimationManager extends reduxMixin(PolymerElement) {
   static get properties() {
     return {
       animations: {
@@ -63,7 +63,7 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
     <style>
       .container {
         --width: 8;

@@ -1,4 +1,4 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 
 /*
  * A scene list item
@@ -11,7 +11,7 @@ class SceneListItem extends PolymerElement {
   }
 
   static get template() {
-    return `
+    return html`
       <div>
         [[scene.name]]
       </div>

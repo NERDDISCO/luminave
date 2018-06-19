@@ -1,4 +1,4 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { store, reduxMixin } from '../../reduxStore.js'
 import { STORAGE_STATE } from '/src/constants/index.js'
 
@@ -58,7 +58,7 @@ class StorageManager extends reduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <!--<button on-click="resetStorage">Reset storage</button>
       <button on-click="printStorage">Print storage</button>-->
     `

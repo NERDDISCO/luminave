@@ -1,4 +1,4 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 import '/node_modules/@polymer/paper-tabs/paper-tab.js'
 import '/node_modules/@polymer/paper-tabs/paper-tabs.js'
 import '/node_modules/@polymer/iron-pages/iron-pages.js'
@@ -9,7 +9,7 @@ import '/node_modules/@polymer/iron-flex-layout/iron-flex-layout.js'
 import '/node_modules/@polymer/iron-icons/iron-icons.js'
 import '/node_modules/@polymer/paper-icon-button/paper-icon-button.js'
 
-import ReduxMixin from '../../reduxStore.js'
+import reduxMixin from '../../reduxStore.js'
 import '../luminave-status/index.js'
 import '../tap-button/index.js'
 import '../bpm-meter/index.js'
@@ -24,7 +24,7 @@ import '../dekk-manager/index.js'
 import '../rainbow-text/index.js'
 
 
-class LuminaveMenu extends ReduxMixin(PolymerElement) {
+class LuminaveMenu extends reduxMixin(PolymerElement) {
   static get properties() {
     return {
       bpm: {
@@ -54,7 +54,7 @@ class LuminaveMenu extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <style>
         .grid {
           display: flex;

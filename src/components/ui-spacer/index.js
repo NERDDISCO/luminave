@@ -1,4 +1,4 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 
 /*
  * A spacer to be used to make some space between components
@@ -27,7 +27,7 @@ class UiSpacer extends PolymerElement {
   }
 
   static get template() {
-    return `
+    return html`
       <style>
         div {
           width: 100%;

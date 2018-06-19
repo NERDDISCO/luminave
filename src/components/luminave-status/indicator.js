@@ -1,4 +1,4 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 
 import '/node_modules/@polymer/paper-button/paper-button.js'
 
@@ -32,7 +32,7 @@ class LuminaveStatusIndicator extends PolymerElement {
   }
 
   static get template() {
-    return `
+    return html`
         <style>
           .active {
             border-bottom: 3px solid var(--background-primary);

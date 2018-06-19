@@ -1,4 +1,4 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { reduxMixin } from '../../reduxStore.js'
 import { connectDekk, setDekkData, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures } from '../../actions/index.js'
 import { getSceneByName } from '../../selectors/index.js'
@@ -137,7 +137,7 @@ class DekkManager extends reduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       Dekk: <button on-click="handleClick">[[connectedLabel]]</button>
     `
   }

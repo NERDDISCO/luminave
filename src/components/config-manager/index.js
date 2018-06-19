@@ -1,4 +1,4 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { reduxMixin } from '../../reduxStore.js'
 import { STORAGE_STATE } from '/src/constants/index.js'
 
@@ -39,7 +39,7 @@ class ConfigManager extends reduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       Config
       <a on-click="handleDownload" href="{{generateDownload()}}">Download</a>
     `

@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import Controller from '/node_modules/webusb-dmx512-controller/controller.js'
 import { connectUsb } from '../../actions/index.js'
 
@@ -7,7 +7,7 @@ import { connectUsb } from '../../actions/index.js'
  * Handle the connection to a WebUSB DMX512 Controller
  * @see https://github.com/NERDDISCO/webusb-dmx512-controller
  */
-class UsbDmxManager extends ReduxMixin(PolymerElement) {
+class UsbDmxManager extends reduxMixin(PolymerElement) {
 
   constructor() {
     super()
@@ -132,7 +132,7 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <connect-button type="usb" label="USB" on-click="handleConnectButtonClick"></connect-button>
     `
   }

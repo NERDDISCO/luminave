@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { addKeyframe, setAnimationName, removeAnimation } from '../../actions/index.js'
 import { FIXTURE_PROPERTIES } from '../../constants/index.js'
 import '../keyframe-grid/index.js'
@@ -7,7 +7,7 @@ import '../keyframe-grid/index.js'
 /*
  * Handle a list of scenes
  */
-class AnimationBee extends ReduxMixin(PolymerElement) {
+class AnimationBee extends reduxMixin(PolymerElement) {
 
   constructor() {
     super()
@@ -54,7 +54,7 @@ class AnimationBee extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <style>
         .name {
           display: inline-block;

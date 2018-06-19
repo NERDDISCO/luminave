@@ -1,4 +1,4 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../animation-list-item/index.js'
 
@@ -40,7 +40,7 @@ class AnimationList extends PolymerElement {
   }
 
   static get template() {
-    return `
+    return html`
       <style>
         .items {
           display: flex;

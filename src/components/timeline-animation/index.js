@@ -1,4 +1,4 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 import { addToFixtureBatch } from '../../utils/index.js'
 import { getFixture } from '../../selectors/index.js'
 import { store } from '../../reduxStore.js'
@@ -118,7 +118,7 @@ class TimelineAnimation extends PolymerElement {
   }
 
   static get template() {
-    return ``
+    return html``
   }
 }
 

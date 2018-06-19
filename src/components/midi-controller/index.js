@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import WebMidi from '../../../libs/webmidi/index.js'
 import '../midi-grid/index.js'
 import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
@@ -7,7 +7,7 @@ import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineA
 /*
  * Handle MIDI controller
  */
-class MidiController extends ReduxMixin(PolymerElement) {
+class MidiController extends reduxMixin(PolymerElement) {
 
   constructor() {
     super()
@@ -197,7 +197,7 @@ class MidiController extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <style>
         h3 {
           margin-top: 0;

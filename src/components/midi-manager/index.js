@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import WebMidi from '../../../libs/webmidi/index.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addMidi, removeMidi, enableMidi } from '../../actions/index.js'
@@ -8,7 +8,7 @@ import '../midi-controller/index.js'
 /*
  * Handle DMX fixtures
  */
-class MidiManager extends ReduxMixin(PolymerElement) {
+class MidiManager extends reduxMixin(PolymerElement) {
 
   constructor() {
     super()
@@ -107,7 +107,7 @@ class MidiManager extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
     <style>
       .grid {
         display: flex;

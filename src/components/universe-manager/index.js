@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import reduxMixin from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addUniverse, removeUniverse, resetUniverseAndFixtures } from '../../actions/index.js'
 import '../channel-grid/index.js'
@@ -7,7 +7,7 @@ import '../channel-grid/index.js'
 /*
  *
  */
-class UniverseManager extends ReduxMixin(PolymerElement) {
+class UniverseManager extends reduxMixin(PolymerElement) {
   static get properties() {
     return {
       universes: {
@@ -45,7 +45,7 @@ class UniverseManager extends ReduxMixin(PolymerElement) {
   }
 
   static get template() {
-    return `
+    return html`
       <template is="dom-if" if="[[editMode]]">
         <button on-click="addUniverse">Add universe</button>
       </template>
