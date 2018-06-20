@@ -5,9 +5,7 @@ import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-ele
  */
 class AnimationListItem extends PolymerElement {
   static get properties() {
-    return {
-      animation: Object
-    }
+    return { animation: Object }
   }
 
   static get template() {

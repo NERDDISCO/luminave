@@ -1,7 +1,7 @@
 import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 import reduxMixin from '../../reduxStore.js'
 import { setChannels, setFixtureAddress } from '../../actions/index.js'
-import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../dmx-fixture-property/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 import { batch } from '../../utils/index.js'

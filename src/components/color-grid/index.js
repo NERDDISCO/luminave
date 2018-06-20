@@ -1,5 +1,5 @@
 import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 
 /*
  * Show colors in a grid
@@ -22,7 +22,8 @@ class ColorGrid extends PolymerElement {
   computeGridVars(rows) {
     const vars = { '--rows': rows }
 
-    return Object.keys(vars).map(key => [key, vars[key]].join(':')).join(';')
+    return Object.keys(vars).map(key => [key, vars[key]].join(':'))
+      .join(';')
   }
 
   /*
@@ -36,7 +37,8 @@ class ColorGrid extends PolymerElement {
       '--blue': color[2]
     }
 
-    return Object.keys(vars).map(key => [key, vars[key]].join(':')).join(';')
+    return Object.keys(vars).map(key => [key, vars[key]].join(':'))
+      .join(';')
   }
 
   /*

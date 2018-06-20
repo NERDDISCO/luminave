@@ -1,6 +1,6 @@
 import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
 import reduxMixin from '../../reduxStore.js'
-import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import { DomIf } from '/node_modules/@polymer/polymer/lib/elements/dom-if.js'
 import { learnMidi, addScenesToMidi, removeSceneFromMidi, addMidiMapping } from '../../actions/index.js'
 import '../scene-list/index.js'
