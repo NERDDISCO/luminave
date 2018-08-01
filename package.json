@@ -40,6 +40,10 @@
     "webmidi": "^2.0.0",
     "webusb-dmx512-controller": "^1.0.6"
   },
+  "homepage": "https://github.com/NERDDISCO/luminave#readme",
+  "devDependencies": {
+    "eslint": "^4.7.2"
+  },
   "resolutions": {
     "color-convert": "0.6.0",
     "symbol-observable": "1.2.0",
@@ -52,9 +56,5 @@
     "has-flag": "3.0.0",
     "acorn": "5.5.3",
     "pify": "3.0.0"
-  },
-  "homepage": "https://github.com/NERDDISCO/luminave#readme",
-  "devDependencies": {
-    "eslint": "^4.7.2"
   }
 }
