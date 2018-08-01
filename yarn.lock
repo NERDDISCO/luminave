@@ -600,8 +600,8 @@ global@^4.3.1:
     process "~0.5.1"
 
 globals@^11.0.1:
-  version "11.5.0"
-  resolved "https://registry.yarnpkg.com/globals/-/globals-11.5.0.tgz#6bc840de6771173b191f13d3a9c94d441ee92642"
+  version "11.7.0"
+  resolved "https://registry.yarnpkg.com/globals/-/globals-11.7.0.tgz#a583faa43055b1aca771914bf68258e2fc125673"
 
 globby@^5.0.0:
   version "5.0.0"
@@ -639,8 +639,8 @@ iconv-lite@^0.4.17:
     safer-buffer ">= 2.1.2 < 3"
 
 ignore@^3.3.3:
-  version "3.3.8"
-  resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.8.tgz#3f8e9c35d38708a3a7e0e9abb6c73e7ee7707b2b"
+  version "3.3.10"
+  resolved "https://registry.yarnpkg.com/ignore/-/ignore-3.3.10.tgz#0a97fb876986e8081c631160f8f9f389157f0043"
 
 "immutability-helper@github:nerddisco/immutability-helper":
   version "2.5.1"
@@ -860,6 +860,10 @@ natural-compare@^1.4.0:
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/natural-compare/-/natural-compare-1.4.0.tgz#4abebfeed7541f2c27acfb29bdbbd15c8d5ba4f7"
 
+nodejs-websocket@^1.7.1:
+  version "1.7.1"
+  resolved "https://registry.yarnpkg.com/nodejs-websocket/-/nodejs-websocket-1.7.1.tgz#cccfbba823bf1cfa9680f168ab7ab53121e48410"
+
 normalize-package-data@^2.3.2:
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/normalize-package-data/-/normalize-package-data-2.4.0.tgz#12f95a307d58352075a04907b84ac8be98ac012f"
@@ -927,7 +931,7 @@ path-type@^3.0.0:
   dependencies:
     pify "^3.0.0"
 
-pify@^2.0.0, pify@^3.0.0:
+pify@3.0.0, pify@^2.0.0, pify@^3.0.0:
   version "3.0.0"
   resolved "https://registry.yarnpkg.com/pify/-/pify-3.0.0.tgz#e5a4acd2c101fdf3d9a4d07f0dbc4db49dd28176"
 
@@ -1214,8 +1218,8 @@ validate-npm-package-license@^3.0.1:
     spdx-expression-parse "^3.0.0"
 
 webmidi@^2.0.0:
-  version "2.0.5"
-  resolved "https://registry.yarnpkg.com/webmidi/-/webmidi-2.0.5.tgz#e5d29063896b4ebdf152af295f951b42523a70c4"
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/webmidi/-/webmidi-2.2.0.tgz#9f6c54f95e9c6baf5dca26d8307a299bb1b6feb5"
 
 webusb-dmx512-controller@^1.0.6:
   version "1.0.6"
