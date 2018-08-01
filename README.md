@@ -35,15 +35,18 @@ cd luminave
 yarn
 # or
 npm install
+
+# install polymer-cli which is used to run luminave
+npm install -g polymer-cli
 ```
 
 ## Run
 
-Start the local HTTPS server on https://localhost:1337:
-
-❗️accept the unsigned certificate❗️
+Start the local HTTPS server on http://localhost:1337:
 
 ```bash
+yarn start
+# or
 npm start
 ```
 
