@@ -9,8 +9,6 @@ import './indicator.js'
 import '../color-grid/index.js'
 import '../ui-spacer/index.js'
 
-import { modvData } from '../../utils/index.js'
-
 
 class LuminaveStatus extends reduxMixin(PolymerElement) {
   static get properties() {
@@ -35,7 +33,6 @@ class LuminaveStatus extends reduxMixin(PolymerElement) {
         type: Boolean,
         statePath: 'modvManager.connected'
       },
-      modvColors: Array,
       fivetwelveConnected: {
         type: Boolean,
         statePath: 'fivetwelveManager.connected'
@@ -45,20 +42,6 @@ class LuminaveStatus extends reduxMixin(PolymerElement) {
 
   computeEditMode(live) {
     return !live
-  }
-
-  connectedCallback() {
-    super.connectedCallback()
-    window.addEventListener('received-data-from-modv', this.listenReceivedModvData.bind(this))
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback()
-    window.removeEventListener('received-data-from-modv', this.listenReceivedModvData.bind(this))
-  }
-
-  listenReceivedModvData(e) {
-    this.modvColors = modvData.colors
   }
 
   static get template() {
@@ -96,10 +79,6 @@ class LuminaveStatus extends reduxMixin(PolymerElement) {
 
       <ui-spacer></ui-spacer>
       <ui-spacer></ui-spacer>
-
-      <template is="dom-if" if="[[modvConnected]]">
-        <!--<color-grid rows="4" colors="[[modvColors]]"></color-grid>-->
-      </template>
     `
   }
 }

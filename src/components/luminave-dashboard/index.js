@@ -11,8 +11,9 @@ import '../animation-manager/index.js'
 import '../midi-manager/index.js'
 import '../timeline-manager/index.js'
 import '../ui-spacer/index.js'
-
 import '../luminave-status/index.js'
+
+import { modvData } from '../../utils/index.js'
 
 
 class LuminaveDashboard extends reduxMixin(PolymerElement) {
@@ -29,12 +30,27 @@ class LuminaveDashboard extends reduxMixin(PolymerElement) {
       editMode: {
         type: Boolean,
         computed: 'computeEditMode(live)'
-      }
+      },
+      modvColors: Array
     }
   }
 
   computeEditMode(live) {
     return !live
+  }
+
+  listenReceivedModvData() {
+    this.modvColors = modvData.colors
+  }
+
+  connectedCallback() {
+    super.connectedCallback()
+    window.addEventListener('received-data-from-modv', this.listenReceivedModvData.bind(this))
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback()
+    window.removeEventListener('received-data-from-modv', this.listenReceivedModvData.bind(this))
   }
 
   static get template() {
@@ -85,6 +101,7 @@ class LuminaveDashboard extends reduxMixin(PolymerElement) {
             <paper-tab>Scenes</paper-tab>
             <paper-tab>Animations</paper-tab>
             <paper-tab>Fixtures</paper-tab>
+            <paper-tab>modV</paper-tab>
           </paper-tabs>
 
           <iron-pages selected="{{selected}}">
@@ -107,6 +124,13 @@ class LuminaveDashboard extends reduxMixin(PolymerElement) {
             <div>
               <ui-spacer></ui-spacer>
               <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
+            </div>
+            <div>
+              <ui-spacer></ui-spacer>
+              <ui-spacer></ui-spacer>
+      <!-- <template is="dom-if" if="[[modvConnected]]"> -->
+              <color-grid rows="4" colors="[[modvColors]]"></color-grid>
+      <!-- </template> -->
             </div>
           </iron-pages>
         </div>
