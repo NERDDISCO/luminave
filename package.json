@@ -9,7 +9,6 @@
     "url": "https://github.com/NERDDISCO/luminave/issues"
   },
   "scripts": {
-    "test": "mocha --recursive test/",
     "start": "concurrently --kill-others \"polymer serve\" \"npm run dekk-integration\" \"npm run modv-integration\"",
     "dekk-integration": "cd integration/dekk && npm start",
     "modv-integration": "cd integration/modV && npm start",
@@ -17,7 +16,10 @@
     "build:prpl-server": "polymer build --auto-base-path && gulp prpl-server",
     "build:static": "polymer build",
     "serve:prpl-server": "prpl-server --root server/build",
-    "serve:static": "polymer serve --port 5000 build/es5-bundled"
+    "serve:static": "polymer serve --port 5000 build/esm-bundled",
+    "test": "npm run test:unit && npm run test:integration",
+    "test:integration": "mocha test/integration --timeout=10000",
+    "test:unit": "polymer test --module-resolution=node --npm"
   },
   "repository": {
     "type": "git",
@@ -51,6 +53,9 @@
     "gulp": "^4.0.0",
     "gulp-rename": "^1.2.3",
     "gulp-replace": "^1.0.0",
-    "prpl-server": "^1.1.0"
+    "prpl-server": "^1.1.0",
+    "mocha": "^5.1.0",
+    "puppeteer": "^1.4.0",
+    "wct-browser-legacy": "^1.0.1"
   }
 }
