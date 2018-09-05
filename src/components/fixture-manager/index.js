@@ -82,11 +82,6 @@ class FixtureManager extends reduxMixin(PolymerElement) {
         }))
       }
     }
-
-
-
-
-
   }
 
   static get template() {
@@ -98,7 +93,7 @@ class FixtureManager extends reduxMixin(PolymerElement) {
 
       @media (min-width: 1024px) {
         :host {
-          --width: 12;
+          --width: 5;
         }
       }
 
