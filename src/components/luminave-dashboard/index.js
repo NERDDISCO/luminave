@@ -1,141 +1,106 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 import '/node_modules/@polymer/paper-tabs/paper-tab.js'
 import '/node_modules/@polymer/paper-tabs/paper-tabs.js'
-import '/node_modules/@polymer/iron-pages/iron-pages.js'
 
-import reduxMixin from '../../reduxStore.js'
-import '../universe-manager/index.js'
-import '../fixture-manager/index.js'
-import '../scene-manager/index.js'
-import '../animation-manager/index.js'
-import '../midi-manager/index.js'
+import { installRouter } from 'pwa-helpers/router.js'
+import { navigate } from '../../actions/app.js'
+
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import '../timeline-manager/index.js'
 import '../ui-spacer/index.js'
-import '../luminave-status/index.js'
 
-import { modvData } from '../../utils/index.js'
-
-
-class LuminaveDashboard extends reduxMixin(PolymerElement) {
+class LuminaveDashboard extends connect(store)(LitElement) {
   static get properties() {
     return {
-      bpm: {
-        type: Number,
-        statePath: 'bpm'
-      },
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      },
-      modvColors: Array
+      live: Boolean,
+      _page: String
     }
   }
 
-  computeEditMode(live) {
-    return !live
+  _firstRendered() {
+    // Use a helper router to dispatch the location
+    installRouter(location => store.dispatch(navigate(window.decodeURIComponent(location.pathname))))
   }
 
-  listenReceivedModvData() {
-    this.modvColors = modvData.colors
+  _stateChanged(state) {
+    this._page = state.app.page
   }
 
-  connectedCallback() {
-    super.connectedCallback()
-    window.addEventListener('received-data-from-modv', this.listenReceivedModvData.bind(this))
-  }
-
-  disconnectedCallback() {
-    super.disconnectedCallback()
-    window.removeEventListener('received-data-from-modv', this.listenReceivedModvData.bind(this))
-  }
-
-  static get template() {
+  _render({ _page }) {
     return html`
       <style>
-          paper-tabs {
-            display: inline-block;
-            background-color: var(--dark-primary-color);
-            color: var(--paper-toolbar-color);
-            font-size: 1em;
-          }
+        paper-tabs {
+          display: inline-block;
+          background-color: var(--dark-primary-color);
+          color: var(--paper-toolbar-color);
+          font-size: 1em;
+        }
+
+        paper-tab a {
+          display: inherit;
+          font-size: inherit;
+          color: inherit;
+          text-decoration: inherit;
+        }
+
+        paper-tab[link] {
+          /* TODO: Remove, magic numbers from original styling of paper-tab, but gets removed for link attribute*/
+          padding: 0 12px;
+        }
+
+        .page {
+          display: none;
+        }
+
+        .page[active] {
+          display: block;
+        }
       </style>
 
-      <luminave-status></luminave-status>
+      <ui-spacer></ui-spacer>
+      <ui-spacer></ui-spacer>
+      <ui-spacer></ui-spacer>
+      <ui-spacer></ui-spacer>
+      <ui-spacer></ui-spacer>
 
       <timeline-manager></timeline-manager>
 
       <ui-spacer></ui-spacer>
 
-      <template is="dom-if" if="[[live]]">
-        <div>
-          <paper-tabs selected="{{selected}}">
-            <paper-tab>Universes</paper-tab>
-            <paper-tab>MIDI Controller</paper-tab>
-          </paper-tabs>
+      <paper-tabs selected="${_page}" attr-for-selected="name">
+        <paper-tab name="universe" link>
+          <a href="/universe" tabindex="-1">Universes</a>
+        </paper-tab>
+        <paper-tab name="midi" link>
+          <a href="/midi" tabindex="-1">MIDI</a>
+        </paper-tab>
+        <paper-tab name="scene" link>
+          <a href="/scene" tabindex="-1">Scenes</a>
+        </paper-tab>
+        <paper-tab name="animation" link>
+          <a href="/animation" tabindex="-1">Animations</a>
+        </paper-tab>
+        <paper-tab name="fixture" link>
+          <a href="/fixture" tabindex="-1">Fixtures</a>
+        </paper-tab>
+        <paper-tab name="modv" link>
+          <a href="/modv" tabindex="-1">modV</a>
+        </paper-tab>
+      </paper-tabs>
 
-          <iron-pages selected="{{selected}}">
-            <div>
-              <ui-spacer></ui-spacer>
-              <universe-manager universes={{universeManager}}></universe-manager>
-            </div>
-            <div>
-              <ui-spacer></ui-spacer>
-              <midi-manager controllers="{{midiManager}}"></midi-manager>
-            </div>
-          </iron-pages>
-        </div>
-      </template>
+      <ui-spacer></ui-spacer>
 
-
-
-      <template is="dom-if" if="[[editMode]]">
-
-        <div>
-          <paper-tabs selected="{{selected}}">
-            <paper-tab>Universes</paper-tab>
-            <paper-tab>MIDI Controller</paper-tab>
-            <paper-tab>Scenes</paper-tab>
-            <paper-tab>Animations</paper-tab>
-            <paper-tab>Fixtures</paper-tab>
-            <paper-tab>modV</paper-tab>
-          </paper-tabs>
-
-          <iron-pages selected="{{selected}}">
-            <div>
-              <ui-spacer></ui-spacer>
-              <universe-manager universes={{universeManager}}></universe-manager>
-            </div>
-            <div>
-              <ui-spacer></ui-spacer>
-              <midi-manager controllers="{{midiManager}}"></midi-manager>
-            </div>
-            <div>
-              <ui-spacer></ui-spacer>
-              <scene-manager scenes={{sceneManager}}></scene-manager>
-            </div>
-            <div>
-              <ui-spacer></ui-spacer>
-              <animation-manager animations="{{animationManager}}"></animation-manager>
-            </div>
-            <div>
-              <ui-spacer></ui-spacer>
-              <fixture-manager fixtures={{fixtureManager}}></fixture-manager>
-            </div>
-            <div>
-              <ui-spacer></ui-spacer>
-              <ui-spacer></ui-spacer>
-      <!-- <template is="dom-if" if="[[modvConnected]]"> -->
-              <color-grid rows="4" colors="[[modvColors]]"></color-grid>
-      <!-- </template> -->
-            </div>
-          </iron-pages>
-        </div>
-
-      </template>
+      <!-- Main content -->
+      <main role="main" class="main-content">
+        <universe-view active?="${_page === 'universe'}" class="page"></universe-view>
+        <midi-view active?="${_page === 'midi'}" class="page"></midi-view>
+        <scene-view active?="${_page === 'scene'}" class="page"></scene-view>
+        <animation-view active?="${_page === 'animation'}" class="page"></animation-view>
+        <fixture-view active?="${_page === 'fixture'}" class="page"></fixture-view>
+        <modv-view active?="${_page === 'modv'}" class="page"></modv-view>
+        <my-view404 active?="${_page === 'view404'}" class="page"></my-view404>
+      </main>
     `
   }
 }

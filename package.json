@@ -26,12 +26,13 @@
     "url": "git+https://github.com/NERDDISCO/luminave.git"
   },
   "dependencies": {
-    "@polymer/app-layout": "3.0.0-pre.21",
-    "@polymer/iron-icons": "3.0.0-pre.21",
-    "@polymer/iron-pages": "3.0.0-pre.21",
-    "@polymer/paper-button": "3.0.0-pre.21",
-    "@polymer/paper-tabs": "3.0.0-pre.21",
-    "@polymer/paper-tooltip": "3.0.0-pre.21",
+    "@polymer/app-layout": "3.0.0-pre.25",
+    "@polymer/iron-icons": "3.0.0-pre.25",
+    "@polymer/iron-pages": "3.0.0-pre.25",
+    "@polymer/lit-element": "^0.5.2",
+    "@polymer/paper-button": "3.0.0-pre.25",
+    "@polymer/paper-tabs": "3.0.0-pre.25",
+    "@polymer/paper-tooltip": "3.0.0-pre.25",
     "@webcomponents/webcomponentsjs": "2.0.0",
     "concurrently": "^3.5.1",
     "fivetwelve": "^1.0.0-alpha.1",
@@ -39,6 +40,7 @@
     "keytime": "^0.1.1",
     "nodejs-websocket": "^1.7.1",
     "polymer-redux": "git+https://github.com/NERDDISCO/polymer-redux.git#feat/127/disableStateChangedEvent",
+    "pwa-helpers": "^0.8.3",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
@@ -53,8 +55,8 @@
     "gulp": "^4.0.0",
     "gulp-rename": "^1.2.3",
     "gulp-replace": "^1.0.0",
-    "prpl-server": "^1.1.0",
     "mocha": "^5.1.0",
+    "prpl-server": "^1.1.0",
     "puppeteer": "^1.4.0",
     "wct-browser-legacy": "^1.0.1"
   }
