@@ -19,7 +19,8 @@
     "serve:static": "polymer serve --port 5000 build/esm-bundled",
     "test": "npm run test:unit && npm run test:integration",
     "test:integration": "mocha test/integration --timeout=10000",
-    "test:unit": "polymer test --module-resolution=node --npm"
+    "test:unit": "polymer test --module-resolution=node --npm",
+    "test:regenerate_screenshots": "mocha test/integration/screenshots-baseline/regenerate.js --timeout=20000"
   },
   "repository": {
     "type": "git",
@@ -50,14 +51,19 @@
   },
   "homepage": "https://github.com/NERDDISCO/luminave#readme",
   "devDependencies": {
+    "axe-core": "^3.0.0",
+    "chai": "^4.1.2",
     "del": "^3.0.0",
     "eslint": "^4.7.2",
     "gulp": "^4.0.0",
     "gulp-rename": "^1.2.3",
     "gulp-replace": "^1.0.0",
     "mocha": "^5.1.0",
+    "pixelmatch": "^4.0.2",
+    "polyserve": "^0.27.0",
     "prpl-server": "^1.1.0",
     "puppeteer": "^1.4.0",
+    "query-selector-shadow-dom": "^0.2.1",
     "wct-browser-legacy": "^1.0.1"
   }
 }

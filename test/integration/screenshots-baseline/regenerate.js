@@ -52,6 +52,7 @@ async function generateBaselineScreenshots(page) {
       {width: 800, height: 600},
       {width: 375, height: 667}];
   const prefixes = ['wide', 'narrow'];
+  const views = ['universe', 'animation', 'fixture'];
 
   for (let i = 0; i < prefixes.length; i++) {
     const prefix = prefixes[i];
@@ -60,11 +61,13 @@ async function generateBaselineScreenshots(page) {
     // Index.
     await page.goto('http://127.0.0.1:4444/');
     await page.screenshot({path: `${baselineDir}/${prefix}/index.png`});
+
     // Views.
-    for (let i = 1; i <= 3; i++) {
-      await page.goto(`http://127.0.0.1:4444/view${i}`);
-      await page.screenshot({path: `${baselineDir}/${prefix}/view${i}.png`});
+    for (let i = 0; i < views.length; i++) {
+      await page.goto(`http://127.0.0.1:4444/${views[i]}`);
+      await page.screenshot({path: `${baselineDir}/${prefix}/${views[i]}.png`});
     }
+
     // 404.
     await page.goto('http://127.0.0.1:4444/batmanNotAView');
     await page.screenshot({path: `${baselineDir}/${prefix}/batmanNotAView.png`});

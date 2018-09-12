@@ -14,7 +14,7 @@ const {startServer} = require('polyserve');
 const path = require('path');
 const appUrl = 'http://127.0.0.1:4444';
 
-describe('routing tests', function() {
+describe('Universe tests', function() {
   let polyserve, browser, page;
 
   before(async function() {
@@ -27,7 +27,7 @@ describe('routing tests', function() {
     browser = await puppeteer.launch();
     page = await browser.newPage();
 
-    await page.goto(`${appUrl}`);
+    await page.goto(`${appUrl}/universe`);
     await page.addScriptTag({
       path: path.join(__dirname, '../../node_modules/query-selector-shadow-dom/dist/querySelectorShadowDom.js')
     });
@@ -35,19 +35,14 @@ describe('routing tests', function() {
 
   afterEach(() => browser.close());
 
-  it('the page selector switches pages', async function() {
+  it('create a new universe', async function() {
     await page.waitForSelector('lumi-nave', {visible: true});
 
-    await testNavigation(page, 'universe', 'Universes');
-    await testNavigation(page, 'animation', 'Animations');
-    await testNavigation(page, 'fixture', 'Fixtures');
-    await testNavigation(page, 'scene', 'Scenes');
-    await testNavigation(page, 'midi', 'MIDI');
-    await testNavigation(page, 'modv', 'modV');
+    await createNewUniverse(page);
   });
 });
 
-async function testNavigation(page, href, linkText) {
+async function createNewUniverse(page) {
 
   const getChildProperty = (selector, property) => {
     const child = Array.from(querySelectorShadowDom.querySelectorAllDeep(selector))[0]
@@ -59,14 +54,16 @@ async function testNavigation(page, href, linkText) {
     return child.click()
   }
 
-  const selector = `luminave-dashboard a[href="/${href}"]`;
+  // const selector = `luminave-dashboard main universe-view section universe-manager button`;
+  const selector = `luminave-dashboard main universe-view`;
+
 
   // Get the text of the link
-  const myText = await page.evaluate(getChildProperty, selector, 'textContent');
-  expect(myText).equal(linkText);
+  const myText = await page.evaluate(getChildProperty, selector, 'innerHTML');
+  expect(myText).equal("shit");
 
-  // Does the click take you to the right page?
-  await page.evaluate(doClick, selector);
-  const newUrl = await page.evaluate('window.location.href')
-  expect(newUrl).equal(`${appUrl}/${href}`);
+  // // Does the click take you to the right page?
+  // await page.evaluate(doClick, selector);
+  // const newUrl = await page.evaluate('window.location.href')
+  // expect(newUrl).equal(`${appUrl}/${href}`);
 }
