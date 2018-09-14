@@ -624,12 +624,11 @@
     "@polymer/iron-meta" "^3.0.0-pre.24"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/lit-element@^0.5.2":
-  version "0.5.2"
-  resolved "https://registry.yarnpkg.com/@polymer/lit-element/-/lit-element-0.5.2.tgz#8d4e2d1ada27cf0f1a38b7b0eb9fadae92eb63df"
+"@polymer/lit-element@0.6.0-dev.6":
+  version "0.6.0-dev.6"
+  resolved "https://registry.yarnpkg.com/@polymer/lit-element/-/lit-element-0.6.0-dev.6.tgz#d60d01061300c8059d9dde3a9c14e03777b6a35d"
   dependencies:
-    "@polymer/polymer" "^3.0.2"
-    lit-html "^0.10.0"
+    lit-html "^0.11.0"
 
 "@polymer/paper-behaviors@^3.0.0-pre.25":
   version "3.0.0-pre.26"
@@ -695,7 +694,7 @@
     "@polymer/paper-styles" "^3.0.0-pre.24"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/polymer@^3.0.0", "@polymer/polymer@^3.0.2":
+"@polymer/polymer@^3.0.0":
   version "3.0.5"
   resolved "https://registry.yarnpkg.com/@polymer/polymer/-/polymer-3.0.5.tgz#eaa42e70df7de818b5e1839452c82a5f83e39929"
   dependencies:
@@ -1026,9 +1025,9 @@
   version "1.4.0"
   resolved "https://registry.yarnpkg.com/@webcomponents/shadycss/-/shadycss-1.4.0.tgz#2b2b66443252f81d02ebb2dd139e4a717655bfa9"
 
-"@webcomponents/webcomponentsjs@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.0.0.tgz#166e7489b9ce66f5c082a3360120cb27505f762f"
+"@webcomponents/webcomponentsjs@2.1.1":
+  version "2.1.1"
+  resolved "https://registry.yarnpkg.com/@webcomponents/webcomponentsjs/-/webcomponentsjs-2.1.1.tgz#2884f5a878d0823dd6b3a15a06fb0382c3012d88"
 
 "@webcomponents/webcomponentsjs@^2.0.0":
   version "2.0.4"
@@ -4109,9 +4108,9 @@ liftoff@^2.5.0:
     rechoir "^0.6.2"
     resolve "^1.1.7"
 
-lit-html@^0.10.0:
-  version "0.10.2"
-  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.10.2.tgz#53c846afcf91bb1e6623179ef22e327ab8ac0e0e"
+lit-html@^0.11.0:
+  version "0.11.2"
+  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.11.2.tgz#218f0444f776070ad8380b0258a74996ae76ef4a"
 
 load-json-file@^1.0.0:
   version "1.1.0"

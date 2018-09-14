@@ -12,9 +12,9 @@ class modvView extends PageViewElement {
 
   static get properties() {
     return { 
-      active: Boolean,
-      visible: Boolean,
-      colors: Array
+      active: { type: Boolean },
+      visible: { type: Boolean },
+      colors: { type: Array }
     }
   }
 
@@ -31,33 +31,36 @@ class modvView extends PageViewElement {
   }
 
   // Only render this page if it's actually visible.
-  _shouldRender(props, changedProps, old) {
+  shouldUpdate() {
     // View gets active and visible for the first time
     // @TODO: This nonsense is only needed because colors is a property 
     // on the modv-view component. Instead we should create a new component
     // that handles everything related to modV so we can go back to the default
     // funtionality of PageViewElement and don't add our own properties which will
-    // force _shouldRender update every time a property is changing
-    if (props.active && !props.visible) {
-      props.visible = true
+    // force _shouldUpdate update every time a property is changing
+    if (this.active && !this.visible) {
+      this.visible = true
       window.addEventListener('received-data-from-modv', this.listener)
     }
 
     // View gets inactive
-    if (!props.active) {
-      props.visible = false
+    if (!this.active) {
+      this.visible = false
       window.removeEventListener('received-data-from-modv', this.listener)
     }
 
-    return props.active
+    return this.active
   }
 
-  _render({ colors }) {
+  render() {
+
+    const { colors } = this
+
     return html`
       <section>
         <ui-spacer></ui-spacer>
         
-        <color-grid rows="4" colors="${colors}"></color-grid>
+        <color-grid rows="4" .colors="${colors}"></color-grid>
       </section>
     `
   }

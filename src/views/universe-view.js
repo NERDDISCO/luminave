@@ -7,7 +7,7 @@ import '../components/universe-manager/index.js'
 // import { SharedStyles } from './shared-styles.js'
 
 class UniverseView extends PageViewElement {
-  _render(props) {
+  render() {
     return html`
       <section>
         <universe-manager></universe-manager>

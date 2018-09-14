@@ -7,7 +7,7 @@ import '../components/scene-manager/index.js'
 // import { SharedStyles } from './shared-styles.js'
 
 class SceneView extends PageViewElement {
-  _render(props) {
+  render() {
     return html`
       <section>
         <scene-manager></scene-manager>

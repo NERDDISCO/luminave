@@ -7,7 +7,7 @@ import '../components/midi-manager/index.js'
 // import { SharedStyles } from './shared-styles.js'
 
 class MidiView extends PageViewElement {
-  _render(props) {
+  render() {
     return html`
       <section>
         <midi-manager></midi-manager>

@@ -7,7 +7,7 @@ import '../components/animation-manager/index.js'
 // import { SharedStyles } from './shared-styles.js'
 
 class AnimationView extends PageViewElement {
-  _render(props) {
+  render() {
     return html`
       <section>
         <animation-manager></animation-manager>

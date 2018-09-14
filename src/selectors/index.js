@@ -15,6 +15,7 @@ export const getAnimations = state => state.animationManager
 export const getFixtures = state => state.fixtureManager
 export const getTimeline = state => state.timelineManager
 export const getTimelineSceneIds = state => state.timelineManager.scenes
+export const getModv = state => state.modvManager
 
 export const getAnimation = (state, properties) => {
   return getAnimations(state)

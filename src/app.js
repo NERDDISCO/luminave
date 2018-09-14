@@ -2,9 +2,10 @@ import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element
 
 import './components/luminave-menu/index.js'
 import './components/luminave-dashboard/index.js'
+import './components/ui-spacer/index.js'
 
 class Luminave extends LitElement {
-  _render() {
+  render() {
     return html`
       <luminave-menu></luminave-menu>
 

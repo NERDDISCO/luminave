@@ -7,7 +7,7 @@ import '../components/fixture-manager/index.js'
 // import { SharedStyles } from './shared-styles.js'
 
 class FixtureView extends PageViewElement {
-  _render(props) {
+  render() {
     return html`
       <section>
         <fixture-manager></fixture-manager>
