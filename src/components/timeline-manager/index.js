@@ -113,7 +113,6 @@ class TimelineManager extends connect(store)(LitElement) {
     if (this.isPlaying) {
       this.duration = ~~(60 / this.bpm * 1000 * this.measures)
 
-      // const {time, duration, paused} = this.state
       const now = new Date()
       const loopEnd = now - this.time > this.duration
 
