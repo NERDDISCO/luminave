@@ -1,28 +1,17 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 import { addToFixtureBatch } from '../../utils/index.js'
-import { getFixture } from '../../selectors/index.js'
-import { store } from '../../reduxStore.js'
 
 /*
  * Handle an animation in a timeline
  */
-class TimelineAnimation extends PolymerElement {
+class TimelineAnimation extends LitElement {
   static get properties() {
     return {
-      duration: Number,
-
-      progress: {
-        type: Number,
-        observer: 'observeProgress'
-      },
-
-      fixtureIds: Array,
-
-      animation: Object,
-      timeline: {
-        type: Object,
-        computed: 'computeTimeline(animation.keyframes)'
-      }
+      duration: { type: Number },
+      progress: { type: Number },
+      fixtureIds:  { type: Array },
+      animation:  { type: Object },
+      timeline: { type: Object }
     }
   }
 
@@ -101,6 +90,11 @@ class TimelineAnimation extends PolymerElement {
   }
 
   observeProgress() {
+
+    if (this.fixtureIds === undefined) {
+      return
+    }
+
     const interpolatedProperties = this.timeline.values(this.computeProgress())
 
     for (let i = 0; i < this.fixtureIds.length; i++) {
@@ -117,7 +111,18 @@ class TimelineAnimation extends PolymerElement {
     return progress
   }
 
-  static get template() {
+  shouldUpdate(changedProperties) {
+    // Update the timeline when the animation is updated
+    if (changedProperties.has('animation')) {
+      this.timeline = this.computeTimeline(this.animation.keyframes)
+    }
+
+    return true
+  }
+
+  render() {
+    this.observeProgress()
+
     return html``
   }
 }
