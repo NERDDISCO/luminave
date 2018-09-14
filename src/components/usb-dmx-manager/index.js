@@ -29,7 +29,8 @@ class UsbDmxManager extends reduxMixin(PolymerElement) {
         this.connect()
       })
       .catch(error => {
-        console.log(error)
+        console.error(error)
+        this.dispatch(connectUsb(false))
       })
   }
 
