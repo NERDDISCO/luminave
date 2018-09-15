@@ -1,15 +1,18 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import reduxMixin from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addFixture, removeFixtureFromEverywhere } from '../../actions/index.js'
 import '../dmx-fixture/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 import { FIXTURE_TYPES } from '../../constants/index.js'
+import { getFixtures } from '../../selectors/index.js';
 
 /*
  * Handle DMX fixtures
  */
-class FixtureManager extends reduxMixin(PolymerElement) {
+class FixtureManager extends connect(store)(LitElement) {
 
   constructor() {
     super()
@@ -19,17 +22,16 @@ class FixtureManager extends reduxMixin(PolymerElement) {
   }
 
   static get properties() {
-    return {
-      fixtures: {
-        type: Array,
-        statePath: 'fixtureManager'
-      }
-    }
+    return { fixtures: { type: Array } }
+  }
+
+  _stateChanged(state) {
+    this.fixtures = getFixtures(state)
   }
 
   removeFixture(e) {
     const { dataset } = e.target
-    this.dispatch(removeFixtureFromEverywhere(dataset.id))
+    store.dispatch(removeFixtureFromEverywhere(dataset.id))
   }
 
   handleSubmit(e) {
@@ -48,7 +50,7 @@ class FixtureManager extends reduxMixin(PolymerElement) {
 
     // Amount was not specified, so we just add one fixture
     if (isNaN(amount)) {
-      this.dispatch(addFixture({
+      store.dispatch(addFixture({
         id: uuidV1(),
         type,
         name,
@@ -72,7 +74,7 @@ class FixtureManager extends reduxMixin(PolymerElement) {
       for (let i = 0; i < amount; i++) {
         const bulkAddress = address + (offset * i)
 
-        this.dispatch(addFixture({
+        store.dispatch(addFixture({
           id: uuidV1(),
           type,
           name: `${name}${bulkAddress}`,
@@ -84,7 +86,9 @@ class FixtureManager extends reduxMixin(PolymerElement) {
     }
   }
 
-  static get template() {
+  render() {
+    const { types, fixtures } = this
+
     return html`
     <style>
       :host {
@@ -124,23 +128,23 @@ class FixtureManager extends reduxMixin(PolymerElement) {
 
     </style>
 
-        <form on-submit="handleSubmit">
+        <form @submit="${e => this.handleSubmit(e)}">
           <label for="type">Type</label>
           <select name="type" required>
             <option value=""></option>
-            <template is="dom-repeat" items="{{types}}" as="type">
-              <option value="[[type]]">[[type]]</option>
-            </template>
+            ${repeat(types, type => html`
+              <option value="${type}">${type}</option>
+            `)}
           </select>
 
           <label for="address">Address</label>
-          <input name="address" type="number" min="1" max="512" required></input>
+          <input name="address" type="number" min="1" max="512" required />
 
           <label for="name">Name</label>
-          <input name="name" type="text"></input>
+          <input name="name" type="text" />
 
           <label for="amount">Amount</label>
-          <input name="amount" type="number" min="1" max="512"></input>
+          <input name="amount" type="number" min="1" max="512" />
 
           <button type="submit">Add</button>
         </form>
@@ -149,20 +153,21 @@ class FixtureManager extends reduxMixin(PolymerElement) {
 
         <div class="container">
 
-          <template is="dom-repeat" items="[[fixtures]]" as="fixture">
+          ${repeat(fixtures, fixture => html`
+          
+            <div class="item" data-name="${fixture.name}">
+              <dmx-fixture
+                name="${fixture.name}"
+                .properties="${fixture.properties}"
+                id="${fixture.id}"
+                type="${fixture.type}"
+                address="${fixture.address}"
+                universe="${fixture.universe}"></dmx-fixture>
 
-              <div class="item" data-name$="[[fixture.name]]">
-                <dmx-fixture
-                  name="[[fixture.name]]"
-                  properties="[[fixture.properties]]"
-                  id="[[fixture.id]]"
-                  type="[[fixture.type]]"
-                  address="[[fixture.address]]"
-                  universe="[[fixture.universe]]"></dmx-fixture>
+              <button @click="${e => this.removeFixture(e)}" data-id="${fixture.id}">Remove</button>
+            </div>
 
-                <button on-click="removeFixture" data-id$="[[fixture.id]]">Remove</button>
-              </div>
-          </template>
+          `)}
 
         </div>
     `
