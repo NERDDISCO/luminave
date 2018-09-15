@@ -7,7 +7,8 @@ Use luminave to manage all the lights with your web browser and create stunning 
 * *lumi* = "Light" in different languages
 * *nave* = "A hub of a wheel"
 
-[![polymer 3](https://img.shields.io/badge/polymer-3.0.0-f50057.svg?style=flat)](https://www.polymer-project.org/)
+[![Polymer 3](https://img.shields.io/badge/polymer-3.0.0-f50057.svg?style=flat)](https://www.polymer-project.org/)
+[![Built with pwa–starter–kit](https://img.shields.io/badge/built_with-pwa–starter–kit_-blue.svg)](https://github.com/Polymer/pwa-starter-kit "Built with pwa–starter–kit")
 [![Redux](https://img.shields.io/badge/Redux-3.7.2-9f33ff.svg?style=flat)](https://redux.js.org/)
 [![ES6 modules](https://img.shields.io/badge/ES6-modules-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 [![WebUSB](https://img.shields.io/badge/API-WebUSB-1e88e5.svg?style=flat)](https://wicg.github.io/webusb/)
