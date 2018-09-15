@@ -6756,9 +6756,9 @@ webmidi@^2.0.0:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/webmidi/-/webmidi-2.2.0.tgz#9f6c54f95e9c6baf5dca26d8307a299bb1b6feb5"
 
-webusb-dmx512-controller@^1.0.6:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/webusb-dmx512-controller/-/webusb-dmx512-controller-1.0.6.tgz#742ec0c2da7719271d7aabf6f9259bff40f94c24"
+webusb-dmx512-controller@^1.0.7:
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/webusb-dmx512-controller/-/webusb-dmx512-controller-1.0.7.tgz#78f24aff2cd6c3d53139c46857a6197a0186d7d7"
 
 whatwg-url@^6.4.0:
   version "6.5.0"
