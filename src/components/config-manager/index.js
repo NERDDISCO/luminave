@@ -1,27 +1,13 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import { reduxMixin } from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 import { STORAGE_STATE } from '/src/constants/index.js'
 
 /*
  * Handle the configuration
  */
-class ConfigManager extends reduxMixin(PolymerElement) {
+class ConfigManager extends LitElement {
 
   static get properties() {
-    return {
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      }
-    }
-  }
-
-  computeEditMode(live) {
-    return !live
+    return {}
   }
 
   /*
@@ -32,16 +18,15 @@ class ConfigManager extends reduxMixin(PolymerElement) {
     return `data:text/json;charset=utf-8,${encodeURIComponent(localStorage.getItem(STORAGE_STATE))}`
   }
 
+  // @TODO: implement
   handleDownload(e) {
     const { target } = e
-
-    console.log(target)
   }
 
-  static get template() {
+  render() {
     return html`
       Config
-      <a on-click="handleDownload" href="{{generateDownload()}}">Download</a>
+      <a @click="${e => this.handleDownload(e)}" href="${this.generateDownload()}">Download</a>
     `
   }
 }

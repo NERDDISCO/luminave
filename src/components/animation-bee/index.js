@@ -1,13 +1,14 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import reduxMixin from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { store } from '../../reduxStore.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 import { addKeyframe, setAnimationName, removeAnimation } from '../../actions/index.js'
 import { FIXTURE_PROPERTIES } from '../../constants/index.js'
 import '../keyframe-grid/index.js'
 
 /*
- * Handle a list of scenes
+ * Handle a specific animation with multiple keyframes
  */
-class AnimationBee extends reduxMixin(PolymerElement) {
+class AnimationBee extends LitElement {
 
   constructor() {
     super()
@@ -18,42 +19,39 @@ class AnimationBee extends reduxMixin(PolymerElement) {
 
   static get properties() {
     return {
-      name: String,
-      duration: Number,
-      index: Number,
-      keyframes: Object
+      name: { type: String },
+      duration: { type: Number },
+      index: { type: Number },
+      keyframes: { type: Object }
     }
   }
 
   removeAnimation(e) {
-    this.dispatch(removeAnimation(parseInt(this.index, 10)))
+    store.dispatch(removeAnimation(parseInt(this.index, 10)))
   }
 
   handleKeyframeSubmit(e) {
     // Prevent sending data to server
     e.preventDefault()
 
-    this.dispatch(addKeyframe(this.index, this.step, this.property, this.value))
-  }
+    // Get data out of the form
+    const data = new FormData(e.target)
 
-  handleStep(e) {
-    this.step = e.target.value
-  }
+    const step = data.get('step')
+    const property = data.get('property')
+    const value = data.get('value')
 
-  handleSelectedProperty(e) {
-    this.property = e.target.selectedOptions[0].value
-  }
-
-  handleValue(e) {
-    this.value = e.target.value
+    store.dispatch(addKeyframe(this.index, step, property, value))
   }
 
   handleNameChange(e) {
     const animationName = e.target.value
-    this.dispatch(setAnimationName(this.index, animationName))
+    store.dispatch(setAnimationName(this.index, animationName))
   }
 
-  static get template() {
+  render() {
+    const { index, properties, keyframes, name } = this
+
     return html`
       <style>
         .name {
@@ -68,29 +66,29 @@ class AnimationBee extends reduxMixin(PolymerElement) {
       </style>
 
       <div>
-        <input class="name" name="name" type="text" on-change="handleNameChange" value="[[name]]"></input>
-        <button on-click="removeAnimation" data-index$="[[index]]">Remove</button>
+        <input class="name" name="name" type="text" @change="${e => this.handleNameChange(e)}" value="${name}" />
+        <button @click="${e => this.removeAnimation(e)}" data-index="${index}">Remove</button>
 
         <br><br>
 
-        <form on-submit="handleKeyframeSubmit">
-          <input name="step" type="number" min="0" max="1" step="any" on-change="handleStep" required placeholder="Step"></input>
+        <form @submit="${e => this.handleKeyframeSubmit(e)}">
+          <input name="step" type="number" min="0" max="1" step="any" required placeholder="Step"/>
 
-          <select name="property" on-change="handleSelectedProperty" required>
+          <select name="property" required>
             <option value="" disabled selected>Property</option>
-            <template is="dom-repeat" items="{{properties}}" as="property">
-              <option value="[[property]]">[[property]]</option>
-            </template>
+            ${repeat(properties, property => html`
+              <option value="${property}">${property}</option>
+            `)}
           </select>
 
-          <input name="value" type="text" on-change="handleValue" required placeholder="Value"></input>
+          <input name="value" type="text" required placeholder="Value"/>
 
           <button type="submit">Add keyframe</button>
         </form>
 
         <br>
 
-        <keyframe-grid keyframes="{{keyframes}}"></keyframe-grid>
+        <keyframe-grid .keyframes="${keyframes}"></keyframe-grid>
       </div>
     `
   }

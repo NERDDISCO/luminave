@@ -1,45 +1,25 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import { reduxMixin } from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import { connectDekk, setDekkData, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures } from '../../actions/index.js'
-import { getSceneByName } from '../../selectors/index.js'
+import { getSceneByName, getDekkConnected, getDekkData } from '../../selectors/index.js'
 
 /*
  * Handle the connection to Dekk
  */
-class DekkManager extends reduxMixin(PolymerElement) {
+class DekkManager extends connect(store)(LitElement) {
 
   static get properties() {
     return {
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      },
-      connected: {
-        type: Boolean,
-        statePath: 'dekkManager.connected'
-      },
-      data: {
-        type: Object,
-        statePath: 'dekkManager.data'
-      },
-      url: String,
-      connectedLabel: {
-        type: String,
-        computed: 'computeConnectedLabel(connected)'
-      }
+      connected: { type: Boolean },
+      data: { type: Object },
+      url: { type: String }
     }
   }
 
-  computeEditMode(live) {
-    return !live
-  }
-
-  computeConnectedLabel(connected) {
-    return connected ? 'disconnect': 'connect'
+  _stateChanged(state) {
+    this.connected = getDekkConnected(state)
+    this.data = getDekkData(state)
   }
 
   connectedCallback() {
@@ -58,7 +38,7 @@ class DekkManager extends reduxMixin(PolymerElement) {
     // Close active WebSocket connection
     if (this.connected) {
       this.socket.close()
-      this.dispatch(connectDekk(false))
+      store.dispatch(connectDekk(false))
 
     // Create new WebSocket connection
     } else {
@@ -73,21 +53,21 @@ class DekkManager extends reduxMixin(PolymerElement) {
     this.socket.addEventListener('open', () => {
       console.info('Dekk WebSocket opened to', this.url)
 
-      this.dispatch(connectDekk(true))
+      store.dispatch(connectDekk(true))
     })
 
     // Connection was closed
     this.socket.addEventListener('close', event => {
       console.info('Dekk WebSocket closed:', event)
 
-      this.dispatch(connectDekk(false))
+      store.dispatch(connectDekk(false))
     })
 
     // Error with connection
     this.socket.addEventListener('error', error => {
       console.error('Dekk WebSocket error:', error)
 
-      this.dispatch(connectDekk(false))
+      store.dispatch(connectDekk(false))
     })
 
     // Listen for messages
@@ -99,7 +79,7 @@ class DekkManager extends reduxMixin(PolymerElement) {
       this.changeScenes(this.data.scenes, 'remove')
 
       // Save data into state
-      this.dispatch(setDekkData({ scenes: JSON.parse(data) }))
+      store.dispatch(setDekkData({ scenes: JSON.parse(data) }))
 
       // Add scenes
       this.changeScenes(this.data.scenes, 'add')
@@ -107,7 +87,9 @@ class DekkManager extends reduxMixin(PolymerElement) {
   }
 
   changeScenes(sceneNames, action) {
-    const arrayType = Array.isArray(sceneNames) ? sceneNames : [sceneNames]
+    const arrayType = Array.isArray(sceneNames) 
+      ? sceneNames 
+      : [sceneNames]
     
     // Dekk will give us an array of scene names
     arrayType.map(name => {
@@ -120,13 +102,13 @@ class DekkManager extends reduxMixin(PolymerElement) {
 
         switch (action) {
           case 'remove':
-            this.dispatch(removeSceneFromTimelineAndResetFixtures(scene.id))
+            store.dispatch(removeSceneFromTimelineAndResetFixtures(scene.id))
             break
 
           case 'add':
             // @TODO: TimelineManager: Don't add the same scene x+1 times
             // https://github.com/NERDDISCO/luminave/issues/16
-            this.dispatch(addSceneToTimeline(scene.id))
+            store.dispatch(addSceneToTimeline(scene.id))
             break
 
           default:
@@ -136,9 +118,15 @@ class DekkManager extends reduxMixin(PolymerElement) {
     })
   }
 
-  static get template() {
+  render() {
+    const { connected } = this
+
+    const connectedLabel = connected 
+    ? 'disconnect'
+    : 'connect'
+
     return html`
-      Dekk: <button on-click="handleClick">[[connectedLabel]]</button>
+      Dekk: <button @click="${e => this.handleClick(e)}">${connectedLabel}</button>
     `
   }
 }

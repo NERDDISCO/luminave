@@ -1,37 +1,30 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 
 import '/node_modules/@polymer/paper-button/paper-button.js'
 
 /*
  * Show the status of something, for example USB or modV
  */
-class LuminaveStatusIndicator extends PolymerElement {
+class LuminaveStatusIndicator extends LitElement {
 
   static get properties() {
-    return {
-      status: {
-        type: Boolean,
-        value: false
-      }
-    }
+    return { status: { type: Boolean } }
   }
 
   /*
    * Change the class based on the status
    */
   computeClass(status) {
-    let statusClass = ''
-
-    if (status) {
-      statusClass = 'active'
-    } else {
-      statusClass = 'inactive'
-    }
+    const statusClass = status 
+      ? 'active'
+      : 'inactive' 
 
     return statusClass
   }
 
-  static get template() {
+  render() {
+    const { status } = this
+
     return html`
         <style>
           .active {
@@ -43,7 +36,7 @@ class LuminaveStatusIndicator extends PolymerElement {
           }
         </style>
 
-        <div class$="{{computeClass(status)}}">
+        <div class="${this.computeClass(status)}">
           <slot></slot>
         </div>
     `

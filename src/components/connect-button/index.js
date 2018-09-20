@@ -1,6 +1,8 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import reduxMixin from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import { connectUsb, connectBluetooth } from '../../actions/index.js'
+import { getConnections } from '../../selectors/index.js'
 
 const actions = {
   usb: connectUsb,
@@ -10,21 +12,19 @@ const actions = {
 /*
  * Connect to an external system via USB or Bluetooth
  */
-class ConnectButton extends reduxMixin(PolymerElement) {
+class ConnectButton extends connect(store)(LitElement) {
 
   static get properties() {
     return {
       label: { type: String },
       type: { type: String },
-      connections: {
-        type: Object,
-        statePath: 'connectionManager',
-        observer: 'connectionChanged'
-      }
+      connected: { type: Boolean },
+      connections: { type: Object }
     }
   }
 
-  connectionChanged() {
+  _stateChanged(state) {
+    this.connections = getConnections(state)
     this.connected = this.connections[this.type].connected
   }
 
@@ -33,14 +33,17 @@ class ConnectButton extends reduxMixin(PolymerElement) {
       '--on': connected ? 1 : 0,
       '--off': connected ? 0 : 1
     }
+
     return Object.keys(vars).map(key => {
       return [key, vars[key]].join(':')
     } ).join(';')
   }
 
-  static get template() {
+  render() {
+    const { connected, label } = this
+
     return html`
-        <style>
+      <style>
         button {
           --background: rgba(calc(var(--off) * 50), calc(var(--on) * 50), 0, 1);
           --color: rgba(calc(var(--off) * 255), calc(var(--on) * 255), 0, 1);
@@ -58,7 +61,7 @@ class ConnectButton extends reduxMixin(PolymerElement) {
             cursor: pointer;
           }
       </style>
-      <button style="{{computeVars(connected)}}">[[label]]</button>
+      <button style="${this.computeVars(connected)}">${label}</button>
     `
   }
 }

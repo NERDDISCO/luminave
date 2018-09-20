@@ -212,7 +212,7 @@ class TimelineManager extends connect(store)(LitElement) {
           display: flex;
           flex-direction: row;
 
-          min-height: 2em;
+          min-height: 3em;
         }
 
         .timeline {

@@ -1,22 +1,19 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 
 /*
  * Show BPM (Beats per Minute)
  */
-class BPMMeter extends PolymerElement {
+class BPMMeter extends LitElement {
 
   static get properties() {
-    return {
-      bpm: {
-        type: Number,
-        statePath: 'bpm'
-      }
-    }
+    return { bpm: { type: Number } }
   }
 
-  static get template() {
+  render() {
+    const { bpm } = this
+
     return html`
-      <div>[[bpm]]</div>
+      <div>${bpm}</div>
     `
   }
 }

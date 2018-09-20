@@ -1,15 +1,17 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 
 /*
  * Show DMX512 channels in a grid
  */
-class ChannelGrid extends PolymerElement {
+class ChannelGrid extends LitElement {
   static get properties() {
     return { channels: Array }
   }
 
-  static get template() {
+  render() {
+    const { channels } = this
+
     return html`
       <style>
         .items {
@@ -22,9 +24,9 @@ class ChannelGrid extends PolymerElement {
       </style>
 
       <div class="items">
-        <template is="dom-repeat" items="[[channels]]" as="channel">
-          <div class="item">[[channel]]</div>
-        </template>
+        ${repeat(channels, channel => html`
+          <div class="item">${channel}</div>
+        `)}
       </div>
     `
   }

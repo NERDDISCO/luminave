@@ -9,11 +9,7 @@ class Luminave extends LitElement {
     return html`
       <luminave-menu></luminave-menu>
 
-      <ui-spacer></ui-spacer>
-      <ui-spacer></ui-spacer>
-      <ui-spacer></ui-spacer>
-      <ui-spacer></ui-spacer>
-      <ui-spacer></ui-spacer>
+      <ui-spacer height="5em"></ui-spacer>
 
       <luminave-dashboard></luminave-dashboard>
     `

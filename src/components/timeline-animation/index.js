@@ -9,8 +9,8 @@ class TimelineAnimation extends LitElement {
     return {
       duration: { type: Number },
       progress: { type: Number },
-      fixtureIds:  { type: Array },
-      animation:  { type: Object },
+      fixtureIds: { type: Array },
+      animation: { type: Object },
       timeline: { type: Object }
     }
   }
@@ -89,19 +89,6 @@ class TimelineAnimation extends LitElement {
     return array.sort((a, b) => a.time - b.time)
   }
 
-  observeProgress() {
-
-    if (this.fixtureIds === undefined) {
-      return
-    }
-
-    const interpolatedProperties = this.timeline.values(this.computeProgress())
-
-    for (let i = 0; i < this.fixtureIds.length; i++) {
-      addToFixtureBatch(this.fixtureIds[i], interpolatedProperties)
-    }
-  }
-
   computeProgress() {
     let progress = this.progress / this.duration
     if (progress > 1.0) {
@@ -121,7 +108,17 @@ class TimelineAnimation extends LitElement {
   }
 
   render() {
-    this.observeProgress()
+    if (this.fixtureIds === undefined) {
+      return
+    }
+
+    // Interpolate the properties of the fixtures associated with the animation
+    const interpolatedProperties = this.timeline.values(this.computeProgress())
+
+    // Add the interpolated properties to the fixtureBatch (which is used to set the value in the universe)
+    for (let i = 0; i < this.fixtureIds.length; i++) {
+      addToFixtureBatch(this.fixtureIds[i], interpolatedProperties)
+    }
 
     return html``
   }

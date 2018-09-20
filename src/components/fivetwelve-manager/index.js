@@ -1,29 +1,24 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import { reduxMixin } from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import { connectFivetwelve } from '../../actions/index.js'
+import { getFivetwelveConnected } from '../../selectors/index.js'
 import { batch } from '../../utils/index.js'
 
 /*
  * Handle the connection to fivetwelve
  */
-class FivetwelveManager extends reduxMixin(PolymerElement) {
+class FivetwelveManager extends connect(store)(LitElement) {
 
   static get properties() {
     return {
-      connected: {
-        type: Boolean,
-        statePath: 'fivetwelveManager.connected'
-      },
-      url: String,
-      connectedLabel: {
-        type: String,
-        computed: 'computeConnectedLabel(connected)'
-      }
+      connected: { type: Boolean },
+      url: { type: String }
     }
   }
 
-  computeConnectedLabel(connected) {
-    return connected ? 'disconnect': 'connect'
+  _stateChanged(state) {
+    this.connected = getFivetwelveConnected(state)
   }
 
   connectedCallback() {
@@ -56,7 +51,7 @@ class FivetwelveManager extends reduxMixin(PolymerElement) {
     // Close active WebSocket connection
     if (this.connected) {
       this.socket.close()
-      this.dispatch(connectFivetwelve(false))
+      store.dispatch(connectFivetwelve(false))
     }
   }
 
@@ -88,21 +83,21 @@ class FivetwelveManager extends reduxMixin(PolymerElement) {
     this.socket.addEventListener('open', () => {
       console.info('fivetwelve WebSocket opened to', this.url)
 
-      this.dispatch(connectFivetwelve(true))
+      store.dispatch(connectFivetwelve(true))
     })
 
     // Connection was closed
     this.socket.addEventListener('close', event => {
       console.info('fivetwelve WebSocket closed:', event)
 
-      this.dispatch(connectFivetwelve(false))
+      store.dispatch(connectFivetwelve(false))
     })
 
     // Error with connection
     this.socket.addEventListener('error', error => {
       console.error('fivetwelve WebSocket error:', error)
 
-      this.dispatch(connectFivetwelve(false))
+      store.dispatch(connectFivetwelve(false))
     })
 
     // Listen for messages
@@ -136,11 +131,17 @@ class FivetwelveManager extends reduxMixin(PolymerElement) {
     }
   }
 
-  static get template() {
-    return html`
-      fivetwelve: <button on-click="handleClick">[[connectedLabel]]</button>
+  render() {
+    const { connected } = this
 
-      <button on-click="handleSend">Send</button>
+    const connectedLabel = connected 
+      ? 'disconnect'
+      : 'connect'
+
+    return html`
+      fivetwelve: <button @click="${e => this.handleClick(e)}">${connectedLabel}</button>
+
+      <button @click="${e => this.handleSend(e)}">Send</button>
     `
   }
 }

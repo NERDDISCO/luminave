@@ -1,17 +1,19 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 
 /*
  * A animation list item
  */
-class AnimationListItem extends PolymerElement {
+class AnimationListItem extends LitElement {
   static get properties() {
     return { animation: Object }
   }
 
-  static get template() {
+  render() {
+    const { animation } = this
+
     return html`
       <div>
-        [[animation.name]]
+        ${animation.name}
       </div>
     `
   }

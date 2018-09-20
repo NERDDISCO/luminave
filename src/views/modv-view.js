@@ -24,6 +24,8 @@ class modvView extends PageViewElement {
     // bind() is creating a new function reference, so we have to save it in order to be able 
     // to remove it again, see https://stackoverflow.com/a/22870717/1012875
     this.listener = this.listenReceivedModvData.bind(this)
+
+    this.colors = []
   }
 
   listenReceivedModvData() {

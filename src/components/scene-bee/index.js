@@ -1,5 +1,5 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import reduxMixin from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { store } from '../../reduxStore.js'
 import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene, resetUniverseAndFixtures } from '../../actions/index.js'
 import '../fixture-list/index.js'
 import '../animation-list/index.js'
@@ -7,33 +7,27 @@ import '../animation-list/index.js'
 /*
  * Handle a list of scenes
  */
-class SceneBee extends reduxMixin(PolymerElement) {
+class SceneBee extends LitElement {
   static get properties() {
     return {
-      name: String,
-      duration: Number,
-      id: String,
-      index: Number,
-      fixtures: Array,
-      fixtureManager: {
-        type: Array,
-        statePath: 'fixtureManager'
-      },
-      animations: Array,
-      animationManager: {
-        type: Array,
-        statePath: 'animationManager'
-      }
+      name: { type: String },
+      duration: { type: Number },
+      id: { type: String },
+      index: { type: Number },
+      fixtures: { type: Array },
+      fixtureManager: { type: Array },
+      animations: { type: Array },
+      animationManager: { type: Array }
     }
   }
 
   runScene(e) {
-    this.dispatch(addSceneToTimeline(this.id))
+    store.dispatch(addSceneToTimeline(this.id))
   }
 
   removeScene(e) {
     const { dataset } = e.target
-    this.dispatch(removeScene(parseInt(dataset.index, 10)))
+    store.dispatch(removeScene(parseInt(dataset.index, 10)))
   }
 
   handleAddAnimation(e) {
@@ -43,17 +37,17 @@ class SceneBee extends reduxMixin(PolymerElement) {
     event.preventDefault()
     event.target.reset()
 
-    this.dispatch(addAnimationToScene(this.index, animationId))
+    store.dispatch(addAnimationToScene(this.index, animationId))
   }
 
   handleRemoveAnimation(e) {
     const { animationIndex } = e.detail
 
-    this.dispatch(removeAnimationFromScene(this.index, animationIndex))
+    store.dispatch(removeAnimationFromScene(this.index, animationIndex))
 
     // #35: Reset fixture properties after animation was removed
     // @TODO: Only reset the fixtures that are attached to the scene
-    this.dispatch(resetUniverseAndFixtures(0))
+    store.dispatch(resetUniverseAndFixtures(0))
   }
 
   handleAddFixtures(e) {
@@ -62,21 +56,23 @@ class SceneBee extends reduxMixin(PolymerElement) {
     // Prevent sending data to server & reset all fields
     event.preventDefault()
 
-    this.dispatch(addFixturesToScene(this.index, fixtureIds))
+    store.dispatch(addFixturesToScene(this.index, fixtureIds))
   }
 
   handleRemoveFixture(e) {
     const { fixtureIndex } = e.detail
 
-    this.dispatch(removeFixtureFromScene(this.id, fixtureIndex))
+    store.dispatch(removeFixtureFromScene(this.id, fixtureIndex))
   }
 
   handleNameChange(e) {
     const sceneName = e.target.value
-    this.dispatch(setSceneName(this.index, sceneName))
+    store.dispatch(setSceneName(this.index, sceneName))
   }
 
-  static get template() {
+  render() {
+    const { index, id, animations, fixtures, animationManager, fixtureManager } = this
+
     return html`
     <style>
       h4 {
@@ -90,25 +86,25 @@ class SceneBee extends reduxMixin(PolymerElement) {
     </style>
 
       <div>
-        <input class="name" name="name" type="text" on-change="handleNameChange" value="[[name]]"></input>
+        <input class="name" name="name" type="text" @change="${e => this.handleNameChange(e)}" value="${name}" />
 
-        <button on-click="removeScene" data-index$="[[index]]">Remove</button>
-        <button on-click="runScene" scene-id="[[scene.id]]">Run</button>
+        <button @click="${e => this.removeScene(e)}" data-index="${index}">Remove</button>
+        <button @click="${e => this.runScene(e)}" sceneId="${id}">Run</button>
 
         <animation-list
-          on-add-animation="handleAddAnimation"
-          on-remove-animation="handleRemoveAnimation"
-          data-index$="[[index]]"
-          animations$="{{animations}}"
-          animation-manager$="[[animationManager]]"></animation-list>
+          @add-animation="${e => this.handleAddAnimation(e)}"
+          @remove-animation="${e => this.handleRemoveAnimation(e)}"
+          data-index="${index}"
+          .animations="${animations}"
+          .animationManager="${animationManager}"></animation-list>
 
 
         <fixture-list
-          on-add-fixtures="handleAddFixtures"
-          on-remove-fixture="handleRemoveFixture"
-          data-index$="[[index]]"
-          fixtures="{{fixtures}}"
-          fixture-manager="[[fixtureManager]]"></fixture-list>
+          @add-fixtures="${e => this.handleAddFixtures(e)}"
+          @remove-fixture="${e => this.handleRemoveFixture(e)}"
+          data-index="${index}"
+          .fixtures="${fixtures}"
+          .fixtureManager="${fixtureManager}"></fixture-list>
       </div>
     `
   }

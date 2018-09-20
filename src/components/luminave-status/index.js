@@ -1,6 +1,8 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
+import { getUsbDmxControllerConnected, getModvConnected, getFivetwelveConnected } from '../../selectors/index.js'
 
-import reduxMixin from '../../reduxStore.js'
 import '../usb-dmx-manager/index.js'
 import '../modv-manager/index.js'
 import '../fivetwelve-manager/index.js'
@@ -10,41 +12,24 @@ import '../color-grid/index.js'
 import '../ui-spacer/index.js'
 
 
-class LuminaveStatus extends reduxMixin(PolymerElement) {
+class LuminaveStatus extends connect(store)(LitElement) {
   static get properties() {
     return {
-      bpm: {
-        type: Number,
-        statePath: 'bpm'
-      },
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      },
-      usbConnected: {
-        type: Boolean,
-        statePath: 'connectionManager.usb.connected'
-      },
-      modvConnected: {
-        type: Boolean,
-        statePath: 'modvManager.connected'
-      },
-      fivetwelveConnected: {
-        type: Boolean,
-        statePath: 'fivetwelveManager.connected'
-      }
+      usbConnected: { type: Boolean },
+      modvConnected: { type: Boolean },
+      fivetwelveConnected: { type: Boolean }
     }
   }
 
-  computeEditMode(live) {
-    return !live
+  _stateChanged(state) {
+    this.usbConnected = getUsbDmxControllerConnected(state)
+    this.modvConnected = getModvConnected(state)
+    this.fivetwelveConnected = getFivetwelveConnected(state)
   }
 
-  static get template() {
+  render() {
+    const { usbConnected, modvConnected, fivetwelveConnected } = this
+
     return html`
       <style>
         .grid {
@@ -69,16 +54,13 @@ class LuminaveStatus extends reduxMixin(PolymerElement) {
       </style>
 
       <div class="grid">
-        <luminave-status-indicator status="[[usbConnected]]">WebUSB-DMX512</luminave-status-indicator>
+        <luminave-status-indicator ?status="${usbConnected}">WebUSB-DMX512</luminave-status-indicator>
 
         <div class="item">
-          <luminave-status-indicator status="[[modvConnected]]">modV</luminave-status-indicator>
+          <luminave-status-indicator ?status="${modvConnected}">modV</luminave-status-indicator>
         </div>
-        <luminave-status-indicator status="[[fivetwelveConnected]]">fivetwelve</luminave-status-indicator>
+        <luminave-status-indicator ?status="${fivetwelveConnected}">fivetwelve</luminave-status-indicator>
       </div>
-
-      <ui-spacer></ui-spacer>
-      <ui-spacer></ui-spacer>
     `
   }
 }

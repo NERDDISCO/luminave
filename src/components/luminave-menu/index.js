@@ -1,4 +1,6 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import '/node_modules/@polymer/paper-tabs/paper-tab.js'
 import '/node_modules/@polymer/paper-tabs/paper-tabs.js'
 import '/node_modules/@polymer/iron-pages/iron-pages.js'
@@ -9,51 +11,48 @@ import '/node_modules/@polymer/iron-flex-layout/iron-flex-layout.js'
 import '/node_modules/@polymer/iron-icons/iron-icons.js'
 import '/node_modules/@polymer/paper-icon-button/paper-icon-button.js'
 
-import reduxMixin from '../../reduxStore.js'
 import '../luminave-status/index.js'
 import '../tap-button/index.js'
 import '../bpm-meter/index.js'
-import '../connect-button/index.js'
 import '../usb-dmx-manager/index.js'
 import '../storage-manager/index.js'
 import '../live-mode/index.js'
 import '../modv-manager/index.js'
 import '../fivetwelve-manager/index.js'
-import '../config-manager/index.js'
 import '../dekk-manager/index.js'
 import '../rainbow-text/index.js'
 
+import { updateDrawerState } from '../../actions/app.js'
+import { getBpm, getLive, getDrawerOpened } from '../../selectors/index.js'
 
-class LuminaveMenu extends reduxMixin(PolymerElement) {
+
+class LuminaveMenu extends connect(store)(LitElement) {
   static get properties() {
     return {
-      bpm: {
-        type: Number,
-        statePath: 'bpm'
-      },
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      }
+      bpm: { type: Number },
+      live: { type: Boolean },
+      drawerOpened: { type: Boolean }
     }
   }
 
-  computeEditMode(live) {
-    return !live
+  _stateChanged(state) {
+    this.bpm = getBpm(state)
+    this.live = getLive(state)
+    this.drawerOpened = getDrawerOpened(state)
   }
 
   /*
-   * Toggle the visiblity of the drawer (menu)
+   * Update the drawer (menu) visibility
    */
-  toggleDrawer() {
-    this.$.drawer.toggle()
+  handleDrawer(opened) {
+    if (opened !== this.drawerOpened) {
+      store.dispatch(updateDrawerState(opened))
+    }
   }
 
-  static get template() {
+  render() {
+    const { bpm, live, drawerOpened } = this
+
     return html`
       <style>
         .grid {
@@ -106,26 +105,33 @@ class LuminaveMenu extends reduxMixin(PolymerElement) {
           <div main-title>
             <h1>
               <rainbow-text text="luminave"></rainbow-text>
-              <template is="dom-if" if="[[live]]">
-                <span class="live" align="left">live</span>
-              </template>
+              ${
+                live 
+                ? html`<span class="live" align="left">live</span>`
+                : ''
+              }
             </h1>
           </div>
 
           <!--<luminave-status></luminave-status>-->
 
-          <paper-icon-button icon="menu" on-click="toggleDrawer"></paper-icon-button>
+          <paper-icon-button icon="menu" @click="${() => this.handleDrawer(true)}"></paper-icon-button>
         </app-toolbar>
       </app-header>
 
-      <app-drawer id="drawer" swipe-open  align="right">
+      <app-drawer 
+        id="drawer" 
+        swipe-open 
+        align="right" 
+        .opened="${drawerOpened}"
+        @opened-changed="${e => this.handleDrawer(e.target.opened)}">
 
         <div class="grid">
 
           <usb-dmx-manager></usb-dmx-manager>
 
           <div>
-            <bpm-meter bpm="[[bpm]]"></bpm-meter>
+            <bpm-meter bpm="${bpm}"></bpm-meter>
             <tap-button></tap-button>
           </div>
 

@@ -1,14 +1,12 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 
 /*
  * Show keyframes in a grid
  */
-class KeyframeGrid extends PolymerElement {
+class KeyframeGrid extends LitElement {
   static get properties() {
-    return {
-      keyframes: { type: Object }
-    }
+    return { keyframes: { type: Object } }
   }
 
   _toArray(object) {
@@ -26,11 +24,9 @@ class KeyframeGrid extends PolymerElement {
     return array
   }
 
-  _toJson(object) {
-    return JSON.stringify(object)
-  }
+  render() {
+    const { keyframes } = this
 
-  static get template() {
     return html`
       <style>
         .items {
@@ -44,9 +40,11 @@ class KeyframeGrid extends PolymerElement {
       </style>
 
       <div class="items">
-        <template is="dom-repeat" items="[[_toArray(keyframes)]]" as="keyframe">
-          <div class="item">[[keyframe.step]]: [[_toJson(keyframe.value)]]</div>
-        </template>
+
+        ${repeat(this._toArray(keyframes), keyframe => html`
+          <div class="item">${keyframe.step}: ${JSON.stringify(keyframe.value)}</div>
+        `)}
+
       </div>
     `
   }

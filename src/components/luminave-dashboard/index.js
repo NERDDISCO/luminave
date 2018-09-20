@@ -13,8 +13,8 @@ import '../ui-spacer/index.js'
 class LuminaveDashboard extends connect(store)(LitElement) {
   static get properties() {
     return {
-      live: Boolean,
-      _page: String
+      live: { type: Boolean },
+      _page: { type: String }
     }
   }
 

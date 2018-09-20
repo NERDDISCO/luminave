@@ -27,7 +27,9 @@ export const clearFixtureInBatch = fixtureId => {
 }
 
 export const modvData = {
+  // Of all colors that is grabbed from Canvas we get the average
   average: [0, 0, 0],
+  // An array of colors grabbed from specific points from the Canvas (configurable in modV)
   colors: []
 }
 

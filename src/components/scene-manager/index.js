@@ -1,31 +1,31 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import reduxMixin from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import { uuidV1 } from '../../../libs/abcq/uuid.js'
 import { addScene } from '../../actions/index.js'
-import { getScenesSorted } from '../../selectors/index.js'
+import { getScenesSorted, getFixtures, getAnimations } from '../../selectors/index.js'
 import '../scene-bee/index.js'
 
 /*
  * Handle a list of scenes
  * @TODO: Allow adding multiple animations aswell
  */
-class SceneManager extends reduxMixin(PolymerElement) {
+class SceneManager extends connect(store)(LitElement) {
   static get properties() {
     return {
-      scenes: {
-        type: Array,
-        // @TODO: getScenesSorted has to be fixed in order to support "scene1, scene2, scene10" in correct order
-        statePath: getScenesSorted
-      },
-      fixtureManager: {
-        type: Array,
-        statePath: 'fixtureManager'
-      },
-      animationManager: {
-        type: Array,
-        statePath: 'animationManager'
-      }
+      scenes: { type: Array },
+      fixtureManager: { type: Array },
+      animationManager: { type: Array },
+      _fixtures: { type: Array },
+      _animations: { type: Array }
     }
+  }
+
+  _stateChanged(state) {
+    this.scenes = getScenesSorted(state)
+    this.fixtureManager = getFixtures(state)
+    this.animationManager = getAnimations(state)
   }
 
   /*
@@ -35,7 +35,7 @@ class SceneManager extends reduxMixin(PolymerElement) {
     // Prevent sending data to server
     e.preventDefault()
 
-    this.dispatch(addScene({
+    store.dispatch(addScene({
       id: uuidV1(),
       fixtures: [],
       animations: [],
@@ -66,17 +66,17 @@ class SceneManager extends reduxMixin(PolymerElement) {
     const duration = 20
     const name = data.get('name')
 
-    this.dispatch(addScene({
+    store.dispatch(addScene({
       id: uuidV1(),
-      fixtures: this.fixtures,
-      animations: this.animations,
+      fixtures: this._fixtures,
+      animations: this._animations,
       duration,
       name,
       isRunning: false
     }))
 
-    this.fixtures = []
-    this.animations = []
+    this._fixtures = []
+    this._animations = []
   }
 
   /*
@@ -88,7 +88,7 @@ class SceneManager extends reduxMixin(PolymerElement) {
     // Prevent sending data to server & reset all fields
     event.preventDefault()
 
-    this.animations = [animationId]
+    this._animations = [animationId]
   }
 
   /*
@@ -100,10 +100,12 @@ class SceneManager extends reduxMixin(PolymerElement) {
     // Prevent sending data to server & reset all fields
     event.preventDefault()
 
-    this.fixtures = fixtureIds
+    this._fixtures = fixtureIds
   }
 
-  static get template() {
+  render() {
+    const { scenes, _animations, animationManager, _fixtures, fixtureManager } = this
+
     return html`
       <style>
         :host {
@@ -155,42 +157,44 @@ class SceneManager extends reduxMixin(PolymerElement) {
 
       </style>
 
-      <form on-submit="handleSubmitScene">
+      <form @submit="${e => this.handleSubmitScene(e)}">
         <label for="name">Name</label>
-        <input name="name" type="text" on-change="handleName" required></input>
+        <input name="name" type="text" @change="${e => this.handleName(e)}" required />
 
         <label for="duration">Duration</label>
-        <input name="duration" type="number" min="0" on-change="handleDuration" required></input>
+        <input name="duration" type="number" min="0" @change="${e => this.handleDuration(e)}" required />
 
         <button type="submit">Add scene</button>
       </form>
 
       <br>
 
-      <form on-submit="handleSubmitSceneAnimationFixtures">
+      <form @submit="${e => this.handleSubmitSceneAnimationFixtures(e)}">
         <div class="flex">
 
           <div class="flex-item">
             <label for="name">Name</label>
-            <input name="name" type="text" on-change="handleName" required></input>
+            <input name="name" type="text" @change="${e => this.handleName(e)}" required />
           </div>
 
           <div class="flex-item">
             <animation-list
               name="animation"
-              on-add-animation="handleAddAnimation"
-              on-remove-animation="handleRemoveAnimation"
-              animations="{{animations}}"
-              animation-manager$="[[animationManager]]"></animation-list>
+              @add-animation="${e => this.handleAddAnimation(e)}"
+              @remove-animation="${e => this.handleRemoveAnimation(e)}"
+              .animations="${_animations}"
+              .animationManager="${animationManager}">
+            </animation-list>
           </div>
 
           <div class="flex-item">
             <fixture-list
               name="fixtures"
-              on-add-fixtures="handleAddFixtures"
-              on-remove-fixture="handleRemoveFixture"
-              fixtures="{{fixtures}}"
-              fixture-manager="[[fixtureManager]]"></fixture-list>
+              @add-fixtures="${e => this.handleAddFixtures(e)}"
+              @remove-fixture="${e => this.handleRemoveFixture(e)}"
+              .fixtures="${_fixtures}"
+              .fixtureManager="${fixtureManager}">
+            </fixture-list>
           </div>
 
           <div class="flex-item">
@@ -203,19 +207,24 @@ class SceneManager extends reduxMixin(PolymerElement) {
 
       <div class="container">
 
-        <template is="dom-repeat" items="{{scenes}}" as="scene">
-          <div class="item" data-name$="[[scene.name]]">
+        ${repeat(scenes, scene => scene.id, (scene, index) => html`
+
+          <div class="item" data-name="${scene.name}">
 
             <scene-bee
-              index$="[[index]]"
-              name="[[scene.name]]"
-              id="[[scene.id]]"
-              duration="[[scene.duration]]"
-              fixtures="[[scene.fixtures]]"
-              animations="[[scene.animations]]"></scene-bee>
+              index="${index}"
+              name="${scene.name}"
+              id="${scene.id}"
+              duration="${scene.duration}"
+              .fixtures="${scene.fixtures}"
+              .animations="${scene.animations}"
+              .fixtureManager="${fixtureManager}"
+              .animationManager="${animationManager}">
+            </scene-bee>
 
-          </div>
-        </template>
+          </div>     
+        
+        `)}
 
       </div>
     `

@@ -1,19 +1,19 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 
 /*
  * A fixture list item
  */
-class FixtureListItem extends PolymerElement {
+class FixtureListItem extends LitElement {
   static get properties() {
-    return {
-      fixture: Object
-    }
+    return { fixture: { type: Object } }
   }
 
-  static get template() {
+  render() {
+    const { fixture } = this
+
     return html`
       <div>
-        [[fixture.name]]
+        ${fixture.name}
       </div>
     `
   }

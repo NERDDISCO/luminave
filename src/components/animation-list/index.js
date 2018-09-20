@@ -1,15 +1,17 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { store } from '../../reduxStore.js'
 import '../animation-list-item/index.js'
+import { getAnimation } from '../../selectors/index.js'
 
 /*
  * A list of animations
  */
-class AnimationList extends PolymerElement {
+class AnimationList extends LitElement {
   static get properties() {
     return {
-      animations: Array,
-      animationManager: Array
+      animations: { type: Array },
+      animationManager: { type: Array }
     }
   }
 
@@ -39,7 +41,13 @@ class AnimationList extends PolymerElement {
     return this.animationManager.filter(animation => animation.id === animationId)[0]
   }
 
-  static get template() {
+  render() {
+    if (this.animations === undefined) {
+      this.animations = []
+    }
+
+    const { animationManager, animations } = this
+
     return html`
       <style>
         .items {
@@ -51,23 +59,24 @@ class AnimationList extends PolymerElement {
         }
       </style>
 
-      <form on-submit="handleAnimationSubmit">
-        <select name="type" on-change="handleSelectedAnimation" required>
+      <form @submit="${e => this.handleAnimationSubmit(e)}">
+        <select name="type" @change="${e => this.handleSelectedAnimation(e)}" required>
           <option value=""></option>
-
-          <template is="dom-repeat" items="{{animationManager}}" as="animation">
-            <option value="[[animation.id]]">[[animation.name]]</option>
-          </template>
+          ${repeat(animationManager, animation => html`
+            <option value="${animation.id}">${animation.name}</option>
+          `)}
         </select>
 
         <button type="submit">Add animation</button>
       </form>
 
       <div class="items">
-      <template is="dom-repeat" items="{{animations}}" as="animationId">
-        <animation-list-item class="item" animation="{{getAnimation(animationId)}}"></animation-list-item>
-        <button on-click="handleRemoveAnimation" animation-index="[[index]]">x</button>
-      </template>
+    
+        ${repeat(animations, animationId => animationId, (animationId, index) => html`
+          <animation-list-item class="item" .animation="${getAnimation(store.getState(), { animationId })}"></animation-list-item>
+          <button @click="${e => this.handleRemoveAnimation(e)}" .animationIndex="${index}">x</button>
+        `)}
+
       </div>
     `
   }

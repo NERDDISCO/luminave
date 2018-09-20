@@ -1,22 +1,21 @@
-import { PolymerElement, html } from '/node_modules/@polymer/polymer/polymer-element.js'
-import '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 
 /*
  * Create a rainbow effect for any given text
  */
-class RainbowText extends PolymerElement {
+class RainbowText extends LitElement {
+
+  constructor() {
+    super()
+
+    this.duration = '12s'
+  }
 
   static get properties() {
     return {
-      text: String,
-      duration: {
-        type: String,
-        value: '12s'
-      },
-      rainbowChars: {
-        type: Array,
-        computed: 'computeText(text)'
-      }
+      text: { type: String },
+      duration: { type: String }
     }
   }
 
@@ -38,7 +37,11 @@ class RainbowText extends PolymerElement {
     return Object.keys(vars).map(key => [key, vars[key]].join(':')).join(';')
   }
 
-  static get template() {
+  render() {
+    const { text, duration } = this
+
+    const rainbowChars = this.computeText(text)
+
     return html`
       <style>
         :root {
@@ -73,11 +76,9 @@ class RainbowText extends PolymerElement {
         span {
           animation: rainbow linear var(--duration) infinite backwards calc(var(--duration) / var(--length) * (var(--length) - var(--delay)) * -1)
         }
-
-
       </style>
 
-      <template is="dom-repeat" items={{rainbowChars}} as="char"><span style="{{computeVars(duration, rainbowChars, index)}}">[[char]]</span></template>
+      ${repeat(rainbowChars, char => char, (char, index) => html`<span style="${this.computeVars(duration, rainbowChars, index)}">${char}</span>`)}
     `
   }
 }
