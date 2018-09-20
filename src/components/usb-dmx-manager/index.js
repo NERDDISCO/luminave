@@ -64,7 +64,22 @@ class UsbDmxManager extends connect(store)(LitElement) {
       // Send universe 0 to the USB DMX controller
       this.controller.send(this.universes[0].channels)
       .catch(error => {
-        console.error(error)
+        console.error(error.code, error)
+
+        switch (error.code) {
+          // The device was disconnected
+          case 8:
+          // A transfer error has occurred
+          case 19:
+          // The transfer was cancelled
+          case 20:
+
+            store.dispatch(connectUsb(false))
+            break;
+        
+          default:
+            break;
+        }
       })
     }
   }
