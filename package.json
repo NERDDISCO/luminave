@@ -40,7 +40,6 @@
     "immutability-helper": "github:nerddisco/immutability-helper",
     "keytime": "^0.1.1",
     "nodejs-websocket": "^1.7.1",
-    "polymer-redux": "git+https://github.com/NERDDISCO/polymer-redux.git#feat/127/disableStateChangedEvent",
     "pwa-helpers": "^0.8.3",
     "redux": "^3.7.2",
     "redux-thunk": "^2.2.0",
