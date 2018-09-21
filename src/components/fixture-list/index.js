@@ -32,7 +32,8 @@ class FixtureList extends LitElement {
     this.dispatchEvent(new CustomEvent('remove-fixture', {
       detail: {
         event: e,
-        fixtureIndex: e.target.fixtureIndex
+        fixtureIndex: e.target.fixtureIndex,
+        fixtureId: e.target.fixtureId
       }
     }))
   }
@@ -78,7 +79,7 @@ class FixtureList extends LitElement {
       <div class="items">
         ${repeat(fixtures, fixtureId => fixtureId, (fixtureId, index) => html`
           <fixture-list-item class="item" .fixture="${this.getFixture(fixtureId)}"></fixture-list-item>
-          <button @click="${e => this.handleRemoveFixture(e)}" .fixtureIndex="${index}">x</button>
+          <button @click="${e => this.handleRemoveFixture(e)}" .fixtureIndex="${index}" .fixtureId="${fixtureId}">x</button>
         `)}
       </div>
     `

@@ -168,13 +168,27 @@ export const addFixturesToScene = (sceneIndex, fixtureIds) => {
 }
 
 /*
- * Add a fixture to the scene
+ * Remove a fixture from a scene
  */
 export const removeFixtureFromScene = (sceneId, fixtureIndex) => ({
   sceneId,
   fixtureIndex,
   type: constants.REMOVE_FIXTURE_FROM_SCENE
 })
+
+
+/*
+ * Remove a fixture from a scene and reset the values of the fixture in the universe
+ */
+export const removeFixtureFromSceneAndUniverse = (sceneId, fixtureId, fixtureIndex) => {
+  return (dispatch, getState) => {
+    
+    utils.clearFixtureInBatch(fixtureId)
+
+    // Reset the propeties of the fixture in the state & batch
+    dispatch(removeFixtureFromScene(sceneId, fixtureIndex))
+  }
+}
 
 
 /*

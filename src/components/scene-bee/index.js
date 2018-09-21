@@ -1,6 +1,6 @@
 import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 import { store } from '../../reduxStore.js'
-import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene, resetUniverseAndFixtures } from '../../actions/index.js'
+import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene, resetUniverseAndFixtures, removeFixtureFromSceneAndUniverse } from '../../actions/index.js'
 import '../fixture-list/index.js'
 import '../animation-list/index.js'
 
@@ -60,9 +60,9 @@ class SceneBee extends LitElement {
   }
 
   handleRemoveFixture(e) {
-    const { fixtureIndex } = e.detail
+    const { fixtureIndex, fixtureId } = e.detail
 
-    store.dispatch(removeFixtureFromScene(this.id, fixtureIndex))
+    store.dispatch(removeFixtureFromSceneAndUniverse(this.id, fixtureId, fixtureIndex))
   }
 
   handleNameChange(e) {
