@@ -94,7 +94,7 @@ class DekkManager extends connect(store)(LitElement) {
     // Dekk will give us an array of scene names
     arrayType.map(name => {
       // Retrieve the scene
-      const scene = getSceneByName(this.getState(), { name })
+      const scene = getSceneByName(store.getState(), { name })
 
       if (scene === undefined) {
         console.log(`Scene "${name}" doesn't exist`)
