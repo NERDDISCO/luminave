@@ -71,7 +71,7 @@ class SceneBee extends LitElement {
   }
 
   render() {
-    const { index, id, animations, fixtures, animationManager, fixtureManager } = this
+    const { index, id, animations, fixtures, animationManager, fixtureManager, name } = this
 
     return html`
     <style>
