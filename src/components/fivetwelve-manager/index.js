@@ -2,8 +2,7 @@ import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { connectFivetwelve } from '../../actions/index.js'
-import { getFivetwelveConnected } from '../../selectors/index.js'
-import { batch } from '../../utils/index.js'
+import { getFivetwelveConnected, getUniverses } from '../../selectors/index.js'
 
 /*
  * Handle the connection to fivetwelve
@@ -19,6 +18,7 @@ class FivetwelveManager extends connect(store)(LitElement) {
 
   _stateChanged(state) {
     this.connected = getFivetwelveConnected(state)
+    this.universes = getUniverses(state)
   }
 
   connectedCallback() {
@@ -109,6 +109,8 @@ class FivetwelveManager extends connect(store)(LitElement) {
 
   send(universe) {
     if (this.connected && this.socket !== undefined) {
+      const batch = this.universes[0].channels
+
       // bring diff into binary format
       const messageBuffer = new window.buffer.Buffer(batch.length * 3)
 
