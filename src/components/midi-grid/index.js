@@ -4,7 +4,7 @@ import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { learnMidi, addScenesToMidi, removeSceneFromMidi, addMidiMapping } from '../../actions/index.js'
 import '../scene-list/index.js'
-import { MIDI_TYPES, MIDI_TYPE_KNOB, MIDI_TYPE_FADER, MIDI_TYPE_EMPTY } from '../../constants/index.js'
+import { MIDI_TYPES, MIDI_TYPE_KNOB, MIDI_TYPE_FADER, MIDI_TYPE_EMPTY, MIDI_TYPE_BUTTON } from '../../constants/index.js'
 import { getMidiLearning, getScenes, getLive } from '../../selectors/index.js'
 
 
@@ -125,6 +125,10 @@ class MidiGrid extends connect(store)(LitElement) {
     return type !== MIDI_TYPE_EMPTY
   }
 
+  isButton(type) {
+    return type === MIDI_TYPE_BUTTON
+  }
+
   render() {
     const { width, mapping, learnIndex, sceneManager, live, types } = this
     const itemTemplates = []
@@ -183,7 +187,7 @@ class MidiGrid extends connect(store)(LitElement) {
               }
 
               ${
-                this.isNotEmpty(element.type)
+                this.isNotEmpty(element.type) && this.isButton(element.type)
                 ? html`
                   <scene-list
                     @add-scenes="${e => this.handleAddScenes(e)}"
@@ -197,8 +201,6 @@ class MidiGrid extends connect(store)(LitElement) {
                 : ''
               }
           `}
-
-
 
         </div>
       `)
@@ -229,9 +231,7 @@ class MidiGrid extends connect(store)(LitElement) {
       </style>
 
       <div class="container" style="${this.computeGridVars(width)}">
-
         ${itemTemplates}
-
       </div>
     `
   }
