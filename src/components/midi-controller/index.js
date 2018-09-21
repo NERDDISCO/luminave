@@ -37,8 +37,7 @@ class MidiController extends connect(store)(LitElement) {
       },
       midiLearning: { type: Number },
       midiEnabled: { type: Boolean },
-      live: { type: Boolean },
-      _controllers: { type: Array }
+      live: { type: Boolean }
     }
   }
 
@@ -70,6 +69,17 @@ class MidiController extends connect(store)(LitElement) {
     }
   }
 
+  disconnectedCallback() {
+    super.disconnectedCallback()
+
+    if (this.input !== null) {
+      this.input.removeListener()
+      this.input = null
+      this.output = null
+      this.connected = false
+    }
+  }
+
   midiEnabledChanged() {
     if (this.midiEnabled) {
       // MIDI input / output ports (from a single device) are connected to the computer
@@ -89,11 +99,12 @@ class MidiController extends connect(store)(LitElement) {
           // Listen to "controlchange" events
           this.input.addListener('controlchange', 'all', this.controlchange.bind(this))
 
+          // Controller is connected
+          this.connected = true
+
         } else if (name === this.outputname && type === 'output') {
           this.output = port
         }
-
-        this.connected = true
       })
 
       // MIDI input / output ports (from a single device) are disconnected to the computer
@@ -101,6 +112,9 @@ class MidiController extends connect(store)(LitElement) {
         const { name, type } = e.port
 
         if (name === this.inputname && type === 'input') {
+          // Remove all listener
+          this.input.removeListener()
+
           this.input = null
         } else if (name === this.outputname && type === 'output') {
           this.output = null
