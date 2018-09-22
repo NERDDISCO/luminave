@@ -90,12 +90,12 @@ class DmxFixtureProperty extends LitElement {
 
       ${
         property.isMultiRange
-        ? html`<input type="text" @change="${e => this.handleInputChange(e)}" title="${property.mapping}">`
+        ? html`<input type="text" @change="${e => this.handleInputChange(e)}" title="${JSON.stringify(property.mapping)}">`
         : ''
       }
 
       ${
-        property.isMultiRange
+        property.isHiRes
         ? html`<input type="number" @change="${e => this.handleInputChange(e)}" title="${property.min} to ${property.max}" min="${property.min}" max="${property.max}">`
         : ''
       }
