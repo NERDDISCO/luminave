@@ -70,26 +70,17 @@
 
     <!-- Add any global styles for body, document, etc. -->
     <style>
-      :root {
-        --focus-background: #464819;
-        --focus-color: #D3DE81;
-        --background: #fff;
-        --background-light: #F5F5F5;
-        --background-dark: #424b4b;
-        --background-primary: #35c9a4;
-        --background-warning: #da4453;
-        --color: #bdced7;
-        --color-light: #fff;
-        --color-dark: #6b6b6b;
-        --padding-basic: .5em;
-      }
+       @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
       body {
         margin: 0;
-        font-family: sans-serif;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
         line-height: 1.5;
         min-height: 100vh;
         -webkit-font-smoothing: antialiased;
+        background-color: #212121;
       }
     </style>
   </head>
@@ -106,7 +97,6 @@
     <script src="libs/keytime/index.js"></script>
     <script src="libs/buffer/index.js"></script>
     <script src="libs/uuid/v1.js"></script>
-    <link rel="import" href="dark-side/dark-side.html">
     <script type="module" src="src/app.js" crossorigin></script>
   </body>
 </html>
