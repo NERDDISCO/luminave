@@ -8,7 +8,7 @@ import '../timeline-scene/index.js'
 import { getTimelineScenes, getAnimations, getTimeline, getFixtures, getModv } from '../../selectors/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 
-import '../luminave-elements/button.js'
+import { buttons } from '../../styles/buttons.js'
 
 /*
  * Handle the elements in a timeline
@@ -207,6 +207,8 @@ class TimelineManager extends connect(store)(LitElement) {
       : 'Play'
     
     return html`
+      ${buttons}
+
       <style>
         .grid {
           display: flex;
@@ -253,9 +255,9 @@ class TimelineManager extends connect(store)(LitElement) {
 
       <div class="timeline">
 
-        <luminave-button class="primary" @click="${() => this.handlePlay()}">${playLabel}</luminave-button>
+        <paper-button class="primary" @click="${() => this.handlePlay()}">${playLabel}</paper-button>
         ${progress}
-        <luminave-button @click="${() => this.handleReset()}">Reset</luminave-button>
+        <paper-button @click="${() => this.handleReset()}">Reset</paper-button>
 
         <ui-spacer></ui-spacer>
 
