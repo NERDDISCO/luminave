@@ -1,6 +1,7 @@
 import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 import '../fixture-list-item/index.js'
+import { shared } from '../../styles/shared.js'
 
 /*
  * A list of fixtures
@@ -50,15 +51,9 @@ class FixtureList extends LitElement {
     const { fixtureManager, fixtures } = this
 
     return html`
-      <style>
-        .items {
-          display: flex;
-          flex-wrap: wrap;
-        }
-        .item {
-          flex: 0 0 2em;
-        }
+      ${shared}
 
+      <style>
         .fixture-list {
           width: 120px;
           height: 120px;

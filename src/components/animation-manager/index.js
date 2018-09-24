@@ -80,7 +80,6 @@ class AnimationManager extends connect(store)(LitElement) {
           min-height: 1.5em;
           overflow: hidden;
         }
-
       </style>
 
       <form @submit="${e => this.handleSubmit(e)}">

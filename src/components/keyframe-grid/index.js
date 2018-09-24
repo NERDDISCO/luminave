@@ -1,5 +1,6 @@
 import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { shared } from '../../styles/shared.js'
 
 /*
  * Show keyframes in a grid
@@ -28,13 +29,9 @@ class KeyframeGrid extends LitElement {
     const { keyframes } = this
 
     return html`
+      ${shared}
       <style>
-        .items {
-          display: flex;
-          flex-wrap: wrap;
-        }
         .item {
-          flex: 0 0 2em;
           font-size: 0.8em;
         }
       </style>

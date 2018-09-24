@@ -3,6 +3,7 @@ import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 import { store } from '../../reduxStore.js'
 import '../animation-list-item/index.js'
 import { getAnimation } from '../../selectors/index.js'
+import { shared } from '../../styles/shared.js'
 
 /*
  * A list of animations
@@ -49,15 +50,7 @@ class AnimationList extends LitElement {
     const { animationManager, animations } = this
 
     return html`
-      <style>
-        .items {
-          display: flex;
-          flex-wrap: wrap;
-        }
-        .item {
-          flex: 0 0 2em;
-        }
-      </style>
+      ${shared}
 
       <form @submit="${e => this.handleAnimationSubmit(e)}">
         <select name="type" @change="${e => this.handleSelectedAnimation(e)}" required>

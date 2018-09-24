@@ -208,9 +208,6 @@ class MidiController extends connect(store)(LitElement) {
     const { live, name, connected, inputname, outputname, width, height, mapping, index } = this
 
     return html`
-      <style>
-      </style>
-
       <div>
         <h3>${name} (${connected})</h3>
 
