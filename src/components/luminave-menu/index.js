@@ -61,42 +61,42 @@ class LuminaveMenu extends connect(store)(LitElement) {
           justify-content: space-around;
           padding: .5em;
         }
+
+        app-header {
+          position: fixed;
+          width: 100%;
+          z-index: 1337;
+          top: 0;
+          left: 0;
+          color: var(--paper-toolbar-color);
+          background: var(--background-dark);
+        }
+
+        app-drawer {
+          color: var(--paper-toolbar-color);
+          z-index: 1337;
+        }
+
+        h1 {
+          font: 1.6em sans-serif;
+          text-transform: none;
+        }
+
+        .live {
+          color: grey;
+          font-weight: normal;
+          text-transform: uppercase;
+          font-size: .8em;
+        }
       </style>
 
       <custom-style>
         <style>
-          app-header {
-            position: fixed;
-            width: 100%;
-            z-index: 1337;
-            top: 0;
-            left: 0;
-            color: var(--paper-toolbar-color);
-            background: var(--background-dark);
-          }
-
-          app-drawer {
-            color: var(--paper-toolbar-color);
-            z-index: 1337;
-
-            --app-drawer-scrim-background: rgba(0, 0, 0, 0.8);
+          app-drawer {  
             --app-drawer-content-container: {
               background-color: var(--background-dark);
-            }
+            };
           }
-
-          h1 {
-            font: 1.6em sans-serif;
-            text-transform: none;
-          }
-
-          .live {
-            color: grey;
-            font-weight: normal;
-            text-transform: uppercase;
-            font-size: .8em;
-          }
-
         </style>
       </custom-style>
 

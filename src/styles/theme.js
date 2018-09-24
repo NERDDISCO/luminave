@@ -30,6 +30,8 @@ export const theme = html`
         --divider-color: #e0e0e0;
 
         /* Polymer Elements */
+        --app-drawer-scrim-background: rgba(0, 0, 0, 0.8);
+
         --paper-checkbox-checked-color: var(--default-primary-color);
         --paper-checkbox-checked-ink-color: var(--default-primary-color);
         --paper-checkbox-unchecked-color: var(--dark-primary-color);
