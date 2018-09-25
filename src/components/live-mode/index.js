@@ -1,37 +1,34 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import { setLive } from '../../actions/index.js'
+import { getLive } from '../../selectors/index.js'
 
 /*
  * Handle the LIVE mode
  */
-class LiveMode extends ReduxMixin(PolymerElement) {
+class LiveMode extends connect(store)(LitElement) {
 
   static get properties() {
-    return {
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      liveLabel: {
-        type: String,
-        computed: 'computeLiveLabel(live)'
-      }
-    }
+    return { live: { type: Boolean } }
   }
 
-  computeLiveLabel() {
-    return this.live ? 'Live' : 'edit'
+  _stateChanged(state) {
+    this.live = getLive(state)
   }
 
   handleLive() {
-    this.dispatch(setLive(!this.live))
+    store.dispatch(setLive(!this.live))
   }
 
-  static get template() {
-    return `
+  render() {
+    const liveLabel = this.live 
+    ? 'Live'
+    : 'Edit'
+
+    return html`
       <div>
-        Mode: <button on-click="handleLive">[[liveLabel]]</button>
+        Mode: <button @click="${e => this.handleLive(e)}">${liveLabel}</button>
       </div>
     `
   }

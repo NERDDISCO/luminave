@@ -1,13 +1,16 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import WebMidi from '../../../libs/webmidi/index.js'
 import '../midi-grid/index.js'
 import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
+import { getMidiLearning, getMidiEnabled, getLive } from '../../selectors/index.js'
+
 
 /*
  * Handle MIDI controller
  */
-class MidiController extends ReduxMixin(PolymerElement) {
+class MidiController extends connect(store)(LitElement) {
 
   constructor() {
     super()
@@ -18,15 +21,42 @@ class MidiController extends ReduxMixin(PolymerElement) {
     this.output = null
   }
 
-  ready() {
-    super.ready()
+  static get properties() {
+    return {
+      name: { type: String },
+      id: { type: String },
+      inputname: { type: String },
+      outputname: { type: String },
+      width: { type: Number },
+      height: { type: Number },
+      connected: { type: Boolean },
+      mapping: { 
+        type: Array,
+        hasChanged: (newValue, oldValue) => !Object.is(newValue, oldValue)
+      },
+      midiLearning: { type: Number },
+      midiEnabled: { type: Boolean },
+      live: { type: Boolean }
+    }
+  }
 
+  _stateChanged(state) {
+    this.midiLearning = getMidiLearning(state)
+    this.live = getLive(state)
+
+    if (this.midiEnabled !== getMidiEnabled(state)) {
+      this.midiEnabled = getMidiEnabled(state)
+      this.midiEnabledChanged()
+    }
+  }
+
+  firstUpdated() {
     // Initialize mapping
     if (this.mapping.length === 0) {
       const elements = this.width * this.height
 
       for (let i = 0; i < elements; i++) {
-        this.dispatch(addMidiMapping(this.index, i, {
+        store.dispatch(addMidiMapping(this.id, i, {
           scenes: [],
           note: -1,
           label: '',
@@ -38,44 +68,19 @@ class MidiController extends ReduxMixin(PolymerElement) {
     }
   }
 
-  static get properties() {
-    return {
-      name: String,
-      id: String,
-      index: Number,
-      inputname: String,
-      outputname: String,
-      width: Number,
-      height: Number,
-      connected: Boolean,
-      mapping: Array,
-      midiLearning: {
-        type: Number,
-        statePath: 'midiManager.learning'
-      },
-      midiEnabled: {
-        type: Boolean,
-        statePath: 'midiManager.enabled',
-        observer: 'midiEnabledChanged'
-      },
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      }
-    }
-  }
+  disconnectedCallback() {
+    super.disconnectedCallback()
 
-  computeEditMode(live) {
-    return !live
+    if (this.input !== null) {
+      this.input.removeListener()
+      this.input = null
+      this.output = null
+      this.connected = false
+    }
   }
 
   midiEnabledChanged() {
     if (this.midiEnabled) {
-
       // MIDI input / output ports (from a single device) are connected to the computer
       WebMidi.addListener('connected', e => {
 
@@ -93,11 +98,12 @@ class MidiController extends ReduxMixin(PolymerElement) {
           // Listen to "controlchange" events
           this.input.addListener('controlchange', 'all', this.controlchange.bind(this))
 
+          // Controller is connected
+          this.connected = true
+
         } else if (name === this.outputname && type === 'output') {
           this.output = port
         }
-
-        this.connected = true
       })
 
       // MIDI input / output ports (from a single device) are disconnected to the computer
@@ -105,6 +111,9 @@ class MidiController extends ReduxMixin(PolymerElement) {
         const { name, type } = e.port
 
         if (name === this.inputname && type === 'input') {
+          // Remove all listener
+          this.input.removeListener()
+
           this.input = null
         } else if (name === this.outputname && type === 'output') {
           this.output = null
@@ -121,16 +130,16 @@ class MidiController extends ReduxMixin(PolymerElement) {
    */
   noteon(event) {
     const { data } = event
-    const [channel, note, velocity] = data
+    const [ channel, note, velocity ] = data
 
     // Learning is active
     if (this.midiLearning > -1) {
 
       const mapping = { note }
-      this.dispatch(addMidiMapping(this.index, this.midiLearning, mapping))
+      store.dispatch(addMidiMapping(this.id, this.midiLearning, mapping))
 
       // Disable learning
-      this.dispatch(learnMidi(-1))
+      store.dispatch(learnMidi(-1))
 
     // Handle mappped input
     } else {
@@ -144,20 +153,20 @@ class MidiController extends ReduxMixin(PolymerElement) {
         const element = this.mapping[mappingIndex]
 
         // Change the active status of the element (pressed vs not pressed)
-        element.active = !element.active
+        const elementState = !element.active
 
         // Set active state of element
-        this.dispatch(setMidiMappingActive(this.index, mappingIndex, element.active))
+        store.dispatch(setMidiMappingActive(this.id, mappingIndex, elementState))
 
-        if (element.active) {
+        if (elementState) {
           // Add all scenes to the timeline
-          element.scenes.map(sceneId => this.dispatch(addSceneToTimeline(sceneId)))
+          element.scenes.map(sceneId => store.dispatch(addSceneToTimeline(sceneId)))
 
           // Button light: on
           this.output.send(144, [note, 127])
         } else {
           // Remove all scenes from the timeline
-          element.scenes.map(sceneId => this.dispatch(removeSceneFromTimelineAndResetFixtures(sceneId)))
+          element.scenes.map(sceneId => store.dispatch(removeSceneFromTimelineAndResetFixtures(sceneId)))
 
           // Button light: off
           this.output.send(144, [note, 0])
@@ -175,10 +184,10 @@ class MidiController extends ReduxMixin(PolymerElement) {
     if (this.midiLearning > -1) {
 
       const mapping = { note }
-      this.dispatch(addMidiMapping(this.index, this.midiLearning, mapping))
+      store.dispatch(addMidiMapping(this.id, this.midiLearning, mapping))
 
       // Disable learning
-      this.dispatch(learnMidi(-1))
+      store.dispatch(learnMidi(-1))
 
     // Handle mappped input
     } else {
@@ -186,39 +195,37 @@ class MidiController extends ReduxMixin(PolymerElement) {
 
       // Found a mapping
       if (mappingIndex > -1) {
-        // this.mapping[mappingIndex].value = velocity
-
-        // @TODO Move this into utils and load from there
-        // const value = velocity
-        // const mapping = { value }
-        // this.dispatch(addMidiMapping(this.index, mappingIndex, mapping))
+        const value = velocity
+        const mapping = { value }
+        store.dispatch(addMidiMapping(this.id, mappingIndex, mapping))
       }
     }
   }
 
-  static get template() {
-    return `
-      <style>
-        h3 {
-          margin-top: 0;
-        }
-      </style>
+  render() {
 
+    const { live, name, connected, inputname, outputname, width, height, mapping, id } = this
+
+    return html`
       <div>
-        <h3>[[name]] ([[connected]])</h3>
+        <h3>${name} (${connected})</h3>
 
-        <template is="dom-if" if="[[editMode]]">
-          <ul>
-            <li>input: [[inputname]]</li>
-            <li>output: [[outputname]]</li>
-          </ul>
-        </template>
+        ${
+          live 
+          ? ''
+          : html`
+            <ul>
+              <li>input: ${inputname}</li>
+              <li>output: ${outputname}</li>
+            </ul>
+          `
+        }
 
         <midi-grid
-          width="[[width]]"
-          height="[[height]]"
-          mapping$="[[mapping]]"
-          controllerindex="[[index]]"></midi-grid>
+          width="${width}"
+          height="${height}"
+          .mapping="${mapping}"
+          .controllerId="${id}"></midi-grid>
 
       </div>
     `

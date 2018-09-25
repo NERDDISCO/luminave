@@ -1,17 +1,20 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
-import { playTimeline, resetTimeline, sendUniverseToUsb, sendUniverseToFivetwelve, setTimelineProgress, setChannels, setAllFixtureProperties, resetUniverseAndFixtures } from '../../actions/index.js'
-import { batch, clearBatch, fixtureBatch, clearFixtureBatch, modvData } from '/src/utils/index.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
+import { playTimeline, resetTimeline, setChannels, resetUniverseAndFixtures } from '../../actions/index.js'
+import { batch, clearBatch, fixtureBatch, modvData } from '/src/utils/index.js'
 import '../timeline-scene/index.js'
-import { getTimelineScenes, getFixtures } from '../../selectors/index.js'
+import { getTimelineScenes, getAnimations, getTimeline, getFixtures, getModv } from '../../selectors/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 
-import '../luminave-elements/button.js'
+import '/node_modules/@polymer/paper-button/paper-button.js'
+import { buttons } from '../../styles/buttons.js'
 
 /*
  * Handle the elements in a timeline
  */
-class TimelineManager extends ReduxMixin(PolymerElement) {
+class TimelineManager extends connect(store)(LitElement) {
   constructor() {
     super()
 
@@ -19,6 +22,8 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
     this.measures = 20
 
     this.timeoutId = undefined
+
+    this.progress = 0
 
     document.addEventListener('keypress', e => {
       const { code } = e
@@ -34,56 +39,60 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
 
   static get properties() {
     return {
-      bpm: {
-        type: Number,
-        statePath: 'bpm'
-      },
-      timelineScenes: {
-        type: Array,
-        statePath: getTimelineScenes
-      },
-      isPlaying: {
-        type: Boolean,
-        statePath: 'timelineManager.playing',
-        observer: 'observePlaying'
-      },
-      playLabel: {
-        type: String,
-        computed: 'computePlayLabel(isPlaying)'
-      },
-
-      allFixtures: {
-        type: Array,
-        statePath: getFixtures
-      },
-
-      timelineFixtures: {
-        type: Object,
-        computed: 'computeFixtures(allFixtures)'
-      },
-
-      modvConnected: {
-        type: Boolean,
-        statePath: 'modvManager.connected'
-      }
+      bpm: { type: Number },
+      progress: { type: Number },
+      timelineScenes: { type: Array },
+      animationManager: { type: Array },
+      isPlaying: { type: Boolean },
+      allFixtures: { type: Array },
+      timelineFixtures: { type: Object },
+      modvConnected: { type: Boolean }
     }
   }
 
-  computePlayLabel(isPlaying) {
-    return isPlaying ? 'Pause' : 'Play'
+  // Start / stop the playback loop whenever isPlaying is changed
+  set playing(value) {
+    // Only update the value if it's actually different
+    if (this.isPlaying !== value) {
+      this.isPlaying = value
+      this.observePlaying()
+    }
+  }
+
+  // Compute the timelineFixtures whenever the fixtures on the state are changing
+  set fixtures(value) {
+    if (!Object.is(this.allFixtures, value)) {
+      this.allFixtures = value
+
+      // List of fixtures
+      this.timelineFixtures = this.computeFixtures(value)
+    }
+  }
+
+  _stateChanged(state) {
+    this._page = state.app.page
+    this.bpm = state.bpm
+    this.modvConnected = getModv(state).connected
+    this.timelineScenes = getTimelineScenes(state)
+    this.animationManager = getAnimations(state)
+    this.fixtures = getFixtures(state)
+
+    // @TODO: What is the performance difference when checking if the value has changed here
+    // vs changed in the setter?
+    this.playing = getTimeline(state).playing
   }
 
   handlePlay() {
-    this.dispatch(playTimeline(!this.isPlaying))
+    store.dispatch(playTimeline(!this.isPlaying))
   }
 
   handleReset() {
-    this.dispatch(resetTimeline())
-    this.dispatch(resetUniverseAndFixtures(0))
+    store.dispatch(resetTimeline())
+    store.dispatch(resetUniverseAndFixtures(0))
   }
 
   // @TODO: Save the current progress into state
-  // this.dispatch(setTimelineProgress(this.progress))
+  // store.dispatch(setTimelineProgress(this.progress))
   observePlaying() {
     if (this.isPlaying) {
       console.log('playing')
@@ -105,7 +114,6 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
     if (this.isPlaying) {
       this.duration = ~~(60 / this.bpm * 1000 * this.measures)
 
-      // const {time, duration, paused} = this.state
       const now = new Date()
       const loopEnd = now - this.time > this.duration
 
@@ -152,9 +160,9 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
             }
           }
       }
-
+      
       // Update the channels of universe 0 with the batch of values collected for the fixtures
-      this.dispatch(setChannels(0, [...batch]))
+      store.dispatch(setChannels(0, [...batch]))
 
       // Reset the batch so that if a scene is done the values for the attachted fixtures are also reset
       clearBatch()
@@ -191,19 +199,28 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
     return fixtures
   }
 
-  static get template() {
-    return `
+  render() {
+    const { progress, isPlaying } = this
+
+    // Label for the play-button
+    const playLabel = isPlaying 
+      ? 'Pause' 
+      : 'Play'
+    
+    return html`
+      ${buttons}
+
       <style>
         .grid {
           display: flex;
           flex-direction: row;
 
-          min-height: 2em;
+          min-height: 3em;
         }
 
         .timeline {
-          background-color: var(--background-dark);
-          color: var(--color-light);
+          background-color: var(--dark-primary-color);
+          color: var(--text-primary-color);
           padding: var(--padding-basic);
         }
 
@@ -211,7 +228,7 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
           position: relative;
           margin-top: calc(var(--padding-basic) * 2);
           padding: calc(var(--padding-basic) * 3) var(--padding-basic) var(--padding-basic) var(--padding-basic);
-          border: 3px solid var(--background-light);
+          border: 3px solid var(--light-primary-color);
         }
 
         .scenes::before {
@@ -219,8 +236,8 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
           position: absolute;
           top: calc(var(--padding-basic) * -3);
           overflow: visible;
-          background: var(--background-light);
-          color: var(--color-dark);
+          background: var(--light-primary-color);
+          color: var( --dark-primary-color);
           padding: var(--padding-basic);
         }
 
@@ -232,27 +249,29 @@ class TimelineManager extends ReduxMixin(PolymerElement) {
         .item {
           margin: 0 .1em;
           padding: var(--padding-basic);
-          border-left: 3px solid var(--background-light);
-          color: var(--color-light);
+          border-left: 3px solid var(--light-primary-color);
+          color: var(--text-primary-color);
         }
       </style>
 
       <div class="timeline">
 
-        <luminave-button class="primary" on-click="handlePlay">[[playLabel]]</luminave-button>
-        [[progress]]
-        <luminave-button on-click="handleReset">Reset</luminave-button>
+        <paper-button class="primary" @click="${() => this.handlePlay()}">${playLabel}</paper-button>
+        ${progress}
+        <paper-button @click="${() => this.handleReset()}">Reset</paper-button>
 
         <ui-spacer></ui-spacer>
 
         <div class="scenes">
 
           <div class="grid">
-            <template is="dom-repeat" items="[[timelineScenes]]" as="scene">
+
+            ${repeat(this.timelineScenes, scene => html`
               <div class="item">
-                <timeline-scene scene$="[[scene]]" progress="[[progress]]"></timeline-scene>
+                <timeline-scene .scene=${scene} progress=${progress}></timeline-scene>
               </div>
-            </template>
+            `)}
+
           </div>
 
         </div>

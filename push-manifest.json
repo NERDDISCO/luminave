@@ -1,0 +1,192 @@
+{
+  "/": {
+    "src/app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/keytime/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/buffer/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/uuid/v1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+
+  "/universe": {
+    "src/app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/keytime/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/buffer/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/uuid/v1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+
+  "/midi": {
+    "src/app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/keytime/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/buffer/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/uuid/v1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+
+  "/scene": {
+    "src/app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/keytime/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/buffer/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/uuid/v1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+
+  "/animation": {
+    "src/app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/keytime/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/buffer/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/uuid/v1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+
+  "/fixture": {
+    "src/app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/keytime/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/buffer/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/uuid/v1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
+      "type": "script",
+      "weight": 1
+    }
+  },
+
+  "/modv": {
+    "src/app.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/keytime/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/buffer/index.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "libs/uuid/v1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
+      "type": "script",
+      "weight": 1
+    }
+  }
+
+  
+}

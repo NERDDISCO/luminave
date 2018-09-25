@@ -1,38 +1,29 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import { store, reduxMixin } from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import { STORAGE_STATE } from '/src/constants/index.js'
+import { getLive } from '../../selectors/index.js'
 
 /*
  * Handle state in localStorage
  *
  * @TODO: Use https://github.com/PolymerElements/app-storage instead
  */
-class StorageManager extends reduxMixin(PolymerElement) {
+class StorageManager extends connect(store)(LitElement) {
 
   static get properties() {
-    return {
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      }
-    }
+    return { live: { type: Boolean } }
   }
 
-  computeEditMode(live) {
-    return !live
+  _stateChanged(state) {
+    this.live = getLive(state)
   }
 
-  ready() {
-    super.ready()
-
+  firstUpdated() {
     // Listen to every change in redux store
     store.subscribe(() => {
-      // Save the state into localStorage when in editMode, otherwise it's super slow
-      if (this.editMode) {
+      // Save the state into localStorage when not live, otherwise it's super slow
+      if (!this.live) {
         localStorage.setItem(STORAGE_STATE, JSON.stringify(store.getState()))
       }
     })
@@ -57,8 +48,8 @@ class StorageManager extends reduxMixin(PolymerElement) {
     return `data:text/json;charset=utf-8,${encodeURIComponent(localStorage.getItem(STORAGE_STATE))}`
   }
 
-  static get template() {
-    return `
+  render() {
+    return html`
       <!--<button on-click="resetStorage">Reset storage</button>
       <button on-click="printStorage">Print storage</button>-->
     `

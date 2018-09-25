@@ -10,11 +10,27 @@ import { collator } from '../utils/index.js'
  * -> https://github.com/reactjs/reselect
  * -> https://redux.js.org/docs/recipes/ComputingDerivedData.html
  */
+export const getBpm = state => state.bpm
+export const getDrawerOpened = state => state.app.drawerOpened
+export const getLive = state => state.live
+export const getConnections = state => state.connectionManager
+export const getUniverses = state => state.universeManager
 export const getScenes = state => state.sceneManager
 export const getAnimations = state => state.animationManager
 export const getFixtures = state => state.fixtureManager
 export const getTimeline = state => state.timelineManager
 export const getTimelineSceneIds = state => state.timelineManager.scenes
+export const getModv = state => state.modvManager
+export const getModvConnected = state => state.modvManager.connected
+export const getMidi = state => state.midiManager
+export const getMidiEnabled = state => state.midiManager.enabled
+export const getMidiControllers = state => state.midiManager.controllers
+export const getMidiLearning = state => state.midiManager.learning
+export const getDekk = state => state.dekkManager
+export const getDekkConnected = state => state.dekkManager.connected
+export const getDekkData = state => state.dekkManager.data
+export const getFivetwelveConnected = state => state.fivetwelveManager.connected
+export const getUsbDmxControllerConnected = state => state.connectionManager.usb.connected
 
 export const getAnimation = (state, properties) => {
   return getAnimations(state)

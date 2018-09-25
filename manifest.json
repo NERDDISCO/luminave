@@ -1,0 +1,21 @@
+{
+  "name": "luminave",
+  "short_name": "luminave",
+  "description": "Manage all the lights with your web browser and create stunning visual experiences.",
+  "start_url": "/",
+  "display": "standalone",
+  "theme_color": "#424b4b",
+  "background_color": "#424b4b",
+  "icons": [
+    {
+      "src": "images/manifest/icon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "images/manifest/icon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

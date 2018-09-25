@@ -1,69 +1,83 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
-import { uuidV1 } from '../../../libs/abcq/uuid.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
+import { uuidV1 } from '../../../libs/uuid/uuid.js'
 import { addUniverse, removeUniverse, resetUniverseAndFixtures } from '../../actions/index.js'
+import { getUniverses, getLive } from '../../selectors/index.js'
 import '../channel-grid/index.js'
 
+import '/node_modules/@polymer/paper-button/paper-button.js'
+import { buttons } from '../../styles/buttons.js'
+
 /*
- *
+ * Handle all DMX512 universes
  */
-class UniverseManager extends ReduxMixin(PolymerElement) {
+class UniverseManager extends connect(store)(LitElement) {
   static get properties() {
     return {
-      universes: {
-        type: Array,
-        statePath: 'universeManager'
-      },
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      }
+      universes: { type: Array },
+      live: { type: Boolean }
     }
   }
 
-  computeEditMode(live) {
-    return !live
+  _stateChanged(state) {
+    this.universes = getUniverses(state)
+    this.live = getLive(state)
   }
 
   addUniverse() {
     const id = uuidV1()
-    this.dispatch(addUniverse({ id, channels: [...Array(512)].map(() => 0), name: `${id}` }))
+    store.dispatch(addUniverse({ 
+      id, 
+      channels: [...Array(512)].map(() => 0), 
+      name: `${id}` 
+    }))
   }
 
   removeUniverse(e) {
-    const { dataset } = e.target
-    this.dispatch(removeUniverse(parseInt(dataset.index, 10)))
+    const { universeId } = e.target
+    store.dispatch(removeUniverse(universeId))
   }
 
   resetUniverse(e) {
-    const { dataset } = e.target
-    this.dispatch(resetUniverseAndFixtures(parseInt(dataset.index, 10)))
+    store.dispatch(resetUniverseAndFixtures(0))
   }
 
-  static get template() {
-    return `
-      <template is="dom-if" if="[[editMode]]">
-        <button on-click="addUniverse">Add universe</button>
-      </template>
+  render() {
+    const { universes, live } = this
 
-      <template is="dom-repeat" items="{{universes}}" as="universe">
+    return html`
+      ${buttons}
+
+      ${
+        live 
+        ? ''
+        : html`<paper-button @click="${e => this.addUniverse(e)}" class="primary">Add universe</paper-button>`
+      }
+
+      ${repeat(universes, universe => html`
         <div>
-          <template is="dom-if" if="[[editMode]]">
-            <h3>[[universe.name]]</h3>
-            <button on-click="removeUniverse" data-index$="[[index]]">Remove</button>
-          </template>
 
-          <button on-click="resetUniverse" data-index$="[[index]]">Reset</button>
+          ${
+            live 
+            ? ''
+            : html`
+              <h3>${universe.name}</h3>
+              <paper-button @click="${e => this.removeUniverse(e)}" .universeId="${universe.id}" class="warning">Remove</paper-button>
+            `
+          }
+
+          <paper-button @click="${e => this.resetUniverse(e)}" .universeId="${universe.id}">Reset</paper-button>
 
           <div>
-            <channel-grid channels="[[universe.channels]]"></channel-grid>
+            <channel-grid .channels="${universe.channels}"></channel-grid>
           </div>
+
         </div>
-      </template>
+
+      `)}
+
     `
   }
 }

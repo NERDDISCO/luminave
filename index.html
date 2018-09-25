@@ -1,39 +1,101 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
   <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
     <title>luminave</title>
-    <script src="/node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="/node_modules/webmidi/webmidi.min.js"></script>
-    <script src="/node_modules/redux/dist/redux.min.js"></script>
-    <script src="/libs/keytime/index.js"></script>
-    <script src="/libs/buffer/index.js"></script>
-    <script src="/libs/uuid/v1.js"></script>
-    <link rel="import" href="dark-side/dark-side.html">
-    <script type="module" src="/src/app.js"></script>
-    <style>
-      :root {
-        --focus-background: #464819;
-        --focus-color: #D3DE81;
-        --background: #fff;
-        --background-light: #F5F5F5;
-        --background-dark: #424b4b;
-        --background-primary: #35c9a4;
-        --background-warning: #da4453;
-        --color: #bdced7;
-        --color-light: #fff;
-        --color-dark: #6b6b6b;
-        --padding-basic: .5em;
-      }
-      body {
-        margin: 0;
-        /* background: var(--background); */
-        /* color: var(--color); */
-        /* font: 0.9em sans-serif; */
+    <meta name="description" content="Manage all the lights with your web browser and create stunning visual experiences.">
+
+    <!--
+      The `<base>` tag below is present to support two advanced deployment options:
+      1) Differential serving. 2) Serving from a non-root path.
+
+      Instead of manually editing the `<base>` tag yourself, you should generally either:
+      a) Add a `basePath` property to the build configuration in your `polymer.json`.
+      b) Use the `--base-path` command-line option for `polymer build`.
+    -->
+    <base href="/">
+
+    <link rel="icon" href="images/favicon.ico">
+
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="manifest.json">
+
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#424b4b">
+
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="luminave">
+
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="luminave">
+
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="images/manifest/icon-192x192.png">
+
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#424b4b">
+    <meta name="msapplication-tap-highlight" content="no">
+
+    <!-- Default twitter cards -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:site" content="@NERDDISCO">
+    <meta property="og:type" content="website">
+    <meta property="og:site_name" content="luminave">
+    <meta property="og:image" content="images/manifest/icon-144x144.png" />
+
+    <script>
+      // Load and register pre-caching Service Worker
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('service-worker.js', {
+            scope: '/',
+          });
+        });
       }
 
+      // Redux assumes `process.env.NODE_ENV` exists in the ES module build.
+      // https://github.com/reactjs/redux/issues/2907
+      window.process = { env: { NODE_ENV: 'production' } };
+    </script>
+
+    <!-- Add any global styles for body, document, etc. -->
+    <style>
+       @import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+      body {
+        margin: 0;
+        padding: 0;
+        font-family: 'Open Sans', sans-serif;
+        font-weight: 400;
+        line-height: 1.5;
+        min-height: 100vh;
+        -webkit-font-smoothing: antialiased;
+        background-color: #212121;
+      }
     </style>
   </head>
   <body>
     <lumi-nave></lumi-nave>
+
+    <noscript>
+      Please enable JavaScript to use luminave.
+    </noscript>
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script src="node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="node_modules/webmidi/webmidi.min.js"></script>
+    <script src="libs/keytime/index.js"></script>
+    <script src="libs/buffer/index.js"></script>
+    <script src="libs/uuid/v1.js"></script>
+    <script type="module" src="src/app.js" crossorigin></script>
   </body>
 </html>

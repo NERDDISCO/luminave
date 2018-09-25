@@ -1,83 +1,84 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
-import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene, resetUniverseAndFixtures } from '../../actions/index.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { store } from '../../reduxStore.js'
+import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene, resetUniverseAndFixtures, removeFixtureFromSceneAndUniverse } from '../../actions/index.js'
 import '../fixture-list/index.js'
 import '../animation-list/index.js'
 
 /*
  * Handle a list of scenes
  */
-class SceneBee extends ReduxMixin(PolymerElement) {
+class SceneBee extends LitElement {
   static get properties() {
     return {
-      name: String,
-      duration: Number,
-      id: String,
-      index: Number,
-      fixtures: Array,
-      fixtureManager: {
-        type: Array,
-        statePath: 'fixtureManager'
-      },
-      animations: Array,
-      animationManager: {
-        type: Array,
-        statePath: 'animationManager'
-      }
+      name: { type: String },
+      duration: { type: Number },
+      id: { type: String },
+      index: { type: Number },
+      fixtures: { type: Array },
+      fixtureManager: { type: Array },
+      animations: { type: Array },
+      animationManager: { type: Array }
     }
   }
 
   runScene(e) {
-    this.dispatch(addSceneToTimeline(this.id))
+    const { sceneId } = e.target
+    store.dispatch(addSceneToTimeline(sceneId))
   }
 
   removeScene(e) {
-    const { dataset } = e.target
-    this.dispatch(removeScene(parseInt(dataset.index, 10)))
+    const { sceneId } = e.target
+    store.dispatch(removeScene(sceneId))
   }
 
   handleAddAnimation(e) {
     const { event, animationId } = e.detail
+    const { sceneId } = e.target
 
     // Prevent sending data to server & reset all fields
     event.preventDefault()
     event.target.reset()
 
-    this.dispatch(addAnimationToScene(this.index, animationId))
+    store.dispatch(addAnimationToScene(sceneId, animationId))
   }
 
   handleRemoveAnimation(e) {
-    const { animationIndex } = e.detail
+    const { animationId } = e.detail
+    const { sceneId } = e.target
 
-    this.dispatch(removeAnimationFromScene(this.index, animationIndex))
+    store.dispatch(removeAnimationFromScene(sceneId, animationId))
 
     // #35: Reset fixture properties after animation was removed
     // @TODO: Only reset the fixtures that are attached to the scene
-    this.dispatch(resetUniverseAndFixtures(0))
+    store.dispatch(resetUniverseAndFixtures(0))
   }
 
   handleAddFixtures(e) {
     const { event, fixtureIds } = e.detail
+    const { sceneId } = e.target
 
     // Prevent sending data to server & reset all fields
     event.preventDefault()
 
-    this.dispatch(addFixturesToScene(this.index, fixtureIds))
+    store.dispatch(addFixturesToScene(sceneId, fixtureIds))
   }
 
   handleRemoveFixture(e) {
-    const { fixtureIndex } = e.detail
+    const { fixtureId } = e.detail
+    const { sceneId } = e.target
 
-    this.dispatch(removeFixtureFromScene(this.id, fixtureIndex))
+    store.dispatch(removeFixtureFromSceneAndUniverse(sceneId, fixtureId))
   }
 
   handleNameChange(e) {
-    const sceneName = e.target.value
-    this.dispatch(setSceneName(this.index, sceneName))
+    const { value } = e.target
+    store.dispatch(setSceneName(this.id, value))
   }
 
-  static get template() {
-    return `
+  render() {
+    const { id, animations, fixtures, animationManager, fixtureManager, name } = this
+
+    return html`
     <style>
       h4 {
         margin: 0.25em 0;
@@ -90,25 +91,25 @@ class SceneBee extends ReduxMixin(PolymerElement) {
     </style>
 
       <div>
-        <input class="name" name="name" type="text" on-change="handleNameChange" value="[[name]]"></input>
+        <input class="name" name="name" type="text" @change="${e => this.handleNameChange(e)}" value="${name}" />
 
-        <button on-click="removeScene" data-index$="[[index]]">Remove</button>
-        <button on-click="runScene" scene-id="[[scene.id]]">Run</button>
+        <button @click="${e => this.removeScene(e)}" .sceneId="${id}">Remove</button>
+        <button @click="${e => this.runScene(e)}" .sceneId="${id}">Run</button>
 
         <animation-list
-          on-add-animation="handleAddAnimation"
-          on-remove-animation="handleRemoveAnimation"
-          data-index$="[[index]]"
-          animations$="{{animations}}"
-          animation-manager$="[[animationManager]]"></animation-list>
+          @add-animation="${e => this.handleAddAnimation(e)}"
+          @remove-animation="${e => this.handleRemoveAnimation(e)}"
+          .sceneId="${id}"
+          .animations="${animations}"
+          .animationManager="${animationManager}"></animation-list>
 
 
         <fixture-list
-          on-add-fixtures="handleAddFixtures"
-          on-remove-fixture="handleRemoveFixture"
-          data-index$="[[index]]"
-          fixtures="{{fixtures}}"
-          fixture-manager="[[fixtureManager]]"></fixture-list>
+          @add-fixtures="${e => this.handleAddFixtures(e)}"
+          @remove-fixture="${e => this.handleRemoveFixture(e)}"
+          .sceneId="${id}"
+          .fixtures="${fixtures}"
+          .fixtureManager="${fixtureManager}"></fixture-list>
       </div>
     `
   }

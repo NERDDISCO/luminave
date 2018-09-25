@@ -78,8 +78,8 @@ export const addUniverse = universe => ({
 /*
  * Remove a DMX512 universe
  */
-export const removeUniverse = universeIndex => ({
-  universeIndex,
+export const removeUniverse = universeId => ({
+  universeId,
   type: constants.REMOVE_UNIVERSE
 })
 
@@ -109,24 +109,24 @@ export const addScene = scene => ({
 /*
  * Start the playback of a scene
  */
-export const runScene = sceneIndex => ({
-  sceneIndex,
+export const runScene = sceneId => ({
+  sceneId,
   type: constants.RUN_SCENE
 })
 
 /*
  * Remove a scene
  */
-export const removeScene = sceneIndex => ({
-  sceneIndex,
+export const removeScene = sceneId => ({
+  sceneId,
   type: constants.REMOVE_SCENE
 })
 
 /*
  * Set the name of a scene
  */
-export const setSceneName = (sceneIndex, sceneName) => ({
-  sceneIndex,
+export const setSceneName = (sceneId, sceneName) => ({
+  sceneId,
   sceneName,
   type: constants.SET_SCENE_NAME
 })
@@ -134,8 +134,8 @@ export const setSceneName = (sceneIndex, sceneName) => ({
 /*
  * Add a animation to the scene
  */
-export const addAnimationToScene = (sceneIndex, animationId) => ({
-  sceneIndex,
+export const addAnimationToScene = (sceneId, animationId) => ({
+  sceneId,
   animationId,
   type: constants.ADD_ANIMATION_TO_SCENE
 })
@@ -143,17 +143,17 @@ export const addAnimationToScene = (sceneIndex, animationId) => ({
 /*
  * Remove a animation from the scene
  */
-export const removeAnimationFromScene = (sceneIndex, animationIndex) => ({
-  sceneIndex,
-  animationIndex,
+export const removeAnimationFromScene = (sceneId, animationId) => ({
+  sceneId,
+  animationId,
   type: constants.REMOVE_ANIMATION_FROM_SCENE
 })
 
 /*
  * Add a fixture to the scene
  */
-export const addFixtureToScene = (sceneIndex, fixtureId) => ({
-  sceneIndex,
+export const addFixtureToScene = (sceneId, fixtureId) => ({
+  sceneId,
   fixtureId,
   type: constants.ADD_FIXTURE_TO_SCENE
 })
@@ -161,20 +161,34 @@ export const addFixtureToScene = (sceneIndex, fixtureId) => ({
 /*
  * Add a fixtures to the scene
  */
-export const addFixturesToScene = (sceneIndex, fixtureIds) => {
+export const addFixturesToScene = (sceneId, fixtureIds) => {
   return (dispatch, getState) => {
-    fixtureIds.map(fixtureId => dispatch(addFixtureToScene(sceneIndex, fixtureId)))
+    fixtureIds.map(fixtureId => dispatch(addFixtureToScene(sceneId, fixtureId)))
   }
 }
 
 /*
- * Add a fixture to the scene
+ * Remove a fixture from a scene
  */
-export const removeFixtureFromScene = (sceneId, fixtureIndex) => ({
+export const removeFixtureFromScene = (sceneId, fixtureId) => ({
   sceneId,
-  fixtureIndex,
+  fixtureId,
   type: constants.REMOVE_FIXTURE_FROM_SCENE
 })
+
+
+/*
+ * Remove a fixture from a scene and reset the values of the fixture in the universe
+ */
+export const removeFixtureFromSceneAndUniverse = (sceneId, fixtureId) => {
+  return (dispatch, getState) => {
+    
+    utils.clearFixtureInBatch(fixtureId)
+
+    // Reset the propeties of the fixture in the state & batch
+    dispatch(removeFixtureFromScene(sceneId, fixtureId))
+  }
+}
 
 
 /*
@@ -206,16 +220,16 @@ export const addAnimation = animation => ({
 /*
  * Start the playback of a animation
  */
-export const runAnimation = animationIndex => ({
-  animationIndex,
+export const runAnimation = animationId => ({
+  animationId,
   type: constants.RUN_ANIMATION
 })
 
 /*
- * Remove a DMX512 universe
+ * Remove an animation
  */
-export const removeAnimation = animationIndex => ({
-  animationIndex,
+export const removeAnimation = animationId => ({
+  animationId,
   type: constants.REMOVE_ANIMATION
 })
 
@@ -223,18 +237,18 @@ export const removeAnimation = animationIndex => ({
 /*
  * Set the name of a scene
  */
-export const setAnimationName = (animationIndex, animationName) => ({
-  animationIndex,
+export const setAnimationName = (animationId, animationName) => ({
+  animationId,
   animationName,
   type: constants.SET_ANIMATION_NAME
 })
 
 
 /*
- * Add a keyframe
+ * Add a keyframe to an animation
  */
-export const addKeyframe = (animationIndex, keyframeStep, keyframeProperty, keyframeValue) => ({
-  animationIndex,
+export const addKeyframe = (animationId, keyframeStep, keyframeProperty, keyframeValue) => ({
+  animationId,
   keyframeStep,
   keyframeProperty,
   keyframeValue,
@@ -286,8 +300,8 @@ export const resetFixtureProperties = fixtureId => ({
 /*
  * Remove a fixture
  */
-export const removeFixture = fixtureIndex => ({
-  fixtureIndex,
+export const removeFixture = fixtureId => ({
+  fixtureId,
   type: constants.REMOVE_FIXTURE
 })
 
@@ -296,8 +310,6 @@ export const removeFixture = fixtureIndex => ({
  */
 export const removeFixtureFromEverywhere = fixtureId => {
   return (dispatch, getState) => {
-
-    const fixtureIndex = selectors.getFixtures(getState()).findIndex(fixture => fixture.id === fixtureId)
 
     // Remove fixture from batch
     utils.clearFixtureInBatch(fixtureId)
@@ -309,7 +321,7 @@ export const removeFixtureFromEverywhere = fixtureId => {
       }
     })
 
-    dispatch(removeFixture(fixtureIndex))
+    dispatch(removeFixture(fixtureId))
   }
 }
 
@@ -324,8 +336,8 @@ export const addMidi = controller => ({
 /*
  * Remove a MIDI controller
  */
-export const removeMidi = controllerIndex => ({
-  controllerIndex,
+export const removeMidi = controllerId => ({
+  controllerId,
   type: constants.REMOVE_MIDI
 })
 
@@ -349,8 +361,8 @@ export const learnMidi = mappingIndex => ({
 /*
  * Add a MIDI mapping for a specific input (e.g. button) from a MIDI controller
  */
-export const addMidiMapping = (controllerIndex, mappingIndex, mapping) => ({
-  controllerIndex,
+export const addMidiMapping = (controllerId, mappingIndex, mapping) => ({
+  controllerId,
   mappingIndex,
   mapping,
   type: constants.ADD_MIDI_MAPPING
@@ -359,8 +371,8 @@ export const addMidiMapping = (controllerIndex, mappingIndex, mapping) => ({
 /*
  * Set the active state of a  MIDI mapping for a specific input (e.g. button)
  */
-export const setMidiMappingActive = (controllerIndex, mappingIndex, active) => ({
-  controllerIndex,
+export const setMidiMappingActive = (controllerId, mappingIndex, active) => ({
+  controllerId,
   mappingIndex,
   active,
   type: constants.SET_MIDI_MAPPING_ACTIVE
@@ -369,8 +381,8 @@ export const setMidiMappingActive = (controllerIndex, mappingIndex, active) => (
 /*
  * Add a scene to a MIDI controller
  */
-export const addSceneToMidi = (controllerIndex, mappingIndex, sceneId) => ({
-  controllerIndex,
+export const addSceneToMidi = (controllerId, mappingIndex, sceneId) => ({
+  controllerId,
   mappingIndex,
   sceneId,
   type: constants.ADD_SCENE_TO_MIDI
@@ -379,8 +391,8 @@ export const addSceneToMidi = (controllerIndex, mappingIndex, sceneId) => ({
 /*
  * Add multiple scenes to a MIDI controller
  */
-export const addScenesToMidi = (controllerIndex, mappingIndex, sceneIds) => ({
-  controllerIndex,
+export const addScenesToMidi = (controllerId, mappingIndex, sceneIds) => ({
+  controllerId,
   mappingIndex,
   sceneIds,
   type: constants.ADD_SCENES_TO_MIDI
@@ -390,10 +402,10 @@ export const addScenesToMidi = (controllerIndex, mappingIndex, sceneIds) => ({
 /*
  * Remove a scene from a MIDI controller
  */
-export const removeSceneFromMidi = (controllerIndex, mappingIndex, sceneIndex) => ({
-  controllerIndex,
+export const removeSceneFromMidi = (controllerId, mappingIndex, sceneId) => ({
+  controllerId,
   mappingIndex,
-  sceneIndex,
+  sceneId,
   type: constants.REMOVE_SCENE_FROM_MIDI
 })
 

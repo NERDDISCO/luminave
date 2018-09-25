@@ -1,28 +1,22 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import { html } from '/node_modules/lit-html/lit-html.js'
-import { render } from '/node_modules/lit-html/lib/lit-extended.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 
 import './components/luminave-menu/index.js'
 import './components/luminave-dashboard/index.js'
+import './components/ui-spacer/index.js'
 
-class Luminave extends PolymerElement {
-  constructor() {
-    super()
-  }
+import { theme } from './styles/theme.js'
 
-  static get template() {
-    return render(html`
-        <style>
-          body {
-            padding: .5em;
-            margin: 4em 0 0 0;
-          }
-        </style>
+class Luminave extends LitElement {
+  render() {
+    return html`
+      ${theme}
 
       <luminave-menu></luminave-menu>
-      <luminave-dashboard></luminave-dashboard>
 
-    `, document.body)
+      <ui-spacer height="5em"></ui-spacer>
+
+      <luminave-dashboard></luminave-dashboard>
+    `
   }
 }
 

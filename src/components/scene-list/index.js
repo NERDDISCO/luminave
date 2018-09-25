@@ -1,30 +1,17 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
-import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
-import { DomIf } from '/node_modules/@polymer/polymer/lib/elements/dom-if.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 import '../scene-list-item/index.js'
 
 /*
  * A list of scenes
  */
-class SceneList extends ReduxMixin(PolymerElement) {
+class SceneList extends LitElement {
   static get properties() {
     return {
-      scenes: Array,
-      sceneManager: Array,
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      }
+      scenes: { type: Array },
+      sceneManager: { type: Array },
+      live: { type: Boolean }
     }
-  }
-
-  computeEditMode(live) {
-    return !live
   }
 
   handleSceneSubmit(e) {
@@ -43,10 +30,12 @@ class SceneList extends ReduxMixin(PolymerElement) {
   }
 
   handleRemoveScene(e) {
+    const { sceneId } = e.target
+
     this.dispatchEvent(new CustomEvent('remove-scene', {
       detail: {
         event: e,
-        sceneIndex: e.target.sceneIndex
+        sceneId
       }
     }))
   }
@@ -55,29 +44,44 @@ class SceneList extends ReduxMixin(PolymerElement) {
     return this.sceneManager.filter(scene => scene.id === sceneId)[0]
   }
 
-  static get template() {
-    return `
-      <template is="dom-if" if="[[editMode]]">
-        <form on-submit="handleSceneSubmit">
-          <select name="scenes" required multiple>
-            <option value=""></option>
+  render() {
+    const { scenes, sceneManager, live } = this
+    const itemTemplates = []
 
-            <template is="dom-repeat" items="{{sceneManager}}" as="scene">
-              <option value="[[scene.id]]">[[scene.name]]</option>
-            </template>
-          </select>
+    for (let index = 0; index < scenes.length; index++) {
+      const sceneId = scenes[index]
 
-          <button type="submit">Add</button>
-        </form>
-      </template>
+      itemTemplates.push(html`
+        <scene-list-item .scene="${this.getScene(sceneId)}"></scene-list-item>
 
-      <template is="dom-repeat" items="{{scenes}}" as="sceneId">
-        <scene-list-item scene="{{getScene(sceneId)}}"></scene-list-item>
+        ${
+          live 
+          ? ''
+          : html`<button @click="${e => this.handleRemoveScene(e)}" .sceneId="${sceneId}">x</button>`
+        }
+      `)
+    }
 
-        <template is="dom-if" if="[[editMode]]">
-          <button on-click="handleRemoveScene" scene-index="[[index]]">x</button>
-        </template>
-      </template>
+    return html`
+      ${
+        live 
+        ? ''
+        : html`
+          <form @submit="${e => this.handleSceneSubmit(e)}">
+            <select name="scenes" required multiple>
+              <option value=""></option>
+              ${repeat(sceneManager, scene => html`
+                <option value="${scene.id}">${scene.name}</option>
+              `)}
+            </select>
+
+            <button type="submit">Add</button>
+          </form>
+        `
+      }
+
+      ${itemTemplates}
+
     `
   }
 

@@ -1,5 +1,5 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 
 /*
  * Show colors in a grid
@@ -7,11 +7,11 @@ import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repea
  * @TODO: Move the label (borth column and row) into their own modules and make them configurable
  * @TODO: Fix the performance
  */
-class ColorGrid extends PolymerElement {
+class ColorGrid extends LitElement {
   static get properties() {
     return {
-      rows: Number,
-      colors: Array
+      rows: { type: Number },
+      colors: { type: Array }
     }
   }
 
@@ -22,7 +22,8 @@ class ColorGrid extends PolymerElement {
   computeGridVars(rows) {
     const vars = { '--rows': rows }
 
-    return Object.keys(vars).map(key => [key, vars[key]].join(':')).join(';')
+    return Object.keys(vars).map(key => [key, vars[key]].join(':'))
+      .join(';')
   }
 
   /*
@@ -36,13 +37,14 @@ class ColorGrid extends PolymerElement {
       '--blue': color[2]
     }
 
-    return Object.keys(vars).map(key => [key, vars[key]].join(':')).join(';')
+    return Object.keys(vars).map(key => [key, vars[key]].join(':'))
+      .join(';')
   }
 
   /*
    * Convert simple array of colors into Array of Objects which can be used by dom-repeat
    *
-   * @TODO See if this is called over and over again when the colors are changing
+   * @TODO This is called over and over again
    */
   _toColorArray(colors) {
     const colorChunks = []
@@ -60,7 +62,7 @@ class ColorGrid extends PolymerElement {
   /*
    * Set the label of a color
    *
-   * @TODO: See if this is called over and over again when the colors are changing
+   * @TODO: This is executed over and over again because the array is regenerated with every frame
    */
   computeLabel(index) {
     const realIndex = index + 1
@@ -68,8 +70,10 @@ class ColorGrid extends PolymerElement {
     return `${realIndex}`
   }
 
-  static get template() {
-    return `
+  render() {
+    const { rows, colors } = this
+
+    return html`
       <style>
         .container {
           display: grid;
@@ -108,8 +112,8 @@ class ColorGrid extends PolymerElement {
           position: absolute;
           top: calc(var(--padding-basic) * -6);
           overflow: visible;
-          background: var(--background-dark);
-          color: var(--color-light);
+          background: var(--dark-primary-color);
+          color: var(--text-primary-color);
           padding: var(--padding-basic);
           font-size: .7em;
         }
@@ -117,8 +121,8 @@ class ColorGrid extends PolymerElement {
         .label {
           font-size: .7em;
           padding: 0 0 0 calc(var(--padding-basic) / 2);
-          background: var(--background-dark);
-          color: var(--color-light);
+          background: var(--dark-primary-color);
+          color: var(--text-primary-color);
           height: 100%;
           min-width: 20px;
           display: inline-block;
@@ -126,7 +130,7 @@ class ColorGrid extends PolymerElement {
         }
       </style>
 
-      <div class="container left" style="{{computeGridVars(rows)}}">
+      <div class="container left" style="${this.computeGridVars(rows)}">
           <div class="row-label">
             <span class="label">a</span>
           </div>
@@ -144,13 +148,15 @@ class ColorGrid extends PolymerElement {
           </div>
       </div>
 
-      <div class="container" style="{{computeGridVars(rows)}}">
+      <div class="container" style="${this.computeGridVars(rows)}">
 
-        <template is="dom-repeat" items={{_toColorArray(colors)}} as="element">
-          <div class="item" style="{{computeItemVars(element.color)}}">
-            <span class="label">{{computeLabel(index)}}</span>
+        ${repeat(this._toColorArray(colors), element => element, (element, index) => html`
+
+          <div class="item" style="${this.computeItemVars(element.color)}">
+            <span class="label">${this.computeLabel(index)}</span>
           </div>
-        </template>
+
+        `)}
 
       </div>
     `

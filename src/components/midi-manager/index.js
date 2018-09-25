@@ -1,20 +1,23 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import WebMidi from '../../../libs/webmidi/index.js'
-import { uuidV1 } from '../../../libs/abcq/uuid.js'
+import { uuidV1 } from '../../../libs/uuid/uuid.js'
 import { addMidi, removeMidi, enableMidi } from '../../actions/index.js'
+import { getMidiControllers, getLive } from '../../selectors/index.js'
 import '../midi-controller/index.js'
 
 /*
  * Handle DMX fixtures
  */
-class MidiManager extends ReduxMixin(PolymerElement) {
+class MidiManager extends connect(store)(LitElement) {
 
   constructor() {
     super()
 
     // Web MIDI is disabled
-    this.dispatch(enableMidi(false))
+    store.dispatch(enableMidi(false))
 
     // Enable Web MIDI
     WebMidi.enable(err => {
@@ -34,7 +37,7 @@ class MidiManager extends ReduxMixin(PolymerElement) {
         })
 
         // Web MIDI is enabled
-        this.dispatch(enableMidi(true))
+        store.dispatch(enableMidi(true))
       }
 
     })
@@ -42,132 +45,116 @@ class MidiManager extends ReduxMixin(PolymerElement) {
 
   static get properties() {
     return {
-      controllers: {
-        type: Array,
-        statePath: 'midiManager.controllers'
-      },
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      }
+      controllers: { type: Array },
+      live: { type: Boolean }
     }
   }
 
-  computeEditMode(live) {
-    return !live
+  _stateChanged(state) {
+    this.live = getLive(state)
+    this.controllers = getMidiControllers(state)
   }
 
   removeMidi(e) {
-    const { dataset } = e.target
-    this.dispatch(removeMidi(parseInt(dataset.index, 10)))
-  }
-
-  handleController(e) {
-    console.log('handleController', e)
-  }
-
-  handleName(e) {
-    this.name = e.target.value
-  }
-
-  handleInput(e) {
-    this.input = e.target.value
-  }
-
-  handleOutput(e) {
-    this.output = e.target.value
-  }
-
-  handleWidth(e) {
-    this.width = e.target.value
-  }
-
-  handleHeight(e) {
-    this.height = e.target.value
+    const { controllerId } = e.target
+    store.dispatch(removeMidi(controllerId))
   }
 
   handleSubmit(e) {
-    // Prevent sending data to server & reset all fields
+    // Prevent sending data to server
     e.preventDefault()
-    e.target.reset()
 
-    this.dispatch(addMidi({
+    // Get data out of the form
+    const data = new FormData(e.target)
+
+    const name = data.get('name')
+    const input = data.get('input')
+    const output = data.get('output')
+    const width = parseInt(data.get('width'), 10)
+    const height = parseInt(data.get('height'), 10)
+
+    store.dispatch(addMidi({
       id: uuidV1(),
-      name: this.name,
-      input: this.input,
-      output: this.output,
-      width: this.width,
-      height: this.height,
+      name,
+      input,
+      output,
+      width,
+      height,
       mapping: []
     }))
   }
 
-  static get template() {
-    return `
-    <style>
-      .grid {
-        display: flex;
-        flex-direction: column;
+  render() {
+    const { controllers, live } = this
+
+    return html`
+      <style>
+        .grid {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .fixture {
+          border: 1px solid var(--color-lighter);
+          margin: 0 0 .25em 0;
+        }
+
+        h3 {
+          margin-bottom: 0em;
+          margin-top: 1em;
+          border-top: 2px solid var(--background-darker);
+        }
+      </style>
+
+      ${
+        live 
+        ? ''
+        : html`
+          <form @submit="${e => this.handleSubmit(e)}">
+            <label for="name">Name</label>
+            <input name="name" type="text" required />
+
+            <label for="input">Input</label>
+            <input name="input" type="text" required />
+
+            <label for="output">Output</label>
+            <input name="output" type="text" required />
+
+            <label for="width">Width</label>
+            <input name="width" type="number" min="1" max="255" required />
+
+            <label for="height">Height</label>
+            <input name="height" type="number" min="1" max="255" required />
+
+            <button type="submit">Add controller</button>
+          </form>
+        `
       }
-
-      .fixture {
-        border: 1px solid var(--color-lighter);
-        margin: 0 0 .25em 0;
-      }
-
-      h3 {
-        margin-bottom: 0em;
-        margin-top: 1em;
-        border-top: 2px solid var(--background-darker);
-      }
-    </style>
-
-    <template is="dom-if" if="[[editMode]]">
-
-      <form on-submit="handleSubmit">
-        <label for="name">Name</label>
-        <input name="name" type="text" on-change="handleName" required></input>
-
-        <label for="input">Input</label>
-        <input name="input" type="text" on-change="handleInput" required></input>
-
-        <label for="output">Output</label>
-        <input name="output" type="text" on-change="handleOutput" required></input>
-
-        <label for="width">Width</label>
-        <input name="width" type="number" min="1" max="255" on-change="handleWidth" required></input>
-
-        <label for="height">Height</label>
-        <input name="height" type="number" min="1" max="255" on-change="handleHeight" required></input>
-
-        <button type="submit">Add controller</button>
-      </form>
-
-    </template>
 
       <div class="grid">
 
-        <template is="dom-repeat" items="{{controllers}}" as="controller">
+        ${repeat(controllers, controller => html`
+
           <div>
             <midi-controller
-              id="[[controller.id]]"
-              index="[[index]]"
-              name="[[controller.name]]"
-              mapping$="[[controller.mapping]]"
-              inputname="[[controller.input]]"
-              outputname="[[controller.output]]"
-              width="[[controller.width]]"
-              height="[[controller.height]]"></midi-controller>
+              id="${controller.id}"
+              name="${controller.name}"
+              .mapping="${controller.mapping}"
+              inputname="${controller.input}"
+              outputname="${controller.output}"
+              width="${controller.width}"
+              height="${controller.height}">
+            </midi-controller>
 
-            <template is="dom-if" if="[[editMode]]">
-              <button on-click="removeMidi" data-index$="[[index]]">Remove</button>
-            </template>
+            ${
+              live 
+              ? ''
+              : html`<button @click="${e => this.removeMidi(e)}" .controllerId="${controller.id}">Remove</button>`
+            }
+                
           </div>
-        </template>
+        
+        `)}
 
       </div>
     `

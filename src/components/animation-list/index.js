@@ -1,36 +1,41 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { store } from '../../reduxStore.js'
 import '../animation-list-item/index.js'
+import { getAnimation } from '../../selectors/index.js'
+import { shared } from '../../styles/shared.js'
 
 /*
  * A list of animations
  */
-class AnimationList extends PolymerElement {
+class AnimationList extends LitElement {
   static get properties() {
     return {
-      animations: Array,
-      animationManager: Array
+      animations: { type: Array },
+      animationManager: { type: Array }
     }
   }
 
   handleAnimationSubmit(e) {
+    // Get data out of the form
+    const data = new FormData(e.target)
+    const animationId = data.get('animationId')
+
     this.dispatchEvent(new CustomEvent('add-animation', {
       detail: {
         event: e,
-        animationId: this.animationId
+        animationId
       }
     }))
   }
 
-  handleSelectedAnimation(e) {
-    this.animationId = e.target.selectedOptions[0].value
-  }
-
   handleRemoveAnimation(e) {
+    const { animationId } = e.target
+
     this.dispatchEvent(new CustomEvent('remove-animation', {
       detail: {
         event: e,
-        animationIndex: e.target.animationIndex
+        animationId
       }
     }))
   }
@@ -39,35 +44,34 @@ class AnimationList extends PolymerElement {
     return this.animationManager.filter(animation => animation.id === animationId)[0]
   }
 
-  static get template() {
-    return `
-      <style>
-        .items {
-          display: flex;
-          flex-wrap: wrap;
-        }
-        .item {
-          flex: 0 0 2em;
-        }
-      </style>
+  render() {
+    if (this.animations === undefined) {
+      this.animations = []
+    }
 
-      <form on-submit="handleAnimationSubmit">
-        <select name="type" on-change="handleSelectedAnimation" required>
+    const { animationManager, animations } = this
+
+    return html`
+      ${shared}
+
+      <form @submit="${e => this.handleAnimationSubmit(e)}">
+        <select name="animationId" required>
           <option value=""></option>
-
-          <template is="dom-repeat" items="{{animationManager}}" as="animation">
-            <option value="[[animation.id]]">[[animation.name]]</option>
-          </template>
+          ${repeat(animationManager, animation => html`
+            <option value="${animation.id}">${animation.name}</option>
+          `)}
         </select>
 
         <button type="submit">Add animation</button>
       </form>
 
       <div class="items">
-      <template is="dom-repeat" items="{{animations}}" as="animationId">
-        <animation-list-item class="item" animation="{{getAnimation(animationId)}}"></animation-list-item>
-        <button on-click="handleRemoveAnimation" animation-index="[[index]]">x</button>
-      </template>
+    
+        ${repeat(animations, animationId => html`
+          <animation-list-item class="item" .animation="${getAnimation(store.getState(), { animationId })}"></animation-list-item>
+          <button @click="${e => this.handleRemoveAnimation(e)}" .animationId="${animationId}">x</button>
+        `)}
+
       </div>
     `
   }

@@ -1,6 +1,8 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
-import { uuidV1 } from '../../../libs/abcq/uuid.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
+import { uuidV1 } from '../../../libs/uuid/uuid.js'
 import { addAnimation } from '../../actions/index.js'
 import { getAnimationsSorted } from '../../selectors/index.js'
 import '../animation-bee/index.js'
@@ -8,14 +10,13 @@ import '../animation-bee/index.js'
 /*
  * Handle a list of animations
  */
-class AnimationManager extends ReduxMixin(PolymerElement) {
+class AnimationManager extends connect(store)(LitElement) {
   static get properties() {
-    return {
-      animations: {
-        type: Array,
-        statePath: getAnimationsSorted
-      }
-    }
+    return { animations: { type: Array } }
+  }
+
+  _stateChanged(state) {
+    this.animations = getAnimationsSorted(state)
   }
 
   handleSubmit(e) {
@@ -31,7 +32,7 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
 
     // Amount was not specified, so we just add one fixture
     if (isNaN(amount)) {
-      this.dispatch(addAnimation({
+      store.dispatch(addAnimation({
         id: uuidV1(),
         keyframes: {},
         duration,
@@ -51,7 +52,7 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
           1: { modvColor: animationIndex }
         }
 
-        this.dispatch(addAnimation({
+        store.dispatch(addAnimation({
           id: uuidV1(),
           keyframes,
           duration,
@@ -62,33 +63,34 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
 
   }
 
-  static get template() {
-    return `
-    <style>
-      .container {
-        --width: 8;
-        display: grid;
-        grid-template-columns: repeat(var(--width), auto);
-      }
+  render() {
+    const { animations } = this
 
-      .item {
-        border: 1px solid rgba(0, 0, 0, 0.25);
-        margin: 0.15em;
-        min-height: 1.5em;
-        overflow: hidden;
-      }
+    return html`
+      <style>
+        .container {
+          --width: 8;
+          display: grid;
+          grid-template-columns: repeat(var(--width), auto);
+        }
 
-    </style>
+        .item {
+          border: 1px solid rgba(0, 0, 0, 0.25);
+          margin: 0.15em;
+          min-height: 1.5em;
+          overflow: hidden;
+        }
+      </style>
 
-      <form on-submit="handleSubmit">
+      <form @submit="${e => this.handleSubmit(e)}">
         <label for="name">Name</label>
-        <input name="name" type="text" required></input>
+        <input name="name" type="text" required />
 
         <label for="duration">Duration</label>
-        <input name="duration" type="number" min="0" required></input>
+        <input name="duration" type="number" min="0" require />
 
         <label for="amount">Amount</label>
-        <input name="amount" type="number" min="1" max="512"></input>
+        <input name="amount" type="number" min="1" max="512" />
 
         <button type="submit">Add</button>
       </form>
@@ -97,17 +99,18 @@ class AnimationManager extends ReduxMixin(PolymerElement) {
 
       <div class="container">
 
-        <template is="dom-repeat" items="{{animations}}" as="animation">
+        ${repeat(animations, animation => html`
+
           <div class="item">
-
             <animation-bee
-              index$="[[index]]"
-              name="[[animation.name]]"
-              duration="[[animation.duration]]"
-              keyframes="[[animation.keyframes]]""></animation-bee>
-
+              id="${animation.id}"
+              name="${animation.name}"
+              duration="${animation.duration}"
+              .keyframes="${animation.keyframes}">
+            </animation-bee>
           </div>
-        </template>
+
+        `)}
 
       </div>
     `

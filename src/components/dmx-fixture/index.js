@@ -1,7 +1,8 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { store } from '../../reduxStore.js'
 import { setChannels, setFixtureAddress } from '../../actions/index.js'
-import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../dmx-fixture-property/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 import { batch } from '../../utils/index.js'
@@ -13,7 +14,7 @@ import '/node_modules/@polymer/paper-tooltip/paper-tooltip.js'
 /*
  * A single DMX fixture with all properties
  */
-class DmxFixture extends ReduxMixin(PolymerElement) {
+class DmxFixture extends LitElement {
 
   static get properties() {
     return {
@@ -22,22 +23,9 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
       type: { type: String },
       address: { type: Number },
       universe: { type: Number },
-      fixture: { type: Object },
-      properties: Object,
-      _properties: {
-        type: Object,
-        computed: 'computeProperties(fixture)'
-      }
+      _fixture: { type: Object },
+      _properties: { type: Object }
     }
-  }
-
-  ready() {
-    super.ready()
-
-    this.fixture = new Fixtures[this.type]({
-      address: this.address,
-      universe: this.universe
-    })
   }
 
   handleSubmit(e) {
@@ -47,12 +35,7 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
     const data = new FormData(e.target)
     const address = parseInt(data.get('address'), 10)
 
-    this.dispatch(setFixtureAddress(this.id, address))
-  }
-
-  // @TODO: I thought this might fix https://github.com/NERDDISCO/luminave/issues/11, but it doesn't
-  computeProperties(fixture) {
-    return fixture.getParamsList()
+    store.dispatch(setFixtureAddress(this.id, address))
   }
 
   /*
@@ -61,10 +44,10 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
   handleChange(e) {
     const { name, value } = e.detail
     // Set the property of the fixture which will also set the values on the corresponding channels
-    this.fixture[name] = value
+    this._fixture[name] = value
 
     // Send all values of all channels to universe 0
-    this.dispatch(setChannels(0, [...batch]))
+    store.dispatch(setChannels(0, [...batch]))
 
     const now = new Date()
 
@@ -75,8 +58,19 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
     window.dispatchEvent(new CustomEvent('send-universe-to-fivetwelve', { detail: { now } }))
   }
 
-  static get template() {
-    return `
+  render() {
+    // Initialize the fixture based on the type
+    this._fixture = new Fixtures[this.type]({
+      address: this.address,
+      universe: this.universe
+    })
+
+    // Get the properties of the fixture
+    this._properties = this._fixture.getParamsList()
+
+    const { type, address, _fixture, _properties } = this
+
+    return html`
         <style>
           .grid {
             display: flex;
@@ -94,30 +88,33 @@ class DmxFixture extends ReduxMixin(PolymerElement) {
             <div>
               <iron-icon icon="info-outline" id="info"></iron-icon>
               <paper-tooltip for="info">
-                [[type]] | [[fixture.weight]] kg | [[fixture.channels]] Channels
+                ${type} | ${_fixture.weight} kg | ${_fixture.channels} Channels
               </paper-tooltip>
             </div>
 
-            <form id="fixtureMetaProperties" on-submit="handleSubmit">
+            <form id="fixtureMetaProperties" @submit="${e => this.handleSubmit(e)}">
               <div>
                 <paper-tooltip for="address">Address</paper-tooltip>
-                <input id="address" name="address" type="number" min="0" max="512" value="[[address]]"/>
+                <input id="address" name="address" type="number" min="0" max="512" value="${address}"/>
               </div>
             </form>
           </div>
 
           <div class="grid">
-            <template is="dom-repeat" items="{{_properties}}" as="property">
+
+            ${repeat(_properties, property => html`
               <dmx-fixture-property
-                on-change="handleChange"
+                @change="${e => this.handleChange(e)}"
 
-                property="[[property]]"
-                name="[[property.name]]"
-                type="[[property.type]]"
-                channels="[[property.channels]]"
+                .property="${property}"
+                name="${property.name}"
+                type="${property.type}"
+                channels="${property.channels}"
 
-                class="property"></dmx-fixture-property>
-            </template>
+                class="property">
+              </dmx-fixture-property>
+            `)}
+
           </div>
 
         </div>

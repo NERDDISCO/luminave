@@ -1,19 +1,19 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 
 /*
  * A scene list item
  */
-class SceneListItem extends PolymerElement {
+class SceneListItem extends LitElement {
   static get properties() {
-    return {
-      scene: Object
-    }
+    return { scene: { type: Object } }
   }
 
-  static get template() {
-    return `
+  render() {
+    const { scene } = this
+
+    return html`
       <div>
-        [[scene.name]]
+        ${scene.name}
       </div>
     `
   }

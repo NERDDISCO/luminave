@@ -1,13 +1,16 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import ReduxMixin from '../../reduxStore.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
 import Controller from '/node_modules/webusb-dmx512-controller/controller.js'
 import { connectUsb } from '../../actions/index.js'
+import '../connect-button/index.js'
+import { getUsbDmxControllerConnected, getUniverses } from '../../selectors/index.js'
 
 /*
  * Handle the connection to a WebUSB DMX512 Controller
  * @see https://github.com/NERDDISCO/webusb-dmx512-controller
  */
-class UsbDmxManager extends ReduxMixin(PolymerElement) {
+class UsbDmxManager extends connect(store)(LitElement) {
 
   constructor() {
     super()
@@ -29,21 +32,21 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
         this.connect()
       })
       .catch(error => {
-        console.log(error)
+        console.error(error)
+        store.dispatch(connectUsb(false))
       })
   }
 
   static get properties() {
     return {
-      usbConnection: {
-        type: Boolean,
-        statePath: 'connectionManager.usb'
-      },
-      universes: {
-        type: Array,
-        statePath: 'universeManager'
-      }
+      usbConnected: { type: Boolean },
+      universes: { type: Array }
     }
+  }
+
+  _stateChanged(state) {
+    this.usbConnected = getUsbDmxControllerConnected(state)
+    this.universes = getUniverses(state)
   }
 
   connectedCallback() {
@@ -57,11 +60,26 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
   }
 
   listenSendUniverse(e) {
-    if (this.usbConnection.connected) {
+    if (this.usbConnected) {
       // Send universe 0 to the USB DMX controller
       this.controller.send(this.universes[0].channels)
       .catch(error => {
-        console.error(error)
+        console.error(error.code, error)
+
+        switch (error.code) {
+          // The device was disconnected
+          case 8:
+          // A transfer error has occurred
+          case 19:
+          // The transfer was cancelled
+          case 20:
+
+            store.dispatch(connectUsb(false))
+            break;
+        
+          default:
+            break;
+        }
       })
     }
   }
@@ -69,14 +87,14 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
   handleConnectButtonClick() {
 
     // Disconnect from USB controller
-    if (this.usbConnection.connected) {
+    if (this.usbConnected) {
 
       if (this.controller.device === undefined) {
-        this.dispatch(connectUsb(false))
+        store.dispatch(connectUsb(false))
       } else {
         this.controller.disconnect().then(() => {
           // Disconnected
-          this.dispatch(connectUsb(false))
+          store.dispatch(connectUsb(false))
         }, error => {
           console.error(error)
         })
@@ -109,7 +127,7 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
     this.controller.connect().then(() => {
 
       // USB is connected
-      this.dispatch(connectUsb(true))
+      store.dispatch(connectUsb(true))
 
       // // Receive data
       // this.controller.device.onReceive = data => {
@@ -120,20 +138,20 @@ class UsbDmxManager extends ReduxMixin(PolymerElement) {
       // // Receive error
       // this.controller.device.onReceiveError = error => {
       //   // USB is disconnected
-      //   this.dispatch(connectUsb(false))
+      //   store.dispatch(connectUsb(false))
       //   console.log(error)
       // }
 
     }, error => {
       // USB is disconnected
-      this.dispatch(connectUsb(false))
+      store.dispatch(connectUsb(false))
       console.error(error)
     })
   }
 
-  static get template() {
-    return `
-      <connect-button type="usb" label="USB" on-click="handleConnectButtonClick"></connect-button>
+  render() {
+    return html`
+      <connect-button type="usb" label="USB" @click="${() => this.handleConnectButtonClick()}"></connect-button>
     `
   }
 }

@@ -1,12 +1,11 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
-import { DomRepeat } from '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
-import { DomIf } from '/node_modules/@polymer/polymer/lib/elements/dom-if.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 
 
 /*
- *
+ * Property of a DMX fixture
  */
-class DmxFixtureProperty extends PolymerElement {
+class DmxFixtureProperty extends LitElement {
 
   static get properties() {
     return {
@@ -58,34 +57,49 @@ class DmxFixtureProperty extends PolymerElement {
     }))
   }
 
-  static get template() {
-    return `
+  render() {
+    const { channels, property, name } = this
+
+    return html`
     <div>
-      <label title="[[channels]]">[[name]]</label>:
+      <label title="${channels}">${name}</label>:
 
-      <template is="dom-if" if="[[property.isRgb]]">
-        <input type="color" on-change="handleColorChange">
-      </template>
+      ${
+        property.isRgb
+        ? html`<input type="color" @change="${e => this.handleColorChange(e)}">`
+        : ''
+      }
 
-      <template is="dom-if" if="[[property.isRange]]">
-        <input type="number" value="0" min="0" max="255" on-change="handleInputChange">
-      </template>
+      ${
+        property.isRange
+        ? html`<input type="number" value="0" min="0" max="255" @change="${e => this.handleInputChange(e)}">`
+        : ''
+      }
 
-      <template is="dom-if" if="[[property.isMapped]]">
-        <select on-change="handleSelectChange">
-          <template is="dom-repeat" items="{{property.mapping}}" as="mapping">
-            <option value="[[mapping]]">[[mapping]]</option>
-          </template>
-        </select>
-      </template>
+      ${
+        property.isMapped
+        ? html`
+          <select @change="${e => this.handleSelectChange(e)}">
+            ${repeat(property.mapping, mapping => html`
+              <option value="${mapping}">${mapping}</option>
+            `)}
+          </select>
+        `
+        : ''
+      }
 
-      <template is="dom-if" if="[[property.isMultiRange]]">
-        <input type="text" on-change="handleInputChange" title="[[property.mapping]]">
-      </template>
+      ${
+        property.isMultiRange
+        ? html`<input type="text" @change="${e => this.handleInputChange(e)}" title="${JSON.stringify(property.mapping)}">`
+        : ''
+      }
 
-      <template is="dom-if" if="[[property.isHiRes]]">
-        <input type="number" on-change="handleInputChange" title="[[property.min]] to [[property.max]]" min="[[property.min]]" max="[[property.max]]">
-      </template>
+      ${
+        property.isHiRes
+        ? html`<input type="number" @change="${e => this.handleInputChange(e)}" title="${property.min} to ${property.max}" min="${property.min}" max="${property.max}">`
+        : ''
+      }
+
     </div>
     `
   }

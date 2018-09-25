@@ -1,28 +1,17 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 import { addToFixtureBatch } from '../../utils/index.js'
-import { getFixture } from '../../selectors/index.js'
-import { store } from '../../reduxStore.js'
 
 /*
  * Handle an animation in a timeline
  */
-class TimelineAnimation extends PolymerElement {
+class TimelineAnimation extends LitElement {
   static get properties() {
     return {
-      duration: Number,
-
-      progress: {
-        type: Number,
-        observer: 'observeProgress'
-      },
-
-      fixtureIds: Array,
-
-      animation: Object,
-      timeline: {
-        type: Object,
-        computed: 'computeTimeline(animation.keyframes)'
-      }
+      duration: { type: Number },
+      progress: { type: Number },
+      fixtureIds: { type: Array },
+      animation: { type: Object },
+      timeline: { type: Object }
     }
   }
 
@@ -100,14 +89,6 @@ class TimelineAnimation extends PolymerElement {
     return array.sort((a, b) => a.time - b.time)
   }
 
-  observeProgress() {
-    const interpolatedProperties = this.timeline.values(this.computeProgress())
-
-    for (let i = 0; i < this.fixtureIds.length; i++) {
-      addToFixtureBatch(this.fixtureIds[i], interpolatedProperties)
-    }
-  }
-
   computeProgress() {
     let progress = this.progress / this.duration
     if (progress > 1.0) {
@@ -117,8 +98,29 @@ class TimelineAnimation extends PolymerElement {
     return progress
   }
 
-  static get template() {
-    return ``
+  shouldUpdate(changedProperties) {
+    // Update the timeline when the animation is updated
+    if (changedProperties.has('animation')) {
+      this.timeline = this.computeTimeline(this.animation.keyframes)
+    }
+
+    return true
+  }
+
+  render() {
+    if (this.fixtureIds === undefined) {
+      return
+    }
+
+    // Interpolate the properties of the fixtures associated with the animation
+    const interpolatedProperties = this.timeline.values(this.computeProgress())
+
+    // Add the interpolated properties to the fixtureBatch (which is used to set the value in the universe)
+    for (let i = 0; i < this.fixtureIds.length; i++) {
+      addToFixtureBatch(this.fixtureIds[i], interpolatedProperties)
+    }
+
+    return html``
   }
 }
 

@@ -1,19 +1,18 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 
 /*
  * A spacer to be used to make some space between components
- *
- * @TODO: Fix the problem that setting the height has no effect
  */
-class UiSpacer extends PolymerElement {
+class UiSpacer extends LitElement {
+
+  constructor() {
+    super()
+
+    this.height = '1em'
+  }
 
   static get properties() {
-    return {
-      height: {
-        type: Number,
-        value: '1em'
-      }
-    }
+    return { height: { type: String } }
   }
 
   /*
@@ -26,8 +25,10 @@ class UiSpacer extends PolymerElement {
     return Object.keys(vars).map(key => [key, vars[key]].join(':')).join(';')
   }
 
-  static get template() {
-    return `
+  render() {
+    const { height } = this
+    
+    return html`
       <style>
         div {
           width: 100%;
@@ -35,7 +36,7 @@ class UiSpacer extends PolymerElement {
         }
       </style>
 
-      <div style="{{computeVars(height)}}"></div>
+      <div style="${this.computeVars(height)}"></div>
     `
   }
 }

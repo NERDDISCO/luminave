@@ -1,6 +1,8 @@
-import { Element as PolymerElement } from '/node_modules/@polymer/polymer/polymer-element.js'
+import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import { store } from '../../reduxStore.js'
+import { getUsbDmxControllerConnected, getModvConnected, getFivetwelveConnected } from '../../selectors/index.js'
 
-import ReduxMixin from '../../reduxStore.js'
 import '../usb-dmx-manager/index.js'
 import '../modv-manager/index.js'
 import '../fivetwelve-manager/index.js'
@@ -9,60 +11,26 @@ import './indicator.js'
 import '../color-grid/index.js'
 import '../ui-spacer/index.js'
 
-import { modvData } from '../../utils/index.js'
 
-
-class LuminaveStatus extends ReduxMixin(PolymerElement) {
+class LuminaveStatus extends connect(store)(LitElement) {
   static get properties() {
     return {
-      bpm: {
-        type: Number,
-        statePath: 'bpm'
-      },
-      live: {
-        type: Boolean,
-        statePath: 'live'
-      },
-      editMode: {
-        type: Boolean,
-        computed: 'computeEditMode(live)'
-      },
-      usbConnected: {
-        type: Boolean,
-        statePath: 'connectionManager.usb.connected'
-      },
-      modvConnected: {
-        type: Boolean,
-        statePath: 'modvManager.connected'
-      },
-      modvColors: Array,
-      fivetwelveConnected: {
-        type: Boolean,
-        statePath: 'fivetwelveManager.connected'
-      }
+      usbConnected: { type: Boolean },
+      modvConnected: { type: Boolean },
+      fivetwelveConnected: { type: Boolean }
     }
   }
 
-  computeEditMode(live) {
-    return !live
+  _stateChanged(state) {
+    this.usbConnected = getUsbDmxControllerConnected(state)
+    this.modvConnected = getModvConnected(state)
+    this.fivetwelveConnected = getFivetwelveConnected(state)
   }
 
-  connectedCallback() {
-    super.connectedCallback()
-    window.addEventListener('received-data-from-modv', this.listenReceivedModvData.bind(this))
-  }
+  render() {
+    const { usbConnected, modvConnected, fivetwelveConnected } = this
 
-  disconnectedCallback() {
-    super.disconnectedCallback()
-    window.removeEventListener('received-data-from-modv', this.listenReceivedModvData.bind(this))
-  }
-
-  listenReceivedModvData(e) {
-    this.modvColors = modvData.colors
-  }
-
-  static get template() {
-    return `
+    return html`
       <style>
         .grid {
           display: flex;
@@ -86,20 +54,13 @@ class LuminaveStatus extends ReduxMixin(PolymerElement) {
       </style>
 
       <div class="grid">
-        <luminave-status-indicator status="[[usbConnected]]">WebUSB-DMX512</luminave-status-indicator>
+        <luminave-status-indicator ?status="${usbConnected}">WebUSB-DMX512</luminave-status-indicator>
 
         <div class="item">
-          <luminave-status-indicator status="[[modvConnected]]">modV</luminave-status-indicator>
+          <luminave-status-indicator ?status="${modvConnected}">modV</luminave-status-indicator>
         </div>
-        <luminave-status-indicator status="[[fivetwelveConnected]]">fivetwelve</luminave-status-indicator>
+        <luminave-status-indicator ?status="${fivetwelveConnected}">fivetwelve</luminave-status-indicator>
       </div>
-
-      <ui-spacer></ui-spacer>
-      <ui-spacer></ui-spacer>
-
-      <template is="dom-if" if="[[modvConnected]]">
-        <!--<color-grid rows="4" colors="[[modvColors]]"></color-grid>-->
-      </template>
     `
   }
 }

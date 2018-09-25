@@ -131,7 +131,12 @@ export const connectionManager = (
 /*
  * Handle the DMX512 universes
  */
-export const universeManager = (state = [], { type, universe, universeIndex, channelIndex, value, channels }) => {
+export const universeManager = (state = [], { type, universe, universeIndex, universeId, channelIndex, value, channels }) => {
+  
+  if (universeId !== undefined) {
+    universeIndex = state.findIndex(universe => universe.id === universeId)
+  }
+  
   switch (type) {
     case constants.ADD_UNIVERSE:
       return update(state, { $push: [universe] })
@@ -162,6 +167,11 @@ export const universeManager = (state = [], { type, universe, universeIndex, cha
  * Handle the scenes
  */
 export const sceneManager = (state = [], { type, scene, sceneIndex, sceneName, sceneId, animationId, animationIndex, fixtureId, fixtureIndex }) => {
+
+  if (sceneId !== undefined) {
+    sceneIndex = state.findIndex(scene => scene.id === sceneId)
+  }
+
   switch (type) {
     case constants.ADD_SCENE:
       return update(state, { $push: [scene] })
@@ -173,12 +183,14 @@ export const sceneManager = (state = [], { type, scene, sceneIndex, sceneName, s
       return update(state, { [sceneIndex]: { name: { $set: sceneName } } })
     case constants.ADD_ANIMATION_TO_SCENE:
       return update(state, { [sceneIndex]: { animations: { $push: [animationId] } } })
-    case constants.REMOVE_ANIMATION_FROM_SCENE:
+    case constants.REMOVE_ANIMATION_FROM_SCENE: {
+      animationIndex = state[sceneIndex].animations.indexOf(animationId)
       return update(state, { [sceneIndex]: { animations: { $splice: [[animationIndex, 1]] } } })
+    }
     case constants.ADD_FIXTURE_TO_SCENE:
       return update(state, { [sceneIndex]: { fixtures: { $push: [fixtureId] } } })
     case constants.REMOVE_FIXTURE_FROM_SCENE: {
-      const sceneIndex = state.findIndex(scene => scene.id === sceneId)
+      fixtureIndex = state[sceneIndex].fixtures.indexOf(fixtureId)
       return update(state, { [sceneIndex]: { fixtures: { $splice: [[fixtureIndex, 1]] } } })
     }
     default:
@@ -189,7 +201,12 @@ export const sceneManager = (state = [], { type, scene, sceneIndex, sceneName, s
 /*
  * Handle the animations
  */
-export const animationManager = (state = [], { type, animation, animationIndex, animationName, keyframeStep, keyframeProperty, keyframeValue }) => {
+export const animationManager = (state = [], { type, animation, animationIndex, animationId, animationName, keyframeStep, keyframeProperty, keyframeValue }) => {
+  
+  if (animationId !== undefined) {
+    animationIndex = state.findIndex(animation => animation.id === animationId)
+  }
+  
   switch (type) {
     case constants.ADD_ANIMATION:
       return update(state, { $push: [animation] })
@@ -232,25 +249,24 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
  * Handle the DMX512 fixtures
  */
 export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtureId, fixtureAddress, properties, fixtureBatch }) => {
+  
+  if (fixtureId !== undefined) {
+    fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
+  }
+  
   switch (type) {
     case constants.ADD_FIXTURE:
       return update(state, { $push: [fixture] })
 
-
-    case constants.SET_FIXTURE_ADDRESS: {
-      const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
+    case constants.SET_FIXTURE_ADDRESS:
       return update(state, { [fixtureIndex]: { address: { $set: fixtureAddress } } })
-    }
 
     case constants.SET_FIXTURE_PROPERTIES: {
-      const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
       // Properties might already been set
       const oldProperties = state[fixtureIndex].properties
 
       // @TODO: Only add properties that the device can understand based on the instance
       return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties} } } })
-
-      // return update(state, { [fixtureIndex]: { properties: { $merge: {...oldProperties, ...properties, shit: new Date()} } } })
     }
 
     case constants.SET_ALL_FIXTURE_PROPERTIES: {
@@ -272,14 +288,13 @@ export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtur
       // Clean up the fixtureBatch
       clearFixtureInBatch(fixtureId)
 
-      const fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
-
       // @TODO: Only remove the properties that are part of the scene / animation
       return update(state, { [fixtureIndex]: { properties: { $set: {} } } })
     }
 
     case constants.REMOVE_FIXTURE:
       return update(state, { $splice: [[fixtureIndex, 1]] })
+
     default:
       return state
   }
@@ -292,7 +307,12 @@ export const midiManager = (state = {
   controllers: [],
   enabled: false,
   learning: false
-}, { type, controller, controllerIndex, enabled, mapping, mappingIndex, sceneId, sceneIds, sceneIndex, active }) => {
+}, { type, controller, controllerIndex, controllerId, enabled, mapping, mappingIndex, sceneId, sceneIds, sceneIndex, active }) => {
+
+  if (controllerId !== undefined) {
+    controllerIndex = state.controllers.findIndex(controller => controller.id === controllerId)
+  }
+
   switch (type) {
     case constants.ENABLE_MIDI:
       return update(state, { enabled: { $set: enabled } })
@@ -317,8 +337,12 @@ export const midiManager = (state = {
 
       return update(state, { controllers: { [controllerIndex]: { mapping: { [mappingIndex]: { scenes: { $push: newSceneIds } } } } } })
     }
-    case constants.REMOVE_SCENE_FROM_MIDI:
+
+    case constants.REMOVE_SCENE_FROM_MIDI: {
+      sceneIndex = state.controllers[controllerIndex].mapping[mappingIndex].scenes.indexOf(sceneId)
       return update(state, { controllers: { [controllerIndex]: { mapping: { [mappingIndex]: { scenes: { $splice: [[sceneIndex, 1]] } } } } } })
+    }
+
     case constants.LEARN_MIDI:
       return update(state, { learning: { $set: mappingIndex } })
     case constants.REMOVE_MIDI:
