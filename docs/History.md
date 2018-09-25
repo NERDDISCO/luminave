@@ -1,4 +1,107 @@
 
+3.0.0 / 2018-09-25
+==================
+
+  * chore(version): Updated to 3.0.0
+  * Merge pull request #78 from NERDDISCO/3.0
+  * chore(build): Created build of luminave
+  * ci(travis): Initial version
+  * refactor(pwa): Improved push-manifest
+  * refactor(import): Remove unnecessary imports
+  * feat(scene-manager): Remove animation + fixture in multi-add
+  * refactor(state): Don't use index to alter state
+  * refactor(style): Removed old colors
+  * refactor(style): Cleanup for app-drawer
+  * refactor(style): Moved common styles into own shared styles
+  * refactor(style): Moved flexbox into shared styles
+  * refactor(theme): Added own theme as shared style
+  * fix(dmx): Use hiRes instead of multiRange
+  * fix(fixture): Remove fixture from scene and universe
+  * refactor(midi): Show scenes only for button controls
+  * fix(midi-manager): Connection status & remove listener
+  * fix(fivetwelve): Get universe from store
+  * fix(scene-bee): Show name of scene in input
+  * fix(dekk-manager): Get state from store
+  * fix(usb-dmx-manager): Disconnect on error
+  * refactor(*): Removed polymer-redux
+  * refactor(*): Use LitElement instead of PolymerElement
+  * chore(pwa-starter-kit): Added "Built with pwa–starter–kit" shield
+  * build(npm): Updated lit-element to 0.6.0
+  * fix(fixture-manager): Reload dmx fixture properties
+  * chore(webusb-dmx512-controller): Updated to 1.0.7
+  * fix(usb-dmx-manager): USB connection status across browsers
+  * refactor(timeline-manager): Remove unused code
+  * fix(timeline): Updated animation is refelected in timeline
+  * refactor(lit-element): Updated from 0.5.2 to 0.6.0-dev.6
+  * refactor(app): Space between components
+  * test(integration): Change page
+  * chore(config): Added backup before moving to views
+  * refactor(fixture-manager): Display more fixtures in big views
+  * refactor(polymer): Use Polymer 3 & LitElement & PWA Starter Kit
+  * build(eslint): Deactivated no-underscore-dangle
+  * test: Added initial unit and integration tests
+  * build(github): Copy bundle into docs
+  * build(bundle): Create a bundeled version of luminave
+  * build(bundle): Created a ESM bundle
+  * build(yarn): Updated dependencies
+  * refactor(modv): Moved modV into it's own tab
+  * chore(cleanup): Reorganized homepage and devDependencies
+  * docs(setup): Install and run
+  * refactor(pwa): Switch to PWA Starter Kit
+  * refactor(pwa): Switch to PWA Starter Kit
+  * refactor(eslint): Allow plusplus
+  * refactor(cleanup): dom-repeat and eslint
+  * build(yarn): Update to Polymer 3
+  * chore(upgrade): Use Polymer 3 and modV 2
+  * chore(upgrade): Use Polymer 3
+  * chore(cleanup): Remove go server
+  * chore(cleanup): Remove unused files
+  * refactor(components): Use PolymerElement & lit-html
+  * refactor(timeline-manager): modV intergration has to be improved
+  * feat(sort): Correct Natural Sort for Arrays
+  * feat(midi): Add multiple scenes to MIDI
+  * refactor(luminave-status): Hide color-grid to improve performance
+  * chore(ideas): Added new ideas
+  * chore(config): Lumiwall v1
+  * chore(config): Added final config for JSConfEU 2018
+  * feat(fixture): Basic Fluter for JSConfEU
+  * feat(scene-manager): Assign fixtures and animations while creation
+  * refactor(scene-bee): Clean up UI
+  * docs(ui-spacer): Setting the height is not working
+  * refactor(fixture-manager): Show more fixtures
+  * refactor(fixture-list): Added width & height
+  * feat(color-grid): Added row & column labels
+  * feat(animation-manager): Add multiple animations
+  * fix(modv-integration): Listen on 0.0.0.0
+  * feat(midi-manager): Add custom MIDI controls
+  * refactor(fixture-manager): Show more fixtures
+  * feat(fixture-manager): Add bulk of fixtures
+  * feat(fixture): UI improvements
+  * feat(fixture): Added BasicColor
+  * feat(fixture): Change address
+  * chore(ideas): Added new ideas
+  * feat(modv): Display colors in correct order
+  * feat(modv): Custom event "received-data-from-modv"
+  * feat(theme): Added a dark-theme and improved UI
+  * fix(usb-dmx-controller): Only send universe when connected
+  * feat(fixture): Added Stairville Outdoor Stage Par Tri
+  * feat(modv): Handle multiple colors
+  * refactor(usb-dmx-controller): Added webusb-dmx512-controller
+  * docs(usb-dmx-controller): Deprecated not needed files
+  * chore(github): Added issue & pr templates
+  * chore(history): Moved history into docs
+  * chore: Clean up
+  * chore(dependency): Added webusb-dmx512-controller
+  * docs: Clean up
+  * feat(modv): Show icon when connected
+  * refactor(storage): Hide elements
+  * refactor(storage): Moved storage mananger around
+  * fix(dekk): sceneNames must be an Array
+  * chore(docs): Clean up
+  * chore(github): Clean up
+  * feat(logo): Added Glitch Logo
+
+
 2.0.0 / 2018-03-24
 ==================
 
