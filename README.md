@@ -43,7 +43,7 @@ npm install -g polymer-cli
 
 ## Run
 
-Start the local HTTPS server on http://localhost:1337:
+Start the local HTTPS server on http://localhost:8081:
 
 ```bash
 yarn start
