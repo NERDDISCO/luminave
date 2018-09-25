@@ -91,6 +91,11 @@ class SceneManager extends connect(store)(LitElement) {
     this._animations = [animationId]
   }
 
+  handleRemoveAnimation(e) {
+    const { animationId } = e.detail
+    this._animations = this._animations.filter(_animationId => _animationId !== animationId)
+  }
+
   /*
    * Add fixtures to a scene, which will be used in handleSubmitSceneAnimationFixtures
    */
@@ -101,6 +106,11 @@ class SceneManager extends connect(store)(LitElement) {
     event.preventDefault()
 
     this._fixtures = fixtureIds
+  }
+
+  handleRemoveFixture(e) {
+    const { fixtureId } = e.detail
+    this._fixtures = this._fixtures.filter(_fixtureId => _fixtureId !== fixtureId)
   }
 
   render() {
