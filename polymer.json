@@ -7,7 +7,11 @@
   "extraDependencies": [
     "manifest.json",
     "node_modules/@webcomponents/webcomponentsjs/**",
-    "push-manifest.json"
+    "push-manifest.json",
+    "node_modules/webmidi/webmidi.min.js",
+    "libs/keytime/index.js",
+    "libs/buffer/index.js",
+    "libs/uuid/v1.js"
   ],
   "builds": [
     {
