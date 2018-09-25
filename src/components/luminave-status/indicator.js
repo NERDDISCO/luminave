@@ -1,7 +1,5 @@
 import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 
-import '/node_modules/@polymer/paper-button/paper-button.js'
-
 /*
  * Show the status of something, for example USB or modV
  */
@@ -28,11 +26,11 @@ class LuminaveStatusIndicator extends LitElement {
     return html`
         <style>
           .active {
-            border-bottom: 3px solid var(--background-primary);
+            border-bottom: 3px solid var(--primary-background-color);
           }
 
           .inactive {
-            border-bottom: 3px solid var(--background-warning);
+            border-bottom: 3px solid var(--default-warning-color);
           }
         </style>
 

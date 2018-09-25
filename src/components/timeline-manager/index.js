@@ -8,6 +8,7 @@ import '../timeline-scene/index.js'
 import { getTimelineScenes, getAnimations, getTimeline, getFixtures, getModv } from '../../selectors/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 
+import '/node_modules/@polymer/paper-button/paper-button.js'
 import { buttons } from '../../styles/buttons.js'
 
 /*
@@ -218,8 +219,8 @@ class TimelineManager extends connect(store)(LitElement) {
         }
 
         .timeline {
-          background-color: var(--background-dark);
-          color: var(--color-light);
+          background-color: var(--dark-primary-color);
+          color: var(--text-primary-color);
           padding: var(--padding-basic);
         }
 
@@ -227,7 +228,7 @@ class TimelineManager extends connect(store)(LitElement) {
           position: relative;
           margin-top: calc(var(--padding-basic) * 2);
           padding: calc(var(--padding-basic) * 3) var(--padding-basic) var(--padding-basic) var(--padding-basic);
-          border: 3px solid var(--background-light);
+          border: 3px solid var(--light-primary-color);
         }
 
         .scenes::before {
@@ -235,8 +236,8 @@ class TimelineManager extends connect(store)(LitElement) {
           position: absolute;
           top: calc(var(--padding-basic) * -3);
           overflow: visible;
-          background: var(--background-light);
-          color: var(--color-dark);
+          background: var(--light-primary-color);
+          color: var( --dark-primary-color);
           padding: var(--padding-basic);
         }
 
@@ -248,8 +249,8 @@ class TimelineManager extends connect(store)(LitElement) {
         .item {
           margin: 0 .1em;
           padding: var(--padding-basic);
-          border-left: 3px solid var(--background-light);
-          color: var(--color-light);
+          border-left: 3px solid var(--light-primary-color);
+          color: var(--text-primary-color);
         }
       </style>
 

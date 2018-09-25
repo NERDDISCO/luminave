@@ -3,27 +3,19 @@ import { html } from '/node_modules/@polymer/lit-element/lit-element.js'
 export const theme = html`
 <style>
     :host {
-        /* @TODO: Check if those are still valid and if we not can standardize with Google Material Design */
-        --background: #fff;
-        --background-light: #F5F5F5;
-        --background-dark: #424b4b;
-        --background-primary: #35c9a4;
-        --background-warning: #da4453;
-        --color: #bdced7;
-        --color-light: #fff;
-        --color-dark: #6b6b6b;
-        --padding-basic: .5em;
-
         /* Luminave Custom */
+        --padding-basic: .5em;
         --focus-color: #ddd;
+        --default-warning-color: #da4453;
+        --warning-text-color: var(--text-primary-color);
 
         /* Google Material Design */
         --default-primary-color: #3b8183;
         --dark-primary-color: #424b4b;
-        --light-primary-color: #c5cae9;
+        --light-primary-color: #f5f5f5;
         --text-primary-color: #ffffff;
         --accent-color: #ff4081;
-        --primary-background-color: #ffffff;
+        --primary-background-color: #35c9a4;
         --primary-text-color: #ffffff;
         --secondary-text-color: #ffffff;
         --disabled-text-color: black;

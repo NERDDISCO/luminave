@@ -69,7 +69,7 @@ class LuminaveMenu extends connect(store)(LitElement) {
           top: 0;
           left: 0;
           color: var(--paper-toolbar-color);
-          background: var(--background-dark);
+          background: var(--dark-primary-color);
         }
 
         app-drawer {
@@ -94,7 +94,7 @@ class LuminaveMenu extends connect(store)(LitElement) {
         <style>
           app-drawer {  
             --app-drawer-content-container: {
-              background-color: var(--background-dark);
+              background-color: var(--dark-primary-color);
             };
           }
         </style>

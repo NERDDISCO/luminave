@@ -112,8 +112,8 @@ class FixtureManager extends connect(store)(LitElement) {
         position: relative;
         margin-top: calc(var(--padding-basic) * 2);
         padding: calc(var(--padding-basic) * 3) var(--padding-basic) var(--padding-basic) var(--padding-basic);
-        border: 3px solid var(--background-dark);
-        background: var(--background-dark);
+        border: 3px solid var(--dark-primary-color);
+        background: var(--dark-primary-color);
       }
 
       .item::before {
@@ -121,8 +121,8 @@ class FixtureManager extends connect(store)(LitElement) {
         position: absolute;
         top: calc(var(--padding-basic) * -3);
         overflow: visible;
-        background: var(--background-dark);
-        color: var(--color-light);
+        background: var(--dark-primary-color);
+        color: var(--text-primary-color);
         padding: var(--padding-basic);
       }
 

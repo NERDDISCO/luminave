@@ -112,8 +112,8 @@ class ColorGrid extends LitElement {
           position: absolute;
           top: calc(var(--padding-basic) * -6);
           overflow: visible;
-          background: var(--background-dark);
-          color: var(--color-light);
+          background: var(--dark-primary-color);
+          color: var(--text-primary-color);
           padding: var(--padding-basic);
           font-size: .7em;
         }
@@ -121,8 +121,8 @@ class ColorGrid extends LitElement {
         .label {
           font-size: .7em;
           padding: 0 0 0 calc(var(--padding-basic) / 2);
-          background: var(--background-dark);
-          color: var(--color-light);
+          background: var(--dark-primary-color);
+          color: var(--text-primary-color);
           height: 100%;
           min-width: 20px;
           display: inline-block;

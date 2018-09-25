@@ -7,6 +7,9 @@ import { addUniverse, removeUniverse, resetUniverseAndFixtures } from '../../act
 import { getUniverses, getLive } from '../../selectors/index.js'
 import '../channel-grid/index.js'
 
+import '/node_modules/@polymer/paper-button/paper-button.js'
+import { buttons } from '../../styles/buttons.js'
+
 /*
  * Handle all DMX512 universes
  */
@@ -46,10 +49,12 @@ class UniverseManager extends connect(store)(LitElement) {
     const { universes, live } = this
 
     return html`
+      ${buttons}
+
       ${
         live 
         ? ''
-        : html`<button @click="${(e) => this.addUniverse(e)}">Add universe</button>`
+        : html`<paper-button @click="${(e) => this.addUniverse(e)}" class="primary">Add universe</paper-button>`
       }
 
       ${repeat(universes, (universe) => universe.id, (universe, index) => html`
@@ -60,11 +65,11 @@ class UniverseManager extends connect(store)(LitElement) {
             ? ''
             : html`
               <h3>${universe.name}</h3>
-              <button @click="${(e) => this.removeUniverse(e)}" data-index="${index}">Remove</button>
+              <paper-button @click="${(e) => this.removeUniverse(e)}" data-index="${index}" class="warning">Remove</paper-button>
             `
           }
 
-          <button @click="${(e) => this.resetUniverse(e)}" data-index="${index}">Reset</button>
+          <paper-button @click="${(e) => this.resetUniverse(e)}" data-index="${index}">Reset</paper-button>
 
           <div>
             <channel-grid .channels="${universe.channels}"></channel-grid>
