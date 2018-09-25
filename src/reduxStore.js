@@ -1,4 +1,4 @@
-import { createStore, combineReducers, applyMiddleware } from '/libs/redux/index.js'
+import { createStore, combineReducers, applyMiddleware } from '/node_modules/redux/es/index.js'
 
 import * as reducers from './reducers/index.js'
 import app from './reducers/app.js'

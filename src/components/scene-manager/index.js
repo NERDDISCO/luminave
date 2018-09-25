@@ -2,7 +2,7 @@ import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element
 import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { uuidV1 } from '../../../libs/abcq/uuid.js'
+import { uuidV1 } from '../../../libs/uuid/uuid.js'
 import { addScene } from '../../actions/index.js'
 import { getScenesSorted, getFixtures, getAnimations } from '../../selectors/index.js'
 import '../scene-bee/index.js'

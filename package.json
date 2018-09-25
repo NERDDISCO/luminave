@@ -45,7 +45,7 @@
     "redux-thunk": "^2.2.0",
     "reselect": "^3.0.1",
     "uuid": "^3.1.0",
-    "webmidi": "^2.0.0",
+    "webmidi": "^2.2.0",
     "webusb-dmx512-controller": "^1.0.7"
   },
   "homepage": "https://github.com/NERDDISCO/luminave#readme",

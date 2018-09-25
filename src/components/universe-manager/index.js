@@ -2,7 +2,7 @@ import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element
 import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { uuidV1 } from '../../../libs/abcq/uuid.js'
+import { uuidV1 } from '../../../libs/uuid/uuid.js'
 import { addUniverse, removeUniverse, resetUniverseAndFixtures } from '../../actions/index.js'
 import { getUniverses, getLive } from '../../selectors/index.js'
 import '../channel-grid/index.js'
