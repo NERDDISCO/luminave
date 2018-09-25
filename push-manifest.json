@@ -19,6 +19,10 @@
     "libs/uuid/v1.js": {
       "type": "script",
       "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
+      "type": "script",
+      "weight": 1
     }
   },
 
@@ -40,6 +44,10 @@
       "weight": 1
     },
     "libs/uuid/v1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
       "type": "script",
       "weight": 1
     }
@@ -92,6 +100,10 @@
     "libs/uuid/v1.js": {
       "type": "script",
       "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
+      "type": "script",
+      "weight": 1
     }
   },
 
@@ -113,6 +125,10 @@
       "weight": 1
     },
     "libs/uuid/v1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
       "type": "script",
       "weight": 1
     }
@@ -138,6 +154,10 @@
     "libs/uuid/v1.js": {
       "type": "script",
       "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
+      "type": "script",
+      "weight": 1
     }
   },
 
@@ -159,6 +179,10 @@
       "weight": 1
     },
     "libs/uuid/v1.js": {
+      "type": "script",
+      "weight": 1
+    },
+    "node_modules/webmidi/webmidi.min.js": {
       "type": "script",
       "weight": 1
     }

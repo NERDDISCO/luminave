@@ -1,7 +1,7 @@
 {
   "name": "luminave",
   "short_name": "luminave",
-  "description": "lManage all the lights with your web browser and create stunning visual experiences.",
+  "description": "Manage all the lights with your web browser and create stunning visual experiences.",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#424b4b",
