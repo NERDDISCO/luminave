@@ -1,6 +1,6 @@
  ![luminave 3.0.0](images/luminave_logo.gif)
 
-[![3.0.0](https://img.shields.io/badge/Stable-2.0.0-00f557.svg?style=flat)](https://github.com/NERDDISCO/luminave/releases/tag/3.0.0)
+[![3.0.0](https://img.shields.io/badge/Stable-3.0.0-00f557.svg?style=flat)](https://github.com/NERDDISCO/luminave/releases/tag/3.0.0)
 
 Use luminave to manage all the lights with your web browser and create stunning visual experiences.
 
