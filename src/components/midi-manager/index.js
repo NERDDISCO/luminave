@@ -56,8 +56,8 @@ class MidiManager extends connect(store)(LitElement) {
   }
 
   removeMidi(e) {
-    const { dataset } = e.target
-    store.dispatch(removeMidi(parseInt(dataset.index, 10)))
+    const { controllerId } = e.target
+    store.dispatch(removeMidi(controllerId))
   }
 
   handleSubmit(e) {
@@ -133,12 +133,11 @@ class MidiManager extends connect(store)(LitElement) {
 
       <div class="grid">
 
-        ${repeat(controllers, controller => controller.id, (controller, index) => html`
+        ${repeat(controllers, controller => html`
 
           <div>
             <midi-controller
               id="${controller.id}"
-              index="${index}"
               name="${controller.name}"
               .mapping="${controller.mapping}"
               inputname="${controller.input}"
@@ -150,7 +149,7 @@ class MidiManager extends connect(store)(LitElement) {
             ${
               live 
               ? ''
-              : html`<button @click="${e => this.removeMidi(e)}" data-index="${index}">Remove</button>`
+              : html`<button @click="${e => this.removeMidi(e)}" .controllerId="${controller.id}">Remove</button>`
             }
                 
           </div>

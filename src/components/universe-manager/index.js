@@ -36,13 +36,12 @@ class UniverseManager extends connect(store)(LitElement) {
   }
 
   removeUniverse(e) {
-    const { dataset } = e.target
-    store.dispatch(removeUniverse(parseInt(dataset.index, 10)))
+    const { universeId } = e.target
+    store.dispatch(removeUniverse(universeId))
   }
 
   resetUniverse(e) {
-    const { dataset } = e.target
-    store.dispatch(resetUniverseAndFixtures(parseInt(dataset.index, 10)))
+    store.dispatch(resetUniverseAndFixtures(0))
   }
 
   render() {
@@ -54,10 +53,10 @@ class UniverseManager extends connect(store)(LitElement) {
       ${
         live 
         ? ''
-        : html`<paper-button @click="${(e) => this.addUniverse(e)}" class="primary">Add universe</paper-button>`
+        : html`<paper-button @click="${e => this.addUniverse(e)}" class="primary">Add universe</paper-button>`
       }
 
-      ${repeat(universes, (universe) => universe.id, (universe, index) => html`
+      ${repeat(universes, universe => html`
         <div>
 
           ${
@@ -65,11 +64,11 @@ class UniverseManager extends connect(store)(LitElement) {
             ? ''
             : html`
               <h3>${universe.name}</h3>
-              <paper-button @click="${(e) => this.removeUniverse(e)}" data-index="${index}" class="warning">Remove</paper-button>
+              <paper-button @click="${e => this.removeUniverse(e)}" .universeId="${universe.id}" class="warning">Remove</paper-button>
             `
           }
 
-          <paper-button @click="${(e) => this.resetUniverse(e)}" data-index="${index}">Reset</paper-button>
+          <paper-button @click="${e => this.resetUniverse(e)}" .universeId="${universe.id}">Reset</paper-button>
 
           <div>
             <channel-grid .channels="${universe.channels}"></channel-grid>

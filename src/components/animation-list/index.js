@@ -17,23 +17,25 @@ class AnimationList extends LitElement {
   }
 
   handleAnimationSubmit(e) {
+    // Get data out of the form
+    const data = new FormData(e.target)
+    const animationId = data.get('animationId')
+
     this.dispatchEvent(new CustomEvent('add-animation', {
       detail: {
         event: e,
-        animationId: this.animationId
+        animationId
       }
     }))
   }
 
-  handleSelectedAnimation(e) {
-    this.animationId = e.target.selectedOptions[0].value
-  }
-
   handleRemoveAnimation(e) {
+    const { animationId } = e.target
+
     this.dispatchEvent(new CustomEvent('remove-animation', {
       detail: {
         event: e,
-        animationIndex: e.target.animationIndex
+        animationId
       }
     }))
   }
@@ -53,7 +55,7 @@ class AnimationList extends LitElement {
       ${shared}
 
       <form @submit="${e => this.handleAnimationSubmit(e)}">
-        <select name="type" @change="${e => this.handleSelectedAnimation(e)}" required>
+        <select name="animationId" required>
           <option value=""></option>
           ${repeat(animationManager, animation => html`
             <option value="${animation.id}">${animation.name}</option>
@@ -65,9 +67,9 @@ class AnimationList extends LitElement {
 
       <div class="items">
     
-        ${repeat(animations, animationId => animationId, (animationId, index) => html`
+        ${repeat(animations, animationId => html`
           <animation-list-item class="item" .animation="${getAnimation(store.getState(), { animationId })}"></animation-list-item>
-          <button @click="${e => this.handleRemoveAnimation(e)}" .animationIndex="${index}">x</button>
+          <button @click="${e => this.handleRemoveAnimation(e)}" .animationId="${animationId}">x</button>
         `)}
 
       </div>

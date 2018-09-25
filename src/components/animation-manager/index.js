@@ -99,11 +99,11 @@ class AnimationManager extends connect(store)(LitElement) {
 
       <div class="container">
 
-        ${repeat(animations, animation => animation.id, (animation, index) => html`
+        ${repeat(animations, animation => html`
 
           <div class="item">
             <animation-bee
-              index="${index}"
+              id="${animation.id}"
               name="${animation.name}"
               duration="${animation.duration}"
               .keyframes="${animation.keyframes}">

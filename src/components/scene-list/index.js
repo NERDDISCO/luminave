@@ -30,10 +30,12 @@ class SceneList extends LitElement {
   }
 
   handleRemoveScene(e) {
+    const { sceneId } = e.target
+
     this.dispatchEvent(new CustomEvent('remove-scene', {
       detail: {
         event: e,
-        sceneIndex: e.target.sceneIndex
+        sceneId
       }
     }))
   }
@@ -55,7 +57,7 @@ class SceneList extends LitElement {
         ${
           live 
           ? ''
-          : html`<button @click="${e => this.handleRemoveScene(e)}" scene-index="${index}">x</button>`
+          : html`<button @click="${e => this.handleRemoveScene(e)}" .sceneId="${sceneId}">x</button>`
         }
       `)
     }

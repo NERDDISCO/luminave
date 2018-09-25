@@ -25,7 +25,7 @@ class MidiGrid extends connect(store)(LitElement) {
       width: { type: Number },
       height: { type: Number },
       mapping: { type: Array },
-      controllerindex: { type: Number },
+      controllerId: { type: String },
       learnIndex: { type: Number },
       sceneManager: { type: Array },
       live: { type: Boolean }
@@ -63,37 +63,34 @@ class MidiGrid extends connect(store)(LitElement) {
   }
 
   handleLearn(e) {
-    const { dataset } = e.target
-    const mappingIndex = parseInt(dataset.index, 10)
+    const { mappingIndex } = e.target
     store.dispatch(learnMidi(mappingIndex))
   }
 
   handleAddScenes(e) {
     const { event, sceneIds } = e.detail
-    const { dataset } = e.target
+    const { mappingIndex } = e.target
 
     // Prevent sending data to server & reset all fields
     event.preventDefault()
     event.target.reset()
 
-    store.dispatch(addScenesToMidi(this.controllerindex, parseInt(dataset.index, 10), sceneIds))
+    store.dispatch(addScenesToMidi(this.controllerId, mappingIndex, sceneIds))
   }
 
   handleRemoveScene(e) {
-    const { sceneIndex } = e.detail
-    const { dataset } = e.target
-    const mappingIndex = parseInt(dataset.index, 10)
+    const { sceneId } = e.detail
+    const { mappingIndex } = e.target
 
-    store.dispatch(removeSceneFromMidi(this.controllerindex, mappingIndex, sceneIndex))
+    store.dispatch(removeSceneFromMidi(this.controllerId, mappingIndex, sceneId))
   }
 
   handleLabelChange(e) {
     const label = e.target.value
-    const { dataset } = e.target
-    const mappingIndex = parseInt(dataset.index, 10)
+    const { mappingIndex } = e.target
 
     const mapping = { label }
-    store.dispatch(addMidiMapping(this.controllerindex, mappingIndex, mapping))
+    store.dispatch(addMidiMapping(this.controllerId, mappingIndex, mapping))
   }
 
   handleType(e) {
@@ -104,7 +101,7 @@ class MidiGrid extends connect(store)(LitElement) {
     const mappingIndex = parseInt(data.get('mappingIndex'), 10)
 
     const mapping = { type }
-    store.dispatch(addMidiMapping(this.controllerindex, mappingIndex, mapping))
+    store.dispatch(addMidiMapping(this.controllerId, mappingIndex, mapping))
   }
 
   selectedType(elementType, type) {
@@ -159,7 +156,7 @@ class MidiGrid extends connect(store)(LitElement) {
               ${
                 this.isNotEmpty(element.type)
                 ? html`
-                  <input class="name" name="label" type="text" @change="${e => this.handleLabelChange(e)}" value="${element.label}" data-index="${index}" />
+                  <input class="name" name="label" type="text" @change="${e => this.handleLabelChange(e)}" value="${element.label}" .mappingIndex="${index}" />
                   <br>
                 ` 
                 : ''
@@ -181,7 +178,7 @@ class MidiGrid extends connect(store)(LitElement) {
                 ? html`
                   <br>
                   Note: ${element.note}
-                  <button class="learn" @click="${e => this.handleLearn(e)}" data-index="${index}">Learn</button>                
+                  <button class="learn" @click="${e => this.handleLearn(e)}" .mappingIndex="${index}">Learn</button>                
                 ` 
                 : ''
               }
@@ -192,7 +189,7 @@ class MidiGrid extends connect(store)(LitElement) {
                   <scene-list
                     @add-scenes="${e => this.handleAddScenes(e)}"
                     @remove-scene="${e => this.handleRemoveScene(e)}"
-                    data-index="${index}"
+                    .mappingIndex="${index}"
                     .scenes="${element.scenes}"
                     .sceneManager="${sceneManager}"
                     .live="${live}">

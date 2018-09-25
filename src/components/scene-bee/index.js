@@ -22,28 +22,31 @@ class SceneBee extends LitElement {
   }
 
   runScene(e) {
-    store.dispatch(addSceneToTimeline(this.id))
+    const { sceneId } = e.target
+    store.dispatch(addSceneToTimeline(sceneId))
   }
 
   removeScene(e) {
-    const { dataset } = e.target
-    store.dispatch(removeScene(parseInt(dataset.index, 10)))
+    const { sceneId } = e.target
+    store.dispatch(removeScene(sceneId))
   }
 
   handleAddAnimation(e) {
     const { event, animationId } = e.detail
+    const { sceneId } = e.target
 
     // Prevent sending data to server & reset all fields
     event.preventDefault()
     event.target.reset()
 
-    store.dispatch(addAnimationToScene(this.index, animationId))
+    store.dispatch(addAnimationToScene(sceneId, animationId))
   }
 
   handleRemoveAnimation(e) {
-    const { animationIndex } = e.detail
+    const { animationId } = e.detail
+    const { sceneId } = e.target
 
-    store.dispatch(removeAnimationFromScene(this.index, animationIndex))
+    store.dispatch(removeAnimationFromScene(sceneId, animationId))
 
     // #35: Reset fixture properties after animation was removed
     // @TODO: Only reset the fixtures that are attached to the scene
@@ -52,26 +55,28 @@ class SceneBee extends LitElement {
 
   handleAddFixtures(e) {
     const { event, fixtureIds } = e.detail
+    const { sceneId } = e.target
 
     // Prevent sending data to server & reset all fields
     event.preventDefault()
 
-    store.dispatch(addFixturesToScene(this.index, fixtureIds))
+    store.dispatch(addFixturesToScene(sceneId, fixtureIds))
   }
 
   handleRemoveFixture(e) {
-    const { fixtureIndex, fixtureId } = e.detail
+    const { fixtureId } = e.detail
+    const { sceneId } = e.target
 
-    store.dispatch(removeFixtureFromSceneAndUniverse(this.id, fixtureId, fixtureIndex))
+    store.dispatch(removeFixtureFromSceneAndUniverse(sceneId, fixtureId))
   }
 
   handleNameChange(e) {
-    const sceneName = e.target.value
-    store.dispatch(setSceneName(this.index, sceneName))
+    const { value } = e.target
+    store.dispatch(setSceneName(this.id, value))
   }
 
   render() {
-    const { index, id, animations, fixtures, animationManager, fixtureManager, name } = this
+    const { id, animations, fixtures, animationManager, fixtureManager, name } = this
 
     return html`
     <style>
@@ -88,13 +93,13 @@ class SceneBee extends LitElement {
       <div>
         <input class="name" name="name" type="text" @change="${e => this.handleNameChange(e)}" value="${name}" />
 
-        <button @click="${e => this.removeScene(e)}" data-index="${index}">Remove</button>
-        <button @click="${e => this.runScene(e)}" sceneId="${id}">Run</button>
+        <button @click="${e => this.removeScene(e)}" .sceneId="${id}">Remove</button>
+        <button @click="${e => this.runScene(e)}" .sceneId="${id}">Run</button>
 
         <animation-list
           @add-animation="${e => this.handleAddAnimation(e)}"
           @remove-animation="${e => this.handleRemoveAnimation(e)}"
-          data-index="${index}"
+          .sceneId="${id}"
           .animations="${animations}"
           .animationManager="${animationManager}"></animation-list>
 
@@ -102,7 +107,7 @@ class SceneBee extends LitElement {
         <fixture-list
           @add-fixtures="${e => this.handleAddFixtures(e)}"
           @remove-fixture="${e => this.handleRemoveFixture(e)}"
-          data-index="${index}"
+          .sceneId="${id}"
           .fixtures="${fixtures}"
           .fixtureManager="${fixtureManager}"></fixture-list>
       </div>

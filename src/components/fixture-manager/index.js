@@ -30,8 +30,8 @@ class FixtureManager extends connect(store)(LitElement) {
   }
 
   removeFixture(e) {
-    const { dataset } = e.target
-    store.dispatch(removeFixtureFromEverywhere(dataset.id))
+    const { fixtureId } = e.target
+    store.dispatch(removeFixtureFromEverywhere(fixtureId))
   }
 
   handleSubmit(e) {
@@ -164,7 +164,7 @@ class FixtureManager extends connect(store)(LitElement) {
                 address="${fixture.address}"
                 universe="${fixture.universe}"></dmx-fixture>
 
-              <button @click="${e => this.removeFixture(e)}" data-id="${fixture.id}">Remove</button>
+              <button @click="${e => this.removeFixture(e)}" .fixtureId="${fixture.id}">Remove</button>
             </div>
 
           `)}

@@ -21,13 +21,14 @@ class AnimationBee extends LitElement {
     return {
       name: { type: String },
       duration: { type: Number },
-      index: { type: Number },
+      id: { type: String },
       keyframes: { type: Object }
     }
   }
 
   removeAnimation(e) {
-    store.dispatch(removeAnimation(parseInt(this.index, 10)))
+    const { animationId } = e.target
+    store.dispatch(removeAnimation(animationId))
   }
 
   handleKeyframeSubmit(e) {
@@ -41,16 +42,16 @@ class AnimationBee extends LitElement {
     const property = data.get('property')
     const value = data.get('value')
 
-    store.dispatch(addKeyframe(this.index, step, property, value))
+    store.dispatch(addKeyframe(this.id, step, property, value))
   }
 
   handleNameChange(e) {
     const animationName = e.target.value
-    store.dispatch(setAnimationName(this.index, animationName))
+    store.dispatch(setAnimationName(this.id, animationName))
   }
 
   render() {
-    const { index, properties, keyframes, name } = this
+    const { id, properties, keyframes, name } = this
 
     return html`
       <style>
@@ -67,7 +68,7 @@ class AnimationBee extends LitElement {
 
       <div>
         <input class="name" name="name" type="text" @change="${e => this.handleNameChange(e)}" value="${name}" />
-        <button @click="${e => this.removeAnimation(e)}" data-index="${index}">Remove</button>
+        <button @click="${e => this.removeAnimation(e)}" .animationId="${id}">Remove</button>
 
         <br><br>
 

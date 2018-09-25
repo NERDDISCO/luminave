@@ -4,7 +4,7 @@ import { store } from '../../reduxStore.js'
 import WebMidi from '../../../libs/webmidi/index.js'
 import '../midi-grid/index.js'
 import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
-import { getMidiLearning, getMidiEnabled, getLive, getMidiControllers } from '../../selectors/index.js'
+import { getMidiLearning, getMidiEnabled, getLive } from '../../selectors/index.js'
 
 
 /*
@@ -25,7 +25,6 @@ class MidiController extends connect(store)(LitElement) {
     return {
       name: { type: String },
       id: { type: String },
-      index: { type: Number },
       inputname: { type: String },
       outputname: { type: String },
       width: { type: Number },
@@ -57,7 +56,7 @@ class MidiController extends connect(store)(LitElement) {
       const elements = this.width * this.height
 
       for (let i = 0; i < elements; i++) {
-        store.dispatch(addMidiMapping(this.index, i, {
+        store.dispatch(addMidiMapping(this.id, i, {
           scenes: [],
           note: -1,
           label: '',
@@ -137,7 +136,7 @@ class MidiController extends connect(store)(LitElement) {
     if (this.midiLearning > -1) {
 
       const mapping = { note }
-      store.dispatch(addMidiMapping(this.index, this.midiLearning, mapping))
+      store.dispatch(addMidiMapping(this.id, this.midiLearning, mapping))
 
       // Disable learning
       store.dispatch(learnMidi(-1))
@@ -157,7 +156,7 @@ class MidiController extends connect(store)(LitElement) {
         const elementState = !element.active
 
         // Set active state of element
-        store.dispatch(setMidiMappingActive(this.index, mappingIndex, elementState))
+        store.dispatch(setMidiMappingActive(this.id, mappingIndex, elementState))
 
         if (elementState) {
           // Add all scenes to the timeline
@@ -185,7 +184,7 @@ class MidiController extends connect(store)(LitElement) {
     if (this.midiLearning > -1) {
 
       const mapping = { note }
-      store.dispatch(addMidiMapping(this.index, this.midiLearning, mapping))
+      store.dispatch(addMidiMapping(this.id, this.midiLearning, mapping))
 
       // Disable learning
       store.dispatch(learnMidi(-1))
@@ -198,14 +197,14 @@ class MidiController extends connect(store)(LitElement) {
       if (mappingIndex > -1) {
         const value = velocity
         const mapping = { value }
-        store.dispatch(addMidiMapping(this.index, mappingIndex, mapping))
+        store.dispatch(addMidiMapping(this.id, mappingIndex, mapping))
       }
     }
   }
 
   render() {
 
-    const { live, name, connected, inputname, outputname, width, height, mapping, index } = this
+    const { live, name, connected, inputname, outputname, width, height, mapping, id } = this
 
     return html`
       <div>
@@ -226,7 +225,7 @@ class MidiController extends connect(store)(LitElement) {
           width="${width}"
           height="${height}"
           .mapping="${mapping}"
-          controllerindex="${index}"></midi-grid>
+          .controllerId="${id}"></midi-grid>
 
       </div>
     `
