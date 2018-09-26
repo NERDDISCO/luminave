@@ -18,7 +18,7 @@
   "builds": [
     {
       "name": "esm-bundled",
-      "basePath": "/",
+      "basePath": "/luminave",
       "browserCapabilities": [
         "es2015",
         "modules"
