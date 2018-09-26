@@ -17,12 +17,14 @@ const del = require('del')
  * Cleans the prpl-server build in the server directory.
  */
 gulp.task('prpl-server:clean', () => del('server/build'))
-gulp.task('prpl-server:clean:docs', () => del(['docs/images', 
+gulp.task('prpl-server:clean:docs', () => del([
+  'docs/images', 
   'docs/src', 
   'docs/index.html',
   'docs/manifest.json',
   'docs/push-manifest.json',
-  'docs/service-worker.js']))
+  'docs/service-worker.js'
+]))
 
 gulp.task('prpl-server:copy:docs', () => gulp.src('build/esm-bundled/**').pipe(gulp.dest('docs/')))
 

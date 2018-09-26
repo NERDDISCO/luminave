@@ -2,7 +2,9 @@
   "entrypoint": "index.html",
   "shell": "src/app.js",
   "sources": [
-    "images/**/*"
+    "images/**/*",
+    "src/app.js",
+    "src/views/*"
   ],
   "extraDependencies": [
     "manifest.json",
@@ -16,6 +18,7 @@
   "builds": [
     {
       "name": "esm-bundled",
+      "basePath": "/",
       "browserCapabilities": [
         "es2015",
         "modules"
