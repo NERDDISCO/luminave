@@ -9,7 +9,6 @@ import { batch } from '../../utils/index.js'
 
 import '/node_modules/@polymer/iron-icons/iron-icons.js'
 import '/node_modules/@polymer/iron-icons/maps-icons.js'
-import '/node_modules/@polymer/paper-tooltip/paper-tooltip.js'
 
 /*
  * A single DMX fixture with all properties
@@ -87,17 +86,19 @@ class DmxFixture extends LitElement {
           <div class="grid">
             <div>
               <iron-icon icon="info-outline" id="info"></iron-icon>
-              <paper-tooltip for="info">
-                ${type} | ${_fixture.weight} kg | ${_fixture.channels} Channels
-              </paper-tooltip>
-            </div>
+              Type: ${type}
+              <br />
+              Weight: ${_fixture.weight} kg
+              <br />
+              Channels: ${_fixture.channels}
 
-            <form id="fixtureMetaProperties" @submit="${e => this.handleSubmit(e)}">
-              <div>
-                <paper-tooltip for="address">Address</paper-tooltip>
-                <input id="address" name="address" type="number" min="0" max="512" value="${address}"/>
-              </div>
-            </form>
+              <form id="fixtureMetaProperties" @submit="${e => this.handleSubmit(e)}">
+                <div>
+                  <label for="address">Address</label>
+                  <input id="address" name="address" type="number" min="0" max="512" value="${address}"/>
+                </div>
+              </form>
+            </div>
           </div>
 
           <div class="grid">

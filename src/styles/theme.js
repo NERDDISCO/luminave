@@ -3,6 +3,15 @@ import { html } from '/node_modules/@polymer/lit-element/lit-element.js'
 export const theme = html`
 <style>
     :host {
+        /* Material Components Web Components */
+        --mdc-theme-primary: var(--paper-blue-grey-700);
+        --mdc-theme-secondary: var(--paper-red-500);
+        --mdc-theme-background: var(--paper-grey-900);
+        --mdc-theme-surface: var(--paper-grey-300);
+        --mdc-theme-on-primary: #fff;
+        --mdc-theme-on-secondary: #000;
+        --mdc-theme-on-surface: #000;
+
         /* Luminave Custom */
         --padding-basic: .5em;
         --focus-color: #ddd;
@@ -10,20 +19,23 @@ export const theme = html`
         --warning-text-color: var(--text-primary-color);
 
         /* Google Material Design */
-        --default-primary-color: #3b8183;
+        --primary-background-color: var(--mdc-theme-surface);
+        --primary-color: var(--mdc-theme-on-surface);
+
+
         --dark-primary-color: #424b4b;
         --light-primary-color: #f5f5f5;
         --text-primary-color: #ffffff;
         --accent-color: #ff4081;
-        --primary-background-color: #35c9a4;
         --primary-text-color: #ffffff;
         --secondary-text-color: #ffffff;
         --disabled-text-color: black;
         --divider-color: #e0e0e0;
 
+
         /* Polymer Elements */
         --app-drawer-scrim-background: rgba(0, 0, 0, 0.8);
-
+/*
         --paper-checkbox-checked-color: var(--default-primary-color);
         --paper-checkbox-checked-ink-color: var(--default-primary-color);
         --paper-checkbox-unchecked-color: var(--dark-primary-color);
@@ -64,6 +76,7 @@ export const theme = html`
         --paper-toggle-button-unchecked-ink-color: var(--dark-primary-color);
         --paper-toolbar-background: var(--dark-primary-color);
         --paper-toolbar-color: #bdced7;
+*/
 
         color: #fff;
     }

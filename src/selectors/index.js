@@ -84,3 +84,11 @@ export const getFixture = (state, properties) => {
   return getFixtures(state)
     .filter(fixture => fixture.id === properties.fixtureId)[0]
 }
+
+/*
+ * Sort fixtures by fixture.name
+ */
+export const getFixturesSorted = createSelector(
+  getFixtures,
+  fixtures => fixtures.sort((a, b) => collator.compare(a.name, b.name))
+)

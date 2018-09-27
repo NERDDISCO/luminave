@@ -16,20 +16,24 @@ class LuminaveDashboard extends connect(store)(LitElement) {
   static get properties() {
     return {
       live: { type: Boolean },
-      _page: { type: String }
+      _page: { type: String },
+      _entityId: { type: String }
     }
   }
 
   firstUpdated() {
     // Use a helper router to dispatch the location
-    installRouter(location => store.dispatch(navigate(window.decodeURIComponent(location.pathname))))
+    installRouter(location => store.dispatch(navigate(location)))
   }
 
   _stateChanged(state) {
     this._page = state.app.page
+    this._entityId = state.app.entityId
   }
 
   render() {
+    const { _page, _entityId } = this
+
     return html`
       ${tabs}
 
@@ -47,7 +51,7 @@ class LuminaveDashboard extends connect(store)(LitElement) {
 
       <ui-spacer></ui-spacer>
 
-      <paper-tabs selected="${this._page}" attr-for-selected="name">
+      <paper-tabs selected="${_page}" attr-for-selected="name">
         <paper-tab name="universe" link>
           <a href="/universe" tabindex="-1">Universes</a>
         </paper-tab>
@@ -72,13 +76,17 @@ class LuminaveDashboard extends connect(store)(LitElement) {
 
       <!-- Main content -->
       <main role="main" class="main-content">
-        <universe-view ?active="${this._page === 'universe'}" class="page"></universe-view>
-        <midi-view ?active="${this._page === 'midi'}" class="page"></midi-view>
-        <scene-view ?active="${this._page === 'scene'}" class="page"></scene-view>
-        <animation-view ?active="${this._page === 'animation'}" class="page"></animation-view>
-        <fixture-view ?active="${this._page === 'fixture'}" class="page"></fixture-view>
-        <modv-view ?active="${this._page === 'modv'}" class="page"></modv-view>
-        <my-view404 ?active="${this._page === 'view404'}" class="page"></my-view404>
+        <universe-view ?active="${_page === 'universe'}" class="page"></universe-view>
+        <midi-view ?active="${_page === 'midi'}" class="page"></midi-view>
+        <scene-view ?active="${_page === 'scene'}" class="page"></scene-view>
+        <animation-view ?active="${_page === 'animation'}" class="page"></animation-view>
+
+        <fixture-view ?active="${_page === 'fixture' && _entityId === undefined}" class="page"></fixture-view>
+        <fixture-detail-view ?active="${_page === 'fixture' && _entityId !== undefined}" class="page" .fixtureId="${_entityId}"></fixture-detail-view>
+
+        <modv-view ?active="${_page === 'modv'}" class="page"></modv-view>
+        <my-view404 ?active="${_page === 'view404'}" class="page"></my-view404>
+
       </main>
     `
   }
