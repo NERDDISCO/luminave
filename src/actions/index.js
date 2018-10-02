@@ -273,6 +273,15 @@ export const setFixtureAddress = (fixtureId, fixtureAddress) => ({
 })
 
 /*
+ * Set the values of the fixture
+ */
+export const setFixture = (fixtureId, fixture) => ({
+  fixtureId,
+  fixture,
+  type: constants.SET_FIXTURE
+})
+
+/*
  * Set the properties of a fixture
  */
 export const setFixtureProperties = (fixtureId, properties) => ({

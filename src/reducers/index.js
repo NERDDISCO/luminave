@@ -258,6 +258,10 @@ export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtur
     case constants.ADD_FIXTURE:
       return update(state, { $push: [fixture] })
 
+    case constants.SET_FIXTURE: {
+      return update(state, { [fixtureIndex]: { $merge: fixture } })
+    }
+
     case constants.SET_FIXTURE_ADDRESS:
       return update(state, { [fixtureIndex]: { address: { $set: fixtureAddress } } })
 

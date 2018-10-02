@@ -2,18 +2,31 @@ import { html } from '@polymer/lit-element'
 import { PageViewElement } from './page-view-element.js'
 import { getFixture } from '../selectors/index.js'
 import { store } from '../reduxStore.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
 import '../components/dmx-fixture/index.js'
 
-class FixtureDetailView extends PageViewElement {
+class FixtureDetailView extends connect(store)(PageViewElement) {
 
   static get properties() {
-    return { fixtureId: { type: String } }
+    return { 
+      fixtureId: { type: String },
+      fixture: {
+        type: Object,
+        hasChanged: (newValue, oldValue) => !Object.is(newValue, oldValue)
+      }
+    }
+  }
+
+  _stateChanged(state) {
+    const { fixtureId } = this
+    this.fixture = getFixture(state, { fixtureId })
   }
 
   render() {
     const { fixtureId } = this
+    this.fixture = getFixture(store.getState(), { fixtureId })
 
-    const fixture = getFixture(store.getState(), { fixtureId })
+    const { fixture } = this
 
     return html`
       <style>
@@ -24,23 +37,13 @@ class FixtureDetailView extends PageViewElement {
           border: 3px solid var(--dark-primary-color);
           background: var(--dark-primary-color);
         }
-
-        .item::before {
-          content: attr(data-name);
-          position: absolute;
-          top: calc(var(--padding-basic) * -3);
-          overflow: visible;
-          background: var(--dark-primary-color);
-          color: var(--text-primary-color);
-          padding: var(--padding-basic);
-        }
       </style>
 
 
-      <div class="item" data-name="${fixture.name}">
+      <div class="item">
 
         <dmx-fixture
-          name="${fixture.name}"
+          .name="${fixture.name}"
           .properties="${fixture.properties}"
           id="${fixture.id}"
           type="${fixture.type}"
