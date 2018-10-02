@@ -128,11 +128,10 @@ class FixtureManager extends connect(store)(LitElement) {
         }
 
         .container {
-          display: grid;
-          grid-template-columns: repeat(var(--width), auto);
-          row-gap: calc(var(--padding-basic) * 2);
-          column-gap: var(--padding-basic);
+          background-color: var(--mdc-theme-primary);
         }
+
+
       </style>
 
       <custom-style>
@@ -179,7 +178,7 @@ class FixtureManager extends connect(store)(LitElement) {
 
         <br>
 
-        <div class="mdc-layout-grid mdc-layout-grid--align-left">
+        <div class="mdc-layout-grid mdc-layout-grid--align-left container">
           <div class="mdc-layout-grid__inner">
 
             ${repeat(fixtures, fixture => html`

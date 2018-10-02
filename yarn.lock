@@ -531,7 +531,7 @@
   dependencies:
     "@polymer/lit-element" "^0.6.0"
 
-"@material/mwc-button@^0.2.1":
+"@material/mwc-button@0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@material/mwc-button/-/mwc-button-0.2.1.tgz#be61290559d2660530cee573e26ee5e70eab7ed4"
   dependencies:
@@ -541,7 +541,7 @@
     "@material/mwc-ripple" "^0.2.1"
     "@polymer/lit-element" "^0.6.0"
 
-"@material/mwc-icon@^0.2.1":
+"@material/mwc-icon@0.2.1", "@material/mwc-icon@^0.2.1":
   version "0.2.1"
   resolved "https://registry.yarnpkg.com/@material/mwc-icon/-/mwc-icon-0.2.1.tgz#16cd881e48c5de7bf0372453393a40c56e372d53"
   dependencies:
@@ -728,13 +728,7 @@
     "@polymer/iron-meta" "^3.0.0-pre.26"
     "@polymer/polymer" "^3.0.0"
 
-"@polymer/lit-element@0.6.0":
-  version "0.6.0"
-  resolved "https://registry.yarnpkg.com/@polymer/lit-element/-/lit-element-0.6.0.tgz#6ad8ae0f0c749624ad5c5523384d5cd64db30d18"
-  dependencies:
-    lit-html "^0.11.2"
-
-"@polymer/lit-element@^0.6.0":
+"@polymer/lit-element@0.6.1", "@polymer/lit-element@^0.6.0":
   version "0.6.1"
   resolved "https://registry.yarnpkg.com/@polymer/lit-element/-/lit-element-0.6.1.tgz#56772f8fb0c6d3d73a20a6d17f3bc82ec648664b"
   dependencies:
@@ -4240,10 +4234,6 @@ liftoff@^2.5.0:
     object.map "^1.0.0"
     rechoir "^0.6.2"
     resolve "^1.1.7"
-
-lit-html@^0.11.2:
-  version "0.11.3"
-  resolved "https://registry.yarnpkg.com/lit-html/-/lit-html-0.11.3.tgz#34d6eb27ef0c7fdae542c7b50762526704605681"
 
 lit-html@^0.11.4:
   version "0.11.4"

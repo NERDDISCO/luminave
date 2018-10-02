@@ -7,10 +7,10 @@ export const theme = html`
         --mdc-theme-primary: var(--paper-blue-grey-700);
         --mdc-theme-secondary: var(--paper-red-500);
         --mdc-theme-background: var(--paper-grey-900);
-        --mdc-theme-surface: var(--paper-grey-300);
+        --mdc-theme-surface: var(--paper-grey-900);
         --mdc-theme-on-primary: #fff;
         --mdc-theme-on-secondary: #000;
-        --mdc-theme-on-surface: #000;
+        --mdc-theme-on-surface: #fff;
 
         /* Luminave Custom */
         --padding-basic: .5em;
@@ -21,11 +21,12 @@ export const theme = html`
         /* Google Material Design */
         --primary-background-color: var(--mdc-theme-surface);
         --primary-color: var(--mdc-theme-on-surface);
+        --text-primary-color: var(--mdc-theme-on-primary);
 
 
-        --dark-primary-color: #424b4b;
+        --dark-primary-color: var(--paper-blue-grey-700);
         --light-primary-color: #f5f5f5;
-        --text-primary-color: #ffffff;
+        
         --accent-color: #ff4081;
         --primary-text-color: #ffffff;
         --secondary-text-color: #ffffff;
