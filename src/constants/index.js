@@ -35,6 +35,7 @@ export const REMOVE_ANIMATION = uuidV1()
 export const SET_ANIMATION_NAME = uuidV1()
 export const ADD_KEYFRAME = uuidV1()
 export const ADD_FIXTURE = uuidV1()
+export const SET_FIXTURE = uuidV1()
 export const SET_FIXTURE_ADDRESS = uuidV1()
 export const SET_FIXTURE_PROPERTIES = uuidV1()
 export const SET_ALL_FIXTURE_PROPERTIES = uuidV1()
@@ -73,14 +74,21 @@ export const STORAGE_STATE = 'LuminaveConfig'
 export const FIXTURE_TYPES = ['EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
   'AdjStarburst', 'CameoFlatPar1RGBW', 'CameoPixBar600PRO', 'CameoWookie200RGY',
   'StairvilleAF150', 'StairvilleBowlBeam604LEDCOBMovingHead', 'JsFestMovingHeadWash',
-  'StairvilleOutdoorStageParTri', 'BasicColor', 'BasicFluter']
+  'StairvilleOutdoorStageParTri', 'BasicColor', 'BasicFluter', 'EuroliteTMH7',
+  'TourHazerII', 'SgmXC5', 'BasicDimmer', 'LTHLedParCob250w', 'AdjSweeperBeamQuadLed',
+  'RobeColorWash575EAt1_4'
+]
 
 export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
   'yellow', 'uv', 'rotate', 'pan', 'tilt', 'speed', 'brightness', 'colorSpeed',
   'movement', 'gobo', 'amount', 'mode', 'modvColor', 'colors', 'pattern', 'zoom',
   'xAxisRolling', 'yAxisRolling', 'zAxisRolling', 'xAxisMoving', 'yAxisMoving',
   'panTilt', 'panEndless', 'tiltEndless', 'sound', 'colorMacro', 'strobeMacro',
-  'scanSpeed', 'rgbwMacro', 'resetAuto']
+  'scanSpeed', 'rgbwMacro', 'resetAuto', 'pump', 'fan', 'strobeDuration', 'strobeRate',
+  'white1', 'white2', 'white3', 'white4', 'white5', 'tiltMacro', 'tiltMacroSpeed', 
+  'chase', 'chaseSpeed', 'panTiltMacro', 'panTiltMacroSpeed', 'goboRotating', 'goboWheelRotating',
+  'goboRotation', 'prism', 'prismRotation', 'frost', 'iris', 'focus'
+]
 
 export const MIDI_TYPE_BUTTON = 'Button'
 export const MIDI_TYPE_KNOB = 'Knob'
