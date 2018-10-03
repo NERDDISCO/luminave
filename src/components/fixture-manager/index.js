@@ -127,11 +127,6 @@ class FixtureManager extends connect(store)(LitElement) {
           }
         }
 
-        .container {
-          background-color: var(--mdc-theme-primary);
-        }
-
-
       </style>
 
       <custom-style>
@@ -178,7 +173,7 @@ class FixtureManager extends connect(store)(LitElement) {
 
         <br>
 
-        <div class="mdc-layout-grid mdc-layout-grid--align-left container">
+        <div class="mdc-layout-grid mdc-layout-grid--align-left">
           <div class="mdc-layout-grid__inner">
 
             ${repeat(fixtures, fixture => html`
@@ -191,8 +186,8 @@ class FixtureManager extends connect(store)(LitElement) {
                   </div>
 
                   <div class="card-actions">
-                    <a href="/fixture/${fixture.id}" tabindex="-1"><mwc-button class="card" icon="edit"></mwc-button></a>
-                    <mwc-button class="card" icon="delete" @click="${e => this.removeFixture(e)}" .fixtureId="${fixture.id}"></mwc-button>
+                    <a href="/fixture/${fixture.id}" tabindex="-1"><mwc-button icon="edit"></mwc-button></a>
+                    <mwc-button icon="delete" @click="${e => this.removeFixture(e)}" .fixtureId="${fixture.id}"></mwc-button>
                   </div>
                 </paper-card>
 
