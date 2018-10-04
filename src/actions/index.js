@@ -256,6 +256,21 @@ export const addKeyframe = (animationId, keyframeStep, keyframeProperty, keyfram
 })
 
 /*
+ * Add keyframes to an animation
+ */
+export const addKeyframes = (animationId, keyframeStep, keyframeProperties) => {
+  return (dispatch, getState) => {
+    debugger
+    Object.entries(keyframeProperties).map(keyframeProperty => {
+      const [property, value] = keyframeProperty
+
+      dispatch(addKeyframe(animationId, keyframeStep, property, value))
+    })
+
+  }
+}
+
+/*
  * Add a fixture
  */
 export const addFixture = fixture => ({

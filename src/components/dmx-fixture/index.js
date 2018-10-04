@@ -1,11 +1,14 @@
 import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
 import { repeat } from '/node_modules/lit-html/directives/repeat.js'
 import { store } from '../../reduxStore.js'
-import { setChannels, setFixture, setFixtureProperties } from '../../actions/index.js'
+import { setChannels, setFixture, setFixtureProperties, addKeyframes } from '../../actions/index.js'
+import { getAnimations } from '../../selectors/index.js'
 import '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
 import '../dmx-fixture-property/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 import { batch } from '../../utils/index.js'
+import { connect } from 'pwa-helpers/connect-mixin.js'
+import '../animation-list/index.js'
 
 import '/node_modules/@polymer/iron-icons/iron-icons.js'
 import '/node_modules/@polymer/iron-icons/maps-icons.js'
@@ -13,7 +16,7 @@ import '/node_modules/@polymer/iron-icons/maps-icons.js'
 /*
  * A single DMX fixture with all properties
  */
-class DmxFixture extends LitElement {
+class DmxFixture extends connect(store)(LitElement) {
 
   static get properties() {
     return {
@@ -24,8 +27,14 @@ class DmxFixture extends LitElement {
       universe: { type: Number },
       properties: { type: Object },
       _fixture: { type: Object },
-      _properties: { type: Object }
+      _properties: { type: Object },
+      animationManager: { type: Array },
+      _animations: { type: Array }
     }
+  }
+
+  _stateChanged(state) {
+    this.animationManager = getAnimations(state)
   }
 
   handleSubmit(e) {
@@ -65,6 +74,35 @@ class DmxFixture extends LitElement {
     window.dispatchEvent(new CustomEvent('send-universe-to-fivetwelve', { detail: { now } }))
   }
 
+  handleCreateKeyframe(e) {
+    e.preventDefault()
+
+    // Get data out of the form
+    const data = new FormData(e.target)
+    const step = data.get('step')
+
+    const [animationId] = this._animations
+
+    store.dispatch(addKeyframes(animationId, step, this.properties))
+  }
+
+  /*
+   * Add an animation to a scene, which will be used in handleSubmitSceneAnimationFixtures
+   */
+  handleAddAnimation(e) {
+    const { event, animationId } = e.detail
+
+    // Prevent sending data to server & reset all fields
+    event.preventDefault()
+
+    this._animations = [animationId]
+  }
+
+  handleRemoveAnimation(e) {
+    const { animationId } = e.detail
+    this._animations = this._animations.filter(_animationId => _animationId !== animationId)
+  }
+
   render() {
     // Initialize the fixture based on the type
     this._fixture = new Fixtures[this.type]({
@@ -75,7 +113,7 @@ class DmxFixture extends LitElement {
     // Get the properties of the fixture
     this._properties = this._fixture.getParamsList()
 
-    const { properties, type, address, name, _fixture, _properties } = this
+    const { properties, type, address, name, _fixture, _properties, _animations, animationManager } = this
 
     return html`
         <style>
@@ -113,6 +151,24 @@ class DmxFixture extends LitElement {
               Weight: ${_fixture.weight} kg
               <br />
               Channels: ${_fixture.channels}
+
+
+              <form id="createKeyframe" @submit="${e => this.handleCreateKeyframe(e)}">
+                <animation-list
+                  name="animation"
+                  @add-animation="${e => this.handleAddAnimation(e)}"
+                  @remove-animation="${e => this.handleRemoveAnimation(e)}"
+                  .animations="${_animations}"
+                  .animationManager="${animationManager}">
+                </animation-list>
+
+                <div>
+                  <label for="step">Step</label>
+                  <input id="step" name="step" type="number" min="0" max="1" value="0" />
+                </div>
+
+                <button type="submit">Create Keyframe</button>
+              </form>
             </div>
           </div>
 
