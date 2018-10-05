@@ -29,6 +29,7 @@ class AnimationManager extends connect(store)(LitElement) {
     const duration = parseInt(data.get('duration'), 10)
     const name = data.get('name')
     const amount = parseInt(data.get('amount'), 10)
+    const startId = parseInt(data.get('startId'), 10) || 1
 
     // Amount was not specified, so we just add one fixture
     if (isNaN(amount)) {
@@ -44,7 +45,7 @@ class AnimationManager extends connect(store)(LitElement) {
 
       // Add multiple animations
       for (let i = 0; i < amount; i++) {
-        const animationIndex = i + 1
+        const animationIndex = startId + i
 
         // @TODO: Allow default keyframes than only modvColor
         const keyframes = {
@@ -52,11 +53,19 @@ class AnimationManager extends connect(store)(LitElement) {
           1: { modvColor: animationIndex }
         }
 
+        let newName = ''
+        
+        if (amount > 1) {
+          newName = `${name}${animationIndex}`
+        } else {
+          newName = `${name}`
+        }
+
         store.dispatch(addAnimation({
           id: uuidV1(),
           keyframes,
           duration,
-          name: `${name}${animationIndex}`
+          name: newName
         }))
       }
     }
@@ -91,6 +100,9 @@ class AnimationManager extends connect(store)(LitElement) {
 
         <label for="amount">Amount</label>
         <input name="amount" type="number" min="1" max="512" />
+
+        <label for="startId">ID to start</label>
+        <input name="startId" type="number" min="1" />
 
         <button type="submit">Add</button>
       </form>
