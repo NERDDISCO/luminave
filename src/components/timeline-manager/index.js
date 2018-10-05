@@ -135,12 +135,9 @@ class TimelineManager extends connect(store)(LitElement) {
           }
 
           // Overwrite the color of every fixture when a connection to modV was established
-          if (this.modvConnected && fixture.hasOwnProperty('color')) {
-
-            // @TODO: When modvConnected, but no color value yet, we still set the color
-
+          if (this.modvConnected && fixture.hasOwnProperty('modvColor')) {
             // Set a specific color from modV
-            if (fixture.hasOwnProperty('modvColor')) {
+            // if () {
 
               // @TODO: Fix precision error = No interpolation for values that don't change
               fixture.modvColor = Math.round(fixture.modvColor)
@@ -155,9 +152,10 @@ class TimelineManager extends connect(store)(LitElement) {
                 : fixture.color
 
             // Use average color from modV
-            } else {
-              fixture.color = modvData.average
-            }
+            // } else {
+              // @TODO: The color should only be set if the modV color is defined, everything else is confusing
+              // fixture.color = modvData.average
+            // }
           }
       }
       

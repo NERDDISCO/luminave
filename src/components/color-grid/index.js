@@ -106,14 +106,14 @@ class ColorGrid extends LitElement {
           width: 40px;
         }
 
-        .item:nth-child(4n-3):before {
+        .item:nth-child(6n-5):before {
           counter-increment: header;
           content: counter(header);
           position: absolute;
           top: calc(var(--padding-basic) * -6);
           overflow: visible;
-          background: var(--dark-primary-color);
-          color: var(--text-primary-color);
+          background: var(--mdc-theme-surface);
+          color: var(--mdc-theme-on-surface);
           padding: var(--padding-basic);
           font-size: .7em;
         }
@@ -145,6 +145,14 @@ class ColorGrid extends LitElement {
 
           <div class="row-label">
             <span class="label">d</span>
+          </div>
+
+          <div class="row-label">
+            <span class="label">e</span>
+          </div>
+
+          <div class="row-label">
+            <span class="label">f</span>
           </div>
       </div>
 

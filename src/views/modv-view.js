@@ -62,7 +62,7 @@ class modvView extends PageViewElement {
       <section>
         <ui-spacer></ui-spacer>
         
-        <color-grid rows="4" .colors="${colors}"></color-grid>
+        <color-grid rows="6" .colors="${colors}"></color-grid>
       </section>
     `
   }
