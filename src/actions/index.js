@@ -260,7 +260,6 @@ export const addKeyframe = (animationId, keyframeStep, keyframeProperty, keyfram
  */
 export const addKeyframes = (animationId, keyframeStep, keyframeProperties) => {
   return (dispatch, getState) => {
-    debugger
     Object.entries(keyframeProperties).map(keyframeProperty => {
       const [property, value] = keyframeProperty
 
