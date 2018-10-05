@@ -164,7 +164,7 @@ class DmxFixture extends connect(store)(LitElement) {
 
                 <div>
                   <label for="step">Step</label>
-                  <input id="step" name="step" type="number" min="0" max="1" value="0" />
+                  <input id="step" name="step" type="number" min="0" max="1" step="any" value="0" />
                 </div>
 
                 <button type="submit">Create Keyframe</button>
