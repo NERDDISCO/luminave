@@ -135,7 +135,7 @@ class MidiGrid extends connect(store)(LitElement) {
       const element = mapping[index]
       
       itemTemplates.push(html`
-        <div style="${this.computeItemVars(element, index, learnIndex)}" class="item ${classMap({active: element.active})}">
+        <div style="${this.computeItemVars(element, index, learnIndex)}" class="item ${classMap({active: element.active, empty: !this.isNotEmpty(element.type)})}">
 
           <div class="wrapper">
 
@@ -242,6 +242,10 @@ class MidiGrid extends connect(store)(LitElement) {
           display: flex;
           justify-content: center;
           align-items: center;
+        }
+
+        .live .item.empty {
+          background: var(--mdc-theme-background);
         }
 
         .live .control-value {
