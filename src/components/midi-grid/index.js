@@ -237,7 +237,7 @@ class MidiGrid extends connect(store)(LitElement) {
         }
 
         .live .item {
-          border: 5px solid var(--mdc-theme-background);
+          border: 10px solid var(--mdc-theme-background);
           border-radius: .5em;
           display: flex;
           justify-content: center;
