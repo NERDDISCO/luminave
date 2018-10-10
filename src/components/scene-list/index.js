@@ -63,6 +63,14 @@ class SceneList extends LitElement {
     }
 
     return html`
+      <style>
+        :host {
+          max-height: 8em;
+          display: block;
+          overflow: scroll;
+        }
+      </style>
+
       ${
         live 
         ? ''
