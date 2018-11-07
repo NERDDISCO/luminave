@@ -1,0 +1,1090 @@
+{
+  "animationManager": [{
+    "id": "fb2e7a10-c80c-11e8-95b5-3b5b63b7c97e",
+    "keyframes": {
+      "0": {
+        "dimmer": 255,
+        "white5": 255,
+        "color": [255, 255, 0],
+        "brightness": "dimmer(255)",
+        "gobo": "open",
+        "strobe": 0
+      },
+      "1": {
+        "dimmer": 255,
+        "white5": 255,
+        "color": [255, 255, 0],
+        "brightness": "dimmer(255)",
+        "gobo": "open",
+        "strobe": 0
+      }
+    },
+    "duration": 20,
+    "name": "all-white"
+  }, {
+    "id": "653f69f0-6e94-11e8-a1ad-2535aca727fd",
+    "keyframes": {
+      "0": {
+        "dimmer": 255,
+        "brightness": "dimmer(255)"
+      },
+      "1": {
+        "dimmer": 255,
+        "brightness": "dimmer(255)"
+      }
+    },
+    "duration": 20,
+    "name": "dimmer 8"
+  }, {
+    "id": "1dd2ed20-c80e-11e8-aa32-4920b825426c",
+    "keyframes": {
+      "0": {
+        "dimmer": 255,
+        "color": [255, 0, 0]
+      },
+      "1": {
+        "dimmer": 255,
+        "color": [255, 0, 255]
+      },
+      "0.1": {
+        "dimmer": 255,
+        "color": [255, 128, 0]
+      },
+      "0.2": {
+        "dimmer": 255,
+        "color": [255, 255, 0]
+      },
+      "0.3": {
+        "dimmer": 255,
+        "color": [128, 255, 0]
+      },
+      "0.4": {
+        "dimmer": 255,
+        "color": [0, 255, 0]
+      },
+      "0.5": {
+        "dimmer": 255,
+        "color": [0, 255, 128]
+      },
+      "0.6": {
+        "dimmer": 255,
+        "color": [0, 255, 255]
+      },
+      "0.7": {
+        "dimmer": 255,
+        "color": [0, 128, 255]
+      },
+      "0.8": {
+        "dimmer": 255,
+        "color": [0, 0, 255]
+      },
+      "0.9": {
+        "dimmer": 255,
+        "color": [128, 0, 255]
+      }
+    },
+    "duration": 20,
+    "name": "Rainbow"
+  }, {
+    "id": "1c962b51-e110-11e8-9baa-e3c839f8f810",
+    "keyframes": {
+      "0": {
+        "modvColor": 44
+      },
+      "1": {
+        "modvColor": 44
+      }
+    },
+    "duration": 20,
+    "name": "viper 2"
+  }, {
+    "id": "486222c0-e17e-11e8-a629-f3a47a287d52",
+    "keyframes": {
+      "0": {
+        "modvColor": 5
+      },
+      "1": {
+        "modvColor": 5
+      }
+    },
+    "duration": 20,
+    "name": "viper 1"
+  }],
+  "bpm": 59,
+  "connectionManager": {
+    "usb": {
+      "connected": false
+    },
+    "bluetooth": {
+      "connected": false
+    }
+  },
+  "dekkManager": {
+    "data": {
+      "scenes": ["0position 1", "color red"]
+    },
+    "connected": false
+  },
+  "fivetwelveManager": {
+    "connected": false,
+    "lastTransmission": "2018-02-07T05:56:08.130Z"
+  },
+  "fixtureManager": [{
+    "id": "e7047e30-de88-11e8-9736-0559264100a5",
+    "type": "ViperVl3000Spot",
+    "name": "Viper 1",
+    "universe": 0,
+    "address": 1,
+    "properties": {}
+  }, {
+    "id": "760a0e60-e0f5-11e8-abd4-0b2df56d1fa6",
+    "type": "ViperVl3000Spot",
+    "name": "Viper 2",
+    "universe": 0,
+    "address": 50,
+    "properties": {}
+  }],
+  "live": false,
+  "midiManager": {
+    "controllers": [{
+      "id": "9fd89270-6580-11e8-b11b-4340480b7153",
+      "name": "AKAI MIDIMix",
+      "input": "MIDI Mix",
+      "output": "MIDI Mix",
+      "width": "9",
+      "height": "6",
+      "mapping": [{
+        "scenes": [],
+        "note": 63,
+        "label": "C: Stroke Weight",
+        "type": "Knob",
+        "active": false,
+        "value": 60
+      }, {
+        "scenes": [],
+        "note": 66,
+        "label": "",
+        "type": "Knob",
+        "active": false,
+        "value": 76
+      }, {
+        "scenes": [],
+        "note": 69,
+        "label": "Fractilion: Fine",
+        "type": "Knob",
+        "active": false,
+        "value": 67
+      }, {
+        "scenes": [],
+        "note": 28,
+        "label": "Hexagon: Speed",
+        "type": "Knob",
+        "active": false,
+        "value": 67
+      }, {
+        "scenes": [],
+        "note": 46,
+        "label": "Sea: Speed",
+        "type": "Knob",
+        "active": false,
+        "value": 61
+      }, {
+        "scenes": [],
+        "note": 50,
+        "label": "Kaleidoscope: Rotation",
+        "type": "Knob",
+        "active": false,
+        "value": 64
+      }, {
+        "scenes": [],
+        "note": 54,
+        "label": "BadTv: Scroll",
+        "type": "Knob",
+        "active": false,
+        "value": 64
+      }, {
+        "scenes": [],
+        "note": 58,
+        "label": "BoF: Density",
+        "type": "Knob",
+        "active": false,
+        "value": 7
+      }, {
+        "scenes": [],
+        "note": 63,
+        "label": "",
+        "type": "Empty",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 64,
+        "label": "C: Distance",
+        "type": "Knob",
+        "active": false,
+        "value": 90
+      }, {
+        "scenes": [],
+        "note": 67,
+        "label": "TapestryFract: J",
+        "type": "Knob",
+        "active": false,
+        "value": 37
+      }, {
+        "scenes": [],
+        "note": 70,
+        "label": "Fractilion: Rate",
+        "type": "Knob",
+        "active": false,
+        "value": 63
+      }, {
+        "scenes": [],
+        "note": 29,
+        "label": "Hexagon: Depth",
+        "type": "Knob",
+        "active": false,
+        "value": 66
+      }, {
+        "scenes": [],
+        "note": 47,
+        "label": "Sea: Choppy",
+        "type": "Knob",
+        "active": false,
+        "value": 80
+      }, {
+        "scenes": [],
+        "note": 51,
+        "label": "Kaleidoscope: Sides",
+        "type": "Knob",
+        "active": false,
+        "value": 67
+      }, {
+        "scenes": [],
+        "note": 55,
+        "label": "BadTv: Distortion 1",
+        "type": "Knob",
+        "active": false,
+        "value": 127
+      }, {
+        "scenes": [],
+        "note": 59,
+        "label": "BoF: Depth",
+        "type": "Knob",
+        "active": false,
+        "value": 17
+      }, {
+        "scenes": [],
+        "note": 25,
+        "label": "Crystal Tunnel",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 65,
+        "label": "C: Spacing",
+        "type": "Knob",
+        "active": false,
+        "value": 54
+      }, {
+        "scenes": [],
+        "note": 68,
+        "label": "TapestryFract: H",
+        "type": "Knob",
+        "active": false,
+        "value": 40
+      }, {
+        "scenes": [],
+        "note": 71,
+        "label": "Fractilion: Scale",
+        "type": "Knob",
+        "active": false,
+        "value": 62
+      }, {
+        "scenes": [],
+        "note": 30,
+        "label": "Hexagon: Repeat",
+        "type": "Knob",
+        "active": false,
+        "value": 63
+      }, {
+        "scenes": [],
+        "note": 48,
+        "label": "Sea: Freq",
+        "type": "Knob",
+        "active": false,
+        "value": 83
+      }, {
+        "scenes": [],
+        "note": 52,
+        "label": "Kaleidoscope: Size",
+        "type": "Knob",
+        "active": false,
+        "value": 76
+      }, {
+        "scenes": [],
+        "note": 56,
+        "label": "BadTv: Noise",
+        "type": "Knob",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 60,
+        "label": "BoF: Size",
+        "type": "Knob",
+        "active": false,
+        "value": 127
+      }, {
+        "scenes": [],
+        "note": 26,
+        "label": "GLOW",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 1,
+        "label": "Concentrics",
+        "type": "Button",
+        "active": true,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 4,
+        "label": "TapestryFract",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 7,
+        "label": "Fractilion",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 10,
+        "label": "Hexagon",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 13,
+        "label": "Sea",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 16,
+        "label": "Kaleidoscope",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 19,
+        "label": "BadTv",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 22,
+        "label": "Ball of Fire",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 27,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 3
+      }, {
+        "scenes": [],
+        "note": 3,
+        "label": "Waveform",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 6,
+        "label": "Collage",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 9,
+        "label": "Triangles",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 12,
+        "label": "Optical Flow Distort",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 15,
+        "label": "Pinch",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 18,
+        "label": "Pixelate",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 21,
+        "label": "Accenture Interactive",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 24,
+        "label": "RuhrJS",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 24,
+        "label": "",
+        "type": "Empty",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 72,
+        "label": "Waveform: Stroke",
+        "type": "Fader",
+        "active": false,
+        "value": 118
+      }, {
+        "scenes": [],
+        "note": 73,
+        "label": "Collage: Cell Size",
+        "type": "Fader",
+        "active": false,
+        "value": 35
+      }, {
+        "scenes": [],
+        "note": 74,
+        "label": "Triangles: Cell Size",
+        "type": "Fader",
+        "active": false,
+        "value": 92
+      }, {
+        "scenes": [],
+        "note": 31,
+        "label": "OFD: Offset",
+        "type": "Fader",
+        "active": false,
+        "value": 14
+      }, {
+        "scenes": [],
+        "note": 49,
+        "label": "Pinch: Amount",
+        "type": "Fader",
+        "active": false,
+        "value": 9
+      }, {
+        "scenes": [],
+        "note": 53,
+        "label": "Pixelate: Amount",
+        "type": "Fader",
+        "active": false,
+        "value": 127
+      }, {
+        "scenes": [],
+        "note": 57,
+        "label": "Accenture: Size",
+        "type": "Fader",
+        "active": false,
+        "value": 71
+      }, {
+        "scenes": [],
+        "note": 61,
+        "label": "RuhrJS: Size",
+        "type": "Fader",
+        "active": false,
+        "value": 90
+      }, {
+        "scenes": [],
+        "note": 62,
+        "label": "Master",
+        "type": "Fader",
+        "active": false,
+        "value": 127
+      }]
+    }, {
+      "id": "53984340-deb3-11e8-a58f-011855131eb5",
+      "name": "Launchpad Mini",
+      "input": "Launchpad Mini",
+      "output": "Launchpad Mini",
+      "width": 8,
+      "height": 8,
+      "mapping": [{
+        "scenes": ["760b7ab0-e105-11e8-addd-9b5de0407495", "1c965260-e110-11e8-9baa-e3c839f8f810"],
+        "note": 0,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 1,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 2,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 3,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 4,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 5,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 6,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 7,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 16,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 17,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 18,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 19,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 20,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 21,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 22,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 23,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 32,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 33,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 34,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 35,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 36,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 37,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 38,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 39,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 48,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 49,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 50,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 51,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 52,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 53,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 54,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 55,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 64,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 65,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 66,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 67,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 68,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 69,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 70,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 71,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 80,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 81,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 82,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 83,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 84,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 85,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 86,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 87,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 96,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 97,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 98,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 99,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 100,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 101,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 102,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 103,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 112,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 113,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 114,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 115,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 116,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 117,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 118,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 119,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }]
+    }],
+    "enabled": true,
+    "learning": -1
+  },
+  "modvManager": {
+    "color": [1, 0, 0],
+    "connected": true
+  },
+  "sceneManager": [{
+    "id": "058d9a10-6690-11e8-9676-0b0c8f83b6b0",
+    "fixtures": [],
+    "animations": ["fb2e7a10-c80c-11e8-95b5-3b5b63b7c97e"],
+    "duration": "20",
+    "name": "all-white",
+    "isRunning": false
+  }, {
+    "id": "c6f65e10-6e94-11e8-a1ad-2535aca727fd",
+    "fixtures": [],
+    "animations": ["653f69f0-6e94-11e8-a1ad-2535aca727fd"],
+    "duration": 20,
+    "name": "dimmer-100",
+    "isRunning": false
+  }, {
+    "id": "b1678910-c80e-11e8-a8b6-e76fc77499de",
+    "fixtures": [],
+    "animations": ["1dd2ed20-c80e-11e8-aa32-4920b825426c"],
+    "duration": 20,
+    "name": "Rainbow",
+    "isRunning": false
+  }, {
+    "id": "486249d0-e17e-11e8-a629-f3a47a287d52",
+    "fixtures": ["e7047e30-de88-11e8-9736-0559264100a5"],
+    "animations": ["486222c0-e17e-11e8-a629-f3a47a287d52"],
+    "duration": 20,
+    "name": "viper 1"
+  }, {
+    "id": "1c965260-e110-11e8-9baa-e3c839f8f810",
+    "fixtures": ["760a0e60-e0f5-11e8-abd4-0b2df56d1fa6"],
+    "animations": ["1c962b51-e110-11e8-9baa-e3c839f8f810"],
+    "duration": 20,
+    "name": "viper 2"
+  }],
+  "timelineManager": {
+    "scenes": ["486249d0-e17e-11e8-a629-f3a47a287d52"],
+    "playing": false,
+    "progress": 12.814833891321143
+  },
+  "universeManager": [{
+    "id": "1e380f60-c0ee-11e8-a97a-5594ce2ad9f3",
+    "channels": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "name": "1e380f60-c0ee-11e8-a97a-5594ce2ad9f3"
+  }],
+  "usbManager": {
+    "lastTransmission": "2018-02-07T05:56:08.130Z"
+  },
+  "app": {
+    "drawerOpened": false,
+    "page": "venue",
+    "entityId": "0b557c70-e182-11e8-9963-03225b7ef566"
+  },
+  "venueManager": [{
+    "id": "5b81e790-e06c-11e8-bab0-b34800323584",
+    "name": "Hall",
+    "width": 5,
+    "height": 2,
+    "modv": {
+      "width": 6,
+      "height": 6
+    },
+    "slots": [{
+      "x": 4,
+      "y": 0,
+      "name": "viper 2",
+      "id": "1c962b50-e110-11e8-9baa-e3c839f8f810",
+      "modv": 44,
+      "animations": ["1c962b51-e110-11e8-9baa-e3c839f8f810"],
+      "sceneId": "1c965260-e110-11e8-9baa-e3c839f8f810",
+      "fixtures": ["760a0e60-e0f5-11e8-abd4-0b2df56d1fa6"]
+    }, {
+      "x": 1,
+      "y": 0,
+      "name": "viper 1",
+      "id": "4861fbb0-e17e-11e8-a629-f3a47a287d52",
+      "modv": 5,
+      "animations": ["486222c0-e17e-11e8-a629-f3a47a287d52"],
+      "sceneId": "486249d0-e17e-11e8-a629-f3a47a287d52",
+      "fixtures": ["e7047e30-de88-11e8-9736-0559264100a5"]
+    }]
+  }, {
+    "id": "0b557c70-e182-11e8-9963-03225b7ef566",
+    "name": "Stage",
+    "width": 5,
+    "height": 5,
+    "modv": {
+      "width": 6,
+      "height": 6
+    },
+    "slots": []
+  }]
+}
