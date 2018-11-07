@@ -31,6 +31,7 @@ export const getDekkConnected = state => state.dekkManager.connected
 export const getDekkData = state => state.dekkManager.data
 export const getFivetwelveConnected = state => state.fivetwelveManager.connected
 export const getUsbDmxControllerConnected = state => state.connectionManager.usb.connected
+export const getVenues = state => state.venueManager
 
 export const getAnimation = (state, properties) => {
   return getAnimations(state)
@@ -84,6 +85,22 @@ export const getFixture = (state, properties) => {
   return getFixtures(state)
     .filter(fixture => fixture.id === properties.fixtureId)[0]
 }
+
+/*
+ * Get a specific fixture by using the fixtureId
+ */
+export const getVenue = (state, properties) => {
+  return getVenues(state)
+    .filter(venue => venue.id === properties.venueId)[0]
+}
+
+/*
+ * Sort venues by venue.name
+ */
+export const getVenuesSorted = createSelector(
+  getVenues,
+  venues => venues.sort((a, b) => collator.compare(a.name, b.name))
+)
 
 /*
  * Sort fixtures by fixture.name

@@ -22,6 +22,7 @@ export const ADD_UNIVERSE = uuidV1()
 export const REMOVE_UNIVERSE = uuidV1()
 export const DEMO_UNIVERSE = uuidV1()
 export const ADD_SCENE = uuidV1()
+export const SET_SCENE = uuidV1()
 export const RUN_SCENE = uuidV1()
 export const REMOVE_SCENE = uuidV1()
 export const SET_SCENE_NAME = uuidV1()
@@ -32,6 +33,7 @@ export const REMOVE_FIXTURE_FROM_SCENE = uuidV1()
 export const ADD_ANIMATION = uuidV1()
 export const RUN_ANIMATION = uuidV1()
 export const REMOVE_ANIMATION = uuidV1()
+export const SET_ANIMATION = uuidV1()
 export const SET_ANIMATION_NAME = uuidV1()
 export const ADD_KEYFRAME = uuidV1()
 export const ADD_KEYFRAMES = uuidV1()
@@ -63,6 +65,12 @@ export const CONNECT_DEKK = uuidV1()
 export const SET_DEKK_DATA = uuidV1()
 export const CONNECT_FIVETWELVE = uuidV1()
 export const SEND_UNIVERSE_TO_FIVETWELVE = uuidV1()
+export const ADD_VENUE = uuidV1()
+export const SET_VENUE = uuidV1()
+export const REMOVE_VENUE = uuidV1()
+export const ADD_VENUE_SLOT = uuidV1()
+export const SET_VENUE_SLOT = uuidV1()
+export const REMOVE_VENUE_SLOT = uuidV1()
 
 /*
  * localStorage
@@ -77,7 +85,7 @@ export const FIXTURE_TYPES = ['EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
   'StairvilleAF150', 'StairvilleBowlBeam604LEDCOBMovingHead', 'JsFestMovingHeadWash',
   'StairvilleOutdoorStageParTri', 'BasicColor', 'BasicFluter', 'EuroliteTMH7',
   'TourHazerII', 'SgmXC5', 'BasicDimmer', 'LTHLedParCob250w', 'AdjSweeperBeamQuadLed',
-  'RobeColorWash575EAt1_4'
+  'RobeColorWash575EAt1_4', 'ViperVl3000Spot', 'MacQuantumWash', 'MacAura'
 ]
 
 export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
@@ -88,7 +96,10 @@ export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
   'scanSpeed', 'rgbwMacro', 'resetAuto', 'pump', 'fan', 'strobeDuration', 'strobeRate',
   'white1', 'white2', 'white3', 'white4', 'white5', 'tiltMacro', 'tiltMacroSpeed', 
   'chase', 'chaseSpeed', 'panTiltMacro', 'panTiltMacroSpeed', 'goboRotating', 'goboWheelRotating',
-  'goboRotation', 'prism', 'prismRotation', 'frost', 'iris', 'focus'
+  'goboRotation', 'prism', 'prismRotation', 'frost', 'iris', 'focus', 'intensity', 'edge', 'ctoMixer',
+  'colorWheel', 'gobo1', 'gobo1Rotation', 'gobo2', 'gobo2Rotation', 'gobo3', 'gobo3Rotation',
+  'beamIris', 'focusTime', 'colorTime', 'beamTime', 'goboTime', 'control', 'shutter', 'auraShutter',
+  'auraDimmer', 'auraColor'
 ]
 
 export const MIDI_TYPE_BUTTON = 'Button'

@@ -33,6 +33,15 @@ const loadPage = (page, entityId) => (dispatch) => {
       break
     }
 
+    case 'venue': {
+      if (entityId !== undefined) {
+        import('../views/venue-detail-view.js')
+      } else {
+        import('../views/venue-view.js')
+      }
+      break
+    }
+
     case 'universe':
       import('../views/universe-view.js').then((module) => {
         // Put code in here that you want to run every time when
