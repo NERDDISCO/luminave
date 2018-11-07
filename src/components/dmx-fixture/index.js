@@ -57,6 +57,7 @@ class DmxFixture extends connect(store)(LitElement) {
   handleChange(e) {
     const { name, value } = e.detail
     // Set the property of the fixture which will also set the values on the corresponding channels
+    
     this._fixture[name] = value
 
     // Send all values of all channels to universe 0
@@ -121,10 +122,11 @@ class DmxFixture extends connect(store)(LitElement) {
             display: flex;
             flex-direction: row;
             overflow: scroll;
+            flex-flow: wrap;
           }
 
           .property {
-            margin: 0 .25em;
+            margin: .5em .25em;
           }
         </style>
 

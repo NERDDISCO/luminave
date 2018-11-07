@@ -16,6 +16,12 @@ class ChannelGrid extends LitElement {
     return html`
       ${shared}
 
+      <style>q
+        .item {
+          flex: 0 0 2em;
+        }
+      </style>
+
       <div class="items">
         ${repeat(channels, channel => html`
           <div class="item">${channel}</div>
