@@ -7,7 +7,7 @@ export const shared = html`
         flex-wrap: wrap;
     }
     .item {
-        flex: 0 0 2em;
+        flex: 0 0 auto;
     }
 </style>
 `
