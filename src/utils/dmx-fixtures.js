@@ -18,4 +18,6 @@ export { default as SgmXC5 } from './dmx/SgmXC5.js'
 export { default as LTHLedParCob250w } from './dmx/LTHLedParCob250w.js'
 export { default as AdjSweeperBeamQuadLed } from './dmx/AdjSweeperBeamQuadLed.js'
 export { default as RobeColorWash575EAt1_4 } from './dmx/RobeColorWash575EAt1_4.js'
-
+export { default as ViperVl3000Spot } from './dmx/ViperVl3000Spot.js'
+export { default as MacQuantumWash } from './dmx/MacQuantumWash.js'
+export { default as MacAura } from './dmx/MacAura.js'
