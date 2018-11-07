@@ -16,7 +16,7 @@ class ChannelGrid extends LitElement {
     return html`
       ${shared}
 
-      <style>q
+      <style>
         .item {
           flex: 0 0 2em;
         }
