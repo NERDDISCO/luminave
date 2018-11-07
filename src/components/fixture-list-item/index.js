@@ -13,7 +13,7 @@ class FixtureListItem extends LitElement {
 
     return html`
       <div>
-        ${fixture.name}
+        <a href="/fixture/${fixture.id}">${fixture.name}</a>
       </div>
     `
   }
