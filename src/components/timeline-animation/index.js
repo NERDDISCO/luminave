@@ -100,7 +100,7 @@ class TimelineAnimation extends LitElement {
 
   shouldUpdate(changedProperties) {
     // Update the timeline when the animation is updated
-    if (changedProperties.has('animation')) {
+    if (changedProperties.has('animation') && this.animation !== undefined) {
       this.timeline = this.computeTimeline(this.animation.keyframes)
     }
 
