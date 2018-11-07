@@ -1,4 +1,5 @@
 import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { defaultValue } from '../../directives/default-value.js'
 
 /*
  * A scene list item
@@ -13,7 +14,7 @@ class SceneListItem extends LitElement {
 
     return html`
       <div>
-        ${scene.name}
+        ${defaultValue(scene.name, '')}
       </div>
     `
   }

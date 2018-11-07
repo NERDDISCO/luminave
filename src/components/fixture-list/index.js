@@ -15,6 +15,8 @@ class FixtureList extends LitElement {
   }
 
   handleFixtureSubmit(e) {
+    e.preventDefault()
+    
     const { path } = e
     const [ form ] = path
     const [ select ] = form
