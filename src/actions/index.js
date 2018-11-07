@@ -107,6 +107,14 @@ export const addScene = scene => ({
 })
 
 /*
+ * Set the values of a scene
+ */
+export const setScene = scene => ({
+  scene,
+  type: constants.SET_SCENE
+})
+
+/*
  * Start the playback of a scene
  */
 export const runScene = sceneId => ({
@@ -215,6 +223,14 @@ export const resetAllFixtures = () => {
 export const addAnimation = animation => ({
   animation,
   type: constants.ADD_ANIMATION
+})
+
+/*
+ * Update a animation
+ */
+export const setAnimation = animation => ({
+  animation,
+  type: constants.SET_ANIMATION
 })
 
 /*

@@ -172,9 +172,18 @@ export const sceneManager = (state = [], { type, scene, sceneIndex, sceneName, s
     sceneIndex = state.findIndex(scene => scene.id === sceneId)
   }
 
+  if (scene !== undefined && scene.id !== undefined) {
+    sceneIndex = state.findIndex(_scene => _scene.id === scene.id)
+  }
+
   switch (type) {
     case constants.ADD_SCENE:
       return update(state, { $push: [scene] })
+
+    case constants.SET_SCENE: {
+      return update(state, { [sceneIndex]: { $merge: { ...scene } } })
+    }
+
     case constants.RUN_SCENE:
       return update(state, { [sceneIndex]: { isRunning: { $set: true } } })
     case constants.REMOVE_SCENE:
@@ -206,10 +215,19 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
   if (animationId !== undefined) {
     animationIndex = state.findIndex(animation => animation.id === animationId)
   }
+
+  if (animation !== undefined && animation.id !== undefined) {
+    animationIndex = state.findIndex(_animation => _animation.id === animation.id)
+  }
   
   switch (type) {
     case constants.ADD_ANIMATION:
       return update(state, { $push: [animation] })
+
+    case constants.SET_ANIMATION: {
+      return update(state, { [animationIndex]: { $merge: { ...animation } } })
+    }
+      
     case constants.SET_ANIMATION_NAME:
       return update(state, { [animationIndex]: { name: { $set: animationName } } })
     case constants.ADD_KEYFRAME: {
