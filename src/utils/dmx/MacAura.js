@@ -10,9 +10,9 @@ export default class MacAura extends DmxDevice {
     super(Object.assign(options, {
       params: {
 
-        shutter: new MappedParam(1, MacAura.SHUTTER),
+        beamShutter: new MappedParam(1, MacAura.SHUTTER),
 
-        dimmer: new RangeParam(2, { min: 0, max: 255 }),
+        beamDimmer: new RangeParam(2, { min: 0, max: 255 }),
 
         // Wide → narrow
         zoom: new RangeParam(3, { min: 0, max: 255 }),
@@ -25,7 +25,7 @@ export default class MacAura extends DmxDevice {
         // Beam color wheel effect: 9
 
         // Beam
-        color: new RgbParam([10, 11, 12]),
+        beamColor: new RgbParam([10, 11, 12]),
         white: new RangeParam(13, { min: 0, max: 255 }),
 
         // Beam CTC (Color Temeratur Control): 14
@@ -47,6 +47,22 @@ export default class MacAura extends DmxDevice {
     this.channels = 25
     this.weight = 5.6
   }
+
+  set color(value) {
+    this.beamColor = value
+    this.auraColor = value
+  }
+
+  set shutter(value) {
+    this.beamShutter = value
+    this.auraShutter = value
+  }
+
+  set dimmer(value) {
+    this.beamDimmer = value
+    this.auraDimmer = value
+  }
+
 }
 
 

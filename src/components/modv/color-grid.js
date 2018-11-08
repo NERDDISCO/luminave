@@ -82,9 +82,9 @@ class ModvColorGrid extends LitElement {
     if (colors.length === 0) {
       colors = new Array(width * height * 3).fill(0)
 
-      colors[0] = 255
-      colors[3] = 255
-      colors[4] = 255
+      // colors[0] = 255
+      // colors[3] = 255
+      // colors[4] = 255
     }
 
     const colorChunks = []
@@ -92,9 +92,11 @@ class ModvColorGrid extends LitElement {
     let modvIndex = 0
     let slotItems = []
 
-    for (let x = 0; x < width; x++) {
-      labels.push(alphabet[x])
+    for (let i = 0; i < height; i++) {
+      labels.push(alphabet[i])
+    }
 
+    for (let x = 0; x < width; x++) {
       for (let y = 0; y < height; y++) {
         modvIndex++
 

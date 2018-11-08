@@ -99,7 +99,7 @@ export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
   'goboRotation', 'prism', 'prismRotation', 'frost', 'iris', 'focus', 'intensity', 'edge', 'ctoMixer',
   'colorWheel', 'gobo1', 'gobo1Rotation', 'gobo2', 'gobo2Rotation', 'gobo3', 'gobo3Rotation',
   'beamIris', 'focusTime', 'colorTime', 'beamTime', 'goboTime', 'control', 'shutter', 'auraShutter',
-  'auraDimmer', 'auraColor'
+  'auraDimmer', 'auraColor', 'beamColor', 'beamDimmer', 'beamShutter'
 ]
 
 export const MIDI_TYPE_BUTTON = 'Button'

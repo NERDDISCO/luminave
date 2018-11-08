@@ -62,6 +62,12 @@ class VenueDetailView extends connect(store)(PageViewElement) {
         h3 {
           display: inline;
         }
+
+        .sticky {
+          position: sticky;
+          top: 0;
+          z-index: 1337;
+        }
       </style>
 
 
@@ -95,7 +101,7 @@ class VenueDetailView extends connect(store)(PageViewElement) {
 
       <ui-spacer></ui-spacer>
       
-      <div class="item">
+      <div class="item sticky">
         <ui-spacer></ui-spacer>
         <ui-spacer></ui-spacer>
         <modv-mapper 
