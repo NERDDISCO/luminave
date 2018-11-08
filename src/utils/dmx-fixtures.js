@@ -21,3 +21,5 @@ export { default as RobeColorWash575EAt1_4 } from './dmx/RobeColorWash575EAt1_4.
 export { default as ViperVl3000Spot } from './dmx/ViperVl3000Spot.js'
 export { default as MacQuantumWash } from './dmx/MacQuantumWash.js'
 export { default as MacAura } from './dmx/MacAura.js'
+export { default as Rollapix100 } from './dmx/Rollapix100.js'
+
