@@ -21,6 +21,7 @@ import '../modv-manager/index.js'
 import '../fivetwelve-manager/index.js'
 import '../dekk-manager/index.js'
 import '../rainbow-text/index.js'
+import '../luminave-server/luminave-server.js'
 
 import { updateDrawerState } from '../../actions/app.js'
 import { getBpm, getLive, getDrawerOpened } from '../../selectors/index.js'
@@ -141,6 +142,8 @@ class LuminaveMenu extends connect(store)(LitElement) {
           <dekk-manager></dekk-manager>
           <fivetwelve-manager></fivetwelve-manager>
           <storage-manager></storage-manager>
+
+          <luminave-server></luminave-server>
 
         </div>
 

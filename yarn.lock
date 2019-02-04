@@ -2,6 +2,26 @@
 # yarn lockfile v1
 
 
+"@apollo-elements/lib@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@apollo-elements/lib/-/lib-0.0.2.tgz#3edab36326e6f44f984e24c0bc828a23bc30133b"
+  dependencies:
+    crocks "^0.9.4"
+    graphql-tag "^2.10.1"
+
+"@apollo-elements/lit-apollo@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@apollo-elements/lit-apollo/-/lit-apollo-0.0.5.tgz#038872cd961d0ae52d69dae887a93b73f3b656bc"
+  dependencies:
+    "@apollo-elements/mixins" "^0.0.5"
+
+"@apollo-elements/mixins@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@apollo-elements/mixins/-/mixins-0.0.5.tgz#6db930bfd82cd536ce4db73b5b4eb20ea0e9e43a"
+  dependencies:
+    "@apollo-elements/lib" "^0.0.2"
+    crocks "^0.9.4"
+
 "@babel/code-frame@7.0.0-beta.35":
   version "7.0.0-beta.35"
   resolved "https://registry.yarnpkg.com/@babel/code-frame/-/code-frame-7.0.0-beta.35.tgz#04eeb6dca7efef8f65776a4c214157303b85ad51"
@@ -2345,6 +2365,10 @@ create-error-class@^3.0.0:
   dependencies:
     capture-stack-trace "^1.0.0"
 
+crocks@^0.9.4:
+  version "0.9.4"
+  resolved "https://registry.yarnpkg.com/crocks/-/crocks-0.9.4.tgz#bc4e13da4b3173a8e48af0a620dc83ee7c4b22b0"
+
 cross-spawn@^5.0.1, cross-spawn@^5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/cross-spawn/-/cross-spawn-5.1.0.tgz#e8bd0efee58fcff6f8f94510a0a554bbfa235449"
@@ -3412,6 +3436,10 @@ graceful-fs@^4.0.0, graceful-fs@^4.1.11, graceful-fs@^4.1.2, graceful-fs@^4.1.3,
 "graceful-readlink@>= 1.0.0":
   version "1.0.1"
   resolved "https://registry.yarnpkg.com/graceful-readlink/-/graceful-readlink-1.0.1.tgz#4cafad76bc62f02fa039b2f94e9a3dd3a391a725"
+
+graphql-tag@^2.10.1:
+  version "2.10.1"
+  resolved "https://registry.yarnpkg.com/graphql-tag/-/graphql-tag-2.10.1.tgz#10aa41f1cd8fae5373eaf11f1f67260a3cad5e02"
 
 growl@1.10.5:
   version "1.10.5"
