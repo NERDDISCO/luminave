@@ -1,5 +1,5 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { rgbToHex } from '../../directives/rgb-to-hex.js'
 import { defaultValue } from '../../directives/default-value.js'
 import { selected } from '../../directives/selected.js'

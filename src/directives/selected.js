@@ -1,4 +1,4 @@
-import { directive } from '/node_modules/lit-html/lit-html.js'
+import { directive } from 'lit-html/lit-html.js'
 
 /*
  * Find out if the provided value is defined or equals the value of the <option></option>

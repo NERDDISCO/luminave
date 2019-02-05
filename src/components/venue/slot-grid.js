@@ -1,14 +1,14 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { addVenueSlot, setVenueSlot, removeVenueSlot } from '../../actions/venue.js'
 import { addAnimation, setAnimation, removeAnimation, addScene, setScene, removeScene, removeSceneFromTimelineAndResetFixtures } from '../../actions/index.js'
 import { getFixtures, getLive } from '../../selectors/index.js'
 import '../../components/venue/slot-item.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
-import { uuidV1 } from '../../../libs/uuid/uuid.js'
+import { repeat } from 'lit-html/directives/repeat.js'
+import uuidv1 from 'uuid/v1.js'
 import { defaultValue } from '../../directives/default-value.js'
-import { classMap } from '/node_modules/lit-html/directives/classMap.js'
+import { classMap } from 'lit-html/directives/classMap.js'
 
 /*
  * Show MIDI buttons in a grid
@@ -48,7 +48,7 @@ class VenueSlotGrid extends connect(store)(LitElement) {
 
     // ID doesn' exist yet because this is a new slot
     if (id === undefined) {
-      id = uuidV1()
+      id = uuidv1()
 
       store.dispatch(addVenueSlot(this.venueId, {
         x,
@@ -64,7 +64,7 @@ class VenueSlotGrid extends connect(store)(LitElement) {
         1: { modvColor: modv }
       }
       const duration = 20
-      const animationId = uuidV1()
+      const animationId = uuidv1()
 
       store.dispatch(addAnimation({
         id: animationId,
@@ -77,7 +77,7 @@ class VenueSlotGrid extends connect(store)(LitElement) {
       animations.push(animationId)
 
       // Create new scene
-      sceneId = uuidV1()
+      sceneId = uuidv1()
 
       store.dispatch(addScene({
         id: sceneId,

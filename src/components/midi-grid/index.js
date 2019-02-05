@@ -1,12 +1,12 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { learnMidi, addScenesToMidi, removeSceneFromMidi, addMidiMapping } from '../../actions/index.js'
 import '../scene-list/index.js'
 import { MIDI_TYPES, MIDI_TYPE_KNOB, MIDI_TYPE_FADER, MIDI_TYPE_EMPTY, MIDI_TYPE_BUTTON } from '../../constants/index.js'
 import { getMidiLearning, getScenes, getLive } from '../../selectors/index.js'
-import { classMap } from '/node_modules/lit-html/directives/classMap.js'
+import { classMap } from 'lit-html/directives/classMap.js'
 
 
 /*

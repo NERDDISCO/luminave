@@ -1,17 +1,17 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { store } from '../../reduxStore.js'
 import { setChannels, setFixture, setFixtureProperties, addKeyframes } from '../../actions/index.js'
 import { getAnimations } from '../../selectors/index.js'
-import '/node_modules/@polymer/polymer/lib/elements/dom-repeat.js'
+import '@polymer/polymer/lib/elements/dom-repeat.js'
 import '../dmx-fixture-property/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 import { batch } from '../../utils/index.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import '../animation-list/index.js'
 
-import '/node_modules/@polymer/iron-icons/iron-icons.js'
-import '/node_modules/@polymer/iron-icons/maps-icons.js'
+import '@polymer/iron-icons/iron-icons.js'
+import '@polymer/iron-icons/maps-icons.js'
 
 /*
  * A single DMX fixture with all properties

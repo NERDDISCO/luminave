@@ -1,4 +1,4 @@
-import { html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { html } from '@polymer/lit-element/lit-element.js'
 
 export const theme = html`
 <style>
@@ -26,9 +26,9 @@ export const theme = html`
         --text-primary-color: var(--mdc-theme-on-primary);
 
 
-        
+
         --light-primary-color: #f5f5f5;
-        
+
         --accent-color: #ff4081;
         --primary-text-color: #ffffff;
         --secondary-text-color: #ffffff;

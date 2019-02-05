@@ -1,8 +1,8 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { uuidV1 } from '../../../libs/uuid/uuid.js'
+import uuidv1 from 'uuid/v1.js'
 import { addVenue, removeVenue } from '../../actions/venue.js'
 import { getVenuesSorted } from '../../selectors/index.js'
 import { buttons } from '../../styles/buttons.js'
@@ -44,7 +44,7 @@ class VenueManager extends connect(store)(LitElement) {
     modv.height = parseInt(data.get('modvHeight'), 10)
 
     store.dispatch(addVenue({
-      id: uuidV1(),
+      id: uuidv1(),
       name,
       width,
       height,
@@ -82,7 +82,7 @@ class VenueManager extends connect(store)(LitElement) {
       ${buttons}
 
       <style>
-        @import url('node_modules/@material/layout-grid/dist/mdc.layout-grid.css');
+        @import url('@material/layout-grid/dist/mdc.layout-grid.css');
 
         :host {
           --width: 4;

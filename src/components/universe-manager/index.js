@@ -1,13 +1,13 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { uuidV1 } from '../../../libs/uuid/uuid.js'
+import uuidv1 from 'uuid/v1.js'
 import { addUniverse, removeUniverse, resetUniverseAndFixtures } from '../../actions/index.js'
 import { getUniverses, getLive } from '../../selectors/index.js'
 import '../channel-grid/index.js'
 
-import '/node_modules/@polymer/paper-button/paper-button.js'
+import '@polymer/paper-button/paper-button.js'
 import { buttons } from '../../styles/buttons.js'
 
 /*
@@ -27,7 +27,7 @@ class UniverseManager extends connect(store)(LitElement) {
   }
 
   addUniverse() {
-    const id = uuidV1()
+    const id = uuidv1()
     store.dispatch(addUniverse({ 
       id, 
       channels: [...Array(512)].map(() => 0), 

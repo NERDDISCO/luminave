@@ -1,6 +1,6 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { store } from '../../reduxStore.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { addKeyframe, setAnimationName, removeAnimation } from '../../actions/index.js'
 import { FIXTURE_PROPERTIES } from '../../constants/index.js'
 import '../keyframe-grid/index.js'

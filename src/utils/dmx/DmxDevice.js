@@ -1,17 +1,17 @@
-import { addToBatch, batch } from '/src/utils/index.js'
+import { addToBatch, batch } from '../../utils/index.js'
 
-import fivetwelve from '/libs/fivetwelve/index.js'
-import DmxParam from '/libs/fivetwelve/lib/param/DmxParam.js'
-import RgbParam from '/libs/fivetwelve/lib/param/RgbParam.js'
-import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
-import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
-import MultiRangeParam from '/libs/fivetwelve/lib/param/MultiRangeParam.js'
-import HiResParam from '/libs/fivetwelve/lib/param/HiResParam.js'
+import { DmxDevice as FivetwelveDmxDevice } from 'fivetwelve'
+import DmxParam from 'fivetwelve/lib/param/DmxParam.js'
+import RgbParam from 'fivetwelve/lib/param/RgbParam.js'
+import RangeParam from 'fivetwelve/lib/param/RangeParam.js'
+import MappedParam from 'fivetwelve/lib/param/MappedParam.js'
+import MultiRangeParam from 'fivetwelve/lib/param/MultiRangeParam.js'
+import HiResParam from 'fivetwelve/lib/param/HiResParam.js'
 
 /**
  *
  */
-export default class DmxDevice extends fivetwelve.DmxDevice {
+export default class DmxDevice extends FivetwelveDmxDevice {
   constructor(options) {
     super(options)
 

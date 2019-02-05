@@ -1,8 +1,9 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { connectFivetwelve } from '../../actions/index.js'
 import { getFivetwelveConnected, getUniverses } from '../../selectors/index.js'
+import Buffer from 'buffer'
 
 /*
  * Handle the connection to fivetwelve
@@ -112,7 +113,7 @@ class FivetwelveManager extends connect(store)(LitElement) {
       const batch = this.universes[0].channels
 
       // bring diff into binary format
-      const messageBuffer = new window.buffer.Buffer(batch.length * 3)
+      const messageBuffer = new Buffer.Buffer(batch.length * 3)
 
       for (let channel = 0; channel < batch.length; channel++) {
 
@@ -136,7 +137,7 @@ class FivetwelveManager extends connect(store)(LitElement) {
   render() {
     const { connected } = this
 
-    const connectedLabel = connected 
+    const connectedLabel = connected
       ? 'disconnect'
       : 'connect'
 

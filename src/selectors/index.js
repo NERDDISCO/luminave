@@ -1,4 +1,4 @@
-import { createSelector } from '/node_modules/reselect/src/index.js'
+import { createSelector } from 'reselect/src/index.js'
 import { collator } from '../utils/index.js'
 
 /*

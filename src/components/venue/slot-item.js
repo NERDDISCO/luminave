@@ -1,9 +1,9 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { defaultValue } from '../../directives/default-value.js'
 import '@polymer/paper-dialog/paper-dialog.js'
 import '@material/mwc-button/mwc-button.js'
 import '@material/mwc-icon/mwc-icon.js'
-import { when } from '/node_modules/lit-html/directives/when.js'
+import { when } from 'lit-html/directives/when.js'
 import '../fixture-list/index.js'
 
 /*

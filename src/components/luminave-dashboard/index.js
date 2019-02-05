@@ -1,6 +1,6 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import '/node_modules/@polymer/paper-tabs/paper-tab.js'
-import '/node_modules/@polymer/paper-tabs/paper-tabs.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import '@polymer/paper-tabs/paper-tab.js'
+import '@polymer/paper-tabs/paper-tabs.js'
 
 import { installRouter } from 'pwa-helpers/router.js'
 import { navigate } from '../../actions/app.js'

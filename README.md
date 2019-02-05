@@ -1,4 +1,4 @@
- ![luminave 3.0.0](images/luminave_logo.gif)
+ ![luminave 3.0.0](src/assets/luminave_logo.gif)
 
 [![3.0.0](https://img.shields.io/badge/Stable-3.0.0-00f557.svg?style=flat)](https://github.com/NERDDISCO/luminave/releases/tag/3.0.0)
 

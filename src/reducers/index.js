@@ -1,4 +1,4 @@
-import update from '../../node_modules/immutability-helper/index.js'
+import update from 'immutability-helper/index.js'
 import * as constants from '../constants/index.js'
 import * as selectors from '../selectors/index.js'
 import { clearFixtureInBatch } from '../utils/index.js'
@@ -132,11 +132,11 @@ export const connectionManager = (
  * Handle the DMX512 universes
  */
 export const universeManager = (state = [], { type, universe, universeIndex, universeId, channelIndex, value, channels }) => {
-  
+
   if (universeId !== undefined) {
     universeIndex = state.findIndex(universe => universe.id === universeId)
   }
-  
+
   switch (type) {
     case constants.ADD_UNIVERSE:
       return update(state, { $push: [universe] })
@@ -211,7 +211,7 @@ export const sceneManager = (state = [], { type, scene, sceneIndex, sceneName, s
  * Handle the animations
  */
 export const animationManager = (state = [], { type, animation, animationIndex, animationId, animationName, keyframeStep, keyframeProperty, keyframeValue }) => {
-  
+
   if (animationId !== undefined) {
     animationIndex = state.findIndex(animation => animation.id === animationId)
   }
@@ -219,7 +219,7 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
   if (animation !== undefined && animation.id !== undefined) {
     animationIndex = state.findIndex(_animation => _animation.id === animation.id)
   }
-  
+
   switch (type) {
     case constants.ADD_ANIMATION:
       return update(state, { $push: [animation] })
@@ -227,7 +227,7 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
     case constants.SET_ANIMATION: {
       return update(state, { [animationIndex]: { $merge: { ...animation } } })
     }
-      
+
     case constants.SET_ANIMATION_NAME:
       return update(state, { [animationIndex]: { name: { $set: animationName } } })
     case constants.ADD_KEYFRAME: {
@@ -267,11 +267,11 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
  * Handle the DMX512 fixtures
  */
 export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtureId, fixtureAddress, properties, fixtureBatch }) => {
-  
+
   if (fixtureId !== undefined) {
     fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
   }
-  
+
   switch (type) {
     case constants.ADD_FIXTURE:
       return update(state, { $push: [fixture] })

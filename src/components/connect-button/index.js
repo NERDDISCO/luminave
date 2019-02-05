@@ -1,9 +1,9 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { getConnections } from '../../selectors/index.js'
 
-import '/node_modules/@polymer/paper-button/paper-button.js'
+import '@polymer/paper-button/paper-button.js'
 import { buttons } from '../../styles/buttons.js'
 
 /*

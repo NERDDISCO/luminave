@@ -1,4 +1,4 @@
-import { directive } from '/node_modules/lit-html/lit-html.js'
+import { directive } from 'lit-html/lit-html.js'
 
 /*
  * Set a default value if the provided value is undefined

@@ -1,9 +1,9 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import WebMidi from '../../../libs/webmidi/index.js'
-import { uuidV1 } from '../../../libs/uuid/uuid.js'
+import WebMidi from 'webmidi'
+import uuidv1 from 'uuid/v1.js'
 import { addMidi, removeMidi, enableMidi } from '../../actions/index.js'
 import { getMidiControllers, getLive } from '../../selectors/index.js'
 import '../midi-controller/index.js'
@@ -74,7 +74,7 @@ class MidiManager extends connect(store)(LitElement) {
     const height = parseInt(data.get('height'), 10)
 
     store.dispatch(addMidi({
-      id: uuidV1(),
+      id: uuidv1(),
       name,
       input,
       output,
@@ -107,7 +107,7 @@ class MidiManager extends connect(store)(LitElement) {
       </style>
 
       ${
-        live 
+        live
         ? ''
         : html`
           <form @submit="${e => this.handleSubmit(e)}">
@@ -147,13 +147,13 @@ class MidiManager extends connect(store)(LitElement) {
             </midi-controller>
 
             ${
-              live 
+              live
               ? ''
               : html`<button @click="${e => this.removeMidi(e)}" .controllerId="${controller.id}">Remove</button>`
             }
-                
+
           </div>
-        
+
         `)}
 
       </div>

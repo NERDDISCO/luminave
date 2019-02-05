@@ -1,6 +1,6 @@
-import RgbParam from '/libs/fivetwelve/lib/param/RgbParam.js'
-import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
-import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
+import RgbParam from 'fivetwelve/lib/param/RgbParam.js'
+import RangeParam from 'fivetwelve/lib/param/RangeParam.js'
+import MappedParam from 'fivetwelve/lib/param/MappedParam.js'
 import DmxDevice from './DmxDevice.js'
 
 export default class AdjSweeperBeamQuadLed extends DmxDevice {

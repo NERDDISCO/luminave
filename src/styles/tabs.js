@@ -1,4 +1,4 @@
-import { html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { html } from '@polymer/lit-element/lit-element.js'
 
 export const tabs = html`
 <style>

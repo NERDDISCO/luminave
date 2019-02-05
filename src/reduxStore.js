@@ -1,11 +1,11 @@
-import { createStore, combineReducers, applyMiddleware } from '/node_modules/redux/es/index.js'
+import { createStore, combineReducers, applyMiddleware } from 'redux/es/index.js'
 
 import * as reducers from './reducers/index.js'
 import app from './reducers/app.js'
 import venueManager from './reducers/venue.js'
 
-import thunk from '/node_modules/redux-thunk/src/index.js'
-import { STORAGE_STATE } from '/src/constants/index.js'
+import thunk from 'redux-thunk/src/index.js'
+import { STORAGE_STATE } from './constants/index.js'
 
 export const store = createStore(
   combineReducers({

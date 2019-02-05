@@ -1,7 +1,7 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
-import { classMap } from '/node_modules/lit-html/directives/classMap.js'
-import '/node_modules/@polymer/paper-tooltip/paper-tooltip.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
+import { classMap } from 'lit-html/directives/classMap.js'
+import '@polymer/paper-tooltip/paper-tooltip.js'
 import { collator } from '../../utils/index.js'
 
 /*

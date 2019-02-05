@@ -1,8 +1,8 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { uuidV1 } from '../../../libs/uuid/uuid.js'
+import uuidv1 from 'uuid/v1.js'
 import { addAnimation } from '../../actions/index.js'
 import { getAnimationsSorted } from '../../selectors/index.js'
 import '../animation-bee/index.js'
@@ -34,7 +34,7 @@ class AnimationManager extends connect(store)(LitElement) {
     // Amount was not specified, so we just add one fixture
     if (isNaN(amount)) {
       store.dispatch(addAnimation({
-        id: uuidV1(),
+        id: uuidv1(),
         keyframes: {},
         duration,
         name
@@ -54,7 +54,7 @@ class AnimationManager extends connect(store)(LitElement) {
         }
 
         let newName = ''
-        
+
         if (amount > 1) {
           newName = `${name}${animationIndex}`
         } else {
@@ -62,7 +62,7 @@ class AnimationManager extends connect(store)(LitElement) {
         }
 
         store.dispatch(addAnimation({
-          id: uuidV1(),
+          id: uuidv1(),
           keyframes,
           duration,
           name: newName

@@ -1,4 +1,4 @@
-import update from '../../node_modules/immutability-helper/index.js'
+import update from 'immutability-helper/index.js'
 import {
   ADD_VENUE,
   SET_VENUE,

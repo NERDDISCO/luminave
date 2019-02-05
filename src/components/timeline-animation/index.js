@@ -1,5 +1,6 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { addToFixtureBatch } from '../../utils/index.js'
+import KeytimeTimeline from './keytime-timeline.js'
 
 /*
  * Handle an animation in a timeline
@@ -73,7 +74,7 @@ class TimelineAnimation extends LitElement {
       return property
     })
 
-    return new keytime(timeline)
+    return new KeytimeTimeline(timeline)
   }
 
   _toArray(object) {

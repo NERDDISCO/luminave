@@ -1,4 +1,4 @@
-import MappedParam from '/libs/fivetwelve/lib/param/MappedParam.js'
+import MappedParam from 'fivetwelve/lib/param/MappedParam.js'
 
 import DmxDevice from './DmxDevice.js'
 

@@ -1,4 +1,4 @@
-import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
+import RangeParam from 'fivetwelve/lib/param/RangeParam.js'
 
 import DmxDevice from './DmxDevice.js'
 

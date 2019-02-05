@@ -1,14 +1,14 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { playTimeline, resetTimeline, setChannels, resetUniverseAndFixtures } from '../../actions/index.js'
-import { batch, clearBatch, fixtureBatch, modvData } from '/src/utils/index.js'
+import { batch, clearBatch, fixtureBatch, modvData } from '../../utils/index.js'
 import '../timeline-scene/index.js'
 import { getTimelineScenes, getAnimations, getTimeline, getFixtures, getModv } from '../../selectors/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 
-import '/node_modules/@polymer/paper-button/paper-button.js'
+import '@polymer/paper-button/paper-button.js'
 import { buttons } from '../../styles/buttons.js'
 
 /*
@@ -158,7 +158,7 @@ class TimelineManager extends connect(store)(LitElement) {
             // }
           }
       }
-      
+
       // Update the channels of universe 0 with the batch of values collected for the fixtures
       store.dispatch(setChannels(0, [...batch]))
 
@@ -201,10 +201,10 @@ class TimelineManager extends connect(store)(LitElement) {
     const { progress, isPlaying } = this
 
     // Label for the play-button
-    const playLabel = isPlaying 
-      ? 'Pause' 
+    const playLabel = isPlaying
+      ? 'Pause'
       : 'Play'
-    
+
     return html`
       ${buttons}
 

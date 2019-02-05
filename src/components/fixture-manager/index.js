@@ -1,8 +1,8 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { uuidV1 } from '../../../libs/uuid/uuid.js'
+import uuidv1 from 'uuid/v1.js'
 import { addFixture, removeFixtureFromEverywhere } from '../../actions/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 import { FIXTURE_TYPES } from '../../constants/index.js'
@@ -51,7 +51,7 @@ class FixtureManager extends connect(store)(LitElement) {
     // Amount was not specified, so we just add one fixture
     if (isNaN(amount)) {
       store.dispatch(addFixture({
-        id: uuidV1(),
+        id: uuidv1(),
         type,
         name,
         universe,
@@ -75,7 +75,7 @@ class FixtureManager extends connect(store)(LitElement) {
         const bulkAddress = address + (offset * i)
 
         store.dispatch(addFixture({
-          id: uuidV1(),
+          id: uuidv1(),
           type,
           name: `${name}${bulkAddress}`,
           universe,
@@ -115,7 +115,7 @@ class FixtureManager extends connect(store)(LitElement) {
       ${buttons}
 
       <style>
-        @import url('node_modules/@material/layout-grid/dist/mdc.layout-grid.css');
+        @import url('@material/layout-grid/dist/mdc.layout-grid.css');
 
         :host {
           --width: 4;

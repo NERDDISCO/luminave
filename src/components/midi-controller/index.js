@@ -1,7 +1,7 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import WebMidi from '../../../libs/webmidi/index.js'
+import WebMidi from 'webmidi'
 import '../midi-grid/index.js'
 import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
 import { getMidiLearning, getMidiEnabled, getLive } from '../../selectors/index.js'
@@ -30,7 +30,7 @@ class MidiController extends connect(store)(LitElement) {
       width: { type: Number },
       height: { type: Number },
       connected: { type: Boolean },
-      mapping: { 
+      mapping: {
         type: Array,
         hasChanged: (newValue, oldValue) => !Object.is(newValue, oldValue)
       },
@@ -211,7 +211,7 @@ class MidiController extends connect(store)(LitElement) {
         <h3>${name} (${connected})</h3>
 
         ${
-          live 
+          live
           ? ''
           : html`
             <ul>
