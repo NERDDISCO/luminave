@@ -76,6 +76,7 @@ class LuminaveMenu extends connect(store)(LitElement) {
         app-drawer {
           color: var(--paper-toolbar-color);
           z-index: 1337;
+          text-align: left;
         }
 
         h1 {
