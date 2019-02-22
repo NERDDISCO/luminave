@@ -9,7 +9,7 @@
     "url": "https://github.com/NERDDISCO/luminave/issues"
   },
   "scripts": {
-    "dev": "polymerx watch -c polymerx.config.js",
+    "dev": "polymerx watch -c polymerx.config.js -p 8081",
     "start": "concurrently --kill-others \"npm run dev\" \"npm run dekk-integration\" \"npm run modv-integration\"",
     "dekk-integration": "cd integration/dekk && npm start 3005",
     "modv-integration": "cd integration/modV && npm start 3006",
