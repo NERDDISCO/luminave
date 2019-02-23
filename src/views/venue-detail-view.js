@@ -1,5 +1,5 @@
 import { html } from '@polymer/lit-element'
-import { PageViewElement } from './page-view-element.js'
+import { PageViewElementModv } from './page-view-element-modv.js'
 import { getVenue } from '../selectors/index.js'
 import { store } from '../reduxStore.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
@@ -7,11 +7,10 @@ import { setVenue } from '../actions/venue.js'
 import '../components/venue/slot-grid.js'
 import '../components/ui-spacer/index.js'
 import '../components/modv/mapper.js'
-import { modvData } from '../utils/index.js'
 import { defaultValue } from '../directives/default-value.js'
 
 
-class VenueDetailView extends connect(store)(PageViewElement) {
+class VenueDetailView extends connect(store)(PageViewElementModv) {
 
   static get properties() {
     return { 
@@ -21,21 +20,6 @@ class VenueDetailView extends connect(store)(PageViewElement) {
         hasChanged: (newValue, oldValue) => !Object.is(newValue, oldValue)
       }
     }
-  }
-
-  constructor() {
-    super()
-
-    this.colors = []
-
-    // bind() is creating a new function reference, so we have to save it in order to be able 
-    // to remove it again, see https://stackoverflow.com/a/22870717/1012875
-    this.listener = this.listenReceivedModvData.bind(this)
-  }
-
-  listenReceivedModvData() {
-    this.colors = modvData.colors
-    this.requestUpdate()
   }
 
   _stateChanged(state) {
@@ -63,24 +47,6 @@ class VenueDetailView extends connect(store)(PageViewElement) {
       height,
       modv
     }))
-  }
-
-  shouldUpdate(changedProps) {
-    // changedProps.forEach((oldValue, propName) => {
-    //   console.log(`${propName} changed. oldValue: ${oldValue}, newValue: ${this[propName]}`)
-    // })
-
-    if (changedProps.has('active') && this.active !== changedProps.get('active')) {
-      if (this.active) {
-        console.log('receive data from modV')
-        window.addEventListener('received-data-from-modv', this.listener)
-      } else {
-        console.log('dont receive data from modV')
-        window.removeEventListener('received-data-from-modv', this.listener)
-      }
-    }
-
-    return true
   }
 
   render() {
