@@ -373,6 +373,16 @@ export const addMidi = controller => ({
 })
 
 /*
+ * Update a MIDI controller
+ */
+export const setMidi = (controllerId, controller) => ({
+  controllerId, 
+  controller,
+  type: constants.SET_MIDI
+})
+
+
+/*
  * Remove a MIDI controller
  */
 export const removeMidi = controllerId => ({

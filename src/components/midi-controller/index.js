@@ -3,7 +3,7 @@ import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import WebMidi from 'webmidi'
 import '../midi-grid/index.js'
-import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
+import { learnMidi, setMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
 import { getMidiLearning, getMidiEnabled, getLive } from '../../selectors/index.js'
 
 
@@ -202,6 +202,30 @@ class MidiController extends connect(store)(LitElement) {
     }
   }
 
+
+  handleSubmit(e) {
+    // Prevent sending data to server
+    e.preventDefault()
+
+    // Get data out of the form
+    const data = new FormData(e.target)
+
+    const name = data.get('name')
+    const input = data.get('input')
+    const output = data.get('output')
+    const width = parseInt(data.get('width'), 10)
+    const height = parseInt(data.get('height'), 10)
+    const controllerId = this.id
+
+    store.dispatch(setMidi(controllerId, {
+      name,
+      input,
+      output,
+      width,
+      height
+    }))
+  }  
+
   render() {
 
     const { live, name, connected, inputname, outputname, width, height, mapping, id } = this
@@ -214,10 +238,24 @@ class MidiController extends connect(store)(LitElement) {
           live
           ? ''
           : html`
-            <ul>
-              <li>input: ${inputname}</li>
-              <li>output: ${outputname}</li>
-            </ul>
+            <form @submit="${e => this.handleSubmit(e)}">
+              <label for="name">Name</label>
+              <input name="name" type="text" value="${name}" required />
+
+              <label for="input">Input</label>
+              <input name="input" type="text" value="${inputname}" required />
+
+              <label for="output">Output</label>
+              <input name="output" type="text" value="${outputname}" required />
+
+              <label for="width">Width</label>
+              <input name="width" type="number" min="1" max="255" value="${width}" required />
+
+              <label for="height">Height</label>
+              <input name="height" type="number" min="1" max="255" value="${height}" required />
+
+              <button type="submit">Update</button>
+            </form>
           `
         }
 

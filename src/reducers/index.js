@@ -338,6 +338,10 @@ export const midiManager = (state = {
       return update(state, { enabled: { $set: enabled } })
     case constants.ADD_MIDI:
       return update(state, { controllers: { $push: [controller] } })
+
+    case constants.SET_MIDI:
+      return update(state, { controllers: { [controllerIndex]: { $merge: controller } } } )
+
     case constants.ADD_MIDI_MAPPING: {
       // Mapping might already exist
       const old = state.controllers[controllerIndex].mapping[mappingIndex] || {}
