@@ -30,12 +30,17 @@ export const modvData = {
   // Of all colors that is grabbed from Canvas we get the average
   average: [0, 0, 0],
   // An array of colors grabbed from specific points from the Canvas (configurable in modV)
-  colors: []
+  colors: [],
+  // The amount of areas that are selected for x & y
+  selectionX: 0,
+  selectionY: 0
 }
 
 export const setModvData = data => {
   modvData.average = data.average
   modvData.colors = data.colors
+  modvData.selectionX = data.selectionX
+  modvData.selectionY = data.selectionY
 }
 
 /**
