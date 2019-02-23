@@ -66,8 +66,6 @@ export const modvManager = (state = {
   switch (type) {
     case constants.CONNECT_MODV:
       return update(state, { connected: { $set: connected } } )
-    case constants.SET_MODV_COLOR:
-      return update(state, { color: { $set: color } } )
     default:
       return state
   }

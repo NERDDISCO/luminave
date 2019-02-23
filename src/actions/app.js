@@ -49,10 +49,6 @@ const loadPage = (page, entityId) => (dispatch) => {
       })
       break
 
-    case 'modv':
-      import('../views/modv-view.js')
-      break
-
     case 'midi':
       import('../views/midi-view.js')
       break

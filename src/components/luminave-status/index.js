@@ -8,7 +8,6 @@ import '../modv-manager/index.js'
 import '../fivetwelve-manager/index.js'
 import '../dekk-manager/index.js'
 import './indicator.js'
-import '../color-grid/index.js'
 import '../ui-spacer/index.js'
 
 
@@ -42,14 +41,6 @@ class LuminaveStatus extends connect(store)(LitElement) {
         .item {
           display: inline-flex;
           padding: 0 var(--padding-basic)
-        }
-
-        .item color-grid {
-          width: 33vw;
-        }
-
-        color-grid {
-          width: 100%;
         }
       </style>
 

@@ -67,9 +67,6 @@ class LuminaveDashboard extends connect(store)(LitElement) {
         <paper-tab name="fixture" link>
           <a href="/fixture" tabindex="-1">Fixtures</a>
         </paper-tab>
-        <paper-tab name="modv" link>
-          <a href="/modv" tabindex="-1">modV</a>
-        </paper-tab>
         <paper-tab name="venue" link>
           <a href="/venue" tabindex="-1">Venues</a>
         </paper-tab>
@@ -86,8 +83,6 @@ class LuminaveDashboard extends connect(store)(LitElement) {
 
         <fixture-view ?active="${_page === 'fixture' && _entityId === undefined}" class="page"></fixture-view>
         <fixture-detail-view ?active="${_page === 'fixture' && _entityId !== undefined}" class="page" .fixtureId="${_entityId}"></fixture-detail-view>
-
-        <modv-view ?active="${_page === 'modv'}" class="page"></modv-view>
 
         <venue-view ?active="${_page === 'venue' && _entityId === undefined}" class="page"></venue-view>
         <venue-detail-view ?active="${_page === 'venue' && _entityId !== undefined}" class="page" .venueId="${_entityId}"></venue-detail-view>
