@@ -5,7 +5,7 @@ import { store } from '../../reduxStore.js'
 import { playTimeline, resetTimeline, setChannels, resetUniverseAndFixtures } from '../../actions/index.js'
 import { batch, clearBatch, fixtureBatch, modvData } from '../../utils/index.js'
 import '../timeline-scene/index.js'
-import { getTimelineScenes, getAnimations, getTimeline, getFixtures, getModv } from '../../selectors/index.js'
+import { getTimelineScenes, getAnimations, getTimeline, getFixtures, getModvConnected } from '../../selectors/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 
 import '@polymer/paper-button/paper-button.js'
@@ -72,7 +72,7 @@ class TimelineManager extends connect(store)(LitElement) {
   _stateChanged(state) {
     this._page = state.app.page
     this.bpm = state.bpm
-    this.modvConnected = getModv(state).connected
+    this.modvConnected = getModvConnected(state)
     this.timelineScenes = getTimelineScenes(state)
     this.animationManager = getAnimations(state)
     this.fixtures = getFixtures(state)

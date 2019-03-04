@@ -542,11 +542,11 @@ export const sendUniverseToFivetwelve = value => ({
 })
 
 /*
- * Connect / disconnect to modV
+ * Update the data of the modV integration
  */
-export const connectModv = connected => ({
-  connected,
-  type: constants.CONNECT_MODV
+export const setModv = data => ({
+  data,
+  type: constants.SET_MODV
 })
 
 /*
