@@ -135,27 +135,13 @@ class TimelineManager extends connect(store)(LitElement) {
           }
 
           // Overwrite the color of every fixture when a connection to modV was established
-          if (this.modvConnected && fixture.hasOwnProperty('modvColor')) {
-            // Set a specific color from modV
-            // if () {
+          // & the "modvColor" property is actually set on the fixture within an active scene
+          if (this.modvConnected && interpolatedProperties.hasOwnProperty('modvColor')) {
+            // @TODO: Fix precision error = No interpolation for values that don't change
+            fixture.modvColor = Math.round(fixture.modvColor)
 
-              // @TODO: Fix precision error = No interpolation for values that don't change
-              fixture.modvColor = Math.round(fixture.modvColor)
-
-              const color = modvData.colors.slice((fixture.modvColor - 1) * 3, ((fixture.modvColor - 1) * 3) + 3)
-
-              // Set the color
-              // @TODO: This is still overwriting the color that was previously set on the device
-              // which means it's totally useless
-              fixture.color = color.length === 3
-                ? color
-                : fixture.color
-
-            // Use average color from modV
-            // } else {
-              // @TODO: The color should only be set if the modV color is defined, everything else is confusing
-              // fixture.color = modvData.average
-            // }
+            // Set the color
+            fixture.color = modvData.colors.slice((fixture.modvColor - 1) * 3, ((fixture.modvColor - 1) * 3) + 3)
           }
       }
 
