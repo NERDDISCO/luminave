@@ -17,11 +17,9 @@ import '../bpm-meter/index.js'
 import '../usb-dmx-manager/index.js'
 import '../storage-manager/index.js'
 import '../live-mode/index.js'
-import '../modv-manager/index.js'
 import '../fivetwelve-manager/index.js'
 import '../dekk-manager/index.js'
 import '../rainbow-text/index.js'
-import '../luminave-server/luminave-server.js'
 
 import { updateDrawerState } from '../../actions/app.js'
 import { getBpm, getLive, getDrawerOpened } from '../../selectors/index.js'
@@ -75,7 +73,7 @@ class LuminaveMenu extends connect(store)(LitElement) {
 
         app-drawer {
           color: var(--paper-toolbar-color);
-          z-index: 1337;
+          z-index: 99999;
           text-align: left;
         }
 
@@ -139,12 +137,9 @@ class LuminaveMenu extends connect(store)(LitElement) {
 
           <live-mode></live-mode>
 
-          <modv-manager></modv-manager>
           <dekk-manager></dekk-manager>
           <fivetwelve-manager></fivetwelve-manager>
           <storage-manager></storage-manager>
-
-          <luminave-server></luminave-server>
 
         </div>
 
