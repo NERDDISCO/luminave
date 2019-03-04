@@ -194,8 +194,10 @@ module.exports = {
         'quote-props': 'off',
         'quotes': ['error', 'single'],
         'radix': 'error',
+        'require-jsdoc': ['error', {
+          'requireReturn': false
+        }],
         'require-await': 'error',
-        'require-jsdoc': 'error',
         'rest-spread-spacing': 'error',
         'semi': ['error', 'never'],
         'semi-spacing': 'error',
