@@ -16,6 +16,7 @@ export const theme = html`
         --padding-basic: .5em;
         --focus-color: #ddd;
         --default-warning-color: #da4453;
+        --default-success-color: var(--google-green-500);
         --warning-text-color: var(--text-primary-color);
 
         /* Google Material Design */
