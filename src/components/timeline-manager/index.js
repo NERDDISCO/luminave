@@ -129,20 +129,25 @@ class TimelineManager extends connect(store)(LitElement) {
         const interpolatedProperties = fixtureBatch[fixtureId].properties
         const fixture = this.timelineFixtures[fixtureId]
 
-          for (const propertyName in interpolatedProperties) {
-            // @TODO: only set properties that the fixture understands
-            fixture[propertyName] = interpolatedProperties[propertyName]
-          }
+        for (const propertyName in interpolatedProperties) {
+          // @TODO: only set properties that the fixture understands
+          fixture[propertyName] = interpolatedProperties[propertyName]
+        }
 
-          // Overwrite the color of every fixture when a connection to modV was established
-          // & the "modvColor" property is actually set on the fixture within an active scene
-          if (this.modvConnected && interpolatedProperties.hasOwnProperty('modvColor')) {
-            // @TODO: Fix precision error = No interpolation for values that don't change
-            fixture.modvColor = Math.round(fixture.modvColor)
+        // Overwrite the color of every fixture when a connection to modV was established
+        // & the "modvColor" property is actually set on the fixture within an active scene
+        if (this.modvConnected && interpolatedProperties.hasOwnProperty('modvColor')) {
+          // @TODO: Fix precision error = No interpolation for values that don't change
+          fixture.modvColor = Math.round(fixture.modvColor)
 
-            // Set the color
-            fixture.color = modvData.colors.slice((fixture.modvColor - 1) * 3, ((fixture.modvColor - 1) * 3) + 3)
+          // Get the RGB color out of an array of colors
+          const color = modvData.colors.slice((fixture.modvColor - 1) * 3, ((fixture.modvColor - 1) * 3) + 3)
+
+          // Color actually has values
+          if (color.length > 0 && !isNaN(color[0])) {
+            fixture.color = color
           }
+        }
       }
 
       // Update the channels of universe 0 with the batch of values collected for the fixtures
