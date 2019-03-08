@@ -31,6 +31,10 @@ class KeyframeGrid extends LitElement {
     return html`
       ${shared}
       <style>
+        .items {
+          overflow-x: scroll;
+        }
+
         .item {
           font-size: 0.8em;
         }
@@ -39,7 +43,7 @@ class KeyframeGrid extends LitElement {
       <div class="items">
 
         ${repeat(this._toArray(keyframes), keyframe => html`
-          <div class="item">${keyframe.step}: ${JSON.stringify(keyframe.value)}</div>
+          <div class="item">${keyframe.step}: ${JSON.stringify(keyframe.value, null, '\t')}</div>
         `)}
 
       </div>
