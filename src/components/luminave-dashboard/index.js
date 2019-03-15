@@ -52,9 +52,6 @@ class LuminaveDashboard extends connect(store)(LitElement) {
       <ui-spacer></ui-spacer>
 
       <paper-tabs selected="${_page}" attr-for-selected="name">
-        <paper-tab name="general" link>
-          <a href="/general" tabindex="-1">General</a>
-        </paper-tab>
         <paper-tab name="universe" link>
           <a href="/universe" tabindex="-1">Universes</a>
         </paper-tab>
@@ -79,8 +76,6 @@ class LuminaveDashboard extends connect(store)(LitElement) {
 
       <!-- Main content -->
       <main role="main" class="main-content">
-        <general-view ?active="${_page === 'general'}" class="page"></general-view>
-
         <universe-view ?active="${_page === 'universe'}" class="page"></universe-view>
         <midi-view ?active="${_page === 'midi'}" class="page"></midi-view>
         <scene-view ?active="${_page === 'scene'}" class="page"></scene-view>

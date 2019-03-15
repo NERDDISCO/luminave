@@ -7,7 +7,7 @@ export const CLOSE_SNACKBAR = 'CLOSE_SNACKBAR'
 export const navigate = (location) => (dispatch) => {
   const pathname = location.pathname
   const parts = pathname.slice(1).split('/')
-  const page = parts[0] || 'general'
+  const page = parts[0] || 'universe'
   const entityId = parts[1] || undefined
 
   // Any other info you might want to extract from the path (like page type),

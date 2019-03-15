@@ -20,6 +20,7 @@ import '../live-mode/index.js'
 import '../fivetwelve-manager/index.js'
 import '../dekk-manager/index.js'
 import '../rainbow-text/index.js'
+import '../modv/manager.js'
 
 import { updateDrawerState } from '../../actions/app.js'
 import { getBpm, getLive, getDrawerOpened } from '../../selectors/index.js'
@@ -75,6 +76,7 @@ class LuminaveMenu extends connect(store)(LitElement) {
           color: var(--paper-toolbar-color);
           z-index: 99999;
           text-align: left;
+          --app-drawer-width: 40vw;
         }
 
         h1 {
@@ -140,6 +142,9 @@ class LuminaveMenu extends connect(store)(LitElement) {
           <dekk-manager></dekk-manager>
           <fivetwelve-manager></fivetwelve-manager>
           <storage-manager></storage-manager>
+
+          <h3>modV</h3>
+          <modv-manager></modv-manager>
 
         </div>
 
