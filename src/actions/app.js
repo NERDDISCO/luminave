@@ -15,7 +15,7 @@ export const navigate = (location) => (dispatch) => {
   dispatch(loadPage(page, entityId))
 
   // Close the drawer - in case the *path* change came from a link in the drawer.
-  dispatch(updateDrawerState(false))
+  // dispatch(updateDrawerState(false))
 }
 
 const loadPage = (page, entityId) => (dispatch) => {
