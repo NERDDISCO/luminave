@@ -20,7 +20,7 @@ import '../live-mode/index.js'
 import '../fivetwelve-manager/index.js'
 import '../dekk-manager/index.js'
 import '../rainbow-text/index.js'
-import '../modv/manager.js'
+import '../modv/modv-manager.js'
 
 import { updateDrawerState } from '../../actions/app.js'
 import { getBpm, getLive, getDrawerOpened } from '../../selectors/index.js'

@@ -4,7 +4,8 @@ import { store } from '../../reduxStore.js'
 import { setModv } from '../../actions/index.js'
 import { getLive, getModvUrl, getModvConnected, getModvReconnect } from '../../selectors/index.js'
 import { setModvData } from '../../utils/index.js'
-import '../integration/configuration.js'
+import '../integration/integration-configuration.js'
+import '../integration/integration-websocket.js'
 
 /*
  * Handle the connection to modV
@@ -22,11 +23,24 @@ class ModvManager extends connect(store)(LitElement) {
     }
   }
 
+  constructor() {
+    super()
+
+    // State of the actual WebSocket connection (connected vs disconnected)
+    this._connected = false
+    // State of the actual WebSocket connection as text
+    this._connectionStatus = undefined
+  }
+
   _stateChanged(state) {
     this.live = getLive(state)
     this.url = getModvUrl(state)
     this.connected = getModvConnected(state)
     this.reconnect = getModvReconnect(state)
+  }
+
+  firstUpdated() {
+    this._websocket = this.shadowRoot.querySelector('#websocket')
   }
 
   /**
@@ -55,8 +69,12 @@ class ModvManager extends connect(store)(LitElement) {
    * @param {Object} e - The event
    */
   handleConnection(e) {
-    const { connected } = e.detail
+    const { connected, connectionStatus } = e.detail
     store.dispatch(setModv({ connected }))
+
+    this._connectionStatus = connectionStatus
+    this._connected = connected
+    this.requestUpdate()
   }
 
   /**
@@ -84,19 +102,34 @@ class ModvManager extends connect(store)(LitElement) {
   }
 
   render() {
-    const { url, reconnect } = this
+    const { url, reconnect, _connectionStatus, _connected } = this
 
     return html`
-      <integration-configuration 
+      <integration-websocket
         .url="${url}"
         .reconnect="${reconnect}"
-        name="modV"
-        @url-changed="${e => this.handleUrlChanged(e)}"
-        @reconnect-changed="${e => this.handleReconnectChanged(e)}"
+        .name="modV"
+
+        id="websocket"
+
         @connection-opened="${e => this.handleConnection(e)}"
         @connection-closed="${e => this.handleConnection(e)}"
         @connection-error="${e => this.handleConnection(e)}"
         @message-received="${e => this.handleMessage(e)}"
+      >
+      </integration-websocket>
+
+      <integration-configuration 
+        .url="${url}"
+        .reconnect="${reconnect}"
+        .name="modV"
+        .connectionStatus="${_connectionStatus}"
+        .connected="${_connected}"
+
+        @url-changed="${e => this.handleUrlChanged(e)}"
+        @reconnect-changed="${e => this.handleReconnectChanged(e)}"
+        @open-connection="${e => this._websocket.connect()}"
+        @close-connection="${e => this._websocket.disconnect()}"
       >
       </integration-configuration>
     `

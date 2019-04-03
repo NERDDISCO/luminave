@@ -6,7 +6,7 @@ import { connect } from 'pwa-helpers/connect-mixin.js'
 import { setVenue } from '../actions/venue.js'
 import '../components/venue/slot-grid.js'
 import '../components/ui-spacer/index.js'
-import '../components/modv/mapper.js'
+import '../components/modv/modv-mapper.js'
 import { defaultValue } from '../directives/default-value.js'
 
 
