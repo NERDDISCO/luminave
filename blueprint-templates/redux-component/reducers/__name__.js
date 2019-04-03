@@ -5,8 +5,13 @@ import {
 /**
  * 
  */
-const {{camelCase name}}Manager = (state = [], {
-  type
+const {{camelCase name}} = (state = {
+  reconnect: false,
+  connected: false,
+  url: 'ws://localhost:3000'
+}, {
+  type,
+  data
 }) => {
 
   switch (type) {
@@ -27,4 +32,4 @@ const {{camelCase name}}Manager = (state = [], {
   }
 }
 
-export default {{camelCase name}}Manager
+export default {{camelCase name}}
