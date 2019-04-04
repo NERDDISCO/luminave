@@ -18,7 +18,9 @@ Use luminave to manage all the lights with your web browser and create stunning 
 [![WebMIDI](https://img.shields.io/badge/API-WebMIDI-1e88e5.svg?style=flat)](https://webaudio.github.io/web-midi-api/)
 [![WebSocket](https://img.shields.io/badge/API-WebSocket-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 [![localStorage](https://img.shields.io/badge/API-localStorage-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
-˘
+
+---
+
 [![Video of modV + luminave in love with Chiptune](src/assets/luminave_modV_in_love_with_chiptune_2018.jpg)](http://www.youtube.com/watch?v=GiTkwz9AKhM "modV + luminave in ❤️ with Chiptune")
 
 _Video of modV + luminave in ❤️ with Chiptune (Caution: Flashing lights & music!)_
