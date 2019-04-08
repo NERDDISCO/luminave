@@ -72,6 +72,7 @@ export const REMOVE_VENUE = uuidv1()
 export const ADD_VENUE_SLOT = uuidv1()
 export const SET_VENUE_SLOT = uuidv1()
 export const REMOVE_VENUE_SLOT = uuidv1()
+export const SET_LUMINAVE_SERVER = uuidv1()
 
 /*
  * localStorage

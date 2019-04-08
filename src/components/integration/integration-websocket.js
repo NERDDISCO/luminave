@@ -9,7 +9,6 @@ class IntegrationWebsocket extends LitElement {
   static get properties() {
     return {
       name: { type: String, reflect: true },
-      connected: { type: Boolean },
       url: { type: String },
       reconnect: { type: Boolean },
       connectionStatus: { type: String },
@@ -19,6 +18,7 @@ class IntegrationWebsocket extends LitElement {
   constructor() {
     super()
 
+    this.connected = false
     this.name = 'WebSocket'
     this.socket = null
     this.reconnect = false
