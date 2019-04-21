@@ -1,11 +1,11 @@
 import { connect } from 'pwa-helpers/connect-mixin.js'
-import { store } from '../../reduxStore.js'
+import { store } from '../../../reduxStore.js'
 import { repeat } from 'lit-html/directives/repeat.js'
 import gql from 'graphql-tag'
 import { ApolloSubscription, html } from '@apollo-elements/lit-apollo'
-import { getClient } from '../../graphql-client'
-import { addSceneToTimeline, removeSceneFromTimelineAndResetFixtures } from '../../actions/index.js'
-import { getSceneByName } from '../../selectors/index.js'
+import { getClient } from '../../graphql/graphql-client.js'
+import { addSceneToTimeline, removeSceneFromTimelineAndResetFixtures } from '../../../actions/index.js'
+import { getSceneByName } from '../../../selectors/index.js'
 
 
 
@@ -40,7 +40,7 @@ class LuminaveServer extends connect(store)(ApolloSubscription) {
   }
 
   async resolveClient() {
-    this.client = await getClient()
+    this.client = await getClient({url: 'ws://localhost:4000/graphql', reconnect: true})
     this.connected = true
     this.subscription = subscription
   }
@@ -49,6 +49,7 @@ class LuminaveServer extends connect(store)(ApolloSubscription) {
   }
 
   shouldUpdate(changedProps) {
+    console.log(changedProps)
 
     if (changedProps.has('data')) {
       // @TODO: Remove scenes when component gets loaded

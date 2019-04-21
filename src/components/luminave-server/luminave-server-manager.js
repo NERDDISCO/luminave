@@ -5,7 +5,19 @@ import { store } from '../../reduxStore.js'
 import { setLuminaveServer } from '../../actions/luminave-server.js'
 import { getLuminaveServerUrl, getLuminaveServerConnected, getLuminaveServerReconnect } from '../../selectors/luminave-server.js'
 import '../integration/integration-configuration.js'
-import '../integration/integration-websocket.js'
+import '../integration/integration-graphql.js'
+import './deprecated/luminave-server.js'
+import gql from 'graphql-tag'
+
+
+ // Compute graphql documents statically for performance
+const subscription = gql`
+subscription {
+  timelineScenesUpdated {
+    name
+  }
+}
+`
 
 /**
  * Handle the connection to the luminave-server
@@ -22,9 +34,9 @@ class LuminaveServerManager extends connect(store)(LitElement) {
   constructor() {
     super()
 
-    // State of the actual WebSocket connection (connected vs disconnected)
+    // State of the actual GraphQL connection (connected vs disconnected)
     this._connected = false
-    // State of the actual WebSocket connection as text
+    // State of the actual GraphQL connection as text
     this._connectionStatus = undefined
   }
 
@@ -35,7 +47,7 @@ class LuminaveServerManager extends connect(store)(LitElement) {
   }
 
   firstUpdated() {
-    this._websocket = this.shadowRoot.querySelector('#websocket')
+    this._graphql = this.shadowRoot.querySelector('#graphql')
   }
 
   /**
@@ -81,18 +93,24 @@ class LuminaveServerManager extends connect(store)(LitElement) {
     const { url, reconnect, _connectionStatus, _connected } = this
 
     return html`
-      <integration-websocket
+      <luminave-server></luminave-server>
+
+      ${
+        /*
+      <integration-graphql
         .url="${url}"
         .reconnect="${reconnect}"
         .name="luminave-server"
 
-        id="websocket"
+        id="graphql"
 
         @connection-opened="${e => this.handleConnection(e)}"
         @connection-closed="${e => this.handleConnection(e)}"
         @connection-error="${e => this.handleConnection(e)}"
       >
-      </integration-websocket>
+      </integration-graphql>
+        */''
+      }
 
       <integration-configuration 
         .url="${url}"
@@ -103,8 +121,8 @@ class LuminaveServerManager extends connect(store)(LitElement) {
 
         @url-changed="${e => this.handleUrlChanged(e)}"
         @reconnect-changed="${e => this.handleReconnectChanged(e)}"
-        @open-connection="${e => this._websocket.connect()}"
-        @close-connection="${e => this._websocket.disconnect()}"
+        @open-connection="${e => this._graphql.connect()}"
+        @close-connection="${e => this._graphql.disconnect()}"
       >
       </integration-configuration>
     `
