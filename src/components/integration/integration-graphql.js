@@ -17,6 +17,7 @@ class IntegrationGraphql extends LitElement {
       url: { type: String },
       reconnect: { type: Boolean },
       connectionStatus: { type: String },
+      client: { type: Object }
     }
   }
 
@@ -67,9 +68,9 @@ class IntegrationGraphql extends LitElement {
 
       this.connected = true
       this.connectionStatus = 'connected'
-      const { connected, connectionStatus } = this
+      const { connected, connectionStatus, client } = this
 
-      this.dispatchEvent(new CustomEvent('connection-opened', { detail: { connected, connectionStatus } }))
+      this.dispatchEvent(new CustomEvent('connection-opened', { detail: { connected, connectionStatus, client } }))
     }, this)
 
     // Connection was closed

@@ -6,6 +6,7 @@ import { setLuminaveServer } from '../../actions/luminave-server.js'
 import { getLuminaveServerUrl, getLuminaveServerConnected, getLuminaveServerReconnect } from '../../selectors/luminave-server.js'
 import '../integration/integration-configuration.js'
 import '../integration/integration-graphql.js'
+import './luminave-server-subscription.js'
 import gql from 'graphql-tag'
 
 
@@ -37,6 +38,8 @@ class LuminaveServerManager extends connect(store)(LitElement) {
     this._connected = false
     // State of the actual GraphQL connection as text
     this._connectionStatus = undefined
+    // GraphQL client
+    this._client = undefined
   }
 
   _stateChanged(state) {
@@ -75,8 +78,13 @@ class LuminaveServerManager extends connect(store)(LitElement) {
    * @param {Object} e - The event
    */
   handleConnection(e) {
-    const { connected, connectionStatus } = e.detail
+    const { connected, connectionStatus, client } = e.detail
     store.dispatch(setLuminaveServer({ connected }))
+
+    // Apollo Client
+    if (client !== undefined) {
+      this._client = client
+    }
 
     this._connectionStatus = connectionStatus
     this._connected = connected
@@ -89,7 +97,7 @@ class LuminaveServerManager extends connect(store)(LitElement) {
   }
 
   render() {
-    const { url, reconnect, _connectionStatus, _connected } = this
+    const { url, reconnect, _connectionStatus, _connected, _client } = this
     const integrationName = "luminave-server"
 
     return html`
@@ -105,8 +113,6 @@ class LuminaveServerManager extends connect(store)(LitElement) {
         @connection-error="${e => this.handleConnection(e)}"
       >
       </integration-graphql>
-      
-      
 
       <integration-configuration 
         .url="${url}"
@@ -121,6 +127,8 @@ class LuminaveServerManager extends connect(store)(LitElement) {
         @close-connection="${e => this._graphql.disconnect()}"
       >
       </integration-configuration>
+
+      <luminave-server-subscription .client="${_client}"></luminave-server-subscription>
     `
   }
 }
