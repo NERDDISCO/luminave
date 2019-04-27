@@ -52,6 +52,7 @@
     "apollo-link-ws": "^1.0.14",
     "apollo-utilities": "^1.1.2",
     "buffer": "5.2.1",
+    "color": "^3.1.1",
     "fivetwelve": "^1.0.0-alpha.1",
     "graphql": "^14.1.1",
     "graphql-tag": "2.10.1",
