@@ -144,7 +144,7 @@ class LuminaveMenu extends connect(store)(LitElement) {
           <fivetwelve-manager></fivetwelve-manager>
           <storage-manager></storage-manager>
 
-          <h3>Backend</h3>
+          <h3>luminave-server</h3>
           <luminave-server-manager></luminave-server-manager>
 
           <h3>modV</h3>

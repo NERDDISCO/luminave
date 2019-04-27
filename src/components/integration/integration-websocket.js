@@ -44,7 +44,7 @@ class IntegrationWebsocket extends LitElement {
 
     // Connection was opened
     this.socket.addEventListener('open', () => {
-      console.info(`${this.name} opened to ${this.url}`)
+      console.info(`%c${this.name}`+`%c integrated via ${this.url}`, "color: #fff; font-style: bold; background-color: #111;padding: 2px", "")
       this.connected = true
       this.connectionStatus = 'connected'
 

@@ -15,6 +15,7 @@ class IntegrationConfiguration extends LitElement {
       url: { type: String },
       defaultUrl: { type: String },
       reconnect: { type: Boolean },
+      reconnectIntervalConfigurable: { type: Boolean },
       connectionStatus: { type: String }
     }
   }
@@ -22,10 +23,11 @@ class IntegrationConfiguration extends LitElement {
   constructor() {
     super()
 
-    this.name = 'WebSocket'
-    this.socket = null
+    this.name = 'Configuration'
     this.reconnect = false
     this.reconnectInterval = 5000
+    // Is it possible to set the reconnect inteval? 
+    this.reconnectIntervalConfigurable = false
     this.connectionStatus = 'disconnected'
     this._reconnectTimer = undefined
     this.defaultUrl = 'localhost'
@@ -57,7 +59,7 @@ class IntegrationConfiguration extends LitElement {
   }
 
   render() {
-    const { connected, url, defaultUrl, reconnect, connectionStatus, reconnectInterval } = this
+    const { connected, url, defaultUrl, reconnect, reconnectIntervalConfigurable, connectionStatus, reconnectInterval } = this
 
     const connectedLabel = connected 
     ? 'disconnect'
@@ -66,7 +68,8 @@ class IntegrationConfiguration extends LitElement {
     const statusClasses = {
       'status': true,
       'connected': connectionStatus === 'connected',
-      'disconnected': connectionStatus === 'disconnected'
+      'disconnected': connectionStatus === 'disconnected',
+      'error': connectionStatus === 'error'
     }
 
     return html`
@@ -105,7 +108,7 @@ class IntegrationConfiguration extends LitElement {
         @click="${e => this.handleReconnectChange(e)}" />
 
       ${
-        reconnect 
+        reconnect && reconnectIntervalConfigurable
         ? html`
           <input name="reconnectInterval" type="number" 
             value="${reconnectInterval}"

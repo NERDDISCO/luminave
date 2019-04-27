@@ -103,12 +103,13 @@ class ModvManager extends connect(store)(LitElement) {
 
   render() {
     const { url, reconnect, _connectionStatus, _connected } = this
+    const integrationName = "modV"
 
     return html`
       <integration-websocket
         .url="${url}"
         .reconnect="${reconnect}"
-        .name="modV"
+        .name="${integrationName}"
 
         id="websocket"
 
@@ -122,9 +123,10 @@ class ModvManager extends connect(store)(LitElement) {
       <integration-configuration 
         .url="${url}"
         .reconnect="${reconnect}"
-        .name="modV"
+        .name="${integrationName}"
         .connectionStatus="${_connectionStatus}"
         .connected="${_connected}"
+        .reconnectIntervalConfigurable="${true}"
 
         @url-changed="${e => this.handleUrlChanged(e)}"
         @reconnect-changed="${e => this.handleReconnectChanged(e)}"

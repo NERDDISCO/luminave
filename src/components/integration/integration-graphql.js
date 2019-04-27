@@ -1,6 +1,10 @@
 
 import { LitElement, html } from 'lit-element/lit-element.js'
-import { getClient } from '../graphql/graphql-client.js'
+import { InMemoryCache } from 'apollo-cache-inmemory'
+import { WebSocketLink } from 'apollo-link-ws'
+import { persistCache } from 'apollo-cache-persist'
+import ApolloClient from 'apollo-client'
+import { ApolloLink } from 'apollo-link'
 
 /*
  * Handle a GraphQL integration
@@ -26,6 +30,12 @@ class IntegrationGraphql extends LitElement {
     this.reconnectInterval = 5000
     this.connectionStatus = 'disconnected'
     this._reconnectTimer = undefined
+
+    // Apollo Client
+    this.client = undefined
+
+    // Apollo WebSocket Link
+    this.websocketLink = undefined
   }
 
   connectedCallback() {
@@ -43,49 +53,66 @@ class IntegrationGraphql extends LitElement {
   async connect() {
     const { url, reconnect } = this
 
-    this.client = await getClient({ url, reconnect })
+    // WebSocket connection
+    this.websocketLink = new WebSocketLink({ 
+      uri: url, 
+      options: {
+        reconnect
+      } 
+    })
 
-    // // Connection was opened
-    // this.socket.addEventListener('open', () => {
-    //   console.info(`${this.name} opened to ${this.url}`)
-    //   this.connected = true
-    //   this.connectionStatus = 'connected'
+    // Connection was opened
+    this.websocketLink.subscriptionClient.on('connected', () => {
+      console.info(`%c${this.name}`+`%c integrated via ${this.url}`, "color: #fff; font-style: bold; background-color: #111;padding: 2px", "")
 
-    //   const { connected, connectionStatus } = this
+      this.connected = true
+      this.connectionStatus = 'connected'
+      const { connected, connectionStatus } = this
 
-    //   this.dispatchEvent(new CustomEvent('connection-opened', { detail: { connected, connectionStatus } }))
-    // })
+      this.dispatchEvent(new CustomEvent('connection-opened', { detail: { connected, connectionStatus } }))
+    }, this)
 
-    // // Connection was closed
-    // this.socket.addEventListener('close', event => {
-    //   console.info(`${this.name} closed:`, event)
-    //   this.connected = false
-    //   // @TODO: Handle "error" state, because the close event is always fired, also when an error occurs
-    //   this.connectionStatus = 'disconnected'
+    // Connection was closed
+    this.websocketLink.subscriptionClient.on('disconnected', () => {
 
-    //   const { connected, connectionStatus } = this
+      if (this.connectionStatus === 'error') {
+        return
+      }
 
-    //   this.dispatchEvent(new CustomEvent('connection-closed', { detail: { connected, connectionStatus } }))
-    // })
+      console.info(`${this.name} closed`)
 
-    // // Error with connection
-    // this.socket.addEventListener('error', error => {
-    //   console.error(`${this.name} error:`, error)
-    //   this.connected = false
-    //   this.connectionStatus = 'error'
+      this.connected = false
+      this.connectionStatus = 'disconnected'
+      const { connected, connectionStatus } = this
 
-    //   const { connected, connectionStatus } = this
+      this.dispatchEvent(new CustomEvent('connection-closed', { detail: { connected, connectionStatus } }))
+    }, this)
 
-    //   this.dispatchEvent(new CustomEvent('connection-error', { detail: { connected, error, connectionStatus } }))
-    //   this.doReconnect()
-    // })
+    // Error with connection
+    this.websocketLink.subscriptionClient.on('error', error => {
+      console.error(`${this.name} error`)
 
-    // // Listen for messages
-    // this.socket.addEventListener('message', event => {
-    //   const { data } = event
+      this.connected = false
+      this.connectionStatus = 'error'
+      const { connected, connectionStatus } = this
 
-    //   this.dispatchEvent(new CustomEvent('message-received', { detail: { data } }))
-    // })
+      this.dispatchEvent(new CustomEvent('connection-error', { detail: { connected, error, connectionStatus } }))
+    }, this)
+
+    // Stitch different links together
+    const link = ApolloLink.from([
+      this.websocketLink
+    ])
+
+    // Cache
+    const cache = new InMemoryCache().restore(window.__APOLLO_STATE__)
+    await persistCache({
+      cache, 
+      storage: window.localStorage 
+    })
+
+    // Create a new client
+    this.client = new ApolloClient({ cache, link, ssrForceFetchDelay: 100, debug: true })
   }
 
   /**
@@ -93,24 +120,7 @@ class IntegrationGraphql extends LitElement {
    */
   disconnect() {
     if (this.connected) {
-      this.socket.close()
-    }
-  }
-
-  /**
-   * Try to reopen a WebSocket connection. 
-   */
-  doReconnect() {
-    if (this.reconnect) {
-      // Cancel an old timeout
-      clearTimeout(this._reconnectTimer)
-
-      console.info(`${this.name} reconnect in ${this.reconnectInterval} ms`)
-
-      // Create a new timeout
-      this._reconnectTimer = setTimeout(() => {
-        this.connect()
-      }, this.reconnectInterval)
+      this.websocketLink.subscriptionClient.close()
     }
   }
 

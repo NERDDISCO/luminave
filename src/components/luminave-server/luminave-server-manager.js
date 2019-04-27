@@ -6,7 +6,6 @@ import { setLuminaveServer } from '../../actions/luminave-server.js'
 import { getLuminaveServerUrl, getLuminaveServerConnected, getLuminaveServerReconnect } from '../../selectors/luminave-server.js'
 import '../integration/integration-configuration.js'
 import '../integration/integration-graphql.js'
-import './deprecated/luminave-server.js'
 import gql from 'graphql-tag'
 
 
@@ -91,16 +90,13 @@ class LuminaveServerManager extends connect(store)(LitElement) {
 
   render() {
     const { url, reconnect, _connectionStatus, _connected } = this
+    const integrationName = "luminave-server"
 
     return html`
-      <luminave-server></luminave-server>
-
-      ${
-        /*
       <integration-graphql
         .url="${url}"
         .reconnect="${reconnect}"
-        .name="luminave-server"
+        .name="${integrationName}"
 
         id="graphql"
 
@@ -109,13 +105,13 @@ class LuminaveServerManager extends connect(store)(LitElement) {
         @connection-error="${e => this.handleConnection(e)}"
       >
       </integration-graphql>
-        */''
-      }
+      
+      
 
       <integration-configuration 
         .url="${url}"
         .reconnect="${reconnect}"
-        .name="luminave-server"
+        .name="${integrationName}"
         .connectionStatus="${_connectionStatus}"
         .connected="${_connected}"
 
