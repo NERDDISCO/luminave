@@ -65,6 +65,8 @@ class IntegrationConfiguration extends LitElement {
     ? 'disconnect'
     : 'connect'
 
+    
+
     const statusClasses = {
       'status': true,
       'connected': connectionStatus === 'connected',
@@ -79,23 +81,37 @@ class IntegrationConfiguration extends LitElement {
         }
 
         .status {
-          width: 1.75em;
-          height: .95em;
-          background: #ccc;
+          position: relative;
+          width: 1.85em;
+          height: 1.25em;
           display: inline-block;
-          border: 3px solid var(--light-primary-color);
         }
 
-        .status.connected {
-          background: var(--default-success-color);
+        .status:after {
+          position: absolute;
+          left: 0;
+          top: 0;
+          display: block;
+          padding: .25em;
+          background: #fff;
+          font-size: 1rem;
+          line-height: 1rem;
         }
 
-        .status.error {
-          background: var(--default-warning-color);
+        .status.connected:after {
+          content: '❤️';
+        }
+
+        .status.error:after {
+          content: '💀';
+        }
+
+        .status.disconnected:after {
+          content: '👀';
         }
       </style>
 
-      <div class="${classMap(statusClasses)}"></div>
+      <div class="${classMap(statusClasses)}" title="${connectionStatus}"></div>
 
       <label for="url">URL</label>
       <input class="width" name="url" type="text" 
