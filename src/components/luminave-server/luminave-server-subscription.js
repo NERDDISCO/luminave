@@ -9,6 +9,7 @@ import { setAnimation } from '../../actions'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import Color from 'color'
+import { toFixedNumber } from '../../utils/index.js'
 
 // Compute graphql documents statically for performance
 const subscription = gql`
@@ -78,7 +79,7 @@ class LuminaveServerSubscription extends connect(store)(ApolloSubscription) {
     const dimmer = Math.round(255 * intensity)
 
     // TODO: duration should be in ms, not in seconds (luminave only supports seconds as of now)
-    const duration = (transitionDuration / 1000).toFixed(1)
+    const duration = toFixedNumber(transitionDuration / 1000, 1)
 
     const _color = Color(color).rgb().array()
 
