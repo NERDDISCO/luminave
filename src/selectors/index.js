@@ -19,6 +19,7 @@ export const getScenes = state => state.sceneManager
 export const getAnimations = state => state.animationManager
 export const getFixtures = state => state.fixtureManager
 export const getTimeline = state => state.timelineManager
+export const getTimelinePlaying = state => state.timelineManager.playing
 export const getTimelineSceneIds = state => state.timelineManager.scenes
 export const getModv = state => state.modvManager
 export const getModvUrl = state => state.modvManager.url
