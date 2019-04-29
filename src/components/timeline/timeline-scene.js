@@ -2,8 +2,8 @@ import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { repeat } from 'lit-html/directives/repeat.js'
 import { store } from '../../reduxStore.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
-import '../timeline-animation/index.js'
-import { getAnimation, getAnimations } from '../../selectors/index.js'
+import './timeline-animation.js'
+import { getAnimation, getAnimations, getTimelinePlaying } from '../../selectors/index.js'
 
 /*
  * Handle a scene in a timeline
@@ -17,6 +17,10 @@ class TimelineScene extends connect(store)(LitElement) {
     }
   }
 
+  constructor() {
+    super()
+  }
+
   _stateChanged(state) {
     // @TODO: timeline-manager should update all it's children when the animations in the state are changing
     if (!Object.is(this.animations, getAnimations(state))) {
@@ -26,7 +30,7 @@ class TimelineScene extends connect(store)(LitElement) {
   }
 
   render() {
-    const { scene, progress } = this
+    const { scene, progress, playing } = this
 
     return html`
       <style>
@@ -46,7 +50,6 @@ class TimelineScene extends connect(store)(LitElement) {
             <timeline-animation
               .animation="${getAnimation(store.getState(), { animationId })}"
               .fixtureIds=${scene.fixtures}
-              duration=${scene.duration}
               progress=${progress}>
             </timeline-animation>
           </div>

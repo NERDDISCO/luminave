@@ -7,7 +7,7 @@ import { navigate } from '../../actions/app.js'
 
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import '../timeline-manager/index.js'
+import '../timeline/timeline-manager.js'
 import '../ui-spacer/index.js'
 
 import { tabs } from '../../styles/tabs.js'

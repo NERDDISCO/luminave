@@ -1,6 +1,6 @@
 import Keytime from 'keytime/keytime.js'
 
-export default class KeytimeTimeline extends Keytime {
+export default class TimelineKeytime extends Keytime {
   constructor(data) {
     super(data)
 

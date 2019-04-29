@@ -1,6 +1,7 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html, css } from '@polymer/lit-element/lit-element.js'
 import { addToFixtureBatch } from '../../utils/index.js'
-import KeytimeTimeline from './keytime-timeline.js'
+import TimelineKeytime from './timeline-keytime.js'
+import { toFixedNumber } from '../../utils/index.js'
 
 /*
  * Handle an animation in a timeline
@@ -9,9 +10,21 @@ class TimelineAnimation extends LitElement {
   static get properties() {
     return {
       duration: { type: Number },
+      started: { type: Number },
       progress: { type: Number },
+      repeat: { type: Boolean },
       fixtureIds: { type: Array },
-      animation: { type: Object },
+      animation: { 
+        type: Object
+        // hasChanged: (newValue, oldValue) => {
+
+        //   if (oldValue !== undefined) {
+        //     console.log(newValue.duration, oldValue.duration, newValue.duration === oldValue.duration)
+        //   }
+
+        //   return !Object.is(newValue, oldValue)
+        // }
+      },
       timeline: { type: Object }
     }
   }
@@ -74,7 +87,7 @@ class TimelineAnimation extends LitElement {
       return property
     })
 
-    return new KeytimeTimeline(timeline)
+    return new TimelineKeytime(timeline)
   }
 
   _toArray(object) {
@@ -91,9 +104,30 @@ class TimelineAnimation extends LitElement {
   }
 
   computeProgress() {
-    let progress = this.progress / this.duration
+
+    // Timeline was never started
+    if (this.progress === 0) {
+      return 0
+    }
+
+    let progress = (this.progress - this.started) / this.duration
+    progress = toFixedNumber(progress, 2)
+
+    // console.log(this.progress, this.started, this.progress - this.started, progress, this.duration)
+
+    // We reached the end of the duration
     if (progress > 1.0) {
-      progress = 1
+
+      // @TODO: Check what happens if the timeline is not running, but then it gets started again. The progress will be beyond 1.0, but it should start at 0
+      if (progress > 1.5) {
+        progress = 0
+      } else {
+        progress = 1
+      }
+
+      if (this.repeat) {
+        this.started = new Date().getTime()
+      }
     }
 
     return progress
@@ -103,7 +137,17 @@ class TimelineAnimation extends LitElement {
     // Update the timeline when the animation is updated
     if (changedProperties.has('animation') && this.animation !== undefined) {
       this.timeline = this.computeTimeline(this.animation.keyframes)
+      // console.log('updated animation', this.animation)
+
+      // console.log(changedProperties.animation)
+      this.started = new Date().getTime()
+      this.repeat = true
+      this.duration = this.animation.duration * 1000
     }
+
+    // if (changedProperties.has('progress') && changedProperties.get('progress') === undefined) {
+    //   console.log(this.animation.name)
+    // }
 
     return true
   }
@@ -113,15 +157,28 @@ class TimelineAnimation extends LitElement {
       return
     }
 
+    const { duration, styles } = this
+
+    const progress = this.computeProgress()
+
     // Interpolate the properties of the fixtures associated with the animation
-    const interpolatedProperties = this.timeline.values(this.computeProgress())
+    const interpolatedProperties = this.timeline.values(progress)
 
     // Add the interpolated properties to the fixtureBatch (which is used to set the value in the universe)
     for (let i = 0; i < this.fixtureIds.length; i++) {
       addToFixtureBatch(this.fixtureIds[i], interpolatedProperties)
     }
 
-    return html``
+    return html`
+      <style>
+        .progress {
+          width: 2em;
+          display: inline-block;
+        }
+      </style>
+
+      ${duration}ms | <span class="progress">${progress}</span>
+    `
   }
 }
 

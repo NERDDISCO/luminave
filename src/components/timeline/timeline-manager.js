@@ -4,7 +4,7 @@ import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { playTimeline, resetTimeline, setChannels, resetUniverseAndFixtures } from '../../actions/index.js'
 import { batch, clearBatch, fixtureBatch, modvData } from '../../utils/index.js'
-import '../timeline-scene/index.js'
+import './timeline-scene.js'
 import { getTimelineScenes, getAnimations, getTimeline, getFixtures, getModvConnected } from '../../selectors/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 
@@ -27,7 +27,6 @@ class TimelineManager extends connect(store)(LitElement) {
 
     document.addEventListener('keypress', e => {
       const { code } = e
-      // console.log(`Keypress code: ${code}`)
 
       // Start playback when active element is the body
       if (code === 'Space' && e.target === document.body) {
@@ -96,7 +95,6 @@ class TimelineManager extends connect(store)(LitElement) {
   observePlaying() {
     if (this.isPlaying) {
       console.log('playing')
-      this.time = new Date()
 
       this.loop()
     } else {
@@ -112,18 +110,8 @@ class TimelineManager extends connect(store)(LitElement) {
 
   loop() {
     if (this.isPlaying) {
-      this.duration = ~~(60 / this.bpm * 1000 * this.measures)
-
       const now = new Date()
-      const loopEnd = now - this.time > this.duration
-
-      const timeCounter = (now - this.time) / this.duration
-
-      if (loopEnd) {
-        this.time = now
-      }
-
-      this.progress = this.normalizeProgress(timeCounter * this.measures)
+      this.progress = now.getTime()
 
       for (const fixtureId in fixtureBatch) {
         const interpolatedProperties = fixtureBatch[fixtureId].properties
