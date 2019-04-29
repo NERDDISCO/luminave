@@ -2,6 +2,7 @@ import { createStore, combineReducers, applyMiddleware } from 'redux/es/index.js
 
 import * as reducers from './reducers/index.js'
 import app from './reducers/app.js'
+import timeline from './reducers/timeline.js'
 import venueManager from './reducers/venue.js'
 import modvManager from './reducers/modv.js'
 import luminaveServer from './reducers/luminave-server.js'
@@ -13,6 +14,7 @@ export const store = createStore(
   combineReducers({
     ...reducers,
     app,
+    timeline,
     venueManager,
     modvManager,
     luminaveServer

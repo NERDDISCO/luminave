@@ -3,7 +3,7 @@ import { repeat } from 'lit-html/directives/repeat.js'
 import { store } from '../../reduxStore.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import './timeline-animation.js'
-import { getAnimation, getAnimations, getTimelinePlaying } from '../../selectors/index.js'
+import { getAnimation, getAnimations } from '../../selectors/index.js'
 
 /*
  * Handle a scene in a timeline

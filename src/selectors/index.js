@@ -18,9 +18,6 @@ export const getUniverses = state => state.universeManager
 export const getScenes = state => state.sceneManager
 export const getAnimations = state => state.animationManager
 export const getFixtures = state => state.fixtureManager
-export const getTimeline = state => state.timelineManager
-export const getTimelinePlaying = state => state.timelineManager.playing
-export const getTimelineSceneIds = state => state.timelineManager.scenes
 export const getModv = state => state.modvManager
 export const getModvUrl = state => state.modvManager.url
 export const getModvReconnect = state => state.modvManager.reconnect
@@ -67,19 +64,6 @@ export const getScenesSorted = createSelector(
   getScenes,
   scenes => scenes.sort((a, b) => collator.compare(a.name, b.name))
 )
-
-/*
- * Get scenes that are part of the timeline
- */
- export const getTimelineScenes = createSelector(
-   getScenes,
-   getTimelineSceneIds,
-   (scenes, timelineSceneIds) => {
-     return scenes.filter(scene => {
-       return timelineSceneIds.includes(scene.id)
-     })
-   }
- )
 
 /*
  * Get a specific fixture by using the fixtureId
