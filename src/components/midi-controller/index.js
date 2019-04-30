@@ -5,6 +5,8 @@ import WebMidi from 'webmidi'
 import '../midi-grid/index.js'
 import { learnMidi, setMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
 import { getMidiLearning, getMidiEnabled, getLive } from '../../selectors/index.js'
+import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
+import uuidv1 from 'uuid/v1.js'
 
 
 /*
@@ -157,10 +159,22 @@ class MidiController extends connect(store)(LitElement) {
 
         // Set active state of element
         store.dispatch(setMidiMappingActive(this.id, mappingIndex, elementState))
-
         if (elementState) {
+
           // Add all scenes to the timeline
-          element.scenes.map(sceneId => store.dispatch(addSceneToTimeline(sceneId)))
+          element.scenes.map(sceneId => {
+            const scene = {
+              sceneId,
+              timelineSceneId: uuidv1(),
+              adapt: true,
+              type: SCENE_TYPE_STATIC,
+              added: new Date().getTime(),
+              started: undefined,
+              priority: 0
+            }
+
+            store.dispatch(addSceneToTimeline(scene))
+          })
 
           // Button light: on
           this.output.send(144, [note, 127])

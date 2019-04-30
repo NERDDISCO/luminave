@@ -26,12 +26,24 @@ export const resetTimeline = () => ({
 })
 
 
-/*
+/**
  * Add a scene to the timeline
+ * 
+ * @param {Object} scene - The scene to add to the timeline
  */
-export const addSceneToTimeline = sceneId => ({
-  sceneId,
+export const addSceneToTimeline = scene => ({
+  scene,
   type: constants.ADD_SCENE_TO_TIMELINE
+})
+
+/**
+ * Set (update) a scene on the timeline
+ * 
+ * @param {Object} scene - The scene to set on the timeline
+ */
+export const setSceneOnTimeline = scene => ({
+  scene,
+  type: constants.SET_SCENE_ON_TIMELINE
 })
 
 /*

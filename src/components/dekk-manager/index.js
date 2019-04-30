@@ -3,6 +3,9 @@ import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { connectDekk, setDekkData, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures } from '../../actions/index.js'
 import { getSceneByName, getDekkConnected, getDekkData } from '../../selectors/index.js'
+import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
+import uuidv1 from 'uuid/v1.js'
+
 
 /*
  * Handle the connection to Dekk
@@ -105,10 +108,22 @@ class DekkManager extends connect(store)(LitElement) {
             store.dispatch(removeSceneFromTimelineAndResetFixtures(scene.id))
             break
 
-          case 'add':
+          case 'add': {
+            const scene = {
+              sceneId: scene.id,
+              timelineSceneId: uuidv1(),
+              adapt: true,
+              type: SCENE_TYPE_STATIC,
+              added: new Date().getTime(),
+              started: undefined,
+              priority: 0
+            }
+
             // @TODO: TimelineManager: Don't add the same scene x+1 times
             // https://github.com/NERDDISCO/luminave/issues/16
-            store.dispatch(addSceneToTimeline(scene.id))
+            store.dispatch(addSceneToTimeline(scene))
+          }
+
             break
 
           default:

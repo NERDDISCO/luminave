@@ -4,7 +4,8 @@ import {
   ADD_SCENE_TO_TIMELINE,
   REMOVE_SCENE_FROM_TIMELINE,
   RESET_TIMELINE,
-  SET_TIMELINE_PROGRESS
+  SET_TIMELINE_PROGRESS,
+  SET_SCENE_ON_TIMELINE
 } from '../constants/index.js'
 
 /**
@@ -16,8 +17,12 @@ const timeline = (state = {
   progress: 0
 }, { type, sceneId, scene, sceneIndex, playing, progress }) => {
 
-  if (scene !== undefined && scene.id !== undefined) {
-    sceneIndex = state.scenes.findIndex(_scene => _scene.id === scene.id)
+  if (scene !== undefined && scene.sceneId !== undefined) {
+    sceneIndex = state.scenes.findIndex(_scene => _scene.sceneId === scene.sceneId)
+  }
+
+  if (sceneId !== undefined) {
+    sceneIndex = state.scenes.findIndex(scene => scene.sceneId === sceneId)
   }
 
   switch (type) {
@@ -25,11 +30,14 @@ const timeline = (state = {
       return update(state, { playing: { $set: playing } })
 
     case ADD_SCENE_TO_TIMELINE: {
-      return update(state, { scenes: { $push: [sceneId] } })
+      return update(state, { scenes: { $push: [scene] } })
+    }
+
+    case SET_SCENE_ON_TIMELINE: {
+      return update(state, { scenes: { [sceneIndex]: { $merge: scene } } })
     }
       
     case REMOVE_SCENE_FROM_TIMELINE: {
-      const sceneIndex = state.scenes.indexOf(sceneId)
       return update(state, { scenes: { $splice: [[sceneIndex, 1]] } })
     }
 

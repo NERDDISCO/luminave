@@ -14,18 +14,9 @@ class TimelineAnimation extends LitElement {
       progress: { type: Number },
       repeat: { type: Boolean },
       fixtureIds: { type: Array },
-      animation: { 
-        type: Object
-        // hasChanged: (newValue, oldValue) => {
-
-        //   if (oldValue !== undefined) {
-        //     console.log(newValue.duration, oldValue.duration, newValue.duration === oldValue.duration)
-        //   }
-
-        //   return !Object.is(newValue, oldValue)
-        // }
-      },
-      timeline: { type: Object }
+      animation: { type: Object },
+      timeline: { type: Object },
+      sceneName: { type: String }
     }
   }
 
@@ -111,9 +102,10 @@ class TimelineAnimation extends LitElement {
     }
 
     let progress = (this.progress - this.started) / this.duration
-    progress = toFixedNumber(progress, 2)
+    let progressMs = this.duration - (this.progress - this.started)
+    
 
-    // console.log(this.progress, this.started, this.progress - this.started, progress, this.duration)
+    progress = toFixedNumber(progress, 2)
 
     // We reached the end of the duration
     if (progress > 1.0) {
@@ -121,33 +113,45 @@ class TimelineAnimation extends LitElement {
       // @TODO: Check what happens if the timeline is not running, but then it gets started again. The progress will be beyond 1.0, but it should start at 0
       if (progress > 1.5) {
         progress = 0
+        progressMs = 0
       } else {
         progress = 1
       }
 
-      if (this.repeat) {
-        this.started = new Date().getTime()
-      }
+      // Animation is done
+      this.ended()
     }
 
-    return progress
+    if (progressMs < 0) {
+      progressMs = 0
+    }
+
+    return { progress, progressMs }
+  }
+
+  ended() {
+    // Animation is done
+    this.dispatchEvent(new CustomEvent('animation-ended', {
+      detail: {}
+    }))
   }
 
   shouldUpdate(changedProperties) {
     // Update the timeline when the animation is updated
     if (changedProperties.has('animation') && this.animation !== undefined) {
       this.timeline = this.computeTimeline(this.animation.keyframes)
-      // console.log('updated animation', this.animation)
+      this.duration = this.animation.duration
 
-      // console.log(changedProperties.animation)
-      this.started = new Date().getTime()
-      this.repeat = true
-      this.duration = this.animation.duration * 1000
+      /*
+       * The animation should be restarted if it was really changed. There are different states for an animation
+       * - animation is added => started = undefined
+       * - animation is there, another animation gets removed => started > animation.changed
+       * - animation is there, animation gets updated => started < animation.changed -> THIS IS THE ONE
+       */
+      if (this.animation.changed !== undefined && this.started < this.animation.changed) {
+        this.ended()
+      }
     }
-
-    // if (changedProperties.has('progress') && changedProperties.get('progress') === undefined) {
-    //   console.log(this.animation.name)
-    // }
 
     return true
   }
@@ -159,7 +163,10 @@ class TimelineAnimation extends LitElement {
 
     const { duration, styles } = this
 
-    const progress = this.computeProgress()
+    let { progress, progressMs } = this.computeProgress()
+
+    // In %
+    progress = toFixedNumber(progress * 100, 2)
 
     // Interpolate the properties of the fixtures associated with the animation
     const interpolatedProperties = this.timeline.values(progress)
@@ -172,12 +179,20 @@ class TimelineAnimation extends LitElement {
     return html`
       <style>
         .progress {
-          width: 2em;
-          display: inline-block;
+          font-size: .8rem;
+          text-align: right;
+        }
+
+        .duration {
+          font-size: .7rem;
+          opacity: .6;
+          text-align: right;
         }
       </style>
 
-      ${duration}ms | <span class="progress">${progress}</span>
+      <div class="duration">${duration} ms</div>
+      <div class="duration">${progressMs} ms</div>
+      <div class="progress">${progress} %</div>
     `
   }
 }

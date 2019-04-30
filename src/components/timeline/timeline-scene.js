@@ -4,6 +4,8 @@ import { store } from '../../reduxStore.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import './timeline-animation.js'
 import { getAnimation, getAnimations } from '../../selectors/index.js'
+import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
+import { setSceneOnTimeline } from '../../actions/index.js'
 
 /*
  * Handle a scene in a timeline
@@ -11,14 +13,10 @@ import { getAnimation, getAnimations } from '../../selectors/index.js'
 class TimelineScene extends connect(store)(LitElement) {
   static get properties() {
     return {
-      scene: { type: Object },
+      timelineScene: { type: Object },
       progress: { type: Number },
       animations: { type: Array }
     }
-  }
-
-  constructor() {
-    super()
   }
 
   _stateChanged(state) {
@@ -29,8 +27,20 @@ class TimelineScene extends connect(store)(LitElement) {
     }
   }
 
+  animationEnded(e) {
+    if (this.timelineScene.type === SCENE_TYPE_STATIC) {
+      const scene = {
+        sceneId: this.timelineScene.sceneId,
+        timelineSceneId: this.timelineScene.timelineSceneId,
+        started: new Date().getTime() 
+      }
+
+      store.dispatch(setSceneOnTimeline(scene))
+    }
+  }
+
   render() {
-    const { scene, progress, playing } = this
+    const { timelineScene, progress } = this
 
     return html`
       <style>
@@ -42,15 +52,21 @@ class TimelineScene extends connect(store)(LitElement) {
       </style>
 
       <div>
-        <h3>${scene.name}</h3>
+        <h3>${timelineScene.scene.name}</h3>
         
-        ${repeat(this.scene.animations, animationId => html`
+        ${repeat(timelineScene.scene.animations, animationId => html`
 
           <div>
             <timeline-animation
               .animation="${getAnimation(store.getState(), { animationId })}"
-              .fixtureIds=${scene.fixtures}
-              progress=${progress}>
+              .fixtureIds=${timelineScene.scene.fixtures}
+              .started=${timelineScene.started}
+              .sceneName=${timelineScene.scene.name}
+              progress=${progress}
+
+              @animation-ended=${e => this.animationEnded(e)}
+              
+            >
             </timeline-animation>
           </div>
 

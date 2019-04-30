@@ -203,16 +203,27 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
     animationIndex = state.findIndex(_animation => _animation.id === animation.id)
   }
 
+  const changed = new Date().getTime()
+
   switch (type) {
     case constants.ADD_ANIMATION:
+      animation.changed = changed
       return update(state, { $push: [animation] })
 
     case constants.SET_ANIMATION: {
+      animation.changed = changed
       return update(state, { [animationIndex]: { $merge: { ...animation } } })
     }
 
-    case constants.SET_ANIMATION_NAME:
-      return update(state, { [animationIndex]: { name: { $set: animationName } } })
+    case constants.SET_ANIMATION_NAME: {
+      const animation = { 
+        name: animationName,
+        changed
+      }
+
+      return update(state, { [animationIndex]: { $merge: { ...animation } } })
+    }
+
     case constants.ADD_KEYFRAME: {
 
       // Is not a number
@@ -235,7 +246,7 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
       const oldSteps = state[animationIndex].keyframes[keyframeStep] || {}
       const newStep = { [keyframeProperty]: keyframeValue }
 
-      return update(state, { [animationIndex]: { keyframes: { $merge: {[keyframeStep]: {...oldSteps, ...newStep} } } } })
+      return update(state, { [animationIndex]: { keyframes: { $merge: {[keyframeStep]: {...oldSteps, ...newStep} } }, changed: { $set: changed }  } })
     }
     case constants.RUN_ANIMATION:
       return update(state, { [animationIndex]: { isRunning: { $set: true } } })

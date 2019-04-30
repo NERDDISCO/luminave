@@ -3,6 +3,10 @@ import { store } from '../../reduxStore.js'
 import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene, resetUniverseAndFixtures, removeFixtureFromSceneAndUniverse } from '../../actions/index.js'
 import '../fixture-list/index.js'
 import '../animation-list/index.js'
+import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
+import uuidv1 from 'uuid/v1.js'
+
+
 
 /*
  * Handle a list of scenes
@@ -23,7 +27,18 @@ class SceneBee extends LitElement {
 
   runScene(e) {
     const { sceneId } = e.target
-    store.dispatch(addSceneToTimeline(sceneId))
+
+    const scene = {
+      sceneId,
+      timelineSceneId: uuidv1(),
+      adapt: true,
+      type: SCENE_TYPE_STATIC,
+      added: new Date().getTime(),
+      started: undefined,
+      priority: 0
+    }
+
+    store.dispatch(addSceneToTimeline(scene))
   }
 
   removeScene(e) {

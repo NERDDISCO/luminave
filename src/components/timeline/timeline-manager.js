@@ -2,11 +2,11 @@ import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { playTimeline, resetTimeline, setChannels, resetUniverseAndFixtures } from '../../actions/index.js'
+import { playTimeline, resetTimeline, setChannels, resetUniverseAndFixtures, setSceneOnTimeline, setScene } from '../../actions/index.js'
 import { batch, clearBatch, fixtureBatch, modvData } from '../../utils/index.js'
 import './timeline-scene.js'
 import { getFixtures, getModvConnected, getAnimations } from '../../selectors/index.js'
-import { getTimelineScenes, getTimeline } from '../../selectors/timeline.js'
+import { getTimelineScenesEnhanced, getTimeline } from '../../selectors/timeline.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 
 import '@polymer/paper-button/paper-button.js'
@@ -18,9 +18,6 @@ import { buttons } from '../../styles/buttons.js'
 class TimelineManager extends connect(store)(LitElement) {
   constructor() {
     super()
-
-    // Max length of a scene
-    this.measures = 20
 
     this.timeoutId = undefined
 
@@ -73,7 +70,9 @@ class TimelineManager extends connect(store)(LitElement) {
     this._page = state.app.page
     this.bpm = state.bpm
     this.modvConnected = getModvConnected(state)
-    this.timelineScenes = getTimelineScenes(state)
+
+    // @TODO: This is triggered over and over again when the timeline is playing, we might check if the state change is really needed for this?
+    this.timelineScenes = getTimelineScenesEnhanced(state)
     this.animationManager = getAnimations(state)
     this.fixtures = getFixtures(state)
 
@@ -113,6 +112,22 @@ class TimelineManager extends connect(store)(LitElement) {
     if (this.isPlaying) {
       const now = new Date()
       this.progress = now.getTime()
+
+      // Start all scenes that are not started yet
+      for (let i = 0; i < this.timelineScenes.length; i++) {
+        const scene = this.timelineScenes[i];
+        
+        // Start the scene if it wasn't started yet
+        if (scene.started === undefined) {
+          const { sceneId, timelineSceneId } = scene
+
+          store.dispatch(setSceneOnTimeline({
+            sceneId,
+            timelineSceneId,
+            started: new Date().getTime()
+          }))
+        }
+      }
 
       for (const fixtureId in fixtureBatch) {
         const interpolatedProperties = fixtureBatch[fixtureId].properties
@@ -178,7 +193,7 @@ class TimelineManager extends connect(store)(LitElement) {
   }
 
   render() {
-    const { progress, isPlaying } = this
+    const { progress, isPlaying, timelineScenes } = this
 
     // Label for the play-button
     const playLabel = isPlaying
@@ -210,7 +225,7 @@ class TimelineManager extends connect(store)(LitElement) {
         }
 
         .scenes::before {
-          content: 'Scenes';
+          content: 'Timeline';
           position: absolute;
           top: calc(var(--padding-basic) * -3);
           overflow: visible;
@@ -244,9 +259,9 @@ class TimelineManager extends connect(store)(LitElement) {
 
           <div class="grid">
 
-            ${repeat(this.timelineScenes, scene => html`
+            ${repeat(timelineScenes, timelineScene => html`
               <div class="item">
-                <timeline-scene .scene=${scene} progress=${progress}></timeline-scene>
+                <timeline-scene .timelineScene=${timelineScene} progress=${progress}></timeline-scene>
               </div>
             `)}
 
