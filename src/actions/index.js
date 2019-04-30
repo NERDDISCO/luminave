@@ -253,16 +253,6 @@ export const removeAnimation = animationId => ({
 
 
 /*
- * Set the name of a scene
- */
-export const setAnimationName = (animationId, animationName) => ({
-  animationId,
-  animationName,
-  type: constants.SET_ANIMATION_NAME
-})
-
-
-/*
  * Add a keyframe to an animation
  */
 export const addKeyframe = (animationId, keyframeStep, keyframeProperty, keyframeValue) => ({

@@ -215,15 +215,6 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
       return update(state, { [animationIndex]: { $merge: { ...animation } } })
     }
 
-    case constants.SET_ANIMATION_NAME: {
-      const animation = { 
-        name: animationName,
-        changed
-      }
-
-      return update(state, { [animationIndex]: { $merge: { ...animation } } })
-    }
-
     case constants.ADD_KEYFRAME: {
 
       // Is not a number

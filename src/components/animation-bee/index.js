@@ -1,7 +1,7 @@
 import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { store } from '../../reduxStore.js'
 import { repeat } from 'lit-html/directives/repeat.js'
-import { addKeyframe, setAnimationName, removeAnimation } from '../../actions/index.js'
+import { addKeyframe, removeAnimation, setAnimation } from '../../actions/index.js'
 import { FIXTURE_PROPERTIES } from '../../constants/index.js'
 import '../keyframe-grid/index.js'
 
@@ -45,13 +45,27 @@ class AnimationBee extends LitElement {
     store.dispatch(addKeyframe(this.id, step, property, value))
   }
 
-  handleNameChange(e) {
-    const animationName = e.target.value
-    store.dispatch(setAnimationName(this.id, animationName))
+  handleAnimationSubmit(e) {
+    // Prevent sending data to server
+    e.preventDefault()
+
+    // Get data out of the form
+    const data = new FormData(e.target)
+
+    const name = data.get('name')
+    const duration = parseInt(data.get('duration'), 10)
+
+    const { id } = this
+
+    store.dispatch(setAnimation({
+      id,
+      name,
+      duration
+    }))
   }
 
   render() {
-    const { id, properties, keyframes, name } = this
+    const { id, properties, keyframes, name, duration } = this
 
     return html`
       <style>
@@ -67,7 +81,15 @@ class AnimationBee extends LitElement {
       </style>
 
       <div>
-        <input class="name" name="name" type="text" @change="${e => this.handleNameChange(e)}" value="${name}" />
+
+
+        <form @submit="${e => this.handleAnimationSubmit(e)}">
+          <input class="name" name="name" type="text" value="${name}" />
+          <input class="name" name="duration" type="number" min="0" value="${duration}" />
+
+          <button type="submit">Save</button>
+        </form>
+
         <button @click="${e => this.removeAnimation(e)}" .animationId="${id}">Remove</button>
 
         <br><br>
