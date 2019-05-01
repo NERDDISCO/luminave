@@ -3,14 +3,15 @@ import { LitElement, html, css } from 'lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { setLuminaveServer } from '../../actions/luminave-server.js'
-import { getLuminaveServerUrl, getLuminaveServerConnected, getLuminaveServerReconnect } from '../../selectors/luminave-server.js'
+import { getLuminaveServerUrl, getLuminaveServerConnected, getLuminaveServerReconnect, getLuminaveServerAnimation } from '../../selectors/luminave-server.js'
 import '../integration/integration-configuration.js'
 import '../integration/integration-graphql.js'
-import './luminave-server-subscription.js'
+import './luminave-server-subscription-animation.js'
 import gql from 'graphql-tag'
 
 
  // Compute graphql documents statically for performance
+ // @TODO: Also listen to dynamic scene changes
 const subscription = gql`
 subscription {
   timelineScenesUpdated {
@@ -46,6 +47,7 @@ class LuminaveServerManager extends connect(store)(LitElement) {
     this.url = getLuminaveServerUrl(state)
     this.connected = getLuminaveServerConnected(state)
     this.reconnect = getLuminaveServerReconnect(state)
+    this.animationId = getLuminaveServerAnimation(state)
   }
 
   firstUpdated() {
@@ -91,14 +93,24 @@ class LuminaveServerManager extends connect(store)(LitElement) {
     this.requestUpdate()
   }
 
+  /**
+   * New dynamic animation was added.
+   * 
+   * @param {Object} e - The event.
+   */
+  handleAnimationAdded(e) {
+    const { animationId } = e.detail
+    store.dispatch(setLuminaveServer({ animationId }))
+  }
+
   static get styles() {
     return css`
     `
   }
 
   render() {
-    const { url, reconnect, _connectionStatus, _connected, _client } = this
-    const integrationName = "luminave-server"
+    const { url, reconnect, _connectionStatus, _connected, _client, animationId } = this
+    const integrationName = 'luminave-server'
 
     return html`
       <integration-graphql
@@ -128,7 +140,12 @@ class LuminaveServerManager extends connect(store)(LitElement) {
       >
       </integration-configuration>
 
-      <luminave-server-subscription .client="${_client}"></luminave-server-subscription>
+      <luminave-server-subscription-animation 
+        .client="${_client}"
+        .animationId="${animationId}"
+
+        @added-animation="${e => this.handleAnimationAdded(e)}"
+      ></luminave-server-subscription-animation>
     `
   }
 }

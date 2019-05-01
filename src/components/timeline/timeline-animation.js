@@ -126,7 +126,10 @@ class TimelineAnimation extends LitElement {
       progressMs = 0
     }
 
-    return { progress, progressMs }
+    // In %
+    const progressPercent = toFixedNumber(progress * 100, 2)
+
+    return { progress, progressMs, progressPercent }
   }
 
   ended() {
@@ -163,10 +166,7 @@ class TimelineAnimation extends LitElement {
 
     const { duration, styles } = this
 
-    let { progress, progressMs } = this.computeProgress()
-
-    // In %
-    progress = toFixedNumber(progress * 100, 2)
+    let { progress, progressMs, progressPercent } = this.computeProgress()
 
     // Interpolate the properties of the fixtures associated with the animation
     const interpolatedProperties = this.timeline.values(progress)
@@ -192,7 +192,7 @@ class TimelineAnimation extends LitElement {
 
       <div class="duration">${duration} ms</div>
       <div class="duration">${progressMs} ms</div>
-      <div class="progress">${progress} %</div>
+      <div class="progress">${progressPercent} %</div>
     `
   }
 }

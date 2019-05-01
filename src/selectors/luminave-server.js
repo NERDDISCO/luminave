@@ -5,6 +5,7 @@ export const getLuminaveServer = state => state.luminaveServer
 export const getLuminaveServerUrl = state => state.luminaveServer.url
 export const getLuminaveServerReconnect = state => state.luminaveServer.reconnect
 export const getLuminaveServerConnected = state => state.luminaveServer.connected
+export const getLuminaveServerAnimation = state => state.luminaveServer.animationId
 
 // /**
 //  * 
