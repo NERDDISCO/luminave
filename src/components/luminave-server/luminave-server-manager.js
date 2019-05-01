@@ -7,18 +7,8 @@ import { getLuminaveServerUrl, getLuminaveServerConnected, getLuminaveServerReco
 import '../integration/integration-configuration.js'
 import '../integration/integration-graphql.js'
 import './luminave-server-subscription-animation.js'
-import gql from 'graphql-tag'
+import './luminave-server-subscription-timeline.js'
 
-
- // Compute graphql documents statically for performance
- // @TODO: Also listen to dynamic scene changes
-const subscription = gql`
-subscription {
-  timelineScenesUpdated {
-    name
-  }
-}
-`
 
 /**
  * Handle the connection to the luminave-server
@@ -146,6 +136,10 @@ class LuminaveServerManager extends connect(store)(LitElement) {
 
         @added-animation="${e => this.handleAnimationAdded(e)}"
       ></luminave-server-subscription-animation>
+
+      <luminave-server-subscription-timeline 
+        .client="${_client}"
+      ></luminave-server-subscription-timeline>
     `
   }
 }
