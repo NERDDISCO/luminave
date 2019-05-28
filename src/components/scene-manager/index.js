@@ -100,10 +100,10 @@ class SceneManager extends connect(store)(LitElement) {
    * Add fixtures to a scene, which will be used in handleSubmitSceneAnimationFixtures
    */
   handleAddFixtures(e) {
-    const { event, fixtureIds } = e.detail
-
     // Prevent sending data to server & reset all fields
-    event.preventDefault()
+    e.preventDefault()
+
+    const { fixtureIds } = e.detail
 
     this._fixtures = fixtureIds
   }

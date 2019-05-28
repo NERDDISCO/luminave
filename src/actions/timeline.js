@@ -63,10 +63,14 @@ export const removeSceneFromTimeline = sceneId => ({
 export const removeSceneFromTimelineAndResetFixtures = sceneId => {
   return (dispatch, getState) => {
 
+    const scene = getScene(getState(), { sceneId })
+
     // Get the fixtures of the scene
-    getScene(getState(), { sceneId }).fixtures.map(fixtureId => {
-      utils.clearFixtureInBatch(fixtureId)
-    })
+    if (scene) {
+      scene.fixtures.map(fixtureId => {
+        utils.clearFixtureInBatch(fixtureId)
+      })
+    }
 
     // Remove the scene from the timelline
     dispatch(removeSceneFromTimeline(sceneId))

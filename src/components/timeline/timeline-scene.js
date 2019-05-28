@@ -3,7 +3,7 @@ import { repeat } from 'lit-html/directives/repeat.js'
 import { store } from '../../reduxStore.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import './timeline-animation.js'
-import { getAnimation, getAnimations } from '../../selectors/index.js'
+import { getAnimation, getAnimations, getLive } from '../../selectors/index.js'
 import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
 import { setSceneOnTimeline } from '../../actions/index.js'
 
@@ -15,7 +15,8 @@ class TimelineScene extends connect(store)(LitElement) {
     return {
       timelineScene: { type: Object },
       progress: { type: Number },
-      animations: { type: Array }
+      animations: { type: Array },
+      live: { type: Boolean }
     }
   }
 
@@ -25,6 +26,8 @@ class TimelineScene extends connect(store)(LitElement) {
       this.animations = getAnimations(state)
       this.requestUpdate()
     }
+
+    this.live = getLive(state)
   }
 
   animationEnded(e) {
@@ -40,7 +43,7 @@ class TimelineScene extends connect(store)(LitElement) {
   }
 
   render() {
-    const { timelineScene, progress } = this
+    const { timelineScene, progress, live } = this
 
     return html`
       <style>
@@ -62,6 +65,7 @@ class TimelineScene extends connect(store)(LitElement) {
               .fixtureIds=${timelineScene.scene.fixtures}
               .started=${timelineScene.started}
               .sceneName=${timelineScene.scene.name}
+              .showMeta=${!live}
               progress=${progress}
 
               @animation-ended=${e => this.animationEnded(e)}

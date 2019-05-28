@@ -1,6 +1,7 @@
 import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { repeat } from 'lit-html/directives/repeat.js'
 import '../scene-list-item/index.js'
+import { shared } from '../../styles/shared.js'
 
 /*
  * A list of scenes
@@ -63,11 +64,17 @@ class SceneList extends LitElement {
     }
 
     return html`
+      ${shared}
+
       <style>
         :host {
           max-height: 8em;
           display: block;
           overflow: scroll;
+        }
+
+        select {
+          min-width: 3em;
         }
       </style>
 
@@ -88,8 +95,9 @@ class SceneList extends LitElement {
         `
       }
 
-      ${itemTemplates}
-
+      <div class="items">
+        ${itemTemplates}
+      </div>
     `
   }
 

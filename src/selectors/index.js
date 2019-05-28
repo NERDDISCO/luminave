@@ -74,6 +74,14 @@ export const getFixture = (state, properties) => {
 }
 
 /*
+ * Get a specific fixture by using the name of the fixture
+ */
+export const getFixtureByName = (state, properties) => {
+  return getFixtures(state)
+    .filter(fixture => fixture.name === properties.name)[0]
+}
+
+/*
  * Get a specific fixture by using the fixtureId
  */
 export const getVenue = (state, properties) => {

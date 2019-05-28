@@ -63,7 +63,7 @@ class VenueSlotGrid extends connect(store)(LitElement) {
         0: { modvColor: modv },
         1: { modvColor: modv }
       }
-      const duration = 20
+      const duration = 2000
       const animationId = uuidv1()
 
       store.dispatch(addAnimation({
@@ -94,6 +94,7 @@ class VenueSlotGrid extends connect(store)(LitElement) {
         sceneId
       }))
 
+      this._addFixtures(id, fixtures, sceneId)
 
     // Update existing slot
     } else {
@@ -149,9 +150,11 @@ class VenueSlotGrid extends connect(store)(LitElement) {
 
   addFixtures(e) {
     e.preventDefault()
-
     const { id, fixtures, sceneId } = e.detail
+    this._addFixtures(id, fixtures, sceneId)
+  }
 
+  _addFixtures(id, fixtures, sceneId) {
     store.dispatch(setVenueSlot(this.venueId, {
       id,
       fixtures
@@ -264,14 +267,6 @@ class VenueSlotGrid extends connect(store)(LitElement) {
         }
 
         .item:focus-within {
-          background: var(--mdc-theme-secondary);
-          transform: scale(1.1);
-          z-index: 1337;
-        }
-
-        .item.edit {
-          background: var(--mdc-theme-secondary);
-          transform: scale(1.1);
           z-index: 1337;
         }
 

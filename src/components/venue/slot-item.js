@@ -5,6 +5,10 @@ import '@material/mwc-button/mwc-button.js'
 import '@material/mwc-icon/mwc-icon.js'
 import { when } from 'lit-html/directives/when.js'
 import '../fixture-list/index.js'
+import { classMap } from 'lit-html/directives/classMap.js'
+import { getFixtureByName } from '../../selectors/index.js'
+import { store } from '../../reduxStore.js'
+
 
 /*
  * One slot in the slots of an venue
@@ -38,6 +42,14 @@ class VenueSlotItem extends LitElement {
     const animations = this.animations || []
     const fixtures = this.fixtures || []
     const { sceneId } = this
+
+    const fixture = getFixtureByName(store.getState(), { name })
+
+    // Automatically add fixtures to the slot if the name of the slot is matching
+    // the one from the fixture
+    if (fixture && !fixtures.includes(fixture.id)) {
+      fixtures.push(fixture.id)
+    }
 
     this.dispatchEvent(new CustomEvent('change-slot', {
       detail: {
@@ -90,13 +102,16 @@ class VenueSlotItem extends LitElement {
     e.preventDefault()
 
     const { fixtureIds } = e.detail
+
+    this.addFixtures(fixtureIds, this.sceneId, this.id)
+  }
+
+  addFixtures(fixtureIds, sceneId, id) {
     const fixtures = [...new Set([...this.fixtures, ...fixtureIds])]
-    const { sceneId } = this
 
     this.dispatchEvent(new CustomEvent('add-fixtures', {
       detail: {
-        event: e,
-        id: this.id,
+        id,
         fixtures,
         sceneId
       }
@@ -145,10 +160,15 @@ class VenueSlotItem extends LitElement {
         .warning {
           color: var(--mdc-theme-secondary);
         }
+
+        .edit {
+          background: var(--mdc-theme-secondary);
+        }
       </style>
 
       ${when(isEditing,
         () => html`
+          <div class="item ${classMap({ edit: isEditing })}">
 
           ${when(missingFixtures, 
             () => html`<mwc-icon class="warning">warning</mwc-icon>`,
@@ -186,6 +206,8 @@ class VenueSlotItem extends LitElement {
               <paper-button raised dialog-confirm autofocus>Yes</paper-button>
             </div>
           </paper-dialog>
+
+          </div>
         `,
 
         () => html`

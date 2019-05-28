@@ -16,7 +16,8 @@ class TimelineAnimation extends LitElement {
       fixtureIds: { type: Array },
       animation: { type: Object },
       timeline: { type: Object },
-      sceneName: { type: String }
+      sceneName: { type: String },
+      showMeta: { type: Boolean }
     }
   }
 
@@ -159,12 +160,20 @@ class TimelineAnimation extends LitElement {
     return true
   }
 
+  _metaTemplate(duration, progressMs, progressPercent) {
+    return html`
+      <div class="duration">${duration} ms</div>
+      <div class="duration">${progressMs} ms</div>
+      <div class="progress">${progressPercent} %</div>
+    `
+  }
+
   render() {
     if (this.fixtureIds === undefined) {
       return
     }
 
-    const { duration, styles } = this
+    const { duration, showMeta, _metaTemplate } = this
 
     let { progress, progressMs, progressPercent } = this.computeProgress()
 
@@ -190,9 +199,12 @@ class TimelineAnimation extends LitElement {
         }
       </style>
 
-      <div class="duration">${duration} ms</div>
-      <div class="duration">${progressMs} ms</div>
-      <div class="progress">${progressPercent} %</div>
+      ${
+        showMeta 
+          ? _metaTemplate(duration, progressMs, progressPercent)
+          : html``
+      }
+
     `
   }
 }
