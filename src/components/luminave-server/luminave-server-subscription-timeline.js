@@ -3,6 +3,7 @@ import { html, css } from 'lit-element/lit-element.js'
 import gql from 'graphql-tag'
 import { ApolloSubscription } from '@apollo-elements/lit-apollo'
 import { removeSceneFromTimelineAndResetFixtures, addSceneToTimeline } from '../../actions'
+import { setLuminaveServer } from '../../actions/luminave-server.js'
 import { getSceneByName } from '../../selectors/index.js'
 import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
 
@@ -25,14 +26,12 @@ class LuminaveServerSubscriptionTimeline extends connect(store)(ApolloSubscripti
 
   constructor() {
     super()
-
-    // @TODO: This has to be moved into state, otherwise it will be wrong in some cases
-    this.lastValues = { scenes: [] }
   }
   
   static get properties() {
     return {
-      client: { type: Object }
+      client: { type: Object },
+      scenes: { type: Array }
     }
   }
 
@@ -73,9 +72,8 @@ class LuminaveServerSubscriptionTimeline extends connect(store)(ApolloSubscripti
    * @param {Object} scenes - The scenes from luminave-server
    */
   _updateTimeline(scenes) {
-    // @TODO: Remove scenes when component gets loaded
     // Remove scenes
-    this.changeScenes(this.lastValues.scenes, 'remove')
+    this.changeScenes(this.scenes, 'remove')
 
     scenes = scenes.map(scene => {
       return {
@@ -91,7 +89,9 @@ class LuminaveServerSubscriptionTimeline extends connect(store)(ApolloSubscripti
     this.changeScenes(scenes, 'add')
 
     // Save current scenes
-    this.lastValues.scenes = scenes
+    // @TODO Decouple this from the actual source and move it into the luminave-server-manager
+    const thorium = { scenes }
+    store.dispatch(setLuminaveServer({ thorium }))
   }
 
   /**
@@ -107,11 +107,12 @@ class LuminaveServerSubscriptionTimeline extends connect(store)(ApolloSubscripti
 
     arrayType.map(scene => {
       const { name } = scene
+
       // Retrieve the scene
       const _scene = getSceneByName(store.getState(), { name })
 
       if (_scene === undefined) {
-        console.log(`Scene "${scene.name}" doesn't exist`)
+        console.log(`Can't ${action} scene "${scene.name}" because it doesn't exist`)
       } else {
         scene.sceneId = _scene.id
 
@@ -121,8 +122,6 @@ class LuminaveServerSubscriptionTimeline extends connect(store)(ApolloSubscripti
             break
 
           case 'add':
-            // @TODO: TimelineManager: Don't add the same scene x+1 times
-            // https://github.com/NERDDISCO/luminave/issues/16
             store.dispatch(addSceneToTimeline(scene))
             break
 

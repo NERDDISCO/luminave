@@ -3,7 +3,7 @@ import { LitElement, html, css } from 'lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { setLuminaveServer } from '../../actions/luminave-server.js'
-import { getLuminaveServerUrl, getLuminaveServerConnected, getLuminaveServerReconnect, getLuminaveServerAnimation } from '../../selectors/luminave-server.js'
+import { getLuminaveServerUrl, getLuminaveServerConnected, getLuminaveServerReconnect, getLuminaveServerAnimation, getLuminaveServerThorium } from '../../selectors/luminave-server.js'
 import '../integration/integration-configuration.js'
 import '../integration/integration-graphql.js'
 import './luminave-server-subscription-animation.js'
@@ -38,6 +38,7 @@ class LuminaveServerManager extends connect(store)(LitElement) {
     this.connected = getLuminaveServerConnected(state)
     this.reconnect = getLuminaveServerReconnect(state)
     this.animationId = getLuminaveServerAnimation(state)
+    this.thorium = getLuminaveServerThorium(state)
   }
 
   firstUpdated() {
@@ -99,7 +100,7 @@ class LuminaveServerManager extends connect(store)(LitElement) {
   }
 
   render() {
-    const { url, reconnect, _connectionStatus, _connected, _client, animationId } = this
+    const { url, reconnect, _connectionStatus, _connected, _client, animationId, thorium } = this
     const integrationName = 'luminave-server'
 
     return html`
@@ -139,6 +140,7 @@ class LuminaveServerManager extends connect(store)(LitElement) {
 
       <luminave-server-subscription-timeline 
         .client="${_client}"
+        .scenes="${thorium.scenes}"
       ></luminave-server-subscription-timeline>
     `
   }

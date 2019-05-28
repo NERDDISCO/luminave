@@ -4,10 +4,7 @@ import gql from 'graphql-tag'
 import { ApolloSubscription } from '@apollo-elements/lit-apollo'
 import { setAnimation, addAnimation } from '../../actions'
 import { getAnimation } from '../../selectors/index.js'
-
-import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import uuidv1 from 'uuid/v1.js'
 import { normal } from '../../utils/animation-effects/normal.js'
 import { fade } from '../../utils/animation-effects/fade.js'
 import { shake } from '../../utils/animation-effects/shake.js'
@@ -18,7 +15,12 @@ import { oscillate } from '../../utils/animation-effects/oscillate.js'
 const subscription = gql`
   subscription {
     animationUpdated {
-      data
+      dimmer
+      duration 
+      color
+      action
+      actionStrength
+      externalId
     }
   }
 `
@@ -26,7 +28,7 @@ const subscription = gql`
 /**
  * Subsribe to the luminave-server to get updates
  */
-class LuminaveServerSubscriptionAnimation extends connect(store)(ApolloSubscription) {
+class LuminaveServerSubscriptionAnimation extends ApolloSubscription {
 
   constructor() {
     super()
@@ -42,18 +44,6 @@ class LuminaveServerSubscriptionAnimation extends connect(store)(ApolloSubscript
     }
   }
 
-  _stateChanged(state) {
-    const { animationId } = this
-
-    const animation = getAnimation(state, { animationId })
-
-    // Create new animation if animation doesn't exist yet
-    if (animation === undefined) {
-      this._addAnimation()
-    }
-    
-  }
-
   static get styles() {
     return css`
     `
@@ -65,7 +55,16 @@ class LuminaveServerSubscriptionAnimation extends connect(store)(ApolloSubscript
     }
 
     if (changedProps.has('data')) {
-      this._setAnimation(this.data.animationUpdated.data)
+      const animation = this.data.animationUpdated
+
+      const _animation = getAnimation(store.getState(), { animationId: animation.externalId })
+
+      // Create new animation if animation doesn't exist yet
+      if (_animation === undefined) {
+        this._addAnimation(animation)
+      }
+
+      this._setAnimation(animation)
     }
 
     return (
@@ -82,10 +81,10 @@ class LuminaveServerSubscriptionAnimation extends connect(store)(ApolloSubscript
     }
   }
 
-  _addAnimation() {
-    const id = uuidv1()
-    const name = 'dynamic-animation-subscription'
-    const duration = 0
+  _addAnimation(animation) {
+    const id = animation.externalId
+    const name = animation.externalId
+    const { duration } = animation
 
     this.animationId = id
   

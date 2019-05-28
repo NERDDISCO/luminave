@@ -40,6 +40,7 @@ _Video of modV + luminave in ❤️ with Chiptune (Caution: Flashing lights & mu
     - [In luminave](#in-luminave)
     - [In modV 1.0](#in-modv-10)
     - [In modV 2.0](#in-modv-20)
+  - [Thorium](#thorium)
   - [Dekk](#dekk)
     - [In luminave](#in-luminave-1)
     - [In dekk](#in-dekk)
@@ -131,7 +132,7 @@ npm start
 
 ## modV
 
-If you want to use modV you have to start the local WebSocket server too:
+If you want to use modV you have to start the local WebSocket server:
 
 ### In luminave
 
@@ -147,7 +148,13 @@ If you want to use modV you have to start the local WebSocket server too:
 ### In modV 2.0
 
 * Activate the "grab-canvas" plugin
+* Set the amounts of areas you want to grab
 
+
+
+## Thorium
+
+Take a look at the [Thorium docs](docs/Thorium.md). 
 
 
 ## Dekk

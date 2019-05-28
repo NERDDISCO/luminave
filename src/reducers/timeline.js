@@ -34,11 +34,15 @@ const timeline = (state = {
     }
 
     case SET_SCENE_ON_TIMELINE: {
-      return update(state, { scenes: { [sceneIndex]: { $merge: scene } } })
+      return sceneIndex === -1 
+        ? state 
+        : update(state, { scenes: { [sceneIndex]: { $merge: scene } } })
     }
       
     case REMOVE_SCENE_FROM_TIMELINE: {
-      return update(state, { scenes: { $splice: [[sceneIndex, 1]] } })
+      return sceneIndex === -1 
+        ? state 
+        : update(state, { scenes: { $splice: [[sceneIndex, 1]] } })
     }
 
     case RESET_TIMELINE:
