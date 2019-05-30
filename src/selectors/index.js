@@ -38,6 +38,11 @@ export const getAnimation = (state, properties) => {
     .filter(animation => animation.id === properties.animationId)[0]
 }
 
+export const getAnimationByName = (state, properties) => {
+  return getAnimations(state)
+    .filter(animation => animation.name === properties.name)[0]
+}
+
 /*
  * Sort animations by animation.name
  */

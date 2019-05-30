@@ -65,6 +65,7 @@ export default class DmxDevice extends FivetwelveDmxDevice {
       .filter(([name, param]) => param instanceof DmxParam)
       .map(([name, param]) => {
 
+
         const { min = 0, max = 0, map = {}, channels } = param
 
         // handle (map|mapping) inconsistency.

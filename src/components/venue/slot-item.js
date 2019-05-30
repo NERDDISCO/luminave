@@ -140,6 +140,12 @@ class VenueSlotItem extends LitElement {
     this.isEditing = !this.isEditing
   }
 
+  updated(changedProperties) {
+    if (changedProperties.has('isEditing') && this.isEditing) {
+      this.shadowRoot.getElementById('slotName').focus()
+    }
+  }
+
   render() {
     const { x, y, name, modv, fixtures, fixtureManager } = this
     let { isEditing } = this
@@ -178,7 +184,7 @@ class VenueSlotItem extends LitElement {
           <form @submit="${e => this.handleSubmit(e)}" autocomplete="off">
             <input name="x" type="number" .value="${defaultValue(x, '')}" min="0" required placeholder="x" />
             <input name="y" type="number" .value="${defaultValue(y, '')}" min="0" required placeholder="y" />
-            <input name="name" type="text" .value="${defaultValue(name, '')}" required placeholder="Name" />
+            <input name="name" type="text" .value="${defaultValue(name, '')}" required placeholder="Name" id="slotName" />
             <input name="modv" type="number" .value="${defaultValue(modv, '')}" min="1" required placeholder="modV" id="focus" />
 
             <button type="submit">Update</button>

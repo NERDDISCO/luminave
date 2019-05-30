@@ -109,7 +109,7 @@ class DmxFixtureProperty extends LitElement {
       ${
         property.isHiRes
         ? html`
-          <input type="number" .value="${defaultValue(value, 0)}" @change="${e => this.handleInputChange(e)}" min="${property.min}" max="${property.max}">
+          <input type="number" .value="${defaultValue(value, 0)}" @change="${e => this.handleInputChange(e)}" min="${property.min}" max="${property.max}" step="0.1">
           <span>From ${property.min} to ${property.max}</span>
         `
         : ''

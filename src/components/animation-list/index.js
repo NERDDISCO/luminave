@@ -66,7 +66,7 @@ class AnimationList extends LitElement {
         <button type="submit">Add animation</button>
       </form>
 
-      <search-field></search-field>
+      <!-- <search-field></search-field> -->
 
       <div class="items">
     

@@ -8,6 +8,7 @@ If you want to use [Thorium](https://github.com/Thorium-Sim) as your space ship 
   - [How does it work?](#how-does-it-work)
   - [Setup](#setup)
   - [Config](#config)
+  - [Usage](#usage)
     - [In luminave](#in-luminave)
 
 <!-- tocstop -->
@@ -30,19 +31,28 @@ This way you can control all the DMX512 lights from within Thorium.
 Clone the following repos:
 
 * [luminave](https://github.com/NERDDISCO/luminave)
-* [luminave-thorium](https://github.com/NERDDISCO/luminave-thorium)
 * [luminave-server](https://github.com/NERDDISCO/luminave-server)
+* [luminave-thorium](https://github.com/NERDDISCO/luminave-thorium)
 * [luminave-fivetwelve](https://github.com/NERDDISCO/luminave-fivetwelve)
 
 Go into each each folder and execute `npm install`
-
-Then start each application by executing `npm start`
-
 
 ## Config
 
 * [luminave](https://github.com/NERDDISCO/luminave) can be configured using the UI at [localhost:8081](http://localhost:8081/)
 * [luminave-thorium](https://github.com/NERDDISCO/luminave-thorium), [luminave-server](https://github.com/NERDDISCO/luminave-server) & [luminave-fivetwelve](https://github.com/NERDDISCO/luminave-fivetwelve) can be configured by creating an `.env` file in each folder. YO
+
+
+## Usage
+
+Start each application by executing `npm start` in each folder:
+
+* luminave
+* luminave-server
+* luminave-thorium
+* luminave-fivetwelve
+
+Then open the luminave frontend in your browser: [localhost:8081](http://localhost:8081/)
 
 
 ### In luminave
