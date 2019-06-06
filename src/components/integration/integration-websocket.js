@@ -12,6 +12,7 @@ class IntegrationWebsocket extends LitElement {
       url: { type: String },
       reconnect: { type: Boolean },
       connectionStatus: { type: String },
+      binaryType: { type: String }
     }
   }
 
@@ -41,6 +42,10 @@ class IntegrationWebsocket extends LitElement {
    */
   connect() {
     this.socket = new WebSocket(this.url)
+
+    if (this.binaryType) {
+      this.socket.binaryType = this.binaryType
+    }
 
     // Connection was opened
     this.socket.addEventListener('open', () => {
