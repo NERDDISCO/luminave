@@ -467,14 +467,6 @@ export const sendUniverseToUsb = value => ({
 })
 
 /*
- * Send the universe to fivetwelve bridge
- */
-export const sendUniverseToFivetwelve = value => ({
-  value,
-  type: constants.SEND_UNIVERSE_TO_FIVETWELVE
-})
-
-/*
  * Update the data of the modV integration
  */
 export const setModv = data => ({

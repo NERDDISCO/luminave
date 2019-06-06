@@ -74,22 +74,6 @@ export const dekkManager = (state = {
 }
 
 /*
- * fivetwelve Manager
- */
-export const fivetwelveManager = (state = {
-    connected: false
-  }, { type, connected, value }) => {
-  switch (type) {
-    case constants.CONNECT_FIVETWELVE:
-      return update(state, { connected: { $set: connected } } )
-    case constants.SEND_UNIVERSE_TO_FIVETWELVE:
-      return update(state, { lastTransmission: { $set: value } } )
-    default:
-      return state
-  }
-}
-
-/*
  * Handle the connections to USB & Bluetooth
  */
 export const connectionManager = (

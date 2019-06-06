@@ -17,7 +17,7 @@ import '../bpm-meter/index.js'
 import '../usb-dmx-manager/index.js'
 import '../storage-manager/index.js'
 import '../live-mode/index.js'
-import '../fivetwelve-manager/index.js'
+import '../fivetwelve/fivetwelve-manager.js'
 import '../dekk-manager/index.js'
 import '../rainbow-text/index.js'
 import '../modv/modv-manager.js'
@@ -141,7 +141,6 @@ class LuminaveMenu extends connect(store)(LitElement) {
           <live-mode></live-mode>
 
           <dekk-manager></dekk-manager>
-          <fivetwelve-manager></fivetwelve-manager>
           <storage-manager></storage-manager>
 
           <h3>luminave-server</h3>
@@ -149,6 +148,9 @@ class LuminaveMenu extends connect(store)(LitElement) {
 
           <h3>modV</h3>
           <modv-manager></modv-manager>
+
+          <h3>fivetwelve</h3>
+          <fivetwelve-manager></fivetwelve-manager>
 
         </div>
 

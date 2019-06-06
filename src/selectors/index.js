@@ -29,7 +29,6 @@ export const getMidiLearning = state => state.midiManager.learning
 export const getDekk = state => state.dekkManager
 export const getDekkConnected = state => state.dekkManager.connected
 export const getDekkData = state => state.dekkManager.data
-export const getFivetwelveConnected = state => state.fivetwelveManager.connected
 export const getUsbDmxControllerConnected = state => state.connectionManager.usb.connected
 export const getVenues = state => state.venueManager
 

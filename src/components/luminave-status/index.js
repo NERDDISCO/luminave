@@ -4,7 +4,6 @@ import { store } from '../../reduxStore.js'
 import { getUsbDmxControllerConnected, getModvConnected, getFivetwelveConnected } from '../../selectors/index.js'
 
 import '../usb-dmx-manager/index.js'
-import '../fivetwelve-manager/index.js'
 import '../dekk-manager/index.js'
 import './indicator.js'
 import '../ui-spacer/index.js'
