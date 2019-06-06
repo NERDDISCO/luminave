@@ -9,7 +9,8 @@ import {
 const luminaveServer = (state = {
   reconnect: false,
   connected: false,
-  url: 'ws://localhost:4000'
+  url: 'ws://localhost:4000/graphql',
+  thorium: {}
 }, {
   type,
   data
