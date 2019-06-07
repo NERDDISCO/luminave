@@ -10,7 +10,9 @@ const luminaveServer = (state = {
   reconnect: false,
   connected: false,
   url: 'ws://localhost:4000/graphql',
-  thorium: {}
+  thorium: {
+    scenes: []
+  }
 }, {
   type,
   data

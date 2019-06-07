@@ -7,6 +7,7 @@ export const getLuminaveServerReconnect = state => state.luminaveServer.reconnec
 export const getLuminaveServerConnected = state => state.luminaveServer.connected
 export const getLuminaveServerAnimation = state => state.luminaveServer.animationId
 export const getLuminaveServerThorium = state => state.luminaveServer.thorium
+export const getLuminaveServerThoriumScenes = state => state.luminaveServer.thorium.scenes
 
 // /**
 //  * 

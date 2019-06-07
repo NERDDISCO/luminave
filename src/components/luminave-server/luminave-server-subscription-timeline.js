@@ -6,7 +6,7 @@ import { removeSceneFromTimelineAndResetFixtures, addSceneToTimeline } from '../
 import { setLuminaveServer } from '../../actions/luminave-server.js'
 import { getSceneByName } from '../../selectors/index.js'
 import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
-
+import { getLuminaveServerThoriumScenes } from '../../selectors/luminave-server.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import uuidv1 from 'uuid/v1.js'
@@ -35,7 +35,8 @@ class LuminaveServerSubscriptionTimeline extends connect(store)(ApolloSubscripti
     }
   }
 
-  _stateChanged() {
+  _stateChanged(state) {
+    this.scenes = getLuminaveServerThoriumScenes(state)
   }
 
   static get styles() {
@@ -91,6 +92,10 @@ class LuminaveServerSubscriptionTimeline extends connect(store)(ApolloSubscripti
     // Save current scenes
     // @TODO Decouple this from the actual source and move it into the luminave-server-manager
     const thorium = { scenes }
+
+    // The scene gets added into luminave-server regardless if it exists or not, so that we can remove
+    // it later and know which scene was added last
+    // @TODO: But does this make any sense? Do we really need a scene that doesn't exist?
     store.dispatch(setLuminaveServer({ thorium }))
   }
 
