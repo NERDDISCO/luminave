@@ -8,7 +8,7 @@ node_js:
   - '9'
 script:
   # - npm run test
-  - npm run build
+  # - npm run build
   # - npm run jsdoc
   # - npm run toc
 after_success:

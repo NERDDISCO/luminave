@@ -25,13 +25,6 @@ Use luminave to manage all the lights with your web browser and create stunning 
 
 _Video of modV + luminave in ❤️ with Chiptune (Caution: Flashing lights & music!)_
 
-
----
-
-[![Video of modV + luminave in love with Chiptune](images/luminave_modV_in_love_with_chiptune_2018.jpg)](http://www.youtube.com/watch?v=GiTkwz9AKhM "modV + luminave in ❤️ with Chiptune")
-
-_Video of modV + luminave in ❤️ with Chiptune (Caution: Flashing lights & music!)_
-
 ---
 <!-- toc -->
 - [Getting started](#getting-started)
