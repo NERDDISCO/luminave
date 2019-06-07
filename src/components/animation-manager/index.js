@@ -1,8 +1,8 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { uuidV1 } from '../../../libs/uuid/uuid.js'
+import uuidv1 from 'uuid/v1.js'
 import { addAnimation } from '../../actions/index.js'
 import { getAnimationsSorted } from '../../selectors/index.js'
 import '../animation-bee/index.js'
@@ -33,7 +33,7 @@ class AnimationManager extends connect(store)(LitElement) {
     // Amount was not specified, so we just add one fixture
     if (isNaN(amount)) {
       store.dispatch(addAnimation({
-        id: uuidV1(),
+        id: uuidv1(),
         keyframes: {},
         duration,
         name
@@ -44,19 +44,22 @@ class AnimationManager extends connect(store)(LitElement) {
 
       // Add multiple animations
       for (let i = 0; i < amount; i++) {
-        const animationIndex = i + 1
+        const animationIndex = i
+        const keyframes = {}
 
-        // @TODO: Allow default keyframes than only modvColor
-        const keyframes = {
-          0: { modvColor: animationIndex },
-          1: { modvColor: animationIndex }
+        let newName = ''
+
+        if (amount > 1) {
+          newName = `${name}${animationIndex}`
+        } else {
+          newName = `${name}`
         }
 
         store.dispatch(addAnimation({
-          id: uuidV1(),
+          id: uuidv1(),
           keyframes,
           duration,
-          name: `${name}${animationIndex}`
+          name: newName
         }))
       }
     }

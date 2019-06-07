@@ -1,10 +1,10 @@
-import { html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { html } from '@polymer/lit-element/lit-element.js'
 
 export const buttons = html`
 <style>
     paper-button.primary {
-        background-color: var(--primary-background-color);
-        color: var(--text-primary-color);
+        /* background-color: var(--primary-background-color);
+        color: var(--text-primary-color); */
     }
 
     paper-button.warning {

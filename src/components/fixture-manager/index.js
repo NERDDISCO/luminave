@@ -1,13 +1,18 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { uuidV1 } from '../../../libs/uuid/uuid.js'
+import uuidv1 from 'uuid/v1.js'
 import { addFixture, removeFixtureFromEverywhere } from '../../actions/index.js'
-import '../dmx-fixture/index.js'
 import * as Fixtures from '../../utils/dmx-fixtures.js'
 import { FIXTURE_TYPES } from '../../constants/index.js'
-import { getFixtures } from '../../selectors/index.js';
+import { getFixturesSorted } from '../../selectors/index.js'
+import { buttons } from '../../styles/buttons.js'
+
+import '@polymer/paper-card/paper-card.js'
+import '@polymer/paper-dialog/paper-dialog.js'
+import '@material/mwc-button/mwc-button.js'
+import '@material/mwc-icon/mwc-icon.js'
 
 /*
  * Handle DMX fixtures
@@ -26,12 +31,7 @@ class FixtureManager extends connect(store)(LitElement) {
   }
 
   _stateChanged(state) {
-    this.fixtures = getFixtures(state)
-  }
-
-  removeFixture(e) {
-    const { fixtureId } = e.target
-    store.dispatch(removeFixtureFromEverywhere(fixtureId))
+    this.fixtures = getFixturesSorted(state)
   }
 
   handleSubmit(e) {
@@ -51,7 +51,7 @@ class FixtureManager extends connect(store)(LitElement) {
     // Amount was not specified, so we just add one fixture
     if (isNaN(amount)) {
       store.dispatch(addFixture({
-        id: uuidV1(),
+        id: uuidv1(),
         type,
         name,
         universe,
@@ -75,7 +75,7 @@ class FixtureManager extends connect(store)(LitElement) {
         const bulkAddress = address + (offset * i)
 
         store.dispatch(addFixture({
-          id: uuidV1(),
+          id: uuidv1(),
           type,
           name: `${name}${bulkAddress}`,
           universe,
@@ -86,47 +86,69 @@ class FixtureManager extends connect(store)(LitElement) {
     }
   }
 
+  removeFixture(e) {
+    // Dialog was closed
+    if (e.type === 'iron-overlay-closed') {
+
+      // Dialog was confirmed
+      if (e.detail.confirmed) {
+        store.dispatch(removeFixtureFromEverywhere(this._removeFixtureId))
+        this._removeFixtureId = undefined
+      }
+
+    // Dialog should be opened
+    } else {
+      const dialog = this.shadowRoot.getElementById('dialog')
+
+      // Save the ID of the current fixture to be deleted
+      this._removeFixtureId = e.target.fixtureId
+
+      dialog.positionTarget = e.target
+      dialog.open()
+    }
+  }
+
   render() {
     const { types, fixtures } = this
 
     return html`
-    <style>
-      :host {
-        --width: 4;
-      }
+      ${buttons}
 
-      @media (min-width: 1024px) {
+      <style>
+        @import url('@material/layout-grid/dist/mdc.layout-grid.css');
+
         :host {
-          --width: 5;
+          --width: 4;
         }
-      }
 
-      .container {
-        display: grid;
-        grid-template-columns: repeat(var(--width), auto);
-        row-gap: calc(var(--padding-basic) * 2);
-        column-gap: var(--padding-basic);
-      }
+        @media (min-width: 1024px) {
+          :host {
+            --width: 5;
+          }
+        }
 
-      .item {
-        position: relative;
-        margin-top: calc(var(--padding-basic) * 2);
-        padding: calc(var(--padding-basic) * 3) var(--padding-basic) var(--padding-basic) var(--padding-basic);
-        border: 3px solid var(--dark-primary-color);
-        background: var(--dark-primary-color);
-      }
+      </style>
 
-      .item::before {
-        content: attr(data-name);
-        position: absolute;
-        top: calc(var(--padding-basic) * -3);
-        overflow: visible;
-        background: var(--dark-primary-color);
-        color: var(--text-primary-color);
-        padding: var(--padding-basic);
-      }
+      <custom-style>
+        <style>
+          paper-card {
+            width: 100%;
+            color: var(--mdc-theme-on-surface);
 
-    </style>
+            --paper-card-header-color: var(--mdc-theme-on-surface);
+
+            --paper-card-header-text: {
+              font-size: 1.25em;
+              overflow: hidden;
+              white-space: nowrap;
+            };
+          }
+
+          mwc-button.card {
+            color: var(--mdc-theme-on-primary)
+          }
+        </style>
+      </custom-style>
 
         <form @submit="${e => this.handleSubmit(e)}">
           <label for="type">Type</label>
@@ -151,25 +173,39 @@ class FixtureManager extends connect(store)(LitElement) {
 
         <br>
 
-        <div class="container">
+        <div class="mdc-layout-grid mdc-layout-grid--align-left">
+          <div class="mdc-layout-grid__inner">
 
-          ${repeat(fixtures, fixture => html`
-          
-            <div class="item" data-name="${fixture.name}">
-              <dmx-fixture
-                name="${fixture.name}"
-                .properties="${fixture.properties}"
-                id="${fixture.id}"
-                type="${fixture.type}"
-                address="${fixture.address}"
-                universe="${fixture.universe}"></dmx-fixture>
+            ${repeat(fixtures, fixture => html`
 
-              <button @click="${e => this.removeFixture(e)}" .fixtureId="${fixture.id}">Remove</button>
-            </div>
+              <div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-2">
 
-          `)}
+                <paper-card heading="${fixture.name}" alt="${fixture.name}">
+                  <div class="card-content">
+                    ${fixture.address}
+                  </div>
 
+                  <div class="card-actions">
+                    <a href="/fixture/${fixture.id}" tabindex="-1"><mwc-button icon="edit"></mwc-button></a>
+                    <mwc-button icon="delete" @click="${e => this.removeFixture(e)}" .fixtureId="${fixture.id}"></mwc-button>
+                  </div>
+                </paper-card>
+
+              </div>
+
+            `)}
+
+          </div>
         </div>
+
+
+        <paper-dialog id="dialog" no-overlap horizontal-align="left" vertical-align="top" dynamic-align="true" @iron-overlay-closed="${e => this.removeFixture(e)}">
+          <h2>Delete Fixture?</h2>
+          <div class="buttons">
+            <paper-button dialog-dismiss>No</paper-button>
+            <paper-button raised dialog-confirm autofocus>Yes</paper-button>
+          </div>
+        </paper-dialog>
     `
   }
 }

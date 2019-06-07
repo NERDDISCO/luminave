@@ -1,9 +1,10 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { store } from '../../reduxStore.js'
 import '../animation-list-item/index.js'
 import { getAnimation } from '../../selectors/index.js'
 import { shared } from '../../styles/shared.js'
+import '../search/search-field.js'
 
 /*
  * A list of animations
@@ -64,6 +65,8 @@ class AnimationList extends LitElement {
 
         <button type="submit">Add animation</button>
       </form>
+
+      <!-- <search-field></search-field> -->
 
       <div class="items">
     

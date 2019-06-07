@@ -1,5 +1,5 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { shared } from '../../styles/shared.js'
 
 /*
@@ -15,6 +15,12 @@ class ChannelGrid extends LitElement {
 
     return html`
       ${shared}
+
+      <style>
+        .item {
+          flex: 0 0 2em;
+        }
+      </style>
 
       <div class="items">
         ${repeat(channels, channel => html`

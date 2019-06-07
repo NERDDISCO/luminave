@@ -1,8 +1,8 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { uuidV1 } from '../../../libs/uuid/uuid.js'
+import uuidv1 from 'uuid/v1.js'
 import { addScene } from '../../actions/index.js'
 import { getScenesSorted, getFixtures, getAnimations } from '../../selectors/index.js'
 import '../scene-bee/index.js'
@@ -36,7 +36,7 @@ class SceneManager extends connect(store)(LitElement) {
     e.preventDefault()
 
     store.dispatch(addScene({
-      id: uuidV1(),
+      id: uuidv1(),
       fixtures: [],
       animations: [],
       duration: this.duration,
@@ -67,7 +67,7 @@ class SceneManager extends connect(store)(LitElement) {
     const name = data.get('name')
 
     store.dispatch(addScene({
-      id: uuidV1(),
+      id: uuidv1(),
       fixtures: this._fixtures,
       animations: this._animations,
       duration,
@@ -100,10 +100,10 @@ class SceneManager extends connect(store)(LitElement) {
    * Add fixtures to a scene, which will be used in handleSubmitSceneAnimationFixtures
    */
   handleAddFixtures(e) {
-    const { event, fixtureIds } = e.detail
-
     // Prevent sending data to server & reset all fields
-    event.preventDefault()
+    e.preventDefault()
+
+    const { fixtureIds } = e.detail
 
     this._fixtures = fixtureIds
   }

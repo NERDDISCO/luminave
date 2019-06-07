@@ -1,4 +1,4 @@
-import { html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { html } from '@polymer/lit-element/lit-element.js'
 
 export const shared = html`
 <style>
@@ -7,7 +7,7 @@ export const shared = html`
         flex-wrap: wrap;
     }
     .item {
-        flex: 0 0 2em;
+        flex: 0 0 auto;
     }
 </style>
 `

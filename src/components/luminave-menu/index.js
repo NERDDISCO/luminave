@@ -1,15 +1,15 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import '/node_modules/@polymer/paper-tabs/paper-tab.js'
-import '/node_modules/@polymer/paper-tabs/paper-tabs.js'
-import '/node_modules/@polymer/iron-pages/iron-pages.js'
-import '/node_modules/@polymer/app-layout/app-drawer/app-drawer.js'
-import '/node_modules/@polymer/app-layout/app-header/app-header.js'
-import '/node_modules/@polymer/app-layout/app-toolbar/app-toolbar.js'
-import '/node_modules/@polymer/iron-flex-layout/iron-flex-layout.js'
-import '/node_modules/@polymer/iron-icons/iron-icons.js'
-import '/node_modules/@polymer/paper-icon-button/paper-icon-button.js'
+import '@polymer/paper-tabs/paper-tab.js'
+import '@polymer/paper-tabs/paper-tabs.js'
+import '@polymer/iron-pages/iron-pages.js'
+import '@polymer/app-layout/app-drawer/app-drawer.js'
+import '@polymer/app-layout/app-header/app-header.js'
+import '@polymer/app-layout/app-toolbar/app-toolbar.js'
+import '@polymer/iron-flex-layout/iron-flex-layout.js'
+import '@polymer/iron-icons/iron-icons.js'
+import '@polymer/paper-icon-button/paper-icon-button.js'
 
 import '../luminave-status/index.js'
 import '../tap-button/index.js'
@@ -17,10 +17,11 @@ import '../bpm-meter/index.js'
 import '../usb-dmx-manager/index.js'
 import '../storage-manager/index.js'
 import '../live-mode/index.js'
-import '../modv-manager/index.js'
-import '../fivetwelve-manager/index.js'
+import '../fivetwelve/fivetwelve-manager.js'
 import '../dekk-manager/index.js'
 import '../rainbow-text/index.js'
+import '../modv/modv-manager.js'
+import '../luminave-server/luminave-server-manager.js'
 
 import { updateDrawerState } from '../../actions/app.js'
 import { getBpm, getLive, getDrawerOpened } from '../../selectors/index.js'
@@ -74,7 +75,9 @@ class LuminaveMenu extends connect(store)(LitElement) {
 
         app-drawer {
           color: var(--paper-toolbar-color);
-          z-index: 1337;
+          z-index: 99999;
+          text-align: left;
+          --app-drawer-width: 40vw;
         }
 
         h1 {
@@ -137,10 +140,17 @@ class LuminaveMenu extends connect(store)(LitElement) {
 
           <live-mode></live-mode>
 
-          <modv-manager></modv-manager>
           <dekk-manager></dekk-manager>
-          <fivetwelve-manager></fivetwelve-manager>
           <storage-manager></storage-manager>
+
+          <h3>luminave-server</h3>
+          <luminave-server-manager></luminave-server-manager>
+
+          <h3>modV</h3>
+          <modv-manager></modv-manager>
+
+          <h3>fivetwelve</h3>
+          <fivetwelve-manager></fivetwelve-manager>
 
         </div>
 

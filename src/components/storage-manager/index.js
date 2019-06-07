@@ -1,7 +1,7 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { STORAGE_STATE } from '/src/constants/index.js'
+import { STORAGE_STATE } from '../../constants/index.js'
 import { getLive } from '../../selectors/index.js'
 
 /*

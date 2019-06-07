@@ -1,6 +1,6 @@
-import RgbParam from '/libs/fivetwelve/lib/param/RgbParam.js'
-import RangeParam from '/libs/fivetwelve/lib/param/RangeParam.js'
-import MultiRangeParam from '/libs/fivetwelve/lib/param/MultiRangeParam.js'
+import RgbParam from 'fivetwelve/lib/param/RgbParam.js'
+import RangeParam from 'fivetwelve/lib/param/RangeParam.js'
+import MultiRangeParam from 'fivetwelve/lib/param/MultiRangeParam.js'
 
 import DmxDevice from './DmxDevice.js'
 
@@ -14,7 +14,7 @@ export default class AdjStarburst extends DmxDevice {
         uv: new RangeParam(6, { min: 0, max: 255 }),
 
         strobeMacro: new MultiRangeParam(7, {
-          off: { range: [0, 7] },
+          off: { range: [0, 7], values: [0, 7] },
           on: { range: [8, 15], values: [8, 15] },
           slowToFast: { range: [16, 131], values: [16, 131] },
           slowOpenToFastClose: { range: [140, 181], values: [140, 181] },

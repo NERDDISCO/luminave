@@ -1,4 +1,4 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 
 /*
  * Show BPM (Beats per Minute)

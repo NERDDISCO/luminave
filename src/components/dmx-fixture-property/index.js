@@ -1,5 +1,8 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
+import { rgbToHex } from '../../directives/rgb-to-hex.js'
+import { defaultValue } from '../../directives/default-value.js'
+import { selected } from '../../directives/selected.js'
 
 
 /*
@@ -12,7 +15,8 @@ class DmxFixtureProperty extends LitElement {
       name: { type: String },
       type: { type: String },
       channels: { type: Number },
-      property: { type: Object }
+      property: { type: Object },
+      value: { type: String }
     }
   }
 
@@ -58,21 +62,22 @@ class DmxFixtureProperty extends LitElement {
   }
 
   render() {
-    const { channels, property, name } = this
+    const { channels, property, name, value } = this
 
     return html`
     <div>
+
       <label title="${channels}">${name}</label>:
 
       ${
         property.isRgb
-        ? html`<input type="color" @change="${e => this.handleColorChange(e)}">`
+        ? html`<input type="color" .value="${rgbToHex(value)}" @change="${e => this.handleColorChange(e)}">`
         : ''
       }
 
       ${
         property.isRange
-        ? html`<input type="number" value="0" min="0" max="255" @change="${e => this.handleInputChange(e)}">`
+        ? html`<input type="number" .value="${defaultValue(value, 0)}" min="0" max="255" @change="${e => this.handleInputChange(e)}">`
         : ''
       }
 
@@ -81,7 +86,7 @@ class DmxFixtureProperty extends LitElement {
         ? html`
           <select @change="${e => this.handleSelectChange(e)}">
             ${repeat(property.mapping, mapping => html`
-              <option value="${mapping}">${mapping}</option>
+              <option value="${mapping}" ?selected="${selected(value, mapping)}">${mapping}</option>
             `)}
           </select>
         `
@@ -90,13 +95,23 @@ class DmxFixtureProperty extends LitElement {
 
       ${
         property.isMultiRange
-        ? html`<input type="text" @change="${e => this.handleInputChange(e)}" title="${JSON.stringify(property.mapping)}">`
+        ? html`
+          <input type="text" .value="${defaultValue(value, '')}" @change="${e => this.handleInputChange(e)}">
+          <ul>
+            ${repeat(property.mapping, mapping => html`
+              <li>${mapping}</li>
+            `)}
+          </ul>
+        `
         : ''
       }
 
       ${
         property.isHiRes
-        ? html`<input type="number" @change="${e => this.handleInputChange(e)}" title="${property.min} to ${property.max}" min="${property.min}" max="${property.max}">`
+        ? html`
+          <input type="number" .value="${defaultValue(value, 0)}" @change="${e => this.handleInputChange(e)}" min="${property.min}" max="${property.max}" step="0.1">
+          <span>From ${property.min} to ${property.max}</span>
+        `
         : ''
       }
 

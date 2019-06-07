@@ -1,0 +1,140 @@
+{
+  "bpm": 45,
+  "live": false,
+  "usbManager": {
+    "lastTransmission": 0
+  },
+  "modvManager": {
+    "color": [0, 0, 0],
+    "connected": false
+  },
+  "dekkManager": {
+    "data": {},
+    "connected": false
+  },
+  "fivetwelveManager": {
+    "connected": true
+  },
+  "connectionManager": {
+    "usb": {
+      "connected": false
+    },
+    "bluetooth": {
+      "connected": false
+    }
+  },
+  "universeManager": [{
+    "id": "f2a4cbc0-f754-11e8-b78c-0573c08dfc17",
+    "channels": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "name": "f2a4cbc0-f754-11e8-b78c-0573c08dfc17"
+  }],
+  "sceneManager": [{
+    "id": "14152c60-2b2f-11e9-890e-5b75eb6337dc",
+    "fixtures": ["e1b18af0-f755-11e8-b78c-0573c08dfc17"],
+    "animations": ["b3041530-2b2e-11e9-890e-5b75eb6337dc"],
+    "duration": 20,
+    "name": "color-blue",
+    "isRunning": false
+  }, {
+    "id": "1a8a7690-2b2f-11e9-890e-5b75eb6337dc",
+    "fixtures": ["b2622f10-f819-11e8-a519-138935c9940e"],
+    "animations": ["bc8d2f10-2b2e-11e9-890e-5b75eb6337dc", "b3041530-2b2e-11e9-890e-5b75eb6337dc"],
+    "duration": 20,
+    "name": "color-normal",
+    "isRunning": false
+  }, {
+    "id": "0a293200-2b2f-11e9-890e-5b75eb6337dc",
+    "fixtures": ["3d2780c0-f755-11e8-b78c-0573c08dfc17"],
+    "animations": ["b3041530-2b2e-11e9-890e-5b75eb6337dc"],
+    "duration": 20,
+    "name": "color-red",
+    "isRunning": false
+  }, {
+    "id": "27fe7af0-f755-11e8-b78c-0573c08dfc17",
+    "fixtures": [],
+    "animations": ["1bc164a0-f755-11e8-b78c-0573c08dfc17"],
+    "duration": 20,
+    "name": "test",
+    "isRunning": false
+  }],
+  "animationManager": [{
+    "id": "b3041530-2b2e-11e9-890e-5b75eb6337dc",
+    "keyframes": {
+      "0": {
+        "dimmer": 255
+      },
+      "1": {
+        "dimmer": 255
+      }
+    },
+    "duration": 5,
+    "name": "intensity-1"
+  }, {
+    "id": "1bc164a0-f755-11e8-b78c-0573c08dfc17",
+    "keyframes": {
+      "0": {
+        "dimmer": 30
+      },
+      "1": {
+        "dimmer": 0
+      },
+      "0.25": {
+        "dimmer": 100
+      },
+      "0.5": {
+        "dimmer": 70
+      },
+      "0.75": {
+        "dimmer": 160
+      }
+    },
+    "duration": 20,
+    "name": "test"
+  }],
+  "fixtureManager": [{
+    "id": "e1b18af0-f755-11e8-b78c-0573c08dfc17",
+    "type": "BasicDimmer",
+    "name": "Blue",
+    "universe": 0,
+    "address": 3,
+    "properties": {
+      "dimmer": 0
+    }
+  }, {
+    "id": "1b397da0-f81e-11e8-bf92-4575dbe7b60e",
+    "type": "BasicDimmer",
+    "name": "Bulb (Engineering Hall)",
+    "universe": 0,
+    "address": 5,
+    "properties": {}
+  }, {
+    "id": "3d2780c0-f755-11e8-b78c-0573c08dfc17",
+    "type": "BasicDimmer",
+    "name": "Red",
+    "universe": 0,
+    "address": 2,
+    "properties": {}
+  }, {
+    "id": "b2622f10-f819-11e8-a519-138935c9940e",
+    "type": "BasicDimmer",
+    "name": "White",
+    "universe": 0,
+    "address": 4,
+    "properties": {}
+  }],
+  "midiManager": {
+    "controllers": [],
+    "enabled": true,
+    "learning": false
+  },
+  "timelineManager": {
+    "scenes": ["27fe7af0-f755-11e8-b78c-0573c08dfc17"],
+    "playing": false,
+    "progress": 0
+  },
+  "app": {
+    "drawerOpened": false,
+    "page": "scene"
+  },
+  "venueManager": []
+}

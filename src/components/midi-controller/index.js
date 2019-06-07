@@ -1,10 +1,12 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import WebMidi from '../../../libs/webmidi/index.js'
+import WebMidi from 'webmidi'
 import '../midi-grid/index.js'
-import { learnMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
+import { learnMidi, setMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
 import { getMidiLearning, getMidiEnabled, getLive } from '../../selectors/index.js'
+import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
+import uuidv1 from 'uuid/v1.js'
 
 
 /*
@@ -30,7 +32,7 @@ class MidiController extends connect(store)(LitElement) {
       width: { type: Number },
       height: { type: Number },
       connected: { type: Boolean },
-      mapping: { 
+      mapping: {
         type: Array,
         hasChanged: (newValue, oldValue) => !Object.is(newValue, oldValue)
       },
@@ -157,10 +159,22 @@ class MidiController extends connect(store)(LitElement) {
 
         // Set active state of element
         store.dispatch(setMidiMappingActive(this.id, mappingIndex, elementState))
-
         if (elementState) {
+
           // Add all scenes to the timeline
-          element.scenes.map(sceneId => store.dispatch(addSceneToTimeline(sceneId)))
+          element.scenes.map(sceneId => {
+            const scene = {
+              sceneId,
+              timelineSceneId: uuidv1(),
+              adapt: true,
+              type: SCENE_TYPE_STATIC,
+              added: new Date().getTime(),
+              started: undefined,
+              priority: 0
+            }
+
+            store.dispatch(addSceneToTimeline(scene))
+          })
 
           // Button light: on
           this.output.send(144, [note, 127])
@@ -202,6 +216,30 @@ class MidiController extends connect(store)(LitElement) {
     }
   }
 
+
+  handleSubmit(e) {
+    // Prevent sending data to server
+    e.preventDefault()
+
+    // Get data out of the form
+    const data = new FormData(e.target)
+
+    const name = data.get('name')
+    const input = data.get('input')
+    const output = data.get('output')
+    const width = parseInt(data.get('width'), 10)
+    const height = parseInt(data.get('height'), 10)
+    const controllerId = this.id
+
+    store.dispatch(setMidi(controllerId, {
+      name,
+      input,
+      output,
+      width,
+      height
+    }))
+  }  
+
   render() {
 
     const { live, name, connected, inputname, outputname, width, height, mapping, id } = this
@@ -211,13 +249,27 @@ class MidiController extends connect(store)(LitElement) {
         <h3>${name} (${connected})</h3>
 
         ${
-          live 
+          live
           ? ''
           : html`
-            <ul>
-              <li>input: ${inputname}</li>
-              <li>output: ${outputname}</li>
-            </ul>
+            <form @submit="${e => this.handleSubmit(e)}">
+              <label for="name">Name</label>
+              <input name="name" type="text" value="${name}" required />
+
+              <label for="input">Input</label>
+              <input name="input" type="text" value="${inputname}" required />
+
+              <label for="output">Output</label>
+              <input name="output" type="text" value="${outputname}" required />
+
+              <label for="width">Width</label>
+              <input name="width" type="number" min="1" max="255" value="${width}" required />
+
+              <label for="height">Height</label>
+              <input name="height" type="number" min="1" max="255" value="${height}" required />
+
+              <button type="submit">Update</button>
+            </form>
           `
         }
 

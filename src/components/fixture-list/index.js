@@ -1,5 +1,5 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import '../fixture-list-item/index.js'
 import { shared } from '../../styles/shared.js'
 
@@ -15,6 +15,8 @@ class FixtureList extends LitElement {
   }
 
   handleFixtureSubmit(e) {
+    e.preventDefault()
+    
     const { path } = e
     const [ form ] = path
     const [ select ] = form

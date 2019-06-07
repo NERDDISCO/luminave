@@ -1,11 +1,12 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { learnMidi, addScenesToMidi, removeSceneFromMidi, addMidiMapping } from '../../actions/index.js'
 import '../scene-list/index.js'
 import { MIDI_TYPES, MIDI_TYPE_KNOB, MIDI_TYPE_FADER, MIDI_TYPE_EMPTY, MIDI_TYPE_BUTTON } from '../../constants/index.js'
 import { getMidiLearning, getScenes, getLive } from '../../selectors/index.js'
+import { classMap } from 'lit-html/directives/classMap.js'
 
 
 /*
@@ -134,17 +135,21 @@ class MidiGrid extends connect(store)(LitElement) {
       const element = mapping[index]
       
       itemTemplates.push(html`
-        <div class="item" style="${this.computeItemVars(element, index, learnIndex)}">
+        <div style="${this.computeItemVars(element, index, learnIndex)}" class="item ${classMap({active: element.active, empty: !this.isNotEmpty(element.type)})}">
+
+          <div class="wrapper">
 
           ${
             live 
-            ? html`${element.label}`
-            : ''
-          }
+            ? html`
+              ${
+                this.showValueForType(element.type) 
+                ? html`<span class="control-value">${element.value}</span><br />` 
+                : ''
+              }
 
-          ${
-            this.showValueForType(element.type) 
-            ? html`${element.value}` 
+              <span class="label">${element.label}</span>
+            `
             : ''
           }
             
@@ -199,6 +204,7 @@ class MidiGrid extends connect(store)(LitElement) {
               }
           `}
 
+          </div>
         </div>
       `)
     }
@@ -212,22 +218,52 @@ class MidiGrid extends connect(store)(LitElement) {
 
         .item {
           --on: calc(255 * var(--isActive));
-          background: rgb( var(--on), 255, var(--on));
-          border: 1px solid rgba(0, 0, 0, 0.25);
-          margin: 0.05em;
-          min-height: 1.5em;
+          background: var(--mdc-theme-surface);
+          border: 2px solid var(--mdc-theme-background);
+          min-height: 5em;
           color: #000;
           text-align: center;
           overflow: hidden;
+        }
+
+        .item.active {
+          background: var(--mdc-theme-secondary);
+          color: var(--mdc-theme-on-secondary);
         }
 
         .item .learn {
           --on: calc(255 * var(--isLearning));
           background: rgb(255, var(--on), var(--on));
         }
+
+        .live .item {
+          border: 10px solid var(--mdc-theme-background);
+          border-radius: .5em;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+        }
+
+        .live .item.empty {
+          background: var(--mdc-theme-background);
+        }
+
+        .live .control-value {
+          color: var(--mdc-theme-background);
+          opacity: .5;
+        }
+
+        .live .label {
+          font-size: 22px;
+          font-weight: 400;
+        }
+
+        .live {
+          font-weight: bold;
+        }
       </style>
 
-      <div class="container" style="${this.computeGridVars(width)}">
+      <div class="container ${classMap({ live })}" style="${this.computeGridVars(width)}">
         ${itemTemplates}
       </div>
     `

@@ -30,12 +30,17 @@ export const modvData = {
   // Of all colors that is grabbed from Canvas we get the average
   average: [0, 0, 0],
   // An array of colors grabbed from specific points from the Canvas (configurable in modV)
-  colors: []
+  colors: [],
+  // The amount of areas that are selected for x & y
+  selectionX: 0,
+  selectionY: 0
 }
 
 export const setModvData = data => {
   modvData.average = data.average
   modvData.colors = data.colors
+  modvData.selectionX = data.selectionX
+  modvData.selectionY = data.selectionY
 }
 
 /**
@@ -45,3 +50,14 @@ export const collator = new Intl.Collator('en', {
   numeric: true,
   sensitivity: 'base'
 })
+
+/**
+ * Convert any number into a number with fixed precision
+ * @param {Number} number - The number that should have fixed precision
+ * @param {*} precision - The precision to convert to
+ * @param {*} base - The base (default is 10)
+ */
+export const toFixedNumber = (number, precision, base = 10) => {
+  var pow = Math.pow(base, precision)
+  return Math.round(number * pow) / pow
+}

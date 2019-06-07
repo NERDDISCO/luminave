@@ -2,6 +2,8 @@ import * as constants from '../constants/index.js'
 import * as selectors from '../selectors/index.js'
 import * as utils from '../utils/index.js'
 
+export * from './timeline.js'
+
 /*
  *
  * A collection of Redux actions (= something happened)
@@ -104,6 +106,14 @@ export const resetUniverseAndFixtures = universeIndex => {
 export const addScene = scene => ({
   scene,
   type: constants.ADD_SCENE
+})
+
+/*
+ * Set the values of a scene
+ */
+export const setScene = scene => ({
+  scene,
+  type: constants.SET_SCENE
 })
 
 /*
@@ -218,6 +228,14 @@ export const addAnimation = animation => ({
 })
 
 /*
+ * Update a animation
+ */
+export const setAnimation = animation => ({
+  animation,
+  type: constants.SET_ANIMATION
+})
+
+/*
  * Start the playback of a animation
  */
 export const runAnimation = animationId => ({
@@ -235,16 +253,6 @@ export const removeAnimation = animationId => ({
 
 
 /*
- * Set the name of a scene
- */
-export const setAnimationName = (animationId, animationName) => ({
-  animationId,
-  animationName,
-  type: constants.SET_ANIMATION_NAME
-})
-
-
-/*
  * Add a keyframe to an animation
  */
 export const addKeyframe = (animationId, keyframeStep, keyframeProperty, keyframeValue) => ({
@@ -254,6 +262,20 @@ export const addKeyframe = (animationId, keyframeStep, keyframeProperty, keyfram
   keyframeValue,
   type: constants.ADD_KEYFRAME
 })
+
+/*
+ * Add keyframes to an animation
+ */
+export const addKeyframes = (animationId, keyframeStep, keyframeProperties) => {
+  return (dispatch, getState) => {
+    Object.entries(keyframeProperties).map(keyframeProperty => {
+      const [property, value] = keyframeProperty
+
+      dispatch(addKeyframe(animationId, keyframeStep, property, value))
+    })
+
+  }
+}
 
 /*
  * Add a fixture
@@ -270,6 +292,15 @@ export const setFixtureAddress = (fixtureId, fixtureAddress) => ({
   fixtureId,
   fixtureAddress,
   type: constants.SET_FIXTURE_ADDRESS
+})
+
+/*
+ * Set the values of the fixture
+ */
+export const setFixture = (fixtureId, fixture) => ({
+  fixtureId,
+  fixture,
+  type: constants.SET_FIXTURE
 })
 
 /*
@@ -332,6 +363,16 @@ export const addMidi = controller => ({
   controller,
   type: constants.ADD_MIDI
 })
+
+/*
+ * Update a MIDI controller
+ */
+export const setMidi = (controllerId, controller) => ({
+  controllerId, 
+  controller,
+  type: constants.SET_MIDI
+})
+
 
 /*
  * Remove a MIDI controller
@@ -410,65 +451,6 @@ export const removeSceneFromMidi = (controllerId, mappingIndex, sceneId) => ({
 })
 
 /*
- * Control playback of the timeline
- */
-export const playTimeline = playing => ({
-  playing,
-  type: constants.PLAY_TIMELINE
-})
-
-/*
- * Set the progress of the timeline
- */
-export const setTimelineProgress = progress => ({
-  progress,
-  type: constants.SET_TIMELINE_PROGRESS
-})
-
-/*
- * Reset the timeline and remove everything
- */
-export const resetTimeline = () => ({
-  type: constants.RESET_TIMELINE
-})
-
-
-/*
- * Add a scene to the timeline
- */
-export const addSceneToTimeline = sceneId => ({
-  sceneId,
-  type: constants.ADD_SCENE_TO_TIMELINE
-})
-
-/*
- * Remove a scene from the timeline
- *
- * Don't use this directly, use #removeSceneFromTimelineAndResetFixtures
- * to also reset the fixtures
- */
-export const removeSceneFromTimeline = sceneId => ({
-  sceneId,
-  type: constants.REMOVE_SCENE_FROM_TIMELINE
-})
-
-/*
- * Remove a scene fromt he timeline and also reset all fixtures assigned to that scene
- */
-export const removeSceneFromTimelineAndResetFixtures = sceneId => {
-  return (dispatch, getState) => {
-
-    // Get the fixtures of the scene
-    selectors.getScene(getState(), { sceneId }).fixtures.map(fixtureId => {
-      utils.clearFixtureInBatch(fixtureId)
-    })
-
-    // Remove the scene from the timelline
-    dispatch(removeSceneFromTimeline(sceneId))
-  }
-}
-
-/*
  * Set live mode
  */
 export const setLive = value => ({
@@ -485,27 +467,11 @@ export const sendUniverseToUsb = value => ({
 })
 
 /*
- * Send the universe to fivetwelve bridge
+ * Update the data of the modV integration
  */
-export const sendUniverseToFivetwelve = value => ({
-  value,
-  type: constants.SEND_UNIVERSE_TO_FIVETWELVE
-})
-
-/*
- * Set the color from modV
- */
-export const setModvColor = color => ({
-  color,
-  type: constants.SET_MODV_COLOR
-})
-
-/*
- * Connect / disconnect to modV
- */
-export const connectModv = connected => ({
-  connected,
-  type: constants.CONNECT_MODV
+export const setModv = data => ({
+  data,
+  type: constants.SET_MODV
 })
 
 /*

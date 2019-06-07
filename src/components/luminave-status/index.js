@@ -1,14 +1,11 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { getUsbDmxControllerConnected, getModvConnected, getFivetwelveConnected } from '../../selectors/index.js'
 
 import '../usb-dmx-manager/index.js'
-import '../modv-manager/index.js'
-import '../fivetwelve-manager/index.js'
 import '../dekk-manager/index.js'
 import './indicator.js'
-import '../color-grid/index.js'
 import '../ui-spacer/index.js'
 
 
@@ -42,14 +39,6 @@ class LuminaveStatus extends connect(store)(LitElement) {
         .item {
           display: inline-flex;
           padding: 0 var(--padding-basic)
-        }
-
-        .item color-grid {
-          width: 33vw;
-        }
-
-        color-grid {
-          width: 100%;
         }
       </style>
 

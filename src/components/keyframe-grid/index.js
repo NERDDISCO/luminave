@@ -1,5 +1,5 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
-import { repeat } from '/node_modules/lit-html/directives/repeat.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { repeat } from 'lit-html/directives/repeat.js'
 import { shared } from '../../styles/shared.js'
 
 /*
@@ -31,6 +31,10 @@ class KeyframeGrid extends LitElement {
     return html`
       ${shared}
       <style>
+        .items {
+          overflow-x: scroll;
+        }
+
         .item {
           font-size: 0.8em;
         }
@@ -39,7 +43,7 @@ class KeyframeGrid extends LitElement {
       <div class="items">
 
         ${repeat(this._toArray(keyframes), keyframe => html`
-          <div class="item">${keyframe.step}: ${JSON.stringify(keyframe.value)}</div>
+          <div class="item">${keyframe.step}: ${JSON.stringify(keyframe.value, null, '\t')}</div>
         `)}
 
       </div>

@@ -1,4 +1,4 @@
- ![luminave 3.0.0](images/luminave_logo.gif)
+ ![luminave 3.0.0](src/assets/luminave_logo.gif)
 
 [![3.0.0](https://img.shields.io/badge/Stable-3.0.0-00f557.svg?style=flat)](https://github.com/NERDDISCO/luminave/releases/tag/3.0.0)
 
@@ -7,8 +7,11 @@ Use luminave to manage all the lights with your web browser and create stunning 
 * *lumi* = "Light" in different languages
 * *nave* = "A hub of a wheel"
 
+
+[![LitElement](https://img.shields.io/badge/LitElement-2.1.0-2196F3.svg?style=flat)](https://lit-element.polymer-project.org/)
 [![Polymer 3](https://img.shields.io/badge/polymer-3.0.0-f50057.svg?style=flat)](https://www.polymer-project.org/)
 [![Built with pwa–starter–kit](https://img.shields.io/badge/built_with-pwa–starter–kit_-blue.svg)](https://github.com/Polymer/pwa-starter-kit "Built with pwa–starter–kit")
+[![PolymerX CLI](https://img.shields.io/badge/CLI-PolymerX-9f33ff.svg?style=flat)](https://github.com/PolymerX/polymerx-cli)
 [![Redux](https://img.shields.io/badge/Redux-3.7.2-9f33ff.svg?style=flat)](https://redux.js.org/)
 [![ES6 modules](https://img.shields.io/badge/ES6-modules-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import)
 [![WebUSB](https://img.shields.io/badge/API-WebUSB-1e88e5.svg?style=flat)](https://wicg.github.io/webusb/)
@@ -16,12 +19,46 @@ Use luminave to manage all the lights with your web browser and create stunning 
 [![WebSocket](https://img.shields.io/badge/API-WebSocket-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/WebSocket)
 [![localStorage](https://img.shields.io/badge/API-localStorage-1e88e5.svg?style=flat)](https://developer.mozilla.org/en-US/docs/Web/API/Window/localStorage)
 
+---
+
+[![Video of modV + luminave in love with Chiptune](src/assets/luminave_modV_in_love_with_chiptune_2018.jpg)](http://www.youtube.com/watch?v=GiTkwz9AKhM "modV + luminave in ❤️ with Chiptune")
+
+_Video of modV + luminave in ❤️ with Chiptune (Caution: Flashing lights & music!)_
+
+
+---
 
 [![Video of modV + luminave in love with Chiptune](images/luminave_modV_in_love_with_chiptune_2018.jpg)](http://www.youtube.com/watch?v=GiTkwz9AKhM "modV + luminave in ❤️ with Chiptune")
 
 _Video of modV + luminave in ❤️ with Chiptune (Caution: Flashing lights & music!)_
 
 ---
+<!-- toc -->
+- [Getting started](#getting-started)
+  - [Requirements](#requirements)
+  - [Setup](#setup)
+  - [Run](#run)
+- [Features](#features)
+- [Integrations](#integrations)
+  - [WebUSB DMX512 Controller](#webusb-dmx512-controller)
+  - [modV](#modv)
+    - [In luminave](#in-luminave)
+    - [In modV 1.0](#in-modv-10)
+    - [In modV 2.0](#in-modv-20)
+  - [Thorium](#thorium)
+  - [Dekk](#dekk)
+    - [In luminave](#in-luminave-1)
+    - [In dekk](#in-dekk)
+  - [fivetwelve](#fivetwelve)
+- [Contribution](#contribution)
+  - [Contributors](#contributors)
+- [Thanks to](#thanks-to)
+
+<!-- tocstop -->
+
+---
+
+# Getting started
 
 ## Requirements
 
@@ -100,7 +137,7 @@ npm start
 
 ## modV
 
-If you want to use modV you have to start the local WebSocket server too:
+If you want to use modV you have to start the local WebSocket server:
 
 ### In luminave
 
@@ -116,7 +153,13 @@ If you want to use modV you have to start the local WebSocket server too:
 ### In modV 2.0
 
 * Activate the "grab-canvas" plugin
+* Set the amounts of areas you want to grab
 
+
+
+## Thorium
+
+Take a look at the [Thorium docs](docs/Thorium.md). 
 
 
 ## Dekk

@@ -1,8 +1,8 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 
 import './components/luminave-menu/index.js'
 import './components/luminave-dashboard/index.js'
-import './components/ui-spacer/index.js'
+// import './components/ui-spacer/index.js'
 
 import { theme } from './styles/theme.js'
 

@@ -1,4 +1,5 @@
-import { LitElement, html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { links } from '../../styles/links.js'
 
 /*
  * A fixture list item
@@ -12,8 +13,10 @@ class FixtureListItem extends LitElement {
     const { fixture } = this
 
     return html`
+      ${links}
+
       <div>
-        ${fixture.name}
+        <a href="/fixture/${fixture.id}">${fixture.name}</a>
       </div>
     `
   }

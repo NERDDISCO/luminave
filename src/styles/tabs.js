@@ -1,7 +1,12 @@
-import { html } from '/node_modules/@polymer/lit-element/lit-element.js'
+import { html } from '@polymer/lit-element/lit-element.js'
 
 export const tabs = html`
 <style>
+    :host {
+        --paper-tabs-selection-bar-color: var(--mdc-theme-secondary);
+        --paper-tab-ink: var(--mdc-theme-secondary);
+    }
+
     paper-tabs {
         display: inline-block;
         background-color: var(--dark-primary-color);

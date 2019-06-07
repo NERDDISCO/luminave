@@ -1,4 +1,4 @@
-import { createSelector } from '/node_modules/reselect/src/index.js'
+import { createSelector } from 'reselect/src/index.js'
 import { collator } from '../utils/index.js'
 
 /*
@@ -18,9 +18,9 @@ export const getUniverses = state => state.universeManager
 export const getScenes = state => state.sceneManager
 export const getAnimations = state => state.animationManager
 export const getFixtures = state => state.fixtureManager
-export const getTimeline = state => state.timelineManager
-export const getTimelineSceneIds = state => state.timelineManager.scenes
 export const getModv = state => state.modvManager
+export const getModvUrl = state => state.modvManager.url
+export const getModvReconnect = state => state.modvManager.reconnect
 export const getModvConnected = state => state.modvManager.connected
 export const getMidi = state => state.midiManager
 export const getMidiEnabled = state => state.midiManager.enabled
@@ -29,12 +29,17 @@ export const getMidiLearning = state => state.midiManager.learning
 export const getDekk = state => state.dekkManager
 export const getDekkConnected = state => state.dekkManager.connected
 export const getDekkData = state => state.dekkManager.data
-export const getFivetwelveConnected = state => state.fivetwelveManager.connected
 export const getUsbDmxControllerConnected = state => state.connectionManager.usb.connected
+export const getVenues = state => state.venueManager
 
 export const getAnimation = (state, properties) => {
   return getAnimations(state)
     .filter(animation => animation.id === properties.animationId)[0]
+}
+
+export const getAnimationByName = (state, properties) => {
+  return getAnimations(state)
+    .filter(animation => animation.name === properties.name)[0]
 }
 
 /*
@@ -65,22 +70,41 @@ export const getScenesSorted = createSelector(
 )
 
 /*
- * Get scenes that are part of the timeline
- */
- export const getTimelineScenes = createSelector(
-   getScenes,
-   getTimelineSceneIds,
-   (scenes, timelineSceneIds) => {
-     return scenes.filter(scene => {
-       return timelineSceneIds.includes(scene.id)
-     })
-   }
- )
-
-/*
  * Get a specific fixture by using the fixtureId
  */
 export const getFixture = (state, properties) => {
   return getFixtures(state)
     .filter(fixture => fixture.id === properties.fixtureId)[0]
 }
+
+/*
+ * Get a specific fixture by using the name of the fixture
+ */
+export const getFixtureByName = (state, properties) => {
+  return getFixtures(state)
+    .filter(fixture => fixture.name === properties.name)[0]
+}
+
+/*
+ * Get a specific fixture by using the fixtureId
+ */
+export const getVenue = (state, properties) => {
+  return getVenues(state)
+    .filter(venue => venue.id === properties.venueId)[0]
+}
+
+/*
+ * Sort venues by venue.name
+ */
+export const getVenuesSorted = createSelector(
+  getVenues,
+  venues => venues.sort((a, b) => collator.compare(a.name, b.name))
+)
+
+/*
+ * Sort fixtures by fixture.name
+ */
+export const getFixturesSorted = createSelector(
+  getFixtures,
+  fixtures => fixtures.sort((a, b) => collator.compare(a.name, b.name))
+)

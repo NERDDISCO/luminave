@@ -1,4 +1,4 @@
-import update from '../../node_modules/immutability-helper/index.js'
+import update from 'immutability-helper/index.js'
 import * as constants from '../constants/index.js'
 import * as selectors from '../selectors/index.js'
 import { clearFixtureInBatch } from '../utils/index.js'
@@ -57,23 +57,6 @@ export const usbManager = (state = { lastTransmission: 0 }, { type, value }) => 
 }
 
 /*
- * modV Manager
- */
-export const modvManager = (state = {
-    color: [0, 0, 0],
-    connected: false
-  }, { type, color, connected }) => {
-  switch (type) {
-    case constants.CONNECT_MODV:
-      return update(state, { connected: { $set: connected } } )
-    case constants.SET_MODV_COLOR:
-      return update(state, { color: { $set: color } } )
-    default:
-      return state
-  }
-}
-
-/*
  * Dekk Manager
  */
 export const dekkManager = (state = {
@@ -85,22 +68,6 @@ export const dekkManager = (state = {
       return update(state, { connected: { $set: connected } } )
     case constants.SET_DEKK_DATA:
       return update(state, { data: { $set: data } } )
-    default:
-      return state
-  }
-}
-
-/*
- * fivetwelve Manager
- */
-export const fivetwelveManager = (state = {
-    connected: false
-  }, { type, connected, value }) => {
-  switch (type) {
-    case constants.CONNECT_FIVETWELVE:
-      return update(state, { connected: { $set: connected } } )
-    case constants.SEND_UNIVERSE_TO_FIVETWELVE:
-      return update(state, { lastTransmission: { $set: value } } )
     default:
       return state
   }
@@ -132,11 +99,11 @@ export const connectionManager = (
  * Handle the DMX512 universes
  */
 export const universeManager = (state = [], { type, universe, universeIndex, universeId, channelIndex, value, channels }) => {
-  
+
   if (universeId !== undefined) {
     universeIndex = state.findIndex(universe => universe.id === universeId)
   }
-  
+
   switch (type) {
     case constants.ADD_UNIVERSE:
       return update(state, { $push: [universe] })
@@ -172,9 +139,18 @@ export const sceneManager = (state = [], { type, scene, sceneIndex, sceneName, s
     sceneIndex = state.findIndex(scene => scene.id === sceneId)
   }
 
+  if (scene !== undefined && scene.id !== undefined) {
+    sceneIndex = state.findIndex(_scene => _scene.id === scene.id)
+  }
+
   switch (type) {
     case constants.ADD_SCENE:
       return update(state, { $push: [scene] })
+
+    case constants.SET_SCENE: {
+      return update(state, { [sceneIndex]: { $merge: { ...scene } } })
+    }
+
     case constants.RUN_SCENE:
       return update(state, { [sceneIndex]: { isRunning: { $set: true } } })
     case constants.REMOVE_SCENE:
@@ -202,16 +178,27 @@ export const sceneManager = (state = [], { type, scene, sceneIndex, sceneName, s
  * Handle the animations
  */
 export const animationManager = (state = [], { type, animation, animationIndex, animationId, animationName, keyframeStep, keyframeProperty, keyframeValue }) => {
-  
+
   if (animationId !== undefined) {
     animationIndex = state.findIndex(animation => animation.id === animationId)
   }
-  
+
+  if (animation !== undefined && animation.id !== undefined) {
+    animationIndex = state.findIndex(_animation => _animation.id === animation.id)
+  }
+
+  const changed = new Date().getTime()
+
   switch (type) {
     case constants.ADD_ANIMATION:
+      animation.changed = changed
       return update(state, { $push: [animation] })
-    case constants.SET_ANIMATION_NAME:
-      return update(state, { [animationIndex]: { name: { $set: animationName } } })
+
+    case constants.SET_ANIMATION: {
+      animation.changed = changed
+      return update(state, { [animationIndex]: { $merge: { ...animation } } })
+    }
+
     case constants.ADD_KEYFRAME: {
 
       // Is not a number
@@ -234,7 +221,7 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
       const oldSteps = state[animationIndex].keyframes[keyframeStep] || {}
       const newStep = { [keyframeProperty]: keyframeValue }
 
-      return update(state, { [animationIndex]: { keyframes: { $merge: {[keyframeStep]: {...oldSteps, ...newStep} } } } })
+      return update(state, { [animationIndex]: { keyframes: { $merge: {[keyframeStep]: {...oldSteps, ...newStep} } }, changed: { $set: changed }  } })
     }
     case constants.RUN_ANIMATION:
       return update(state, { [animationIndex]: { isRunning: { $set: true } } })
@@ -249,14 +236,18 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
  * Handle the DMX512 fixtures
  */
 export const fixtureManager = (state = [], { type, fixture, fixtureIndex, fixtureId, fixtureAddress, properties, fixtureBatch }) => {
-  
+
   if (fixtureId !== undefined) {
     fixtureIndex = state.findIndex(fixture => fixture.id === fixtureId)
   }
-  
+
   switch (type) {
     case constants.ADD_FIXTURE:
       return update(state, { $push: [fixture] })
+
+    case constants.SET_FIXTURE: {
+      return update(state, { [fixtureIndex]: { $merge: fixture } })
+    }
 
     case constants.SET_FIXTURE_ADDRESS:
       return update(state, { [fixtureIndex]: { address: { $set: fixtureAddress } } })
@@ -318,6 +309,10 @@ export const midiManager = (state = {
       return update(state, { enabled: { $set: enabled } })
     case constants.ADD_MIDI:
       return update(state, { controllers: { $push: [controller] } })
+
+    case constants.SET_MIDI:
+      return update(state, { controllers: { [controllerIndex]: { $merge: controller } } } )
+
     case constants.ADD_MIDI_MAPPING: {
       // Mapping might already exist
       const old = state.controllers[controllerIndex].mapping[mappingIndex] || {}
@@ -347,33 +342,6 @@ export const midiManager = (state = {
       return update(state, { learning: { $set: mappingIndex } })
     case constants.REMOVE_MIDI:
       return update(state, { controllers: { $splice: [[controllerIndex, 1]] } })
-    default:
-      return state
-  }
-}
-
-
-/*
- * Handle the timeline
- */
-export const timelineManager = (state = {
-  scenes: [],
-  playing: false,
-  progress: 0
-}, { type, sceneId, playing, progress }) => {
-  switch (type) {
-    case constants.PLAY_TIMELINE:
-      return update(state, { playing: { $set: playing } })
-    case constants.ADD_SCENE_TO_TIMELINE:
-      return update(state, { scenes: { $push: [sceneId] } })
-    case constants.REMOVE_SCENE_FROM_TIMELINE: {
-      const sceneIndex = state.scenes.indexOf(sceneId)
-      return update(state, { scenes: { $splice: [[sceneIndex, 1]] } })
-    }
-    case constants.RESET_TIMELINE:
-      return update(state, { scenes: { $set : [] } })
-    case constants.SET_TIMELINE_PROGRESS:
-      return update(state, { progress: { $set: progress } })
     default:
       return state
   }
