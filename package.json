@@ -21,7 +21,9 @@
     "test": "npm run test:unit && npm run test:integration",
     "test:integration": "mocha test/integration --timeout=10000",
     "test:unit": "polymer test --module-resolution=node --npm",
-    "test:regenerate_screenshots": "mocha test/integration/screenshots-baseline/regenerate.js --timeout=20000"
+    "test:regenerate_screenshots": "mocha test/integration/screenshots-baseline/regenerate.js --timeout=20000",
+    "semantic-release": "semantic-release",
+    "travis-deploy-once": "travis-deploy-once"
   },
   "repository": {
     "type": "git",
@@ -85,6 +87,9 @@
     "prpl-server": "^1.1.0",
     "puppeteer": "^1.4.0",
     "query-selector-shadow-dom": "^0.2.1",
-    "wct-browser-legacy": "^1.0.1"
+    "wct-browser-legacy": "^1.0.1",
+    "@semantic-release/changelog": "^2.0.2",
+    "@semantic-release/git": "^4.0.3",
+    "semantic-release": "^15.1.7"
   }
 }
