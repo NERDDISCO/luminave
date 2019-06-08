@@ -25,4 +25,5 @@ export { default as Rollapix100 } from './dmx/Rollapix100.js'
 export { default as BasicRGBW } from './dmx/BasicRGBW.js'
 export { default as RobeRobin300LEDWash } from './dmx/RobeRobin300LEDWash.js'
 export { default as BasicRGBDimmer } from './dmx/BasicRGBDimmer.js'
+export { default as OppskPar } from './dmx/OppskPar.js'
 
