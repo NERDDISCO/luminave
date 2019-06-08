@@ -109,8 +109,8 @@ class LuminaveServerSubscriptionAnimation extends ApolloSubscription {
    */
   _setAnimation(data) {
 
-    const { dimmer, duration, color, action, actionStrength } = data
-
+    const { dimmer, color, action, actionStrength } = data
+    let { duration } = data
     let keyframes = normal({ 
       dimmer, 
       color 
@@ -126,11 +126,14 @@ class LuminaveServerSubscriptionAnimation extends ApolloSubscription {
         break
 
       case 'shake':
+        // Loop the same 5 seconds of random values
+        duration = 5000
         keyframes = shake({
           baseStrength: 30,
           actionStrength, 
           dimmer, 
-          color
+          color,
+          duration
         })
         break
 
@@ -146,7 +149,7 @@ class LuminaveServerSubscriptionAnimation extends ApolloSubscription {
 
       case 'oscillate':
         keyframes = oscillate({
-          baseStrength: 30,
+          baseStrength: 10,
           actionStrength, 
           dimmer, 
           color
