@@ -1,0 +1,563 @@
+{
+  "bpm": 50,
+  "live": false,
+  "usbManager": {
+    "lastTransmission": "2018-02-07T05:56:08.130Z"
+  },
+  "dekkManager": {
+    "data": {
+      "scenes": ["rainbow"]
+    },
+    "connected": false
+  },
+  "connectionManager": {
+    "usb": {
+      "connected": false
+    },
+    "bluetooth": {
+      "connected": false
+    }
+  },
+  "universeManager": [{
+    "id": "1e380f60-c0ee-11e8-a97a-5594ce2ad9f3",
+    "channels": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "name": "1e380f60-c0ee-11e8-a97a-5594ce2ad9f3"
+  }],
+  "sceneManager": [{
+    "id": "cb8ad200-8df4-11e9-8726-f52ddc3cc303",
+    "fixtures": ["f5cd1a70-8dd9-11e9-8726-f52ddc3cc303", "f5cdb6b0-8dd9-11e9-8726-f52ddc3cc303", "f5cdddc0-8dd9-11e9-8726-f52ddc3cc303", "f5ce04d0-8dd9-11e9-8726-f52ddc3cc303", "f5ce7a00-8dd9-11e9-8726-f52ddc3cc303", "f5cec820-8dd9-11e9-8726-f52ddc3cc303", "f5cf1640-8dd9-11e9-8726-f52ddc3cc303", "f5cf8b70-8dd9-11e9-8726-f52ddc3cc303", "f5cfd990-8dd9-11e9-8726-f52ddc3cc303", "d921a490-8df7-11e9-95a4-bf2717b535cb"],
+    "animations": ["c0df3120-8df4-11e9-8726-f52ddc3cc303"],
+    "duration": 20,
+    "name": "Blind Audience",
+    "isRunning": false
+  }, {
+    "id": "0c5b8860-8df5-11e9-8726-f52ddc3cc303",
+    "fixtures": ["c990de20-8df1-11e9-8726-f52ddc3cc303", "d95127c0-8df1-11e9-8726-f52ddc3cc303", "8cd834f0-8dd9-11e9-8726-f52ddc3cc303", "8cd88310-8dd9-11e9-8726-f52ddc3cc303", "8cd8aa20-8dd9-11e9-8726-f52ddc3cc303", "8cd8f840-8dd9-11e9-8726-f52ddc3cc303", "8cd91f50-8dd9-11e9-8726-f52ddc3cc303", "8cd96d70-8dd9-11e9-8726-f52ddc3cc303", "f5cd1a70-8dd9-11e9-8726-f52ddc3cc303", "f5cdb6b0-8dd9-11e9-8726-f52ddc3cc303", "f5cdddc0-8dd9-11e9-8726-f52ddc3cc303", "f5ce04d0-8dd9-11e9-8726-f52ddc3cc303", "f5ce7a00-8dd9-11e9-8726-f52ddc3cc303", "f5cec820-8dd9-11e9-8726-f52ddc3cc303", "f5cf1640-8dd9-11e9-8726-f52ddc3cc303", "f5cf8b70-8dd9-11e9-8726-f52ddc3cc303", "f5cfd990-8dd9-11e9-8726-f52ddc3cc303", "d921a490-8df7-11e9-95a4-bf2717b535cb"],
+    "animations": ["c0df3120-8df4-11e9-8726-f52ddc3cc303", "d5344520-8df4-11e9-8726-f52ddc3cc303"],
+    "duration": 20,
+    "name": "Blind Everything",
+    "isRunning": false
+  }, {
+    "id": "fe554ad0-8df4-11e9-8726-f52ddc3cc303",
+    "fixtures": ["c990de20-8df1-11e9-8726-f52ddc3cc303", "d95127c0-8df1-11e9-8726-f52ddc3cc303", "8cd834f0-8dd9-11e9-8726-f52ddc3cc303", "8cd88310-8dd9-11e9-8726-f52ddc3cc303", "8cd8aa20-8dd9-11e9-8726-f52ddc3cc303", "8cd8f840-8dd9-11e9-8726-f52ddc3cc303", "8cd91f50-8dd9-11e9-8726-f52ddc3cc303", "8cd96d70-8dd9-11e9-8726-f52ddc3cc303"],
+    "animations": ["c0df3120-8df4-11e9-8726-f52ddc3cc303", "d5344520-8df4-11e9-8726-f52ddc3cc303"],
+    "duration": 20,
+    "name": "Blind Stage",
+    "isRunning": false
+  }, {
+    "id": "976fd270-8df6-11e9-95a4-bf2717b535cb",
+    "fixtures": ["c990de20-8df1-11e9-8726-f52ddc3cc303", "d95127c0-8df1-11e9-8726-f52ddc3cc303", "8cd834f0-8dd9-11e9-8726-f52ddc3cc303", "8cd88310-8dd9-11e9-8726-f52ddc3cc303", "8cd8aa20-8dd9-11e9-8726-f52ddc3cc303", "8cd8f840-8dd9-11e9-8726-f52ddc3cc303", "8cd91f50-8dd9-11e9-8726-f52ddc3cc303", "8cd96d70-8dd9-11e9-8726-f52ddc3cc303", "f5cd1a70-8dd9-11e9-8726-f52ddc3cc303", "f5cdb6b0-8dd9-11e9-8726-f52ddc3cc303", "f5cdddc0-8dd9-11e9-8726-f52ddc3cc303", "f5ce04d0-8dd9-11e9-8726-f52ddc3cc303", "f5ce7a00-8dd9-11e9-8726-f52ddc3cc303", "f5cec820-8dd9-11e9-8726-f52ddc3cc303", "f5cf1640-8dd9-11e9-8726-f52ddc3cc303", "f5cf8b70-8dd9-11e9-8726-f52ddc3cc303", "f5cfd990-8dd9-11e9-8726-f52ddc3cc303", "d921a490-8df7-11e9-95a4-bf2717b535cb"],
+    "animations": ["7bf50570-8df5-11e9-95a4-bf2717b535cb", "1dd2ed20-c80e-11e8-aa32-4920b825426c"],
+    "duration": 20,
+    "name": "Relax Everything",
+    "isRunning": false
+  }, {
+    "id": "28a7cba0-8df5-11e9-8726-f52ddc3cc303",
+    "fixtures": ["c990de20-8df1-11e9-8726-f52ddc3cc303", "d95127c0-8df1-11e9-8726-f52ddc3cc303", "8cd834f0-8dd9-11e9-8726-f52ddc3cc303", "8cd88310-8dd9-11e9-8726-f52ddc3cc303", "8cd8aa20-8dd9-11e9-8726-f52ddc3cc303", "8cd8f840-8dd9-11e9-8726-f52ddc3cc303", "8cd91f50-8dd9-11e9-8726-f52ddc3cc303", "8cd96d70-8dd9-11e9-8726-f52ddc3cc303"],
+    "animations": ["1dd2ed20-c80e-11e8-aa32-4920b825426c", "7bf50570-8df5-11e9-95a4-bf2717b535cb"],
+    "duration": 20,
+    "name": "Relax Stage",
+    "isRunning": false
+  }, {
+    "id": "5979ec51-8df4-11e9-8726-f52ddc3cc303",
+    "fixtures": ["c990de20-8df1-11e9-8726-f52ddc3cc303"],
+    "animations": ["5979ec50-8df4-11e9-8726-f52ddc3cc303"],
+    "duration": 2000,
+    "name": "Solar 11"
+  }, {
+    "id": "549d1c71-8df4-11e9-8726-f52ddc3cc303",
+    "fixtures": ["d95127c0-8df1-11e9-8726-f52ddc3cc303"],
+    "animations": ["549d1c70-8df4-11e9-8726-f52ddc3cc303"],
+    "duration": 2000,
+    "name": "Solar 12"
+  }, {
+    "id": "509ec5b0-8df4-11e9-8726-f52ddc3cc303",
+    "fixtures": ["8cd834f0-8dd9-11e9-8726-f52ddc3cc303"],
+    "animations": ["509e9ea1-8df4-11e9-8726-f52ddc3cc303"],
+    "duration": 2000,
+    "name": "Solar 13"
+  }, {
+    "id": "48b970c0-8df4-11e9-8726-f52ddc3cc303",
+    "fixtures": ["8cd88310-8dd9-11e9-8726-f52ddc3cc303"],
+    "animations": ["48b949b1-8df4-11e9-8726-f52ddc3cc303"],
+    "duration": 2000,
+    "name": "Solar 14"
+  }, {
+    "id": "801e3231-8df4-11e9-8726-f52ddc3cc303",
+    "fixtures": ["8cd8aa20-8dd9-11e9-8726-f52ddc3cc303"],
+    "animations": ["801e3230-8df4-11e9-8726-f52ddc3cc303"],
+    "duration": 2000,
+    "name": "Solar 15"
+  }, {
+    "id": "7aba7f11-8df4-11e9-8726-f52ddc3cc303",
+    "fixtures": ["8cd8f840-8dd9-11e9-8726-f52ddc3cc303"],
+    "animations": ["7aba7f10-8df4-11e9-8726-f52ddc3cc303"],
+    "duration": 2000,
+    "name": "Solar 16"
+  }, {
+    "id": "75d0b6e2-8df4-11e9-8726-f52ddc3cc303",
+    "fixtures": ["8cd91f50-8dd9-11e9-8726-f52ddc3cc303"],
+    "animations": ["75d0b6e1-8df4-11e9-8726-f52ddc3cc303"],
+    "duration": 2000,
+    "name": "Solar 17"
+  }, {
+    "id": "70424a40-8df4-11e9-8726-f52ddc3cc303",
+    "fixtures": ["8cd96d70-8dd9-11e9-8726-f52ddc3cc303"],
+    "animations": ["70422331-8df4-11e9-8726-f52ddc3cc303"],
+    "duration": 2000,
+    "name": "Solar 18"
+  }],
+  "animationManager": [{
+    "id": "7bf50570-8df5-11e9-95a4-bf2717b535cb",
+    "keyframes": {
+      "0": {
+        "dimmer": 75
+      },
+      "1": {
+        "dimmer": 75
+      }
+    },
+    "duration": 60000,
+    "name": "Dimmer 25%",
+    "changed": 1560442311767
+  }, {
+    "id": "c0df3120-8df4-11e9-8726-f52ddc3cc303",
+    "keyframes": {
+      "0": {
+        "dimmer": 255
+      },
+      "1": {
+        "dimmer": 255
+      }
+    },
+    "duration": 10000,
+    "name": "Dimmer 100%",
+    "changed": 1560441803649
+  }, {
+    "id": "1dd2ed20-c80e-11e8-aa32-4920b825426c",
+    "changed": 1560441990651,
+    "keyframes": {
+      "0": {
+        "color": [255, 0, 0]
+      },
+      "1": {
+        "color": [255, 0, 255]
+      },
+      "0.1": {
+        "color": [255, 128, 0]
+      },
+      "0.2": {
+        "color": [255, 255, 0]
+      },
+      "0.3": {
+        "color": [128, 255, 0]
+      },
+      "0.4": {
+        "color": [0, 255, 0]
+      },
+      "0.5": {
+        "color": [0, 255, 128]
+      },
+      "0.6": {
+        "color": [0, 255, 255]
+      },
+      "0.7": {
+        "color": [0, 128, 255]
+      },
+      "0.8": {
+        "color": [0, 0, 255]
+      },
+      "0.9": {
+        "color": [128, 0, 255]
+      }
+    },
+    "duration": 60000,
+    "name": "Rainbow"
+  }, {
+    "id": "5979ec50-8df4-11e9-8726-f52ddc3cc303",
+    "keyframes": {
+      "0": {
+        "modvColor": 4
+      },
+      "1": {
+        "modvColor": 4
+      }
+    },
+    "duration": 2000,
+    "name": "Solar 11",
+    "changed": 1560441622421
+  }, {
+    "id": "549d1c70-8df4-11e9-8726-f52ddc3cc303",
+    "keyframes": {
+      "0": {
+        "modvColor": 3
+      },
+      "1": {
+        "modvColor": 3
+      }
+    },
+    "duration": 2000,
+    "name": "Solar 12",
+    "changed": 1560441614263
+  }, {
+    "id": "509e9ea1-8df4-11e9-8726-f52ddc3cc303",
+    "keyframes": {
+      "0": {
+        "modvColor": 2
+      },
+      "1": {
+        "modvColor": 2
+      }
+    },
+    "duration": 2000,
+    "name": "Solar 13",
+    "changed": 1560441607562
+  }, {
+    "id": "48b949b1-8df4-11e9-8726-f52ddc3cc303",
+    "keyframes": {
+      "0": {
+        "modvColor": 1
+      },
+      "1": {
+        "modvColor": 1
+      }
+    },
+    "duration": 2000,
+    "name": "Solar 14",
+    "changed": 1560441594315
+  }, {
+    "id": "801e3230-8df4-11e9-8726-f52ddc3cc303",
+    "keyframes": {
+      "0": {
+        "modvColor": 16
+      },
+      "1": {
+        "modvColor": 16
+      }
+    },
+    "duration": 2000,
+    "name": "Solar 15",
+    "changed": 1560441687251
+  }, {
+    "id": "7aba7f10-8df4-11e9-8726-f52ddc3cc303",
+    "keyframes": {
+      "0": {
+        "modvColor": 15
+      },
+      "1": {
+        "modvColor": 15
+      }
+    },
+    "duration": 2000,
+    "name": "Solar 16",
+    "changed": 1560441678209
+  }, {
+    "id": "75d0b6e1-8df4-11e9-8726-f52ddc3cc303",
+    "keyframes": {
+      "0": {
+        "modvColor": 14
+      },
+      "1": {
+        "modvColor": 14
+      }
+    },
+    "duration": 2000,
+    "name": "Solar 17",
+    "changed": 1560441669966
+  }, {
+    "id": "70422331-8df4-11e9-8726-f52ddc3cc303",
+    "keyframes": {
+      "0": {
+        "modvColor": 13
+      },
+      "1": {
+        "modvColor": 13
+      }
+    },
+    "duration": 2000,
+    "name": "Solar 18",
+    "changed": 1560441660643
+  }, {
+    "id": "0dfb22e0-8dda-11e9-8726-f52ddc3cc303",
+    "keyframes": {
+      "0": {
+        "dimmer": 255
+      },
+      "1": {
+        "dimmer": 255
+      },
+      "0.5": {
+        "dimmer": 0
+      }
+    },
+    "duration": 10000,
+    "name": "SpotLoop",
+    "changed": 1560430345401
+  }, {
+    "id": "d5344520-8df4-11e9-8726-f52ddc3cc303",
+    "keyframes": {
+      "0": {
+        "white": 255,
+        "color": [0, 0, 0]
+      },
+      "1": {
+        "white": 255,
+        "color": [0, 0, 0]
+      }
+    },
+    "duration": 10000,
+    "name": "White",
+    "changed": 1560441864873
+  }],
+  "fixtureManager": [{
+    "id": "c990de20-8df1-11e9-8726-f52ddc3cc303",
+    "type": "SolarStar2",
+    "name": "Solar 11",
+    "universe": 0,
+    "address": 11,
+    "properties": {}
+  }, {
+    "id": "d95127c0-8df1-11e9-8726-f52ddc3cc303",
+    "type": "SolarStar2",
+    "name": "Solar 12",
+    "universe": 0,
+    "address": 16,
+    "properties": {}
+  }, {
+    "id": "8cd834f0-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "SolarStar2",
+    "name": "Solar 13",
+    "universe": 0,
+    "address": 21,
+    "properties": {}
+  }, {
+    "id": "8cd88310-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "SolarStar2",
+    "name": "Solar 14",
+    "universe": 0,
+    "address": 26,
+    "properties": {}
+  }, {
+    "id": "8cd8aa20-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "SolarStar2",
+    "name": "Solar 15",
+    "universe": 0,
+    "address": 31,
+    "properties": {}
+  }, {
+    "id": "8cd8f840-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "SolarStar2",
+    "name": "Solar 16",
+    "universe": 0,
+    "address": 36,
+    "properties": {}
+  }, {
+    "id": "8cd91f50-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "SolarStar2",
+    "name": "Solar 17",
+    "universe": 0,
+    "address": 41,
+    "properties": {}
+  }, {
+    "id": "8cd96d70-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "SolarStar2",
+    "name": "Solar 18",
+    "universe": 0,
+    "address": 46,
+    "properties": {}
+  }, {
+    "id": "f5cd1a70-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "BasicDimmer",
+    "name": "Spot 1",
+    "universe": 0,
+    "address": 1,
+    "properties": {}
+  }, {
+    "id": "f5cdb6b0-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "BasicDimmer",
+    "name": "Spot 2",
+    "universe": 0,
+    "address": 2,
+    "properties": {}
+  }, {
+    "id": "f5cdddc0-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "BasicDimmer",
+    "name": "Spot 3",
+    "universe": 0,
+    "address": 3,
+    "properties": {}
+  }, {
+    "id": "f5ce04d0-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "BasicDimmer",
+    "name": "Spot 4",
+    "universe": 0,
+    "address": 4,
+    "properties": {}
+  }, {
+    "id": "d921a490-8df7-11e9-95a4-bf2717b535cb",
+    "type": "BasicDimmer",
+    "name": "Spot 5",
+    "universe": 0,
+    "address": 5,
+    "properties": {}
+  }, {
+    "id": "f5ce7a00-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "BasicDimmer",
+    "name": "Spot 6",
+    "universe": 0,
+    "address": 6,
+    "properties": {}
+  }, {
+    "id": "f5cec820-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "BasicDimmer",
+    "name": "Spot 7",
+    "universe": 0,
+    "address": 7,
+    "properties": {}
+  }, {
+    "id": "f5cf1640-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "BasicDimmer",
+    "name": "Spot 8",
+    "universe": 0,
+    "address": 8,
+    "properties": {}
+  }, {
+    "id": "f5cf8b70-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "BasicDimmer",
+    "name": "Spot 9",
+    "universe": 0,
+    "address": 9,
+    "properties": {}
+  }, {
+    "id": "f5cfd990-8dd9-11e9-8726-f52ddc3cc303",
+    "type": "BasicDimmer",
+    "name": "Spot 10",
+    "universe": 0,
+    "address": 10,
+    "properties": {}
+  }],
+  "midiManager": {
+    "controllers": [],
+    "enabled": true,
+    "learning": -1
+  },
+  "app": {
+    "drawerOpened": false,
+    "page": "universe"
+  },
+  "timeline": {
+    "scenes": [],
+    "playing": false,
+    "progress": 0
+  },
+  "venueManager": [{
+    "id": "9ca10b40-8df3-11e9-8726-f52ddc3cc303",
+    "name": "JSConf Asia Stage",
+    "width": 4,
+    "height": 4,
+    "modv": {
+      "width": 4,
+      "height": 4
+    },
+    "slots": [{
+      "x": 0,
+      "y": 0,
+      "name": "Solar 14",
+      "id": "48b949b0-8df4-11e9-8726-f52ddc3cc303",
+      "modv": 1,
+      "animations": ["48b949b1-8df4-11e9-8726-f52ddc3cc303"],
+      "sceneId": "48b970c0-8df4-11e9-8726-f52ddc3cc303",
+      "fixtures": ["8cd88310-8dd9-11e9-8726-f52ddc3cc303"]
+    }, {
+      "x": 0,
+      "y": 1,
+      "name": "Solar 13",
+      "id": "509e9ea0-8df4-11e9-8726-f52ddc3cc303",
+      "modv": 2,
+      "animations": ["509e9ea1-8df4-11e9-8726-f52ddc3cc303"],
+      "sceneId": "509ec5b0-8df4-11e9-8726-f52ddc3cc303",
+      "fixtures": ["8cd834f0-8dd9-11e9-8726-f52ddc3cc303"]
+    }, {
+      "x": 0,
+      "y": 2,
+      "name": "Solar 12",
+      "id": "549cf560-8df4-11e9-8726-f52ddc3cc303",
+      "modv": 3,
+      "animations": ["549d1c70-8df4-11e9-8726-f52ddc3cc303"],
+      "sceneId": "549d1c71-8df4-11e9-8726-f52ddc3cc303",
+      "fixtures": ["d95127c0-8df1-11e9-8726-f52ddc3cc303"]
+    }, {
+      "x": 0,
+      "y": 3,
+      "name": "Solar 11",
+      "id": "5979c540-8df4-11e9-8726-f52ddc3cc303",
+      "modv": 4,
+      "animations": ["5979ec50-8df4-11e9-8726-f52ddc3cc303"],
+      "sceneId": "5979ec51-8df4-11e9-8726-f52ddc3cc303",
+      "fixtures": ["c990de20-8df1-11e9-8726-f52ddc3cc303"]
+    }, {
+      "x": 3,
+      "y": 0,
+      "name": "Solar 18",
+      "id": "70422330-8df4-11e9-8726-f52ddc3cc303",
+      "modv": 13,
+      "animations": ["70422331-8df4-11e9-8726-f52ddc3cc303"],
+      "sceneId": "70424a40-8df4-11e9-8726-f52ddc3cc303",
+      "fixtures": ["8cd96d70-8dd9-11e9-8726-f52ddc3cc303"]
+    }, {
+      "x": 3,
+      "y": 1,
+      "name": "Solar 17",
+      "id": "75d0b6e0-8df4-11e9-8726-f52ddc3cc303",
+      "modv": 14,
+      "animations": ["75d0b6e1-8df4-11e9-8726-f52ddc3cc303"],
+      "sceneId": "75d0b6e2-8df4-11e9-8726-f52ddc3cc303",
+      "fixtures": ["8cd91f50-8dd9-11e9-8726-f52ddc3cc303"]
+    }, {
+      "x": 3,
+      "y": 2,
+      "name": "Solar 16",
+      "id": "7aba5800-8df4-11e9-8726-f52ddc3cc303",
+      "modv": 15,
+      "animations": ["7aba7f10-8df4-11e9-8726-f52ddc3cc303"],
+      "sceneId": "7aba7f11-8df4-11e9-8726-f52ddc3cc303",
+      "fixtures": ["8cd8f840-8dd9-11e9-8726-f52ddc3cc303"]
+    }, {
+      "x": 3,
+      "y": 3,
+      "name": "Solar 15",
+      "id": "801e0b20-8df4-11e9-8726-f52ddc3cc303",
+      "modv": 16,
+      "animations": ["801e3230-8df4-11e9-8726-f52ddc3cc303"],
+      "sceneId": "801e3231-8df4-11e9-8726-f52ddc3cc303",
+      "fixtures": ["8cd8aa20-8dd9-11e9-8726-f52ddc3cc303"]
+    }]
+  }],
+  "modvManager": {
+    "connected": true,
+    "url": "ws://localhost:3006/luminave",
+    "reconnect": true,
+    "data": {
+      "url": "ws://localhost:3006"
+    }
+  },
+  "luminaveServer": {
+    "reconnect": false,
+    "connected": false,
+    "url": "ws://localhost:4000/graphql",
+    "animationId": null,
+    "thorium": {
+      "scenes": [{
+        "name": "color-red",
+        "type": "static",
+        "adapt": true,
+        "timelineSceneId": "2af499d0-7fa7-11e9-bfdc-f3028a04f7b0"
+      }]
+    }
+  },
+  "fivetwelve": {
+    "reconnect": false,
+    "connected": false,
+    "url": "ws://localhost:1234"
+  }
+}
