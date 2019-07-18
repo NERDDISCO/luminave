@@ -33,7 +33,7 @@ If you want to use [Thorium](https://github.com/Thorium-Sim) as your space ship 
   - [Problems](#Problems)
     - [I have no idea which fixture type to choose](#I-have-no-idea-which-fixture-type-to-choose)
     - [No data received from Thorium](#No-data-received-from-Thorium)
-    - [I have multiple Thorium server running and lumiave-thorium is connecting to a random one](#I-have-multiple-Thorium-server-running-and-lumiave-thorium-is-connecting-to-a-random-one)
+    - [I have multiple Thorium server running and luminave-thorium is connecting to a random server](#I-have-multiple-Thorium-server-running-and-luminave-thorium-is-connecting-to-a-random-server)
 
 <!-- tocstop -->
 
@@ -237,7 +237,7 @@ When everything is configured and you want the scenes to run (= the lights will 
 
 #### Connection to luminave-server
 
-In order to exchange data with Thorium, luminve needs a connection to luminve-server. This can be established & configured using the right panel:
+In order to exchange data with Thorium, luminave needs a connection to luminave-server. This can be established & configured using the right panel:
 
 * Open the right panel using the menu-icon in the top right
   ![Navigation opened](images/navigation-open.png)
@@ -326,7 +326,7 @@ If you have no idea which type to choose, open an [issue on luminave](https://gi
 Check if the client IP changed, if that happened you have to restart Thorium & luminave-thorium so it registers itself with the new IP of your computer
 
 
-### I have multiple Thorium server running and lumiave-thorium is connecting to a random one
+### I have multiple Thorium server running and luminave-thorium is connecting to a random server
 
 You have to configure the IP of the Thorium server you want connect to by creating an `.env` file in luminave-thorium. The file would look like this
 
@@ -338,4 +338,4 @@ HOST_THORIUM=192.168.41.1
 PORT_THORIUM=1337
 ```
 
-This will deactivate the auto-connection to the nearest Thorium server. 
+This will deactivate the auto-connection to the nearest Thorium server and use the configured host instead. 
