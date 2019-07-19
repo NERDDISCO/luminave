@@ -1,3 +1,59 @@
+# [3.1.0](https://github.com/NERDDISCO/luminave/compare/v3.0.0...v3.1.0) (2019-07-19)
+
+
+### Bug Fixes
+
+* **animation:** Don't set useless keyframes ([2f2ff8f](https://github.com/NERDDISCO/luminave/commit/2f2ff8f))
+* **build:** BasePath should be / and not esm-bundled ([5ac84dd](https://github.com/NERDDISCO/luminave/commit/5ac84dd)), closes [#79](https://github.com/NERDDISCO/luminave/issues/79)
+* **directive:** React to "undefined" String ([c0625d9](https://github.com/NERDDISCO/luminave/commit/c0625d9))
+* **fixture:** The properties are loaded from the store ([e58a02e](https://github.com/NERDDISCO/luminave/commit/e58a02e)), closes [#80](https://github.com/NERDDISCO/luminave/issues/80) [#8](https://github.com/NERDDISCO/luminave/issues/8) [#74](https://github.com/NERDDISCO/luminave/issues/74)
+* **keyframe-grid:** Make all keyframes visible via scroll ([5f31813](https://github.com/NERDDISCO/luminave/commit/5f31813))
+* **luminave:** Build & merge fix ([8bdcab6](https://github.com/NERDDISCO/luminave/commit/8bdcab6))
+* **luminave-server:** Set correct default URL ([a70350c](https://github.com/NERDDISCO/luminave/commit/a70350c))
+* **menu:** Don't close menu on page reload ([8d540d7](https://github.com/NERDDISCO/luminave/commit/8d540d7))
+* **polymerx:** Remove unused service worker ([d664255](https://github.com/NERDDISCO/luminave/commit/d664255))
+* **style:** Remove unused character ([31bd519](https://github.com/NERDDISCO/luminave/commit/31bd519))
+* **thorium:** Listen for scene changes in the store ([4808523](https://github.com/NERDDISCO/luminave/commit/4808523))
+* **timeline:** Animation is not defined ([0a54bd4](https://github.com/NERDDISCO/luminave/commit/0a54bd4))
+* **timeline:** Check for NaN ([bb56fc1](https://github.com/NERDDISCO/luminave/commit/bb56fc1))
+* **timeline:** modvColor is not used when scene gets removed ([941dff8](https://github.com/NERDDISCO/luminave/commit/941dff8)), closes [#95](https://github.com/NERDDISCO/luminave/issues/95)
+
+
+### Features
+
+* **animation:** Add keyframes based on fixture properties ([7f95ed3](https://github.com/NERDDISCO/luminave/commit/7f95ed3)), closes [#50](https://github.com/NERDDISCO/luminave/issues/50)
+* **config:** 1...2...3(0) Feierei ([73be830](https://github.com/NERDDISCO/luminave/commit/73be830))
+* **configuration:** Added the integration-configuration component ([fdac5cb](https://github.com/NERDDISCO/luminave/commit/fdac5cb)), closes [#101](https://github.com/NERDDISCO/luminave/issues/101)
+* **dotjs2018:** Added fixtures ([0dc78f0](https://github.com/NERDDISCO/luminave/commit/0dc78f0)), closes [#91](https://github.com/NERDDISCO/luminave/issues/91)
+* **fivetwelve:** Integration is configurable ([d1a9625](https://github.com/NERDDISCO/luminave/commit/d1a9625))
+* **fixture:** Added BasicRGBDimmer ([420c395](https://github.com/NERDDISCO/luminave/commit/420c395))
+* **fixture-detail:** Edit a fixture in it's own view ([325b68b](https://github.com/NERDDISCO/luminave/commit/325b68b)), closes [#74](https://github.com/NERDDISCO/luminave/issues/74)
+* **general-view:** Move general things to a main view ([3e9660d](https://github.com/NERDDISCO/luminave/commit/3e9660d))
+* **graphql:** Interact with luminave-server via GraphQL ([eaa31a7](https://github.com/NERDDISCO/luminave/commit/eaa31a7))
+* **graphql:** Subscribe to data from luminave-server ([eb64bfc](https://github.com/NERDDISCO/luminave/commit/eb64bfc))
+* **integration:** GraphQL via Apollo ([c8deef1](https://github.com/NERDDISCO/luminave/commit/c8deef1)), closes [#101](https://github.com/NERDDISCO/luminave/issues/101)
+* **integration:** Separated configuration from websocket connection ([50b2801](https://github.com/NERDDISCO/luminave/commit/50b2801))
+* **integration-configuration:** Status emoji ([f2858e0](https://github.com/NERDDISCO/luminave/commit/f2858e0))
+* **jsconfeu-2019:** Everything we need for JSConfEU 2019 ([8bff32a](https://github.com/NERDDISCO/luminave/commit/8bff32a))
+* **luminave-server:** Added action, reducer, selector & constants ([cd8af1c](https://github.com/NERDDISCO/luminave/commit/cd8af1c))
+* **luminave-server:** Added subscription ([7448ab9](https://github.com/NERDDISCO/luminave/commit/7448ab9)), closes [#100](https://github.com/NERDDISCO/luminave/issues/100)
+* **luminave-server:** Default integration via GraphQL ([b616b9a](https://github.com/NERDDISCO/luminave/commit/b616b9a)), closes [#100](https://github.com/NERDDISCO/luminave/issues/100)
+* **midiController:** Update the name, io & layout ([9839fa5](https://github.com/NERDDISCO/luminave/commit/9839fa5)), closes [#90](https://github.com/NERDDISCO/luminave/issues/90)
+* **modv:** Added new mapping component ([61404eb](https://github.com/NERDDISCO/luminave/commit/61404eb))
+* **modv:** Get the x & y of grabCanvas ([5d65b57](https://github.com/NERDDISCO/luminave/commit/5d65b57))
+* **modv:** Listen for data from modV ([b85d486](https://github.com/NERDDISCO/luminave/commit/b85d486))
+* **ruhrjs:** Added fixtures ([b2c1682](https://github.com/NERDDISCO/luminave/commit/b2c1682)), closes [#82](https://github.com/NERDDISCO/luminave/issues/82)
+* **selector:** Is timeline playing? ([b5bd2af](https://github.com/NERDDISCO/luminave/commit/b5bd2af))
+* **style:** Links ([be643cb](https://github.com/NERDDISCO/luminave/commit/be643cb))
+* **thorium:** Dynamic animation ([7c4218c](https://github.com/NERDDISCO/luminave/commit/7c4218c)), closes [#100](https://github.com/NERDDISCO/luminave/issues/100) [#99](https://github.com/NERDDISCO/luminave/issues/99)
+* **thorium:** Improved handling scenes & animations ([4acf689](https://github.com/NERDDISCO/luminave/commit/4acf689)), closes [#100](https://github.com/NERDDISCO/luminave/issues/100)
+* **timeline:** Combined all components & made timeline infinite ([f4079f9](https://github.com/NERDDISCO/luminave/commit/f4079f9)), closes [#61](https://github.com/NERDDISCO/luminave/issues/61)
+* **timeline:** Dynamic scenes ([d0af262](https://github.com/NERDDISCO/luminave/commit/d0af262)), closes [#100](https://github.com/NERDDISCO/luminave/issues/100)
+* **timeline:** Infinite part 2 ([6c88bc5](https://github.com/NERDDISCO/luminave/commit/6c88bc5)), closes [#16](https://github.com/NERDDISCO/luminave/issues/16)
+* **util:** toFixedNumber ([58859fa](https://github.com/NERDDISCO/luminave/commit/58859fa))
+* **venue:** Added venues ([1dd0b8e](https://github.com/NERDDISCO/luminave/commit/1dd0b8e)), closes [#53](https://github.com/NERDDISCO/luminave/issues/53)
+* **venue:** Automatically add matching fixture to slot ([0bb255b](https://github.com/NERDDISCO/luminave/commit/0bb255b))
+
 # 1.0.0 (2019-06-10)
 
 
