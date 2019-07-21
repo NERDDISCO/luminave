@@ -30,7 +30,7 @@ If you want to use [Thorium](https://github.com/Thorium-Sim) as your space ship 
   - [Lighting scenarios](#Lighting-scenarios)
     - [One light can only display one color](#One-light-can-only-display-one-color)
     - [RGB lights that can display every color](#RGB-lights-that-can-display-every-color)
-  - [Problems](#Problems)
+  - [FAQ](#FAQ)
     - [I have no idea which fixture type to choose](#I-have-no-idea-which-fixture-type-to-choose)
     - [No data received from Thorium](#No-data-received-from-Thorium)
     - [I have multiple Thorium server running and luminave-thorium is connecting to a random server](#I-have-multiple-Thorium-server-running-and-luminave-thorium-is-connecting-to-a-random-server)
@@ -314,7 +314,7 @@ Now you can start the timeline and make your changes in Thorium and everything s
 
 ---
 
-## Problems
+## FAQ
 
 ### I have no idea which fixture type to choose
 
