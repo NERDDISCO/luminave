@@ -19,7 +19,6 @@
       "path": "@semantic-release/git",
       "assets": [
         "package.json", 
-        "umd", 
         "docs", 
         "README.md"
       ],
