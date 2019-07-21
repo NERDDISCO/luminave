@@ -4,35 +4,36 @@ If you want to use [Thorium](https://github.com/Thorium-Sim) as your space ship 
 
 <!-- toc -->
 
-- [Thorium + luminave](#thorium--luminave)
-  - [How does it work?](#how-does-it-work)
-  - [Setup](#setup)
-  - [Config](#config)
-  - [Usage](#usage)
-    - [Thorium](#thorium)
-      - [Use the lighting controls](#use-the-lighting-controls)
-        - [Color](#color)
-        - [Mode / Action](#mode--action)
+- [Thorium + luminave](#Thorium--luminave)
+  - [How does it work?](#How-does-it-work)
+  - [Setup](#Setup)
+  - [Config](#Config)
+  - [Usage](#Usage)
+    - [Thorium](#Thorium)
+      - [Use the lighting controls](#Use-the-lighting-controls)
+        - [Color](#Color)
+        - [Mode / Action](#Mode--Action)
     - [luminave](#luminave)
-      - [Add a new universe](#add-a-new-universe)
-      - [Add lights (fixtures)](#add-lights-fixtures)
-        - [Type](#type)
-        - [Address](#address)
-        - [Name](#name)
-        - [Amount](#amount)
-      - [Test lights (fixtures)](#test-lights-fixtures)
-      - [Add scenes](#add-scenes)
-        - [Add animation & fixture to scene](#add-animation--fixture-to-scene)
-      - [Start the timeline](#start-the-timeline)
-      - [Connection to luminave-server](#connection-to-luminave-server)
-      - [Connection to luminave-fivetwelve](#connection-to-luminave-fivetwelve)
-        - [Supported USB DMX512 controllers](#supported-usb-dmx512-controllers)
-  - [Lighting scenarios](#lighting-scenarios)
-    - [One light can only display one color](#one-light-can-only-display-one-color)
-    - [RGB lights that can display every color](#rgb-lights-that-can-display-every-color)
-  - [Problems](#problems)
-    - [I have no idea which fixture type to choose](#i-have-no-idea-which-fixture-type-to-choose)
-    - [No data received from Thorium](#no-data-received-from-thorium)
+      - [Add a new universe](#Add-a-new-universe)
+      - [Add lights (fixtures)](#Add-lights-fixtures)
+        - [Type](#Type)
+        - [Address](#Address)
+        - [Name](#Name)
+        - [Amount](#Amount)
+      - [Test lights (fixtures)](#Test-lights-fixtures)
+      - [Add scenes](#Add-scenes)
+        - [Add animation & fixture to scene](#Add-animation--fixture-to-scene)
+      - [Start the timeline](#Start-the-timeline)
+      - [Connection to luminave-server](#Connection-to-luminave-server)
+      - [Connection to luminave-fivetwelve](#Connection-to-luminave-fivetwelve)
+        - [Supported USB DMX512 controllers](#Supported-USB-DMX512-controllers)
+  - [Lighting scenarios](#Lighting-scenarios)
+    - [One light can only display one color](#One-light-can-only-display-one-color)
+    - [RGB lights that can display every color](#RGB-lights-that-can-display-every-color)
+  - [FAQ](#FAQ)
+    - [I have no idea which fixture type to choose](#I-have-no-idea-which-fixture-type-to-choose)
+    - [No data received from Thorium](#No-data-received-from-Thorium)
+    - [I have multiple Thorium server running and luminave-thorium is connecting to a random server](#I-have-multiple-Thorium-server-running-and-luminave-thorium-is-connecting-to-a-random-server)
 
 <!-- tocstop -->
 
@@ -80,7 +81,7 @@ Start each application by executing `npm start` in each folder:
 
 ### Thorium
 
-When luminave-thorium is started, it tries to connect to Thorium automatically. It registers itself as a Thorium-Client. 
+When luminave-thorium is started, it starts to search for Thorium on the network and connects to the first one it finds automatically. 
 
 In the "Flight Lobby" you have to add the client `ECS-luminave-thorium` to your flight & select the simulator. 
 
@@ -236,7 +237,7 @@ When everything is configured and you want the scenes to run (= the lights will 
 
 #### Connection to luminave-server
 
-In order to exchange data with Thorium, luminve needs a connection to luminve-server. This can be established & configured using the right panel:
+In order to exchange data with Thorium, luminave needs a connection to luminave-server. This can be established & configured using the right panel:
 
 * Open the right panel using the menu-icon in the top right
   ![Navigation opened](images/navigation-open.png)
@@ -313,7 +314,7 @@ Now you can start the timeline and make your changes in Thorium and everything s
 
 ---
 
-## Problems
+## FAQ
 
 ### I have no idea which fixture type to choose
 
@@ -323,3 +324,18 @@ If you have no idea which type to choose, open an [issue on luminave](https://gi
 ### No data received from Thorium
 
 Check if the client IP changed, if that happened you have to restart Thorium & luminave-thorium so it registers itself with the new IP of your computer
+
+
+### I have multiple Thorium server running and luminave-thorium is connecting to a random server
+
+You have to configure the IP of the Thorium server you want connect to by creating an `.env` file in luminave-thorium. The file would look like this
+
+```bash
+# Host of Thorium
+HOST_THORIUM=192.168.41.1
+
+# Port of Thorium
+PORT_THORIUM=1337
+```
+
+This will deactivate the auto-connection to the nearest Thorium server and use the configured host instead. 
