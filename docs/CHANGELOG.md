@@ -1,3 +1,10 @@
+# [3.2.0](https://github.com/NERDDISCO/luminave/compare/v3.1.0...v3.2.0) (2019-07-21)
+
+
+### Features
+
+* **jsconfasia2019:** Fixtures, venue & scenes ([d9c1959](https://github.com/NERDDISCO/luminave/commit/d9c1959))
+
 # [3.1.0](https://github.com/NERDDISCO/luminave/compare/v3.0.0...v3.1.0) (2019-07-19)
 
 
