@@ -112,7 +112,7 @@ class TimelineManager extends connect(store)(LitElement) {
     if (this.isPlaying) {
       const now = new Date()
       this.progress = now.getTime()
-
+      
       // Start all scenes that are not started yet
       for (let i = 0; i < this.timelineScenes.length; i++) {
         const scene = this.timelineScenes[i];
@@ -120,7 +120,7 @@ class TimelineManager extends connect(store)(LitElement) {
         // Start the scene if it wasn't started yet
         if (scene.started === undefined) {
           const { sceneId, timelineSceneId } = scene
-
+          
           store.dispatch(setSceneOnTimeline({
             sceneId,
             timelineSceneId,
@@ -128,16 +128,19 @@ class TimelineManager extends connect(store)(LitElement) {
           }))
         }
       }
-
       for (const fixtureId in fixtureBatch) {
         const interpolatedProperties = fixtureBatch[fixtureId].properties
         const fixture = this.timelineFixtures[fixtureId]
-
         for (const propertyName in interpolatedProperties) {
+          // Allow the fixture to transform the property based on other properties
+          const passThrough = function passThrough(value) { 
+            return value 
+          }
+          const transform = fixture[`${propertyName}Transform`] || passThrough
           // @TODO: only set properties that the fixture understands
-          fixture[propertyName] = interpolatedProperties[propertyName]
+          fixture[propertyName] = transform(interpolatedProperties[propertyName])
         }
-
+        
         // Overwrite the color of every fixture when a connection to modV was established
         // & the "modvColor" property is actually set on the fixture within an active scene
         if (this.modvConnected && interpolatedProperties.hasOwnProperty('modvColor')) {
@@ -153,7 +156,6 @@ class TimelineManager extends connect(store)(LitElement) {
           }
         }
       }
-
       // Update the channels of universe 0 with the batch of values collected for the fixtures
       store.dispatch(setChannels(0, [...batch]))
 
@@ -165,7 +167,7 @@ class TimelineManager extends connect(store)(LitElement) {
 
       // Send the universe to the FivetwelveManager
       window.dispatchEvent(new CustomEvent('send-universe-to-fivetwelve', { detail: { now } }))
-
+      
       this.timeoutId = setTimeout(() => {
         // Get the next frame
         requestAnimationFrame(this.loop.bind(this))
