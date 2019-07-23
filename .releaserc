@@ -1,13 +1,27 @@
 {
-  "verifyConditions": ["@semantic-release/changelog", "@semantic-release/git"],
+  "plugins": [
+    "@semantic-release/commit-analyzer", 
+    "@semantic-release/release-notes-generator", 
+    "@semantic-release/changelog", 
+    "@semantic-release/git",
+    "@semantic-release/github"
+  ],
+  "verifyConditions": [
+    "@semantic-release/changelog", 
+    "@semantic-release/git"
+  ],
   "prepare": [
     {
       "path": "@semantic-release/changelog",
-      "changelogFile": "docs/CHANGELOG.md",
+      "changelogFile": "docs/CHANGELOG.md"
     },
     {
       "path": "@semantic-release/git",
-      "assets": ["package.json", "umd", "docs", "README.md"],
+      "assets": [
+        "package.json", 
+        "docs", 
+        "README.md"
+      ],
       "message": "chore(release): ${nextRelease.version} [skip ci]\n\n${nextRelease.notes}"
     }
   ]

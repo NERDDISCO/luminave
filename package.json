@@ -72,6 +72,8 @@
   },
   "homepage": "https://github.com/NERDDISCO/luminave#readme",
   "devDependencies": {
+    "@semantic-release/changelog": "^2.1.2",
+    "@semantic-release/git": "^4.0.3",
     "axe-core": "^3.0.0",
     "chai": "^4.1.2",
     "concurrently": "^3.5.1",
@@ -87,9 +89,7 @@
     "prpl-server": "^1.1.0",
     "puppeteer": "^1.4.0",
     "query-selector-shadow-dom": "^0.2.1",
-    "wct-browser-legacy": "^1.0.1",
-    "@semantic-release/changelog": "^2.0.2",
-    "@semantic-release/git": "^4.0.3",
-    "semantic-release": "^15.1.7"
+    "semantic-release": "^15.13.18",
+    "wct-browser-legacy": "^1.0.1"
   }
 }
