@@ -131,14 +131,18 @@ class TimelineManager extends connect(store)(LitElement) {
       for (const fixtureId in fixtureBatch) {
         const interpolatedProperties = fixtureBatch[fixtureId].properties
         const fixture = this.timelineFixtures[fixtureId]
+
+        // Iterate over all interpolated properties of the fixture
+        // @TODO: only set properties that the fixture understands
         for (const propertyName in interpolatedProperties) {
+
           // Allow the fixture to transform the property based on other properties
-          const passThrough = function passThrough(value) { 
-            return value 
+          if (fixture.hasOwnProperty(`${propertyName}Transform`)) {
+            const transform = fixture[`${propertyName}Transform`]
+            fixture[propertyName] = transform(interpolatedProperties[propertyName])
+          } else {
+            fixture[propertyName] = interpolatedProperties[propertyName]
           }
-          const transform = fixture[`${propertyName}Transform`] || passThrough
-          // @TODO: only set properties that the fixture understands
-          fixture[propertyName] = transform(interpolatedProperties[propertyName])
         }
         
         // Overwrite the color of every fixture when a connection to modV was established
