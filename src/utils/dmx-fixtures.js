@@ -27,4 +27,5 @@ export { default as RobeRobin300LEDWash } from './dmx/RobeRobin300LEDWash.js'
 export { default as BasicRGBDimmer } from './dmx/BasicRGBDimmer.js'
 export { default as OppskPar } from './dmx/OppskPar.js'
 export { default as SolarStar2 } from './dmx/SolarStar2.js'
+export { default as BasicRGBDimmableTransform } from './dmx/BasicRGBDimmableTransform.js'
 
