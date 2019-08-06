@@ -1,1 +1,1129 @@
-{"bpm":59,"live":false,"usbManager":{"lastTransmission":"2018-02-07T05:56:08.130Z"},"dekkManager":{"data":{"scenes":["rainbow"]},"connected":false},"fivetwelveManager":{"connected":false,"lastTransmission":"2018-02-07T05:56:08.130Z"},"connectionManager":{"usb":{"connected":true},"bluetooth":{"connected":false}},"universeManager":[{"id":"1e380f60-c0ee-11e8-a97a-5594ce2ad9f3","channels":[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],"name":"1e380f60-c0ee-11e8-a97a-5594ce2ad9f3"}],"sceneManager":[{"id":"44b6e2b0-3ec0-11e9-a3c9-b13750b6249e","fixtures":["c84b5ff0-3e8b-11e9-93bb-93d8d375229b","548fba00-3e97-11e9-9a7b-71eab8005ac3","bb9d9a90-3e98-11e9-9a7b-71eab8005ac3","e5465190-3ebe-11e9-8c1a-231efea37d62"],"animations":["5766c7a0-3ebf-11e9-8c1a-231efea37d62"],"duration":20,"name":"Ambient Chill 1","isRunning":false},{"id":"0381c740-4057-11e9-b9c9-e51148847836","fixtures":["c84b5ff0-3e8b-11e9-93bb-93d8d375229b","548fba00-3e97-11e9-9a7b-71eab8005ac3","bb9d9a90-3e98-11e9-9a7b-71eab8005ac3","e5465190-3ebe-11e9-8c1a-231efea37d62"],"animations":["cbee54b0-4056-11e9-befd-f1c157b47d3d"],"duration":20,"name":"Ambient Dimmer 0.5","isRunning":false},{"id":"0823d810-4057-11e9-b9c9-e51148847836","fixtures":["c84b5ff0-3e8b-11e9-93bb-93d8d375229b","548fba00-3e97-11e9-9a7b-71eab8005ac3","bb9d9a90-3e98-11e9-9a7b-71eab8005ac3","e5465190-3ebe-11e9-8c1a-231efea37d62"],"animations":["40a1cf40-3241-11e9-9b49-e10c982f3673"],"duration":20,"name":"Ambient Dimmer 0.25","isRunning":false},{"id":"f17d3810-3e97-11e9-9a7b-71eab8005ac3","fixtures":["548fba00-3e97-11e9-9a7b-71eab8005ac3","bb9d9a90-3e98-11e9-9a7b-71eab8005ac3","e5465190-3ebe-11e9-8c1a-231efea37d62","c84b5ff0-3e8b-11e9-93bb-93d8d375229b"],"animations":["3be7d100-323e-11e9-9a02-f3eeabb2cc80"],"duration":20,"name":"Ambient Dimmer 1","isRunning":false},{"id":"aaabcb10-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013efeb0-30aa-11e9-b031-0ffdf7222501"],"animations":["aaaba401-323d-11e9-9a02-f3eeabb2cc80"],"duration":20,"name":"Bottom"},{"id":"a4ed9150-323c-11e9-9a02-f3eeabb2cc80","fixtures":["013ed7a0-30aa-11e9-b031-0ffdf7222501"],"animations":["a4ed6a40-323c-11e9-9a02-f3eeabb2cc80"],"duration":20,"name":"Bottom Left"},{"id":"b2f734d0-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f25c0-30aa-11e9-b031-0ffdf7222501"],"animations":["b2f70dc1-323d-11e9-9a02-f3eeabb2cc80"],"duration":20,"name":"Bottom Right"},{"id":"e93a0b80-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f9af1-30aa-11e9-b031-0ffdf7222501"],"animations":["e939e470-323d-11e9-9a02-f3eeabb2cc80"],"duration":20,"name":"Center Left"},{"id":"bbd76480-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f4cd0-30aa-11e9-b031-0ffdf7222501"],"animations":["bbd73d70-323d-11e9-9a02-f3eeabb2cc80"],"duration":20,"name":"Center Right"},{"id":"18b9e2d0-3e97-11e9-8c92-b3d3d2e1445f","fixtures":["c84b5ff0-3e8b-11e9-93bb-93d8d375229b"],"animations":["18b994b0-3e97-11e9-8c92-b3d3d2e1445f"],"duration":20,"name":"Flat Par Ambient  1"},{"id":"5c1f9bf0-3e97-11e9-9a7b-71eab8005ac3","fixtures":["548fba00-3e97-11e9-9a7b-71eab8005ac3"],"animations":["5c1f74e0-3e97-11e9-9a7b-71eab8005ac3"],"duration":20,"name":"Flat Par Ambient 2"},{"id":"3048e920-4129-11e9-9c2c-65e5c3f2cd37","fixtures":["e55a92a0-3125-11e9-b031-0ffdf7222501"],"animations":["c75e6660-312e-11e9-b031-0ffdf7222501"],"duration":20,"name":"laser-dotten-line","isRunning":false},{"id":"602dbb90-312d-11e9-b031-0ffdf7222501","fixtures":["e55a92a0-3125-11e9-b031-0ffdf7222501"],"animations":["4b1ef480-312d-11e9-b031-0ffdf7222501"],"duration":20,"name":"laser-line-loop","isRunning":false},{"id":"389f0140-4129-11e9-9c2c-65e5c3f2cd37","fixtures":["e55a92a0-3125-11e9-b031-0ffdf7222501"],"animations":["ba3c3cb0-312d-11e9-b031-0ffdf7222501"],"duration":20,"name":"laser-line-loop-2","isRunning":false},{"id":"3f5747e0-4129-11e9-9c2c-65e5c3f2cd37","fixtures":["e55a92a0-3125-11e9-b031-0ffdf7222501"],"animations":["8652c9e0-312e-11e9-b031-0ffdf7222501"],"duration":20,"name":"laser-square","isRunning":false},{"id":"450c4f50-4129-11e9-9c2c-65e5c3f2cd37","fixtures":["e55a92a0-3125-11e9-b031-0ffdf7222501"],"animations":["2c0962a0-312e-11e9-b031-0ffdf7222501"],"duration":20,"name":"laser-two-lines","isRunning":false},{"id":"088673f0-4127-11e9-aa84-6b29d9066182","fixtures":["c84b5ff0-3e8b-11e9-93bb-93d8d375229b","548fba00-3e97-11e9-9a7b-71eab8005ac3","bb9d9a90-3e98-11e9-9a7b-71eab8005ac3","e5465190-3ebe-11e9-8c1a-231efea37d62"],"animations":["cbee54b0-4056-11e9-befd-f1c157b47d3d","b41e10b0-4127-11e9-aa84-6b29d9066182"],"duration":20,"name":"modV Ambient Dimmer 0.5","isRunning":false},{"id":"0d678990-4127-11e9-aa84-6b29d9066182","fixtures":["c84b5ff0-3e8b-11e9-93bb-93d8d375229b","548fba00-3e97-11e9-9a7b-71eab8005ac3","bb9d9a90-3e98-11e9-9a7b-71eab8005ac3","e5465190-3ebe-11e9-8c1a-231efea37d62"],"animations":["40a1cf40-3241-11e9-9b49-e10c982f3673","b41e10b0-4127-11e9-aa84-6b29d9066182"],"duration":20,"name":"modV Ambient Dimmer 0.25","isRunning":false},{"id":"011600e0-4127-11e9-aa84-6b29d9066182","fixtures":["c84b5ff0-3e8b-11e9-93bb-93d8d375229b","548fba00-3e97-11e9-9a7b-71eab8005ac3","bb9d9a90-3e98-11e9-9a7b-71eab8005ac3","e5465190-3ebe-11e9-8c1a-231efea37d62"],"animations":["3be7d100-323e-11e9-9a02-f3eeabb2cc80","b41e10b0-4127-11e9-aa84-6b29d9066182"],"duration":20,"name":"modV Ambient Dimmer 1","isRunning":false},{"id":"3fc55460-4057-11e9-b9c9-e51148847836","fixtures":["013ed7a0-30aa-11e9-b031-0ffdf7222501","013efeb0-30aa-11e9-b031-0ffdf7222501","013f25c0-30aa-11e9-b031-0ffdf7222501","013f4cd0-30aa-11e9-b031-0ffdf7222501","013f4cd1-30aa-11e9-b031-0ffdf7222501","013f73e0-30aa-11e9-b031-0ffdf7222501","013f9af0-30aa-11e9-b031-0ffdf7222501","013f9af1-30aa-11e9-b031-0ffdf7222501"],"animations":["cbee54b0-4056-11e9-befd-f1c157b47d3d"],"duration":20,"name":"modV Stage Dimmer 0.5","isRunning":false},{"id":"43aeeaa0-4057-11e9-b9c9-e51148847836","fixtures":["013ed7a0-30aa-11e9-b031-0ffdf7222501","013efeb0-30aa-11e9-b031-0ffdf7222501","013f25c0-30aa-11e9-b031-0ffdf7222501","013f4cd0-30aa-11e9-b031-0ffdf7222501","013f4cd1-30aa-11e9-b031-0ffdf7222501","013f73e0-30aa-11e9-b031-0ffdf7222501","013f9af0-30aa-11e9-b031-0ffdf7222501","013f9af1-30aa-11e9-b031-0ffdf7222501"],"animations":["40a1cf40-3241-11e9-9b49-e10c982f3673"],"duration":20,"name":"modV Stage Dimmer 0.25","isRunning":false},{"id":"69166ac0-4057-11e9-b9c9-e51148847836","fixtures":["013ed7a0-30aa-11e9-b031-0ffdf7222501","013efeb0-30aa-11e9-b031-0ffdf7222501","013f25c0-30aa-11e9-b031-0ffdf7222501","013f4cd0-30aa-11e9-b031-0ffdf7222501","013f4cd1-30aa-11e9-b031-0ffdf7222501","013f73e0-30aa-11e9-b031-0ffdf7222501","013f9af0-30aa-11e9-b031-0ffdf7222501","013f9af1-30aa-11e9-b031-0ffdf7222501"],"animations":["3be7d100-323e-11e9-9a02-f3eeabb2cc80"],"duration":20,"name":"modV Stage Dimmer 1","isRunning":false},{"id":"d4104d20-3e98-11e9-9a7b-71eab8005ac3","fixtures":["bb9d9a90-3e98-11e9-9a7b-71eab8005ac3"],"animations":["d4102610-3e98-11e9-9a7b-71eab8005ac3"],"duration":20,"name":"PixBar Ambient 3"},{"id":"b1678910-c80e-11e8-a8b6-e76fc77499de","fixtures":["013ed7a0-30aa-11e9-b031-0ffdf7222501","013efeb0-30aa-11e9-b031-0ffdf7222501","013f25c0-30aa-11e9-b031-0ffdf7222501","013f4cd0-30aa-11e9-b031-0ffdf7222501","013f4cd1-30aa-11e9-b031-0ffdf7222501","013f73e0-30aa-11e9-b031-0ffdf7222501","013f9af0-30aa-11e9-b031-0ffdf7222501","013f9af1-30aa-11e9-b031-0ffdf7222501"],"animations":["1dd2ed20-c80e-11e8-aa32-4920b825426c"],"duration":20,"name":"rainbow","isRunning":false},{"id":"e364c480-4128-11e9-9c2c-65e5c3f2cd37","fixtures":["949a4f80-3ebe-11e9-8c1a-231efea37d62"],"animations":["ca41d4c0-4128-11e9-9c2c-65e5c3f2cd37"],"duration":20,"name":"Smoke","isRunning":false},{"id":"f0077641-3ebe-11e9-8c1a-231efea37d62","fixtures":["e5465190-3ebe-11e9-8c1a-231efea37d62"],"animations":["f0077640-3ebe-11e9-8c1a-231efea37d62"],"duration":20,"name":"Starburst Ambient 4"},{"id":"620eb8a0-4128-11e9-9c2c-65e5c3f2cd37","fixtures":["e5465190-3ebe-11e9-8c1a-231efea37d62"],"animations":["fd681ea0-4127-11e9-aa84-6b29d9066182"],"duration":20,"name":"Starburst Move Fast","isRunning":false},{"id":"65d02d70-4128-11e9-9c2c-65e5c3f2cd37","fixtures":["e5465190-3ebe-11e9-8c1a-231efea37d62"],"animations":["f474b510-4127-11e9-aa84-6b29d9066182"],"duration":20,"name":"Starburst Move Slow","isRunning":false},{"id":"1196eb90-1bfd-11e9-a4a9-b563df19081f","fixtures":["013ed7a0-30aa-11e9-b031-0ffdf7222501","013efeb0-30aa-11e9-b031-0ffdf7222501","013f25c0-30aa-11e9-b031-0ffdf7222501","013f4cd0-30aa-11e9-b031-0ffdf7222501","013f4cd1-30aa-11e9-b031-0ffdf7222501","013f73e0-30aa-11e9-b031-0ffdf7222501","013f9af0-30aa-11e9-b031-0ffdf7222501","013f9af1-30aa-11e9-b031-0ffdf7222501"],"animations":["aa8510f0-412a-11e9-a924-41d4bee8b149"],"duration":20,"name":"Strobe","isRunning":false},{"id":"d7315880-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f73e0-30aa-11e9-b031-0ffdf7222501"],"animations":["d7310a60-323d-11e9-9a02-f3eeabb2cc80"],"duration":20,"name":"Top"},{"id":"dff43c30-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f9af0-30aa-11e9-b031-0ffdf7222501"],"animations":["dff32ac0-323d-11e9-9a02-f3eeabb2cc80"],"duration":20,"name":"Top Left"},{"id":"cdf09240-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f4cd1-30aa-11e9-b031-0ffdf7222501"],"animations":["cdf06b30-323d-11e9-9a02-f3eeabb2cc80"],"duration":20,"name":"Top Right"},{"id":"0dd63a10-1bfd-11e9-a4a9-b563df19081f","fixtures":["013ed7a0-30aa-11e9-b031-0ffdf7222501","013efeb0-30aa-11e9-b031-0ffdf7222501","013f25c0-30aa-11e9-b031-0ffdf7222501","013f4cd0-30aa-11e9-b031-0ffdf7222501","013f4cd1-30aa-11e9-b031-0ffdf7222501","013f73e0-30aa-11e9-b031-0ffdf7222501","013f9af0-30aa-11e9-b031-0ffdf7222501","013f9af1-30aa-11e9-b031-0ffdf7222501"],"animations":["59ec7cd0-1bfc-11e9-a4a9-b563df19081f"],"duration":20,"name":"uv","isRunning":false}],"animationManager":[{"id":"5766c7a0-3ebf-11e9-8c1a-231efea37d62","keyframes":{"0":{"color":[128,0,255],"uv":255,"strobeMacro":"on","rotate":"clockwise(255)"},"1":{"color":[128,0,255],"uv":255,"strobeMacro":"on","rotate":"clockwise(255)"}},"duration":5,"name":"Ambient Chill 1"},{"id":"aaaba401-323d-11e9-9a02-f3eeabb2cc80","keyframes":{"0":{"modvColor":27},"1":{"modvColor":27}},"duration":20,"name":"Bottom"},{"id":"a4ed6a40-323c-11e9-9a02-f3eeabb2cc80","keyframes":{"0":{"modvColor":13},"1":{"modvColor":13}},"duration":20,"name":"Bottom Left"},{"id":"b2f70dc1-323d-11e9-9a02-f3eeabb2cc80","keyframes":{"0":{"modvColor":41},"1":{"modvColor":41}},"duration":20,"name":"Bottom Right"},{"id":"e939e470-323d-11e9-9a02-f3eeabb2cc80","keyframes":{"0":{"modvColor":11},"1":{"modvColor":11}},"duration":20,"name":"Center Left"},{"id":"bbd73d70-323d-11e9-9a02-f3eeabb2cc80","keyframes":{"0":{"modvColor":39},"1":{"modvColor":39}},"duration":20,"name":"Center Right"},{"id":"cbee54b0-4056-11e9-befd-f1c157b47d3d","keyframes":{"0":{"dimmer":120},"1":{"dimmer":120}},"duration":5,"name":"dimmer 0.5"},{"id":"40a1cf40-3241-11e9-9b49-e10c982f3673","keyframes":{"0":{"dimmer":10},"1":{"dimmer":10}},"duration":5,"name":"dimmer 0.25"},{"id":"3be7d100-323e-11e9-9a02-f3eeabb2cc80","keyframes":{"0":{"dimmer":255},"1":{"dimmer":255}},"duration":5,"name":"dimmer 1"},{"id":"18b994b0-3e97-11e9-8c92-b3d3d2e1445f","keyframes":{"0":{"modvColor":11},"1":{"modvColor":11}},"duration":20,"name":"Flat Par Ambient  1"},{"id":"5c1f74e0-3e97-11e9-9a7b-71eab8005ac3","keyframes":{"0":{"modvColor":18},"1":{"modvColor":18}},"duration":20,"name":"Flat Par Ambient 2"},{"id":"c75e6660-312e-11e9-b031-0ffdf7222501","keyframes":{"0":{"pattern":30,"zoom":"manual(0)","xAxisRolling":"manual(0)","yAxisRolling":"manual(5)","zAxisRolling":"manual(0)","xAxisMoving":"manual(0)","yAxisMoving":"speed(5)","colors":"yellow","mode":"dmx"},"1":{"pattern":30,"zoom":"manual(0)","xAxisRolling":"manual(0)","yAxisRolling":"manual(5)","zAxisRolling":"manual(0)","xAxisMoving":"manual(0)","yAxisMoving":"speed(5)","colors":"yellow","mode":"dmx"}},"duration":5,"name":"laser-dotten-line"},{"id":"4b1ef480-312d-11e9-b031-0ffdf7222501","keyframes":{"0":{"mode":"dmx","colors":"red","pattern":21,"zoom":"manual(0)","xAxisRolling":"manual(0)","yAxisRolling":"manual(0)","zAxisRolling":"manual(0)","xAxisMoving":"manual(0)","yAxisMoving":"speed(20)"},"1":{"mode":"dmx","colors":"red","pattern":21,"zoom":"manual(0)","xAxisRolling":"manual(0)","yAxisRolling":"manual(0)","zAxisRolling":"manual(0)","xAxisMoving":"manual(0)","yAxisMoving":"speed(20)"}},"duration":5,"name":"laser-line-loop"},{"id":"ba3c3cb0-312d-11e9-b031-0ffdf7222501","keyframes":{"0":{"pattern":22,"zoom":"manual(0)","xAxisRolling":"manual(0)","yAxisRolling":"manual(0)","zAxisRolling":"speed(20)","xAxisMoving":"manual(30)","yAxisMoving":"speed(50)","colors":"red","mode":"dmx"},"1":{"pattern":22,"zoom":"manual(0)","xAxisRolling":"manual(0)","yAxisRolling":"manual(0)","zAxisRolling":"speed(20)","xAxisMoving":"manual(30)","yAxisMoving":"speed(50)","colors":"red","mode":"dmx"}},"duration":5,"name":"laser-line-loop-2"},{"id":"8652c9e0-312e-11e9-b031-0ffdf7222501","keyframes":{"0":{"pattern":29,"zoom":"manual(0)","xAxisRolling":"manual(0)","yAxisRolling":"manual(50)","zAxisRolling":"speed(0)","xAxisMoving":"speed(0)","yAxisMoving":"speed(5)","colors":"yellow","mode":"dmx"},"1":{"pattern":29,"zoom":"manual(0)","xAxisRolling":"manual(0)","yAxisRolling":"manual(50)","zAxisRolling":"speed(0)","xAxisMoving":"speed(0)","yAxisMoving":"speed(5)","colors":"yellow","mode":"dmx"}},"duration":5,"name":"laser-square"},{"id":"2c0962a0-312e-11e9-b031-0ffdf7222501","keyframes":{"0":{"pattern":25,"zoom":"manual(0)","xAxisRolling":"speed(10)","yAxisRolling":"manual(0)","zAxisRolling":"speed(5)","xAxisMoving":"speed(10)","yAxisMoving":"speed(20)","colors":"green","mode":"dmx"},"1":{"pattern":25,"zoom":"manual(0)","xAxisRolling":"speed(10)","yAxisRolling":"manual(0)","zAxisRolling":"speed(5)","xAxisMoving":"speed(10)","yAxisMoving":"speed(20)","colors":"green","mode":"dmx"}},"duration":5,"name":"laser-two-lines"},{"id":"d4102610-3e98-11e9-9a7b-71eab8005ac3","keyframes":{"0":{"modvColor":25},"1":{"modvColor":25}},"duration":20,"name":"PixBar Ambient 3"},{"id":"1dd2ed20-c80e-11e8-aa32-4920b825426c","keyframes":{"0":{"dimmer":255,"color":[255,0,0]},"1":{"dimmer":255,"color":[255,0,255]},"0.1":{"dimmer":255,"color":[255,128,0]},"0.2":{"dimmer":255,"color":[255,255,0]},"0.3":{"dimmer":255,"color":[128,255,0]},"0.4":{"dimmer":255,"color":[0,255,0]},"0.5":{"dimmer":255,"color":[0,255,128]},"0.6":{"dimmer":255,"color":[0,255,255]},"0.7":{"dimmer":255,"color":[0,128,255]},"0.8":{"dimmer":255,"color":[0,0,255]},"0.9":{"dimmer":255,"color":[128,0,255]}},"duration":20,"name":"Rainbow"},{"id":"ca41d4c0-4128-11e9-9c2c-65e5c3f2cd37","keyframes":{"0":{"amount":255},"1":{"amount":255}},"duration":5,"name":"smoke"},{"id":"f0077640-3ebe-11e9-8c1a-231efea37d62","keyframes":{"0":{"modvColor":32},"1":{"modvColor":32}},"duration":20,"name":"Starburst Ambient 4"},{"id":"fd681ea0-4127-11e9-aa84-6b29d9066182","keyframes":{"0":{"rotate":"clockwise(70)"},"1":{"rotate":"clockwise(70)"}},"duration":5,"name":"starburst move fast"},{"id":"f474b510-4127-11e9-aa84-6b29d9066182","keyframes":{"0":{"rotate":"clockwise(220)"},"1":{"rotate":"clockwise(220)"}},"duration":5,"name":"starburst move slow"},{"id":"b41e10b0-4127-11e9-aa84-6b29d9066182","keyframes":{"0":{"strobeMacro":"on"},"1":{"strobeMacro":"on"}},"duration":5,"name":"starburst on"},{"id":"aa8510f0-412a-11e9-a924-41d4bee8b149","keyframes":{"0":{"strobe":95},"1":{"strobe":95}},"duration":20,"name":"Strobe"},{"id":"d7310a60-323d-11e9-9a02-f3eeabb2cc80","keyframes":{"0":{"modvColor":23},"1":{"modvColor":23}},"duration":20,"name":"Top"},{"id":"dff32ac0-323d-11e9-9a02-f3eeabb2cc80","keyframes":{"0":{"modvColor":9},"1":{"modvColor":9}},"duration":20,"name":"Top Left"},{"id":"cdf06b30-323d-11e9-9a02-f3eeabb2cc80","keyframes":{"0":{"modvColor":37},"1":{"modvColor":37}},"duration":20,"name":"Top Right"}],"fixtureManager":[{"id":"013ed7a0-30aa-11e9-b031-0ffdf7222501","type":"FunGenerationSeParQuadLedRgbUv","name":"Flat Par 1","universe":0,"address":1,"properties":{"color":[255,0,0],"dimmer":255,"strobe":95}},{"id":"013efeb0-30aa-11e9-b031-0ffdf7222501","type":"FunGenerationSeParQuadLedRgbUv","name":"Flat Par 2","universe":0,"address":7,"properties":{}},{"id":"013f25c0-30aa-11e9-b031-0ffdf7222501","type":"FunGenerationSeParQuadLedRgbUv","name":"Flat Par 3","universe":0,"address":13,"properties":{}},{"id":"013f4cd0-30aa-11e9-b031-0ffdf7222501","type":"FunGenerationSeParQuadLedRgbUv","name":"Flat Par 4","universe":0,"address":19,"properties":{}},{"id":"013f4cd1-30aa-11e9-b031-0ffdf7222501","type":"FunGenerationSeParQuadLedRgbUv","name":"Flat Par 5","universe":0,"address":25,"properties":{}},{"id":"013f73e0-30aa-11e9-b031-0ffdf7222501","type":"FunGenerationSeParQuadLedRgbUv","name":"Flat Par 6","universe":0,"address":31,"properties":{}},{"id":"013f9af0-30aa-11e9-b031-0ffdf7222501","type":"FunGenerationSeParQuadLedRgbUv","name":"Flat Par 7","universe":0,"address":37,"properties":{}},{"id":"013f9af1-30aa-11e9-b031-0ffdf7222501","type":"FunGenerationSeParQuadLedRgbUv","name":"Flat Par 8","universe":0,"address":43,"properties":{}},{"id":"c84b5ff0-3e8b-11e9-93bb-93d8d375229b","type":"CameoFlatPar1RGBW","name":"Flat Par Ambient 1","universe":0,"address":58,"properties":{}},{"id":"548fba00-3e97-11e9-9a7b-71eab8005ac3","type":"CameoFlatPar1RGBW","name":"Flat Par Ambient 2","universe":0,"address":66,"properties":{}},{"id":"e55a92a0-3125-11e9-b031-0ffdf7222501","type":"CameoWookie200RGY","name":"Laser 1","universe":0,"address":49,"properties":{}},{"id":"bb9d9a90-3e98-11e9-9a7b-71eab8005ac3","type":"CameoPixBar600PRO","name":"PixBar Ambient 3","universe":0,"address":74,"properties":{}},{"id":"949a4f80-3ebe-11e9-8c1a-231efea37d62","type":"StairvilleAF150","name":"Smoke 1","universe":0,"address":511,"properties":{}},{"id":"e5465190-3ebe-11e9-8c1a-231efea37d62","type":"AdjStarburst","name":"Starburst Ambient 4","universe":0,"address":148,"properties":{}}],"midiManager":{"controllers":[{"id":"59a2c080-4015-11e9-8b10-87533eeed722","name":"KORG nanoKONTROL 2","input":"nanoKONTROL2 SLIDER/KNOB","output":"nanoKONTROL2 CTRL","width":8,"height":3,"mapping":[{"scenes":["aaabcb10-323d-11e9-9a02-f3eeabb2cc80","a4ed9150-323c-11e9-9a02-f3eeabb2cc80","b2f734d0-323d-11e9-9a02-f3eeabb2cc80","e93a0b80-323d-11e9-9a02-f3eeabb2cc80","bbd76480-323d-11e9-9a02-f3eeabb2cc80","d7315880-323d-11e9-9a02-f3eeabb2cc80","dff43c30-323d-11e9-9a02-f3eeabb2cc80","cdf09240-323d-11e9-9a02-f3eeabb2cc80"],"note":32,"label":"modV Stage","type":"Button","active":false,"value":0},{"scenes":["69166ac0-4057-11e9-b9c9-e51148847836"],"note":33,"label":"mS Dimmer 100%","type":"Button","active":false,"value":0},{"scenes":["18b9e2d0-3e97-11e9-8c92-b3d3d2e1445f","5c1f9bf0-3e97-11e9-9a7b-71eab8005ac3","d4104d20-3e98-11e9-9a7b-71eab8005ac3","f0077641-3ebe-11e9-8c1a-231efea37d62"],"note":34,"label":"modV Ambient","type":"Button","active":false,"value":0},{"scenes":["011600e0-4127-11e9-aa84-6b29d9066182"],"note":35,"label":"mA Dimmer 100%","type":"Button","active":false,"value":0},{"scenes":["44b6e2b0-3ec0-11e9-a3c9-b13750b6249e"],"note":36,"label":"Ambient 1","type":"Button","active":false,"value":0},{"scenes":["f17d3810-3e97-11e9-9a7b-71eab8005ac3"],"note":37,"label":"A Dimmer 100%","type":"Button","active":false,"value":0},{"scenes":["602dbb90-312d-11e9-b031-0ffdf7222501"],"note":38,"label":"Laser Line Loop","type":"Button","active":false,"value":0},{"scenes":["3f5747e0-4129-11e9-9c2c-65e5c3f2cd37"],"note":39,"label":"Laser Square","type":"Button","active":false,"value":0},{"scenes":["1196eb90-1bfd-11e9-a4a9-b563df19081f"],"note":48,"label":"Strobe","type":"Button","active":false,"value":0},{"scenes":["3fc55460-4057-11e9-b9c9-e51148847836"],"note":49,"label":"mS Dimmer 50%","type":"Button","active":false,"value":0},{"scenes":["65d02d70-4128-11e9-9c2c-65e5c3f2cd37"],"note":50,"label":"Rotate Slow","type":"Button","active":false,"value":0},{"scenes":["088673f0-4127-11e9-aa84-6b29d9066182"],"note":51,"label":"mA Dimmer 50%","type":"Button","active":false,"value":0},{"scenes":[],"note":52,"label":"","type":"Button","active":false,"value":0},{"scenes":["0381c740-4057-11e9-b9c9-e51148847836"],"note":53,"label":"A Dimmer 50%","type":"Button","active":false,"value":0},{"scenes":["389f0140-4129-11e9-9c2c-65e5c3f2cd37"],"note":54,"label":"Laser Line Loop 2","type":"Button","active":false,"value":0},{"scenes":["450c4f50-4129-11e9-9c2c-65e5c3f2cd37"],"note":55,"label":"Laser Two Lines","type":"Button","active":false,"value":0},{"scenes":["e364c480-4128-11e9-9c2c-65e5c3f2cd37"],"note":64,"label":"Smoke","type":"Button","active":false,"value":0},{"scenes":["43aeeaa0-4057-11e9-b9c9-e51148847836"],"note":65,"label":"mS Dimmer 25%","type":"Button","active":false,"value":0},{"scenes":["620eb8a0-4128-11e9-9c2c-65e5c3f2cd37"],"note":66,"label":"Rotate Fast","type":"Button","active":false,"value":0},{"scenes":["0d678990-4127-11e9-aa84-6b29d9066182"],"note":67,"label":"mA Dimmer 25%","type":"Button","active":false,"value":0},{"scenes":[],"note":68,"label":"","type":"Button","active":false,"value":0},{"scenes":["0823d810-4057-11e9-b9c9-e51148847836"],"note":69,"label":"A Dimmer 0.25","type":"Button","active":false,"value":0},{"scenes":["3048e920-4129-11e9-9c2c-65e5c3f2cd37"],"note":70,"label":"Laser Dotten Line","type":"Button","active":false,"value":0},{"scenes":[],"note":71,"label":"","type":"Button","active":false,"value":0}]}],"enabled":true,"learning":-1},"timelineManager":{"scenes":[],"playing":false,"progress":12.814833891321143},"app":{"drawerOpened":false,"page":"fixture"},"venueManager":[{"id":"c06e6e70-3e96-11e9-8c92-b3d3d2e1445f","name":"Ambient","width":4,"height":1,"modv":{"width":7,"height":7},"slots":[{"x":0,"y":0,"name":"Flat Par Ambient  1","id":"18b96da0-3e97-11e9-8c92-b3d3d2e1445f","modv":11,"animations":["18b994b0-3e97-11e9-8c92-b3d3d2e1445f"],"sceneId":"18b9e2d0-3e97-11e9-8c92-b3d3d2e1445f","fixtures":["c84b5ff0-3e8b-11e9-93bb-93d8d375229b"]},{"x":1,"y":0,"name":"Flat Par Ambient 2","id":"5c1f4dd0-3e97-11e9-9a7b-71eab8005ac3","modv":18,"animations":["5c1f74e0-3e97-11e9-9a7b-71eab8005ac3"],"sceneId":"5c1f9bf0-3e97-11e9-9a7b-71eab8005ac3","fixtures":["548fba00-3e97-11e9-9a7b-71eab8005ac3"]},{"x":2,"y":0,"name":"PixBar Ambient 3","id":"d40fff00-3e98-11e9-9a7b-71eab8005ac3","modv":25,"animations":["d4102610-3e98-11e9-9a7b-71eab8005ac3"],"sceneId":"d4104d20-3e98-11e9-9a7b-71eab8005ac3","fixtures":["bb9d9a90-3e98-11e9-9a7b-71eab8005ac3"]},{"x":3,"y":0,"name":"Starburst Ambient 4","id":"f0074f30-3ebe-11e9-8c1a-231efea37d62","modv":32,"animations":["f0077640-3ebe-11e9-8c1a-231efea37d62"],"sceneId":"f0077641-3ebe-11e9-8c1a-231efea37d62","fixtures":["e5465190-3ebe-11e9-8c1a-231efea37d62"]}]},{"id":"49a83de0-323c-11e9-9a02-f3eeabb2cc80","name":"Stage","width":3,"height":3,"modv":{"width":7,"height":7},"slots":[{"x":0,"y":2,"name":"Bottom Left","id":"a4ed4330-323c-11e9-9a02-f3eeabb2cc80","modv":13,"animations":["a4ed6a40-323c-11e9-9a02-f3eeabb2cc80"],"sceneId":"a4ed9150-323c-11e9-9a02-f3eeabb2cc80","fixtures":["013ed7a0-30aa-11e9-b031-0ffdf7222501"]},{"x":1,"y":2,"name":"Bottom","id":"aaaba400-323d-11e9-9a02-f3eeabb2cc80","modv":27,"animations":["aaaba401-323d-11e9-9a02-f3eeabb2cc80"],"sceneId":"aaabcb10-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013efeb0-30aa-11e9-b031-0ffdf7222501"]},{"x":2,"y":2,"name":"Bottom Right","id":"b2f70dc0-323d-11e9-9a02-f3eeabb2cc80","modv":41,"animations":["b2f70dc1-323d-11e9-9a02-f3eeabb2cc80"],"sceneId":"b2f734d0-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f25c0-30aa-11e9-b031-0ffdf7222501"]},{"x":2,"y":1,"name":"Center Right","id":"bbd71660-323d-11e9-9a02-f3eeabb2cc80","modv":39,"animations":["bbd73d70-323d-11e9-9a02-f3eeabb2cc80"],"sceneId":"bbd76480-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f4cd0-30aa-11e9-b031-0ffdf7222501"]},{"x":2,"y":0,"name":"Top Right","id":"cdf04420-323d-11e9-9a02-f3eeabb2cc80","modv":37,"animations":["cdf06b30-323d-11e9-9a02-f3eeabb2cc80"],"sceneId":"cdf09240-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f4cd1-30aa-11e9-b031-0ffdf7222501"]},{"x":1,"y":0,"name":"Top","id":"d730e350-323d-11e9-9a02-f3eeabb2cc80","modv":23,"animations":["d7310a60-323d-11e9-9a02-f3eeabb2cc80"],"sceneId":"d7315880-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f73e0-30aa-11e9-b031-0ffdf7222501"]},{"x":0,"y":0,"name":"Top Left","id":"dff2dca0-323d-11e9-9a02-f3eeabb2cc80","modv":9,"animations":["dff32ac0-323d-11e9-9a02-f3eeabb2cc80"],"sceneId":"dff43c30-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f9af0-30aa-11e9-b031-0ffdf7222501"]},{"x":0,"y":1,"name":"Center Left","id":"e939bd60-323d-11e9-9a02-f3eeabb2cc80","modv":11,"animations":["e939e470-323d-11e9-9a02-f3eeabb2cc80"],"sceneId":"e93a0b80-323d-11e9-9a02-f3eeabb2cc80","fixtures":["013f9af1-30aa-11e9-b031-0ffdf7222501"]}]}],"modvManager":{"connected":true,"url":"ws://localhost:3006/luminave","reconnect":true,"data":{"url":"ws://localhost:3006"}}}
+{
+  "bpm": 59,
+  "live": false,
+  "usbManager": {
+    "lastTransmission": "2018-02-07T05:56:08.130Z"
+  },
+  "dekkManager": {
+    "data": {
+      "scenes": ["rainbow"]
+    },
+    "connected": false
+  },
+  "fivetwelveManager": {
+    "connected": false,
+    "lastTransmission": "2018-02-07T05:56:08.130Z"
+  },
+  "connectionManager": {
+    "usb": {
+      "connected": true
+    },
+    "bluetooth": {
+      "connected": false
+    }
+  },
+  "universeManager": [{
+    "id": "1e380f60-c0ee-11e8-a97a-5594ce2ad9f3",
+    "channels": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "name": "1e380f60-c0ee-11e8-a97a-5594ce2ad9f3"
+  }],
+  "sceneManager": [{
+    "id": "44b6e2b0-3ec0-11e9-a3c9-b13750b6249e",
+    "fixtures": ["c84b5ff0-3e8b-11e9-93bb-93d8d375229b", "548fba00-3e97-11e9-9a7b-71eab8005ac3", "bb9d9a90-3e98-11e9-9a7b-71eab8005ac3", "e5465190-3ebe-11e9-8c1a-231efea37d62"],
+    "animations": ["5766c7a0-3ebf-11e9-8c1a-231efea37d62"],
+    "duration": 20,
+    "name": "Ambient Chill 1",
+    "isRunning": false
+  }, {
+    "id": "0381c740-4057-11e9-b9c9-e51148847836",
+    "fixtures": ["c84b5ff0-3e8b-11e9-93bb-93d8d375229b", "548fba00-3e97-11e9-9a7b-71eab8005ac3", "bb9d9a90-3e98-11e9-9a7b-71eab8005ac3", "e5465190-3ebe-11e9-8c1a-231efea37d62"],
+    "animations": ["cbee54b0-4056-11e9-befd-f1c157b47d3d"],
+    "duration": 20,
+    "name": "Ambient Dimmer 0.5",
+    "isRunning": false
+  }, {
+    "id": "0823d810-4057-11e9-b9c9-e51148847836",
+    "fixtures": ["c84b5ff0-3e8b-11e9-93bb-93d8d375229b", "548fba00-3e97-11e9-9a7b-71eab8005ac3", "bb9d9a90-3e98-11e9-9a7b-71eab8005ac3", "e5465190-3ebe-11e9-8c1a-231efea37d62"],
+    "animations": ["40a1cf40-3241-11e9-9b49-e10c982f3673"],
+    "duration": 20,
+    "name": "Ambient Dimmer 0.25",
+    "isRunning": false
+  }, {
+    "id": "f17d3810-3e97-11e9-9a7b-71eab8005ac3",
+    "fixtures": ["548fba00-3e97-11e9-9a7b-71eab8005ac3", "bb9d9a90-3e98-11e9-9a7b-71eab8005ac3", "e5465190-3ebe-11e9-8c1a-231efea37d62", "c84b5ff0-3e8b-11e9-93bb-93d8d375229b"],
+    "animations": ["3be7d100-323e-11e9-9a02-f3eeabb2cc80"],
+    "duration": 20,
+    "name": "Ambient Dimmer 1",
+    "isRunning": false
+  }, {
+    "id": "aaabcb10-323d-11e9-9a02-f3eeabb2cc80",
+    "fixtures": ["013efeb0-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["aaaba401-323d-11e9-9a02-f3eeabb2cc80"],
+    "duration": 20,
+    "name": "Bottom"
+  }, {
+    "id": "a4ed9150-323c-11e9-9a02-f3eeabb2cc80",
+    "fixtures": ["013ed7a0-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["a4ed6a40-323c-11e9-9a02-f3eeabb2cc80"],
+    "duration": 20,
+    "name": "Bottom Left"
+  }, {
+    "id": "b2f734d0-323d-11e9-9a02-f3eeabb2cc80",
+    "fixtures": ["013f25c0-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["b2f70dc1-323d-11e9-9a02-f3eeabb2cc80"],
+    "duration": 20,
+    "name": "Bottom Right"
+  }, {
+    "id": "e93a0b80-323d-11e9-9a02-f3eeabb2cc80",
+    "fixtures": ["013f9af1-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["e939e470-323d-11e9-9a02-f3eeabb2cc80"],
+    "duration": 20,
+    "name": "Center Left"
+  }, {
+    "id": "bbd76480-323d-11e9-9a02-f3eeabb2cc80",
+    "fixtures": ["013f4cd0-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["bbd73d70-323d-11e9-9a02-f3eeabb2cc80"],
+    "duration": 20,
+    "name": "Center Right"
+  }, {
+    "id": "18b9e2d0-3e97-11e9-8c92-b3d3d2e1445f",
+    "fixtures": ["c84b5ff0-3e8b-11e9-93bb-93d8d375229b"],
+    "animations": ["18b994b0-3e97-11e9-8c92-b3d3d2e1445f"],
+    "duration": 20,
+    "name": "Flat Par Ambient  1"
+  }, {
+    "id": "5c1f9bf0-3e97-11e9-9a7b-71eab8005ac3",
+    "fixtures": ["548fba00-3e97-11e9-9a7b-71eab8005ac3"],
+    "animations": ["5c1f74e0-3e97-11e9-9a7b-71eab8005ac3"],
+    "duration": 20,
+    "name": "Flat Par Ambient 2"
+  }, {
+    "id": "3048e920-4129-11e9-9c2c-65e5c3f2cd37",
+    "fixtures": ["e55a92a0-3125-11e9-b031-0ffdf7222501"],
+    "animations": ["c75e6660-312e-11e9-b031-0ffdf7222501"],
+    "duration": 20,
+    "name": "laser-dotten-line",
+    "isRunning": false
+  }, {
+    "id": "602dbb90-312d-11e9-b031-0ffdf7222501",
+    "fixtures": ["e55a92a0-3125-11e9-b031-0ffdf7222501"],
+    "animations": ["4b1ef480-312d-11e9-b031-0ffdf7222501"],
+    "duration": 20,
+    "name": "laser-line-loop",
+    "isRunning": false
+  }, {
+    "id": "389f0140-4129-11e9-9c2c-65e5c3f2cd37",
+    "fixtures": ["e55a92a0-3125-11e9-b031-0ffdf7222501"],
+    "animations": ["ba3c3cb0-312d-11e9-b031-0ffdf7222501"],
+    "duration": 20,
+    "name": "laser-line-loop-2",
+    "isRunning": false
+  }, {
+    "id": "3f5747e0-4129-11e9-9c2c-65e5c3f2cd37",
+    "fixtures": ["e55a92a0-3125-11e9-b031-0ffdf7222501"],
+    "animations": ["8652c9e0-312e-11e9-b031-0ffdf7222501"],
+    "duration": 20,
+    "name": "laser-square",
+    "isRunning": false
+  }, {
+    "id": "450c4f50-4129-11e9-9c2c-65e5c3f2cd37",
+    "fixtures": ["e55a92a0-3125-11e9-b031-0ffdf7222501"],
+    "animations": ["2c0962a0-312e-11e9-b031-0ffdf7222501"],
+    "duration": 20,
+    "name": "laser-two-lines",
+    "isRunning": false
+  }, {
+    "id": "088673f0-4127-11e9-aa84-6b29d9066182",
+    "fixtures": ["c84b5ff0-3e8b-11e9-93bb-93d8d375229b", "548fba00-3e97-11e9-9a7b-71eab8005ac3", "bb9d9a90-3e98-11e9-9a7b-71eab8005ac3", "e5465190-3ebe-11e9-8c1a-231efea37d62"],
+    "animations": ["cbee54b0-4056-11e9-befd-f1c157b47d3d", "b41e10b0-4127-11e9-aa84-6b29d9066182"],
+    "duration": 20,
+    "name": "modV Ambient Dimmer 0.5",
+    "isRunning": false
+  }, {
+    "id": "0d678990-4127-11e9-aa84-6b29d9066182",
+    "fixtures": ["c84b5ff0-3e8b-11e9-93bb-93d8d375229b", "548fba00-3e97-11e9-9a7b-71eab8005ac3", "bb9d9a90-3e98-11e9-9a7b-71eab8005ac3", "e5465190-3ebe-11e9-8c1a-231efea37d62"],
+    "animations": ["40a1cf40-3241-11e9-9b49-e10c982f3673", "b41e10b0-4127-11e9-aa84-6b29d9066182"],
+    "duration": 20,
+    "name": "modV Ambient Dimmer 0.25",
+    "isRunning": false
+  }, {
+    "id": "011600e0-4127-11e9-aa84-6b29d9066182",
+    "fixtures": ["c84b5ff0-3e8b-11e9-93bb-93d8d375229b", "548fba00-3e97-11e9-9a7b-71eab8005ac3", "bb9d9a90-3e98-11e9-9a7b-71eab8005ac3", "e5465190-3ebe-11e9-8c1a-231efea37d62"],
+    "animations": ["3be7d100-323e-11e9-9a02-f3eeabb2cc80", "b41e10b0-4127-11e9-aa84-6b29d9066182"],
+    "duration": 20,
+    "name": "modV Ambient Dimmer 1",
+    "isRunning": false
+  }, {
+    "id": "3fc55460-4057-11e9-b9c9-e51148847836",
+    "fixtures": ["013ed7a0-30aa-11e9-b031-0ffdf7222501", "013efeb0-30aa-11e9-b031-0ffdf7222501", "013f25c0-30aa-11e9-b031-0ffdf7222501", "013f4cd0-30aa-11e9-b031-0ffdf7222501", "013f4cd1-30aa-11e9-b031-0ffdf7222501", "013f73e0-30aa-11e9-b031-0ffdf7222501", "013f9af0-30aa-11e9-b031-0ffdf7222501", "013f9af1-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["cbee54b0-4056-11e9-befd-f1c157b47d3d"],
+    "duration": 20,
+    "name": "modV Stage Dimmer 0.5",
+    "isRunning": false
+  }, {
+    "id": "43aeeaa0-4057-11e9-b9c9-e51148847836",
+    "fixtures": ["013ed7a0-30aa-11e9-b031-0ffdf7222501", "013efeb0-30aa-11e9-b031-0ffdf7222501", "013f25c0-30aa-11e9-b031-0ffdf7222501", "013f4cd0-30aa-11e9-b031-0ffdf7222501", "013f4cd1-30aa-11e9-b031-0ffdf7222501", "013f73e0-30aa-11e9-b031-0ffdf7222501", "013f9af0-30aa-11e9-b031-0ffdf7222501", "013f9af1-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["40a1cf40-3241-11e9-9b49-e10c982f3673"],
+    "duration": 20,
+    "name": "modV Stage Dimmer 0.25",
+    "isRunning": false
+  }, {
+    "id": "69166ac0-4057-11e9-b9c9-e51148847836",
+    "fixtures": ["013ed7a0-30aa-11e9-b031-0ffdf7222501", "013efeb0-30aa-11e9-b031-0ffdf7222501", "013f25c0-30aa-11e9-b031-0ffdf7222501", "013f4cd0-30aa-11e9-b031-0ffdf7222501", "013f4cd1-30aa-11e9-b031-0ffdf7222501", "013f73e0-30aa-11e9-b031-0ffdf7222501", "013f9af0-30aa-11e9-b031-0ffdf7222501", "013f9af1-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["3be7d100-323e-11e9-9a02-f3eeabb2cc80"],
+    "duration": 20,
+    "name": "modV Stage Dimmer 1",
+    "isRunning": false
+  }, {
+    "id": "d4104d20-3e98-11e9-9a7b-71eab8005ac3",
+    "fixtures": ["bb9d9a90-3e98-11e9-9a7b-71eab8005ac3"],
+    "animations": ["d4102610-3e98-11e9-9a7b-71eab8005ac3"],
+    "duration": 20,
+    "name": "PixBar Ambient 3"
+  }, {
+    "id": "b1678910-c80e-11e8-a8b6-e76fc77499de",
+    "fixtures": ["013ed7a0-30aa-11e9-b031-0ffdf7222501", "013efeb0-30aa-11e9-b031-0ffdf7222501", "013f25c0-30aa-11e9-b031-0ffdf7222501", "013f4cd0-30aa-11e9-b031-0ffdf7222501", "013f4cd1-30aa-11e9-b031-0ffdf7222501", "013f73e0-30aa-11e9-b031-0ffdf7222501", "013f9af0-30aa-11e9-b031-0ffdf7222501", "013f9af1-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["1dd2ed20-c80e-11e8-aa32-4920b825426c"],
+    "duration": 20,
+    "name": "rainbow",
+    "isRunning": false
+  }, {
+    "id": "e364c480-4128-11e9-9c2c-65e5c3f2cd37",
+    "fixtures": ["949a4f80-3ebe-11e9-8c1a-231efea37d62"],
+    "animations": ["ca41d4c0-4128-11e9-9c2c-65e5c3f2cd37"],
+    "duration": 20,
+    "name": "Smoke",
+    "isRunning": false
+  }, {
+    "id": "f0077641-3ebe-11e9-8c1a-231efea37d62",
+    "fixtures": ["e5465190-3ebe-11e9-8c1a-231efea37d62"],
+    "animations": ["f0077640-3ebe-11e9-8c1a-231efea37d62"],
+    "duration": 20,
+    "name": "Starburst Ambient 4"
+  }, {
+    "id": "620eb8a0-4128-11e9-9c2c-65e5c3f2cd37",
+    "fixtures": ["e5465190-3ebe-11e9-8c1a-231efea37d62"],
+    "animations": ["fd681ea0-4127-11e9-aa84-6b29d9066182"],
+    "duration": 20,
+    "name": "Starburst Move Fast",
+    "isRunning": false
+  }, {
+    "id": "65d02d70-4128-11e9-9c2c-65e5c3f2cd37",
+    "fixtures": ["e5465190-3ebe-11e9-8c1a-231efea37d62"],
+    "animations": ["f474b510-4127-11e9-aa84-6b29d9066182"],
+    "duration": 20,
+    "name": "Starburst Move Slow",
+    "isRunning": false
+  }, {
+    "id": "1196eb90-1bfd-11e9-a4a9-b563df19081f",
+    "fixtures": ["013ed7a0-30aa-11e9-b031-0ffdf7222501", "013efeb0-30aa-11e9-b031-0ffdf7222501", "013f25c0-30aa-11e9-b031-0ffdf7222501", "013f4cd0-30aa-11e9-b031-0ffdf7222501", "013f4cd1-30aa-11e9-b031-0ffdf7222501", "013f73e0-30aa-11e9-b031-0ffdf7222501", "013f9af0-30aa-11e9-b031-0ffdf7222501", "013f9af1-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["aa8510f0-412a-11e9-a924-41d4bee8b149"],
+    "duration": 20,
+    "name": "Strobe",
+    "isRunning": false
+  }, {
+    "id": "d7315880-323d-11e9-9a02-f3eeabb2cc80",
+    "fixtures": ["013f73e0-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["d7310a60-323d-11e9-9a02-f3eeabb2cc80"],
+    "duration": 20,
+    "name": "Top"
+  }, {
+    "id": "dff43c30-323d-11e9-9a02-f3eeabb2cc80",
+    "fixtures": ["013f9af0-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["dff32ac0-323d-11e9-9a02-f3eeabb2cc80"],
+    "duration": 20,
+    "name": "Top Left"
+  }, {
+    "id": "cdf09240-323d-11e9-9a02-f3eeabb2cc80",
+    "fixtures": ["013f4cd1-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["cdf06b30-323d-11e9-9a02-f3eeabb2cc80"],
+    "duration": 20,
+    "name": "Top Right"
+  }, {
+    "id": "0dd63a10-1bfd-11e9-a4a9-b563df19081f",
+    "fixtures": ["013ed7a0-30aa-11e9-b031-0ffdf7222501", "013efeb0-30aa-11e9-b031-0ffdf7222501", "013f25c0-30aa-11e9-b031-0ffdf7222501", "013f4cd0-30aa-11e9-b031-0ffdf7222501", "013f4cd1-30aa-11e9-b031-0ffdf7222501", "013f73e0-30aa-11e9-b031-0ffdf7222501", "013f9af0-30aa-11e9-b031-0ffdf7222501", "013f9af1-30aa-11e9-b031-0ffdf7222501"],
+    "animations": ["59ec7cd0-1bfc-11e9-a4a9-b563df19081f"],
+    "duration": 20,
+    "name": "uv",
+    "isRunning": false
+  }],
+  "animationManager": [{
+    "id": "5766c7a0-3ebf-11e9-8c1a-231efea37d62",
+    "keyframes": {
+      "0": {
+        "color": [128, 0, 255],
+        "uv": 255,
+        "strobeMacro": "on",
+        "rotate": "clockwise(255)"
+      },
+      "1": {
+        "color": [128, 0, 255],
+        "uv": 255,
+        "strobeMacro": "on",
+        "rotate": "clockwise(255)"
+      }
+    },
+    "duration": 5,
+    "name": "Ambient Chill 1"
+  }, {
+    "id": "aaaba401-323d-11e9-9a02-f3eeabb2cc80",
+    "keyframes": {
+      "0": {
+        "modvColor": 27
+      },
+      "1": {
+        "modvColor": 27
+      }
+    },
+    "duration": 20,
+    "name": "Bottom"
+  }, {
+    "id": "a4ed6a40-323c-11e9-9a02-f3eeabb2cc80",
+    "keyframes": {
+      "0": {
+        "modvColor": 13
+      },
+      "1": {
+        "modvColor": 13
+      }
+    },
+    "duration": 20,
+    "name": "Bottom Left"
+  }, {
+    "id": "b2f70dc1-323d-11e9-9a02-f3eeabb2cc80",
+    "keyframes": {
+      "0": {
+        "modvColor": 41
+      },
+      "1": {
+        "modvColor": 41
+      }
+    },
+    "duration": 20,
+    "name": "Bottom Right"
+  }, {
+    "id": "e939e470-323d-11e9-9a02-f3eeabb2cc80",
+    "keyframes": {
+      "0": {
+        "modvColor": 11
+      },
+      "1": {
+        "modvColor": 11
+      }
+    },
+    "duration": 20,
+    "name": "Center Left"
+  }, {
+    "id": "bbd73d70-323d-11e9-9a02-f3eeabb2cc80",
+    "keyframes": {
+      "0": {
+        "modvColor": 39
+      },
+      "1": {
+        "modvColor": 39
+      }
+    },
+    "duration": 20,
+    "name": "Center Right"
+  }, {
+    "id": "cbee54b0-4056-11e9-befd-f1c157b47d3d",
+    "keyframes": {
+      "0": {
+        "dimmer": 120
+      },
+      "1": {
+        "dimmer": 120
+      }
+    },
+    "duration": 5,
+    "name": "dimmer 0.5"
+  }, {
+    "id": "40a1cf40-3241-11e9-9b49-e10c982f3673",
+    "keyframes": {
+      "0": {
+        "dimmer": 10
+      },
+      "1": {
+        "dimmer": 10
+      }
+    },
+    "duration": 5,
+    "name": "dimmer 0.25"
+  }, {
+    "id": "3be7d100-323e-11e9-9a02-f3eeabb2cc80",
+    "keyframes": {
+      "0": {
+        "dimmer": 255
+      },
+      "1": {
+        "dimmer": 255
+      }
+    },
+    "duration": 5,
+    "name": "dimmer 1"
+  }, {
+    "id": "18b994b0-3e97-11e9-8c92-b3d3d2e1445f",
+    "keyframes": {
+      "0": {
+        "modvColor": 11
+      },
+      "1": {
+        "modvColor": 11
+      }
+    },
+    "duration": 20,
+    "name": "Flat Par Ambient  1"
+  }, {
+    "id": "5c1f74e0-3e97-11e9-9a7b-71eab8005ac3",
+    "keyframes": {
+      "0": {
+        "modvColor": 18
+      },
+      "1": {
+        "modvColor": 18
+      }
+    },
+    "duration": 20,
+    "name": "Flat Par Ambient 2"
+  }, {
+    "id": "c75e6660-312e-11e9-b031-0ffdf7222501",
+    "keyframes": {
+      "0": {
+        "pattern": 30,
+        "zoom": "manual(0)",
+        "xAxisRolling": "manual(0)",
+        "yAxisRolling": "manual(5)",
+        "zAxisRolling": "manual(0)",
+        "xAxisMoving": "manual(0)",
+        "yAxisMoving": "speed(5)",
+        "colors": "yellow",
+        "mode": "dmx"
+      },
+      "1": {
+        "pattern": 30,
+        "zoom": "manual(0)",
+        "xAxisRolling": "manual(0)",
+        "yAxisRolling": "manual(5)",
+        "zAxisRolling": "manual(0)",
+        "xAxisMoving": "manual(0)",
+        "yAxisMoving": "speed(5)",
+        "colors": "yellow",
+        "mode": "dmx"
+      }
+    },
+    "duration": 5,
+    "name": "laser-dotten-line"
+  }, {
+    "id": "4b1ef480-312d-11e9-b031-0ffdf7222501",
+    "keyframes": {
+      "0": {
+        "mode": "dmx",
+        "colors": "red",
+        "pattern": 21,
+        "zoom": "manual(0)",
+        "xAxisRolling": "manual(0)",
+        "yAxisRolling": "manual(0)",
+        "zAxisRolling": "manual(0)",
+        "xAxisMoving": "manual(0)",
+        "yAxisMoving": "speed(20)"
+      },
+      "1": {
+        "mode": "dmx",
+        "colors": "red",
+        "pattern": 21,
+        "zoom": "manual(0)",
+        "xAxisRolling": "manual(0)",
+        "yAxisRolling": "manual(0)",
+        "zAxisRolling": "manual(0)",
+        "xAxisMoving": "manual(0)",
+        "yAxisMoving": "speed(20)"
+      }
+    },
+    "duration": 5,
+    "name": "laser-line-loop"
+  }, {
+    "id": "ba3c3cb0-312d-11e9-b031-0ffdf7222501",
+    "keyframes": {
+      "0": {
+        "pattern": 22,
+        "zoom": "manual(0)",
+        "xAxisRolling": "manual(0)",
+        "yAxisRolling": "manual(0)",
+        "zAxisRolling": "speed(20)",
+        "xAxisMoving": "manual(30)",
+        "yAxisMoving": "speed(50)",
+        "colors": "red",
+        "mode": "dmx"
+      },
+      "1": {
+        "pattern": 22,
+        "zoom": "manual(0)",
+        "xAxisRolling": "manual(0)",
+        "yAxisRolling": "manual(0)",
+        "zAxisRolling": "speed(20)",
+        "xAxisMoving": "manual(30)",
+        "yAxisMoving": "speed(50)",
+        "colors": "red",
+        "mode": "dmx"
+      }
+    },
+    "duration": 5,
+    "name": "laser-line-loop-2"
+  }, {
+    "id": "8652c9e0-312e-11e9-b031-0ffdf7222501",
+    "keyframes": {
+      "0": {
+        "pattern": 29,
+        "zoom": "manual(0)",
+        "xAxisRolling": "manual(0)",
+        "yAxisRolling": "manual(50)",
+        "zAxisRolling": "speed(0)",
+        "xAxisMoving": "speed(0)",
+        "yAxisMoving": "speed(5)",
+        "colors": "yellow",
+        "mode": "dmx"
+      },
+      "1": {
+        "pattern": 29,
+        "zoom": "manual(0)",
+        "xAxisRolling": "manual(0)",
+        "yAxisRolling": "manual(50)",
+        "zAxisRolling": "speed(0)",
+        "xAxisMoving": "speed(0)",
+        "yAxisMoving": "speed(5)",
+        "colors": "yellow",
+        "mode": "dmx"
+      }
+    },
+    "duration": 5,
+    "name": "laser-square"
+  }, {
+    "id": "2c0962a0-312e-11e9-b031-0ffdf7222501",
+    "keyframes": {
+      "0": {
+        "pattern": 25,
+        "zoom": "manual(0)",
+        "xAxisRolling": "speed(10)",
+        "yAxisRolling": "manual(0)",
+        "zAxisRolling": "speed(5)",
+        "xAxisMoving": "speed(10)",
+        "yAxisMoving": "speed(20)",
+        "colors": "green",
+        "mode": "dmx"
+      },
+      "1": {
+        "pattern": 25,
+        "zoom": "manual(0)",
+        "xAxisRolling": "speed(10)",
+        "yAxisRolling": "manual(0)",
+        "zAxisRolling": "speed(5)",
+        "xAxisMoving": "speed(10)",
+        "yAxisMoving": "speed(20)",
+        "colors": "green",
+        "mode": "dmx"
+      }
+    },
+    "duration": 5,
+    "name": "laser-two-lines"
+  }, {
+    "id": "d4102610-3e98-11e9-9a7b-71eab8005ac3",
+    "keyframes": {
+      "0": {
+        "modvColor": 25
+      },
+      "1": {
+        "modvColor": 25
+      }
+    },
+    "duration": 20,
+    "name": "PixBar Ambient 3"
+  }, {
+    "id": "1dd2ed20-c80e-11e8-aa32-4920b825426c",
+    "keyframes": {
+      "0": {
+        "dimmer": 255,
+        "color": [255, 0, 0]
+      },
+      "1": {
+        "dimmer": 255,
+        "color": [255, 0, 255]
+      },
+      "0.1": {
+        "dimmer": 255,
+        "color": [255, 128, 0]
+      },
+      "0.2": {
+        "dimmer": 255,
+        "color": [255, 255, 0]
+      },
+      "0.3": {
+        "dimmer": 255,
+        "color": [128, 255, 0]
+      },
+      "0.4": {
+        "dimmer": 255,
+        "color": [0, 255, 0]
+      },
+      "0.5": {
+        "dimmer": 255,
+        "color": [0, 255, 128]
+      },
+      "0.6": {
+        "dimmer": 255,
+        "color": [0, 255, 255]
+      },
+      "0.7": {
+        "dimmer": 255,
+        "color": [0, 128, 255]
+      },
+      "0.8": {
+        "dimmer": 255,
+        "color": [0, 0, 255]
+      },
+      "0.9": {
+        "dimmer": 255,
+        "color": [128, 0, 255]
+      }
+    },
+    "duration": 20,
+    "name": "Rainbow"
+  }, {
+    "id": "ca41d4c0-4128-11e9-9c2c-65e5c3f2cd37",
+    "keyframes": {
+      "0": {
+        "amount": 255
+      },
+      "1": {
+        "amount": 255
+      }
+    },
+    "duration": 5,
+    "name": "smoke"
+  }, {
+    "id": "f0077640-3ebe-11e9-8c1a-231efea37d62",
+    "keyframes": {
+      "0": {
+        "modvColor": 32
+      },
+      "1": {
+        "modvColor": 32
+      }
+    },
+    "duration": 20,
+    "name": "Starburst Ambient 4"
+  }, {
+    "id": "fd681ea0-4127-11e9-aa84-6b29d9066182",
+    "keyframes": {
+      "0": {
+        "rotate": "clockwise(70)"
+      },
+      "1": {
+        "rotate": "clockwise(70)"
+      }
+    },
+    "duration": 5,
+    "name": "starburst move fast"
+  }, {
+    "id": "f474b510-4127-11e9-aa84-6b29d9066182",
+    "keyframes": {
+      "0": {
+        "rotate": "clockwise(220)"
+      },
+      "1": {
+        "rotate": "clockwise(220)"
+      }
+    },
+    "duration": 5,
+    "name": "starburst move slow"
+  }, {
+    "id": "b41e10b0-4127-11e9-aa84-6b29d9066182",
+    "keyframes": {
+      "0": {
+        "strobeMacro": "on"
+      },
+      "1": {
+        "strobeMacro": "on"
+      }
+    },
+    "duration": 5,
+    "name": "starburst on"
+  }, {
+    "id": "aa8510f0-412a-11e9-a924-41d4bee8b149",
+    "keyframes": {
+      "0": {
+        "strobe": 95
+      },
+      "1": {
+        "strobe": 95
+      }
+    },
+    "duration": 20,
+    "name": "Strobe"
+  }, {
+    "id": "d7310a60-323d-11e9-9a02-f3eeabb2cc80",
+    "keyframes": {
+      "0": {
+        "modvColor": 23
+      },
+      "1": {
+        "modvColor": 23
+      }
+    },
+    "duration": 20,
+    "name": "Top"
+  }, {
+    "id": "dff32ac0-323d-11e9-9a02-f3eeabb2cc80",
+    "keyframes": {
+      "0": {
+        "modvColor": 9
+      },
+      "1": {
+        "modvColor": 9
+      }
+    },
+    "duration": 20,
+    "name": "Top Left"
+  }, {
+    "id": "cdf06b30-323d-11e9-9a02-f3eeabb2cc80",
+    "keyframes": {
+      "0": {
+        "modvColor": 37
+      },
+      "1": {
+        "modvColor": 37
+      }
+    },
+    "duration": 20,
+    "name": "Top Right"
+  }],
+  "fixtureManager": [{
+    "id": "013ed7a0-30aa-11e9-b031-0ffdf7222501",
+    "type": "FunGenerationSeParQuadLedRgbUv",
+    "name": "Flat Par 1",
+    "universe": 0,
+    "address": 1,
+    "properties": {
+      "color": [255, 0, 0],
+      "dimmer": 255,
+      "strobe": 95
+    }
+  }, {
+    "id": "013efeb0-30aa-11e9-b031-0ffdf7222501",
+    "type": "FunGenerationSeParQuadLedRgbUv",
+    "name": "Flat Par 2",
+    "universe": 0,
+    "address": 7,
+    "properties": {}
+  }, {
+    "id": "013f25c0-30aa-11e9-b031-0ffdf7222501",
+    "type": "FunGenerationSeParQuadLedRgbUv",
+    "name": "Flat Par 3",
+    "universe": 0,
+    "address": 13,
+    "properties": {}
+  }, {
+    "id": "013f4cd0-30aa-11e9-b031-0ffdf7222501",
+    "type": "FunGenerationSeParQuadLedRgbUv",
+    "name": "Flat Par 4",
+    "universe": 0,
+    "address": 19,
+    "properties": {}
+  }, {
+    "id": "013f4cd1-30aa-11e9-b031-0ffdf7222501",
+    "type": "FunGenerationSeParQuadLedRgbUv",
+    "name": "Flat Par 5",
+    "universe": 0,
+    "address": 25,
+    "properties": {}
+  }, {
+    "id": "013f73e0-30aa-11e9-b031-0ffdf7222501",
+    "type": "FunGenerationSeParQuadLedRgbUv",
+    "name": "Flat Par 6",
+    "universe": 0,
+    "address": 31,
+    "properties": {}
+  }, {
+    "id": "013f9af0-30aa-11e9-b031-0ffdf7222501",
+    "type": "FunGenerationSeParQuadLedRgbUv",
+    "name": "Flat Par 7",
+    "universe": 0,
+    "address": 37,
+    "properties": {}
+  }, {
+    "id": "013f9af1-30aa-11e9-b031-0ffdf7222501",
+    "type": "FunGenerationSeParQuadLedRgbUv",
+    "name": "Flat Par 8",
+    "universe": 0,
+    "address": 43,
+    "properties": {}
+  }, {
+    "id": "c84b5ff0-3e8b-11e9-93bb-93d8d375229b",
+    "type": "CameoFlatPar1RGBW",
+    "name": "Flat Par Ambient 1",
+    "universe": 0,
+    "address": 58,
+    "properties": {}
+  }, {
+    "id": "548fba00-3e97-11e9-9a7b-71eab8005ac3",
+    "type": "CameoFlatPar1RGBW",
+    "name": "Flat Par Ambient 2",
+    "universe": 0,
+    "address": 66,
+    "properties": {}
+  }, {
+    "id": "e55a92a0-3125-11e9-b031-0ffdf7222501",
+    "type": "CameoWookie200RGY",
+    "name": "Laser 1",
+    "universe": 0,
+    "address": 49,
+    "properties": {}
+  }, {
+    "id": "bb9d9a90-3e98-11e9-9a7b-71eab8005ac3",
+    "type": "CameoPixBar600PRO",
+    "name": "PixBar Ambient 3",
+    "universe": 0,
+    "address": 74,
+    "properties": {}
+  }, {
+    "id": "949a4f80-3ebe-11e9-8c1a-231efea37d62",
+    "type": "StairvilleAF150",
+    "name": "Smoke 1",
+    "universe": 0,
+    "address": 511,
+    "properties": {}
+  }, {
+    "id": "e5465190-3ebe-11e9-8c1a-231efea37d62",
+    "type": "AdjStarburst",
+    "name": "Starburst Ambient 4",
+    "universe": 0,
+    "address": 148,
+    "properties": {}
+  }],
+  "midiManager": {
+    "controllers": [{
+      "id": "59a2c080-4015-11e9-8b10-87533eeed722",
+      "name": "KORG nanoKONTROL 2",
+      "input": "nanoKONTROL2 SLIDER/KNOB",
+      "output": "nanoKONTROL2 CTRL",
+      "width": 8,
+      "height": 3,
+      "mapping": [{
+        "scenes": ["aaabcb10-323d-11e9-9a02-f3eeabb2cc80", "a4ed9150-323c-11e9-9a02-f3eeabb2cc80", "b2f734d0-323d-11e9-9a02-f3eeabb2cc80", "e93a0b80-323d-11e9-9a02-f3eeabb2cc80", "bbd76480-323d-11e9-9a02-f3eeabb2cc80", "d7315880-323d-11e9-9a02-f3eeabb2cc80", "dff43c30-323d-11e9-9a02-f3eeabb2cc80", "cdf09240-323d-11e9-9a02-f3eeabb2cc80"],
+        "note": 32,
+        "label": "modV Stage",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["69166ac0-4057-11e9-b9c9-e51148847836"],
+        "note": 33,
+        "label": "mS Dimmer 100%",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["18b9e2d0-3e97-11e9-8c92-b3d3d2e1445f", "5c1f9bf0-3e97-11e9-9a7b-71eab8005ac3", "d4104d20-3e98-11e9-9a7b-71eab8005ac3", "f0077641-3ebe-11e9-8c1a-231efea37d62"],
+        "note": 34,
+        "label": "modV Ambient",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["011600e0-4127-11e9-aa84-6b29d9066182"],
+        "note": 35,
+        "label": "mA Dimmer 100%",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["44b6e2b0-3ec0-11e9-a3c9-b13750b6249e"],
+        "note": 36,
+        "label": "Ambient 1",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["f17d3810-3e97-11e9-9a7b-71eab8005ac3"],
+        "note": 37,
+        "label": "A Dimmer 100%",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["602dbb90-312d-11e9-b031-0ffdf7222501"],
+        "note": 38,
+        "label": "Laser Line Loop",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["3f5747e0-4129-11e9-9c2c-65e5c3f2cd37"],
+        "note": 39,
+        "label": "Laser Square",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["1196eb90-1bfd-11e9-a4a9-b563df19081f"],
+        "note": 48,
+        "label": "Strobe",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["3fc55460-4057-11e9-b9c9-e51148847836"],
+        "note": 49,
+        "label": "mS Dimmer 50%",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["65d02d70-4128-11e9-9c2c-65e5c3f2cd37"],
+        "note": 50,
+        "label": "Rotate Slow",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["088673f0-4127-11e9-aa84-6b29d9066182"],
+        "note": 51,
+        "label": "mA Dimmer 50%",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 52,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["0381c740-4057-11e9-b9c9-e51148847836"],
+        "note": 53,
+        "label": "A Dimmer 50%",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["389f0140-4129-11e9-9c2c-65e5c3f2cd37"],
+        "note": 54,
+        "label": "Laser Line Loop 2",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["450c4f50-4129-11e9-9c2c-65e5c3f2cd37"],
+        "note": 55,
+        "label": "Laser Two Lines",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["e364c480-4128-11e9-9c2c-65e5c3f2cd37"],
+        "note": 64,
+        "label": "Smoke",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["43aeeaa0-4057-11e9-b9c9-e51148847836"],
+        "note": 65,
+        "label": "mS Dimmer 25%",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["620eb8a0-4128-11e9-9c2c-65e5c3f2cd37"],
+        "note": 66,
+        "label": "Rotate Fast",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["0d678990-4127-11e9-aa84-6b29d9066182"],
+        "note": 67,
+        "label": "mA Dimmer 25%",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 68,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["0823d810-4057-11e9-b9c9-e51148847836"],
+        "note": 69,
+        "label": "A Dimmer 0.25",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": ["3048e920-4129-11e9-9c2c-65e5c3f2cd37"],
+        "note": 70,
+        "label": "Laser Dotten Line",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }, {
+        "scenes": [],
+        "note": 71,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0
+      }]
+    }],
+    "enabled": true,
+    "learning": -1
+  },
+  "timelineManager": {
+    "scenes": [],
+    "playing": false,
+    "progress": 12.814833891321143
+  },
+  "app": {
+    "drawerOpened": false,
+    "page": "fixture"
+  },
+  "venueManager": [{
+    "id": "c06e6e70-3e96-11e9-8c92-b3d3d2e1445f",
+    "name": "Ambient",
+    "width": 4,
+    "height": 1,
+    "modv": {
+      "width": 7,
+      "height": 7
+    },
+    "slots": [{
+      "x": 0,
+      "y": 0,
+      "name": "Flat Par Ambient  1",
+      "id": "18b96da0-3e97-11e9-8c92-b3d3d2e1445f",
+      "modv": 11,
+      "animations": ["18b994b0-3e97-11e9-8c92-b3d3d2e1445f"],
+      "sceneId": "18b9e2d0-3e97-11e9-8c92-b3d3d2e1445f",
+      "fixtures": ["c84b5ff0-3e8b-11e9-93bb-93d8d375229b"]
+    }, {
+      "x": 1,
+      "y": 0,
+      "name": "Flat Par Ambient 2",
+      "id": "5c1f4dd0-3e97-11e9-9a7b-71eab8005ac3",
+      "modv": 18,
+      "animations": ["5c1f74e0-3e97-11e9-9a7b-71eab8005ac3"],
+      "sceneId": "5c1f9bf0-3e97-11e9-9a7b-71eab8005ac3",
+      "fixtures": ["548fba00-3e97-11e9-9a7b-71eab8005ac3"]
+    }, {
+      "x": 2,
+      "y": 0,
+      "name": "PixBar Ambient 3",
+      "id": "d40fff00-3e98-11e9-9a7b-71eab8005ac3",
+      "modv": 25,
+      "animations": ["d4102610-3e98-11e9-9a7b-71eab8005ac3"],
+      "sceneId": "d4104d20-3e98-11e9-9a7b-71eab8005ac3",
+      "fixtures": ["bb9d9a90-3e98-11e9-9a7b-71eab8005ac3"]
+    }, {
+      "x": 3,
+      "y": 0,
+      "name": "Starburst Ambient 4",
+      "id": "f0074f30-3ebe-11e9-8c1a-231efea37d62",
+      "modv": 32,
+      "animations": ["f0077640-3ebe-11e9-8c1a-231efea37d62"],
+      "sceneId": "f0077641-3ebe-11e9-8c1a-231efea37d62",
+      "fixtures": ["e5465190-3ebe-11e9-8c1a-231efea37d62"]
+    }]
+  }, {
+    "id": "49a83de0-323c-11e9-9a02-f3eeabb2cc80",
+    "name": "Stage",
+    "width": 3,
+    "height": 3,
+    "modv": {
+      "width": 7,
+      "height": 7
+    },
+    "slots": [{
+      "x": 0,
+      "y": 2,
+      "name": "Bottom Left",
+      "id": "a4ed4330-323c-11e9-9a02-f3eeabb2cc80",
+      "modv": 13,
+      "animations": ["a4ed6a40-323c-11e9-9a02-f3eeabb2cc80"],
+      "sceneId": "a4ed9150-323c-11e9-9a02-f3eeabb2cc80",
+      "fixtures": ["013ed7a0-30aa-11e9-b031-0ffdf7222501"]
+    }, {
+      "x": 1,
+      "y": 2,
+      "name": "Bottom",
+      "id": "aaaba400-323d-11e9-9a02-f3eeabb2cc80",
+      "modv": 27,
+      "animations": ["aaaba401-323d-11e9-9a02-f3eeabb2cc80"],
+      "sceneId": "aaabcb10-323d-11e9-9a02-f3eeabb2cc80",
+      "fixtures": ["013efeb0-30aa-11e9-b031-0ffdf7222501"]
+    }, {
+      "x": 2,
+      "y": 2,
+      "name": "Bottom Right",
+      "id": "b2f70dc0-323d-11e9-9a02-f3eeabb2cc80",
+      "modv": 41,
+      "animations": ["b2f70dc1-323d-11e9-9a02-f3eeabb2cc80"],
+      "sceneId": "b2f734d0-323d-11e9-9a02-f3eeabb2cc80",
+      "fixtures": ["013f25c0-30aa-11e9-b031-0ffdf7222501"]
+    }, {
+      "x": 2,
+      "y": 1,
+      "name": "Center Right",
+      "id": "bbd71660-323d-11e9-9a02-f3eeabb2cc80",
+      "modv": 39,
+      "animations": ["bbd73d70-323d-11e9-9a02-f3eeabb2cc80"],
+      "sceneId": "bbd76480-323d-11e9-9a02-f3eeabb2cc80",
+      "fixtures": ["013f4cd0-30aa-11e9-b031-0ffdf7222501"]
+    }, {
+      "x": 2,
+      "y": 0,
+      "name": "Top Right",
+      "id": "cdf04420-323d-11e9-9a02-f3eeabb2cc80",
+      "modv": 37,
+      "animations": ["cdf06b30-323d-11e9-9a02-f3eeabb2cc80"],
+      "sceneId": "cdf09240-323d-11e9-9a02-f3eeabb2cc80",
+      "fixtures": ["013f4cd1-30aa-11e9-b031-0ffdf7222501"]
+    }, {
+      "x": 1,
+      "y": 0,
+      "name": "Top",
+      "id": "d730e350-323d-11e9-9a02-f3eeabb2cc80",
+      "modv": 23,
+      "animations": ["d7310a60-323d-11e9-9a02-f3eeabb2cc80"],
+      "sceneId": "d7315880-323d-11e9-9a02-f3eeabb2cc80",
+      "fixtures": ["013f73e0-30aa-11e9-b031-0ffdf7222501"]
+    }, {
+      "x": 0,
+      "y": 0,
+      "name": "Top Left",
+      "id": "dff2dca0-323d-11e9-9a02-f3eeabb2cc80",
+      "modv": 9,
+      "animations": ["dff32ac0-323d-11e9-9a02-f3eeabb2cc80"],
+      "sceneId": "dff43c30-323d-11e9-9a02-f3eeabb2cc80",
+      "fixtures": ["013f9af0-30aa-11e9-b031-0ffdf7222501"]
+    }, {
+      "x": 0,
+      "y": 1,
+      "name": "Center Left",
+      "id": "e939bd60-323d-11e9-9a02-f3eeabb2cc80",
+      "modv": 11,
+      "animations": ["e939e470-323d-11e9-9a02-f3eeabb2cc80"],
+      "sceneId": "e93a0b80-323d-11e9-9a02-f3eeabb2cc80",
+      "fixtures": ["013f9af1-30aa-11e9-b031-0ffdf7222501"]
+    }]
+  }],
+  "modvManager": {
+    "connected": true,
+    "url": "ws://localhost:3006/luminave",
+    "reconnect": true,
+    "data": {
+      "url": "ws://localhost:3006"
+    }
+  }
+}
