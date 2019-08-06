@@ -88,7 +88,8 @@ export const FIXTURE_TYPES = ['EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
   'StairvilleOutdoorStageParTri', 'BasicColor', 'BasicFluter', 'EuroliteTMH7',
   'TourHazerII', 'SgmXC5', 'BasicDimmer', 'LTHLedParCob250w', 'AdjSweeperBeamQuadLed',
   'RobeColorWash575EAt1_4', 'ViperVl3000Spot', 'MacQuantumWash', 'MacAura', 'Rollapix100',
-  'RobeRobin300LEDWash', 'BasicRGBW', 'BasicRGBDimmer', 'OppskPar', 'SolarStar2', 'BasicColorDimmableTransform'
+  'RobeRobin300LEDWash', 'BasicRGBW', 'BasicRGBDimmer', 'OppskPar', 'SolarStar2', 'BasicColorDimmableTransform',
+  'StairvilleWildWashPro648Rgb'
 ]
 
 export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
