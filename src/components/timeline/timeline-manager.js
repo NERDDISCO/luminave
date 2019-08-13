@@ -19,19 +19,9 @@ class TimelineManager extends connect(store)(LitElement) {
   constructor() {
     super()
 
-    this.timeoutId = undefined
-
     this.progress = 0
 
-    document.addEventListener('keypress', e => {
-      const { code } = e
-
-      // Start playback when active element is the body
-      if (code === 'Space' && e.target === document.body) {
-        e.preventDefault()
-        this.handlePlay()
-      }
-    })
+    this.worker = undefined
   }
 
   static get properties() {
@@ -45,6 +35,39 @@ class TimelineManager extends connect(store)(LitElement) {
       timelineFixtures: { type: Object },
       modvConnected: { type: Boolean }
     }
+  }
+
+  connectedCallback() {
+    super.connectedCallback()
+
+    // Toggle the playback when the space-key is pressed
+    document.addEventListener('keypress', e => {
+      const { code } = e
+
+      // Start playback when active element is the body
+      if (code === 'Space' && e.target === document.body) {
+        e.preventDefault()
+        this.handlePlay()
+      }
+    })
+
+    // Worker to handle background playback
+    this.worker = new Worker('components/timeline/timeline-worker.js')
+    // Trigger the timeline loop when we receive a message from the worker
+    this.worker.addEventListener('message', () => {
+      this.loop()
+    })
+    // Update the playback state when the timeline-manager is initially loaded
+    this.observePlaying()
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback()
+
+    document.removeEventListener('keypress')
+
+    this.worker.removeEventListener('message')
+    this.worker.terminate()
   }
 
   // Start / stop the playback loop whenever isPlaying is changed
@@ -93,14 +116,18 @@ class TimelineManager extends connect(store)(LitElement) {
   // @TODO: Save the current progress into state
   // store.dispatch(setTimelineProgress(this.progress))
   observePlaying() {
-    if (this.isPlaying) {
-      console.log('playing')
+    // Based on isPlaying we have to start or stop the playback-loop in the worker
+    this.updateWorker(this.isPlaying)
+  }
 
-      this.loop()
-    } else {
-      console.log('stopped')
-
-      clearTimeout(this.timeoutId)
+  /**
+   * Start or stop the playback-loop of the worker
+   * 
+   * @param {boolean} isPlaying - Is the timeline running or not?
+   */
+  updateWorker(isPlaying) {
+    if (this.worker !== undefined) {
+      this.worker.postMessage({ isPlaying })
     }
   }
 
@@ -112,10 +139,10 @@ class TimelineManager extends connect(store)(LitElement) {
     if (this.isPlaying) {
       const now = new Date()
       this.progress = now.getTime()
-      
+
       // Start all scenes that are not started yet
       for (let i = 0; i < this.timelineScenes.length; i++) {
-        const scene = this.timelineScenes[i];
+        const scene = this.timelineScenes[i]
         
         // Start the scene if it wasn't started yet
         if (scene.started === undefined) {
@@ -171,12 +198,6 @@ class TimelineManager extends connect(store)(LitElement) {
 
       // Send the universe to the FivetwelveManager
       window.dispatchEvent(new CustomEvent('send-universe-to-fivetwelve', { detail: { now } }))
-      
-      this.timeoutId = setTimeout(() => {
-        // Get the next frame
-        requestAnimationFrame(this.loop.bind(this))
-      }, 1000 / 30)
-
     }
   }
 
