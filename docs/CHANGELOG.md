@@ -1,3 +1,18 @@
+# [3.3.0](https://github.com/NERDDISCO/luminave/compare/v3.2.0...v3.3.0) (2019-08-13)
+
+
+### Bug Fixes
+
+* **Animations:** Update shake and dimmer animation ([f51e24d](https://github.com/NERDDISCO/luminave/commit/f51e24d))
+
+
+### Features
+
+* **fixture:** Added "Stairville Wild Wash Pro 648 RGB" ([a865ded](https://github.com/NERDDISCO/luminave/commit/a865ded))
+* **Fixtures:** Adds an OppskPar fixture. ([ad24c70](https://github.com/NERDDISCO/luminave/commit/ad24c70))
+* **Param Transforms:** Adds the ability to transform parameter values based on the value of another parameter. ([32b9ced](https://github.com/NERDDISCO/luminave/commit/32b9ced))
+* **timeline:** Run in the background ([763a720](https://github.com/NERDDISCO/luminave/commit/763a720)), closes [#108](https://github.com/NERDDISCO/luminave/issues/108)
+
 # [3.2.0](https://github.com/NERDDISCO/luminave/compare/v3.1.0...v3.2.0) (2019-07-21)
 
 
