@@ -7,7 +7,8 @@ export default class BasicColor extends DmxDevice {
   constructor(options) {
     super(Object.assign({}, options, {
       params: {
-        color: new RgbParam([1, 2, 3])
+        color: new RgbParam([1, 2, 3]),
+        dimmer: new RangeParam(1, { min: 0, max: 255 })
       }
     }))
 
@@ -17,5 +18,10 @@ export default class BasicColor extends DmxDevice {
 
     this.channels = 3
     this.weight = 0
+
+    this.colorTransform = this.colorTransform.bind(this)
+  }
+  colorTransform(input) {
+    return input.map(value => Math.round(value * this.dimmer / 255))
   }
 }
