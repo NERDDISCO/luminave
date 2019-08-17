@@ -15,6 +15,21 @@ class StorageManager extends connect(store)(LitElement) {
     return { live: { type: Boolean } }
   }
 
+  connectedCallback() {
+    super.connectedCallback()
+
+    // Update localstorage even when in live mode
+    window.addEventListener('save-config-into-localstorage', () => {
+      localStorage.setItem(STORAGE_STATE, JSON.stringify(store.getState()))
+    })
+  }
+
+  disconnectedCallback() {
+    super.disconnectedCallback()
+
+    window.removeEventListener('save-config-into-localstorage')
+  }
+
   _stateChanged(state) {
     this.live = getLive(state)
   }
