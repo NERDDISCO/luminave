@@ -174,7 +174,9 @@ class MidiGrid extends connect(store)(LitElement) {
         live
         ? html``
         : html`
-          <mwc-button icon="edit" @click="${e => this.handleEdit(e, true)}" .mappingIndex="${index}"></mwc-button>
+          <div class="menu">
+            <mwc-button icon="edit" @click="${e => this.handleEdit(e, true)}" .mappingIndex="${index}"></mwc-button>
+          </div>
         `
       }
       
@@ -186,73 +188,78 @@ class MidiGrid extends connect(store)(LitElement) {
     const { sceneManager, live, types } = this
 
     return html`
-      <mwc-button icon="cancel" @click="${e => this.handleEdit(e, false)}" .mappingIndex="${index}"></mwc-button>
-      <br />
+      <div class="menu">
+        <mwc-button icon="cancel" @click="${e => this.handleEdit(e, false)}" .mappingIndex="${index}"></mwc-button>
+      </div>
+
+      <div class="wrapper">
       
-      ${
-        live 
-        ? html`
-          ${
-            this.showValueForType(element.type) 
-            ? html`<span class="control-value">${element.value}</span><br />` 
-            : ''
-          }
+        ${
+          live 
+          ? html`
+            ${
+              this.showValueForType(element.type) 
+              ? html`<span class="control-value">${element.value}</span><br />` 
+              : ''
+            }
 
-          <span class="label">${element.label}</span>
-        `
-        : ''
-      }
-        
-      ${
-        live 
-        ? ''
-        : html`
+            <span class="label">${element.label}</span>
+          `
+          : ''
+        }
+          
+        ${
+          live 
+          ? ''
+          : html`
 
-          ${
-            this.isNotEmpty(element.type)
-            ? html`
-              <input class="name" name="label" type="text" @change="${e => this.handleLabelChange(e)}" value="${element.label}" .mappingIndex="${index}" />
-            ` 
-            : ''
-          }
+            ${
+              this.isNotEmpty(element.type)
+              ? html`
+                <input class="name" name="label" type="text" @change="${e => this.handleLabelChange(e)}" value="${element.label}" .mappingIndex="${index}" />
+              ` 
+              : ''
+            }
 
-          <form @submit="${e => this.handleType(e)}">
-            <input name="mappingIndex" type="hidden" value="${index}" />
-            <select name="type" required @change="${e => this.handleType(e)}" .mappingIndex="${index}">
-              <option value=""></option>
-              ${repeat(types, type => html`
-                <option value="${type}" ?selected="${this.selectedType(element.type, type)}">${type}</option>
-              `)}
-            </select>
-          </form>
+            <form @submit="${e => this.handleType(e)}">
+              <input name="mappingIndex" type="hidden" value="${index}" />
+              <select name="type" required @change="${e => this.handleType(e)}" .mappingIndex="${index}">
+                <option value=""></option>
+                ${repeat(types, type => html`
+                  <option value="${type}" ?selected="${this.selectedType(element.type, type)}">${type}</option>
+                `)}
+              </select>
+            </form>
 
-          ${
-            this.isNotEmpty(element.type) && (this.isButton(element.type) || this.isRoundButton(element.type))
-            ? html`
-              <scene-list
-                @add-scenes="${e => this.handleAddScenes(e)}"
-                @remove-scene="${e => this.handleRemoveScene(e)}"
-                .mappingIndex="${index}"
-                .scenes="${element.scenes}"
-                .sceneManager="${sceneManager}"
-                .live="${live}">
-              </scene-list>            
-            `
-            : ''
-          }
+            ${
+              this.isNotEmpty(element.type) && (this.isButton(element.type) || this.isRoundButton(element.type))
+              ? html`
+                <scene-list
+                  @add-scenes="${e => this.handleAddScenes(e)}"
+                  @remove-scene="${e => this.handleRemoveScene(e)}"
+                  .mappingIndex="${index}"
+                  .scenes="${element.scenes}"
+                  .sceneManager="${sceneManager}"
+                  .live="${live}">
+                </scene-list>            
+              `
+              : ''
+            }
 
-          ${
-            this.isNotEmpty(element.type)
-            ? html`
-              <div class="learn">
-                Note: ${element.note}
-                <button @click="${e => this.handleLearn(e)}" .mappingIndex="${index}">Learn</button>
-              </div>
-            ` 
-            : ''
-          }
+            ${
+              this.isNotEmpty(element.type)
+              ? html`
+                <div class="learn">
+                  Note: ${element.note}
+                  <button @click="${e => this.handleLearn(e)}" .mappingIndex="${index}">Learn</button>
+                </div>
+              ` 
+              : ''
+            }
 
-      `}
+        `}
+
+      </div>
     `
   }
 
@@ -274,11 +281,8 @@ class MidiGrid extends connect(store)(LitElement) {
       itemTemplates.push(html`
         <div style="${this.computeItemVars(element, index, learnIndex)}" class="${classMap(itemClasses)}">
 
-          <div class="wrapper">
+          ${when(isEditing, () => this.templateEdit(element, index), () => this.templateNormal(element, index))}
 
-            ${when(isEditing, () => this.templateEdit(element, index), () => this.templateNormal(element, index))}
-
-          </div>
         </div>
       `)
     }
@@ -291,6 +295,7 @@ class MidiGrid extends connect(store)(LitElement) {
         }
 
         .item {
+          position: relative;
           --on: calc(255 * var(--isActive));
           background: var(--mdc-theme-surface);
           min-height: 5em;
@@ -313,8 +318,17 @@ class MidiGrid extends connect(store)(LitElement) {
           background: var(--paper-blue-200);
         }
 
+        .item.round.active {
+          background: var(--paper-orange-400);
+        }
+
         .live .item.round {
           border-radius: 50%;
+        }
+
+        .label {
+          font-size: 1.5em;
+          font-weight: 400;
         }
 
         .item .learn {
@@ -343,13 +357,15 @@ class MidiGrid extends connect(store)(LitElement) {
           opacity: .5;
         }
 
-        .live .label {
-          font-size: 22px;
-          font-weight: 400;
+        .menu {
+          position: absolute;
+          top: 0;
+          right: 0;
+          opacity: .5;
         }
 
-        .live {
-          font-weight: bold;
+        .menu:hover {
+          opacity: 1;
         }
       </style>
 
