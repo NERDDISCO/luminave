@@ -31,6 +31,7 @@ class MidiController extends connect(store)(LitElement) {
       outputname: { type: String },
       width: { type: Number },
       height: { type: Number },
+      ccasnoteon: { type: Boolean },
       connected: { type: Boolean },
       mapping: {
         type: Array,
@@ -193,8 +194,16 @@ class MidiController extends connect(store)(LitElement) {
   }
 
   controlchange(event) {
+    const { ccasnoteon } = this
     const { data } = event
-    const [, note, velocity] = data
+    const [channel , note, velocity] = data
+
+    // Trigger NoteOn instead of CC
+    if (ccasnoteon && velocity > 0) {
+      this.noteon(event)
+
+      return
+    }
 
     // Learning is active
     if (this.midiLearning > -1) {
@@ -231,20 +240,24 @@ class MidiController extends connect(store)(LitElement) {
     const output = data.get('output')
     const width = parseInt(data.get('width'), 10)
     const height = parseInt(data.get('height'), 10)
+    const ccasnoteon = data.has('ccasnoteon')
     const controllerId = this.id
+
+    debugger
 
     store.dispatch(setMidi(controllerId, {
       name,
       input,
       output,
       width,
-      height
+      height,
+      ccasnoteon
     }))
   }  
 
   render() {
 
-    const { live, name, connected, inputname, outputname, width, height, mapping, id } = this
+    const { live, name, connected, inputname, outputname, width, height, ccasnoteon, mapping, id } = this
 
     return html`
       <div>
@@ -270,6 +283,9 @@ class MidiController extends connect(store)(LitElement) {
               <label for="height">Height</label>
               <input name="height" type="number" min="1" max="255" value="${height}" required />
 
+              <label for="ccasnoteon">CC as NoteOn</label>
+              <input name="ccasnoteon" type="checkbox" ?checked=${ccasnoteon} />
+
               <button type="submit">Update</button>
             </form>
           `
@@ -278,6 +294,7 @@ class MidiController extends connect(store)(LitElement) {
         <midi-grid
           width="${width}"
           height="${height}"
+          cc
           .mapping="${mapping}"
           .controllerId="${id}"></midi-grid>
 
