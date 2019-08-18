@@ -128,6 +128,9 @@ class MidiManager extends connect(store)(LitElement) {
             <label for="height">Height</label>
             <input name="height" type="number" min="1" max="255" required />
 
+            <label for="ccasnoteon">CC as NoteOn</label>
+            <input name="ccasnoteon" type="checkbox" />
+
             <button type="submit">Add controller</button>
           </form>
         `
@@ -146,7 +149,7 @@ class MidiManager extends connect(store)(LitElement) {
               outputname="${controller.output}"
               width="${controller.width}"
               height="${controller.height}"
-              ccasnoteon="${controller.ccasnoteon}">
+              ?ccasnoteon="${controller.ccasnoteon}">
             </midi-controller>
 
             ${
