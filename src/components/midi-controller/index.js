@@ -243,8 +243,6 @@ class MidiController extends connect(store)(LitElement) {
     const ccasnoteon = data.has('ccasnoteon')
     const controllerId = this.id
 
-    debugger
-
     store.dispatch(setMidi(controllerId, {
       name,
       input,
@@ -294,7 +292,6 @@ class MidiController extends connect(store)(LitElement) {
         <midi-grid
           width="${width}"
           height="${height}"
-          cc
           .mapping="${mapping}"
           .controllerId="${id}"></midi-grid>
 
