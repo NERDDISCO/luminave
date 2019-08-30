@@ -291,7 +291,7 @@ class MidiGrid extends connect(store)(LitElement) {
       <style>
         .container {
           display: grid;
-          grid-template-columns: repeat(var(--width), auto);
+          grid-template-columns: repeat(var(--width), 1fr);
         }
 
         .item {
