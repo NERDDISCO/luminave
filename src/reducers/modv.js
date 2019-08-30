@@ -9,7 +9,7 @@ import {
 const modvManager = (state = {
   reconnect: false,
   connected: false,
-  url: 'ws://localhost:3000'
+  url: 'ws://localhost:3006/luminave'
 }, {
   type,
   data
