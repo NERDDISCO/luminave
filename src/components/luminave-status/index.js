@@ -1,7 +1,8 @@
 import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
-import { getUsbDmxControllerConnected, getModvConnected, getFivetwelveConnected } from '../../selectors/index.js'
+import { getUsbDmxControllerConnected, getModvConnected } from '../../selectors/index.js'
+import { getFivetwelveConnected } from '../../selectors/fivetwelve.js'
 
 import '../usb-dmx-manager/index.js'
 import '../dekk-manager/index.js'
