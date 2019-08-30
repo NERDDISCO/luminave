@@ -1,3 +1,23 @@
+# [3.4.0](https://github.com/NERDDISCO/luminave/compare/v3.3.0...v3.4.0) (2019-08-30)
+
+
+### Bug Fixes
+
+* **fivetwelve:** Removed unused methods ([1158f60](https://github.com/NERDDISCO/luminave/commit/1158f60))
+* **install:** Removed references to yarn ([c198150](https://github.com/NERDDISCO/luminave/commit/c198150))
+* **live:** Save live change into localstorage ([412f410](https://github.com/NERDDISCO/luminave/commit/412f410))
+* **midi:** Equal width for all grid items ([2dc8f23](https://github.com/NERDDISCO/luminave/commit/2dc8f23))
+* **midi:** Removed debugger and added correct boolean assignment ([bed081f](https://github.com/NERDDISCO/luminave/commit/bed081f))
+* **modv:** Change default URL for luminave ([71df460](https://github.com/NERDDISCO/luminave/commit/71df460))
+
+
+### Features
+
+* **fixture:** Added DunarniaLedPar for the Visual & Light workshop ([fe86a93](https://github.com/NERDDISCO/luminave/commit/fe86a93))
+* **jsconfeu2019:** Final config from Windows PC ([b8876a3](https://github.com/NERDDISCO/luminave/commit/b8876a3))
+* **midi:** Added ButtonRound & edit ([00b9b51](https://github.com/NERDDISCO/luminave/commit/00b9b51))
+* **midi:** CC as NoteOn ([7a10036](https://github.com/NERDDISCO/luminave/commit/7a10036))
+
 # [3.3.0](https://github.com/NERDDISCO/luminave/compare/v3.2.0...v3.3.0) (2019-08-13)
 
 
