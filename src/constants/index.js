@@ -89,7 +89,7 @@ export const FIXTURE_TYPES = ['EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
   'TourHazerII', 'SgmXC5', 'BasicDimmer', 'LTHLedParCob250w', 'AdjSweeperBeamQuadLed',
   'RobeColorWash575EAt1_4', 'ViperVl3000Spot', 'MacQuantumWash', 'MacAura', 'Rollapix100',
   'RobeRobin300LEDWash', 'BasicRGBW', 'BasicRGBDimmer', 'OppskPar', 'SolarStar2', 'BasicColorDimmableTransform',
-  'StairvilleWildWashPro648Rgb'
+  'StairvilleWildWashPro648Rgb', 'DunarniaLedPar'
 ]
 
 export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
@@ -107,7 +107,8 @@ export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
 ]
 
 export const MIDI_TYPE_BUTTON = 'Button'
+export const MIDI_TYPE_ROUND_BUTTON = 'ButtonRound'
 export const MIDI_TYPE_KNOB = 'Knob'
 export const MIDI_TYPE_FADER = 'Fader'
 export const MIDI_TYPE_EMPTY = 'Empty'
-export const MIDI_TYPES = [MIDI_TYPE_BUTTON, MIDI_TYPE_KNOB, MIDI_TYPE_FADER, MIDI_TYPE_EMPTY]
+export const MIDI_TYPES = [MIDI_TYPE_BUTTON, MIDI_TYPE_ROUND_BUTTON, MIDI_TYPE_KNOB, MIDI_TYPE_FADER, MIDI_TYPE_EMPTY]

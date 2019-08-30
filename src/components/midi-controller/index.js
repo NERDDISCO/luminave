@@ -2,7 +2,7 @@ import { LitElement, html } from '@polymer/lit-element/lit-element.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import WebMidi from 'webmidi'
-import '../midi-grid/index.js'
+import '../midi-grid/midi-grid.js'
 import { learnMidi, setMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
 import { getMidiLearning, getMidiEnabled, getLive } from '../../selectors/index.js'
 import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
@@ -31,6 +31,7 @@ class MidiController extends connect(store)(LitElement) {
       outputname: { type: String },
       width: { type: Number },
       height: { type: Number },
+      ccasnoteon: { type: Boolean },
       connected: { type: Boolean },
       mapping: {
         type: Array,
@@ -64,7 +65,8 @@ class MidiController extends connect(store)(LitElement) {
           label: '',
           type: '',
           active: false,
-          value: 0
+          value: 0,
+          isEditing: false
         }))
       }
     }
@@ -177,13 +179,14 @@ class MidiController extends connect(store)(LitElement) {
           })
 
           // Button light: on
-          this.output.send(144, [note, 127])
+          // The last value is the velocity and defines the color (if available)
+          this.output.send(channel, [note, 127])
         } else {
           // Remove all scenes from the timeline
           element.scenes.map(sceneId => store.dispatch(removeSceneFromTimelineAndResetFixtures(sceneId)))
 
           // Button light: off
-          this.output.send(144, [note, 0])
+          this.output.send(channel, [note, 0])
         }
       }
 
@@ -191,8 +194,16 @@ class MidiController extends connect(store)(LitElement) {
   }
 
   controlchange(event) {
+    const { ccasnoteon } = this
     const { data } = event
-    const [, note, velocity] = data
+    const [channel , note, velocity] = data
+
+    // Trigger NoteOn instead of CC
+    if (ccasnoteon && velocity > 0) {
+      this.noteon(event)
+
+      return
+    }
 
     // Learning is active
     if (this.midiLearning > -1) {
@@ -229,6 +240,7 @@ class MidiController extends connect(store)(LitElement) {
     const output = data.get('output')
     const width = parseInt(data.get('width'), 10)
     const height = parseInt(data.get('height'), 10)
+    const ccasnoteon = data.has('ccasnoteon')
     const controllerId = this.id
 
     store.dispatch(setMidi(controllerId, {
@@ -236,13 +248,14 @@ class MidiController extends connect(store)(LitElement) {
       input,
       output,
       width,
-      height
+      height,
+      ccasnoteon
     }))
   }  
 
   render() {
 
-    const { live, name, connected, inputname, outputname, width, height, mapping, id } = this
+    const { live, name, connected, inputname, outputname, width, height, ccasnoteon, mapping, id } = this
 
     return html`
       <div>
@@ -267,6 +280,9 @@ class MidiController extends connect(store)(LitElement) {
 
               <label for="height">Height</label>
               <input name="height" type="number" min="1" max="255" value="${height}" required />
+
+              <label for="ccasnoteon">CC as NoteOn</label>
+              <input name="ccasnoteon" type="checkbox" ?checked=${ccasnoteon} />
 
               <button type="submit">Update</button>
             </form>

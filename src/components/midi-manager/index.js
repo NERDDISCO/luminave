@@ -72,6 +72,7 @@ class MidiManager extends connect(store)(LitElement) {
     const output = data.get('output')
     const width = parseInt(data.get('width'), 10)
     const height = parseInt(data.get('height'), 10)
+    const ccasnoteon = data.has('ccasnoteon')
 
     store.dispatch(addMidi({
       id: uuidv1(),
@@ -80,6 +81,7 @@ class MidiManager extends connect(store)(LitElement) {
       output,
       width,
       height,
+      ccasnoteon,
       mapping: []
     }))
   }
@@ -126,6 +128,9 @@ class MidiManager extends connect(store)(LitElement) {
             <label for="height">Height</label>
             <input name="height" type="number" min="1" max="255" required />
 
+            <label for="ccasnoteon">CC as NoteOn</label>
+            <input name="ccasnoteon" type="checkbox" />
+
             <button type="submit">Add controller</button>
           </form>
         `
@@ -143,7 +148,8 @@ class MidiManager extends connect(store)(LitElement) {
               inputname="${controller.input}"
               outputname="${controller.output}"
               width="${controller.width}"
-              height="${controller.height}">
+              height="${controller.height}"
+              ?ccasnoteon="${controller.ccasnoteon}">
             </midi-controller>
 
             ${

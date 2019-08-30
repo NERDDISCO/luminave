@@ -4,7 +4,6 @@ import { store } from '../../reduxStore.js'
 import { setFivetwelve } from '../../actions/fivetwelve.js'
 import { getLive, getUniverses } from '../../selectors/index.js'
 import { getFivetwelveUrl, getFivetwelveConnected, getFivetwelveReconnect } from '../../selectors/fivetwelve.js'
-import { setFivetwelveData } from '../../utils/index.js'
 import '../integration/integration-configuration.js'
 import '../integration/integration-websocket.js'
 import Buffer from 'buffer'
@@ -103,23 +102,13 @@ class FivetwelveManager extends connect(store)(LitElement) {
   }
 
   /**
-   * When ever a message was send from modV it should be saved into a global object
+   * When ever a message was send from fivetwelve it should be saved into a global object
    * (because of performance issues) and other components should be informed about it
-   * by triggering a global event "received-data-from-modv"
+   * by triggering a global event "received-data-from-fivetwelve"
    * 
    * @param {Object} e - The event
-   * @param {Object} e.detail.data - Holds all the data that was send from modV
-   * @param {Array}  e.detail.data.average - Of all colors that is grabbed from Canvas we get the average
-   * @param {Array}  e.detail.data.colors - The colors grabbed from specific points from the Canvas (configurable in modV)
-   * @param {Number} e.detail.data.selectionX - The selected areas on x-axis
-   * @param {Number} e.detail.data.selectionY - The selected areas on y-axis
    */
   handleMessage(e) {
-    const { data } = e.detail
-
-    // Save data into global object
-    setFivetwelveData(JSON.parse(data))
-
     const now = new Date()
 
     // Received data from modV

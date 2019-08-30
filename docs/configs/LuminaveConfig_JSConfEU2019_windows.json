@@ -1,0 +1,4314 @@
+{
+    "bpm": 50,
+    "live": false,
+    "usbManager": {
+        "lastTransmission": "2018-02-07T05:56:08.130Z"
+    },
+    "dekkManager": {
+        "data": {
+            "scenes": [
+                "rainbow"
+            ]
+        },
+        "connected": false
+    },
+    "fivetwelveManager": {
+        "connected": false,
+        "lastTransmission": "2018-02-07T05:56:08.130Z"
+    },
+    "connectionManager": {
+        "usb": {
+            "connected": false
+        },
+        "bluetooth": {
+            "connected": false
+        }
+    },
+    "universeManager": [
+        {
+            "id": "1e380f60-c0ee-11e8-a97a-5594ce2ad9f3",
+            "channels": [
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0,
+                0
+            ],
+            "name": "1e380f60-c0ee-11e8-a97a-5594ce2ad9f3"
+        }
+    ],
+    "sceneManager": [
+        {
+            "id": "bc4b7df0-821c-11e9-9a80-6f1f7d30afb2",
+            "fixtures": [
+                "6a675bf0-821a-11e9-a7b7-f70f734cb349",
+                "6a678300-821a-11e9-a7b7-f70f734cb349",
+                "6a67aa10-821a-11e9-a7b7-f70f734cb349",
+                "6a67aa11-821a-11e9-a7b7-f70f734cb349",
+                "6a67aa12-821a-11e9-a7b7-f70f734cb349",
+                "6a67aa13-821a-11e9-a7b7-f70f734cb349",
+                "6a67d120-821a-11e9-a7b7-f70f734cb349",
+                "6a67d121-821a-11e9-a7b7-f70f734cb349",
+                "6a67d122-821a-11e9-a7b7-f70f734cb349",
+                "6a67f830-821a-11e9-a7b7-f70f734cb349",
+                "6a67f831-821a-11e9-a7b7-f70f734cb349",
+                "6a67f832-821a-11e9-a7b7-f70f734cb349",
+                "6a681f40-821a-11e9-a7b7-f70f734cb349",
+                "6a681f41-821a-11e9-a7b7-f70f734cb349",
+                "6a681f42-821a-11e9-a7b7-f70f734cb349",
+                "6a684650-821a-11e9-a7b7-f70f734cb349",
+                "6a686d60-821a-11e9-a7b7-f70f734cb349",
+                "6a689470-821a-11e9-a7b7-f70f734cb349",
+                "6a689471-821a-11e9-a7b7-f70f734cb349",
+                "35afa730-821c-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "animations": [
+                "1dd2ed20-c80e-11e8-aa32-4920b825426c"
+            ],
+            "duration": 20,
+            "name": "A_PixelTest",
+            "isRunning": false
+        },
+        {
+            "id": "651c3b00-82f8-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34eb640-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "de1434f0-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 20,
+            "name": "LiveJS_Move_272",
+            "isRunning": false
+        },
+        {
+            "id": "52120110-82f9-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34edd50-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "e2d3b8d0-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 20,
+            "name": "LiveJS_Move_287",
+            "isRunning": false
+        },
+        {
+            "id": "5a91e850-82f9-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34f0460-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "ec4923a0-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 20,
+            "name": "LiveJS_Move_302",
+            "isRunning": false
+        },
+        {
+            "id": "9e93e170-82f9-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34f0461-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "ef82f1e0-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 20,
+            "name": "LiveJS_Move_317",
+            "isRunning": false
+        },
+        {
+            "id": "6decb340-82f8-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34eb640-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "d9f84410-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 20,
+            "name": "LiveJS_Pos_272",
+            "isRunning": false
+        },
+        {
+            "id": "47072930-82f9-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34edd50-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "e5c9a040-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 20,
+            "name": "LiveJS_Pos_287",
+            "isRunning": false
+        },
+        {
+            "id": "5fee6f80-82f9-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34f0460-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "e9430f90-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 20,
+            "name": "LiveJS_Pos_302",
+            "isRunning": false
+        },
+        {
+            "id": "a5f0a570-82f9-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34f0461-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "f20e0990-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 20,
+            "name": "LiveJS_Pos_317",
+            "isRunning": false
+        },
+        {
+            "id": "40a53630-82c8-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "ca4b5c70-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "a4b26bd0-82c7-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Move_93",
+            "isRunning": false
+        },
+        {
+            "id": "913d2f80-82d2-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "ca4b8380-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "1b27ffa0-82d2-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Move_108",
+            "isRunning": false
+        },
+        {
+            "id": "597bb2a0-82d3-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "ca4baa90-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "1e8b9d00-82d2-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Move_123",
+            "isRunning": false
+        },
+        {
+            "id": "c4599f40-82da-11e9-b40c-13b3d3e584e7",
+            "fixtures": [
+                "ca4bf8b0-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "da10c300-82d4-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Move_138",
+            "isRunning": false
+        },
+        {
+            "id": "38057ad0-82dc-11e9-98c3-8d86d16cb640",
+            "fixtures": [
+                "ca4bf8b1-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "20be8290-82d2-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Move_153",
+            "isRunning": false
+        },
+        {
+            "id": "1d651d60-82dd-11e9-98c3-8d86d16cb640",
+            "fixtures": [
+                "ca4c1fc0-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "22b0b5a0-82d2-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Move_168",
+            "isRunning": false
+        },
+        {
+            "id": "5c989e80-82dd-11e9-98c3-8d86d16cb640",
+            "fixtures": [
+                "ca4c46d0-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "24854e90-82d2-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Move_183",
+            "isRunning": false
+        },
+        {
+            "id": "ca3e84c0-82e4-11e9-b099-3b0177328492",
+            "fixtures": [
+                "e34eb640-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "264722d0-82d2-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Move_272",
+            "isRunning": false
+        },
+        {
+            "id": "d25067f0-82e4-11e9-b099-3b0177328492",
+            "fixtures": [
+                "e34edd50-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "283f4950-82d2-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Move_287",
+            "isRunning": false
+        },
+        {
+            "id": "d89ad190-82e4-11e9-b099-3b0177328492",
+            "fixtures": [
+                "e34f0460-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "29900c40-82d2-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Move_302",
+            "isRunning": false
+        },
+        {
+            "id": "ddf758c0-82e4-11e9-b099-3b0177328492",
+            "fixtures": [
+                "e34f0461-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "2b1106f0-82d2-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Move_317",
+            "isRunning": false
+        },
+        {
+            "id": "992fddd0-82c5-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "ca4b5c70-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "89b72be0-82c2-11e9-af2d-495dee62ed7f"
+            ],
+            "duration": 20,
+            "name": "Main_Pos_93",
+            "isRunning": false
+        },
+        {
+            "id": "f486bd70-82c5-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "ca4b8380-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "ebede1e0-82c3-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Pos_108",
+            "isRunning": false
+        },
+        {
+            "id": "f9f2d500-82c5-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "ca4baa90-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "f6532af0-82c3-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Pos_123",
+            "isRunning": false
+        },
+        {
+            "id": "ffa32180-82c5-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "ca4bf8b0-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "fa0a3f80-82c3-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Pos_138",
+            "isRunning": false
+        },
+        {
+            "id": "064ff670-82c6-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "ca4bf8b1-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "fc9bbfd0-82c3-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Pos_153",
+            "isRunning": false
+        },
+        {
+            "id": "0d3344b0-82c6-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "ca4c1fc0-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "feeed790-82c3-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Pos_168",
+            "isRunning": false
+        },
+        {
+            "id": "14ca5290-82c6-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "ca4c46d0-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "00fc33c0-82c4-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Pos_183",
+            "isRunning": false
+        },
+        {
+            "id": "4855f880-82c6-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "e34eb640-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "0381cd30-82c4-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Pos_272",
+            "isRunning": false
+        },
+        {
+            "id": "4e122be0-82c6-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "e34edd50-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "059e92b0-82c4-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Pos_287",
+            "isRunning": false
+        },
+        {
+            "id": "551fbe70-82c6-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "e34f0460-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "07922550-82c4-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Pos_302",
+            "isRunning": false
+        },
+        {
+            "id": "5dcb97b0-82c6-11e9-a99e-bbeb273ffa0a",
+            "fixtures": [
+                "e34f0461-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "09b616c0-82c4-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Main_Pos_317",
+            "isRunning": false
+        },
+        {
+            "id": "8a1b31e0-8393-11e9-a310-49ab25342c15",
+            "fixtures": [
+                "bdc08750-8304-11e9-99cb-795e6aaf2d8a"
+            ],
+            "animations": [
+                "8a1b0ad1-8393-11e9-a310-49ab25342c15"
+            ],
+            "duration": 2000,
+            "name": "Pixel-LiveJS"
+        },
+        {
+            "id": "995b9f72-821a-11e9-a7b7-f70f734cb349",
+            "fixtures": [
+                "6a675bf0-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "995b9f71-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "duration": 2000,
+            "name": "Pixel1"
+        },
+        {
+            "id": "a736d562-821a-11e9-a7b7-f70f734cb349",
+            "fixtures": [
+                "6a678300-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "a736d561-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "duration": 2000,
+            "name": "Pixel5"
+        },
+        {
+            "id": "ac615010-821a-11e9-a7b7-f70f734cb349",
+            "fixtures": [
+                "6a67aa10-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "ac612901-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "duration": 2000,
+            "name": "Pixel9"
+        },
+        {
+            "id": "b32d93e0-821a-11e9-a7b7-f70f734cb349",
+            "fixtures": [
+                "6a67aa11-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "b32d6cd1-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "duration": 2000,
+            "name": "Pixel13"
+        },
+        {
+            "id": "9eea3db0-821b-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a67aa12-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "9eea16a1-821b-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel17"
+        },
+        {
+            "id": "b70d49a1-821b-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a67aa13-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "b70d49a0-821b-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel21"
+        },
+        {
+            "id": "be5ffb81-821b-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a67d121-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "be5ffb80-821b-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel29"
+        },
+        {
+            "id": "c67b0671-821b-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a67d122-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "c67b0670-821b-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel33"
+        },
+        {
+            "id": "da761392-821b-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a67f830-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "da761391-821b-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel37"
+        },
+        {
+            "id": "e0028462-821b-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a67f831-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "e0028461-821b-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel41"
+        },
+        {
+            "id": "e5e4b651-821b-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a67f832-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "e5e4b650-821b-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel45"
+        },
+        {
+            "id": "ec440781-821b-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a681f40-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "ec440780-821b-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel49"
+        },
+        {
+            "id": "f53e4ee0-821b-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a681f41-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "f53e27d1-821b-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel53"
+        },
+        {
+            "id": "fbe24a32-821b-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a681f42-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "fbe24a31-821b-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel57"
+        },
+        {
+            "id": "048dfc61-821c-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a684650-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "048dfc60-821c-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel61"
+        },
+        {
+            "id": "0c5b0e61-821c-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a686d60-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "0c5b0e60-821c-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel65"
+        },
+        {
+            "id": "42bb63d0-82fb-11e9-92c1-e9c9c0bad3d5",
+            "fixtures": [
+                "cc775bc0-82fa-11e9-aca2-158c1e3230e2"
+            ],
+            "animations": [
+                "42bb3cc0-82fb-11e9-92c1-e9c9c0bad3d5"
+            ],
+            "duration": 2000,
+            "name": "Pixel69"
+        },
+        {
+            "id": "11c06f31-821c-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "6a689471-821a-11e9-a7b7-f70f734cb349"
+            ],
+            "animations": [
+                "11c06f30-821c-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel73"
+        },
+        {
+            "id": "3e5c1cb2-821c-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "35afa730-821c-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "animations": [
+                "3e5c1cb1-821c-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel77"
+        },
+        {
+            "id": "42a02f01-821c-11e9-9e0d-6fc7e4fa41eb",
+            "fixtures": [
+                "35afce40-821c-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "animations": [
+                "42a02f00-821c-11e9-9e0d-6fc7e4fa41eb"
+            ],
+            "duration": 2000,
+            "name": "Pixel81"
+        },
+        {
+            "id": "12642960-8305-11e9-99cb-795e6aaf2d8a",
+            "fixtures": [
+                "bdc08750-8304-11e9-99cb-795e6aaf2d8a"
+            ],
+            "animations": [
+                "1263db40-8305-11e9-99cb-795e6aaf2d8a"
+            ],
+            "duration": 2000,
+            "name": "PixelLiveJSStage350"
+        },
+        {
+            "id": "be0bfc40-83d5-11e9-ab66-5159ceb71c8b",
+            "fixtures": [
+                "9d4cce80-83d5-11e9-ab66-5159ceb71c8b"
+            ],
+            "animations": [
+                "be0bd530-83d5-11e9-ab66-5159ceb71c8b"
+            ],
+            "duration": 2000,
+            "name": "PixelLiveJSStage380"
+        },
+        {
+            "id": "2b0c0410-82b5-11e9-a773-098f2353d044",
+            "fixtures": [
+                "e34eb640-8228-11e9-9a80-6f1f7d30afb2",
+                "e34edd50-8228-11e9-9a80-6f1f7d30afb2",
+                "e34f0460-8228-11e9-9a80-6f1f7d30afb2",
+                "e34f0461-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "0f0e97d0-822b-11e9-9a80-6f1f7d30afb2"
+            ],
+            "duration": 20,
+            "name": "Wash_On_LiveJS_Stage",
+            "isRunning": false
+        },
+        {
+            "id": "3b3f5910-822c-11e9-9068-c96ca159357b",
+            "fixtures": [
+                "ca4b5c70-8228-11e9-9a80-6f1f7d30afb2",
+                "ca4b8380-8228-11e9-9a80-6f1f7d30afb2",
+                "ca4baa90-8228-11e9-9a80-6f1f7d30afb2",
+                "ca4bf8b0-8228-11e9-9a80-6f1f7d30afb2",
+                "ca4bf8b1-8228-11e9-9a80-6f1f7d30afb2",
+                "ca4c1fc0-8228-11e9-9a80-6f1f7d30afb2",
+                "ca4c46d0-8228-11e9-9a80-6f1f7d30afb2",
+                "e34eb640-8228-11e9-9a80-6f1f7d30afb2",
+                "e34edd50-8228-11e9-9a80-6f1f7d30afb2",
+                "e34f0460-8228-11e9-9a80-6f1f7d30afb2",
+                "e34f0461-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "0f0e97d0-822b-11e9-9a80-6f1f7d30afb2"
+            ],
+            "duration": 20,
+            "name": "Wash_On_MainStage",
+            "isRunning": false
+        },
+        {
+            "id": "1e686960-8229-11e9-9a80-6f1f7d30afb2",
+            "fixtures": [
+                "ca4b5c70-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "1e684250-8229-11e9-9a80-6f1f7d30afb2"
+            ],
+            "duration": 2000,
+            "name": "Wash93"
+        },
+        {
+            "id": "24d91fb1-8229-11e9-9a80-6f1f7d30afb2",
+            "fixtures": [
+                "ca4b8380-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "24d91fb0-8229-11e9-9a80-6f1f7d30afb2"
+            ],
+            "duration": 2000,
+            "name": "Wash108"
+        },
+        {
+            "id": "2b327d71-8229-11e9-9a80-6f1f7d30afb2",
+            "fixtures": [
+                "ca4baa90-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "2b327d70-8229-11e9-9a80-6f1f7d30afb2"
+            ],
+            "duration": 2000,
+            "name": "Wash123"
+        },
+        {
+            "id": "3123a380-8229-11e9-9a80-6f1f7d30afb2",
+            "fixtures": [
+                "ca4bf8b0-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "31237c71-8229-11e9-9a80-6f1f7d30afb2"
+            ],
+            "duration": 2000,
+            "name": "Wash138"
+        },
+        {
+            "id": "38575bb0-8229-11e9-9a80-6f1f7d30afb2",
+            "fixtures": [
+                "ca4bf8b1-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "385734a1-8229-11e9-9a80-6f1f7d30afb2"
+            ],
+            "duration": 2000,
+            "name": "Wash153"
+        },
+        {
+            "id": "402de390-8229-11e9-9a80-6f1f7d30afb2",
+            "fixtures": [
+                "ca4c1fc0-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "402dbc81-8229-11e9-9a80-6f1f7d30afb2"
+            ],
+            "duration": 2000,
+            "name": "Wash168"
+        },
+        {
+            "id": "43451930-822a-11e9-9a80-6f1f7d30afb2",
+            "fixtures": [
+                "ca4c46d0-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "4344f220-822a-11e9-9a80-6f1f7d30afb2"
+            ],
+            "duration": 2000,
+            "name": "Wash183"
+        },
+        {
+            "id": "a5cd99a0-82e4-11e9-b099-3b0177328492",
+            "fixtures": [
+                "e34eb640-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "06f8f5c0-82c8-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Wash272",
+            "isRunning": false
+        },
+        {
+            "id": "6e8f5150-82f7-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34eb640-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "6e8f2a40-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 2000,
+            "name": "Wash272-LiveJS"
+        },
+        {
+            "id": "ac0342c0-82e4-11e9-b099-3b0177328492",
+            "fixtures": [
+                "e34edd50-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "0e7353e0-82c8-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Wash287",
+            "isRunning": false
+        },
+        {
+            "id": "7b129861-82f7-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34edd50-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "7b129860-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 2000,
+            "name": "Wash287-LiveJS"
+        },
+        {
+            "id": "b1c4a640-82e4-11e9-b099-3b0177328492",
+            "fixtures": [
+                "e34f0460-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "142d6461-82c8-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Wash302",
+            "isRunning": false
+        },
+        {
+            "id": "86327ee0-82f7-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34f0460-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "863257d0-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 2000,
+            "name": "Wash302-LiveJS"
+        },
+        {
+            "id": "b7832390-82e4-11e9-b099-3b0177328492",
+            "fixtures": [
+                "e34f0461-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "199228f0-82c8-11e9-a99e-bbeb273ffa0a"
+            ],
+            "duration": 20,
+            "name": "Wash317",
+            "isRunning": false
+        },
+        {
+            "id": "9325ece0-82f7-11e9-aca2-158c1e3230e2",
+            "fixtures": [
+                "e34f0461-8228-11e9-9a80-6f1f7d30afb2"
+            ],
+            "animations": [
+                "9325c5d0-82f7-11e9-aca2-158c1e3230e2"
+            ],
+            "duration": 2000,
+            "name": "Wash317-LiveJS"
+        }
+    ],
+    "animationManager": [
+        {
+            "id": "8a1b0ad1-8393-11e9-a310-49ab25342c15",
+            "keyframes": {
+                "0": {
+                    "modvColor": 29
+                },
+                "1": {
+                    "modvColor": 29
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel-LiveJS",
+            "changed": 1559300558484
+        },
+        {
+            "id": "995b9f71-821a-11e9-a7b7-f70f734cb349",
+            "keyframes": {
+                "0": {
+                    "modvColor": 3
+                },
+                "1": {
+                    "modvColor": 3
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel1",
+            "changed": 1559138636519
+        },
+        {
+            "id": "a736d561-821a-11e9-a7b7-f70f734cb349",
+            "keyframes": {
+                "0": {
+                    "modvColor": 2
+                },
+                "1": {
+                    "modvColor": 2
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel5",
+            "changed": 1559138659766
+        },
+        {
+            "id": "ac612901-821a-11e9-a7b7-f70f734cb349",
+            "keyframes": {
+                "0": {
+                    "modvColor": 1
+                },
+                "1": {
+                    "modvColor": 1
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel9",
+            "changed": 1559138668432
+        },
+        {
+            "id": "b32d6cd1-821a-11e9-a7b7-f70f734cb349",
+            "keyframes": {
+                "0": {
+                    "modvColor": 4
+                },
+                "1": {
+                    "modvColor": 4
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel13",
+            "changed": 1559138679837
+        },
+        {
+            "id": "9eea16a1-821b-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 7
+                },
+                "1": {
+                    "modvColor": 7
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel17",
+            "changed": 1559139075338
+        },
+        {
+            "id": "b70d49a0-821b-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 10
+                },
+                "1": {
+                    "modvColor": 10
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel21",
+            "changed": 1559139115834
+        },
+        {
+            "id": "be5ffb80-821b-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 13
+                },
+                "1": {
+                    "modvColor": 13
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel29",
+            "changed": 1559139128120
+        },
+        {
+            "id": "c67b0670-821b-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 16
+                },
+                "1": {
+                    "modvColor": 16
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel33",
+            "changed": 1559139141719
+        },
+        {
+            "id": "da761391-821b-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 19
+                },
+                "1": {
+                    "modvColor": 19
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel37",
+            "changed": 1559139175241
+        },
+        {
+            "id": "e0028461-821b-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 22
+                },
+                "1": {
+                    "modvColor": 22
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel41",
+            "changed": 1559139184550
+        },
+        {
+            "id": "e5e4b650-821b-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 25
+                },
+                "1": {
+                    "modvColor": 25
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel45",
+            "changed": 1559139194421
+        },
+        {
+            "id": "ec440780-821b-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 28
+                },
+                "1": {
+                    "modvColor": 28
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel49",
+            "changed": 1559139205112
+        },
+        {
+            "id": "f53e27d1-821b-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 31
+                },
+                "1": {
+                    "modvColor": 31
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel53",
+            "changed": 1559139220174
+        },
+        {
+            "id": "fbe24a31-821b-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 34
+                },
+                "1": {
+                    "modvColor": 34
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel57",
+            "changed": 1559139231315
+        },
+        {
+            "id": "048dfc60-821c-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 37
+                },
+                "1": {
+                    "modvColor": 37
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel61",
+            "changed": 1559139245862
+        },
+        {
+            "id": "0c5b0e60-821c-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 40
+                },
+                "1": {
+                    "modvColor": 40
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel65",
+            "changed": 1559139258950
+        },
+        {
+            "id": "42bb3cc0-82fb-11e9-92c1-e9c9c0bad3d5",
+            "keyframes": {
+                "0": {
+                    "modvColor": 15
+                },
+                "1": {
+                    "modvColor": 15
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel69",
+            "changed": 1559235127948
+        },
+        {
+            "id": "11c06f30-821c-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 43
+                },
+                "1": {
+                    "modvColor": 43
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel73",
+            "changed": 1559139268003
+        },
+        {
+            "id": "3e5c1cb1-821c-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 44
+                },
+                "1": {
+                    "modvColor": 44
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel77",
+            "changed": 1559139342843
+        },
+        {
+            "id": "42a02f00-821c-11e9-9e0d-6fc7e4fa41eb",
+            "keyframes": {
+                "0": {
+                    "modvColor": 45
+                },
+                "1": {
+                    "modvColor": 45
+                }
+            },
+            "duration": 2000,
+            "name": "Pixel81",
+            "changed": 1559139350000
+        },
+        {
+            "id": "1263db40-8305-11e9-99cb-795e6aaf2d8a",
+            "keyframes": {
+                "0": {
+                    "modvColor": 23
+                },
+                "1": {
+                    "modvColor": 23
+                }
+            },
+            "duration": 2000,
+            "name": "PixelLiveJSStage350",
+            "changed": 1559328948043
+        },
+        {
+            "id": "1dd2ed20-c80e-11e8-aa32-4920b825426c",
+            "changed": 1559139570392,
+            "keyframes": {
+                "0": {
+                    "dimmer": 255,
+                    "color": [
+                        255,
+                        0,
+                        0
+                    ]
+                },
+                "1": {
+                    "dimmer": 255,
+                    "color": [
+                        255,
+                        0,
+                        255
+                    ]
+                },
+                "0.1": {
+                    "dimmer": 255,
+                    "color": [
+                        255,
+                        128,
+                        0
+                    ]
+                },
+                "0.2": {
+                    "dimmer": 255,
+                    "color": [
+                        255,
+                        255,
+                        0
+                    ]
+                },
+                "0.3": {
+                    "dimmer": 255,
+                    "color": [
+                        128,
+                        255,
+                        0
+                    ]
+                },
+                "0.4": {
+                    "dimmer": 255,
+                    "color": [
+                        0,
+                        255,
+                        0
+                    ]
+                },
+                "0.5": {
+                    "dimmer": 255,
+                    "color": [
+                        0,
+                        255,
+                        128
+                    ]
+                },
+                "0.6": {
+                    "dimmer": 255,
+                    "color": [
+                        0,
+                        255,
+                        255
+                    ]
+                },
+                "0.7": {
+                    "dimmer": 255,
+                    "color": [
+                        0,
+                        128,
+                        255
+                    ]
+                },
+                "0.8": {
+                    "dimmer": 255,
+                    "color": [
+                        0,
+                        0,
+                        255
+                    ]
+                },
+                "0.9": {
+                    "dimmer": 255,
+                    "color": [
+                        128,
+                        0,
+                        255
+                    ]
+                }
+            },
+            "duration": 10000,
+            "name": "Rainbow"
+        },
+        {
+            "id": "0f0e97d0-822b-11e9-9a80-6f1f7d30afb2",
+            "keyframes": {
+                "0": {
+                    "shutter": "open",
+                    "dimmer": 255
+                },
+                "1": {
+                    "shutter": "open",
+                    "dimmer": 255
+                }
+            },
+            "duration": 2000,
+            "name": "Wash_On",
+            "changed": 1559146255663
+        },
+        {
+            "id": "1e684250-8229-11e9-9a80-6f1f7d30afb2",
+            "keyframes": {
+                "0": {
+                    "modvColor": 14
+                },
+                "1": {
+                    "modvColor": 14
+                }
+            },
+            "duration": 2000,
+            "name": "Wash93",
+            "changed": 1559144872693
+        },
+        {
+            "id": "a4b26bd0-82c7-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -18,
+                    "tilt": 32
+                },
+                "1": {
+                    "pan": -18,
+                    "tilt": 32
+                },
+                "0.5": {
+                    "pan": -8,
+                    "tilt": 37
+                }
+            },
+            "duration": 3000,
+            "name": "Wash93_Movement",
+            "changed": 1559222610910
+        },
+        {
+            "id": "89b72be0-82c2-11e9-af2d-495dee62ed7f",
+            "keyframes": {
+                "0": {
+                    "pan": -18,
+                    "tilt": 32
+                },
+                "1": {
+                    "pan": -18,
+                    "tilt": 32
+                }
+            },
+            "duration": 2000,
+            "name": "Wash93_Position",
+            "changed": 1559211432277
+        },
+        {
+            "id": "24d91fb0-8229-11e9-9a80-6f1f7d30afb2",
+            "keyframes": {
+                "0": {
+                    "modvColor": 17
+                },
+                "1": {
+                    "modvColor": 17
+                }
+            },
+            "duration": 2000,
+            "name": "Wash108",
+            "changed": 1559144883499
+        },
+        {
+            "id": "1b27ffa0-82d2-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -13,
+                    "tilt": 33
+                },
+                "1": {
+                    "pan": -13,
+                    "tilt": 33
+                },
+                "0.5": {
+                    "pan": 5,
+                    "tilt": 33
+                }
+            },
+            "duration": 3000,
+            "name": "Wash108_Movement",
+            "changed": 1559217819903
+        },
+        {
+            "id": "ebede1e0-82c3-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -12,
+                    "tilt": 33
+                },
+                "1": {
+                    "pan": -12,
+                    "tilt": 33
+                }
+            },
+            "duration": 2000,
+            "name": "Wash108_Position",
+            "changed": 1559211498871
+        },
+        {
+            "id": "2b327d70-8229-11e9-9a80-6f1f7d30afb2",
+            "keyframes": {
+                "0": {
+                    "modvColor": 20
+                },
+                "1": {
+                    "modvColor": 20
+                }
+            },
+            "duration": 2000,
+            "name": "Wash123",
+            "changed": 1559144894151
+        },
+        {
+            "id": "1e8b9d00-82d2-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -11,
+                    "tilt": 30
+                },
+                "1": {
+                    "pan": -11,
+                    "tilt": 30
+                },
+                "0.5": {
+                    "pan": 15,
+                    "tilt": 30
+                }
+            },
+            "duration": 4000,
+            "name": "Wash123_Movement",
+            "changed": 1559218047516
+        },
+        {
+            "id": "f6532af0-82c3-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -11,
+                    "tilt": 30
+                },
+                "1": {
+                    "pan": -11,
+                    "tilt": 30
+                }
+            },
+            "duration": 2000,
+            "name": "Wash123_Position",
+            "changed": 1559211567466
+        },
+        {
+            "id": "31237c71-8229-11e9-9a80-6f1f7d30afb2",
+            "keyframes": {
+                "0": {
+                    "modvColor": 23
+                },
+                "1": {
+                    "modvColor": 23
+                }
+            },
+            "duration": 2000,
+            "name": "Wash138",
+            "changed": 1559144904120
+        },
+        {
+            "id": "da10c300-82d4-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -1,
+                    "tilt": 32
+                },
+                "1": {
+                    "pan": -1,
+                    "tilt": 32
+                },
+                "0.5": {
+                    "pan": 23,
+                    "tilt": 32
+                }
+            },
+            "duration": 5000,
+            "name": "Wash138_Movement",
+            "changed": 1559221939174
+        },
+        {
+            "id": "fa0a3f80-82c3-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -1,
+                    "tilt": 32
+                },
+                "1": {
+                    "pan": -1,
+                    "tilt": 32
+                }
+            },
+            "duration": 2000,
+            "name": "Wash138_Position",
+            "changed": 1559218614309
+        },
+        {
+            "id": "385734a1-8229-11e9-9a80-6f1f7d30afb2",
+            "keyframes": {
+                "0": {
+                    "modvColor": 26
+                },
+                "1": {
+                    "modvColor": 26
+                }
+            },
+            "duration": 2000,
+            "name": "Wash153",
+            "changed": 1559144916202
+        },
+        {
+            "id": "20be8290-82d2-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": 10,
+                    "tilt": 31
+                },
+                "1": {
+                    "pan": 10,
+                    "tilt": 31
+                },
+                "0.5": {
+                    "pan": 37,
+                    "tilt": 30
+                }
+            },
+            "duration": 6000,
+            "name": "Wash153_Movement",
+            "changed": 1559222351498
+        },
+        {
+            "id": "fc9bbfd0-82c3-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": 10,
+                    "tilt": 31
+                },
+                "1": {
+                    "pan": 10,
+                    "tilt": 31
+                }
+            },
+            "duration": 2000,
+            "name": "Wash153_Position",
+            "changed": 1559211640484
+        },
+        {
+            "id": "402dbc81-8229-11e9-9a80-6f1f7d30afb2",
+            "keyframes": {
+                "0": {
+                    "modvColor": 29
+                },
+                "1": {
+                    "modvColor": 29
+                }
+            },
+            "duration": 2000,
+            "name": "Wash168",
+            "changed": 1559144929353
+        },
+        {
+            "id": "22b0b5a0-82d2-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": 15,
+                    "tilt": 33
+                },
+                "1": {
+                    "pan": 15,
+                    "tilt": 33
+                },
+                "0.5": {
+                    "pan": 30,
+                    "tilt": 45
+                }
+            },
+            "duration": 7000,
+            "name": "Wash168_Movement",
+            "changed": 1559222947035
+        },
+        {
+            "id": "feeed790-82c3-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": 15,
+                    "tilt": 33
+                },
+                "1": {
+                    "pan": 15,
+                    "tilt": 33
+                }
+            },
+            "duration": 2000,
+            "name": "Wash168_Position",
+            "changed": 1559211688255
+        },
+        {
+            "id": "4344f220-822a-11e9-9a80-6f1f7d30afb2",
+            "keyframes": {
+                "0": {
+                    "modvColor": 32
+                },
+                "1": {
+                    "modvColor": 32
+                }
+            },
+            "duration": 2000,
+            "name": "Wash183",
+            "changed": 1559145364035
+        },
+        {
+            "id": "24854e90-82d2-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": 24,
+                    "tilt": 31
+                },
+                "1": {
+                    "pan": 24,
+                    "tilt": 31
+                },
+                "0.5": {
+                    "pan": 30,
+                    "tilt": 35
+                }
+            },
+            "duration": 5000,
+            "name": "Wash183_Movement",
+            "changed": 1559223025516
+        },
+        {
+            "id": "00fc33c0-82c4-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": 24,
+                    "tilt": 32
+                },
+                "1": {
+                    "pan": 24,
+                    "tilt": 32
+                }
+            },
+            "duration": 2000,
+            "name": "Wash183_Position",
+            "changed": 1559211721686
+        },
+        {
+            "id": "06f8f5c0-82c8-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "modvColor": 15
+                },
+                "1": {
+                    "modvColor": 15
+                }
+            },
+            "duration": 2000,
+            "name": "Wash272",
+            "changed": 1559213123356
+        },
+        {
+            "id": "264722d0-82d2-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -59,
+                    "tilt": 30
+                },
+                "1": {
+                    "pan": -59,
+                    "tilt": 30
+                },
+                "0.5": {
+                    "pan": -30
+                }
+            },
+            "duration": 7000,
+            "name": "Wash272_Movement",
+            "changed": 1559225245058
+        },
+        {
+            "id": "0381cd30-82c4-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -59,
+                    "tilt": 30
+                },
+                "1": {
+                    "pan": -59,
+                    "tilt": 30
+                }
+            },
+            "duration": 2000,
+            "name": "Wash272_Position",
+            "changed": 1559211770876
+        },
+        {
+            "id": "6e8f2a40-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "modvColor": 15
+                },
+                "1": {
+                    "modvColor": 15
+                }
+            },
+            "duration": 2000,
+            "name": "Wash272-LiveJS",
+            "changed": 1559233483492
+        },
+        {
+            "id": "de1434f0-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "1": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "0.5": {
+                    "tilt": -48,
+                    "pan": -32
+                }
+            },
+            "duration": 6000,
+            "name": "Wash272-LiveJS-Movement",
+            "changed": 1559300372690
+        },
+        {
+            "id": "d9f84410-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "1": {
+                    "pan": -36,
+                    "tilt": -51
+                }
+            },
+            "duration": 2000,
+            "name": "Wash272-LiveJS-Position",
+            "changed": 1559233840398
+        },
+        {
+            "id": "0e7353e0-82c8-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "modvColor": 21
+                },
+                "1": {
+                    "modvColor": 21
+                }
+            },
+            "duration": 2000,
+            "name": "Wash287",
+            "changed": 1559213135902
+        },
+        {
+            "id": "283f4950-82d2-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -38,
+                    "tilt": 30
+                },
+                "1": {
+                    "pan": -38,
+                    "tilt": 30
+                },
+                "0.5": {
+                    "pan": -12
+                }
+            },
+            "duration": 8000,
+            "name": "Wash287_Movement",
+            "changed": 1559225249439
+        },
+        {
+            "id": "059e92b0-82c4-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -38,
+                    "tilt": 30
+                },
+                "1": {
+                    "pan": -38,
+                    "tilt": 30
+                }
+            },
+            "duration": 2000,
+            "name": "Wash287_Position",
+            "changed": 1559211887246
+        },
+        {
+            "id": "7b129860-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "modvColor": 21
+                },
+                "1": {
+                    "modvColor": 21
+                }
+            },
+            "duration": 2000,
+            "name": "Wash287-LiveJS",
+            "changed": 1559233504486
+        },
+        {
+            "id": "e2d3b8d0-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "1": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "0.5": {
+                    "pan": -42,
+                    "tilt": -43
+                }
+            },
+            "duration": 9000,
+            "name": "Wash287-LiveJS-Movement",
+            "changed": 1559301191169
+        },
+        {
+            "id": "e5c9a040-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "1": {
+                    "pan": -36,
+                    "tilt": -51
+                }
+            },
+            "duration": 2000,
+            "name": "Wash287-LiveJS-Position",
+            "changed": 1559234045950
+        },
+        {
+            "id": "142d6461-82c8-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "modvColor": 27
+                },
+                "1": {
+                    "modvColor": 27
+                }
+            },
+            "duration": 2000,
+            "name": "Wash302",
+            "changed": 1559225088567
+        },
+        {
+            "id": "29900c40-82d2-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -27,
+                    "tilt": 30
+                },
+                "1": {
+                    "pan": -27,
+                    "tilt": 30
+                },
+                "0.5": {
+                    "pan": -5
+                }
+            },
+            "duration": 3000,
+            "name": "Wash302_Movement",
+            "changed": 1559225301628
+        },
+        {
+            "id": "07922550-82c4-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -27,
+                    "tilt": 30
+                },
+                "1": {
+                    "pan": -27,
+                    "tilt": 30
+                }
+            },
+            "duration": 2000,
+            "name": "Wash302_Position",
+            "changed": 1559211941326
+        },
+        {
+            "id": "863257d0-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "modvColor": 27
+                },
+                "1": {
+                    "modvColor": 27
+                }
+            },
+            "duration": 2000,
+            "name": "Wash302-LiveJS",
+            "changed": 1559233526940
+        },
+        {
+            "id": "ec4923a0-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "1": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "0.5": {
+                    "pan": -22,
+                    "tilt": -46
+                }
+            },
+            "duration": 3333,
+            "name": "Wash302-LiveJS-Movement",
+            "changed": 1559300441997
+        },
+        {
+            "id": "e9430f90-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "1": {
+                    "pan": -36,
+                    "tilt": -51
+                }
+            },
+            "duration": 2000,
+            "name": "Wash302-LiveJS-Position",
+            "changed": 1559234112108
+        },
+        {
+            "id": "199228f0-82c8-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "modvColor": 33
+                },
+                "1": {
+                    "modvColor": 33
+                }
+            },
+            "duration": 2000,
+            "name": "Wash317",
+            "changed": 1559213154559
+        },
+        {
+            "id": "2b1106f0-82d2-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -22,
+                    "tilt": 34
+                },
+                "1": {
+                    "pan": -22,
+                    "tilt": 34
+                },
+                "0.5": {
+                    "pan": 5
+                }
+            },
+            "duration": 3000,
+            "name": "Wash317_Movement",
+            "changed": 1559234226754
+        },
+        {
+            "id": "09b616c0-82c4-11e9-a99e-bbeb273ffa0a",
+            "keyframes": {
+                "0": {
+                    "pan": -36,
+                    "tilt": 34
+                },
+                "1": {
+                    "pan": -36,
+                    "tilt": 34
+                }
+            },
+            "duration": 2000,
+            "name": "Wash317_Position",
+            "changed": 1559234131350
+        },
+        {
+            "id": "9325c5d0-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "modvColor": 33
+                },
+                "1": {
+                    "modvColor": 33
+                }
+            },
+            "duration": 2000,
+            "name": "Wash317-LiveJS",
+            "changed": 1559233544877
+        },
+        {
+            "id": "ef82f1e0-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "1": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "0.5": {
+                    "pan": -30,
+                    "tilt": -38
+                }
+            },
+            "duration": 5500,
+            "name": "Wash317-LiveJS-Movement",
+            "changed": 1559300486967
+        },
+        {
+            "id": "f20e0990-82f7-11e9-aca2-158c1e3230e2",
+            "keyframes": {
+                "0": {
+                    "pan": -36,
+                    "tilt": -51
+                },
+                "1": {
+                    "pan": -36,
+                    "tilt": -51
+                }
+            },
+            "duration": 2000,
+            "name": "Wash317-LiveJS-Position",
+            "changed": 1559234253399
+        },
+        {
+            "id": "be0bd530-83d5-11e9-ab66-5159ceb71c8b",
+            "keyframes": {
+                "0": {
+                    "modvColor": 23
+                },
+                "1": {
+                    "modvColor": 23
+                }
+            },
+            "duration": 2000,
+            "name": "PixelLiveJSStage380",
+            "changed": 1559328965123
+        }
+    ],
+    "fixtureManager": [
+        {
+            "id": "6a675bf0-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel1",
+            "universe": 0,
+            "address": 1,
+            "properties": {}
+        },
+        {
+            "id": "6a678300-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel5",
+            "universe": 0,
+            "address": 5,
+            "properties": {}
+        },
+        {
+            "id": "6a67aa10-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel9",
+            "universe": 0,
+            "address": 9,
+            "properties": {}
+        },
+        {
+            "id": "6a67aa11-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel13",
+            "universe": 0,
+            "address": 13,
+            "properties": {}
+        },
+        {
+            "id": "6a67aa12-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel17",
+            "universe": 0,
+            "address": 17,
+            "properties": {}
+        },
+        {
+            "id": "6a67aa13-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel21",
+            "universe": 0,
+            "address": 21,
+            "properties": {}
+        },
+        {
+            "id": "6a67d120-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel25",
+            "universe": 0,
+            "address": 25,
+            "properties": {}
+        },
+        {
+            "id": "6a67d121-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel29",
+            "universe": 0,
+            "address": 29,
+            "properties": {}
+        },
+        {
+            "id": "6a67d122-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel33",
+            "universe": 0,
+            "address": 33,
+            "properties": {}
+        },
+        {
+            "id": "6a67f830-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel37",
+            "universe": 0,
+            "address": 37,
+            "properties": {}
+        },
+        {
+            "id": "6a67f831-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel41",
+            "universe": 0,
+            "address": 41,
+            "properties": {}
+        },
+        {
+            "id": "6a67f832-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel45",
+            "universe": 0,
+            "address": 45,
+            "properties": {}
+        },
+        {
+            "id": "6a681f40-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel49",
+            "universe": 0,
+            "address": 49,
+            "properties": {}
+        },
+        {
+            "id": "6a681f41-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel53",
+            "universe": 0,
+            "address": 53,
+            "properties": {}
+        },
+        {
+            "id": "6a681f42-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel57",
+            "universe": 0,
+            "address": 57,
+            "properties": {}
+        },
+        {
+            "id": "6a684650-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel61",
+            "universe": 0,
+            "address": 61,
+            "properties": {
+                "color": [
+                    0,
+                    249,
+                    0
+                ]
+            }
+        },
+        {
+            "id": "6a686d60-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel65",
+            "universe": 0,
+            "address": 65,
+            "properties": {
+                "color": [
+                    142,
+                    250,
+                    0
+                ]
+            }
+        },
+        {
+            "id": "cc775bc0-82fa-11e9-aca2-158c1e3230e2",
+            "type": "BasicRGBW",
+            "name": "Pixel69",
+            "universe": 0,
+            "address": 69,
+            "properties": {
+                "color": [
+                    146,
+                    146,
+                    146
+                ]
+            }
+        },
+        {
+            "id": "6a689471-821a-11e9-a7b7-f70f734cb349",
+            "type": "BasicRGBW",
+            "name": "Pixel73",
+            "universe": 0,
+            "address": 73,
+            "properties": {
+                "color": [
+                    115,
+                    250,
+                    121
+                ]
+            }
+        },
+        {
+            "id": "35afa730-821c-11e9-9e0d-6fc7e4fa41eb",
+            "type": "BasicRGBW",
+            "name": "Pixel77",
+            "universe": 0,
+            "address": 77,
+            "properties": {}
+        },
+        {
+            "id": "35afce40-821c-11e9-9e0d-6fc7e4fa41eb",
+            "type": "BasicRGBW",
+            "name": "Pixel81",
+            "universe": 0,
+            "address": 81,
+            "properties": {}
+        },
+        {
+            "id": "bdc08750-8304-11e9-99cb-795e6aaf2d8a",
+            "type": "BasicRGBW",
+            "name": "PixelLiveJSStage350",
+            "universe": 0,
+            "address": 350,
+            "properties": {
+                "color": [
+                    255,
+                    0,
+                    0
+                ]
+            }
+        },
+        {
+            "id": "9d4cce80-83d5-11e9-ab66-5159ceb71c8b",
+            "type": "BasicRGBW",
+            "name": "PixelLiveJSStage380",
+            "universe": 0,
+            "address": 380,
+            "properties": {
+                "color": [
+                    0,
+                    255,
+                    0
+                ],
+                "white": 255
+            }
+        },
+        {
+            "id": "ca4b5c70-8228-11e9-9a80-6f1f7d30afb2",
+            "type": "RobeRobin300LEDWash",
+            "name": "Wash93",
+            "universe": 0,
+            "address": 93,
+            "properties": {}
+        },
+        {
+            "id": "ca4b8380-8228-11e9-9a80-6f1f7d30afb2",
+            "type": "RobeRobin300LEDWash",
+            "name": "Wash108",
+            "universe": 0,
+            "address": 108,
+            "properties": {}
+        },
+        {
+            "id": "ca4baa90-8228-11e9-9a80-6f1f7d30afb2",
+            "type": "RobeRobin300LEDWash",
+            "name": "Wash123",
+            "universe": 0,
+            "address": 123,
+            "properties": {}
+        },
+        {
+            "id": "ca4bf8b0-8228-11e9-9a80-6f1f7d30afb2",
+            "type": "RobeRobin300LEDWash",
+            "name": "Wash138",
+            "universe": 0,
+            "address": 138,
+            "properties": {}
+        },
+        {
+            "id": "ca4bf8b1-8228-11e9-9a80-6f1f7d30afb2",
+            "type": "RobeRobin300LEDWash",
+            "name": "Wash153",
+            "universe": 0,
+            "address": 153,
+            "properties": {}
+        },
+        {
+            "id": "ca4c1fc0-8228-11e9-9a80-6f1f7d30afb2",
+            "type": "RobeRobin300LEDWash",
+            "name": "Wash168",
+            "universe": 0,
+            "address": 168,
+            "properties": {}
+        },
+        {
+            "id": "ca4c46d0-8228-11e9-9a80-6f1f7d30afb2",
+            "type": "RobeRobin300LEDWash",
+            "name": "Wash183",
+            "universe": 0,
+            "address": 183,
+            "properties": {}
+        },
+        {
+            "id": "e34eb640-8228-11e9-9a80-6f1f7d30afb2",
+            "type": "RobeRobin300LEDWash",
+            "name": "Wash272",
+            "universe": 0,
+            "address": 272,
+            "properties": {}
+        },
+        {
+            "id": "e34edd50-8228-11e9-9a80-6f1f7d30afb2",
+            "type": "RobeRobin300LEDWash",
+            "name": "Wash287",
+            "universe": 0,
+            "address": 287,
+            "properties": {}
+        },
+        {
+            "id": "e34f0460-8228-11e9-9a80-6f1f7d30afb2",
+            "type": "RobeRobin300LEDWash",
+            "name": "Wash302",
+            "universe": 0,
+            "address": 302,
+            "properties": {}
+        },
+        {
+            "id": "e34f0461-8228-11e9-9a80-6f1f7d30afb2",
+            "type": "RobeRobin300LEDWash",
+            "name": "Wash317",
+            "universe": 0,
+            "address": 317,
+            "properties": {}
+        }
+    ],
+    "midiManager": {
+        "controllers": [
+            {
+                "id": "59a2c080-4015-11e9-8b10-87533eeed722",
+                "name": "KORG nanoKONTROL 2",
+                "input": "nanoKONTROL2",
+                "output": "nanoKONTROL2",
+                "width": 8,
+                "height": 3,
+                "mapping": [
+                    {
+                        "scenes": [
+                            "995b9f72-821a-11e9-a7b7-f70f734cb349",
+                            "a736d562-821a-11e9-a7b7-f70f734cb349",
+                            "ac615010-821a-11e9-a7b7-f70f734cb349",
+                            "b32d93e0-821a-11e9-a7b7-f70f734cb349",
+                            "9eea3db0-821b-11e9-9e0d-6fc7e4fa41eb",
+                            "b70d49a1-821b-11e9-9e0d-6fc7e4fa41eb",
+                            "be5ffb81-821b-11e9-9e0d-6fc7e4fa41eb",
+                            "c67b0671-821b-11e9-9e0d-6fc7e4fa41eb",
+                            "da761392-821b-11e9-9e0d-6fc7e4fa41eb",
+                            "e0028462-821b-11e9-9e0d-6fc7e4fa41eb",
+                            "e5e4b651-821b-11e9-9e0d-6fc7e4fa41eb",
+                            "ec440781-821b-11e9-9e0d-6fc7e4fa41eb",
+                            "f53e4ee0-821b-11e9-9e0d-6fc7e4fa41eb",
+                            "fbe24a32-821b-11e9-9e0d-6fc7e4fa41eb",
+                            "048dfc61-821c-11e9-9e0d-6fc7e4fa41eb",
+                            "0c5b0e61-821c-11e9-9e0d-6fc7e4fa41eb",
+                            "11c06f31-821c-11e9-9e0d-6fc7e4fa41eb",
+                            "3e5c1cb2-821c-11e9-9e0d-6fc7e4fa41eb",
+                            "42a02f01-821c-11e9-9e0d-6fc7e4fa41eb",
+                            "42bb63d0-82fb-11e9-92c1-e9c9c0bad3d5",
+                            "12642960-8305-11e9-99cb-795e6aaf2d8a",
+                            "be0bfc40-83d5-11e9-ab66-5159ceb71c8b"
+                        ],
+                        "note": 32,
+                        "label": "Pixel",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [
+                            "3b3f5910-822c-11e9-9068-c96ca159357b",
+                            "1e686960-8229-11e9-9a80-6f1f7d30afb2",
+                            "24d91fb1-8229-11e9-9a80-6f1f7d30afb2",
+                            "2b327d71-8229-11e9-9a80-6f1f7d30afb2",
+                            "3123a380-8229-11e9-9a80-6f1f7d30afb2",
+                            "38575bb0-8229-11e9-9a80-6f1f7d30afb2",
+                            "402de390-8229-11e9-9a80-6f1f7d30afb2",
+                            "43451930-822a-11e9-9a80-6f1f7d30afb2",
+                            "a5cd99a0-82e4-11e9-b099-3b0177328492",
+                            "ac0342c0-82e4-11e9-b099-3b0177328492",
+                            "b1c4a640-82e4-11e9-b099-3b0177328492",
+                            "b7832390-82e4-11e9-b099-3b0177328492"
+                        ],
+                        "note": 33,
+                        "label": "Wash Main Stage",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [
+                            "2b0c0410-82b5-11e9-a773-098f2353d044",
+                            "6e8f5150-82f7-11e9-aca2-158c1e3230e2",
+                            "7b129861-82f7-11e9-aca2-158c1e3230e2",
+                            "86327ee0-82f7-11e9-aca2-158c1e3230e2",
+                            "9325ece0-82f7-11e9-aca2-158c1e3230e2",
+                            "12642960-8305-11e9-99cb-795e6aaf2d8a"
+                        ],
+                        "note": 34,
+                        "label": "Wash LiveJS Stage",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [
+                            "12642960-8305-11e9-99cb-795e6aaf2d8a",
+                            "be0bfc40-83d5-11e9-ab66-5159ceb71c8b"
+                        ],
+                        "note": 35,
+                        "label": "LiveJS Stage",
+                        "type": "Button",
+                        "active": true,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 36,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 37,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 38,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [
+                            "bc4b7df0-821c-11e9-9a80-6f1f7d30afb2"
+                        ],
+                        "note": 39,
+                        "label": "Test",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 48,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [
+                            "992fddd0-82c5-11e9-a99e-bbeb273ffa0a",
+                            "f486bd70-82c5-11e9-a99e-bbeb273ffa0a",
+                            "f9f2d500-82c5-11e9-a99e-bbeb273ffa0a",
+                            "ffa32180-82c5-11e9-a99e-bbeb273ffa0a",
+                            "064ff670-82c6-11e9-a99e-bbeb273ffa0a",
+                            "0d3344b0-82c6-11e9-a99e-bbeb273ffa0a",
+                            "14ca5290-82c6-11e9-a99e-bbeb273ffa0a",
+                            "4855f880-82c6-11e9-a99e-bbeb273ffa0a",
+                            "4e122be0-82c6-11e9-a99e-bbeb273ffa0a",
+                            "551fbe70-82c6-11e9-a99e-bbeb273ffa0a",
+                            "5dcb97b0-82c6-11e9-a99e-bbeb273ffa0a"
+                        ],
+                        "note": 49,
+                        "label": "Wash Main Stage: Default Position",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [
+                            "6decb340-82f8-11e9-aca2-158c1e3230e2",
+                            "47072930-82f9-11e9-aca2-158c1e3230e2",
+                            "5fee6f80-82f9-11e9-aca2-158c1e3230e2",
+                            "a5f0a570-82f9-11e9-aca2-158c1e3230e2"
+                        ],
+                        "note": 50,
+                        "label": "LiveJS Stage: Default Position",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 51,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 52,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 53,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 54,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 55,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 64,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [
+                            "40a53630-82c8-11e9-a99e-bbeb273ffa0a",
+                            "913d2f80-82d2-11e9-a99e-bbeb273ffa0a",
+                            "597bb2a0-82d3-11e9-a99e-bbeb273ffa0a",
+                            "c4599f40-82da-11e9-b40c-13b3d3e584e7",
+                            "38057ad0-82dc-11e9-98c3-8d86d16cb640",
+                            "1d651d60-82dd-11e9-98c3-8d86d16cb640",
+                            "5c989e80-82dd-11e9-98c3-8d86d16cb640",
+                            "ca3e84c0-82e4-11e9-b099-3b0177328492",
+                            "d25067f0-82e4-11e9-b099-3b0177328492",
+                            "d89ad190-82e4-11e9-b099-3b0177328492",
+                            "ddf758c0-82e4-11e9-b099-3b0177328492"
+                        ],
+                        "note": 65,
+                        "label": "Main Stage: Move",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [
+                            "651c3b00-82f8-11e9-aca2-158c1e3230e2",
+                            "52120110-82f9-11e9-aca2-158c1e3230e2",
+                            "5a91e850-82f9-11e9-aca2-158c1e3230e2",
+                            "9e93e170-82f9-11e9-aca2-158c1e3230e2"
+                        ],
+                        "note": 66,
+                        "label": "LiveJS Stage: Move",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 67,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 68,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 69,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 70,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 71,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    }
+                ]
+            },
+            {
+                "id": "53984340-deb3-11e8-a58f-011855131eb5",
+                "name": "Launchpad Mini",
+                "input": "6- Launchpad Mini",
+                "output": "6- Launchpad Mini",
+                "width": 8,
+                "height": 8,
+                "mapping": [
+                    {
+                        "scenes": [],
+                        "note": 0,
+                        "label": "WHITE",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 1,
+                        "label": "schickmalzwo",
+                        "type": "Button",
+                        "active": true,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 2,
+                        "label": "Waveform",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 3,
+                        "label": "Polygon",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 4,
+                        "label": "Polygon MOVE",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 5,
+                        "label": "BALL",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 6,
+                        "label": "Doughnut",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 7,
+                        "label": "Un Deux Trois",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 16,
+                        "label": "FIRE",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 17,
+                        "label": "OCEAN",
+                        "type": "Button",
+                        "active": true,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 18,
+                        "label": "FRACTALS",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 19,
+                        "label": "HEXAGON",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 20,
+                        "label": "Plasma",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 21,
+                        "label": "Collapsing Architecture",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 22,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 23,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 32,
+                        "label": "Ocean Structure",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 33,
+                        "label": "Super Mario Bros.",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 34,
+                        "label": "Fractal Land",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 35,
+                        "label": "Red Canyon",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 36,
+                        "label": "Galaxy of Universes",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 37,
+                        "label": "Tokyo",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 38,
+                        "label": "Minecraft Blocks",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 39,
+                        "label": "Voxel Pac-Man",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 48,
+                        "label": "strobe",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 49,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 50,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 51,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 52,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 53,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 54,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 55,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 64,
+                        "label": "Chromatic (Hostile)",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 65,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 66,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 67,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 68,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 69,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 70,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 71,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 80,
+                        "label": "Chromatic STATIC",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 81,
+                        "label": "Chromatic MOVING",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 82,
+                        "label": "Collage",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 83,
+                        "label": "CRT",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 84,
+                        "label": "BADTV",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 85,
+                        "label": "TRIANGLES",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 86,
+                        "label": "ASCII",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 87,
+                        "label": "PIXELATE",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 96,
+                        "label": "Pinch",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 97,
+                        "label": "Feedback",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 98,
+                        "label": "Optical Flow Distort STATIC",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 99,
+                        "label": "Optical Flow Distort MOVING",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 100,
+                        "label": "Fisheye",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 101,
+                        "label": "Mirror Edge",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 102,
+                        "label": "Edge Distort",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 103,
+                        "label": "Echo Trace",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 112,
+                        "label": "RGB Time Glitch",
+                        "type": "Button",
+                        "active": true,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 113,
+                        "label": "VHS Glitch",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 114,
+                        "label": "RGB Halftone",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 115,
+                        "label": "Convergence",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 116,
+                        "label": "Trans Warp Spiral",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 117,
+                        "label": "Slice",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 118,
+                        "label": "Roto Zoomer",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    },
+                    {
+                        "scenes": [],
+                        "note": 119,
+                        "label": "",
+                        "type": "Button",
+                        "active": false,
+                        "value": 0
+                    }
+                ]
+            }
+        ],
+        "enabled": true,
+        "learning": -1
+    },
+    "app": {
+        "drawerOpened": false,
+        "page": "midi"
+    },
+    "timeline": {
+        "scenes": [
+            {
+                "sceneId": "12642960-8305-11e9-99cb-795e6aaf2d8a",
+                "timelineSceneId": "bfa0a5b0-8538-11e9-8c85-31060b95187f",
+                "adapt": true,
+                "type": "static",
+                "added": 1559481439115,
+                "started": 1560391430878,
+                "priority": 0
+            },
+            {
+                "sceneId": "be0bfc40-83d5-11e9-ab66-5159ceb71c8b",
+                "timelineSceneId": "bfa0ccc0-8538-11e9-8c85-31060b95187f",
+                "adapt": true,
+                "type": "static",
+                "added": 1559481439116,
+                "started": 1560391430879,
+                "priority": 0
+            }
+        ],
+        "playing": false,
+        "progress": 0
+    },
+    "venueManager": [
+        {
+            "id": "ab658450-82b1-11e9-aaf0-67b0ce40def8",
+            "name": "LiveJS Stage",
+            "width": 9,
+            "height": 6,
+            "modv": {
+                "width": 9,
+                "height": 6
+            },
+            "slots": [
+                {
+                    "x": 1,
+                    "y": 1,
+                    "name": "Wash272-LiveJS",
+                    "id": "6e8eb510-82f7-11e9-aca2-158c1e3230e2",
+                    "modv": 15,
+                    "animations": [
+                        "6e8f2a40-82f7-11e9-aca2-158c1e3230e2"
+                    ],
+                    "sceneId": "6e8f5150-82f7-11e9-aca2-158c1e3230e2",
+                    "fixtures": [
+                        "e34eb640-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 3,
+                    "y": 1,
+                    "name": "Wash287-LiveJS",
+                    "id": "7b127150-82f7-11e9-aca2-158c1e3230e2",
+                    "modv": 21,
+                    "animations": [
+                        "7b129860-82f7-11e9-aca2-158c1e3230e2"
+                    ],
+                    "sceneId": "7b129861-82f7-11e9-aca2-158c1e3230e2",
+                    "fixtures": [
+                        "e34edd50-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 5,
+                    "y": 1,
+                    "name": "Wash302-LiveJS",
+                    "id": "863230c0-82f7-11e9-aca2-158c1e3230e2",
+                    "modv": 27,
+                    "animations": [
+                        "863257d0-82f7-11e9-aca2-158c1e3230e2"
+                    ],
+                    "sceneId": "86327ee0-82f7-11e9-aca2-158c1e3230e2",
+                    "fixtures": [
+                        "e34f0460-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 7,
+                    "y": 1,
+                    "name": "Wash317-LiveJS",
+                    "id": "93259ec0-82f7-11e9-aca2-158c1e3230e2",
+                    "modv": 33,
+                    "animations": [
+                        "9325c5d0-82f7-11e9-aca2-158c1e3230e2"
+                    ],
+                    "sceneId": "9325ece0-82f7-11e9-aca2-158c1e3230e2",
+                    "fixtures": [
+                        "e34f0461-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 4,
+                    "y": 3,
+                    "name": "Pixel-LiveJS",
+                    "id": "8a1b0ad0-8393-11e9-a310-49ab25342c15",
+                    "modv": 29,
+                    "animations": [
+                        "8a1b0ad1-8393-11e9-a310-49ab25342c15"
+                    ],
+                    "sceneId": "8a1b31e0-8393-11e9-a310-49ab25342c15",
+                    "fixtures": [
+                        "bdc08750-8304-11e9-99cb-795e6aaf2d8a"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "60ba7460-6b87-11e9-8e81-7728f1280188",
+            "name": "Main Stage",
+            "width": 15,
+            "height": 6,
+            "modv": {
+                "width": 15,
+                "height": 3
+            },
+            "slots": [
+                {
+                    "x": 0,
+                    "y": 2,
+                    "name": "Pixel1",
+                    "id": "995b9f70-821a-11e9-a7b7-f70f734cb349",
+                    "modv": 3,
+                    "animations": [
+                        "995b9f71-821a-11e9-a7b7-f70f734cb349"
+                    ],
+                    "sceneId": "995b9f72-821a-11e9-a7b7-f70f734cb349",
+                    "fixtures": [
+                        "6a675bf0-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 0,
+                    "y": 1,
+                    "name": "Pixel5",
+                    "id": "a736d560-821a-11e9-a7b7-f70f734cb349",
+                    "modv": 2,
+                    "animations": [
+                        "a736d561-821a-11e9-a7b7-f70f734cb349"
+                    ],
+                    "sceneId": "a736d562-821a-11e9-a7b7-f70f734cb349",
+                    "fixtures": [
+                        "6a678300-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 0,
+                    "y": 0,
+                    "name": "Pixel9",
+                    "id": "ac612900-821a-11e9-a7b7-f70f734cb349",
+                    "modv": 1,
+                    "animations": [
+                        "ac612901-821a-11e9-a7b7-f70f734cb349"
+                    ],
+                    "sceneId": "ac615010-821a-11e9-a7b7-f70f734cb349",
+                    "fixtures": [
+                        "6a67aa10-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 1,
+                    "y": 0,
+                    "name": "Pixel13",
+                    "id": "b32d6cd0-821a-11e9-a7b7-f70f734cb349",
+                    "modv": 4,
+                    "animations": [
+                        "b32d6cd1-821a-11e9-a7b7-f70f734cb349"
+                    ],
+                    "sceneId": "b32d93e0-821a-11e9-a7b7-f70f734cb349",
+                    "fixtures": [
+                        "6a67aa11-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 2,
+                    "y": 0,
+                    "name": "Pixel17",
+                    "id": "9eea16a0-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 7,
+                    "animations": [
+                        "9eea16a1-821b-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "9eea3db0-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a67aa12-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 3,
+                    "y": 0,
+                    "name": "Pixel21",
+                    "id": "b70d2290-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 10,
+                    "animations": [
+                        "b70d49a0-821b-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "b70d49a1-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a67aa13-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 4,
+                    "y": 0,
+                    "name": "Pixel29",
+                    "id": "be5fd470-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 13,
+                    "animations": [
+                        "be5ffb80-821b-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "be5ffb81-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a67d121-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 5,
+                    "y": 0,
+                    "name": "Pixel33",
+                    "id": "c67adf60-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 16,
+                    "animations": [
+                        "c67b0670-821b-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "c67b0671-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a67d122-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 6,
+                    "y": 0,
+                    "name": "Pixel37",
+                    "id": "da761390-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 19,
+                    "animations": [
+                        "da761391-821b-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "da761392-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a67f830-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 7,
+                    "y": 0,
+                    "name": "Pixel41",
+                    "id": "e0028460-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 22,
+                    "animations": [
+                        "e0028461-821b-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "e0028462-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a67f831-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 8,
+                    "y": 0,
+                    "name": "Pixel45",
+                    "id": "e5e48f40-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 25,
+                    "animations": [
+                        "e5e4b650-821b-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "e5e4b651-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a67f832-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 9,
+                    "y": 0,
+                    "name": "Pixel49",
+                    "id": "ec43e070-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 28,
+                    "animations": [
+                        "ec440780-821b-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "ec440781-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a681f40-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 10,
+                    "y": 0,
+                    "name": "Pixel53",
+                    "id": "f53e27d0-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 31,
+                    "animations": [
+                        "f53e27d1-821b-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "f53e4ee0-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a681f41-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 11,
+                    "y": 0,
+                    "name": "Pixel57",
+                    "id": "fbe24a30-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 34,
+                    "animations": [
+                        "fbe24a31-821b-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "fbe24a32-821b-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a681f42-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 12,
+                    "y": 0,
+                    "name": "Pixel61",
+                    "id": "048dd550-821c-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 37,
+                    "animations": [
+                        "048dfc60-821c-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "048dfc61-821c-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a684650-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 13,
+                    "y": 0,
+                    "name": "Pixel65",
+                    "id": "0c5ae750-821c-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 40,
+                    "animations": [
+                        "0c5b0e60-821c-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "0c5b0e61-821c-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a686d60-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 14,
+                    "y": 0,
+                    "name": "Pixel73",
+                    "id": "11c04820-821c-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 43,
+                    "animations": [
+                        "11c06f30-821c-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "11c06f31-821c-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "6a689471-821a-11e9-a7b7-f70f734cb349"
+                    ]
+                },
+                {
+                    "x": 14,
+                    "y": 1,
+                    "name": "Pixel77",
+                    "id": "3e5c1cb0-821c-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 44,
+                    "animations": [
+                        "3e5c1cb1-821c-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "3e5c1cb2-821c-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "35afa730-821c-11e9-9e0d-6fc7e4fa41eb"
+                    ]
+                },
+                {
+                    "x": 14,
+                    "y": 2,
+                    "name": "Pixel81",
+                    "id": "42a007f0-821c-11e9-9e0d-6fc7e4fa41eb",
+                    "modv": 45,
+                    "animations": [
+                        "42a02f00-821c-11e9-9e0d-6fc7e4fa41eb"
+                    ],
+                    "sceneId": "42a02f01-821c-11e9-9e0d-6fc7e4fa41eb",
+                    "fixtures": [
+                        "35afce40-821c-11e9-9e0d-6fc7e4fa41eb"
+                    ]
+                },
+                {
+                    "x": 4,
+                    "y": 3,
+                    "name": "Wash93",
+                    "id": "1e67cd20-8229-11e9-9a80-6f1f7d30afb2",
+                    "modv": 14,
+                    "animations": [
+                        "1e684250-8229-11e9-9a80-6f1f7d30afb2"
+                    ],
+                    "sceneId": "1e686960-8229-11e9-9a80-6f1f7d30afb2",
+                    "fixtures": [
+                        "ca4b5c70-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 5,
+                    "y": 3,
+                    "name": "Wash108",
+                    "id": "24d8f8a0-8229-11e9-9a80-6f1f7d30afb2",
+                    "modv": 17,
+                    "animations": [
+                        "24d91fb0-8229-11e9-9a80-6f1f7d30afb2"
+                    ],
+                    "sceneId": "24d91fb1-8229-11e9-9a80-6f1f7d30afb2",
+                    "fixtures": [
+                        "ca4b8380-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 6,
+                    "y": 3,
+                    "name": "Wash123",
+                    "id": "2b325660-8229-11e9-9a80-6f1f7d30afb2",
+                    "modv": 20,
+                    "animations": [
+                        "2b327d70-8229-11e9-9a80-6f1f7d30afb2"
+                    ],
+                    "sceneId": "2b327d71-8229-11e9-9a80-6f1f7d30afb2",
+                    "fixtures": [
+                        "ca4baa90-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 7,
+                    "y": 3,
+                    "name": "Wash138",
+                    "id": "31237c70-8229-11e9-9a80-6f1f7d30afb2",
+                    "modv": 23,
+                    "animations": [
+                        "31237c71-8229-11e9-9a80-6f1f7d30afb2"
+                    ],
+                    "sceneId": "3123a380-8229-11e9-9a80-6f1f7d30afb2",
+                    "fixtures": [
+                        "ca4bf8b0-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 8,
+                    "y": 3,
+                    "name": "Wash153",
+                    "id": "385734a0-8229-11e9-9a80-6f1f7d30afb2",
+                    "modv": 26,
+                    "animations": [
+                        "385734a1-8229-11e9-9a80-6f1f7d30afb2"
+                    ],
+                    "sceneId": "38575bb0-8229-11e9-9a80-6f1f7d30afb2",
+                    "fixtures": [
+                        "ca4bf8b1-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 9,
+                    "y": 3,
+                    "name": "Wash168",
+                    "id": "402dbc80-8229-11e9-9a80-6f1f7d30afb2",
+                    "modv": 29,
+                    "animations": [
+                        "402dbc81-8229-11e9-9a80-6f1f7d30afb2"
+                    ],
+                    "sceneId": "402de390-8229-11e9-9a80-6f1f7d30afb2",
+                    "fixtures": [
+                        "ca4c1fc0-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 10,
+                    "y": 3,
+                    "name": "Wash183",
+                    "id": "4344cb10-822a-11e9-9a80-6f1f7d30afb2",
+                    "modv": 32,
+                    "animations": [
+                        "4344f220-822a-11e9-9a80-6f1f7d30afb2"
+                    ],
+                    "sceneId": "43451930-822a-11e9-9a80-6f1f7d30afb2",
+                    "fixtures": [
+                        "ca4c46d0-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 4,
+                    "y": 5,
+                    "name": "Wash272",
+                    "id": "06f8ceb0-82c8-11e9-a99e-bbeb273ffa0a",
+                    "modv": 15,
+                    "animations": [
+                        "06f8f5c0-82c8-11e9-a99e-bbeb273ffa0a"
+                    ],
+                    "sceneId": "06f91cd0-82c8-11e9-a99e-bbeb273ffa0a",
+                    "fixtures": [
+                        "e34eb640-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 6,
+                    "y": 5,
+                    "name": "Wash287",
+                    "id": "0e732cd0-82c8-11e9-a99e-bbeb273ffa0a",
+                    "modv": 21,
+                    "animations": [
+                        "0e7353e0-82c8-11e9-a99e-bbeb273ffa0a"
+                    ],
+                    "sceneId": "0e7353e1-82c8-11e9-a99e-bbeb273ffa0a",
+                    "fixtures": [
+                        "e34edd50-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 8,
+                    "y": 5,
+                    "name": "Wash302",
+                    "id": "142d6460-82c8-11e9-a99e-bbeb273ffa0a",
+                    "modv": 27,
+                    "animations": [
+                        "142d6461-82c8-11e9-a99e-bbeb273ffa0a"
+                    ],
+                    "sceneId": "142d8b70-82c8-11e9-a99e-bbeb273ffa0a",
+                    "fixtures": [
+                        "e34f0460-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 10,
+                    "y": 5,
+                    "name": "Wash317",
+                    "id": "199201e0-82c8-11e9-a99e-bbeb273ffa0a",
+                    "modv": 33,
+                    "animations": [
+                        "199228f0-82c8-11e9-a99e-bbeb273ffa0a"
+                    ],
+                    "sceneId": "199228f1-82c8-11e9-a99e-bbeb273ffa0a",
+                    "fixtures": [
+                        "e34f0461-8228-11e9-9a80-6f1f7d30afb2"
+                    ]
+                },
+                {
+                    "x": 13,
+                    "y": 1,
+                    "name": "Pixel69",
+                    "id": "42bb15b0-82fb-11e9-92c1-e9c9c0bad3d5",
+                    "modv": 15,
+                    "animations": [
+                        "42bb3cc0-82fb-11e9-92c1-e9c9c0bad3d5"
+                    ],
+                    "sceneId": "42bb63d0-82fb-11e9-92c1-e9c9c0bad3d5",
+                    "fixtures": [
+                        "cc775bc0-82fa-11e9-aca2-158c1e3230e2"
+                    ]
+                },
+                {
+                    "x": 7,
+                    "y": 2,
+                    "name": "PixelLiveJSStage350",
+                    "id": "12638d20-8305-11e9-99cb-795e6aaf2d8a",
+                    "modv": 23,
+                    "animations": [
+                        "1263db40-8305-11e9-99cb-795e6aaf2d8a"
+                    ],
+                    "sceneId": "12642960-8305-11e9-99cb-795e6aaf2d8a",
+                    "fixtures": [
+                        "bdc08750-8304-11e9-99cb-795e6aaf2d8a"
+                    ]
+                },
+                {
+                    "x": 8,
+                    "y": 2,
+                    "name": "PixelLiveJSStage380",
+                    "id": "be0b6000-83d5-11e9-ab66-5159ceb71c8b",
+                    "modv": 23,
+                    "animations": [
+                        "be0bd530-83d5-11e9-ab66-5159ceb71c8b"
+                    ],
+                    "sceneId": "be0bfc40-83d5-11e9-ab66-5159ceb71c8b",
+                    "fixtures": [
+                        "9d4cce80-83d5-11e9-ab66-5159ceb71c8b"
+                    ]
+                }
+            ]
+        }
+    ],
+    "modvManager": {
+        "connected": true,
+        "url": "ws://localhost:3006/luminave",
+        "reconnect": true,
+        "data": {
+            "url": "ws://localhost:3006"
+        }
+    },
+    "luminaveServer": {
+        "reconnect": false,
+        "connected": false,
+        "url": "ws://localhost:4000/graphql",
+        "animationId": null,
+        "thorium": {
+            "scenes": [
+                {
+                    "name": "color-red",
+                    "type": "static",
+                    "adapt": true,
+                    "timelineSceneId": "2af499d0-7fa7-11e9-bfdc-f3028a04f7b0"
+                }
+            ]
+        }
+    }
+}

@@ -19,6 +19,8 @@ class LiveMode extends connect(store)(LitElement) {
 
   handleLive() {
     store.dispatch(setLive(!this.live))
+
+    window.dispatchEvent(new CustomEvent('save-config-into-localstorage', { detail: { 'live': this.live } }))
   }
 
   render() {

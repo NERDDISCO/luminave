@@ -68,12 +68,7 @@ git clone git@github.com:NERDDISCO/luminave.git
 cd luminave
 
 # install dependencies
-yarn
-# or
 npm install
-
-# install polymer-cli which is used to run luminave
-npm install -g polymer-cli
 ```
 
 ## Run
@@ -81,8 +76,6 @@ npm install -g polymer-cli
 Start the local HTTPS server on http://localhost:8081:
 
 ```bash
-yarn start
-# or
 npm start
 ```
 
