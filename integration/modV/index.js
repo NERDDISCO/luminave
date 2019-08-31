@@ -18,9 +18,20 @@ console.log('modv-integration', '|', 'WebSocket server on port', port)
       // Broadcast to all connected clients
       server.connections.forEach(con => {
 
+        if (con.readyState !== con.OPEN) {
+          return
+        }
+
         // The client connection came from luminave
         if (con.path === '/luminave') {
           con.sendText(JSON.stringify(dmxData))
+        }
+
+        // The client connection came from cyberpunk goggles
+        if (con.path === '/cyberpunk') {
+          const colors = JSON.stringify(dmxData.colors.slice(0, 3))
+          // console.log('send to cyberpunk', JSON.stringify(colors))
+          con.sendText(colors) 
         }
       })
     })
@@ -33,8 +44,14 @@ console.log('modv-integration', '|', 'WebSocket server on port', port)
     })
 
     connection.on('error', error => {
+      console.log('modv-integration', '|', 'Error by', connection.path, 'with code', error.code)
+
+      if (error.code === 'EHOSTDOWN' || error.code === 'ETIMEDOUT') {
+        return
+      }
+
+      // Ignore ECONNRESET and re throw anything else
       if (error.code !== 'ECONNRESET') {
-        // Ignore ECONNRESET and re throw anything else
         throw error
       }
     })
