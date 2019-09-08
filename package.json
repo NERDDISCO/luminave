@@ -87,7 +87,6 @@
     "pixelmatch": "^4.0.2",
     "polymerx-cli": "^0.4.2",
     "prpl-server": "^1.1.0",
-    "puppeteer": "^1.4.0",
     "query-selector-shadow-dom": "^0.2.1",
     "semantic-release": "^15.13.18",
     "wct-browser-legacy": "^1.0.1"
