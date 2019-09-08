@@ -1,3 +1,16 @@
+# [3.5.0](https://github.com/NERDDISCO/luminave/compare/v3.4.0...v3.5.0) (2019-09-08)
+
+
+### Bug Fixes
+
+* **dependency:** Updated to lit-html 1.1.2 & lit-element 2.1.0 ([5de1151](https://github.com/NERDDISCO/luminave/commit/5de1151)), closes [#114](https://github.com/NERDDISCO/luminave/issues/114)
+
+
+### Features
+
+* **fixture:** Added Laserworld CS 1000 RGB MK2 ([b02a539](https://github.com/NERDDISCO/luminave/commit/b02a539))
+* **modv:** Cyberpunk googles integration ([b10caab](https://github.com/NERDDISCO/luminave/commit/b10caab))
+
 # [3.4.0](https://github.com/NERDDISCO/luminave/compare/v3.3.0...v3.4.0) (2019-08-30)
 
 
