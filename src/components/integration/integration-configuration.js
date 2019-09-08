@@ -1,7 +1,7 @@
 
 import { LitElement, html } from 'lit-element/lit-element.js'
 import { defaultValue } from '../../directives/default-value.js'
-import { classMap } from 'lit-html/directives/classMap.js'
+import { classMap } from 'lit-html/directives/class-map.js'
 
 /*
  * Handle the configuration of an integration (like the API of modV)
@@ -64,8 +64,6 @@ class IntegrationConfiguration extends LitElement {
     const connectedLabel = connected 
     ? 'disconnect'
     : 'connect'
-
-    
 
     const statusClasses = {
       'status': true,

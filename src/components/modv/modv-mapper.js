@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import './modv-color-grid.js'
 import { defaultValue } from '../../directives/default-value.js'
 

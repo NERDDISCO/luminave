@@ -1,4 +1,4 @@
-import { html } from '@polymer/lit-element'
+import { html } from 'lit-element'
 import { PageViewElement } from './page-view-element.js'
 import { getFixture } from '../selectors/index.js'
 import { store } from '../reduxStore.js'

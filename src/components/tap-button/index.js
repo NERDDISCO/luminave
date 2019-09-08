@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import { store } from '../../reduxStore.js'
 import { setBpm } from '../../actions/index.js'
 

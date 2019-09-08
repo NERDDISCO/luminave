@@ -1,11 +1,10 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import { defaultValue } from '../../directives/default-value.js'
 import '@polymer/paper-dialog/paper-dialog.js'
 import '@material/mwc-button/mwc-button.js'
 import '@material/mwc-icon/mwc-icon.js'
-import { when } from 'lit-html/directives/when.js'
 import '../fixture-list/index.js'
-import { classMap } from 'lit-html/directives/classMap.js'
+import { classMap } from 'lit-html/directives/class-map.js'
 import { getFixtureByName } from '../../selectors/index.js'
 import { store } from '../../reduxStore.js'
 
@@ -172,14 +171,14 @@ class VenueSlotItem extends LitElement {
         }
       </style>
 
-      ${when(isEditing,
-        () => html`
+      ${isEditing
+        ? html`
           <div class="item ${classMap({ edit: isEditing })}">
 
-          ${when(missingFixtures, 
-            () => html`<mwc-icon class="warning">warning</mwc-icon>`,
-            () => html``
-          )}
+          ${missingFixtures
+            ? html`<mwc-icon class="warning">warning</mwc-icon>`
+            : html``
+          }
 
           <form @submit="${e => this.handleSubmit(e)}" autocomplete="off">
             <input name="x" type="number" .value="${defaultValue(x, '')}" min="0" required placeholder="x" />
@@ -191,17 +190,17 @@ class VenueSlotItem extends LitElement {
             <mwc-button icon="delete" @click="${e => this.removeSlot(e)}"></mwc-button>
           </form>
 
-          ${when(hasContent,
-            () => html`
+          ${hasContent
+            ? html`
               <fixture-list
                 @add-fixtures="${e => this.handleAddFixtures(e)}"
                 @remove-fixture="${e => this.handleRemoveFixture(e)}"
                 .fixtures="${fixtures}"
                 .fixtureManager="${fixtureManager}"
               />
-            `, 
-            () => html``
-          )}
+            ` 
+            : html``
+          }
 
           <mwc-button icon="cancel" @click="${() => this.handleEdit()}"></mwc-button>
 
@@ -214,19 +213,18 @@ class VenueSlotItem extends LitElement {
           </paper-dialog>
 
           </div>
-        `,
-
-        () => html`
+        `
+        : html`
           <h3>${name}</h3>
 
-          ${when(hasContent && missingFixtures, 
-            () => html`<mwc-icon class="warning">warning</mwc-icon>`,
-            () => html``
-          )}
+          ${hasContent && missingFixtures 
+            ? html`<mwc-icon class="warning">warning</mwc-icon>`
+            : html``
+          }
 
           <mwc-button icon="edit" @click="${() => this.handleEdit()}"></mwc-button>
         `
-      )}
+      }
 
 
     `
