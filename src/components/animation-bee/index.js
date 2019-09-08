@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import { store } from '../../reduxStore.js'
 import { repeat } from 'lit-html/directives/repeat.js'
 import { addKeyframe, removeAnimation, setAnimation } from '../../actions/index.js'

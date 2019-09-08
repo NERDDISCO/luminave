@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import { repeat } from 'lit-html/directives/repeat.js'
 import '../scene-list-item/index.js'
 import { shared } from '../../styles/shared.js'

@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import { repeat } from 'lit-html/directives/repeat.js'
 import { rgbToHex } from '../../directives/rgb-to-hex.js'
 import { defaultValue } from '../../directives/default-value.js'

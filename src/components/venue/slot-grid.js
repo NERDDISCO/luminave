@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { addVenueSlot, setVenueSlot, removeVenueSlot } from '../../actions/venue.js'
@@ -8,7 +8,7 @@ import '../../components/venue/slot-item.js'
 import { repeat } from 'lit-html/directives/repeat.js'
 import uuidv1 from 'uuid/v1.js'
 import { defaultValue } from '../../directives/default-value.js'
-import { classMap } from 'lit-html/directives/classMap.js'
+import { classMap } from 'lit-html/directives/class-map.js'
 
 /*
  * Show MIDI buttons in a grid

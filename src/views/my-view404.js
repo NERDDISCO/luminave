@@ -1,4 +1,4 @@
-import { html } from '@polymer/lit-element'
+import { html } from 'lit-element'
 import { PageViewElement } from './page-view-element.js'
 
 // These are the shared styles needed by this element.

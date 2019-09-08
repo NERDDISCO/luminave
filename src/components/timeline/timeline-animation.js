@@ -1,4 +1,4 @@
-import { LitElement, html, css } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html, css } from 'lit-element'
 import { addToFixtureBatch } from '../../utils/index.js'
 import TimelineKeytime from './timeline-keytime.js'
 import { toFixedNumber } from '../../utils/index.js'

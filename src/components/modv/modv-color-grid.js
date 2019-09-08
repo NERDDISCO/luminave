@@ -1,6 +1,6 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import { repeat } from 'lit-html/directives/repeat.js'
-import { classMap } from 'lit-html/directives/classMap.js'
+import { classMap } from 'lit-html/directives/class-map.js'
 import '@polymer/paper-tooltip/paper-tooltip.js'
 import { collator } from '../../utils/index.js'
 

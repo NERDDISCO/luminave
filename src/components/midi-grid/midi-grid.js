@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
@@ -6,8 +6,7 @@ import { learnMidi, addScenesToMidi, removeSceneFromMidi, addMidiMapping } from 
 import '../scene-list/index.js'
 import { MIDI_TYPES, MIDI_TYPE_KNOB, MIDI_TYPE_FADER, MIDI_TYPE_EMPTY, MIDI_TYPE_BUTTON, MIDI_TYPE_ROUND_BUTTON } from '../../constants/index.js'
 import { getMidiLearning, getScenes, getLive } from '../../selectors/index.js'
-import { classMap } from 'lit-html/directives/classMap.js'
-import { when } from 'lit-html/directives/when.js'
+import { classMap } from 'lit-html/directives/class-map.js'
 import '@material/mwc-button/mwc-button.js'
 import '@material/mwc-icon/mwc-icon.js'
 
@@ -281,7 +280,11 @@ class MidiGrid extends connect(store)(LitElement) {
       itemTemplates.push(html`
         <div style="${this.computeItemVars(element, index, learnIndex)}" class="${classMap(itemClasses)}">
 
-          ${when(isEditing, () => this.templateEdit(element, index), () => this.templateNormal(element, index))}
+          ${
+            isEditing
+            ? this.templateEdit(element, index)
+            : this.templateNormal(element, index)
+          }
 
         </div>
       `)
