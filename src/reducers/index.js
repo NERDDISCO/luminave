@@ -203,9 +203,13 @@ export const animationManager = (state = [], { type, animation, animationIndex, 
 
       // Is not a number
       if (isNaN(keyframeValue)) {
+        // PanTiltParam
+        if (keyframeValue['realX'] !== undefined) {
+
         // Is RGB?
-        if (keyframeValue.includes(',')) {
+        } else if (keyframeValue.includes(',')) {
           keyframeValue = keyframeValue.split(',').map(color => parseInt(color))
+
         // Is not empty String
         } else if (keyframeValue.length !== 0) {
 

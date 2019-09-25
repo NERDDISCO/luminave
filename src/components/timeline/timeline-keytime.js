@@ -15,6 +15,11 @@ export default class TimelineKeytime extends Keytime {
       // Custom interpolation for Strings
       if (typeof frame1.value === 'string') {
         return frame1.value
+      } else if (frame1.value['realX'] !== undefined) {
+        return {
+          realX: Math.round(this.lerp(frame1.value.realX, frame2.value.realX, time)),
+          realY: Math.round(this.lerp(frame1.value.realY, frame2.value.realY, time))
+        }
       }
     } else {
       // Reset the regex
