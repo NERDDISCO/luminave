@@ -9,8 +9,8 @@ export default class DunarniaLedPar extends DmxDevice {
       params: {
         dimmer: new RangeParam(1, { min: 0, max: 255 }),
         color: new RgbParam([2, 3, 4]),
-        white: new RangeParam(5, { min: 0, max: 255 }),
-        amber: new RangeParam(6, { min: 0, max: 255 }),
+        white: new RangeParam(6, { min: 0, max: 255 }),
+        amber: new RangeParam(5, { min: 0, max: 255 }),
         strobe: new RangeParam(7, { min: 0, max: 255 })
       }
     }))
