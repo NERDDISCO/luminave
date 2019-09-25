@@ -1,4 +1,4 @@
-import RgbParam from 'fivetwelve/lib/param/RgbParam.js'
+import RgbParam from './param/RgbParam.js'
 import RangeParam from 'fivetwelve/lib/param/RangeParam.js'
 import MultiRangeParam from 'fivetwelve/lib/param/MultiRangeParam.js'
 import HiResParam from 'fivetwelve/lib/param/HiResParam.js'

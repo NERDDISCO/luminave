@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import { store } from '../../reduxStore.js'
 import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene, resetUniverseAndFixtures, removeFixtureFromSceneAndUniverse } from '../../actions/index.js'
 import '../fixture-list/index.js'

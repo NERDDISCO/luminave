@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 
 /*
  * Show the status of something, for example USB or modV

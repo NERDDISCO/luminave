@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 
 /*
  * A spacer to be used to make some space between components

@@ -31,3 +31,12 @@ export { default as BasicColorDimmableTransform } from './dmx/BasicColorDimmable
 export { default as StairvilleWildWashPro648Rgb } from './dmx/StairvilleWildWashPro648Rgb.js'
 export { default as DunarniaLedPar } from './dmx/DunarniaLedPar.js'
 export { default as LaserworldCs1000RgbMk2 } from './dmx/LaserworldCs1000RgbMk2.js'
+export { default as BasicColorCMY } from './dmx/BasicColorCMY.js'
+export { default as InvolightLedParSlim } from './dmx/InvolightLedParSlim.js'
+export { default as InvolightLedPar64 } from './dmx/InvolightLedPar64.js'
+export { default as BasicDimmerStrobe } from './dmx/BasicDimmerStrobe.js'
+export { default as InvolightLedPar170 } from './dmx/InvolightLedPar170.js'
+export { default as CameoMovoBeamZ100 } from './dmx/CameoMovoBeamZ100.js'
+export { default as CameoMovoBeam100 } from './dmx/CameoMovoBeam100.js'
+export { default as CameoHydrabeam100RGBW } from './dmx/CameoHydrabeam100RGBW.js'
+

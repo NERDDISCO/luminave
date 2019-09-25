@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import '@polymer/paper-tabs/paper-tab.js'
 import '@polymer/paper-tabs/paper-tabs.js'
 

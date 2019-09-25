@@ -1,4 +1,4 @@
-import { html } from '@polymer/lit-element'
+import { html } from 'lit-element'
 import { PageViewElementModv } from './page-view-element-modv.js'
 import { getVenue } from '../selectors/index.js'
 import { store } from '../reduxStore.js'

@@ -1,4 +1,4 @@
-import { LitElement, html } from '@polymer/lit-element/lit-element.js'
+import { LitElement, html } from 'lit-element'
 import { defaultValue } from '../../directives/default-value.js'
 
 /*
