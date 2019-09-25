@@ -1,6 +1,7 @@
-import RgbParam from 'fivetwelve/lib/param/RgbParam.js'
-import RangeParam from 'fivetwelve/lib/param/RangeParam.js'
+import RgbParam from './param/RgbParam.js'
+import RangeParam from './param/RangeParam.js'
 import HiResParam from 'fivetwelve/lib/param/HiResParam.js'
+import PanTiltParam from './param/PanTiltParam.js'
 
 import DmxDevice from './DmxDevice.js'
 
@@ -8,14 +9,19 @@ export default class StairvilleBowlBeam604LEDCOBMovingHead extends DmxDevice {
   constructor(options) {
     super(Object.assign(options, {
       params: {
-        pan: new HiResParam([1, 2], { min: -270, max: 270 }),
-        tilt: new HiResParam([3, 4], { min: -135, max: 135 }),
+        // pan: new HiResParam([1, 2], { min: -270, max: 270 }),
+        // tilt: new HiResParam([3, 4], { min: -135, max: 135 }),
 
-        // @TODO: Should be a MappedRange
-        panTilt: new RangeParam(5, {
-          min: 0,
-          max: 255
-        }),
+        panTilt: new PanTiltParam(
+          new HiResParam([1, 2], { min: 0, max: 180 }), 
+          new HiResParam([3, 4], { min: 0, max: 120 })
+        ),
+
+        // // @TODO: Should be a MappedRange
+        // panTilt: new RangeParam(5, {
+        //   min: 0,
+        //   max: 255
+        // }),
         panEndless: new RangeParam(6, {
           min: 0,
           max: 255
