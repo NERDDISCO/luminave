@@ -29,7 +29,7 @@ console.log('modv-integration', '|', 'WebSocket server on port', port)
 
         // The client connection came from cyberpunk goggles
         if (con.path === '/cyberpunk') {
-          const colors = JSON.stringify(dmxData.colors.slice(0, 3))
+          const colors = JSON.stringify(dmxData.colors.slice(12 * 3, 12 * 3 + 3))
           // console.log('send to cyberpunk', JSON.stringify(colors))
           con.sendText(colors) 
         }
