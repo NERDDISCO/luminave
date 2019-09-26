@@ -4,7 +4,6 @@ import PanTiltParam from './param/PanTiltParam'
 import RangeParam from 'fivetwelve/lib/param/RangeParam.js'
 import HiResParam from 'fivetwelve/lib/param/HiResParam.js'
 
-
 import DmxDevice from './DmxDevice.js'
 
 export default class CameoHydrabeam100RGBW extends DmxDevice {
