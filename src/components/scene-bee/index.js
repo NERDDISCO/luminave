@@ -1,11 +1,10 @@
 import { LitElement, html } from 'lit-element'
 import { store } from '../../reduxStore.js'
-import { setSceneName, addAnimationToScene, addFixturesToScene, removeFixtureFromScene, removeAnimationFromScene, addSceneToTimeline, removeScene, resetUniverseAndFixtures, removeFixtureFromSceneAndUniverse } from '../../actions/index.js'
+import { setSceneName, addAnimationToScene, addFixturesToScene, removeSceneFromTimelineAndResetFixtures, removeAnimationFromScene, addSceneToTimeline, removeScene, resetUniverseAndFixtures, removeFixtureFromSceneAndUniverse } from '../../actions/index.js'
 import '../fixture-list/index.js'
 import '../animation-list/index.js'
 import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
 import uuidv1 from 'uuid/v1.js'
-
 
 
 /*
@@ -43,6 +42,7 @@ class SceneBee extends LitElement {
 
   removeScene(e) {
     const { sceneId } = e.target
+    store.dispatch(removeSceneFromTimelineAndResetFixtures(sceneId))
     store.dispatch(removeScene(sceneId))
   }
 
