@@ -1,3 +1,22 @@
+# [3.6.0](https://github.com/NERDDISCO/luminave/compare/v3.5.0...v3.6.0) (2019-10-10)
+
+
+### Bug Fixes
+
+* **animation:** Remove animation also from scene ([5ce15ca](https://github.com/NERDDISCO/luminave/commit/5ce15ca)), closes [#85](https://github.com/NERDDISCO/luminave/issues/85)
+* **directive:** Convert to new lit-html standard ([e099d31](https://github.com/NERDDISCO/luminave/commit/e099d31))
+* **dunarnia:** Updated channel for white and amber ([09c3256](https://github.com/NERDDISCO/luminave/commit/09c3256))
+* **jsconfbp:** Added one more channel ([0d760f9](https://github.com/NERDDISCO/luminave/commit/0d760f9))
+
+
+### Features
+
+* **constant:** Added "amber" ([fdf73dc](https://github.com/NERDDISCO/luminave/commit/fdf73dc))
+* **jsconfbp:** Added all lights for the small stage @ akvarium ([e87142c](https://github.com/NERDDISCO/luminave/commit/e87142c))
+* **scene:** No animation for scene in timeline ([06f943c](https://github.com/NERDDISCO/luminave/commit/06f943c))
+* **scene:** No animation for scene in timeline ([e62d021](https://github.com/NERDDISCO/luminave/commit/e62d021))
+* **xy-pad:** Use the xy-pad to change Pan / Tilt ([1b6dd63](https://github.com/NERDDISCO/luminave/commit/1b6dd63)), closes [#117](https://github.com/NERDDISCO/luminave/issues/117)
+
 # [3.5.0](https://github.com/NERDDISCO/luminave/compare/v3.4.0...v3.5.0) (2019-09-08)
 
 
