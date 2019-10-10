@@ -34,6 +34,8 @@ class TimelineScene extends connect(store)(LitElement) {
   }
 
   animationEnded(e) {
+    // @TODO: Do not reset the scene if one of it's animations is done
+    // every anmation has to have it's own progress and type
     if (this.timelineScene.type === SCENE_TYPE_STATIC) {
       const scene = {
         sceneId: this.timelineScene.sceneId,

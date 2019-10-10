@@ -1,0 +1,28 @@
+{
+  "timeline": {
+    "scenes": [{
+      "sceneId": "1acee3e0-e02c-11e9-aa5a-053c07f0fa34",
+      "timelineSceneId": "2d3f80f0-eb23-11e9-a506-1d4f9a09fff9",
+      "adapt": true,
+      "type": "static",
+      "added": 1570687192703,
+      "started": 1570688810596,
+      "priority": 0,
+      "animations": [{
+        "animationId": "asd-asdf-asdf-asdf-asdf-asdf",
+        "type": "repeat",
+        "started": 1570688810596
+      }]
+    }, {
+      "sceneId": "6878c220-e02f-11e9-b1ac-b1b9c8742475",
+      "timelineSceneId": "ec3e6ef0-eb26-11e9-af75-e516d6b192d7",
+      "adapt": true,
+      "type": "static",
+      "added": 1570688801631,
+      "started": 1570688806691,
+      "priority": 0
+    }],
+    "playing": false,
+    "progress": 0
+  }
+}
