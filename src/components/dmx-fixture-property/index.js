@@ -1,8 +1,9 @@
-import { LitElement, html } from 'lit-element'
+import { LitElement, html, css } from 'lit-element'
 import { repeat } from 'lit-html/directives/repeat.js'
 import { rgbToHex } from '../../directives/rgb-to-hex.js'
 import { defaultValue } from '../../directives/default-value.js'
 import { selected } from '../../directives/selected.js'
+import '../xy-pad/xy-pad.js'
 
 
 /*
@@ -49,6 +50,22 @@ class DmxFixtureProperty extends LitElement {
     }))
   }
 
+  handleXYPadChange(e) {
+    const { realX, realY } = e.detail
+
+    const value = {
+      realX,
+      realY
+    }
+
+    this.dispatchEvent(new CustomEvent('change', {
+      detail: {
+        value,
+        name: this.name
+      }
+    }))
+  }
+
   handleSelectChange(e) {
     const [selectedOption] = e.target.selectedOptions
     const { value } = selectedOption
@@ -59,6 +76,20 @@ class DmxFixtureProperty extends LitElement {
         name: this.name
       }
     }))
+  }
+  
+  static get styles() {
+    return css`
+      .big-pad {
+        --pad-background: rgba(0, 0, 0, 1); 
+        --position-color: rgba(255, 0, 0, 1);
+        --position-radius: 5;
+        --position-line-width: 1;
+        --grid-sections: 10;
+        --grid-color: rgba(255, 255, 255, .25);
+        --grid-line-width: 1;
+      }
+    `
   }
 
   render() {
@@ -111,6 +142,27 @@ class DmxFixtureProperty extends LitElement {
         ? html`
           <input type="number" .value="${defaultValue(value, 0)}" @change="${e => this.handleInputChange(e)}" min="${property.min}" max="${property.max}" step="0.1">
           <span>From ${property.min} to ${property.max}</span>
+        `
+        : ''
+      }
+
+      ${
+        property.isPanTilt
+        ? html`
+          <xy-pad
+            width="180" 
+            height="120"
+            currentX="${defaultValue(value.realX, 0)}" 
+            currentY="${defaultValue(value.realY, 0)}" 
+            maxX="180" 
+            maxY="120"
+            labelX="pan"
+            labelY="tilt"
+
+            @changed="${e => this.handleXYPadChange(e)}"
+                  
+            class="big-pad">
+          </xy-pad>
         `
         : ''
       }

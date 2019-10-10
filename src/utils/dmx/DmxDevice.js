@@ -2,14 +2,15 @@ import { addToBatch, batch } from '../../utils/index.js'
 
 import { DmxDevice as FivetwelveDmxDevice } from 'fivetwelve'
 import DmxParam from 'fivetwelve/lib/param/DmxParam.js'
-import RgbParam from 'fivetwelve/lib/param/RgbParam.js'
+import RgbParam from './param/RgbParam.js'
 import RangeParam from 'fivetwelve/lib/param/RangeParam.js'
 import MappedParam from 'fivetwelve/lib/param/MappedParam.js'
 import MultiRangeParam from 'fivetwelve/lib/param/MultiRangeParam.js'
 import HiResParam from 'fivetwelve/lib/param/HiResParam.js'
+import PanTiltParam from './param/PanTiltParam.js'
 
 /**
- *
+ * Base class for every DMX fixture
  */
 export default class DmxDevice extends FivetwelveDmxDevice {
   constructor(options) {
@@ -20,8 +21,9 @@ export default class DmxDevice extends FivetwelveDmxDevice {
 
   /**
    * Retrieves the value for a DMX channel from the dmx-buffer.
-   * @param {Number} channelNumber The 1-based channel number.
-   * @returns {Number} The current value of the channel.
+   * 
+   * @param {Number} channelNumber - The 1-based channel number.
+   * @returns {Number} - The current value of the channel.
    */
   getChannelValue(channelNumber) {
     if (!Number.isInteger(channelNumber)) {
@@ -38,6 +40,7 @@ export default class DmxDevice extends FivetwelveDmxDevice {
   /**
    * Sets the value of a dmx-channel for this device and writes it into
    * the dmx-buffer.
+   * 
    * @param {Number} channelNumber The DMX channel-number (1-based).
    * @param {Number} value The (uint8) value for the channel.
    */
@@ -50,7 +53,7 @@ export default class DmxDevice extends FivetwelveDmxDevice {
 
     addToBatch(this.bufferOffset + channelNumber - 1, Math.round(value))
 
-    //store.dispatch(setChannel(this.universe, this.bufferOffset + channelNumber - 1, value))
+    //  store.dispatch(setChannel(this.universe, this.bufferOffset + channelNumber - 1, value))
   }
 
 
@@ -62,7 +65,7 @@ export default class DmxDevice extends FivetwelveDmxDevice {
       // ignore non DMX until implemented. A simple filter will do for now
       // @TODO use switch case or similar
       // @TODO Handle nested DmxParam's
-      .filter(([name, param]) => param instanceof DmxParam)
+      .filter(([name, param]) => param instanceof DmxParam || param instanceof PanTiltParam)
       .map(([name, param]) => {
 
 
@@ -85,8 +88,38 @@ export default class DmxDevice extends FivetwelveDmxDevice {
           isRange: param instanceof RangeParam,
           isMapped: param instanceof MappedParam,
           isMultiRange: param instanceof MultiRangeParam,
-          isHiRes: param instanceof HiResParam
+          isHiRes: param instanceof HiResParam,
+          isPanTilt: param instanceof PanTiltParam
         }
       })
+  }
+
+  /**
+   * Creates dynamic properties for all parameters, using the parameters
+   * getValue/setValue-functions as getter and setter.
+   * 
+   * @param {Object} target - The object to which properties should be attached
+   * @param {Object} params - The params for which properties should be assigned
+   */
+  attachParamProperties(target = this, params = this.params) {
+    for (const name in params) {
+      if (!params.hasOwnProperty(name)) {
+        continue
+      }
+
+      const param = params[name]
+
+      // handle nested parameter-groups
+      if (param instanceof DmxParam || param instanceof PanTiltParam) {
+        Object.defineProperty(target, name, {
+          enumerable: true,
+          get: param.getValue.bind(param, this),
+          set: param.setValue.bind(param, this)
+        });
+      } else {
+        this[name] = {}
+        this.attachParamProperties(this[name], params[name])
+      }
+    }
   }
 }

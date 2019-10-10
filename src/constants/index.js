@@ -89,7 +89,9 @@ export const FIXTURE_TYPES = ['EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
   'TourHazerII', 'SgmXC5', 'BasicDimmer', 'LTHLedParCob250w', 'AdjSweeperBeamQuadLed',
   'RobeColorWash575EAt1_4', 'ViperVl3000Spot', 'MacQuantumWash', 'MacAura', 'Rollapix100',
   'RobeRobin300LEDWash', 'BasicRGBW', 'BasicRGBDimmer', 'OppskPar', 'SolarStar2', 'BasicColorDimmableTransform',
-  'StairvilleWildWashPro648Rgb', 'DunarniaLedPar', 'LaserworldCs1000RgbMk2'
+  'StairvilleWildWashPro648Rgb', 'DunarniaLedPar', 'LaserworldCs1000RgbMk2', 'BasicColorCMY',
+  'InvolightLedParSlim', 'InvolightLedPar64', 'BasicDimmerStrobe', 'InvolightLedPar170',
+  'CameoMovoBeamZ100', 'CameoMovoBeam100', 'CameoHydrabeam100RGBW'
 ]
 
 export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
@@ -104,7 +106,7 @@ export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
   'colorWheel', 'gobo1', 'gobo1Rotation', 'gobo2', 'gobo2Rotation', 'gobo3', 'gobo3Rotation',
   'beamIris', 'focusTime', 'colorTime', 'beamTime', 'goboTime', 'control', 'shutter', 'auraShutter',
   'auraDimmer', 'auraColor', 'beamColor', 'beamDimmer', 'beamShutter', 'circle', 'manualPosition', 'horizontal',
-  'patternConstruction', 'colorSelection'
+  'patternConstruction', 'colorSelection', 'amber'
 ]
 
 export const MIDI_TYPE_BUTTON = 'Button'
