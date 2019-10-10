@@ -16,7 +16,7 @@ If you want to contribute please follow the guide in this file.
 * Create your branch from the [next](https://github.com/NERDDISCO/luminave/tree/next) branch
 * Ensure that the changes are tested and documented  
 * This project uses commitizen and conventional changelog. Please use both to ensure that the changes are listed correctly and the commits can be parsed
-  * If you don't have it installed, please follow the guidline to install both `commitizen` and `cz-conventional-changelog`
+  * If you don't have it installed, [please follow the guidline](https://github.com/commitizen/cz-cli#conventional-commit-messages-as-a-global-utility) to install both `commitizen` and `cz-conventional-changelog`
   * When this is done you can use `git cz` to create commit messages that are valid for this project
 
 
