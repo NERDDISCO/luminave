@@ -70,6 +70,14 @@ export const getScenesSorted = createSelector(
 )
 
 /*
+ * Get scenes that contain a certain animationId
+ */
+export const getScenesWithAnimation = (state, properties) => {
+  return getScenes(state)
+    .filter(scene => scene.animations.includes(properties.animationId))
+}
+
+/*
  * Get a specific fixture by using the fixtureId
  */
 export const getFixture = (state, properties) => {

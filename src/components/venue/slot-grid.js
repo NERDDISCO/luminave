@@ -2,7 +2,7 @@ import { LitElement, html } from 'lit-element'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import { addVenueSlot, setVenueSlot, removeVenueSlot } from '../../actions/venue.js'
-import { addAnimation, setAnimation, removeAnimation, addScene, setScene, removeScene, removeSceneFromTimelineAndResetFixtures } from '../../actions/index.js'
+import { addAnimation, setAnimation, removeAnimationFromEverywhere, addScene, setScene, removeScene, removeSceneFromTimelineAndResetFixtures } from '../../actions/index.js'
 import { getFixtures, getLive } from '../../selectors/index.js'
 import '../../components/venue/slot-item.js'
 import { repeat } from 'lit-html/directives/repeat.js'
@@ -138,7 +138,7 @@ class VenueSlotGrid extends connect(store)(LitElement) {
     store.dispatch(removeScene(sceneId))
 
     animations.forEach(animationId => {
-      store.dispatch(removeAnimation(animationId))
+      store.dispatch(removeAnimationFromEverywhere(animationId))
     })
 
     store.dispatch(removeVenueSlot(this.venueId, {

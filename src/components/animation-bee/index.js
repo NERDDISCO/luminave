@@ -1,7 +1,7 @@
 import { LitElement, html } from 'lit-element'
 import { store } from '../../reduxStore.js'
 import { repeat } from 'lit-html/directives/repeat.js'
-import { addKeyframe, removeAnimation, setAnimation } from '../../actions/index.js'
+import { addKeyframe, removeAnimationFromEverywhere, setAnimation } from '../../actions/index.js'
 import { FIXTURE_PROPERTIES } from '../../constants/index.js'
 import '../keyframe-grid/index.js'
 
@@ -28,7 +28,7 @@ class AnimationBee extends LitElement {
 
   removeAnimation(e) {
     const { animationId } = e.target
-    store.dispatch(removeAnimation(animationId))
+    store.dispatch(removeAnimationFromEverywhere(animationId))
   }
 
   handleKeyframeSubmit(e) {
