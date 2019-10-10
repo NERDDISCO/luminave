@@ -1,4 +1,4 @@
-import { LitElement, html } from 'lit-element'
+import { LitElement, html, css } from 'lit-element'
 import { repeat } from 'lit-html/directives/repeat.js'
 import { store } from '../../reduxStore.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
@@ -6,6 +6,8 @@ import './timeline-animation.js'
 import { getAnimation, getAnimations, getLive } from '../../selectors/index.js'
 import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
 import { setSceneOnTimeline } from '../../actions/index.js'
+import '@material/mwc-icon/mwc-icon.js'
+
 
 /*
  * Handle a scene in a timeline
@@ -15,6 +17,7 @@ class TimelineScene extends connect(store)(LitElement) {
     return {
       timelineScene: { type: Object },
       progress: { type: Number },
+      // All animations that exist in luminave, not only the ones assigned to the scene
       animations: { type: Array },
       live: { type: Boolean }
     }
@@ -42,6 +45,27 @@ class TimelineScene extends connect(store)(LitElement) {
     }
   }
 
+  /*
+   * Check if there is no animation assigned to the scene to inform the user that 
+   * they should add an animation in order to see something
+   */
+  noAnimationInScene(animations) {
+
+    if (animations.length === 0) {
+      return html`<mwc-icon title="No animation is assigned to this Scene">error</mwc-icon>`
+    }
+
+    return html``
+  }
+
+  static get styles() {
+    return css`
+      mwc-icon {
+        color: var(--default-warning-color);
+      }
+    `
+  }
+
   render() {
     const { timelineScene, progress, live } = this
 
@@ -56,6 +80,8 @@ class TimelineScene extends connect(store)(LitElement) {
 
       <div>
         <h3>${timelineScene.scene.name}</h3>
+
+        ${this.noAnimationInScene(timelineScene.scene.animations)}
         
         ${repeat(timelineScene.scene.animations, animationId => html`
 

@@ -34,7 +34,7 @@
     "@apollo-elements/lit-apollo": "^0.0.5",
     "@material/layout-grid": "^0.39.0",
     "@material/mwc-button": "^0.7.1",
-    "@material/mwc-icon": "^0.7.1",
+    "@material/mwc-icon": "^0.9.1",
     "@polymer/app-layout": "3.0.1",
     "@polymer/iron-icons": "3.0.1",
     "@polymer/iron-pages": "3.0.1",
