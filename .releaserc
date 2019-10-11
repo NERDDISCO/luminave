@@ -18,6 +18,7 @@
       "path": "@semantic-release/changelog",
       "changelogFile": "docs/CHANGELOG.md"
     },
+    "@semantic-release/npm",  
     {
       "path": "@semantic-release/git",
       "assets": [
