@@ -134,10 +134,15 @@ class TimelineAnimation extends LitElement {
   }
 
   ended() {
-    // Animation is done
-    this.dispatchEvent(new CustomEvent('animation-ended', {
-      detail: {}
-    }))
+    // This is a quick fix to restart the animation when it's done
+    this.started = new Date().getTime()
+
+    // The real fix would be to still let the scene know that the animation ended
+    // but only restart the animation and not the whole scene
+    // // Animation is done
+    // this.dispatchEvent(new CustomEvent('animation-ended', {
+    //   detail: {}
+    // }))
   }
 
   shouldUpdate(changedProperties) {
