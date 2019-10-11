@@ -152,8 +152,8 @@ class DmxFixtureProperty extends LitElement {
           <xy-pad
             width="180" 
             height="120"
-            currentX="${defaultValue(value.realX, 0)}" 
-            currentY="${defaultValue(value.realY, 0)}" 
+            currentX="${defaultValue(value === undefined ? undefined : value.realX, 0)}" 
+            currentY="${defaultValue(value === undefined ? undefined : value.realY, 0)}" 
             maxX="180" 
             maxY="120"
             labelX="pan"
