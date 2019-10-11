@@ -29,13 +29,12 @@ export const getVenuesWithFixture = (state, properties) => {
 }
 
 /*
- * Get venues that contain a specific fixture
+ * Get venues that contain a specific animation
  */
-export const getVenueSlotsWithFixture = (state, properties) => {
+export const getVenuesWithAnimation = (state, properties) => {
   return getVenues(state)
     .filter(venue => {
-      return venue.slots.filter(slot => slot.fixtures.includes(properties.fixtureId))
+      return venue.slots.filter(slot => slot.animations.includes(properties.animationId))
     })
-    .map(venue => venue.slots)
-    .filter(slot => slot.fixtures.includes(properties.fixtureId))
 }
+

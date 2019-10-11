@@ -1,6 +1,6 @@
 import * as constants from '../constants/index.js'
-import { getScenesWithAnimation } from '../selectors/index.js'
-import { removeAnimationFromScene } from './index.js'
+import { getScenesWithAnimation, getVenuesWithAnimation } from '../selectors/index.js'
+import { removeAnimationFromScene, setVenueSlot } from './index.js'
 
 /*
  * Add a animation
@@ -45,6 +45,18 @@ export const removeAnimationFromEverywhere = animationId => {
     // Remove animation from all scenes
     scenes.map(scene => {
       dispatch(removeAnimationFromScene(scene.id, animationId))
+    })
+
+    // Remove animation from all venues
+    getVenuesWithAnimation(getState(), { animationId }).map(venue => {
+      venue.slots
+        // Find all slots that contain the fixture
+        .filter(slot => slot.animations.includes(animationId))
+        .map(slot => {
+          // Remove the fixture from the list of animations of this slot
+          const animations = slot.animations.filter(_animationId => _animationId !== animationId)
+          dispatch(setVenueSlot(venue.id, { id: slot.id, animations }))
+        })
     })
 
     dispatch(removeAnimation(animationId))
