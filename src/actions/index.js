@@ -4,6 +4,9 @@ import * as utils from '../utils/index.js'
 
 export * from './timeline.js'
 export * from './animation.js'
+export * from './venue.js'
+
+import { setVenueSlot } from './venue.js'
 
 /*
  *
@@ -289,10 +292,20 @@ export const removeFixtureFromEverywhere = fixtureId => {
     utils.clearFixtureInBatch(fixtureId)
 
     // Remove fixture from all scenes
-    selectors.getScenes(getState()).map(scene => {
-      if (scene.fixtures.indexOf(fixtureId) > -1) {
-        dispatch(removeFixtureFromScene(scene.id, scene.fixtures.indexOf(fixtureId)))
-      }
+    selectors.getScenesWithFixture(getState(), { fixtureId }).map(scene => {
+      dispatch(removeFixtureFromScene(scene.id, fixtureId))
+    })
+
+    // Remove fixture from all venues
+    selectors.getVenuesWithFixture(getState(), { fixtureId }).map(venue => {
+      venue.slots
+        // Find all slots that contain the fixture
+        .filter(slot => slot.fixtures.includes(fixtureId))
+        .map(slot => {
+          // Remove the fixture from the list of fixtures of this slot
+          const fixtures = slot.fixtures.filter(_fixtureId => _fixtureId !== fixtureId)
+          dispatch(setVenueSlot(venue.id, { id: slot.id, fixtures }))
+        })
     })
 
     dispatch(removeFixture(fixtureId))
