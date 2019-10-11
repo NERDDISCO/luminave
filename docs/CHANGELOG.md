@@ -1,3 +1,15 @@
+## [3.6.1](https://github.com/NERDDISCO/luminave/compare/v3.6.0...v3.6.1) (2019-10-11)
+
+
+### Bug Fixes
+
+* **animation:** Don't reset the scene when animation is done ([4866618](https://github.com/NERDDISCO/luminave/commit/4866618)), closes [#112](https://github.com/NERDDISCO/luminave/issues/112)
+* **animation:** Remove animation from venue ([950a21e](https://github.com/NERDDISCO/luminave/commit/950a21e)), closes [#85](https://github.com/NERDDISCO/luminave/issues/85)
+* **fixture:** Remove fixture from scene and venue ([5ce5d6f](https://github.com/NERDDISCO/luminave/commit/5ce5d6f)), closes [#83](https://github.com/NERDDISCO/luminave/issues/83)
+* **scene:** Remove scene also from timeline ([02ea464](https://github.com/NERDDISCO/luminave/commit/02ea464)), closes [#86](https://github.com/NERDDISCO/luminave/issues/86)
+* **scene:** Remove scene causes no error anymore ([96a152c](https://github.com/NERDDISCO/luminave/commit/96a152c)), closes [#86](https://github.com/NERDDISCO/luminave/issues/86)
+* **xy-pad:** Default values can be undefined ([a74da21](https://github.com/NERDDISCO/luminave/commit/a74da21))
+
 # [3.6.0](https://github.com/NERDDISCO/luminave/compare/v3.5.0...v3.6.0) (2019-10-10)
 
 
