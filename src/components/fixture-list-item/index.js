@@ -12,6 +12,10 @@ class FixtureListItem extends LitElement {
   render() {
     const { fixture } = this
 
+    if (fixture === undefined) {
+      return html``
+    }
+
     return html`
       ${links}
 
