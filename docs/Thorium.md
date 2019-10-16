@@ -12,6 +12,7 @@ If you want to use [Thorium](https://github.com/Thorium-Sim) as your space ship 
     - [Thorium](#thorium)
       - [Use the lighting controls](#use-the-lighting-controls)
         - [Color](#color)
+        - [Alert Level](#alert-level)
         - [Mode / Action](#mode--action)
     - [luminave](#luminave)
       - [Add a new universe](#add-a-new-universe)
@@ -112,6 +113,18 @@ The default preset allows 4 different colors:
 These keywords can be used in luminave to control the lights that should react for one of these colors. See [Lighting scenarios](#lighting-scenarios) for more. 
 
 You can also create any custom color you want, but then you have to take care of how that can be mapped in luminave. 
+
+##### Alert Level
+
+In Thorium you can activate the checkbox `Alert Color` to change the current color based on the alert levels (1 to 5 & P). When this is activated, the Color preset will not be used anymore, but one of the 6 alerts:
+
+* Alert 1 (= `alert-1`)
+* Alert 2 (= `alert-2`)
+* Alert 3 (= `alert-3`)
+* Alert 4 (= `alert-4`)
+* Alert 5 (= `alert-5`)
+* Alert P (= `alert-p`)
+
 
 
 ##### Mode / Action
