@@ -122,7 +122,25 @@ class SceneManager extends connect(store)(LitElement) {
           --width: 4;
         }
 
-        @media (min-width: 1024px) {
+        @media (max-width: 1024px) {
+          :host {
+            --width: 3;
+          }
+        }
+
+        @media (max-width: 780px) {
+          :host {
+            --width: 2;
+          }
+        }
+
+        @media (max-width: 512px) {
+          :host {
+            --width: 1;
+          }
+        }
+
+        @media (min-width: 1281px) {
           :host {
             --width: 6;
           }
