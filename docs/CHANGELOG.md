@@ -1,3 +1,11 @@
+## [3.6.2](https://github.com/NERDDISCO/luminave/compare/v3.6.1...v3.6.2) (2019-10-17)
+
+
+### Bug Fixes
+
+* **luminave-server:** Remove a scene from Thorium ([01081e5](https://github.com/NERDDISCO/luminave/commit/01081e5))
+* **scene-manager:** Show only 6 scenes in <= 1920px screens ([cc07231](https://github.com/NERDDISCO/luminave/commit/cc07231))
+
 ## [3.6.1](https://github.com/NERDDISCO/luminave/compare/v3.6.0...v3.6.1) (2019-10-11)
 
 
