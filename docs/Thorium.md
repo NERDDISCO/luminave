@@ -4,36 +4,37 @@ If you want to use [Thorium](https://github.com/Thorium-Sim) as your space ship 
 
 <!-- toc -->
 
-- [Thorium + luminave](#Thorium--luminave)
-  - [How does it work?](#How-does-it-work)
-  - [Setup](#Setup)
-  - [Config](#Config)
-  - [Usage](#Usage)
-    - [Thorium](#Thorium)
-      - [Use the lighting controls](#Use-the-lighting-controls)
-        - [Color](#Color)
-        - [Mode / Action](#Mode--Action)
+- [Thorium + luminave](#thorium--luminave)
+  - [How does it work?](#how-does-it-work)
+  - [Setup](#setup)
+  - [Config](#config)
+  - [Usage](#usage)
+    - [Thorium](#thorium)
+      - [Use the lighting controls](#use-the-lighting-controls)
+        - [Color](#color)
+        - [Alert Level](#alert-level)
+        - [Mode / Action](#mode--action)
     - [luminave](#luminave)
-      - [Add a new universe](#Add-a-new-universe)
-      - [Add lights (fixtures)](#Add-lights-fixtures)
-        - [Type](#Type)
-        - [Address](#Address)
-        - [Name](#Name)
-        - [Amount](#Amount)
-      - [Test lights (fixtures)](#Test-lights-fixtures)
-      - [Add scenes](#Add-scenes)
-        - [Add animation & fixture to scene](#Add-animation--fixture-to-scene)
-      - [Start the timeline](#Start-the-timeline)
-      - [Connection to luminave-server](#Connection-to-luminave-server)
-      - [Connection to luminave-fivetwelve](#Connection-to-luminave-fivetwelve)
-        - [Supported USB DMX512 controllers](#Supported-USB-DMX512-controllers)
-  - [Lighting scenarios](#Lighting-scenarios)
-    - [One light can only display one color](#One-light-can-only-display-one-color)
-    - [RGB lights that can display every color](#RGB-lights-that-can-display-every-color)
-  - [FAQ](#FAQ)
-    - [I have no idea which fixture type to choose](#I-have-no-idea-which-fixture-type-to-choose)
-    - [No data received from Thorium](#No-data-received-from-Thorium)
-    - [I have multiple Thorium server running and luminave-thorium is connecting to a random server](#I-have-multiple-Thorium-server-running-and-luminave-thorium-is-connecting-to-a-random-server)
+      - [Add a new universe](#add-a-new-universe)
+      - [Add lights (fixtures)](#add-lights-fixtures)
+        - [Type](#type)
+        - [Address](#address)
+        - [Name](#name)
+        - [Amount](#amount)
+      - [Test lights (fixtures)](#test-lights-fixtures)
+      - [Add scenes](#add-scenes)
+        - [Add animation & fixture to scene](#add-animation--fixture-to-scene)
+      - [Start the timeline](#start-the-timeline)
+      - [Connection to luminave-server](#connection-to-luminave-server)
+      - [Connection to luminave-fivetwelve](#connection-to-luminave-fivetwelve)
+        - [Supported USB DMX512 controllers](#supported-usb-dmx512-controllers)
+  - [Lighting scenarios](#lighting-scenarios)
+    - [One light can only display one color](#one-light-can-only-display-one-color)
+    - [RGB lights that can display every color](#rgb-lights-that-can-display-every-color)
+  - [FAQ](#faq)
+    - [I have no idea which fixture type to choose](#i-have-no-idea-which-fixture-type-to-choose)
+    - [No data received from Thorium](#no-data-received-from-thorium)
+    - [I have multiple Thorium server running and luminave-thorium is connecting to a random server](#i-have-multiple-thorium-server-running-and-luminave-thorium-is-connecting-to-a-random-server)
 
 <!-- tocstop -->
 
@@ -102,15 +103,28 @@ The following information about each part of the lighting controls is taken [fro
 
 color is a suggestion for what color the lights should be. This doesn't mean all the lights need to be this color, but they can be.
 
-The default preset allows 3 different colors:
+The default preset allows 4 different colors:
 
 * normal
 * red
 * blue
+* black (Thorium >= 1.22.0)
 
 These keywords can be used in luminave to control the lights that should react for one of these colors. See [Lighting scenarios](#lighting-scenarios) for more. 
 
 You can also create any custom color you want, but then you have to take care of how that can be mapped in luminave. 
+
+##### Alert Level
+
+In Thorium you can activate the checkbox `Alert Color` to change the current color based on the alert levels (1 to 5 & P). When this is activated, the Color preset will not be used anymore, but one of the 6 alerts:
+
+* Alert 1 (= `alert-1`)
+* Alert 2 (= `alert-2`)
+* Alert 3 (= `alert-3`)
+* Alert 4 (= `alert-4`)
+* Alert 5 (= `alert-5`)
+* Alert P (= `alert-p`)
+
 
 
 ##### Mode / Action

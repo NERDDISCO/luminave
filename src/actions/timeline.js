@@ -1,6 +1,7 @@
 import * as constants from '../constants/index.js'
 import { getScene } from '../selectors/index.js'
 import * as utils from '../utils/index.js'
+import { removeSceneFromLuminaveServer } from './luminave-server.js'
 
 /*
  * Control playback of the timeline
@@ -58,7 +59,7 @@ export const removeSceneFromTimeline = sceneId => ({
 })
 
 /*
- * Remove a scene fromt he timeline and also reset all fixtures assigned to that scene
+ * Remove a scene from the timeline and also reset all fixtures assigned to that scene
  */
 export const removeSceneFromTimelineAndResetFixtures = sceneId => {
   return (dispatch, getState) => {
@@ -66,13 +67,18 @@ export const removeSceneFromTimelineAndResetFixtures = sceneId => {
     const scene = getScene(getState(), { sceneId })
 
     // Get the fixtures of the scene
-    if (scene) {
+    if (scene && scene.fixtures) {
       scene.fixtures.map(fixtureId => {
         utils.clearFixtureInBatch(fixtureId)
       })
     }
 
-    // Remove the scene from the timelline
+    // Remove the scene from luminave-server
+    if (scene) {
+      dispatch(removeSceneFromLuminaveServer(sceneId))
+    }
+
+    // Remove the scene from the timeline
     dispatch(removeSceneFromTimeline(sceneId))
   }
 }
