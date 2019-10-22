@@ -22,6 +22,13 @@ class SceneManager extends connect(store)(LitElement) {
     }
   }
 
+  constructor() {
+    super()
+
+    this._fixtures = []
+    this._animations = []
+  }
+
   _stateChanged(state) {
     this.scenes = getScenesSorted(state)
     this.fixtureManager = getFixtures(state)

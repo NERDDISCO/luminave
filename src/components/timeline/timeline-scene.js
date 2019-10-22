@@ -53,7 +53,7 @@ class TimelineScene extends connect(store)(LitElement) {
    */
   noAnimationInScene(animations) {
 
-    if (animations.length === 0) {
+    if (animations === undefined || animations.length === 0) {
       return html`<mwc-icon title="No animation is assigned to this Scene">error</mwc-icon>`
     }
 
