@@ -1,6 +1,6 @@
 {
   "name": "luminave",
-  "version": "3.6.2",
+  "version": "3.6.3",
   "description": "Manage all the lights with your web browser and create stunning visual experiences.",
   "main": "index.js",
   "author": "Tim Pietrusky",

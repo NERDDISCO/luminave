@@ -1,3 +1,10 @@
+## [3.6.3](https://github.com/NERDDISCO/luminave/compare/v3.6.2...v3.6.3) (2019-10-22)
+
+
+### Bug Fixes
+
+* **scene:** Default values for fixtures & animations ([44e3566](https://github.com/NERDDISCO/luminave/commit/44e3566))
+
 ## [3.6.2](https://github.com/NERDDISCO/luminave/compare/v3.6.1...v3.6.2) (2019-10-17)
 
 
