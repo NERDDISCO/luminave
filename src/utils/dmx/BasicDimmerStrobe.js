@@ -7,7 +7,7 @@ export default class BasicDimmerStrobe extends DmxDevice {
     super(Object.assign({}, options, {
       params: {
         dimmer: new RangeParam(1, { min: 0, max: 255 }),
-        strobe: new RangeParam(1, { min: 0, max: 255 })
+        strobe: new RangeParam(2, { min: 0, max: 255 })
       }
     }))
 

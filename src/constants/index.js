@@ -91,7 +91,8 @@ export const FIXTURE_TYPES = ['EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
   'RobeRobin300LEDWash', 'BasicRGBW', 'BasicRGBDimmer', 'OppskPar', 'SolarStar2', 'BasicColorDimmableTransform',
   'StairvilleWildWashPro648Rgb', 'DunarniaLedPar', 'LaserworldCs1000RgbMk2', 'BasicColorCMY',
   'InvolightLedParSlim', 'InvolightLedPar64', 'BasicDimmerStrobe', 'InvolightLedPar170',
-  'CameoMovoBeamZ100', 'CameoMovoBeam100', 'CameoHydrabeam100RGBW', 'ShowtecHelixQ4000', 'ShowtecPerformer2000'
+  'CameoMovoBeamZ100', 'CameoMovoBeam100', 'CameoHydrabeam100RGBW', 'ShowtecHelixQ4000', 'ShowtecPerformer2000',
+  'InvolightSlimPar784', 'BasicLedBar', 'InvolightMovingBar1808'
 ]
 
 export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
@@ -106,7 +107,7 @@ export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
   'colorWheel', 'gobo1', 'gobo1Rotation', 'gobo2', 'gobo2Rotation', 'gobo3', 'gobo3Rotation',
   'beamIris', 'focusTime', 'colorTime', 'beamTime', 'goboTime', 'control', 'shutter', 'auraShutter',
   'auraDimmer', 'auraColor', 'beamColor', 'beamDimmer', 'beamShutter', 'circle', 'manualPosition', 'horizontal',
-  'patternConstruction', 'colorSelection', 'amber', 'lime', 'dimmerSpeed'
+  'patternConstruction', 'colorSelection', 'amber', 'lime', 'dimmerSpeed', 'tiltSpeed'
 ]
 
 export const MIDI_TYPE_BUTTON = 'Button'

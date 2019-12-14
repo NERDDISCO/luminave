@@ -41,4 +41,6 @@ export { default as CameoMovoBeam100 } from './dmx/CameoMovoBeam100.js'
 export { default as CameoHydrabeam100RGBW } from './dmx/CameoHydrabeam100RGBW.js'
 export { default as ShowtecHelixQ4000 } from './dmx/ShowtecHelixQ4000.js'
 export { default as ShowtecPerformer2000 } from './dmx/ShowtecPerformer2000.js'
-
+export { default as InvolightSlimPar784 } from './dmx/InvolightSlimPar784.js'
+export { default as InvolightMovingBar1808 } from './dmx/InvolightMovingBar1808.js'
+export { default as BasicLedBar } from './dmx/BasicLedBar.js'
