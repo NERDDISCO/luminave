@@ -1,3 +1,18 @@
+# [3.7.0](https://github.com/NERDDISCO/luminave/compare/v3.6.3...v3.7.0) (2020-01-05)
+
+
+### Bug Fixes
+
+* **universe:** Default refresh should be false ([34f2dc1](https://github.com/NERDDISCO/luminave/commit/34f2dc1)), closes [#127](https://github.com/NERDDISCO/luminave/issues/127)
+
+
+### Features
+
+* **dunarnia:** Added BasicLedBar, InvolightMovingBar1808 & InvolightSlimPar784 ([d7beb4d](https://github.com/NERDDISCO/luminave/commit/d7beb4d))
+* **dunarnia:** Config for stifler32, Budapest ([e919583](https://github.com/NERDDISCO/luminave/commit/e919583))
+* **refreshconf:** Added Showtec lights ([5b85443](https://github.com/NERDDISCO/luminave/commit/5b85443))
+* **universe:** Change channel value manually ([2b1c5f3](https://github.com/NERDDISCO/luminave/commit/2b1c5f3)), closes [#127](https://github.com/NERDDISCO/luminave/issues/127)
+
 ## [3.6.3](https://github.com/NERDDISCO/luminave/compare/v3.6.2...v3.6.3) (2019-10-22)
 
 
