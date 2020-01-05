@@ -1,0 +1,1674 @@
+{
+  "bpm": 130,
+  "live": false,
+  "usbManager": {
+    "lastTransmission": 0
+  },
+  "dekkManager": {
+    "data": {},
+    "connected": false
+  },
+  "connectionManager": {
+    "usb": {
+      "connected": false
+    },
+    "bluetooth": {
+      "connected": false
+    }
+  },
+  "universeManager": [{
+    "id": "ea70de40-f513-11e9-92d7-e7c31350950e",
+    "channels": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0],
+    "name": "ea70de40-f513-11e9-92d7-e7c31350950e"
+  }],
+  "sceneManager": [{
+    "id": "31f9ed70-1b83-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["50ab83d0-1b76-11ea-b32f-7bd41be301b0"],
+    "animations": ["31f9c660-1b83-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "Bar 1"
+  }, {
+    "id": "38009751-1b83-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["50abf900-1b76-11ea-b32f-7bd41be301b0"],
+    "animations": ["38009750-1b83-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "Bar 7"
+  }, {
+    "id": "42154f60-1b83-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["8a4d2070-1b77-11ea-b32f-7bd41be301b0"],
+    "animations": ["42152850-1b83-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "Bar 13"
+  }, {
+    "id": "f1f20551-1b82-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["b0301cb0-1b78-11ea-b32f-7bd41be301b0"],
+    "animations": ["f1f20550-1b82-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "Bar 299"
+  }, {
+    "id": "f79cd390-1b82-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["b493ec00-1b78-11ea-b32f-7bd41be301b0"],
+    "animations": ["f79cac80-1b82-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "Bar 331"
+  }, {
+    "id": "0242a810-1b83-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["b8ffaa90-1b78-11ea-b32f-7bd41be301b0"],
+    "animations": ["02428100-1b83-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "Bar 363"
+  }, {
+    "id": "1e6605f0-1e49-11ea-b477-c5c7e64724fd",
+    "fixtures": ["50ab83d0-1b76-11ea-b32f-7bd41be301b0", "50abf900-1b76-11ea-b32f-7bd41be301b0", "8a4d2070-1b77-11ea-b32f-7bd41be301b0", "b0301cb0-1b78-11ea-b32f-7bd41be301b0", "b493ec00-1b78-11ea-b32f-7bd41be301b0", "b8ffaa90-1b78-11ea-b32f-7bd41be301b0", "e191ddc0-1b78-11ea-ba7e-1bf91825cde6", "e85017d0-1b78-11ea-ba7e-1bf91825cde6", "ecae8ff0-1b78-11ea-ba7e-1bf91825cde6", "f12cc510-1b78-11ea-ba7e-1bf91825cde6", "f5e013f0-1b78-11ea-ba7e-1bf91825cde6", "fe0027f0-1b78-11ea-ba7e-1bf91825cde6", "179f6350-1b1b-11ea-909b-0fac0366f214", "cd249d90-1b1a-11ea-909b-0fac0366f214", "d3ca6da0-1b1a-11ea-909b-0fac0366f214", "2dae0e30-1b1b-11ea-909b-0fac0366f214", "de3227b0-1b1a-11ea-909b-0fac0366f214", "37c97d00-1b1b-11ea-909b-0fac0366f214", "e4d93040-1b1a-11ea-909b-0fac0366f214", "e8fdaca0-1b1a-11ea-909b-0fac0366f214", "01739380-1b1b-11ea-909b-0fac0366f214", "ed428240-1b1a-11ea-909b-0fac0366f214", "05f264e0-1b1b-11ea-909b-0fac0366f214", "f19d9f00-1b1a-11ea-909b-0fac0366f214", "0a32f4c0-1b1b-11ea-909b-0fac0366f214", "f5c59dd0-1b1a-11ea-909b-0fac0366f214", "0db71270-1b1b-11ea-909b-0fac0366f214", "33e2f400-1b1b-11ea-909b-0fac0366f214", "29418c50-1b1b-11ea-909b-0fac0366f214", "fb48e6e0-1b1a-11ea-909b-0fac0366f214", "d8a6ef60-1b1a-11ea-909b-0fac0366f214", "c78bf7c0-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["faa93f50-1b79-11ea-ba7e-1bf91825cde6"],
+    "duration": 20,
+    "name": "Dimmer 25%",
+    "isRunning": false
+  }, {
+    "id": "232cdcd0-1e49-11ea-b477-c5c7e64724fd",
+    "fixtures": ["50ab83d0-1b76-11ea-b32f-7bd41be301b0", "50abf900-1b76-11ea-b32f-7bd41be301b0", "8a4d2070-1b77-11ea-b32f-7bd41be301b0", "b0301cb0-1b78-11ea-b32f-7bd41be301b0", "b493ec00-1b78-11ea-b32f-7bd41be301b0", "b8ffaa90-1b78-11ea-b32f-7bd41be301b0", "e191ddc0-1b78-11ea-ba7e-1bf91825cde6", "e85017d0-1b78-11ea-ba7e-1bf91825cde6", "ecae8ff0-1b78-11ea-ba7e-1bf91825cde6", "f12cc510-1b78-11ea-ba7e-1bf91825cde6", "f5e013f0-1b78-11ea-ba7e-1bf91825cde6", "fe0027f0-1b78-11ea-ba7e-1bf91825cde6", "179f6350-1b1b-11ea-909b-0fac0366f214", "cd249d90-1b1a-11ea-909b-0fac0366f214", "d3ca6da0-1b1a-11ea-909b-0fac0366f214", "2dae0e30-1b1b-11ea-909b-0fac0366f214", "de3227b0-1b1a-11ea-909b-0fac0366f214", "37c97d00-1b1b-11ea-909b-0fac0366f214", "e4d93040-1b1a-11ea-909b-0fac0366f214", "e8fdaca0-1b1a-11ea-909b-0fac0366f214", "01739380-1b1b-11ea-909b-0fac0366f214", "ed428240-1b1a-11ea-909b-0fac0366f214", "05f264e0-1b1b-11ea-909b-0fac0366f214", "f19d9f00-1b1a-11ea-909b-0fac0366f214", "0a32f4c0-1b1b-11ea-909b-0fac0366f214", "f5c59dd0-1b1a-11ea-909b-0fac0366f214", "0db71270-1b1b-11ea-909b-0fac0366f214", "33e2f400-1b1b-11ea-909b-0fac0366f214", "29418c50-1b1b-11ea-909b-0fac0366f214", "fb48e6e0-1b1a-11ea-909b-0fac0366f214", "d8a6ef60-1b1a-11ea-909b-0fac0366f214", "c78bf7c0-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["6952bfa0-1e02-11ea-b477-c5c7e64724fd"],
+    "duration": 20,
+    "name": "Dimmer 50%",
+    "isRunning": false
+  }, {
+    "id": "28c7cc90-1e49-11ea-b477-c5c7e64724fd",
+    "fixtures": ["50ab83d0-1b76-11ea-b32f-7bd41be301b0", "50abf900-1b76-11ea-b32f-7bd41be301b0", "8a4d2070-1b77-11ea-b32f-7bd41be301b0", "b0301cb0-1b78-11ea-b32f-7bd41be301b0", "b493ec00-1b78-11ea-b32f-7bd41be301b0", "b8ffaa90-1b78-11ea-b32f-7bd41be301b0", "e191ddc0-1b78-11ea-ba7e-1bf91825cde6", "e85017d0-1b78-11ea-ba7e-1bf91825cde6", "ecae8ff0-1b78-11ea-ba7e-1bf91825cde6", "f12cc510-1b78-11ea-ba7e-1bf91825cde6", "f5e013f0-1b78-11ea-ba7e-1bf91825cde6", "fe0027f0-1b78-11ea-ba7e-1bf91825cde6", "179f6350-1b1b-11ea-909b-0fac0366f214", "cd249d90-1b1a-11ea-909b-0fac0366f214", "d3ca6da0-1b1a-11ea-909b-0fac0366f214", "2dae0e30-1b1b-11ea-909b-0fac0366f214", "de3227b0-1b1a-11ea-909b-0fac0366f214", "37c97d00-1b1b-11ea-909b-0fac0366f214", "e4d93040-1b1a-11ea-909b-0fac0366f214", "e8fdaca0-1b1a-11ea-909b-0fac0366f214", "01739380-1b1b-11ea-909b-0fac0366f214", "ed428240-1b1a-11ea-909b-0fac0366f214", "05f264e0-1b1b-11ea-909b-0fac0366f214", "f19d9f00-1b1a-11ea-909b-0fac0366f214", "0a32f4c0-1b1b-11ea-909b-0fac0366f214", "f5c59dd0-1b1a-11ea-909b-0fac0366f214", "0db71270-1b1b-11ea-909b-0fac0366f214", "33e2f400-1b1b-11ea-909b-0fac0366f214", "29418c50-1b1b-11ea-909b-0fac0366f214", "fb48e6e0-1b1a-11ea-909b-0fac0366f214", "d8a6ef60-1b1a-11ea-909b-0fac0366f214", "c78bf7c0-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["7805df00-1e02-11ea-b477-c5c7e64724fd"],
+    "duration": 20,
+    "name": "Dimmer 75%",
+    "isRunning": false
+  }, {
+    "id": "036ebb10-1b7a-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["50ab83d0-1b76-11ea-b32f-7bd41be301b0", "50abf900-1b76-11ea-b32f-7bd41be301b0", "8a4d2070-1b77-11ea-b32f-7bd41be301b0", "b0301cb0-1b78-11ea-b32f-7bd41be301b0", "b493ec00-1b78-11ea-b32f-7bd41be301b0", "b8ffaa90-1b78-11ea-b32f-7bd41be301b0", "e191ddc0-1b78-11ea-ba7e-1bf91825cde6", "e85017d0-1b78-11ea-ba7e-1bf91825cde6", "ecae8ff0-1b78-11ea-ba7e-1bf91825cde6", "f12cc510-1b78-11ea-ba7e-1bf91825cde6", "f5e013f0-1b78-11ea-ba7e-1bf91825cde6", "fe0027f0-1b78-11ea-ba7e-1bf91825cde6", "179f6350-1b1b-11ea-909b-0fac0366f214", "cd249d90-1b1a-11ea-909b-0fac0366f214", "d3ca6da0-1b1a-11ea-909b-0fac0366f214", "2dae0e30-1b1b-11ea-909b-0fac0366f214", "de3227b0-1b1a-11ea-909b-0fac0366f214", "37c97d00-1b1b-11ea-909b-0fac0366f214", "e4d93040-1b1a-11ea-909b-0fac0366f214", "e8fdaca0-1b1a-11ea-909b-0fac0366f214", "01739380-1b1b-11ea-909b-0fac0366f214", "ed428240-1b1a-11ea-909b-0fac0366f214", "05f264e0-1b1b-11ea-909b-0fac0366f214", "f19d9f00-1b1a-11ea-909b-0fac0366f214", "0a32f4c0-1b1b-11ea-909b-0fac0366f214", "f5c59dd0-1b1a-11ea-909b-0fac0366f214", "0db71270-1b1b-11ea-909b-0fac0366f214", "33e2f400-1b1b-11ea-909b-0fac0366f214", "29418c50-1b1b-11ea-909b-0fac0366f214", "fb48e6e0-1b1a-11ea-909b-0fac0366f214", "d8a6ef60-1b1a-11ea-909b-0fac0366f214", "c78bf7c0-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["f7597810-1b79-11ea-ba7e-1bf91825cde6"],
+    "duration": 20,
+    "name": "Dimmer 100%",
+    "isRunning": false
+  }, {
+    "id": "b7a856f1-1b83-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["e191ddc0-1b78-11ea-ba7e-1bf91825cde6"],
+    "animations": ["b7a856f0-1b83-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "MovingBar 193"
+  }, {
+    "id": "d44e7a00-1b83-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["e85017d0-1b78-11ea-ba7e-1bf91825cde6"],
+    "animations": ["d44e52f0-1b83-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "MovingBar 225"
+  }, {
+    "id": "dfdc6491-1b83-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["ecae8ff0-1b78-11ea-ba7e-1bf91825cde6"],
+    "animations": ["dfdc6490-1b83-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "MovingBar 257"
+  }, {
+    "id": "960754b0-1b83-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["f12cc510-1b78-11ea-ba7e-1bf91825cde6"],
+    "animations": ["96072da0-1b83-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "MovingBar 289"
+  }, {
+    "id": "9fd12110-1b83-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["f5e013f0-1b78-11ea-ba7e-1bf91825cde6"],
+    "animations": ["9fd0fa00-1b83-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "MovingBar 321"
+  }, {
+    "id": "a9cf43e0-1b83-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["fe0027f0-1b78-11ea-ba7e-1bf91825cde6"],
+    "animations": ["a9cf1cd0-1b83-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "MovingBar 353"
+  }, {
+    "id": "48f91500-1e03-11ea-b477-c5c7e64724fd",
+    "fixtures": ["e191ddc0-1b78-11ea-ba7e-1bf91825cde6", "e85017d0-1b78-11ea-ba7e-1bf91825cde6", "ecae8ff0-1b78-11ea-ba7e-1bf91825cde6", "f12cc510-1b78-11ea-ba7e-1bf91825cde6", "f5e013f0-1b78-11ea-ba7e-1bf91825cde6", "fe0027f0-1b78-11ea-ba7e-1bf91825cde6"],
+    "animations": ["b27d1090-1e02-11ea-b477-c5c7e64724fd"],
+    "duration": 20,
+    "name": "MovingBar Moving 1",
+    "isRunning": false
+  }, {
+    "id": "432bcaa0-1e03-11ea-b477-c5c7e64724fd",
+    "fixtures": ["e191ddc0-1b78-11ea-ba7e-1bf91825cde6", "e85017d0-1b78-11ea-ba7e-1bf91825cde6", "ecae8ff0-1b78-11ea-ba7e-1bf91825cde6", "f12cc510-1b78-11ea-ba7e-1bf91825cde6", "f5e013f0-1b78-11ea-ba7e-1bf91825cde6", "fe0027f0-1b78-11ea-ba7e-1bf91825cde6"],
+    "animations": ["a6561a50-1e02-11ea-b477-c5c7e64724fd"],
+    "duration": 20,
+    "name": "MovingBar Straight",
+    "isRunning": false
+  }, {
+    "id": "efeed160-1b79-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["50ab83d0-1b76-11ea-b32f-7bd41be301b0", "50abf900-1b76-11ea-b32f-7bd41be301b0", "8a4d2070-1b77-11ea-b32f-7bd41be301b0", "b0301cb0-1b78-11ea-b32f-7bd41be301b0", "b493ec00-1b78-11ea-b32f-7bd41be301b0", "b8ffaa90-1b78-11ea-b32f-7bd41be301b0", "e191ddc0-1b78-11ea-ba7e-1bf91825cde6", "e85017d0-1b78-11ea-ba7e-1bf91825cde6", "ecae8ff0-1b78-11ea-ba7e-1bf91825cde6", "f12cc510-1b78-11ea-ba7e-1bf91825cde6", "f5e013f0-1b78-11ea-ba7e-1bf91825cde6", "fe0027f0-1b78-11ea-ba7e-1bf91825cde6", "179f6350-1b1b-11ea-909b-0fac0366f214", "cd249d90-1b1a-11ea-909b-0fac0366f214", "d3ca6da0-1b1a-11ea-909b-0fac0366f214", "2dae0e30-1b1b-11ea-909b-0fac0366f214", "de3227b0-1b1a-11ea-909b-0fac0366f214", "37c97d00-1b1b-11ea-909b-0fac0366f214", "e4d93040-1b1a-11ea-909b-0fac0366f214", "e8fdaca0-1b1a-11ea-909b-0fac0366f214", "01739380-1b1b-11ea-909b-0fac0366f214", "ed428240-1b1a-11ea-909b-0fac0366f214", "05f264e0-1b1b-11ea-909b-0fac0366f214", "f19d9f00-1b1a-11ea-909b-0fac0366f214", "0a32f4c0-1b1b-11ea-909b-0fac0366f214", "f5c59dd0-1b1a-11ea-909b-0fac0366f214", "0db71270-1b1b-11ea-909b-0fac0366f214", "33e2f400-1b1b-11ea-909b-0fac0366f214", "29418c50-1b1b-11ea-909b-0fac0366f214", "fb48e6e0-1b1a-11ea-909b-0fac0366f214", "d8a6ef60-1b1a-11ea-909b-0fac0366f214", "c78bf7c0-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["749f4850-1b79-11ea-ba7e-1bf91825cde6"],
+    "duration": 20,
+    "name": "rainbow",
+    "isRunning": false
+  }, {
+    "id": "45728b81-1b80-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["179f6350-1b1b-11ea-909b-0fac0366f214"],
+    "animations": ["45728b80-1b80-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 87"
+  }, {
+    "id": "b4953570-1b81-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["cd249d90-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["b4950e61-1b81-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 113"
+  }, {
+    "id": "bf9f7110-1b81-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["d3ca6da0-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["bf9f4a00-1b81-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 145"
+  }, {
+    "id": "58fdbfd1-1b80-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["2dae0e30-1b1b-11ea-909b-0fac0366f214"],
+    "animations": ["58fdbfd0-1b80-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 151"
+  }, {
+    "id": "e3b6a371-1b81-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["de3227b0-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["e3b6a370-1b81-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 177"
+  }, {
+    "id": "84f40590-1b80-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["37c97d00-1b1b-11ea-909b-0fac0366f214"],
+    "animations": ["84f3de81-1b80-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 183"
+  }, {
+    "id": "f06842f0-1b80-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["e4d93040-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["f0681be0-1b80-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 209"
+  }, {
+    "id": "18eae5c1-1b81-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["e8fdaca0-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["18eae5c0-1b81-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 241"
+  }, {
+    "id": "a9a702c0-1b80-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["01739380-1b1b-11ea-909b-0fac0366f214"],
+    "animations": ["a9a6dbb1-1b80-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 247"
+  }, {
+    "id": "2516e511-1b81-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["ed428240-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["2516e510-1b81-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 273"
+  }, {
+    "id": "bbb38650-1b80-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["05f264e0-1b1b-11ea-909b-0fac0366f214"],
+    "animations": ["bbb35f40-1b80-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 279"
+  }, {
+    "id": "721a7890-1b81-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["f19d9f00-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["721a5180-1b81-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 305"
+  }, {
+    "id": "c6a8b351-1b80-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["0a32f4c0-1b1b-11ea-909b-0fac0366f214"],
+    "animations": ["c6a8b350-1b80-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 311"
+  }, {
+    "id": "8ca1da51-1b81-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["f5c59dd0-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["8ca1da50-1b81-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 337"
+  }, {
+    "id": "e7dc74d0-1b80-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["0db71270-1b1b-11ea-909b-0fac0366f214"],
+    "animations": ["e7dc4dc0-1b80-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 343"
+  }, {
+    "id": "7f748d10-1b80-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["33e2f400-1b1b-11ea-909b-0fac0366f214"],
+    "animations": ["7f746600-1b80-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 474"
+  }, {
+    "id": "4f739480-1b80-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["29418c50-1b1b-11ea-909b-0fac0366f214"],
+    "animations": ["4f736d70-1b80-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 480"
+  }, {
+    "id": "9f2e58c1-1b80-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["fb48e6e0-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["9f2e58c0-1b80-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 486"
+  }, {
+    "id": "dcd9bdd0-1b81-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["d8a6ef60-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["dcd996c0-1b81-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 494"
+  }, {
+    "id": "a8b11490-1b81-11ea-ba7e-1bf91825cde6",
+    "fixtures": ["c78bf7c0-1b1a-11ea-909b-0fac0366f214"],
+    "animations": ["a8b0ed81-1b81-11ea-ba7e-1bf91825cde6"],
+    "duration": 2000,
+    "name": "SlimPar 500"
+  }, {
+    "id": "2ba329f0-1e03-11ea-b477-c5c7e64724fd",
+    "fixtures": ["4fff0fd0-1b79-11ea-ba7e-1bf91825cde6", "4191d310-1b79-11ea-ba7e-1bf91825cde6"],
+    "animations": ["11576710-1e02-11ea-b477-c5c7e64724fd", "f7597810-1b79-11ea-ba7e-1bf91825cde6"],
+    "duration": 20,
+    "name": "Strobe 50%",
+    "isRunning": false
+  }, {
+    "id": "30df30d0-1e03-11ea-b477-c5c7e64724fd",
+    "fixtures": ["4fff0fd0-1b79-11ea-ba7e-1bf91825cde6", "4191d310-1b79-11ea-ba7e-1bf91825cde6"],
+    "animations": ["0ee15e00-1e02-11ea-b477-c5c7e64724fd", "f7597810-1b79-11ea-ba7e-1bf91825cde6"],
+    "duration": 20,
+    "name": "Strobe 75%",
+    "isRunning": false
+  }, {
+    "id": "34b73ae0-1e03-11ea-b477-c5c7e64724fd",
+    "fixtures": ["4fff0fd0-1b79-11ea-ba7e-1bf91825cde6", "4191d310-1b79-11ea-ba7e-1bf91825cde6"],
+    "animations": ["0b6e5750-1e02-11ea-b477-c5c7e64724fd", "f7597810-1b79-11ea-ba7e-1bf91825cde6"],
+    "duration": 20,
+    "name": "Strobe 100%",
+    "isRunning": false
+  }],
+  "animationManager": [{
+    "id": "31f9c660-1b83-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 42
+      },
+      "1": {
+        "modvColor": 42
+      }
+    },
+    "duration": 2000,
+    "name": "Bar 1",
+    "changed": 1576006088134
+  }, {
+    "id": "38009750-1b83-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 44
+      },
+      "1": {
+        "modvColor": 44
+      }
+    },
+    "duration": 2000,
+    "name": "Bar 7",
+    "changed": 1576006098245
+  }, {
+    "id": "42152850-1b83-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 48
+      },
+      "1": {
+        "modvColor": 48
+      }
+    },
+    "duration": 2000,
+    "name": "Bar 13",
+    "changed": 1576006115157
+  }, {
+    "id": "f1f20550-1b82-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 2
+      },
+      "1": {
+        "modvColor": 2
+      }
+    },
+    "duration": 2000,
+    "name": "Bar 299",
+    "changed": 1576005980709
+  }, {
+    "id": "f79cac80-1b82-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 4
+      },
+      "1": {
+        "modvColor": 4
+      }
+    },
+    "duration": 2000,
+    "name": "Bar 331",
+    "changed": 1576005990216
+  }, {
+    "id": "02428100-1b83-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 8
+      },
+      "1": {
+        "modvColor": 8
+      }
+    },
+    "duration": 2000,
+    "name": "Bar 363",
+    "changed": 1576006008080
+  }, {
+    "id": "faa93f50-1b79-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "dimmer": 75
+      },
+      "1": {
+        "dimmer": 75
+      }
+    },
+    "duration": 2000,
+    "name": "Dimmer 25%",
+    "changed": 1576280623739
+  }, {
+    "id": "6952bfa0-1e02-11ea-b477-c5c7e64724fd",
+    "keyframes": {
+      "0": {
+        "dimmer": 125
+      },
+      "1": {
+        "dimmer": 125
+      }
+    },
+    "duration": 2000,
+    "name": "Dimmer 50%",
+    "changed": 1576280646619
+  }, {
+    "id": "7805df00-1e02-11ea-b477-c5c7e64724fd",
+    "keyframes": {
+      "0": {
+        "dimmer": 200
+      },
+      "1": {
+        "dimmer": 200
+      }
+    },
+    "duration": 2000,
+    "name": "Dimmer 75%",
+    "changed": 1576280671024
+  }, {
+    "id": "f7597810-1b79-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "dimmer": 255
+      },
+      "1": {
+        "dimmer": 255
+      }
+    },
+    "duration": 2000,
+    "name": "Dimmer 100%",
+    "changed": 1576280456273
+  }, {
+    "id": "luminave-thorium-dynamic-animation-1337",
+    "keyframes": {
+      "0": {
+        "dimmer": 255,
+        "color": [0, 0, 255]
+      },
+      "1": {
+        "dimmer": 255,
+        "color": [0, 0, 255]
+      }
+    },
+    "duration": 1000,
+    "name": "luminave-thorium-dynamic-animation-1337",
+    "changed": 1571781409028
+  }, {
+    "id": "b7a856f0-1b83-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 34
+      },
+      "1": {
+        "modvColor": 34
+      }
+    },
+    "duration": 2000,
+    "name": "MovingBar 193",
+    "changed": 1576006312415
+  }, {
+    "id": "d44e52f0-1b83-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 37
+      },
+      "1": {
+        "modvColor": 37
+      }
+    },
+    "duration": 2000,
+    "name": "MovingBar 225",
+    "changed": 1576006360479
+  }, {
+    "id": "dfdc6490-1b83-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 39
+      },
+      "1": {
+        "modvColor": 39
+      }
+    },
+    "duration": 2000,
+    "name": "MovingBar 257",
+    "changed": 1576006379865
+  }, {
+    "id": "96072da0-1b83-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 10
+      },
+      "1": {
+        "modvColor": 10
+      }
+    },
+    "duration": 2000,
+    "name": "MovingBar 289",
+    "changed": 1576006255994
+  }, {
+    "id": "9fd0fa00-1b83-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 12
+      },
+      "1": {
+        "modvColor": 12
+      }
+    },
+    "duration": 2000,
+    "name": "MovingBar 321",
+    "changed": 1576006272416
+  }, {
+    "id": "a9cf1cd0-1b83-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 16
+      },
+      "1": {
+        "modvColor": 16
+      }
+    },
+    "duration": 2000,
+    "name": "MovingBar 353",
+    "changed": 1576006289181
+  }, {
+    "id": "b27d1090-1e02-11ea-b477-c5c7e64724fd",
+    "keyframes": {
+      "0": {
+        "tilt": 0,
+        "tiltSpeed": 255
+      },
+      "1": {
+        "tiltSpeed": 255,
+        "tilt": 0
+      },
+      "0.5": {
+        "tilt": 255
+      }
+    },
+    "duration": 2000,
+    "name": "Position Moving 1",
+    "changed": 1576280909976
+  }, {
+    "id": "a6561a50-1e02-11ea-b477-c5c7e64724fd",
+    "keyframes": {
+      "0": {
+        "tilt": 130
+      },
+      "1": {
+        "tilt": 130
+      }
+    },
+    "duration": 2000,
+    "name": "Position Straight",
+    "changed": 1576280816165
+  }, {
+    "id": "749f4850-1b79-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "color": [255, 0, 0]
+      },
+      "1": {
+        "color": [0, 0, 255]
+      },
+      "0.1": {
+        "color": [255, 255, 0]
+      },
+      "0.2": {
+        "color": [0, 255, 0]
+      },
+      "0.3": {
+        "color": [0, 255, 255]
+      },
+      "0.4": {
+        "color": [0, 0, 255]
+      },
+      "0.5": {
+        "color": [255, 0, 255]
+      },
+      "0.6": {
+        "color": [255, 0, 0]
+      },
+      "0.7": {
+        "color": [255, 255, 0]
+      },
+      "0.8": {
+        "color": [0, 255, 0]
+      },
+      "0.9": {
+        "color": [0, 255, 255]
+      }
+    },
+    "duration": 2000,
+    "name": "rainbow",
+    "changed": 1576280460427
+  }, {
+    "id": "45728b80-1b80-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 1
+      },
+      "1": {
+        "modvColor": 1
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 87",
+    "changed": 1576004832312
+  }, {
+    "id": "b4950e61-1b81-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 43
+      },
+      "1": {
+        "modvColor": 43
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 113",
+    "changed": 1576005448263
+  }, {
+    "id": "bf9f4a00-1b81-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 45
+      },
+      "1": {
+        "modvColor": 45
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 145",
+    "changed": 1576005466784
+  }, {
+    "id": "58fdbfd0-1b80-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 5
+      },
+      "1": {
+        "modvColor": 5
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 151",
+    "changed": 1576004865101
+  }, {
+    "id": "e3b6a370-1b81-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 47
+      },
+      "1": {
+        "modvColor": 47
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 177",
+    "changed": 1576005527335
+  }, {
+    "id": "84f3de81-1b80-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 7
+      },
+      "1": {
+        "modvColor": 7
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 183",
+    "changed": 1576004938857
+  }, {
+    "id": "f0681be0-1b80-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 25
+      },
+      "1": {
+        "modvColor": 25
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 209",
+    "changed": 1576005119134
+  }, {
+    "id": "18eae5c0-1b81-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 27
+      },
+      "1": {
+        "modvColor": 27
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 241",
+    "changed": 1576005187100
+  }, {
+    "id": "a9a6dbb1-1b80-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 19
+      },
+      "1": {
+        "modvColor": 19
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 247",
+    "changed": 1576005000427
+  }, {
+    "id": "2516e510-1b81-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 29
+      },
+      "1": {
+        "modvColor": 29
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 273",
+    "changed": 1576005207521
+  }, {
+    "id": "bbb35f40-1b80-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 21
+      },
+      "1": {
+        "modvColor": 21
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 279",
+    "changed": 1576005030708
+  }, {
+    "id": "721a5180-1b81-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 31
+      },
+      "1": {
+        "modvColor": 31
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 305",
+    "changed": 1576005336728
+  }, {
+    "id": "c6a8b350-1b80-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 23
+      },
+      "1": {
+        "modvColor": 23
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 311",
+    "changed": 1576005049093
+  }, {
+    "id": "8ca1da50-1b81-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 32
+      },
+      "1": {
+        "modvColor": 32
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 337",
+    "changed": 1576005381237
+  }, {
+    "id": "e7dc4dc0-1b80-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 24
+      },
+      "1": {
+        "modvColor": 24
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 343",
+    "changed": 1576005104796
+  }, {
+    "id": "7f746600-1b80-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 6
+      },
+      "1": {
+        "modvColor": 6
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 474",
+    "changed": 1576004929632
+  }, {
+    "id": "4f736d70-1b80-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 3
+      },
+      "1": {
+        "modvColor": 3
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 480",
+    "changed": 1576004849095
+  }, {
+    "id": "9f2e58c0-1b80-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 17
+      },
+      "1": {
+        "modvColor": 17
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 486",
+    "changed": 1576004982860
+  }, {
+    "id": "dcd996c0-1b81-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 46
+      },
+      "1": {
+        "modvColor": 46
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 494",
+    "changed": 1576005515820
+  }, {
+    "id": "a8b0ed81-1b81-11ea-ba7e-1bf91825cde6",
+    "keyframes": {
+      "0": {
+        "modvColor": 41
+      },
+      "1": {
+        "modvColor": 41
+      }
+    },
+    "duration": 2000,
+    "name": "SlimPar 500",
+    "changed": 1576005428312
+  }, {
+    "id": "11576710-1e02-11ea-b477-c5c7e64724fd",
+    "keyframes": {
+      "0": {
+        "strobe": 100
+      },
+      "1": {
+        "strobe": 100
+      }
+    },
+    "duration": 2000,
+    "name": "Strobe 50%",
+    "changed": 1576280518444
+  }, {
+    "id": "0ee15e00-1e02-11ea-b477-c5c7e64724fd",
+    "keyframes": {
+      "0": {
+        "strobe": 175
+      },
+      "1": {
+        "strobe": 175
+      }
+    },
+    "duration": 2000,
+    "name": "Strobe 75%",
+    "changed": 1576280528869
+  }, {
+    "id": "0b6e5750-1e02-11ea-b477-c5c7e64724fd",
+    "keyframes": {
+      "0": {
+        "strobe": 225
+      },
+      "1": {
+        "strobe": 225
+      }
+    },
+    "duration": 2000,
+    "name": "Strobe 100%",
+    "changed": 1576280539195
+  }, {
+    "id": "3b450b90-1e02-11ea-b477-c5c7e64724fd",
+    "keyframes": {
+      "0": {
+        "white": 255
+      },
+      "1": {
+        "white": 255
+      }
+    },
+    "duration": 2000,
+    "name": "White",
+    "changed": 1576280565419
+  }],
+  "fixtureManager": [{
+    "id": "50ab83d0-1b76-11ea-b32f-7bd41be301b0",
+    "type": "BasicLedBar",
+    "name": "Bar 1",
+    "universe": 0,
+    "address": 1,
+    "properties": {}
+  }, {
+    "id": "50abf900-1b76-11ea-b32f-7bd41be301b0",
+    "type": "BasicLedBar",
+    "name": "Bar 7",
+    "universe": 0,
+    "address": 7,
+    "properties": {}
+  }, {
+    "id": "8a4d2070-1b77-11ea-b32f-7bd41be301b0",
+    "type": "BasicLedBar",
+    "name": "Bar 13",
+    "universe": 0,
+    "address": 13,
+    "properties": {}
+  }, {
+    "id": "b0301cb0-1b78-11ea-b32f-7bd41be301b0",
+    "type": "BasicLedBar",
+    "name": "Bar 299",
+    "universe": 0,
+    "address": 299,
+    "properties": {}
+  }, {
+    "id": "b493ec00-1b78-11ea-b32f-7bd41be301b0",
+    "type": "BasicLedBar",
+    "name": "Bar 331",
+    "universe": 0,
+    "address": 331,
+    "properties": {}
+  }, {
+    "id": "b8ffaa90-1b78-11ea-b32f-7bd41be301b0",
+    "type": "BasicLedBar",
+    "name": "Bar 363",
+    "universe": 0,
+    "address": 363,
+    "properties": {}
+  }, {
+    "id": "4fff0fd0-1b79-11ea-ba7e-1bf91825cde6",
+    "type": "BasicDimmerStrobe",
+    "name": "Blinder 46",
+    "universe": 0,
+    "address": 46,
+    "properties": {}
+  }, {
+    "id": "4191d310-1b79-11ea-ba7e-1bf91825cde6",
+    "type": "BasicDimmerStrobe",
+    "name": "Blinder 510",
+    "universe": 0,
+    "address": 510,
+    "properties": {}
+  }, {
+    "id": "e191ddc0-1b78-11ea-ba7e-1bf91825cde6",
+    "type": "InvolightMovingBar1808",
+    "name": "MovingBar 193",
+    "universe": 0,
+    "address": 193,
+    "properties": {}
+  }, {
+    "id": "e85017d0-1b78-11ea-ba7e-1bf91825cde6",
+    "type": "InvolightMovingBar1808",
+    "name": "MovingBar 225",
+    "universe": 0,
+    "address": 225,
+    "properties": {}
+  }, {
+    "id": "ecae8ff0-1b78-11ea-ba7e-1bf91825cde6",
+    "type": "InvolightMovingBar1808",
+    "name": "MovingBar 257",
+    "universe": 0,
+    "address": 257,
+    "properties": {}
+  }, {
+    "id": "f12cc510-1b78-11ea-ba7e-1bf91825cde6",
+    "type": "InvolightMovingBar1808",
+    "name": "MovingBar 289",
+    "universe": 0,
+    "address": 289,
+    "properties": {}
+  }, {
+    "id": "f5e013f0-1b78-11ea-ba7e-1bf91825cde6",
+    "type": "InvolightMovingBar1808",
+    "name": "MovingBar 321",
+    "universe": 0,
+    "address": 321,
+    "properties": {}
+  }, {
+    "id": "fe0027f0-1b78-11ea-ba7e-1bf91825cde6",
+    "type": "InvolightMovingBar1808",
+    "name": "MovingBar 353",
+    "universe": 0,
+    "address": 353,
+    "properties": {}
+  }, {
+    "id": "179f6350-1b1b-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 87",
+    "universe": 0,
+    "address": 87,
+    "properties": {}
+  }, {
+    "id": "cd249d90-1b1a-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 113",
+    "universe": 0,
+    "address": 113,
+    "properties": {}
+  }, {
+    "id": "d3ca6da0-1b1a-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 145",
+    "universe": 0,
+    "address": 145,
+    "properties": {}
+  }, {
+    "id": "2dae0e30-1b1b-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 151",
+    "universe": 0,
+    "address": 151,
+    "properties": {}
+  }, {
+    "id": "de3227b0-1b1a-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 177",
+    "universe": 0,
+    "address": 177,
+    "properties": {}
+  }, {
+    "id": "37c97d00-1b1b-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 183",
+    "universe": 0,
+    "address": 183,
+    "properties": {}
+  }, {
+    "id": "e4d93040-1b1a-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 209",
+    "universe": 0,
+    "address": 209,
+    "properties": {}
+  }, {
+    "id": "e8fdaca0-1b1a-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 241",
+    "universe": 0,
+    "address": 241,
+    "properties": {}
+  }, {
+    "id": "01739380-1b1b-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 247",
+    "universe": 0,
+    "address": 247,
+    "properties": {}
+  }, {
+    "id": "ed428240-1b1a-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 273",
+    "universe": 0,
+    "address": 273,
+    "properties": {}
+  }, {
+    "id": "05f264e0-1b1b-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 279",
+    "universe": 0,
+    "address": 279,
+    "properties": {}
+  }, {
+    "id": "f19d9f00-1b1a-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 305",
+    "universe": 0,
+    "address": 305,
+    "properties": {}
+  }, {
+    "id": "0a32f4c0-1b1b-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 311",
+    "universe": 0,
+    "address": 311,
+    "properties": {}
+  }, {
+    "id": "f5c59dd0-1b1a-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 337",
+    "universe": 0,
+    "address": 337,
+    "properties": {}
+  }, {
+    "id": "0db71270-1b1b-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 343",
+    "universe": 0,
+    "address": 343,
+    "properties": {}
+  }, {
+    "id": "33e2f400-1b1b-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 474",
+    "universe": 0,
+    "address": 474,
+    "properties": {}
+  }, {
+    "id": "29418c50-1b1b-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 480",
+    "universe": 0,
+    "address": 480,
+    "properties": {}
+  }, {
+    "id": "fb48e6e0-1b1a-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 486",
+    "universe": 0,
+    "address": 486,
+    "properties": {}
+  }, {
+    "id": "d8a6ef60-1b1a-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 494",
+    "universe": 0,
+    "address": 494,
+    "properties": {}
+  }, {
+    "id": "c78bf7c0-1b1a-11ea-909b-0fac0366f214",
+    "type": "InvolightSlimPar784",
+    "name": "SlimPar 500",
+    "universe": 0,
+    "address": 500,
+    "properties": {}
+  }],
+  "midiManager": {
+    "controllers": [{
+      "id": "c2d35710-02c3-11ea-a965-af3c7fc80f97",
+      "name": "launchpad pro",
+      "input": "Launchpad Pro Standalone Port",
+      "output": "Launchpad Pro Standalone Port",
+      "width": 5,
+      "height": 5,
+      "ccasnoteon": true,
+      "mapping": [{
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "Button",
+        "active": false,
+        "value": 0,
+        "isEditing": true
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": 61,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": true
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }, {
+        "scenes": [],
+        "note": -1,
+        "label": "",
+        "type": "",
+        "active": false,
+        "value": 0,
+        "isEditing": false
+      }]
+    }],
+    "enabled": true,
+    "learning": -1
+  },
+  "app": {
+    "drawerOpened": false,
+    "page": "scene"
+  },
+  "timeline": {
+    "scenes": [],
+    "playing": false,
+    "progress": 0
+  },
+  "venueManager": [{
+    "id": "2667fa50-1b7a-11ea-ba7e-1bf91825cde6",
+    "name": "Stifler32",
+    "width": 6,
+    "height": 8,
+    "modv": {
+      "width": 6,
+      "height": 8
+    },
+    "slots": [{
+      "x": 0,
+      "y": 0,
+      "name": "SlimPar 87",
+      "id": "45726470-1b80-11ea-ba7e-1bf91825cde6",
+      "modv": 1,
+      "animations": ["45728b80-1b80-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "45728b81-1b80-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["179f6350-1b1b-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 0,
+      "y": 2,
+      "name": "SlimPar 480",
+      "id": "4f731f50-1b80-11ea-ba7e-1bf91825cde6",
+      "modv": 3,
+      "animations": ["4f736d70-1b80-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "4f739480-1b80-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["29418c50-1b1b-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 0,
+      "y": 4,
+      "name": "SlimPar 151",
+      "id": "58fd98c0-1b80-11ea-ba7e-1bf91825cde6",
+      "modv": 5,
+      "animations": ["58fdbfd0-1b80-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "58fdbfd1-1b80-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["2dae0e30-1b1b-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 0,
+      "y": 5,
+      "name": "SlimPar 474",
+      "id": "7f743ef0-1b80-11ea-ba7e-1bf91825cde6",
+      "modv": 6,
+      "animations": ["7f746600-1b80-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "7f748d10-1b80-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["33e2f400-1b1b-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 0,
+      "y": 6,
+      "name": "SlimPar 183",
+      "id": "84f3de80-1b80-11ea-ba7e-1bf91825cde6",
+      "modv": 7,
+      "animations": ["84f3de81-1b80-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "84f40590-1b80-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["37c97d00-1b1b-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 2,
+      "y": 0,
+      "name": "SlimPar 486",
+      "id": "9f2e31b0-1b80-11ea-ba7e-1bf91825cde6",
+      "modv": 17,
+      "animations": ["9f2e58c0-1b80-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "9f2e58c1-1b80-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["fb48e6e0-1b1a-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 2,
+      "y": 2,
+      "name": "SlimPar 247",
+      "id": "a9a6dbb0-1b80-11ea-ba7e-1bf91825cde6",
+      "modv": 19,
+      "animations": ["a9a6dbb1-1b80-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "a9a702c0-1b80-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["01739380-1b1b-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 2,
+      "y": 4,
+      "name": "SlimPar 279",
+      "id": "bbb33830-1b80-11ea-ba7e-1bf91825cde6",
+      "modv": 21,
+      "animations": ["bbb35f40-1b80-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "bbb38650-1b80-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["05f264e0-1b1b-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 2,
+      "y": 6,
+      "name": "SlimPar 311",
+      "id": "c6a88c40-1b80-11ea-ba7e-1bf91825cde6",
+      "modv": 23,
+      "animations": ["c6a8b350-1b80-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "c6a8b351-1b80-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["0a32f4c0-1b1b-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 2,
+      "y": 7,
+      "name": "SlimPar 343",
+      "id": "e7dc26b0-1b80-11ea-ba7e-1bf91825cde6",
+      "modv": 24,
+      "animations": ["e7dc4dc0-1b80-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "e7dc74d0-1b80-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["0db71270-1b1b-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 3,
+      "y": 0,
+      "name": "SlimPar 209",
+      "id": "f067f4d0-1b80-11ea-ba7e-1bf91825cde6",
+      "modv": 25,
+      "animations": ["f0681be0-1b80-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "f06842f0-1b80-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["e4d93040-1b1a-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 3,
+      "y": 2,
+      "name": "SlimPar 241",
+      "id": "18eabeb0-1b81-11ea-ba7e-1bf91825cde6",
+      "modv": 27,
+      "animations": ["18eae5c0-1b81-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "18eae5c1-1b81-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["e8fdaca0-1b1a-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 3,
+      "y": 4,
+      "name": "SlimPar 273",
+      "id": "2516be00-1b81-11ea-ba7e-1bf91825cde6",
+      "modv": 29,
+      "animations": ["2516e510-1b81-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "2516e511-1b81-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["ed428240-1b1a-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 3,
+      "y": 6,
+      "name": "SlimPar 305",
+      "id": "721a2a70-1b81-11ea-ba7e-1bf91825cde6",
+      "modv": 31,
+      "animations": ["721a5180-1b81-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "721a7890-1b81-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["f19d9f00-1b1a-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 3,
+      "y": 7,
+      "name": "SlimPar 337",
+      "id": "8ca1b340-1b81-11ea-ba7e-1bf91825cde6",
+      "modv": 32,
+      "animations": ["8ca1da50-1b81-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "8ca1da51-1b81-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["f5c59dd0-1b1a-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 5,
+      "y": 0,
+      "name": "SlimPar 500",
+      "id": "a8b0ed80-1b81-11ea-ba7e-1bf91825cde6",
+      "modv": 41,
+      "animations": ["a8b0ed81-1b81-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "a8b11490-1b81-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["c78bf7c0-1b1a-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 5,
+      "y": 2,
+      "name": "SlimPar 113",
+      "id": "b4950e60-1b81-11ea-ba7e-1bf91825cde6",
+      "modv": 43,
+      "animations": ["b4950e61-1b81-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "b4953570-1b81-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["cd249d90-1b1a-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 5,
+      "y": 4,
+      "name": "SlimPar 145",
+      "id": "bf9f22f0-1b81-11ea-ba7e-1bf91825cde6",
+      "modv": 45,
+      "animations": ["bf9f4a00-1b81-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "bf9f7110-1b81-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["d3ca6da0-1b1a-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 5,
+      "y": 5,
+      "name": "SlimPar 494",
+      "id": "dcd96fb0-1b81-11ea-ba7e-1bf91825cde6",
+      "modv": 46,
+      "animations": ["dcd996c0-1b81-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "dcd9bdd0-1b81-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["d8a6ef60-1b1a-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 5,
+      "y": 6,
+      "name": "SlimPar 177",
+      "id": "e3b67c60-1b81-11ea-ba7e-1bf91825cde6",
+      "modv": 47,
+      "animations": ["e3b6a370-1b81-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "e3b6a371-1b81-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["de3227b0-1b1a-11ea-909b-0fac0366f214"]
+    }, {
+      "x": 0,
+      "y": 1,
+      "name": "Bar 299",
+      "id": "f1f1de40-1b82-11ea-ba7e-1bf91825cde6",
+      "modv": 2,
+      "animations": ["f1f20550-1b82-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "f1f20551-1b82-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["b0301cb0-1b78-11ea-b32f-7bd41be301b0"]
+    }, {
+      "x": 0,
+      "y": 3,
+      "name": "Bar 331",
+      "id": "f79c8570-1b82-11ea-ba7e-1bf91825cde6",
+      "modv": 4,
+      "animations": ["f79cac80-1b82-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "f79cd390-1b82-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["b493ec00-1b78-11ea-b32f-7bd41be301b0"]
+    }, {
+      "x": 0,
+      "y": 7,
+      "name": "Bar 363",
+      "id": "024259f0-1b83-11ea-ba7e-1bf91825cde6",
+      "modv": 8,
+      "animations": ["02428100-1b83-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "0242a810-1b83-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["b8ffaa90-1b78-11ea-b32f-7bd41be301b0"]
+    }, {
+      "x": 5,
+      "y": 1,
+      "name": "Bar 1",
+      "id": "31f99f50-1b83-11ea-ba7e-1bf91825cde6",
+      "modv": 42,
+      "animations": ["31f9c660-1b83-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "31f9ed70-1b83-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["50ab83d0-1b76-11ea-b32f-7bd41be301b0"]
+    }, {
+      "x": 5,
+      "y": 3,
+      "name": "Bar 7",
+      "id": "38007040-1b83-11ea-ba7e-1bf91825cde6",
+      "modv": 44,
+      "animations": ["38009750-1b83-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "38009751-1b83-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["50abf900-1b76-11ea-b32f-7bd41be301b0"]
+    }, {
+      "x": 5,
+      "y": 7,
+      "name": "Bar 13",
+      "id": "42150140-1b83-11ea-ba7e-1bf91825cde6",
+      "modv": 48,
+      "animations": ["42152850-1b83-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "42154f60-1b83-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["8a4d2070-1b77-11ea-b32f-7bd41be301b0"]
+    }, {
+      "x": 1,
+      "y": 1,
+      "name": "MovingBar 289",
+      "id": "96070690-1b83-11ea-ba7e-1bf91825cde6",
+      "modv": 10,
+      "animations": ["96072da0-1b83-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "960754b0-1b83-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["f12cc510-1b78-11ea-ba7e-1bf91825cde6"]
+    }, {
+      "x": 1,
+      "y": 3,
+      "name": "MovingBar 321",
+      "id": "9fd0d2f0-1b83-11ea-ba7e-1bf91825cde6",
+      "modv": 12,
+      "animations": ["9fd0fa00-1b83-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "9fd12110-1b83-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["f5e013f0-1b78-11ea-ba7e-1bf91825cde6"]
+    }, {
+      "x": 1,
+      "y": 7,
+      "name": "MovingBar 353",
+      "id": "a9cef5c0-1b83-11ea-ba7e-1bf91825cde6",
+      "modv": 16,
+      "animations": ["a9cf1cd0-1b83-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "a9cf43e0-1b83-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["fe0027f0-1b78-11ea-ba7e-1bf91825cde6"]
+    }, {
+      "x": 4,
+      "y": 1,
+      "name": "MovingBar 193",
+      "id": "b7a82fe0-1b83-11ea-ba7e-1bf91825cde6",
+      "modv": 34,
+      "animations": ["b7a856f0-1b83-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "b7a856f1-1b83-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["e191ddc0-1b78-11ea-ba7e-1bf91825cde6"]
+    }, {
+      "x": 4,
+      "y": 4,
+      "name": "MovingBar 225",
+      "id": "d44e2be0-1b83-11ea-ba7e-1bf91825cde6",
+      "modv": 37,
+      "animations": ["d44e52f0-1b83-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "d44e7a00-1b83-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["e85017d0-1b78-11ea-ba7e-1bf91825cde6"]
+    }, {
+      "x": 4,
+      "y": 6,
+      "name": "MovingBar 257",
+      "id": "dfdc1670-1b83-11ea-ba7e-1bf91825cde6",
+      "modv": 39,
+      "animations": ["dfdc6490-1b83-11ea-ba7e-1bf91825cde6"],
+      "sceneId": "dfdc6491-1b83-11ea-ba7e-1bf91825cde6",
+      "fixtures": ["ecae8ff0-1b78-11ea-ba7e-1bf91825cde6"]
+    }]
+  }],
+  "modvManager": {
+    "reconnect": true,
+    "connected": false,
+    "url": "ws://localhost:3006/luminave"
+  },
+  "luminaveServer": {
+    "reconnect": false,
+    "connected": false,
+    "url": "ws://localhost:4000/graphql",
+    "thorium": {
+      "scenes": []
+    },
+    "animationId": "luminave-thorium-dynamic-animation-1337"
+  },
+  "fivetwelve": {
+    "reconnect": false,
+    "connected": false,
+    "url": "ws://localhost:1234"
+  }
+}

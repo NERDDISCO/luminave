@@ -98,7 +98,7 @@ export const connectionManager = (
 /*
  * Handle the DMX512 universes
  */
-export const universeManager = (state = [], { type, universe, universeIndex, universeId, channelIndex, value, channels }) => {
+export const universeManager = (state = [], { type, universe, universeIndex, universeId, channelIndex, value, channels, data }) => {
 
   if (universeId !== undefined) {
     universeIndex = state.findIndex(universe => universe.id === universeId)
@@ -125,6 +125,10 @@ export const universeManager = (state = [], { type, universe, universeIndex, uni
       // }
     case constants.GET_CHANNEL:
       return state
+
+    case constants.SET_UNIVERSE:
+      return update(state, { [universeIndex]: { $merge: { ...data } } })
+
     default:
       return state
   }

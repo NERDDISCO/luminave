@@ -1,13 +1,14 @@
+import RgbParam from './param/RgbParam.js'
 import RangeParam from 'fivetwelve/lib/param/RangeParam.js'
 
 import DmxDevice from './DmxDevice.js'
 
-export default class BasicDimmerStrobe extends DmxDevice {
+export default class ShowtecHelixQ4000 extends DmxDevice {
   constructor(options) {
     super(Object.assign({}, options, {
       params: {
-        dimmer: new RangeParam(1, { min: 0, max: 255 }),
-        strobe: new RangeParam(2, { min: 0, max: 255 })
+        color: new RgbParam([1, 2, 3]),
+        white: new RangeParam(4, { min: 0, max: 255 })
       }
     }))
 
@@ -15,7 +16,7 @@ export default class BasicDimmerStrobe extends DmxDevice {
     this.layout.width = 1
     this.layout.height = 1
 
-    this.channels = 2
-    this.weight = 1.2
+    this.channels = 4
+    this.weight = 0
   }
 }
