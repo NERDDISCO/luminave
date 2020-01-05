@@ -33,7 +33,7 @@ class UniverseManager extends connect(store)(LitElement) {
       id, 
       channels: [...Array(512)].map(() => 0), 
       name: `${id}`,
-      refresh: true
+      refresh: false
     }))
   }
 
