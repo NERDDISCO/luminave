@@ -105,6 +105,15 @@ export const resetUniverseAndFixtures = universeIndex => {
 }
 
 /*
+ * Update the data of a universe
+ */
+export const setUniverse = (universeId, data) => ({
+  universeId,
+  data,
+  type: constants.SET_UNIVERSE
+})
+
+/*
  * Add a scene
  */
 export const addScene = scene => ({

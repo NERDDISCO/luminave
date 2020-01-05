@@ -3,9 +3,10 @@ import { repeat } from 'lit-html/directives/repeat.js'
 import { connect } from 'pwa-helpers/connect-mixin.js'
 import { store } from '../../reduxStore.js'
 import uuidv1 from 'uuid/v1.js'
-import { addUniverse, removeUniverse, resetUniverseAndFixtures } from '../../actions/index.js'
+import { addUniverse, removeUniverse, resetUniverseAndFixtures, setChannel, setUniverse } from '../../actions/index.js'
 import { getUniverses, getLive } from '../../selectors/index.js'
-import '../channel-grid/index.js'
+import '../channel-grid/channel-grid.js'
+import { addToBatch } from '../../utils/index.js'
 
 import '@polymer/paper-button/paper-button.js'
 import { buttons } from '../../styles/buttons.js'
@@ -31,7 +32,8 @@ class UniverseManager extends connect(store)(LitElement) {
     store.dispatch(addUniverse({ 
       id, 
       channels: [...Array(512)].map(() => 0), 
-      name: `${id}` 
+      name: `${id}`,
+      refresh: true
     }))
   }
 
@@ -42,6 +44,39 @@ class UniverseManager extends connect(store)(LitElement) {
 
   resetUniverse(e) {
     store.dispatch(resetUniverseAndFixtures(0))
+  }
+
+  /**
+   * Update a specific channel. 
+   * 
+   * @param {Object} e - The event that contains the channel and the value
+   */
+  updateChannel(e) {
+    const { channelIndex, channelValue } = e.detail
+
+    store.dispatch(setChannel(0, channelIndex, channelValue))
+
+    addToBatch(channelIndex, channelValue)
+
+    const now = new Date()
+
+    // Send the universe to the UsbDmxManager
+    window.dispatchEvent(new CustomEvent('send-universe-to-usb-dmx-controller', { detail: { now } }))
+
+    // Send the universe to the FivetwelveManager
+    window.dispatchEvent(new CustomEvent('send-universe-to-fivetwelve', { detail: { now } }))
+  }
+
+  /**
+   * Value of refresh was updated
+   * 
+   * @param {Object} e - The event
+   */
+  handleRefreshChange(e) {
+    const { universeId } = e.target
+    const refresh = e.target.checked
+
+    store.dispatch(setUniverse(universeId, { refresh }))
   }
 
   render() {
@@ -70,8 +105,20 @@ class UniverseManager extends connect(store)(LitElement) {
 
           <paper-button @click="${e => this.resetUniverse(e)}" .universeId="${universe.id}">Reset</paper-button>
 
+          <label for="refresh">Auto-Refresh</label>
+          <input 
+            name="refresh" 
+            type="checkbox" 
+            .checked="${universe.refresh}"
+            .universeId="${universe.id}"
+            @click="${e => this.handleRefreshChange(e)}" />
+
           <div>
-            <channel-grid .channels="${universe.channels}"></channel-grid>
+            <channel-grid 
+              .channels="${universe.channels}"
+              @update-channel="${e => this.updateChannel(e)}"
+              .refresh="${universe.refresh}"
+            ></channel-grid>
           </div>
 
         </div>
