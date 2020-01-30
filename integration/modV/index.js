@@ -5,6 +5,30 @@ const port = _port || 3000
 console.log('modv-integration', '|', 'WebSocket server on port', port)
 
 /*
+ * Find the color in the "middle" which can be mapped to the cyberpunk goggles regardless how big
+ * the selected area in grab-canvas is
+ */
+const centerColor = dmxData => {
+  const { colors } = dmxData
+  let { selectionX } = dmxData
+  let centerIndex = 0
+  selectionX = parseInt(selectionX, 10)
+
+  // Even number
+  if (selectionX % 2 === 0) {
+    centerIndex = Math.floor((colors.length / 3 + selectionX) / 2)
+  } else { 
+    centerIndex = Math.floor(colors.length / 3 / 2)
+  }
+
+  centerIndex *= 3
+  const color = [colors[centerIndex], colors[centerIndex + 1], colors[centerIndex + 2]]
+
+  return color
+}
+
+
+/*
  * Create a WebSocket server
  */
  const server = ws.createServer(connection => {
@@ -29,9 +53,7 @@ console.log('modv-integration', '|', 'WebSocket server on port', port)
 
         // The client connection came from cyberpunk goggles
         if (con.path === '/cyberpunk') {
-          const colors = JSON.stringify(dmxData.colors.slice(12 * 3, 12 * 3 + 3))
-          // console.log('send to cyberpunk', JSON.stringify(colors))
-          con.sendText(colors) 
+          con.sendText(JSON.stringify(centerColor(dmxData))) 
         }
       })
     })
