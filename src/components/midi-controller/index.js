@@ -6,6 +6,7 @@ import '../midi-grid/midi-grid.js'
 import { learnMidi, setMidi, addMidiMapping, addSceneToTimeline, removeSceneFromTimelineAndResetFixtures, setMidiMappingActive } from '../../actions/index.js'
 import { getMidiLearning, getMidiEnabled, getLive } from '../../selectors/index.js'
 import { SCENE_TYPE_STATIC } from '../../constants/timeline.js'
+import { MIDI_TYPE_KNOB, MIDI_TYPE_FADER, MIDI_TYPE_EMPTY, MIDI_TYPE_BUTTON, MIDI_TYPE_ROUND_BUTTON } from '../../constants/index.js'
 import uuidv1 from 'uuid/v1.js'
 
 
@@ -114,7 +115,7 @@ class MidiController extends connect(store)(LitElement) {
           // Do this once output and input are defined
           const len = this.mapping.length
           for (let i = 0; i < len; i++) {
-            if (this.mapping[i].active) {
+            if (this.mapping[i].active && this.mapping[i].type !== MIDI_TYPE_EMPTY) {
               // Button light: on
               // The last value is the velocity and defines the color (if available)
               this.output.send(144, [this.mapping[i].note, 122])

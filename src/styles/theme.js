@@ -5,11 +5,11 @@ export const theme = html`
     :host {
         /* Material Components Web Components */
         --mdc-theme-primary: var(--paper-blue-grey-700);
-        --mdc-theme-secondary: var(--paper-red-500);
+        --mdc-theme-secondary: var(--paper-green-700);
         --mdc-theme-background: var(--paper-grey-900);
         --mdc-theme-surface: var(--paper-grey-300);
         --mdc-theme-on-primary: #fff;
-        --mdc-theme-on-secondary: #000;
+        --mdc-theme-on-secondary: #fff;
         --mdc-theme-on-surface: var(--paper-grey-900);
 
         /* Luminave Custom */
