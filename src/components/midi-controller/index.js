@@ -108,6 +108,20 @@ class MidiController extends connect(store)(LitElement) {
         } else if (name === this.outputname && type === 'output') {
           this.output = port
         }
+
+        // Light up the buttons when the controller gets added based on what is saved in the mapping
+        if (this.input !== null && this.output !== null) {
+          // Do this once output and input are defined
+          const len = this.mapping.length
+          for (let i = 0; i < len; i++) {
+            if (this.mapping[i].active) {
+              // Button light: on
+              // The last value is the velocity and defines the color (if available)
+              this.output.send(144, [this.mapping[i].note, 122])
+            }
+          }
+        }
+
       })
 
       // MIDI input / output ports (from a single device) are disconnected to the computer
@@ -180,13 +194,13 @@ class MidiController extends connect(store)(LitElement) {
 
           // Button light: on
           // The last value is the velocity and defines the color (if available)
-          this.output.send(channel, [note, 127])
+          this.output.send(144, [note, 122])
         } else {
           // Remove all scenes from the timeline
           element.scenes.map(sceneId => store.dispatch(removeSceneFromTimelineAndResetFixtures(sceneId)))
 
           // Button light: off
-          this.output.send(channel, [note, 0])
+          this.output.send(144, [note, 0])
         }
       }
 
