@@ -1,3 +1,112 @@
+# [3.7.0](https://github.com/NERDDISCO/luminave/compare/v3.6.3...v3.7.0) (2020-01-05)
+
+
+### Bug Fixes
+
+* **universe:** Default refresh should be false ([34f2dc1](https://github.com/NERDDISCO/luminave/commit/34f2dc1)), closes [#127](https://github.com/NERDDISCO/luminave/issues/127)
+
+
+### Features
+
+* **dunarnia:** Added BasicLedBar, InvolightMovingBar1808 & InvolightSlimPar784 ([d7beb4d](https://github.com/NERDDISCO/luminave/commit/d7beb4d))
+* **dunarnia:** Config for stifler32, Budapest ([e919583](https://github.com/NERDDISCO/luminave/commit/e919583))
+* **refreshconf:** Added Showtec lights ([5b85443](https://github.com/NERDDISCO/luminave/commit/5b85443))
+* **universe:** Change channel value manually ([2b1c5f3](https://github.com/NERDDISCO/luminave/commit/2b1c5f3)), closes [#127](https://github.com/NERDDISCO/luminave/issues/127)
+
+## [3.6.3](https://github.com/NERDDISCO/luminave/compare/v3.6.2...v3.6.3) (2019-10-22)
+
+
+### Bug Fixes
+
+* **scene:** Default values for fixtures & animations ([44e3566](https://github.com/NERDDISCO/luminave/commit/44e3566))
+
+## [3.6.2](https://github.com/NERDDISCO/luminave/compare/v3.6.1...v3.6.2) (2019-10-17)
+
+
+### Bug Fixes
+
+* **luminave-server:** Remove a scene from Thorium ([01081e5](https://github.com/NERDDISCO/luminave/commit/01081e5))
+* **scene-manager:** Show only 6 scenes in <= 1920px screens ([cc07231](https://github.com/NERDDISCO/luminave/commit/cc07231))
+
+## [3.6.1](https://github.com/NERDDISCO/luminave/compare/v3.6.0...v3.6.1) (2019-10-11)
+
+
+### Bug Fixes
+
+* **animation:** Don't reset the scene when animation is done ([4866618](https://github.com/NERDDISCO/luminave/commit/4866618)), closes [#112](https://github.com/NERDDISCO/luminave/issues/112)
+* **animation:** Remove animation from venue ([950a21e](https://github.com/NERDDISCO/luminave/commit/950a21e)), closes [#85](https://github.com/NERDDISCO/luminave/issues/85)
+* **fixture:** Remove fixture from scene and venue ([5ce5d6f](https://github.com/NERDDISCO/luminave/commit/5ce5d6f)), closes [#83](https://github.com/NERDDISCO/luminave/issues/83)
+* **scene:** Remove scene also from timeline ([02ea464](https://github.com/NERDDISCO/luminave/commit/02ea464)), closes [#86](https://github.com/NERDDISCO/luminave/issues/86)
+* **scene:** Remove scene causes no error anymore ([96a152c](https://github.com/NERDDISCO/luminave/commit/96a152c)), closes [#86](https://github.com/NERDDISCO/luminave/issues/86)
+* **xy-pad:** Default values can be undefined ([a74da21](https://github.com/NERDDISCO/luminave/commit/a74da21))
+
+# [3.6.0](https://github.com/NERDDISCO/luminave/compare/v3.5.0...v3.6.0) (2019-10-10)
+
+
+### Bug Fixes
+
+* **animation:** Remove animation also from scene ([5ce15ca](https://github.com/NERDDISCO/luminave/commit/5ce15ca)), closes [#85](https://github.com/NERDDISCO/luminave/issues/85)
+* **directive:** Convert to new lit-html standard ([e099d31](https://github.com/NERDDISCO/luminave/commit/e099d31))
+* **dunarnia:** Updated channel for white and amber ([09c3256](https://github.com/NERDDISCO/luminave/commit/09c3256))
+* **jsconfbp:** Added one more channel ([0d760f9](https://github.com/NERDDISCO/luminave/commit/0d760f9))
+
+
+### Features
+
+* **constant:** Added "amber" ([fdf73dc](https://github.com/NERDDISCO/luminave/commit/fdf73dc))
+* **jsconfbp:** Added all lights for the small stage @ akvarium ([e87142c](https://github.com/NERDDISCO/luminave/commit/e87142c))
+* **scene:** No animation for scene in timeline ([06f943c](https://github.com/NERDDISCO/luminave/commit/06f943c))
+* **scene:** No animation for scene in timeline ([e62d021](https://github.com/NERDDISCO/luminave/commit/e62d021))
+* **xy-pad:** Use the xy-pad to change Pan / Tilt ([1b6dd63](https://github.com/NERDDISCO/luminave/commit/1b6dd63)), closes [#117](https://github.com/NERDDISCO/luminave/issues/117)
+
+# [3.5.0](https://github.com/NERDDISCO/luminave/compare/v3.4.0...v3.5.0) (2019-09-08)
+
+
+### Bug Fixes
+
+* **dependency:** Updated to lit-html 1.1.2 & lit-element 2.1.0 ([5de1151](https://github.com/NERDDISCO/luminave/commit/5de1151)), closes [#114](https://github.com/NERDDISCO/luminave/issues/114)
+
+
+### Features
+
+* **fixture:** Added Laserworld CS 1000 RGB MK2 ([b02a539](https://github.com/NERDDISCO/luminave/commit/b02a539))
+* **modv:** Cyberpunk googles integration ([b10caab](https://github.com/NERDDISCO/luminave/commit/b10caab))
+
+# [3.4.0](https://github.com/NERDDISCO/luminave/compare/v3.3.0...v3.4.0) (2019-08-30)
+
+
+### Bug Fixes
+
+* **fivetwelve:** Removed unused methods ([1158f60](https://github.com/NERDDISCO/luminave/commit/1158f60))
+* **install:** Removed references to yarn ([c198150](https://github.com/NERDDISCO/luminave/commit/c198150))
+* **live:** Save live change into localstorage ([412f410](https://github.com/NERDDISCO/luminave/commit/412f410))
+* **midi:** Equal width for all grid items ([2dc8f23](https://github.com/NERDDISCO/luminave/commit/2dc8f23))
+* **midi:** Removed debugger and added correct boolean assignment ([bed081f](https://github.com/NERDDISCO/luminave/commit/bed081f))
+* **modv:** Change default URL for luminave ([71df460](https://github.com/NERDDISCO/luminave/commit/71df460))
+
+
+### Features
+
+* **fixture:** Added DunarniaLedPar for the Visual & Light workshop ([fe86a93](https://github.com/NERDDISCO/luminave/commit/fe86a93))
+* **jsconfeu2019:** Final config from Windows PC ([b8876a3](https://github.com/NERDDISCO/luminave/commit/b8876a3))
+* **midi:** Added ButtonRound & edit ([00b9b51](https://github.com/NERDDISCO/luminave/commit/00b9b51))
+* **midi:** CC as NoteOn ([7a10036](https://github.com/NERDDISCO/luminave/commit/7a10036))
+
+# [3.3.0](https://github.com/NERDDISCO/luminave/compare/v3.2.0...v3.3.0) (2019-08-13)
+
+
+### Bug Fixes
+
+* **Animations:** Update shake and dimmer animation ([f51e24d](https://github.com/NERDDISCO/luminave/commit/f51e24d))
+
+
+### Features
+
+* **fixture:** Added "Stairville Wild Wash Pro 648 RGB" ([a865ded](https://github.com/NERDDISCO/luminave/commit/a865ded))
+* **Fixtures:** Adds an OppskPar fixture. ([ad24c70](https://github.com/NERDDISCO/luminave/commit/ad24c70))
+* **Param Transforms:** Adds the ability to transform parameter values based on the value of another parameter. ([32b9ced](https://github.com/NERDDISCO/luminave/commit/32b9ced))
+* **timeline:** Run in the background ([763a720](https://github.com/NERDDISCO/luminave/commit/763a720)), closes [#108](https://github.com/NERDDISCO/luminave/issues/108)
+
 # [3.2.0](https://github.com/NERDDISCO/luminave/compare/v3.1.0...v3.2.0) (2019-07-21)
 
 
