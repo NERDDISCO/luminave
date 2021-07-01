@@ -81,10 +81,6 @@ class ModvColorGrid extends LitElement {
 
     if (colors.length === 0) {
       colors = new Array(width * height * 3).fill(0)
-
-      // colors[0] = 255
-      // colors[3] = 255
-      // colors[4] = 255
     }
 
     const colorChunks = []
@@ -96,8 +92,8 @@ class ModvColorGrid extends LitElement {
       labels.push(alphabet[i])
     }
 
-    for (let x = 0; x < width; x++) {
-      for (let y = 0; y < height; y++) {
+    for (let y = 0; y < height; y++) {
+      for (let x = 0; x < width; x++) {
         modvIndex++
 
         const chunk = { 
@@ -135,6 +131,7 @@ class ModvColorGrid extends LitElement {
           display: grid;
           grid-template-columns: repeat(var(--columns), 1fr);
           grid-template-rows: repeat(var(--rows), 1fr);
+          grid-auto-flow: row;
           grid-gap: 10px;
         }
 
@@ -143,7 +140,7 @@ class ModvColorGrid extends LitElement {
           grid-template-columns: repeat(var(--columns), 1fr);
           grid-template-rows: repeat(var(--rows), 1fr);
           grid-gap: 10px;
-          grid-auto-flow: column;
+          grid-auto-flow: row;
           
           counter-reset: header;
         }
@@ -221,7 +218,7 @@ class ModvColorGrid extends LitElement {
 
             <div class="item 
               ${classMap({ 
-                header: index % height === 0, 
+                header: index < width, 
                 mappedSlots: element.mappedSlots 
               })}" 
               style="${this.computeItemVars(element.color)}" 
