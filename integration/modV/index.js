@@ -68,7 +68,7 @@ const centerColor = dmxData => {
     connection.on('error', error => {
       console.log('modv-integration', '|', 'Error by', connection.path, 'with code', error.code)
 
-      if (error.code === 'EHOSTDOWN' || error.code === 'ETIMEDOUT') {
+      if (error.code === 'EHOSTDOWN' || error.code === 'ETIMEDOUT' || error.code === 'EPIPE') {
         return
       }
 
