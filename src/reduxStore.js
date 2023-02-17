@@ -5,6 +5,7 @@ import app from './reducers/app.js'
 import timeline from './reducers/timeline.js'
 import venueManager from './reducers/venue.js'
 import modvManager from './reducers/modv.js'
+import artnetManager from './reducers/artnet.js'
 import luminaveServer from './reducers/luminave-server.js'
 import fivetwelve from './reducers/fivetwelve.js'
 
@@ -18,6 +19,7 @@ export const store = createStore(
     timeline,
     venueManager,
     modvManager,
+    artnetManager,
     luminaveServer,
     fivetwelve
   }),

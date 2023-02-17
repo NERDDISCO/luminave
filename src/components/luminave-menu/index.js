@@ -21,6 +21,7 @@ import '../fivetwelve/fivetwelve-manager.js'
 import '../dekk-manager/index.js'
 import '../rainbow-text/index.js'
 import '../modv/modv-manager.js'
+import '../artnet/artnet-manager.js'
 import '../luminave-server/luminave-server-manager.js'
 
 import { updateDrawerState } from '../../actions/app.js'
@@ -148,6 +149,9 @@ class LuminaveMenu extends connect(store)(LitElement) {
 
           <h3>modV</h3>
           <modv-manager></modv-manager>
+
+          <h3>Art-Net</h3>
+          <artnet-manager></artnet-manager>
 
           <h3>fivetwelve</h3>
           <fivetwelve-manager></fivetwelve-manager>

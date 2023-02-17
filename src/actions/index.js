@@ -440,6 +440,14 @@ export const setModv = data => ({
 })
 
 /*
+ * Update the data of the Art-Net integration
+ */
+export const setArtnet = data => ({
+  data,
+  type: constants.SET_ARTNET
+})
+
+/*
  * Set the data from Dekk
  */
 export const setDekkData = data => ({

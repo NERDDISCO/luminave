@@ -24,6 +24,10 @@ export const getModv = state => state.modvManager
 export const getModvUrl = state => state.modvManager.url
 export const getModvReconnect = state => state.modvManager.reconnect
 export const getModvConnected = state => state.modvManager.connected
+export const getArtnet = state => state.artnetManager
+export const getArtnetUrl = state => state.artnetManager.url
+export const getArtnetReconnect = state => state.artnetManager.reconnect
+export const getArtnetConnected = state => state.artnetManager.connected
 export const getMidi = state => state.midiManager
 export const getMidiEnabled = state => state.midiManager.enabled
 export const getMidiControllers = state => state.midiManager.controllers

@@ -65,6 +65,9 @@ class UniverseManager extends connect(store)(LitElement) {
 
     // Send the universe to the FivetwelveManager
     window.dispatchEvent(new CustomEvent('send-universe-to-fivetwelve', { detail: { now } }))
+
+    // Send the universe to the ArtnetManager
+    window.dispatchEvent(new CustomEvent('send-universe-to-artnet', { detail: { now } }))
   }
 
   /**
