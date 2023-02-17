@@ -92,7 +92,7 @@
     "polymerx-cli": "^0.4.2",
     "prpl-server": "^1.1.0",
     "query-selector-shadow-dom": "^0.2.1",
-    "semantic-release": "^17.2.3",
+    "semantic-release": "^19.0.3",
     "wct-browser-legacy": "^1.0.1"
   }
 }
