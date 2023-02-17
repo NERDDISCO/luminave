@@ -40,7 +40,7 @@ class MidiManager extends connect(store)(LitElement) {
         store.dispatch(enableMidi(true))
       }
 
-    })
+    }, false)
   }
 
   static get properties() {
