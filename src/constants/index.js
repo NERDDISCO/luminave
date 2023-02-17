@@ -62,6 +62,7 @@ export const SET_TIMELINE_PROGRESS = uuidv1()
 export const SET_SCENE_ON_TIMELINE = uuidv1()
 export const SEND_UNIVERSE_TO_USB = uuidv1()
 export const SET_MODV = uuidv1()
+export const SET_ARTNET = uuidv1()
 export const SET_FIVETWELVE = uuidv1()
 export const CONNECT_DEKK = uuidv1()
 export const SET_DEKK_DATA = uuidv1()
@@ -93,7 +94,8 @@ export const FIXTURE_TYPES = ['EuroliteTMH8', 'FunGenerationSeParQuadLedRgbUv',
   'StairvilleWildWashPro648Rgb', 'DunarniaLedPar', 'LaserworldCs1000RgbMk2', 'BasicColorCMY',
   'InvolightLedParSlim', 'InvolightLedPar64', 'BasicDimmerStrobe', 'InvolightLedPar170',
   'CameoMovoBeamZ100', 'CameoMovoBeam100', 'CameoHydrabeam100RGBW', 'ShowtecHelixQ4000', 'ShowtecPerformer2000',
-  'InvolightSlimPar784', 'BasicLedBar', 'InvolightMovingBar1808'
+  'InvolightSlimPar784', 'BasicLedBar', 'InvolightMovingBar1808', 'CameoThunderwash600RGBW', 'AdjMegaTriparProfilePlus',
+  'EuroliteLedMiniStrobeSmd48'
 ]
 
 export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
@@ -108,7 +110,7 @@ export const FIXTURE_PROPERTIES = ['color', 'dimmer', 'strobe', 'white',
   'colorWheel', 'gobo1', 'gobo1Rotation', 'gobo2', 'gobo2Rotation', 'gobo3', 'gobo3Rotation',
   'beamIris', 'focusTime', 'colorTime', 'beamTime', 'goboTime', 'control', 'shutter', 'auraShutter',
   'auraDimmer', 'auraColor', 'beamColor', 'beamDimmer', 'beamShutter', 'circle', 'manualPosition', 'horizontal',
-  'patternConstruction', 'colorSelection', 'amber', 'lime', 'dimmerSpeed', 'tiltSpeed'
+  'patternConstruction', 'colorSelection', 'amber', 'lime', 'dimmerSpeed', 'tiltSpeed', 'duration', 'strobeEffect'
 ]
 
 export const MIDI_TYPE_BUTTON = 'Button'
